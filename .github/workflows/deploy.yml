@@ -2,7 +2,6 @@ name: Scrape and Deploy
 
 on:
   schedule:
-    # Every 6 hours at minute 0
     - cron: "0 */6 * * *"
   push:
     branches: [main]
@@ -31,43 +30,44 @@ jobs:
       - name: Install requests
         run: pip install requests
 
-      - name: Restore catalog hash
+      - name: Restore scraped data cache
         uses: actions/cache@v4
         with:
-          path: scraper/.catalog-hash
-          key: catalog-hash
+          path: |
+            scraper/.catalog-hash
+            scraper/models.json
+            scraper/sort_orders.json
+            scraper/sort_ranks.json
+            scraper/tags/
+          key: scraped-data
 
       - name: Quick check for changes (1 request)
         id: check
         run: |
-          # On push/manual trigger, skip the check and always do a full build.
-          if [ "${{ github.event_name }}" != "schedule" ]; then
-            echo "Forced build (event: ${{ github.event_name }})"
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          # On schedule: fetch /library?sort=newest, hash card data, compare.
-          # Exit 0 = unchanged (skip), 1 = changed (proceed to full scrape).
+          # Fetch /library?sort=newest, hash card data, compare to cache.
+          # Exit 0 = unchanged, 1 = changed.
           if python3 scraper/scrape.py --check-only; then
-            echo "No changes — skipping build"
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
-            echo "Changes detected — proceeding to full scrape"
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Full scrape + build
+      - name: Smart scrape (only changed models)
         if: steps.check.outputs.changed == 'true'
-        run: |
-          python3 scraper/scrape.py --skip-search -v
-          python3 build.py --base "/${{ github.event.repository.name }}"
+        run: python3 scraper/scrape.py --smart --skip-search -v
+
+      - name: Build site
+        # Always build on push (code may have changed).
+        # On schedule, only build if data changed.
+        if: steps.check.outputs.changed == 'true' || github.event_name != 'schedule'
+        run: python3 build.py --base "/${{ github.event.repository.name }}"
 
       - name: Upload artifact
-        if: steps.check.outputs.changed == 'true'
+        if: steps.check.outputs.changed == 'true' || github.event_name != 'schedule'
         uses: actions/upload-pages-artifact@v3
         with:
           path: public
 
       - name: Deploy to GitHub Pages
-        if: steps.check.outputs.changed == 'true'
+        if: steps.check.outputs.changed == 'true' || github.event_name != 'schedule'
         uses: actions/deploy-pages@v4

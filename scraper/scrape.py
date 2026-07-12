@@ -651,6 +651,11 @@ def main(argv: list[str] | None = None) -> int:
         help="skip /search user-model sweep (official only)",
     )
     ap.add_argument(
+        "--smart",
+        action="store_true",
+        help="only fetch tags for new/changed models; reuse cached tags for unchanged",
+    )
+    ap.add_argument(
         "--self-check",
         action="store_true",
         help="validate existing data and exit",
@@ -713,6 +718,16 @@ def main(argv: list[str] | None = None) -> int:
         models, sort_orders = crawl_official(client)
         log.info("official models: %d", len(models))
 
+        # Load previous model data for smart comparison
+        prev_models = {}
+        if args.smart and (DATA / "models.json").exists():
+            try:
+                prev_data = json.loads((DATA / "models.json").read_text())
+                for pm in prev_data.get("models", []):
+                    prev_models[pm["path"]] = pm
+            except Exception:
+                pass
+
         if not args.skip_search:
             log.info("=== crawling /search for user models ===")
             before = len(models)
@@ -724,29 +739,66 @@ def main(argv: list[str] | None = None) -> int:
             )
 
         if not args.skip_tags:
-            log.info("=== fetching per-model tags ===")
-            total = len(models)
-            for i, m in enumerate(models.values(), 1):
-                slug = slugify(m.path)
-                tf = TAGS_DIR / f"{slug}.json"
-                if tf.exists():
-                    try:
-                        existing = json.loads(tf.read_text())
-                        m.tags = [Tag(**t) for t in existing.get("tags", [])]
-                        log.info(
-                            "  [%d/%d] %s (cached %d tags)",
-                            i,
-                            total,
-                            m.path,
-                            len(m.tags),
-                        )
-                        continue
-                    except Exception:
-                        pass
-                log.info("  [%d/%d] %s", i, total, m.path)
-                m.tags = fetch_tags(client, m)
-                save_tags(m, m.tags)
-                time.sleep(DELAY)
+            if args.smart and prev_models:
+                # Determine which models changed
+                to_fetch = []
+                cached = 0
+                for m in models.values():
+                    slug = slugify(m.path)
+                    tf = TAGS_DIR / f"{slug}.json"
+                    pm = prev_models.get(m.path)
+                    if (
+                        pm
+                        and tf.exists()
+                        and pm.get("pulls") == m.pulls
+                        and pm.get("tag_count") == m.tag_count
+                        and pm.get("updated") == m.updated
+                    ):
+                        # Unchanged — load from cache
+                        try:
+                            existing = json.loads(tf.read_text())
+                            m.tags = [Tag(**t) for t in existing.get("tags", [])]
+                            cached += 1
+                            continue
+                        except Exception:
+                            pass
+                    to_fetch.append(m)
+                log.info(
+                    "=== fetching per-model tags (%d cached, %d to fetch) ===",
+                    cached,
+                    len(to_fetch),
+                )
+                total = len(to_fetch)
+                for i, m in enumerate(to_fetch, 1):
+                    slug = slugify(m.path)
+                    log.info("  [%d/%d] %s", i, total, m.path)
+                    m.tags = fetch_tags(client, m)
+                    save_tags(m, m.tags)
+                    time.sleep(DELAY)
+            else:
+                log.info("=== fetching per-model tags ===")
+                total = len(models)
+                for i, m in enumerate(models.values(), 1):
+                    slug = slugify(m.path)
+                    tf = TAGS_DIR / f"{slug}.json"
+                    if tf.exists():
+                        try:
+                            existing = json.loads(tf.read_text())
+                            m.tags = [Tag(**t) for t in existing.get("tags", [])]
+                            log.info(
+                                "  [%d/%d] %s (cached %d tags)",
+                                i,
+                                total,
+                                m.path,
+                                len(m.tags),
+                            )
+                            continue
+                        except Exception:
+                            pass
+                    log.info("  [%d/%d] %s", i, total, m.path)
+                    m.tags = fetch_tags(client, m)
+                    save_tags(m, m.tags)
+                    time.sleep(DELAY)
 
         save_models(models.values())
 
