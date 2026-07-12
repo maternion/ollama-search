@@ -1,0 +1,23 @@
+# Generated site output
+public/
+
+# Scraped data (regenerate with: python3 scraper/scrape.py)
+scraper/models.json
+scraper/sort_ranks.json
+scraper/sort_orders.json
+scraper/tags/
+
+# Reference HTML snapshots (dev-only)
+reference/
+
+# Logs
+*.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+.DS_Store
+Thumbs.db
