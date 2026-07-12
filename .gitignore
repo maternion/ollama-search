@@ -13,6 +13,10 @@ reference/
 # Logs
 *.log
 
+# Scratch hash files (CI cache only)
+scraper/.catalog-hash
+scraper/.model-hash
+
 # Python
 __pycache__/
 *.pyc

@@ -592,6 +592,48 @@ def save_tags(model: Model, tags: list[Tag]) -> None:
 # --------------------------------------------------------------------------- #
 
 
+def check_only() -> int:
+    """Fetch /library?sort=newest (1 request), hash card data, compare to cache.
+
+    Exit 0 = no change, 1 = changed (or first run).
+    Writes the hash to scraper/.catalog-hash.
+    """
+    import hashlib
+
+    client = Client()
+    try:
+        html = client.get(f"{BASE}/library?sort=newest")
+        if html is None:
+            log.error("failed to fetch /library?sort=newest")
+            return 1
+        cards = parse_cards(html, f"{BASE}/library?sort=newest")
+        log.info("fetched %d cards from /library?sort=newest", len(cards))
+    finally:
+        client.close()
+
+    # Hash: name + pulls + tag_count + updated + path
+    sig = "|".join(
+        f"{m.name}:{m.pulls}:{m.tag_count}:{m.updated}:{m.path}" for m in cards
+    )
+    current = hashlib.sha256(sig.encode()).hexdigest()[:16]
+
+    cache_file = DATA / ".catalog-hash"
+    prev = ""
+    if cache_file.exists():
+        prev = cache_file.read_text().strip()
+
+    log.info("previous hash: %s", prev or "(none)")
+    log.info("current hash:  %s", current)
+
+    if current == prev:
+        log.info("no changes — exiting 0")
+        return 0
+    else:
+        cache_file.write_text(current)
+        log.info("changes detected — exiting 1")
+        return 1
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Scrape ollama.com model catalog.")
     ap.add_argument(
@@ -613,6 +655,12 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="validate existing data and exit",
     )
+    ap.add_argument(
+        "--check-only",
+        action="store_true",
+        help="fetch only /library?sort=newest (1 request), hash card data, "
+        "compare to scraper/.catalog-hash, exit 0=unchanged 1=changed",
+    )
     ap.add_argument("-v", "--verbose", action="store_true")
     args = ap.parse_args(argv)
 
@@ -625,6 +673,9 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.self_check:
         return self_check()
+
+    if args.check_only:
+        return check_only()
 
     client = Client()
     try:
