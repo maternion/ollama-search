@@ -9,7 +9,6 @@ Serves ~/ollama-search/public/ with:
 """
 
 import http.server
-import os
 import sys
 from pathlib import Path
 
@@ -28,7 +27,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Location", "/search/")
             self.end_headers()
             return
-        return super().do_GET()
+        return super().do_GET(self)
 
     def end_headers(self):
         self.send_header("Cache-Control", "no-store")

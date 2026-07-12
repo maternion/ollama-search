@@ -459,9 +459,14 @@ def parse_tags_page(html: str) -> list[Tag]:
 # --------------------------------------------------------------------------- #
 
 
-def crawl_official(client: Client) -> dict[str, Model]:
-    """Crawl /library?sort=popular and newest; union the results."""
+def crawl_official(client: Client) -> tuple[dict[str, Model], dict[str, list[str]]]:
+    """Crawl /library?sort=popular and newest; union the results.
+
+    Returns (models_by_path, sort_orders) where sort_orders maps
+    sort name → list of model paths in document order.
+    """
     found: dict[str, Model] = {}
+    orders: dict[str, list[str]] = {}
     for sort in ("popular", "newest"):
         url = f"{BASE}/library?sort={sort}"
         log.info("crawling %s", url)
@@ -471,11 +476,12 @@ def crawl_official(client: Client) -> dict[str, Model]:
             continue
         cards = parse_cards(html, url)
         log.info("  %s: %d cards", sort, len(cards))
+        orders[sort] = [m.path for m in cards]
         for m in cards:
             if m.path not in found:
                 found[m.path] = m
         time.sleep(DELAY)
-    return found
+    return found, orders
 
 
 # Search terms to enumerate user (and extra official) models.
@@ -653,7 +659,7 @@ def main(argv: list[str] | None = None) -> int:
 
         # ---- full crawl ----
         log.info("=== crawling official catalog ===")
-        models = crawl_official(client)
+        models, sort_orders = crawl_official(client)
         log.info("official models: %d", len(models))
 
         if not args.skip_search:
@@ -692,6 +698,32 @@ def main(argv: list[str] | None = None) -> int:
                 time.sleep(DELAY)
 
         save_models(models.values())
+
+        # Save sort orderings + derived rank data for build.py
+        if sort_orders:
+            (DATA / "sort_orders.json").write_text(json.dumps(sort_orders, indent=2))
+            log.info("wrote sort_orders.json")
+            # Build per-model rank dict from the orderings
+            ranks: dict[str, dict] = {}
+            all_names = {m.name for m in models.values()}
+            for sort_name, paths in sort_orders.items():
+                for rank, path in enumerate(paths):
+                    slug = path.strip("/").split("/")[-1]
+                    model = models.get(path)
+                    name = model.name if model else slug
+                    if name not in ranks:
+                        ranks[name] = {}
+                    ranks[name][f"{sort_name}_rank"] = rank
+            # Fill missing ranks with 9999
+            for name in all_names:
+                if name not in ranks:
+                    ranks[name] = {}
+                for sort_name in sort_orders:
+                    key = f"{sort_name}_rank"
+                    ranks[name].setdefault(key, 9999)
+            (DATA / "sort_ranks.json").write_text(json.dumps(ranks, indent=2))
+            log.info("wrote sort_ranks.json")
+
         log.info("done (%d HTTP requests)", client.requests)
         return 0
     finally:

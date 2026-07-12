@@ -1,0 +1,93 @@
+name: Scrape and Deploy
+
+on:
+  schedule:
+    # Every 6 hours at minute 0
+    - cron: "0 */6 * * *"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "deploy"
+  cancel-in-progress: true
+
+jobs:
+  scrape-and-deploy:
+    runs-on: ubuntu-latest
+    environment: github-pages
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Restore previous hash
+        uses: actions/cache@v4
+        with:
+          path: scraper/.model-hash
+          key: scrape-model-hash
+
+      - name: Scrape ollama.com
+        run: python3 scraper/scrape.py --skip-search -v
+
+      - name: Check for changes
+        id: diff
+        run: |
+          # On push/manual trigger, always build+deploy.
+          # On schedule, only deploy if the hash changed.
+          FORCE="false"
+          [ "${{ github.event_name }}" != "schedule" ] && FORCE="true"
+          if [ ! -f scraper/models.json ]; then
+            echo "No models.json — skipping deploy"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # Hash the model names + pulls + updated fields
+          CURRENT=$(python3 -c "
+          import json,hashlib
+          d=json.load(open('scraper/models.json'))
+          models=d.get('models',d) if isinstance(d,dict) else d
+          sig='|'.join(f\"{m['name']}:{m['pulls']}:{m.get('updated','')}:{m['tag_count']}\" for m in models)
+          print(hashlib.sha256(sig.encode()).hexdigest()[:16])
+          ")
+          # Compare against cached hash
+          CACHE_FILE="scraper/.model-hash"
+          PREV=""
+          [ -f "$CACHE_FILE" ] && PREV=$(cat "$CACHE_FILE")
+          echo "Previous hash: $PREV"
+          echo "Current hash:  $CURRENT"
+          if [ "$FORCE" = "true" ]; then
+            echo "Forced build (event: ${{ github.event_name }})"
+            echo "$CURRENT" > "$CACHE_FILE"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          elif [ "$CURRENT" = "$PREV" ]; then
+            echo "No changes detected — skipping build"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "$CURRENT" > "$CACHE_FILE"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build site
+        if: steps.diff.outputs.changed == 'true'
+        run: python3 build.py --base "/${{ github.event.repository.name }}"
+
+      - name: Upload artifact
+        if: steps.diff.outputs.changed == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        if: steps.diff.outputs.changed == 'true'
+        uses: actions/deploy-pages@v4

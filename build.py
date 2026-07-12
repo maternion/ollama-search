@@ -30,6 +30,20 @@ SCRAPER = HERE / "scraper"
 PUBLIC = HERE / "public"
 TAGS_DIR = SCRAPER / "tags"
 
+# Base URL prefix — "" for local dev, "/ollama-search" for GitHub Pages project site.
+# Set via: python3 build.py --base /ollama-search
+BASE = ""
+
+
+def url(path: str) -> str:
+    """Prefix a site-internal path with BASE. Ensures leading /."""
+    if path.startswith("http"):
+        return path
+    if not path.startswith("/"):
+        path = "/" + path
+    return BASE + path
+
+
 # --------------------------------------------------------------------------- #
 # SVG icons (verbatim from ollama.com markup)
 # --------------------------------------------------------------------------- #
@@ -177,16 +191,16 @@ def head_html(title: str, description: str, extra_css: bool = False) -> str:
     <meta property="og:description" content="{desc}" />
     <meta property="og:type" content="website" />
     <meta name="robots" content="index, follow" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48x48.png" />
-    <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64x64.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/assets/android-chrome-icon-512x512.png" />
-    <link href="/assets/tailwind.css" rel="stylesheet" />
-    <link href="/assets/extras.css" rel="stylesheet" />
-    <script src="/assets/htmx.bundle.js"></script>"""
+    <link rel="icon" type="image/png" sizes="16x16" href="{url("/assets/icon-16x16.png")}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{url("/assets/icon-32x32.png")}" />
+    <link rel="icon" type="image/png" sizes="48x48" href="{url("/assets/icon-48x48.png")}" />
+    <link rel="icon" type="image/png" sizes="64x64" href="{url("/assets/icon-64x64.png")}" />
+    <link rel="apple-touch-icon" sizes="180x" href="{url("/assets/apple-touch-icon.png")}" />
+    <link rel="icon" type="image/png" sizes="192x192" href="{url("/assets/android-chrome-icon-192x192.png")}" />
+    <link rel="icon" type="image/png" sizes="512x512" href="{url("/assets/android-chrome-icon-512x512.png")}" />
+    <link href="{url("/assets/tailwind.css")}" rel="stylesheet" />
+    <link href="{url("/assets/extras.css")}" rel="stylesheet" />
+    <script src="{url("/assets/htmx.bundle.js")}"></script>"""
 
 
 def nav_html(active: str = "") -> str:
@@ -197,21 +211,21 @@ def nav_html(active: str = "") -> str:
     )
     return f"""<header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
   <nav class="flex w-full items-center justify-between px-6 py-[9px]">
-    <a href="/search/" class="z-50">
-      <img src="/assets/ollama.png" class="w-8 dark:hidden" alt="Ollama" />
-      <img src="/assets/ollama-dark.png" class="w-8 hidden dark:block" alt="Ollama" />
+    <a href="{url("/search/")}" class="z-50">
+      <img src="{url("/assets/ollama.png")}" class="w-8 dark:hidden" alt="Ollama" />
+      <img src="{url("/assets/ollama-dark.png")}" class="w-8 hidden dark:block" alt="Ollama" />
     </a>
     <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
-      <a class="{models_cls}" href="/search/">Models</a>
+      <a class="{models_cls}" href="{url("/search/")}">Models</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
     </div>
     <div class="flex-grow justify-center items-center hidden lg:flex">
       <div class="relative w-full xl:max-w-[28rem]">
-        <form action="/search" autocomplete="off" id="nav-search-form">
+        <form action="{url("/search")}" autocomplete="off" id="nav-search-form">
           <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full">
             <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400">{SVG_SEARCH}</span>
-            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){{event.preventDefault();window.location.href='/search/?q='+encodeURIComponent(this.value);}}" />
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){{event.preventDefault();window.location.href='{url("/search/?q=")}'+encodeURIComponent(this.value);}}" />
           </div>
         </form>
       </div>
@@ -316,7 +330,7 @@ def render_card(
     tag_label = "Tag" if tag_count == 1 else "Tags"
     updated = esc(m["updated"])
     updated_title = esc(m.get("updated_title") or "")
-    href = esc(m["path"])
+    href = url(esc(m["path"]))
 
     # Sort rank data attributes
     r = (ranks or {}).get(name_raw, {})
@@ -467,7 +481,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
 
 {footer_html()}
 {theme_script()}
-<script src="/assets/app.js"></script>
+<script src="{url("/assets/app.js")}"></script>
 </body>
 </html>"""
 
@@ -544,7 +558,7 @@ def build_detail(m: dict, tags: list[dict]) -> None:
 {nav_html()}
 
 <main class="mx-auto flex w-full max-w-2xl flex-col px-6 py-5 md:py-12 lg:px-8">
-  <a href="/search/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline mb-4">&larr; Back to models</a>
+  <a href="{url("/search/")}" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline mb-4">&larr; Back to models</a>
   <div class="flex flex-col mb-4">
     <h1 class="text-2xl font-medium tracking-tight dark:text-neutral-100">{esc(name)}</h1>
     <p class="text-neutral-500 dark:text-neutral-400 text-sm mt-1">{format_count(m["pulls"])} &nbsp;Downloads &nbsp; Updated &nbsp;{esc(updated)}</p>
@@ -571,7 +585,7 @@ def build_detail(m: dict, tags: list[dict]) -> None:
 
 {footer_html()}
 {theme_script()}
-<script src="/assets/app.js"></script>
+<script src="{url("/assets/app.js")}"></script>
 </body>
 </html>"""
 
@@ -664,7 +678,7 @@ def build_tags_page(m: dict, tags: list[dict]) -> None:
 
 {footer_html()}
 {theme_script()}
-<script src="/assets/app.js"></script>
+<script src="{url("/assets/app.js")}"></script>
 </body>
 </html>"""
 
@@ -978,6 +992,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 def main() -> int:
+    global BASE
+    if "--base" in sys.argv:
+        idx = sys.argv.index("--base")
+        BASE = sys.argv[idx + 1].rstrip("/") if idx + 1 < len(sys.argv) else ""
     models = load_models()
     print(f"loaded {len(models)} models from scraper/models.json")
 
@@ -991,11 +1009,12 @@ def main() -> int:
 
     # root redirect -> /search/
     print("building root redirect ...")
+    search_url = url("/search/")
     (PUBLIC / "index.html").write_text(
         "<!DOCTYPE html>\n<html><head>"
-        '<meta http-equiv="refresh" content="0; url=/search/">'
+        f'<meta http-equiv="refresh" content="0; url={search_url}">'
         '<meta name="robots" content="noindex"></head>'
-        '<body><a href="/search/">Redirect to search</a></body></html>\n'
+        f'<body><a href="{search_url}">Redirect to search</a></body></html>\n'
     )
 
     # model detail + tags pages
