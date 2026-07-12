@@ -460,13 +460,30 @@ def parse_tags_page(html: str) -> list[Tag]:
 
 
 def crawl_official(client: Client) -> tuple[dict[str, Model], dict[str, list[str]]]:
-    """Crawl /library?sort=popular and newest; union the results.
+    """Crawl /search (trending), /library?sort=popular and /library?sort=newest.
 
     Returns (models_by_path, sort_orders) where sort_orders maps
     sort name → list of model paths in document order.
+    The 'popular' order comes from /search (trending, 20 models) with
+    remaining models appended in /library?sort=popular (pulls) order.
     """
     found: dict[str, Model] = {}
     orders: dict[str, list[str]] = {}
+
+    # 1. Fetch /search for the trending list
+    log.info("crawling %s/search", BASE)
+    search_html = client.get(f"{BASE}/search")
+    search_cards = []
+    if search_html:
+        search_cards = parse_cards(search_html, f"{BASE}/search")
+        log.info("  search (trending): %d cards", len(search_cards))
+        for m in search_cards:
+            if m.path not in found:
+                found[m.path] = m
+    time.sleep(DELAY)
+
+    # 2. Fetch /library?sort=popular and /library?sort=newest
+    lib_orders: dict[str, list[str]] = {}
     for sort in ("popular", "newest"):
         url = f"{BASE}/library?sort={sort}"
         log.info("crawling %s", url)
@@ -476,11 +493,19 @@ def crawl_official(client: Client) -> tuple[dict[str, Model], dict[str, list[str
             continue
         cards = parse_cards(html, url)
         log.info("  %s: %d cards", sort, len(cards))
-        orders[sort] = [m.path for m in cards]
+        lib_orders[sort] = [m.path for m in cards]
         for m in cards:
             if m.path not in found:
                 found[m.path] = m
         time.sleep(DELAY)
+
+    # Build 'popular' order: trending from /search first, then rest by pulls
+    trending_paths = [m.path for m in search_cards]
+    trending_set = set(trending_paths)
+    remaining = [p for p in lib_orders.get("popular", []) if p not in trending_set]
+    orders["popular"] = trending_paths + remaining
+    orders["newest"] = lib_orders.get("newest", [])
+
     return found, orders
 
 
@@ -593,7 +618,7 @@ def save_tags(model: Model, tags: list[Tag]) -> None:
 
 
 def check_only() -> int:
-    """Fetch /library?sort=newest (1 request), hash card data, compare to cache.
+    """Fetch /search (1 request), hash trending card data, compare to cache.
 
     Exit 0 = no change, 1 = changed (or first run).
     Writes the hash to scraper/.catalog-hash.
@@ -602,12 +627,12 @@ def check_only() -> int:
 
     client = Client()
     try:
-        html = client.get(f"{BASE}/library?sort=newest")
+        html = client.get(f"{BASE}/search")
         if html is None:
-            log.error("failed to fetch /library?sort=newest")
+            log.error("failed to fetch /search")
             return 1
-        cards = parse_cards(html, f"{BASE}/library?sort=newest")
-        log.info("fetched %d cards from /library?sort=newest", len(cards))
+        cards = parse_cards(html, f"{BASE}/search")
+        log.info("fetched %d cards from /search", len(cards))
     finally:
         client.close()
 
