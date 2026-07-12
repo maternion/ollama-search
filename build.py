@@ -212,8 +212,7 @@ def nav_html(active: str = "") -> str:
     return f"""<header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
   <nav class="flex w-full items-center justify-between px-6 py-[9px]">
     <a href="{url("/search/")}" class="z-50">
-      <img src="{url("/assets/ollama.png")}" class="w-8 dark:hidden" alt="Ollama" />
-      <img src="{url("/assets/ollama-dark.png")}" class="w-8 hidden dark:block" alt="Ollama" />
+      <img src="{url("/assets/ollama.png")}" class="w-8 dark:invert" alt="Ollama" />
     </a>
     <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
       <a class="{models_cls}" href="{url("/search/")}">Models</a>
@@ -693,15 +692,25 @@ def build_tags_page(m: dict, tags: list[dict]) -> None:
 def copy_assets() -> None:
     assets = PUBLIC / "assets"
     assets.mkdir(parents=True, exist_ok=True)
-    # Copy vendored assets that were downloaded earlier.
-    for name in [
-        "tailwind.css",
-        "htmx.bundle.js",
-        "ollama.png",
-    ]:
-        src = HERE / "public" / "assets" / name
-        if src.exists():
+
+    # Download vendored assets from ollama.com if missing.
+    vendored = [
+        ("tailwind.css", "https://ollama.com/public/tailwind.css"),
+        ("htmx.bundle.js", "https://ollama.com/public/vendor/htmx/bundle.js"),
+        ("ollama.png", "https://ollama.com/public/ollama.png"),
+    ]
+    for name, url in vendored:
+        dst = assets / name
+        if dst.exists():
             continue
+        try:
+            import urllib.request
+
+            urllib.request.urlretrieve(url, dst)
+            print(f"  downloaded {name}")
+        except Exception as e:
+            print(f"  WARN: could not download {name}: {e}", file=sys.stderr)
+
     # Icons (download if missing).
     for icon, url in [
         ("icon-16x16.png", "https://ollama.com/public/icon-16x16.png"),
@@ -709,15 +718,6 @@ def copy_assets() -> None:
         ("icon-48x48.png", "https://ollama.com/public/icon-48x48.png"),
         ("icon-64x64.png", "https://ollama.com/public/icon-64x64.png"),
         ("apple-touch-icon.png", "https://ollama.com/public/apple-touch-icon.png"),
-        (
-            "android-chrome-icon-192x192.png",
-            "https://ollama.com/public/android-chrome-icon-192x192.png",
-        ),
-        (
-            "android-chrome-icon-512x512.png",
-            "https://ollama.com/public/android-chrome-icon-512x512.png",
-        ),
-        ("ollama-dark-logo.png", "https://ollama.com/ollama-dark-logo.png"),
     ]:
         dst = assets / icon
         if dst.exists():
@@ -729,12 +729,6 @@ def copy_assets() -> None:
             print(f"  downloaded {icon}")
         except Exception as e:
             print(f"  WARN: could not download {icon}: {e}", file=sys.stderr)
-    # rename ollama-dark-logo -> ollama-dark if downloaded
-    dark = assets / "ollama-dark.png"
-    if not dark.exists():
-        dl = assets / "ollama-dark-logo.png"
-        if dl.exists():
-            dl.rename(dark)
     # extras.css
     (assets / "extras.css").write_text(EXTRAS_CSS)
     # app.js
@@ -752,6 +746,7 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 .dark header { background-color: #0a0a0a; }
 
 /* --- Base elements: override light-mode neutral classes in dark context --- */
+.dark .dark\:invert { filter: invert(1); }
 .dark .text-neutral-800 { color: #d4d4d4; }
 .dark .text-neutral-500 { color: #a3a3a3; }
 .dark .text-neutral-900 { color: #fafafa; }
