@@ -29,6 +29,8 @@ import json
 import logging
 import os
 import re
+import signal
+import subprocess
 import sys
 import time
 from dataclasses import asdict, dataclass, field
@@ -49,9 +51,25 @@ BLOBS_DIR = HERE / "blobs"
 # Polite crawling: small delay between requests, generous timeout.
 DELAY = 0.5
 TIMEOUT = 30.0
+HARD_DEADLINE = 60.0  # wall-clock seconds per request (SIGALRM)
+MAX_CONSECUTIVE_FAILURES = 10  # stop scraping after this many in a row
+CHECKPOINT_EVERY = 5  # git-push checkpoint every N models
 UA = "ollama-search-scraper/0.1 (+https://github.com/anomalyco/opencode)"
 
 log = logging.getLogger("scraper")
+
+# --------------------------------------------------------------------------- #
+# Hard wall-clock timeout via SIGALRM (POSIX, main thread only)
+# ---------------------------------------------------------------------------
+
+
+class _HardTimeoutError(Exception):
+    pass
+
+
+def _alarm_handler(signum, frame):
+    raise _HardTimeoutError("wall-clock deadline exceeded")
+
 
 # --------------------------------------------------------------------------- #
 # HTTP client
@@ -65,24 +83,50 @@ class Client:
             {"User-Agent": UA, "Accept-Language": "en-US,en;q=0.9"}
         )
         self.requests = 0
+        self.consecutive_failures = 0
+        self.bail_out = False
 
     def get(self, url: str) -> str | None:
+        if self.bail_out:
+            return None
         for attempt in range(3):
             try:
-                r = self.session.get(url, timeout=TIMEOUT)
+                # Hard wall-clock deadline via SIGALRM — catches slow-trickle
+                # hangs that requests' per-byte read timeout misses.
+                old_handler = signal.signal(signal.SIGALRM, _alarm_handler)
+                signal.alarm(int(HARD_DEADLINE))
+                try:
+                    r = self.session.get(url, timeout=TIMEOUT)
+                finally:
+                    signal.alarm(0)
+                    signal.signal(signal.SIGALRM, old_handler)
                 self.requests += 1
                 if r.status_code == 200:
+                    self.consecutive_failures = 0
                     return r.text
                 log.warning("GET %s -> %s", url, r.status_code)
                 if r.status_code in (404, 410):
+                    self.consecutive_failures += 1
                     return None
                 if r.status_code in (429, 502, 503, 504):
                     time.sleep(5 * (attempt + 1))
                     continue
+                self.consecutive_failures += 1
                 return None
+            except _HardTimeoutError:
+                log.warning("HARD TIMEOUT after %ss: %s", HARD_DEADLINE, url)
+                self.consecutive_failures += 1
+                break
             except requests.RequestException as e:
                 log.warning("error %s: %s", url, e)
+                self.consecutive_failures += 1
                 time.sleep(2 * (attempt + 1))
+        if self.consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
+            log.error(
+                "ABORTING: %d consecutive failures — site appears blocked/down",
+                self.consecutive_failures,
+            )
+            self.bail_out = True
         return None
 
     def close(self) -> None:
@@ -1476,6 +1520,58 @@ def save_tags(model: Model, tags: list[Tag]) -> None:
 
 
 # --------------------------------------------------------------------------- #
+# Git checkpoint — push scraped data to scraped-data branch
+# --------------------------------------------------------------------------- #
+
+_GIT_CHECKPOINT_COUNT = 0
+
+
+def git_checkpoint(label: str = "") -> None:
+    """Commit + push scraped data to the 'scraped-data' branch.
+
+    Only acts if the GIT_CHECKPOINT env var is set (CI mode).  Uses a git
+    worktree at GIT_CHECKPOINT_WORKTREE to avoid branch switching.
+    """
+    global _GIT_CHECKPOINT_COUNT
+    if not os.environ.get("GIT_CHECKPOINT"):
+        return
+    worktree = os.environ.get("GIT_CHECKPOINT_WORKTREE", "")
+    if not worktree or not os.path.isdir(worktree):
+        return
+    _GIT_CHECKPOINT_COUNT += 1
+    tag = f"[{_GIT_CHECKPOINT_COUNT}] " if label else ""
+    msg = f"checkpoint {tag}{label}".strip()
+    try:
+        # Copy scraper data to the worktree
+        subprocess.run(
+            ["cp", "-r", "scraper/", f"{worktree}/scraper/"],
+            check=True,
+            cwd=HERE.parent,
+        )
+        subprocess.run(["git", "add", "-A", "scraper/"], check=True, cwd=worktree)
+        r = subprocess.run(
+            ["git", "commit", "-m", f"{msg} [skip ci]"],
+            capture_output=True,
+            text=True,
+            cwd=worktree,
+        )
+        if r.returncode != 0:
+            return  # nothing to commit
+        subprocess.run(
+            ["git", "push", "origin", "scraped-data"],
+            check=True,
+            capture_output=True,
+            text=True,
+            cwd=worktree,
+        )
+        log.info("  git checkpoint pushed: %s", msg)
+    except subprocess.CalledProcessError as e:
+        log.warning("  git checkpoint failed: %s", e)
+    except Exception as e:
+        log.warning("  git checkpoint error: %s", e)
+
+
+# --------------------------------------------------------------------------- #
 # Main
 # --------------------------------------------------------------------------- #
 
@@ -1649,6 +1745,8 @@ def main(argv: list[str] | None = None) -> int:
                 cached_tp = 0
                 fetched_tp = 0
                 for t in tags_to_fetch:
+                    if client.bail_out:
+                        break
                     slug = slugify(m.path)
                     tp_file = TAG_PAGES_DIR / f"{slug}__{t.name}.json"
                     if tp_file.exists():
@@ -1686,6 +1784,8 @@ def main(argv: list[str] | None = None) -> int:
                     BLOBS_DIR.mkdir(parents=True, exist_ok=True)
                     blob_count = 0
                     for t in m.tags:
+                        if client.bail_out:
+                            break
                         slug = slugify(m.path)
                         tp_file = TAG_PAGES_DIR / f"{slug}__{t.name}.json"
                         if not tp_file.exists():
@@ -1803,7 +1903,11 @@ def main(argv: list[str] | None = None) -> int:
             else:
                 log.info("=== fetching per-model tags ===")
                 total = len(models)
+                models_done = 0
                 for i, m in enumerate(models.values(), 1):
+                    if client.bail_out:
+                        log.warning("BAILING OUT at model %d/%d", i, total)
+                        break
                     slug = slugify(m.path)
                     tf = TAGS_DIR / f"{slug}.json"
                     if tf.exists():
@@ -1834,12 +1938,10 @@ def main(argv: list[str] | None = None) -> int:
                     log.info("  [%d/%d] %s", i, total, m.path)
                     m.tags = fetch_tags(client, m)
                     save_tags(m, m.tags)
-                    if i % 10 == 0:
+                    models_done += 1
+                    if models_done % CHECKPOINT_EVERY == 0:
                         save_models(models.values())
-                        log.info(
-                            "  checkpoint: saved models.json (%d models)",
-                            len(models),
-                        )
+                        git_checkpoint(f"tags {i}/{total}")
                     time.sleep(DELAY)
 
         if not args.skip_pages:
@@ -1847,7 +1949,11 @@ def main(argv: list[str] | None = None) -> int:
             PAGES_DIR.mkdir(parents=True, exist_ok=True)
             official_models = [m for m in models.values() if m.official]
             total = len(official_models)
+            pages_done = 0
             for i, m in enumerate(official_models, 1):
+                if client.bail_out:
+                    log.warning("BAILING OUT at page %d/%d", i, total)
+                    break
                 slug = slugify(m.path)
                 pf = PAGES_DIR / f"{slug}.json"
                 if args.smart and prev_models:
@@ -1868,6 +1974,9 @@ def main(argv: list[str] | None = None) -> int:
                 page = fetch_model_page(client, m)
                 if page:
                     save_model_page(m, page)
+                    pages_done += 1
+                    if pages_done % CHECKPOINT_EVERY == 0:
+                        git_checkpoint(f"pages {i}/{total}")
                 else:
                     log.warning("  no page data for %s", m.path)
                 time.sleep(DELAY)
@@ -1877,7 +1986,13 @@ def main(argv: list[str] | None = None) -> int:
             TAG_PAGES_DIR.mkdir(parents=True, exist_ok=True)
             official_models = [m for m in models.values() if m.official]
             total_tag_pages = 0
+            tag_pages_done = 0
             for i, m in enumerate(official_models, 1):
+                if client.bail_out:
+                    log.warning(
+                        "BAILING OUT at tag pages %d/%d", i, len(official_models)
+                    )
+                    break
                 if not m.tags:
                     continue
                 # Fetch ALL tags for this model
@@ -1903,20 +2018,24 @@ def main(argv: list[str] | None = None) -> int:
                     if tp:
                         save_tag_page(m, t.name, tp)
                         total_tag_pages += 1
+                        tag_pages_done += 1
+                        if tag_pages_done % CHECKPOINT_EVERY == 0:
+                            git_checkpoint(f"tag pages {i}/{len(official_models)}")
                     time.sleep(DELAY)
             log.info("fetched %d tag pages", total_tag_pages)
             save_models(models.values())
-            log.info(
-                "  checkpoint: saved models.json after tag pages (%d models)",
-                len(models),
-            )
+            git_checkpoint("tag pages done")
 
         if not args.skip_blobs:
             log.info("=== fetching blob pages (official only) ===")
             BLOBS_DIR.mkdir(parents=True, exist_ok=True)
             official_models = [m for m in models.values() if m.official]
             total_blobs = 0
+            blobs_done = 0
             for i, m in enumerate(official_models, 1):
+                if client.bail_out:
+                    log.warning("BAILING OUT at blobs %d/%d", i, len(official_models))
+                    break
                 if not m.tags:
                     continue
                 for t in m.tags:
@@ -1946,10 +2065,27 @@ def main(argv: list[str] | None = None) -> int:
                                 continue
                         if bf.exists() and not args.smart:
                             continue  # already cached
+                        log.info(
+                            "  [%d/%d] blob: %s:%s",
+                            i,
+                            len(official_models),
+                            m.path,
+                            t.name,
+                        )
                         bp = fetch_blob_page(client, blob_url)
                         if bp:
                             save_blob_page(blob_url, bp)
                             total_blobs += 1
+                            blobs_done += 1
+                            log.info(
+                                "    blob done: %d tensors, %d chars content",
+                                len(bp.tensors),
+                                len(bp.content),
+                            )
+                            if blobs_done % CHECKPOINT_EVERY == 0:
+                                git_checkpoint(
+                                    f"blobs {i}/{len(official_models)} ({total_blobs} total)"
+                                )
                         time.sleep(DELAY)
                 if i % 10 == 0:
                     log.info(
@@ -1959,17 +2095,9 @@ def main(argv: list[str] | None = None) -> int:
                         total_blobs,
                     )
                     save_models(models.values())
-                    log.info(
-                        "  checkpoint: saved models.json (%d models, %d blobs)",
-                        len(models),
-                        total_blobs,
-                    )
             log.info("fetched %d blob pages", total_blobs)
             save_models(models.values())
-            log.info(
-                "  checkpoint: saved models.json after blob pages (%d models)",
-                len(models),
-            )
+            git_checkpoint("blobs done")
 
         # Compute cloud_only flag: True if model has cloud badge but no
         # downloadable local tags (all tags are named "cloud" or have no size).
@@ -2011,7 +2139,11 @@ def main(argv: list[str] | None = None) -> int:
             _atomic_write(DATA / "sort_ranks.json", json.dumps(ranks, indent=2))
             log.info("wrote sort_ranks.json")
 
-        log.info("done (%d HTTP requests)", client.requests)
+        git_checkpoint("final")
+        if client.bail_out:
+            log.warning("DONE (bailed out early, %d HTTP requests)", client.requests)
+        else:
+            log.info("done (%d HTTP requests)", client.requests)
         return 0
     finally:
         client.close()
