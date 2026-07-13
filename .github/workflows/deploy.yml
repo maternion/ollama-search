@@ -40,12 +40,14 @@ jobs:
             scraper/sort_ranks.json
             scraper/tags/
             scraper/pages/
+            scraper/tag_pages/
+            scraper/blobs/
           key: scraped-data
 
-      - name: Quick check for changes (1 request)
+      - name: Quick check for changes (2 requests)
         id: check
         run: |
-          # Fetch /library?sort=newest, hash card data, compare to cache.
+          # Fetch /search + /library?sort=newest, hash card data, compare to cache.
           # Exit 0 = unchanged, 1 = changed.
           if python3 scraper/scrape.py --check-only; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
