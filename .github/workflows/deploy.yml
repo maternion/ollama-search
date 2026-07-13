@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -30,27 +30,19 @@ jobs:
       - name: Install requests
         run: pip install requests
 
-      - name: Restore scraped data cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            scraper/.catalog-hash
-            scraper/models.json
-            scraper/sort_orders.json
-            scraper/sort_ranks.json
-            scraper/tags/
-            scraper/pages/
-            scraper/tag_pages/
-            scraper/blobs/
-          key: scraped-data-${{ github.run_id }}
-          restore-keys: |
-            scraped-data-
+      - name: Restore scraped data from cache branch
+        run: |
+          git fetch origin scraped-data || true
+          if git rev-parse --verify origin/scraped-data >/dev/null 2>&1; then
+            git checkout scraped-data -- scraper/.catalog-hash scraper/models.json scraper/sort_orders.json scraper/sort_ranks.json scraper/tags/ scraper/pages/ scraper/tag_pages/ scraper/blobs/ 2>/dev/null || true
+            echo "Restored scraped data from scraped-data branch"
+          else
+            echo "No scraped-data branch yet, starting fresh"
+          fi
 
       - name: Quick check for changes (2 requests)
         id: check
         run: |
-          # Fetch /search + /library?sort=newest, hash card data, compare to cache.
-          # Exit 0 = unchanged, 1 = changed.
           if python3 scraper/scrape.py --check-only; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
@@ -61,9 +53,19 @@ jobs:
         if: steps.check.outputs.changed == 'true'
         run: python3 scraper/scrape.py --smart --skip-search -v
 
+      - name: Save scraped data to cache branch
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git checkout --orphan scraped-data-tmp
+          git add scraper/.catalog-hash scraper/models.json scraper/sort_orders.json scraper/sort_ranks.json scraper/tags/ scraper/pages/ scraper/tag_pages/ scraper/blobs/ 2>/dev/null || true
+          git commit -m "Scraped data $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+          git branch -D scraped-data 2>/dev/null || true
+          git branch -M scraped-data
+          git push --force origin scraped-data
+
       - name: Build site
-        # Always build on push (code may have changed).
-        # On schedule, only build if data changed.
         if: steps.check.outputs.changed == 'true' || github.event_name != 'schedule'
         run: python3 build.py --base "/${{ github.event.repository.name }}"
 
