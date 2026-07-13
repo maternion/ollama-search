@@ -47,7 +47,7 @@ TAG_PAGES_DIR = HERE / "tag_pages"
 BLOBS_DIR = HERE / "blobs"
 
 # Polite crawling: small delay between requests, generous timeout.
-DELAY = 1.0
+DELAY = 0.5
 TIMEOUT = 30.0
 UA = "ollama-search-scraper/0.1 (+https://github.com/anomalyco/opencode)"
 
