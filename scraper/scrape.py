@@ -1505,6 +1505,29 @@ def save_models(models: Iterable[Model]) -> None:
     log.debug("saved %s", fp)
 
 
+def save_sort_data(sort_orders: dict, models: dict) -> None:
+    """Save sort_orders.json and sort_ranks.json for build.py."""
+    _atomic_write(DATA / "sort_orders.json", json.dumps(sort_orders, indent=2))
+    ranks: dict[str, dict] = {}
+    all_names = {m.name for m in models.values()}
+    for sort_name, paths in sort_orders.items():
+        for rank, path in enumerate(paths):
+            slug = path.strip("/").split("/")[-1]
+            model = models.get(path)
+            name = model.name if model else slug
+            if name not in ranks:
+                ranks[name] = {}
+            ranks[name][f"{sort_name}_rank"] = rank
+    for name in all_names:
+        if name not in ranks:
+            ranks[name] = {}
+        for sort_name in sort_orders:
+            key = f"{sort_name}_rank"
+            ranks[name].setdefault(key, 9999)
+    _atomic_write(DATA / "sort_ranks.json", json.dumps(ranks, indent=2))
+    log.info("wrote sort_orders.json + sort_ranks.json")
+
+
 def save_tags(model: Model, tags: list[Tag]) -> None:
     TAGS_DIR.mkdir(parents=True, exist_ok=True)
     slug = slugify(model.path)
@@ -1860,6 +1883,12 @@ def main(argv: list[str] | None = None) -> int:
                 len(models),
             )
 
+        # Save sort orderings + derived rank data EARLY so they're available
+        # even if the run is cancelled before reaching the end.
+        if sort_orders:
+            save_sort_data(sort_orders, models)
+            git_checkpoint("sort data + models")
+
         if not args.skip_tags:
             if args.smart and prev_models:
                 # Determine which models changed
@@ -2117,30 +2146,9 @@ def main(argv: list[str] | None = None) -> int:
 
         save_models(models.values())
 
-        # Save sort orderings + derived rank data for build.py
+        # Update sort orderings + derived rank data (in case models changed)
         if sort_orders:
-            _atomic_write(DATA / "sort_orders.json", json.dumps(sort_orders, indent=2))
-            log.info("wrote sort_orders.json")
-            # Build per-model rank dict from the orderings
-            ranks: dict[str, dict] = {}
-            all_names = {m.name for m in models.values()}
-            for sort_name, paths in sort_orders.items():
-                for rank, path in enumerate(paths):
-                    slug = path.strip("/").split("/")[-1]
-                    model = models.get(path)
-                    name = model.name if model else slug
-                    if name not in ranks:
-                        ranks[name] = {}
-                    ranks[name][f"{sort_name}_rank"] = rank
-            # Fill missing ranks with 9999
-            for name in all_names:
-                if name not in ranks:
-                    ranks[name] = {}
-                for sort_name in sort_orders:
-                    key = f"{sort_name}_rank"
-                    ranks[name].setdefault(key, 9999)
-            _atomic_write(DATA / "sort_ranks.json", json.dumps(ranks, indent=2))
-            log.info("wrote sort_ranks.json")
+            save_sort_data(sort_orders, models)
 
         git_checkpoint("final")
         if client.bail_out:
