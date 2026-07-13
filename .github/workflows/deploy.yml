@@ -68,6 +68,7 @@ jobs:
       - name: Smart scrape (only changed models)
         id: scrape
         continue-on-error: true
+        timeout-minutes: 240
         env:
           GIT_CHECKPOINT: "1"
           GIT_CHECKPOINT_WORKTREE: "/tmp/scraped-data"
