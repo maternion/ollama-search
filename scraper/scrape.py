@@ -58,6 +58,18 @@ UA = "ollama-search-scraper/0.1 (+https://github.com/anomalyco/opencode)"
 
 log = logging.getLogger("scraper")
 
+_START_TIME = 0.0
+_MAX_RUNTIME = 0.0  # 0 = unlimited
+
+
+def _time_up() -> bool:
+    """Check if --max-runtime has been exceeded."""
+    if _MAX_RUNTIME <= 0:
+        return False
+    elapsed = time.time() - _START_TIME
+    return elapsed >= _MAX_RUNTIME
+
+
 # --------------------------------------------------------------------------- #
 # Hard wall-clock timeout via SIGALRM (POSIX, main thread only)
 # ---------------------------------------------------------------------------
@@ -1706,7 +1718,18 @@ def main(argv: list[str] | None = None) -> int:
         "compare to scraper/.catalog-hash, exit 0=unchanged 1=changed",
     )
     ap.add_argument("-v", "--verbose", action="store_true")
+    ap.add_argument(
+        "--max-runtime",
+        type=int,
+        default=0,
+        help="stop scraping gracefully after N seconds (0 = unlimited). "
+        "Useful for CI: scrape in time-bounded bursts, deploy between bursts.",
+    )
     args = ap.parse_args(argv)
+
+    global _START_TIME, _MAX_RUNTIME
+    _START_TIME = time.time()
+    _MAX_RUNTIME = args.max_runtime if args.max_runtime > 0 else 0
 
     logging.basicConfig(
         level=logging.DEBUG if args.verbose else logging.INFO,
@@ -1810,7 +1833,7 @@ def main(argv: list[str] | None = None) -> int:
                     BLOBS_DIR.mkdir(parents=True, exist_ok=True)
                     blob_count = 0
                     for t in m.tags:
-                        if client.bail_out:
+                        if client.bail_out or _time_up():
                             break
                         slug = slugify(m.path)
                         tp_file = TAG_PAGES_DIR / f"{slug}__{t.name}.json"
@@ -1937,8 +1960,14 @@ def main(argv: list[str] | None = None) -> int:
                 total = len(models)
                 models_done = 0
                 for i, m in enumerate(models.values(), 1):
-                    if client.bail_out:
-                        log.warning("BAILING OUT at model %d/%d", i, total)
+                    if client.bail_out or _time_up():
+                        log.warning(
+                            "STOPPING at model %d/%d (bail=%s, time_up=%s)",
+                            i,
+                            total,
+                            client.bail_out,
+                            _time_up(),
+                        )
                         break
                     slug = slugify(m.path)
                     tf = TAGS_DIR / f"{slug}.json"
@@ -1983,8 +2012,8 @@ def main(argv: list[str] | None = None) -> int:
             total = len(official_models)
             pages_done = 0
             for i, m in enumerate(official_models, 1):
-                if client.bail_out:
-                    log.warning("BAILING OUT at page %d/%d", i, total)
+                if client.bail_out or _time_up():
+                    log.warning("STOPPING at page %d/%d", i, total)
                     break
                 slug = slugify(m.path)
                 pf = PAGES_DIR / f"{slug}.json"
@@ -2065,8 +2094,8 @@ def main(argv: list[str] | None = None) -> int:
             total_blobs = 0
             blobs_done = 0
             for i, m in enumerate(official_models, 1):
-                if client.bail_out:
-                    log.warning("BAILING OUT at blobs %d/%d", i, len(official_models))
+                if client.bail_out or _time_up():
+                    log.warning("STOPPING at blobs %d/%d", i, len(official_models))
                     break
                 if not m.tags:
                     continue
@@ -2152,7 +2181,9 @@ def main(argv: list[str] | None = None) -> int:
 
         git_checkpoint("final")
         if client.bail_out:
-            log.warning("DONE (bailed out early, %d HTTP requests)", client.requests)
+            log.warning("DONE (bailed out, %d HTTP requests)", client.requests)
+        elif _time_up():
+            log.warning("DONE (time limit reached, %d HTTP requests)", client.requests)
         else:
             log.info("done (%d HTTP requests)", client.requests)
         return 0

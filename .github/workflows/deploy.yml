@@ -36,19 +36,13 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
-
-          # Fetch scraped-data branch if it exists
           git fetch origin scraped-data 2>/dev/null || true
-
-          # Restore scraped data files from scraped-data branch into working dir
           if git rev-parse --verify origin/scraped-data >/dev/null 2>&1; then
             git checkout origin/scraped-data -- scraper/ 2>/dev/null || true
             echo "Restored scraped data from scraped-data branch"
-            # Create worktree from existing branch
             git worktree add /tmp/scraped-data scraped-data 2>/dev/null || true
           else
             echo "No scraped-data branch yet, starting fresh"
-            # Create orphan branch via worktree
             git worktree add --orphan -b scraped-data /tmp/scraped-data 2>/dev/null || true
             cd /tmp/scraped-data
             git commit --allow-empty -m "init [skip ci]" 2>/dev/null || true
@@ -56,7 +50,7 @@ jobs:
             cd "$GITHUB_WORKSPACE"
           fi
 
-      - name: Quick check for changes (2 requests)
+      - name: Quick check for changes
         id: check
         run: |
           if python3 scraper/scrape.py --check-only; then
@@ -65,16 +59,53 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Smart scrape (only changed models)
-        id: scrape
+      # ── Cycle 1: scrape 2h → deploy ──
+      - name: Scrape cycle 1 (2h max)
+        if: steps.check.outputs.changed == 'true' || github.event_name != 'schedule'
+        id: scrape1
         continue-on-error: true
-        timeout-minutes: 240
         env:
           GIT_CHECKPOINT: "1"
           GIT_CHECKPOINT_WORKTREE: "/tmp/scraped-data"
-        run: python3 scraper/scrape.py --smart --skip-search -v
+        run: python3 scraper/scrape.py --smart --skip-search --max-runtime 7200 -v
 
-      - name: Final checkpoint push
+      - name: Checkpoint + build + deploy cycle 1
+        if: always()
+        run: |
+          # Push checkpoint
+          if [ -d /tmp/scraped-data ]; then
+            mkdir -p /tmp/scraped-data/scraper
+            cp -r scraper/* /tmp/scraped-data/scraper/
+            cd /tmp/scraped-data
+            git add -A scraper/
+            git commit -m "cycle 1 $(date -u '+%H:%M:%S UTC') [skip ci]" || true
+            git push origin scraped-data || true
+            cd "$GITHUB_WORKSPACE"
+          fi
+          # Build
+          python3 build.py --base "/${{ github.event.repository.name }}"
+
+      - name: Upload + deploy cycle 1
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages cycle 1
+        if: always()
+        uses: actions/deploy-pages@v4
+
+      # ── Cycle 2: scrape 2h → deploy ──
+      - name: Scrape cycle 2 (2h max)
+        if: steps.check.outputs.changed == 'true' || github.event_name != 'schedule'
+        id: scrape2
+        continue-on-error: true
+        env:
+          GIT_CHECKPOINT: "1"
+          GIT_CHECKPOINT_WORKTREE: "/tmp/scraped-data"
+        run: python3 scraper/scrape.py --smart --skip-search --max-runtime 7200 -v
+
+      - name: Checkpoint + build cycle 2
         if: always()
         run: |
           if [ -d /tmp/scraped-data ]; then
@@ -82,21 +113,18 @@ jobs:
             cp -r scraper/* /tmp/scraped-data/scraper/
             cd /tmp/scraped-data
             git add -A scraper/
-            git commit -m "final $(date -u '+%Y-%m-%d %H:%M:%S UTC') [skip ci]" || true
+            git commit -m "cycle 2 $(date -u '+%H:%M:%S UTC') [skip ci]" || true
             git push origin scraped-data || true
             cd "$GITHUB_WORKSPACE"
           fi
+          python3 build.py --base "/${{ github.event.repository.name }}"
 
-      - name: Build site
-        if: always()
-        run: python3 build.py --base "/${{ github.event.repository.name }}"
-
-      - name: Upload artifact
+      - name: Upload + deploy cycle 2
         if: always()
         uses: actions/upload-pages-artifact@v3
         with:
           path: public
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages cycle 2
         if: always()
         uses: actions/deploy-pages@v4
