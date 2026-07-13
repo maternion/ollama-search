@@ -42,7 +42,9 @@ jobs:
             scraper/pages/
             scraper/tag_pages/
             scraper/blobs/
-          key: scraped-data
+          key: scraped-data-${{ github.run_id }}
+          restore-keys: |
+            scraped-data-
 
       - name: Quick check for changes (2 requests)
         id: check
