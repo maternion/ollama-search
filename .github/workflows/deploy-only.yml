@@ -1,0 +1,46 @@
+name: Deploy Only
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "deploy"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: github-pages
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Restore scraped data from scraped-data branch
+        run: |
+          git fetch origin scraped-data 2>/dev/null || true
+          if git rev-parse --verify origin/scraped-data >/dev/null 2>&1; then
+            git checkout origin/scraped-data -- scraper/ 2>/dev/null || true
+            echo "Restored scraped data from scraped-data branch"
+          else
+            echo "No scraped-data branch found, cannot deploy"
+            exit 1
+          fi
+
+      - name: Build site
+        run: python3 build.py --base "/${{ github.event.repository.name }}"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

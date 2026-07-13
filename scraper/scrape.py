@@ -1543,11 +1543,14 @@ def git_checkpoint(label: str = "") -> None:
     msg = f"checkpoint {tag}{label}".strip()
     try:
         # Copy scraper data to the worktree
-        subprocess.run(
-            ["cp", "-r", "scraper/", f"{worktree}/scraper/"],
-            check=True,
-            cwd=HERE.parent,
-        )
+        os.makedirs(f"{worktree}/scraper", exist_ok=True)
+        for item in os.listdir("scraper"):
+            src = f"scraper/{item}"
+            dst = f"{worktree}/scraper/{item}"
+            if os.path.isdir(src):
+                subprocess.run(["cp", "-r", src, dst], check=True, cwd=HERE.parent)
+            else:
+                subprocess.run(["cp", src, dst], check=True, cwd=HERE.parent)
         subprocess.run(["git", "add", "-A", "scraper/"], check=True, cwd=worktree)
         r = subprocess.run(
             ["git", "commit", "-m", f"{msg} [skip ci]"],

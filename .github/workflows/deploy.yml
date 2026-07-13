@@ -78,7 +78,8 @@ jobs:
         if: always()
         run: |
           if [ -d /tmp/scraped-data ]; then
-            cp -r scraper/ /tmp/scraped-data/scraper/
+            mkdir -p /tmp/scraped-data/scraper
+            cp -r scraper/* /tmp/scraped-data/scraper/
             cd /tmp/scraped-data
             git add -A scraper/
             git commit -m "final $(date -u '+%Y-%m-%d %H:%M:%S UTC') [skip ci]" || true
