@@ -27,6 +27,7 @@ import argparse
 import html as html_mod
 import json
 import logging
+import os
 import re
 import sys
 import time
@@ -41,6 +42,9 @@ BASE = "https://ollama.com"
 HERE = Path(__file__).resolve().parent
 DATA = HERE
 TAGS_DIR = HERE / "tags"
+PAGES_DIR = HERE / "pages"
+TAG_PAGES_DIR = HERE / "tag_pages"
+BLOBS_DIR = HERE / "blobs"
 
 # Polite crawling: small delay between requests, generous timeout.
 DELAY = 1.0
@@ -165,6 +169,8 @@ class Tag:
     digest: str  # short hash
     updated: str  # relative text e.g. "1 month ago"
     format: str  # "gguf" | "mlx"
+    usage_level: str = ""  # "low", "medium", "high", "max" — for cloud tags only
+    usage_active_slots: int = 0  # 0-4
 
 
 @dataclass
@@ -182,7 +188,91 @@ class Model:
     official: bool
     owner: str | None  # username for user models, None for official
     source_url: str
+    cloud_only: bool = False  # True if all tags are cloud (no downloadable local tags)
     tags: list[Tag] = field(default_factory=list)
+
+
+@dataclass
+class FileEntry:
+    type: str  # "model", "license", "params", "template"
+    blob_url: str  # full path like /library/gpt-oss:120b/blobs/6be6d66a3f54
+    content_preview: str  # truncated text or JSON preview
+    size: str  # "65GB", "11kB", etc.
+    arch: str  # only for "model" type, else ""
+    parameters: str  # only for "model" type, else ""
+    quantization: str  # only for "model" type, else ""
+
+
+@dataclass
+class AppEntry:
+    name: str  # "Claude Code"
+    icon_url: str  # "/public/claude.png"
+    command: str  # "ollama launch claude --model kimi-k2.6:cloud"
+
+
+@dataclass
+class ModelPage:
+    readme_html: str  # raw HTML inside <div id="display">
+    manifest_updated: str  # "9 months ago"
+    manifest_digest: str  # "a951a23b46a1"
+    manifest_size: str  # "65GB"
+    files: list[FileEntry]
+    # Cloud metrics (only present for cloud models)
+    cloud_usage_level: str = ""  # "low", "medium", "high", "max" — "" if not cloud
+    cloud_usage_active_slots: int = 0  # 0-4
+    cloud_context: str = ""  # e.g. "256K"
+    cloud_context_unit: str = ""  # e.g. "tokens"
+    cloud_size: str = ""  # e.g. "1.04T"
+    cloud_size_unit: str = ""  # e.g. "parameters"
+    applications: list[AppEntry] = field(default_factory=list)
+
+
+@dataclass
+class TagPage:
+    tag_name: str  # e.g. "latest", "e2b-mlx"
+    full_path: str  # e.g. "/library/gemma4:latest"
+    readme_html: str
+    manifest_updated: str
+    manifest_digest: str
+    manifest_size: str
+    files: list[FileEntry]
+    # Cloud metrics (only present for cloud tag pages)
+    cloud_usage_level: str = ""  # "low", "medium", "high", "max" — "" if not cloud
+    cloud_usage_active_slots: int = 0  # 0-4
+    cloud_context: str = ""  # e.g. "256K"
+    cloud_context_unit: str = ""  # e.g. "tokens"
+    cloud_size: str = ""  # e.g. "1.04T"
+    cloud_size_unit: str = ""  # e.g. "parameters"
+    applications: list[AppEntry] = field(default_factory=list)
+
+
+@dataclass
+class MetadataEntry:
+    key: str  # e.g. "general.architecture"
+    value: str  # e.g. "gptoss"
+
+
+@dataclass
+class TensorEntry:
+    name: str  # e.g. "token_embd.weight", "blk.0.attn_k.bias"
+    dtype: str  # e.g. "BF16", "F32", "Q4_K_M"
+    shape: str  # e.g. "[2880, 201088]", "[512]"
+    group: str = ""  # e.g. "blk.0", or "" for ungrouped tensors
+
+
+@dataclass
+class BlobPage:
+    blob_url: str  # full path like /library/gpt-oss:120b/blobs/6be6d66a3f54
+    tag_full: str  # e.g. "library/gpt-oss:120b"
+    blob_type: str  # "model", "license", "params", "template", "json"
+    digest: str  # "6be6d66a3f54"
+    size: str  # "65GB"
+    metadata: list[MetadataEntry]  # for model type blobs
+    content: str  # raw text for license/template/params/json blobs
+    tensors: list[TensorEntry] = field(default_factory=list)
+    tensor_groups: list[str] = field(
+        default_factory=list
+    )  # e.g. ["blk.0", "blk.1", ...]
 
 
 # --------------------------------------------------------------------------- #
@@ -336,13 +426,21 @@ def parse_cards(html_str: str, source_url: str) -> list[Model]:
 # --------------------------------------------------------------------------- #
 
 
-def detect_format(tag_name: str) -> str:
-    """MLX tags use the -mlx suffix; everything else is GGUF."""
-    return (
-        "mlx"
-        if re.search(r"(?:^|[-_])mlx(?:$|[-_])", tag_name, re.IGNORECASE)
-        else "gguf"
-    )
+_MLX_BADGE_RE = re.compile(
+    r'<span class="ml-2 inline-flex[^"]*\bborder-neutral-600\b[^"]*">\s*MLX\s*</span>',
+    re.IGNORECASE,
+)
+
+
+def detect_format(tag_name: str, row_html: str = "") -> str:
+    """Detect MLX vs GGUF. Prefers the MLX badge in the row HTML;
+    falls back to name-based detection for edge cases."""
+    if row_html and _MLX_BADGE_RE.search(row_html):
+        return "mlx"
+    # Fallback: name-based heuristic
+    if re.search(r"(?:^|[-_])mlx(?:$|[-_])", tag_name, re.IGNORECASE):
+        return "mlx"
+    return "gguf"
 
 
 _TAG_ROW_RE = re.compile(
@@ -438,6 +536,21 @@ def parse_tags_page(html: str) -> list[Tag]:
                     input_type = im.group(1).strip()
 
         seen.add(tag_name)
+
+        # Usage tier for cloud tags
+        usage_active = len(re.findall(r"x-test-model-tag-usage-slot-active", row))
+        usage_level = ""
+        if usage_active > 0 or "usage-slot" in row:
+            # Try mobile text
+            usage_text_m = re.search(
+                r"(Low|Medium|High|Max)\s+Usage", row, re.IGNORECASE
+            )
+            if usage_text_m:
+                usage_level = usage_text_m.group(1).lower()
+            elif usage_active > 0:
+                levels = {1: "low", 2: "medium", 3: "high", 4: "max"}
+                usage_level = levels.get(usage_active, "")
+
         tags.append(
             Tag(
                 name=tag_name,
@@ -447,7 +560,9 @@ def parse_tags_page(html: str) -> list[Tag]:
                 input_type=input_type,
                 digest=digest,
                 updated=updated,
-                format=detect_format(tag_name),
+                format=detect_format(tag_name, row),
+                usage_level=usage_level,
+                usage_active_slots=usage_active,
             )
         )
 
@@ -583,8 +698,752 @@ def fetch_tags(client: Client, model: Model) -> list[Tag]:
 
 
 # --------------------------------------------------------------------------- #
+# Model page parsing
+# --------------------------------------------------------------------------- #
+
+
+def _extract_div_by_id(html: str, div_id: str) -> str:
+    """Extract the full inner HTML of <div id="...">...</div>, accounting for
+    nested divs by tracking depth from the opening tag."""
+    import re as _re
+
+    m = _re.search(r'<div\s+id="' + _re.escape(div_id) + r'"', html)
+    if not m:
+        return ""
+    start = m.start()
+    # Begin scanning from the end of the opening <div ...> tag.
+    open_end = html.find(">", start)
+    if open_end == -1:
+        return ""
+    depth = 1
+    i = open_end + 1
+    n = len(html)
+    while i < n and depth > 0:
+        next_open = html.find("<div", i)
+        next_close = html.find("</div>", i)
+        if next_close == -1:
+            return ""
+        if next_open != -1 and next_open < next_close:
+            depth += 1
+            i = next_open + len("<div")
+            # Advance past the rest of the opening tag's attributes
+            tag_end = html.find(">", i)
+            if tag_end == -1:
+                return ""
+            i = tag_end + 1
+        else:
+            depth -= 1
+            close_start = next_close
+            i = next_close + len("</div>")
+            if depth == 0:
+                return html[open_end + 1 : close_start]
+    return ""
+
+
+def _extract_section_by_id(html: str, section_id: str) -> str:
+    """Extract the full inner HTML of <section id="...">...</section>."""
+    import re as _re
+
+    m = _re.search(r'<section\s+[^>]*\bid="' + _re.escape(section_id) + r'"', html)
+    if not m:
+        return ""
+    start = m.start()
+    open_end = html.find(">", start)
+    if open_end == -1:
+        return ""
+    close = html.find("</section>", open_end)
+    if close == -1:
+        return ""
+    return html[open_end + 1 : close]
+
+
+def _parse_file_explorer(
+    file_explorer: str,
+) -> tuple[str, str, str, list[FileEntry]]:
+    """Parse the file-explorer section HTML.
+
+    Returns (manifest_updated, manifest_digest, manifest_size, files).
+    Shared by parse_model_page() and parse_tag_page().
+    """
+    # --- manifest header row: <div class="flex items-center justify-between
+    #     bg-neutral-50 px-4 py-3 ..."> ... </div> ---
+    manifest_updated = ""
+    manifest_digest = ""
+    manifest_size = ""
+    hm = re.search(
+        r'<div class="flex items-center justify-between bg-neutral-50[^"]*">'
+        r"(.*?)</div>",
+        file_explorer,
+        re.DOTALL,
+    )
+    if hm:
+        header = hm.group(1)
+        # Desktop: <p class="hidden sm:block">Updated 9 months ago</p>
+        um = re.search(r'<p class="hidden sm:block">\s*(Updated[^<]*)</p>', header)
+        if um:
+            manifest_updated = strip_tags(um.group(1)).replace("Updated", "").strip()
+        else:
+            # Mobile: text after the SVG
+            mm = re.search(
+                r'<p class="flex items-center sm:hidden">.*?<svg[^>]*>.*?</svg>(.*?)</p>',
+                header,
+                re.DOTALL,
+            )
+            if mm:
+                manifest_updated = strip_tags(mm.group(1)).strip()
+        # Digest + size: <p>a951a23b46a1 · 65GB ·</p>
+        dm = re.search(r"<p\b[^>]*>([^<]*·[^<]*)</p>", header)
+        if dm:
+            blob_text = strip_tags(dm.group(1))
+            parts = [p.strip() for p in blob_text.split("·") if p.strip()]
+            if parts:
+                manifest_digest = parts[0]
+            if len(parts) > 1:
+                manifest_size = parts[1]
+
+    # --- file rows: <div class="group block grid-cols-12 ..."> ... </div> ---
+    files: list[FileEntry] = []
+    for rm in re.finditer(
+        r'<div class="group block grid-cols-12[^"]*">(.*?)(?=<div class="group block grid-cols-12|<!--|$)',
+        file_explorer,
+        re.DOTALL,
+    ):
+        row = rm.group(1)
+        # type + blob_url from the <a> inside sm:col-span-2
+        tm = re.search(
+            r'<div class="[^"]*sm:col-span-2[^"]*">\s*<a\s+href="([^"]+)"[^>]*>(.*?)</a>',
+            row,
+            re.DOTALL,
+        )
+        if not tm:
+            continue
+        blob_url = tm.group(1)
+        ftype = strip_tags(tm.group(2))
+
+        # content_preview: text content of the sm:col-span-8 div
+        cm = re.search(
+            r'<div class="[^"]*sm:col-span-8[^"]*">(.*?)</div>',
+            row,
+            re.DOTALL,
+        )
+        content_preview = strip_tags(re.sub(r"<[^>]+>", " ", cm.group(1))) if cm else ""
+
+        # size: sm:col-start-12 div
+        sz = ""
+        sm = re.search(
+            r'<div class="[^"]*sm:col-start-12[^"]*"[^>]*>(.*?)</div>',
+            row,
+            re.DOTALL,
+        )
+        if sm:
+            sz = strip_tags(sm.group(1))
+
+        # For model-type rows, extract arch/parameters/quantization from the
+        # nested <span class="text-neutral-800 ..."> values following their
+        # labels.
+        arch = ""
+        parameters = ""
+        quantization = ""
+        if ftype == "model":
+            for m in re.finditer(
+                r'<span class="hidden sm:block">(.*?)</span>'
+                r'\s*<span class="[^"]*text-neutral-800[^"]*">(.*?)</span>',
+                row,
+                re.DOTALL,
+            ):
+                label = strip_tags(m.group(1)).lower()
+                value = strip_tags(m.group(2))
+                if label == "arch":
+                    arch = value
+                elif label == "parameters":
+                    parameters = value
+                elif label == "quantization":
+                    quantization = value
+
+        files.append(
+            FileEntry(
+                type=ftype,
+                blob_url=blob_url,
+                content_preview=content_preview,
+                size=sz,
+                arch=arch,
+                parameters=parameters,
+                quantization=quantization,
+            )
+        )
+
+    return manifest_updated, manifest_digest, manifest_size, files
+
+
+def _parse_applications(html: str) -> list[AppEntry]:
+    """Parse the Applications section (id="external-tools-section") HTML.
+
+    Each app row is a <div class="group flex items-center justify-between
+    px-4 py-3"> with an icon, name span, code command, and a hidden input
+    holding the same command.
+    """
+    applications: list[AppEntry] = []
+    ext_section = _extract_section_by_id(html, "external-tools-section")
+    if not ext_section:
+        return applications
+    for row_m in re.finditer(
+        r'<div class="group flex items-center justify-between px-4 py-3">(.*?)(?=<div class="group flex items-center|</div>\s*</div>\s*</div>|$)',
+        ext_section,
+        re.DOTALL,
+    ):
+        row = row_m.group(1)
+        nm = re.search(r'<span class="text-sm font-medium[^"]*">([^<]+)</span>', row)
+        im = re.search(r'<img\s+src="([^"]+)"', row)
+        cm = re.search(r"<code[^>]*>([^<]+)</code>", row)
+        if not cm:
+            cm = re.search(r'<input class="command hidden" value="([^"]+)"', row)
+        if nm:
+            applications.append(
+                AppEntry(
+                    name=strip_tags(nm.group(1)),
+                    icon_url=im.group(1) if im else "",
+                    command=strip_tags(cm.group(1)) if cm else "",
+                )
+            )
+    return applications
+
+
+def _parse_cloud_metrics(
+    html: str,
+) -> tuple[str, int, str, str, str, str]:
+    """Extract cloud metrics (usage/context/size) from a model or tag page.
+
+    Returns (cloud_usage_level, cloud_usage_active_slots, cloud_context,
+    cloud_context_unit, cloud_size, cloud_size_unit).
+
+    These metrics are present on tag pages (/library/model:tag) for cloud
+    tags, identified by `x-test-model-metric="usage|context|size"` markers.
+    They are absent on base model pages, so this returns empty defaults there.
+    """
+    cloud_usage_level = ""
+    cloud_usage_active_slots = 0
+    cloud_context = ""
+    cloud_context_unit = ""
+    cloud_size = ""
+    cloud_size_unit = ""
+
+    # Usage metric
+    usage_m = re.search(
+        r'x-test-model-metric="usage".*?(?=x-test-model-metric="context"|$)',
+        html,
+        re.DOTALL,
+    )
+    if usage_m:
+        usage_section = usage_m.group(0)
+        active_count = len(re.findall(r"x-test-model-cost-slot-active", usage_section))
+        cloud_usage_active_slots = active_count
+        # Level text: <span class="...">high</span> or <span class="...">low</span>
+        level_m = re.search(r"break-words[^>]*>\s*(\w+)\s*</span>", usage_section)
+        if level_m:
+            cloud_usage_level = level_m.group(1).strip().lower()
+
+    # Context metric
+    ctx_m = re.search(
+        r'x-test-model-metric="context".*?(?=x-test-model-metric="size"|$)',
+        html,
+        re.DOTALL,
+    )
+    if ctx_m:
+        ctx_section = ctx_m.group(0)
+        val_m = re.search(
+            r"text-xl font-medium leading-none[^>]*>\s*([^<]+)</span>", ctx_section
+        )
+        if val_m:
+            cloud_context = val_m.group(1).strip()
+        unit_m = re.search(r"break-words[^>]*>\s*([^<]+)</span>", ctx_section)
+        if unit_m:
+            cloud_context_unit = unit_m.group(1).strip()
+
+    # Size metric
+    size_m = re.search(
+        r'x-test-model-metric="size".*?(?=</div>\s*</div>|$)', html, re.DOTALL
+    )
+    if size_m:
+        size_section = size_m.group(0)
+        val_m = re.search(
+            r"text-xl font-medium leading-none[^>]*>\s*([^<]+)</span>", size_section
+        )
+        if val_m:
+            cloud_size = val_m.group(1).strip()
+        unit_m = re.search(r"break-words[^>]*>\s*([^<]+)</span>", size_section)
+        if unit_m:
+            cloud_size_unit = unit_m.group(1).strip()
+
+    return (
+        cloud_usage_level,
+        cloud_usage_active_slots,
+        cloud_context,
+        cloud_context_unit,
+        cloud_size,
+        cloud_size_unit,
+    )
+
+
+def parse_model_page(html: str) -> ModelPage | None:
+    """Parse a model page (/<path>) -> ModelPage.
+
+    Extracts the readme HTML (inside <div id="display">) and the file
+    explorer section (manifest header + per-file rows).
+    """
+    readme_html = _extract_div_by_id(html, "display")
+    file_explorer = _extract_section_by_id(html, "file-explorer")
+    if not readme_html and not file_explorer:
+        return None
+
+    manifest_updated, manifest_digest, manifest_size, files = _parse_file_explorer(
+        file_explorer
+    )
+
+    # Cloud metrics (present on tag pages; base pages currently lack them but
+    # we parse anyway in case ollama.com adds them in the future).
+    (
+        cloud_usage_level,
+        cloud_usage_active_slots,
+        cloud_context,
+        cloud_context_unit,
+        cloud_size,
+        cloud_size_unit,
+    ) = _parse_cloud_metrics(html)
+
+    return ModelPage(
+        readme_html=readme_html,
+        manifest_updated=manifest_updated,
+        manifest_digest=manifest_digest,
+        manifest_size=manifest_size,
+        files=files,
+        cloud_usage_level=cloud_usage_level,
+        cloud_usage_active_slots=cloud_usage_active_slots,
+        cloud_context=cloud_context,
+        cloud_context_unit=cloud_context_unit,
+        cloud_size=cloud_size,
+        cloud_size_unit=cloud_size_unit,
+        applications=_parse_applications(html),
+    )
+
+
+def parse_tag_page(html: str, full_path: str) -> TagPage | None:
+    """Parse a per-tag page (/<path>:<tag>) -> TagPage.
+
+    Same structure as parse_model_page() but the path includes the tag.
+    The file-explorer is present on tag pages (unlike base model pages where
+    it is often missing).
+    """
+    readme_html = _extract_div_by_id(html, "display")
+    file_explorer = _extract_section_by_id(html, "file-explorer")
+    if not readme_html and not file_explorer:
+        return None
+
+    # tag_name is the part after the last ":" in the full_path
+    tag_name = full_path.rsplit(":", 1)[-1] if ":" in full_path else ""
+
+    manifest_updated, manifest_digest, manifest_size, files = _parse_file_explorer(
+        file_explorer
+    )
+
+    # Cloud metrics (present on tag pages for cloud tags)
+    (
+        cloud_usage_level,
+        cloud_usage_active_slots,
+        cloud_context,
+        cloud_context_unit,
+        cloud_size,
+        cloud_size_unit,
+    ) = _parse_cloud_metrics(html)
+
+    return TagPage(
+        tag_name=tag_name,
+        full_path=full_path,
+        readme_html=readme_html,
+        manifest_updated=manifest_updated,
+        manifest_digest=manifest_digest,
+        manifest_size=manifest_size,
+        files=files,
+        cloud_usage_level=cloud_usage_level,
+        cloud_usage_active_slots=cloud_usage_active_slots,
+        cloud_context=cloud_context,
+        cloud_context_unit=cloud_context_unit,
+        cloud_size=cloud_size,
+        cloud_size_unit=cloud_size_unit,
+        applications=_parse_applications(html),
+    )
+
+
+def fetch_model_page(client: Client, model: Model) -> ModelPage | None:
+    url = BASE + model.path
+    html = client.get(url)
+    if html is None:
+        log.error("model page fetch failed: %s", url)
+        return None
+    return parse_model_page(html)
+
+
+def save_model_page(model: Model, page: ModelPage) -> None:
+    PAGES_DIR.mkdir(parents=True, exist_ok=True)
+    slug = slugify(model.path)
+    out = {
+        "path": model.path,
+        "name": model.name,
+        "scraped_at": datetime.now(timezone.utc).isoformat(),
+        "readme_html": page.readme_html,
+        "manifest_updated": page.manifest_updated,
+        "manifest_digest": page.manifest_digest,
+        "manifest_size": page.manifest_size,
+        "files": [asdict(f) for f in page.files],
+        "cloud_usage_level": page.cloud_usage_level,
+        "cloud_usage_active_slots": page.cloud_usage_active_slots,
+        "cloud_context": page.cloud_context,
+        "cloud_context_unit": page.cloud_context_unit,
+        "cloud_size": page.cloud_size,
+        "cloud_size_unit": page.cloud_size_unit,
+        "applications": [asdict(a) for a in page.applications],
+    }
+    fp = PAGES_DIR / f"{slug}.json"
+    _atomic_write(fp, json.dumps(out, indent=2))
+    log.debug("saved %s", fp)
+
+
+def fetch_tag_page(client: Client, model: Model, tag_name: str) -> TagPage | None:
+    full_path = f"{model.path}:{tag_name}"
+    url = BASE + full_path
+    html = client.get(url)
+    if html is None:
+        log.error("tag page fetch failed: %s", url)
+        return None
+    return parse_tag_page(html, full_path)
+
+
+def save_tag_page(model: Model, tag_name: str, page: TagPage) -> None:
+    TAG_PAGES_DIR.mkdir(parents=True, exist_ok=True)
+    slug = slugify(model.path)
+    out = {
+        "path": model.path,
+        "tag_name": tag_name,
+        "full_path": page.full_path,
+        "scraped_at": datetime.now(timezone.utc).isoformat(),
+        "readme_html": page.readme_html,
+        "manifest_updated": page.manifest_updated,
+        "manifest_digest": page.manifest_digest,
+        "manifest_size": page.manifest_size,
+        "files": [asdict(f) for f in page.files],
+        "cloud_usage_level": page.cloud_usage_level,
+        "cloud_usage_active_slots": page.cloud_usage_active_slots,
+        "cloud_context": page.cloud_context,
+        "cloud_context_unit": page.cloud_context_unit,
+        "cloud_size": page.cloud_size,
+        "cloud_size_unit": page.cloud_size_unit,
+        "applications": [asdict(a) for a in page.applications],
+    }
+    fp = TAG_PAGES_DIR / f"{slug}__{tag_name}.json"
+    _atomic_write(fp, json.dumps(out, indent=2))
+    log.debug("saved %s", fp)
+
+
+# --------------------------------------------------------------------------- #
+# Blob page parsing
+# --------------------------------------------------------------------------- #
+
+
+def _extract_div_by_class_substring(html: str, class_substr: str) -> str:
+    """Extract the inner HTML of the first <div ...> whose class attribute
+    contains `class_substr`, accounting for nested divs (depth-aware)."""
+    import re as _re
+
+    m = _re.search(
+        r'<div\b[^>]*\bclass\s*=\s*"[^"]*\b'
+        + _re.escape(class_substr)
+        + r'\b[^"]*"[^>]*>',
+        html,
+        _re.DOTALL,
+    )
+    if not m:
+        return ""
+    depth = 1
+    i = m.end()
+    n = len(html)
+    while i < n and depth > 0:
+        next_open = html.find("<div", i)
+        next_close = html.find("</div>", i)
+        if next_close == -1:
+            return ""
+        if next_open != -1 and next_open < next_close:
+            depth += 1
+            i = next_open + len("<div")
+            tag_end = html.find(">", i)
+            if tag_end == -1:
+                return ""
+            i = tag_end + 1
+        else:
+            depth -= 1
+            close_start = next_close
+            i = next_close + len("</div>")
+            if depth == 0:
+                return html[m.end() : close_start]
+    return ""
+
+
+def parse_blob_page(html: str, blob_url: str) -> BlobPage | None:
+    """Parse a blob page (/<path>:<tag>/blobs/<digest>) -> BlobPage.
+
+    Blob pages have a `<div id="file-explorer">` block with a header (tag full
+    name, blob type, digest + size) and content (metadata table for model-type
+    blobs, raw text for license/template/params/json blobs).
+    """
+    file_explorer = _extract_div_by_id(html, "file-explorer")
+    if not file_explorer:
+        return None
+
+    # --- header: tag full name (from the <a>), blob type (div after the "/" span),
+    #     digest + size (last div in the header) ---
+    tag_full = ""
+    blob_type = ""
+    digest = ""
+    size = ""
+    header = _extract_div_by_class_substring(
+        file_explorer, "flex items-center justify-between bg-neutral-50"
+    )
+    if header:
+        # tag full name from <a href="...">name</a> (prefer the desktop span
+        # hidden sm:block, which holds the full "name:tag"; fallback to whole
+        # <a> text).
+        am = re.search(
+            r"<a\b[^>]*>\s*<span\b[^>]*\bhidden sm:block\b[^>]*>(.*?)</span>",
+            header,
+            re.DOTALL,
+        )
+        if am:
+            tag_full = strip_tags(am.group(1))
+        else:
+            am = re.search(r"<a\b[^>]*>(.*?)</a>", header, re.DOTALL)
+            if am:
+                tag_full = strip_tags(am.group(1))
+        # blob type: the <div> following the "/" separator span.
+        # Header structure: <a>...</a><span>/</span><div>type</div>
+        sm = re.search(
+            r"<span\b[^>]*>[^<]*</span>\s*<div\b[^>]*>(.*?)</div>",
+            header,
+            re.DOTALL,
+        )
+        if sm:
+            blob_type = strip_tags(sm.group(1))
+        # digest + size: last leaf <div> in the header (right-aligned).
+        divs = re.findall(r"<div\b[^>]*>(.*?)</div>", header, re.DOTALL)
+        if divs:
+            blob_text = strip_tags(divs[-1])
+            parts = [p.strip() for p in re.split(r"[·\u00b7]", blob_text) if p.strip()]
+            if parts:
+                digest = parts[0]
+            if len(parts) > 1:
+                size = parts[1]
+
+    # --- content: metadata table (model-type) or raw text (others) ---
+    # ollama.com blob pages render two sections inside a single <ul role="list">:
+    #   1. Metadata  — sticky header div text "Metadata"; <li> rows use
+    #      `px-2 sm:px-4 pt-2 sm:pb-2` with 2 columns (key, value).
+    #   2. Tensor    — sticky header div text "Tensor"; <li> rows use
+    #      `px-4 py-2` with 3 columns (name, type, shape). Block group
+    #      dividers (`blk.0`, `blk.1`, ...) are sticky divs whose text is the
+    #      group name.
+    # The two section headers share the same border/bg classes, so we split by
+    # locating the "Tensor" sticky header by its text content.
+    metadata: list[MetadataEntry] = []
+    content = ""
+    tensors: list[TensorEntry] = []
+    tensor_groups: list[str] = []
+
+    has_metadata = re.search(r"<li\b[^>]*\bgrid grid-cols-8\b", file_explorer)
+    if has_metadata:
+        # Locate the start of the Tensor section: the first sticky div whose
+        # inner text is "Tensor". Everything before it is metadata; everything
+        # from it onward is tensor data (header + column header + entries +
+        # group dividers).
+        tensor_start = -1
+        for sm in re.finditer(
+            r'<div class="sticky top-0 border-y[^"]*">\s*'
+            r'<div class="py-2 px-4 text-xs[^"]*">\s*(.*?)\s*</div>',
+            file_explorer,
+            re.DOTALL,
+        ):
+            if strip_tags(sm.group(1)) == "Tensor":
+                tensor_start = sm.start()
+                break
+
+        if tensor_start == -1:
+            metadata_html = file_explorer
+            tensor_html = ""
+        else:
+            metadata_html = file_explorer[:tensor_start]
+            tensor_html = file_explorer[tensor_start:]
+
+        # --- metadata entries (2-column rows) ---
+        for lm in re.finditer(
+            r"<li\b[^>]*\bgrid grid-cols-8\b[^>]*>(.*?)(?=<li\b[^>]*\bgrid grid-cols-8|</ul>|<!--|$)",
+            metadata_html,
+            re.DOTALL,
+        ):
+            row = lm.group(1)
+            # key: the text-neutral-600 div (or the sm:text-black div)
+            km = re.search(
+                r"<div\b[^>]*\btext-neutral-600\b[^>]*>(.*?)</div>",
+                row,
+                re.DOTALL,
+            )
+            key = strip_tags(km.group(1)) if km else ""
+            # value: the font-mono div holding the value. There may be two
+            # font-mono divs (mobile + desktop); prefer the one with the
+            # `hidden sm:block` (desktop) marker.
+            vm = re.search(
+                r"<div\b[^>]*\bhidden sm:block\b[^>]*\bcol-span-4\b[^>]*\bfont-mono\b[^>]*>(.*?)</div>",
+                row,
+                re.DOTALL,
+            )
+            if not vm:
+                vm = re.search(
+                    r"<div\b[^>]*\bcol-span-4\b[^>]*\bfont-mono\b[^>]*>(.*?)</div>",
+                    row,
+                    re.DOTALL,
+                )
+            if not vm:
+                vm = re.search(
+                    r"<div\b[^>]*\bfont-mono\b[^>]*>(.*?)</div>",
+                    row,
+                    re.DOTALL,
+                )
+            value = strip_tags(vm.group(1)) if vm else ""
+            if key or value:
+                metadata.append(MetadataEntry(key=key, value=value))
+
+        # --- tensor entries (3-column rows) + block group dividers ---
+        # The column-header <li> uses `grid-cols-8 ... hidden sm:grid` (no
+        # standalone `grid` class), so it is naturally skipped by the
+        # `grid grid-cols-8` match below. Walk tensor_html in document order,
+        # interleaving tensor rows and sticky group dividers so each tensor
+        # records the group that was active when it appeared.
+        current_group = ""
+        token_re = re.compile(
+            r"<li\b[^>]*\bgrid grid-cols-8\b[^>]*>"
+            r"|"
+            r'<div class="sticky top-0 border-y[^"]*">\s*'
+            r'<div class="py-2 px-4 text-xs[^"]*">\s*(.*?)\s*</div>',
+            re.DOTALL,
+        )
+        for em in token_re.finditer(tensor_html):
+            if em.group(1) is not None:
+                # sticky group divider (also matches the leading "Tensor"
+                # header, which we skip because gname == "Tensor")
+                gname = strip_tags(em.group(1))
+                if gname and gname != "Tensor":
+                    current_group = gname
+                    if gname not in tensor_groups:
+                        tensor_groups.append(gname)
+                continue
+            # tensor row <li> — capture up to the next row/divider/</ul>
+            start = em.end()
+            nxt = token_re.search(tensor_html, start)
+            end = nxt.start() if nxt else len(tensor_html)
+            row = tensor_html[start:end]
+            # name: the text-neutral-600 div
+            nm = re.search(
+                r"<div\b[^>]*\btext-neutral-600\b[^>]*>(.*?)</div>",
+                row,
+                re.DOTALL,
+            )
+            name = strip_tags(nm.group(1)) if nm else ""
+            # dtype: prefer the desktop `col-span-1` font-mono div, then
+            # fall back to the mobile `hidden sm:block` font-mono div.
+            dm = re.search(
+                r"<div\b[^>]*\bcol-span-1\b[^>]*\bfont-mono\b[^>]*>(.*?)</div>",
+                row,
+                re.DOTALL,
+            )
+            if not dm:
+                dm = re.search(
+                    r"<div\b[^>]*\bhidden sm:block\b[^>]*\bfont-mono\b[^>]*>(.*?)</div>",
+                    row,
+                    re.DOTALL,
+                )
+            dtype = strip_tags(dm.group(1)) if dm else ""
+            # shape: the col-span-3 font-mono div
+            shp = re.search(
+                r"<div\b[^>]*\bcol-span-3\b[^>]*\bfont-mono\b[^>]*>(.*?)</div>",
+                row,
+                re.DOTALL,
+            )
+            shape = strip_tags(shp.group(1)) if shp else ""
+            if name or dtype or shape:
+                tensors.append(
+                    TensorEntry(
+                        name=name, dtype=dtype, shape=shape, group=current_group
+                    )
+                )
+    else:
+        # Raw text content: find the whitespace-pre-wrap div (depth-aware, since
+        # its class spans multiple lines and it contains child <div> line
+        # elements) and extract each child line's text.
+        block = _extract_div_by_class_substring(file_explorer, "whitespace-pre-wrap")
+        if block:
+            lines = re.findall(r"<div\b[^>]*>(.*?)</div>", block, re.DOTALL)
+            if lines:
+                content = "\n".join(strip_tags(ln) for ln in lines)
+            else:
+                content = strip_tags(block)
+
+    return BlobPage(
+        blob_url=blob_url,
+        tag_full=tag_full,
+        blob_type=blob_type,
+        digest=digest,
+        size=size,
+        metadata=metadata,
+        content=content,
+        tensors=tensors,
+        tensor_groups=tensor_groups,
+    )
+
+
+def fetch_blob_page(client: Client, blob_url: str) -> BlobPage | None:
+    url = BASE + blob_url
+    html = client.get(url)
+    if html is None:
+        log.error("blob page fetch failed: %s", url)
+        return None
+    return parse_blob_page(html, blob_url)
+
+
+def save_blob_page(blob_url: str, page: BlobPage) -> None:
+    BLOBS_DIR.mkdir(parents=True, exist_ok=True)
+    safe = blob_url.strip("/").replace("/", "__").replace(":", "_")
+    out = {
+        "blob_url": page.blob_url,
+        "tag_full": page.tag_full,
+        "blob_type": page.blob_type,
+        "digest": page.digest,
+        "size": page.size,
+        "metadata": [asdict(m) for m in page.metadata],
+        "content": page.content,
+        "tensors": [asdict(t) for t in page.tensors],
+        "tensor_groups": page.tensor_groups,
+        "scraped_at": datetime.now(timezone.utc).isoformat(),
+    }
+    fp = BLOBS_DIR / f"{safe}.json"
+    _atomic_write(fp, json.dumps(out, indent=2))
+    log.debug("saved %s", fp)
+
+
+# --------------------------------------------------------------------------- #
 # Persistence
 # --------------------------------------------------------------------------- #
+
+
+def _atomic_write(filepath: Path, content: str) -> None:
+    """Write content to filepath atomically using a temp file + rename."""
+    tmp = filepath.with_suffix(filepath.suffix + ".tmp")
+    tmp.write_text(content)
+    os.replace(tmp, filepath)
 
 
 def save_models(models: Iterable[Model]) -> None:
@@ -596,8 +1455,10 @@ def save_models(models: Iterable[Model]) -> None:
     ms = sorted(models, key=lambda m: (not m.official, m.name.lower()))
     data["models"] = [asdict(m) for m in ms]
     data["count"] = len(data["models"])
-    (DATA / "models.json").write_text(json.dumps(data, indent=2))
+    fp = DATA / "models.json"
+    _atomic_write(fp, json.dumps(data, indent=2))
     log.info("wrote models.json (%d models)", data["count"])
+    log.debug("saved %s", fp)
 
 
 def save_tags(model: Model, tags: list[Tag]) -> None:
@@ -609,7 +1470,9 @@ def save_tags(model: Model, tags: list[Tag]) -> None:
         "scraped_at": datetime.now(timezone.utc).isoformat(),
         "tags": [asdict(t) for t in tags],
     }
-    (TAGS_DIR / f"{slug}.json").write_text(json.dumps(out, indent=2))
+    fp = TAGS_DIR / f"{slug}.json"
+    _atomic_write(fp, json.dumps(out, indent=2))
+    log.debug("saved %s", fp)
 
 
 # --------------------------------------------------------------------------- #
@@ -618,7 +1481,7 @@ def save_tags(model: Model, tags: list[Tag]) -> None:
 
 
 def check_only() -> int:
-    """Fetch /search (1 request), hash trending card data, compare to cache.
+    """Fetch /search + /library?sort=newest (2 requests), hash card data, compare to cache.
 
     Exit 0 = no change, 1 = changed (or first run).
     Writes the hash to scraper/.catalog-hash.
@@ -627,12 +1490,26 @@ def check_only() -> int:
 
     client = Client()
     try:
-        html = client.get(f"{BASE}/search")
-        if html is None:
-            log.error("failed to fetch /search")
-            return 1
-        cards = parse_cards(html, f"{BASE}/search")
-        log.info("fetched %d cards from /search", len(cards))
+        # Fetch /search (trending)
+        search_html = client.get(f"{BASE}/search")
+        cards = []
+        if search_html:
+            cards = parse_cards(search_html, f"{BASE}/search")
+            log.info("fetched %d cards from /search", len(cards))
+
+        # Fetch /library?sort=newest (all official models)
+        lib_html = client.get(f"{BASE}/library?sort=newest")
+        if lib_html:
+            lib_cards = parse_cards(lib_html, f"{BASE}/library?sort=newest")
+            log.info("fetched %d cards from /library?sort=newest", len(lib_cards))
+            # Merge, deduplicating by path
+            seen = {c.path for c in cards}
+            for c in lib_cards:
+                if c.path not in seen:
+                    cards.append(c)
+                    seen.add(c.path)
+
+        log.info("total unique cards: %d", len(cards))
     finally:
         client.close()
 
@@ -654,7 +1531,7 @@ def check_only() -> int:
         log.info("no changes — exiting 0")
         return 0
     else:
-        cache_file.write_text(current)
+        _atomic_write(cache_file, current)
         log.info("changes detected — exiting 1")
         return 1
 
@@ -669,6 +1546,21 @@ def main(argv: list[str] | None = None) -> int:
         "--skip-tags",
         action="store_true",
         help="only scrape the catalog, not per-model tags",
+    )
+    ap.add_argument(
+        "--skip-pages",
+        action="store_true",
+        help="skip fetching per-model pages (official only)",
+    )
+    ap.add_argument(
+        "--skip-tag-pages",
+        action="store_true",
+        help="skip fetching per-tag detail pages (official only: latest + MLX tags)",
+    )
+    ap.add_argument(
+        "--skip-blobs",
+        action="store_true",
+        help="skip fetching per-blob detail pages (official only)",
     )
     ap.add_argument(
         "--skip-search",
@@ -688,7 +1580,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument(
         "--check-only",
         action="store_true",
-        help="fetch only /library?sort=newest (1 request), hash card data, "
+        help="fetch /search + /library?sort=newest (2 requests), hash card data, "
         "compare to scraper/.catalog-hash, exit 0=unchanged 1=changed",
     )
     ap.add_argument("-v", "--verbose", action="store_true")
@@ -736,6 +1628,108 @@ def main(argv: list[str] | None = None) -> int:
             m.tags = fetch_tags(client, m)
             save_tags(m, m.tags)
             log.info("  %d tags", len(m.tags))
+            if m.official:
+                page_slug = slugify(m.path)
+                page_file = PAGES_DIR / f"{page_slug}.json"
+                if page_file.exists():
+                    log.info("  page: cached")
+                else:
+                    page = fetch_model_page(client, m)
+                    if page:
+                        save_model_page(m, page)
+                        log.info(
+                            "  page: %d files, readme %d chars",
+                            len(page.files),
+                            len(page.readme_html),
+                        )
+                    else:
+                        log.warning("  page: fetch failed")
+                # Fetch tag pages for ALL tags (skip cached)
+                tags_to_fetch = list(m.tags)
+                cached_tp = 0
+                fetched_tp = 0
+                for t in tags_to_fetch:
+                    slug = slugify(m.path)
+                    tp_file = TAG_PAGES_DIR / f"{slug}__{t.name}.json"
+                    if tp_file.exists():
+                        try:
+                            existing = json.loads(tp_file.read_text())
+                            cached_digest = existing.get("manifest_digest", "")
+                            if cached_digest == t.digest:
+                                cached_tp += 1
+                                continue
+                            else:
+                                log.info(
+                                    "  tag page digest changed: %s:%s (%s -> %s)",
+                                    m.path,
+                                    t.name,
+                                    cached_digest,
+                                    t.digest,
+                                )
+                        except Exception:
+                            pass
+                    log.info("  tag page: %s:%s", m.path, t.name)
+                    tp = fetch_tag_page(client, m, t.name)
+                    if tp:
+                        save_tag_page(m, t.name, tp)
+                        fetched_tp += 1
+                        log.info(
+                            "    %d files, readme %d chars",
+                            len(tp.files),
+                            len(tp.readme_html),
+                        )
+                    time.sleep(DELAY)
+                log.info("  tag pages: %d cached, %d fetched", cached_tp, fetched_tp)
+                # Fetch blob pages for every file in every tag page
+                if not args.skip_blobs:
+                    log.info("  fetching blob pages for %s", m.path)
+                    BLOBS_DIR.mkdir(parents=True, exist_ok=True)
+                    blob_count = 0
+                    for t in m.tags:
+                        slug = slugify(m.path)
+                        tp_file = TAG_PAGES_DIR / f"{slug}__{t.name}.json"
+                        if not tp_file.exists():
+                            continue
+                        try:
+                            tp_data = json.loads(tp_file.read_text())
+                        except Exception:
+                            continue
+                        for f in tp_data.get("files", []):
+                            burl = f.get("blob_url", "")
+                            if not burl:
+                                continue
+                            safe = burl.strip("/").replace("/", "__").replace(":", "_")
+                            bf = BLOBS_DIR / f"{safe}.json"
+                            if bf.exists():
+                                continue
+                            bp = fetch_blob_page(client, burl)
+                            if bp:
+                                save_blob_page(burl, bp)
+                                blob_count += 1
+                            time.sleep(DELAY)
+                    log.info("  fetched %d blob pages", blob_count)
+            # Update the model in models.json with fresh data
+            if (DATA / "models.json").exists():
+                try:
+                    models_data = json.loads((DATA / "models.json").read_text())
+                    for i, mm in enumerate(models_data.get("models", [])):
+                        if mm["path"] == m.path:
+                            mm["tag_count"] = len(m.tags)
+                            mm["tags"] = [asdict(t) for t in m.tags]
+                            if m.cloud and m.tags:
+                                local_tags = [
+                                    t
+                                    for t in m.tags
+                                    if t.name != "cloud"
+                                    and not t.name.endswith("-cloud")
+                                    and t.size_bytes
+                                ]
+                                mm["cloud_only"] = len(local_tags) == 0
+                            break
+                    json.dump(models_data, open(DATA / "models.json", "w"), indent=2)
+                    log.info("  updated models.json for %s", m.path)
+                except Exception as e:
+                    log.warning("  failed to update models.json: %s", e)
             return 0
 
         # ---- full crawl ----
@@ -777,7 +1771,7 @@ def main(argv: list[str] | None = None) -> int:
                         and tf.exists()
                         and pm.get("pulls") == m.pulls
                         and pm.get("tag_count") == m.tag_count
-                        and pm.get("updated") == m.updated
+                        and pm.get("updated_title") == m.updated_title
                     ):
                         # Unchanged — load from cache
                         try:
@@ -799,6 +1793,12 @@ def main(argv: list[str] | None = None) -> int:
                     log.info("  [%d/%d] %s", i, total, m.path)
                     m.tags = fetch_tags(client, m)
                     save_tags(m, m.tags)
+                    if i % 10 == 0:
+                        save_models(models.values())
+                        log.info(
+                            "  checkpoint: saved models.json (%d models)",
+                            len(models),
+                        )
                     time.sleep(DELAY)
             else:
                 log.info("=== fetching per-model tags ===")
@@ -809,27 +1809,186 @@ def main(argv: list[str] | None = None) -> int:
                     if tf.exists():
                         try:
                             existing = json.loads(tf.read_text())
-                            m.tags = [Tag(**t) for t in existing.get("tags", [])]
-                            log.info(
-                                "  [%d/%d] %s (cached %d tags)",
-                                i,
-                                total,
-                                m.path,
-                                len(m.tags),
-                            )
-                            continue
+                            cached_count = len(existing.get("tags", []))
+                            if cached_count == m.tag_count:
+                                m.tags = [Tag(**t) for t in existing.get("tags", [])]
+                                log.info(
+                                    "  [%d/%d] %s (cached %d tags)",
+                                    i,
+                                    total,
+                                    m.path,
+                                    len(m.tags),
+                                )
+                                continue
+                            else:
+                                log.info(
+                                    "  [%d/%d] %s (tag count changed: %d -> %d)",
+                                    i,
+                                    total,
+                                    m.path,
+                                    cached_count,
+                                    m.tag_count,
+                                )
                         except Exception:
                             pass
                     log.info("  [%d/%d] %s", i, total, m.path)
                     m.tags = fetch_tags(client, m)
                     save_tags(m, m.tags)
+                    if i % 10 == 0:
+                        save_models(models.values())
+                        log.info(
+                            "  checkpoint: saved models.json (%d models)",
+                            len(models),
+                        )
                     time.sleep(DELAY)
+
+        if not args.skip_pages:
+            log.info("=== fetching model pages (official only) ===")
+            PAGES_DIR.mkdir(parents=True, exist_ok=True)
+            official_models = [m for m in models.values() if m.official]
+            total = len(official_models)
+            for i, m in enumerate(official_models, 1):
+                slug = slugify(m.path)
+                pf = PAGES_DIR / f"{slug}.json"
+                if args.smart and prev_models:
+                    pm = prev_models.get(m.path)
+                    if (
+                        pm
+                        and pf.exists()
+                        and pm.get("updated_title") == m.updated_title
+                    ):
+                        try:
+                            json.loads(pf.read_text())
+                            continue
+                        except Exception:
+                            pass
+                elif pf.exists():
+                    continue
+                log.info("  [%d/%d] %s", i, total, m.path)
+                page = fetch_model_page(client, m)
+                if page:
+                    save_model_page(m, page)
+                else:
+                    log.warning("  no page data for %s", m.path)
+                time.sleep(DELAY)
+
+        if not args.skip_tag_pages:
+            log.info("=== fetching tag pages (official only: all tags) ===")
+            TAG_PAGES_DIR.mkdir(parents=True, exist_ok=True)
+            official_models = [m for m in models.values() if m.official]
+            total_tag_pages = 0
+            for i, m in enumerate(official_models, 1):
+                if not m.tags:
+                    continue
+                # Fetch ALL tags for this model
+                tags_to_fetch = list(m.tags)
+                if not tags_to_fetch:
+                    continue
+                for t in tags_to_fetch:
+                    slug = slugify(m.path)
+                    tf = TAG_PAGES_DIR / f"{slug}__{t.name}.json"
+                    # Smart mode: skip if model unchanged and file exists
+                    if args.smart and prev_models:
+                        pm = prev_models.get(m.path)
+                        if (
+                            pm
+                            and tf.exists()
+                            and pm.get("updated_title") == m.updated_title
+                        ):
+                            continue
+                    if tf.exists() and not args.smart:
+                        continue  # already cached
+                    log.info("  [%d/%d] %s:%s", i, len(official_models), m.path, t.name)
+                    tp = fetch_tag_page(client, m, t.name)
+                    if tp:
+                        save_tag_page(m, t.name, tp)
+                        total_tag_pages += 1
+                    time.sleep(DELAY)
+            log.info("fetched %d tag pages", total_tag_pages)
+            save_models(models.values())
+            log.info(
+                "  checkpoint: saved models.json after tag pages (%d models)",
+                len(models),
+            )
+
+        if not args.skip_blobs:
+            log.info("=== fetching blob pages (official only) ===")
+            BLOBS_DIR.mkdir(parents=True, exist_ok=True)
+            official_models = [m for m in models.values() if m.official]
+            total_blobs = 0
+            for i, m in enumerate(official_models, 1):
+                if not m.tags:
+                    continue
+                for t in m.tags:
+                    slug = slugify(m.path)
+                    tp_file = TAG_PAGES_DIR / f"{slug}__{t.name}.json"
+                    if not tp_file.exists():
+                        continue
+                    try:
+                        tp_data = json.loads(tp_file.read_text())
+                    except Exception:
+                        continue
+                    for f in tp_data.get("files", []):
+                        blob_url = f.get("blob_url", "")
+                        if not blob_url:
+                            continue
+                        # Sanitize blob_url for filename
+                        safe = blob_url.strip("/").replace("/", "__").replace(":", "_")
+                        bf = BLOBS_DIR / f"{safe}.json"
+                        # Smart mode: skip if model unchanged and blob file exists
+                        if args.smart and prev_models:
+                            pm = prev_models.get(m.path)
+                            if (
+                                pm
+                                and bf.exists()
+                                and pm.get("updated_title") == m.updated_title
+                            ):
+                                continue
+                        if bf.exists() and not args.smart:
+                            continue  # already cached
+                        bp = fetch_blob_page(client, blob_url)
+                        if bp:
+                            save_blob_page(blob_url, bp)
+                            total_blobs += 1
+                        time.sleep(DELAY)
+                if i % 10 == 0:
+                    log.info(
+                        "  processed %d/%d models (%d blobs)",
+                        i,
+                        len(official_models),
+                        total_blobs,
+                    )
+                    save_models(models.values())
+                    log.info(
+                        "  checkpoint: saved models.json (%d models, %d blobs)",
+                        len(models),
+                        total_blobs,
+                    )
+            log.info("fetched %d blob pages", total_blobs)
+            save_models(models.values())
+            log.info(
+                "  checkpoint: saved models.json after blob pages (%d models)",
+                len(models),
+            )
+
+        # Compute cloud_only flag: True if model has cloud badge but no
+        # downloadable local tags (all tags are named "cloud" or have no size).
+        for m in models.values():
+            if m.cloud and m.tags:
+                local_tags = [
+                    t
+                    for t in m.tags
+                    if t.name != "cloud"
+                    and not t.name.endswith("-cloud")
+                    and t.size_bytes
+                ]
+                m.cloud_only = len(local_tags) == 0
 
         save_models(models.values())
 
         # Save sort orderings + derived rank data for build.py
         if sort_orders:
-            (DATA / "sort_orders.json").write_text(json.dumps(sort_orders, indent=2))
+            _atomic_write(DATA / "sort_orders.json", json.dumps(sort_orders, indent=2))
             log.info("wrote sort_orders.json")
             # Build per-model rank dict from the orderings
             ranks: dict[str, dict] = {}
@@ -849,7 +2008,7 @@ def main(argv: list[str] | None = None) -> int:
                 for sort_name in sort_orders:
                     key = f"{sort_name}_rank"
                     ranks[name].setdefault(key, 9999)
-            (DATA / "sort_ranks.json").write_text(json.dumps(ranks, indent=2))
+            _atomic_write(DATA / "sort_ranks.json", json.dumps(ranks, indent=2))
             log.info("wrote sort_ranks.json")
 
         log.info("done (%d HTTP requests)", client.requests)
@@ -882,11 +2041,6 @@ def self_check() -> int:
         for t in td.get("tags", []):
             if t.get("format") not in ("gguf", "mlx"):
                 bad_format += 1
-            if t.get("format") == "mlx" and not re.search(
-                r"(?:^|[-_])mlx(?:$|[-_])", t["name"], re.IGNORECASE
-            ):
-                bad_format += 1
-                print(f"  BAD MLX classification: {m['path']} tag={t['name']}")
         if m["official"] and not m["path"].startswith("/library/"):
             bad_owner += 1
             print(f"  BAD official flag: {m['path']}")

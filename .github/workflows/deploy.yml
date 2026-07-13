@@ -39,6 +39,7 @@ jobs:
             scraper/sort_orders.json
             scraper/sort_ranks.json
             scraper/tags/
+            scraper/pages/
           key: scraped-data
 
       - name: Quick check for changes (1 request)

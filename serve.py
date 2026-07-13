@@ -27,7 +27,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Location", "/search/")
             self.end_headers()
             return
-        return super().do_GET(self)
+        return super().do_GET()
 
     def end_headers(self):
         self.send_header("Cache-Control", "no-store")
