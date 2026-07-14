@@ -59,7 +59,7 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      # ── Cycle 1: scrape 2h → deploy ──
+      # ── Cycle 1: scrape 2h → build → deploy to gh-pages ──
       - name: Scrape cycle 1 (2h max)
         if: steps.check.outputs.changed == 'true' || github.event_name != 'schedule'
         id: scrape1
@@ -72,7 +72,7 @@ jobs:
       - name: Checkpoint + build + deploy cycle 1
         if: always()
         run: |
-          # Push checkpoint
+          # Push checkpoint to scraped-data
           if [ -d /tmp/scraped-data ]; then
             mkdir -p /tmp/scraped-data/scraper
             cp -r scraper/* /tmp/scraped-data/scraper/
@@ -82,20 +82,20 @@ jobs:
             git push origin scraped-data || true
             cd "$GITHUB_WORKSPACE"
           fi
-          # Build
+          # Build site
           python3 build.py --base "/${{ github.event.repository.name }}"
+          # Deploy to gh-pages branch
+          git fetch origin gh-pages 2>/dev/null || true
+          git worktree add /tmp/gh-pages gh-pages 2>/dev/null || git worktree add --orphan -b gh-pages /tmp/gh-pages 2>/dev/null || true
+          cd /tmp/gh-pages
+          git rm -rf . 2>/dev/null || true
+          cp -r "$GITHUB_WORKSPACE/public/"* .
+          git add -A
+          git commit -m "deploy cycle 1 $(date -u '+%Y-%m-%d %H:%M:%S UTC') [skip ci]" || true
+          git push origin gh-pages || true
+          cd "$GITHUB_WORKSPACE"
 
-      - name: Upload + deploy cycle 1
-        if: always()
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: public
-
-      - name: Deploy to GitHub Pages cycle 1
-        if: always()
-        uses: actions/deploy-pages@v4
-
-      # ── Cycle 2: scrape 2h → deploy ──
+      # ── Cycle 2: scrape 2h → build → deploy to gh-pages ──
       - name: Scrape cycle 2 (2h max)
         if: steps.check.outputs.changed == 'true' || github.event_name != 'schedule'
         id: scrape2
@@ -105,9 +105,10 @@ jobs:
           GIT_CHECKPOINT_WORKTREE: "/tmp/scraped-data"
         run: python3 scraper/scrape.py --smart --skip-search --max-runtime 7200 -v
 
-      - name: Checkpoint + build cycle 2
+      - name: Checkpoint + build + deploy cycle 2
         if: always()
         run: |
+          # Push checkpoint to scraped-data
           if [ -d /tmp/scraped-data ]; then
             mkdir -p /tmp/scraped-data/scraper
             cp -r scraper/* /tmp/scraped-data/scraper/
@@ -117,14 +118,13 @@ jobs:
             git push origin scraped-data || true
             cd "$GITHUB_WORKSPACE"
           fi
+          # Build site
           python3 build.py --base "/${{ github.event.repository.name }}"
-
-      - name: Upload + deploy cycle 2
-        if: always()
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: public
-
-      - name: Deploy to GitHub Pages cycle 2
-        if: always()
-        uses: actions/deploy-pages@v4
+          # Deploy to gh-pages branch (reuse worktree from cycle 1)
+          cd /tmp/gh-pages
+          git rm -rf . 2>/dev/null || true
+          cp -r "$GITHUB_WORKSPACE/public/"* .
+          git add -A
+          git commit -m "deploy cycle 2 $(date -u '+%Y-%m-%d %H:%M:%S UTC') [skip ci]" || true
+          git push origin gh-pages || true
+          cd "$GITHUB_WORKSPACE"

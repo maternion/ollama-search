@@ -23,8 +23,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Restore scraped data from scraped-data branch
+      - name: Restore scraped data and deploy to gh-pages
         run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
           git fetch origin scraped-data 2>/dev/null || true
           if git rev-parse --verify origin/scraped-data >/dev/null 2>&1; then
             git checkout origin/scraped-data -- scraper/ 2>/dev/null || true
@@ -33,14 +36,12 @@ jobs:
             echo "No scraped-data branch found, cannot deploy"
             exit 1
           fi
-
-      - name: Build site
-        run: python3 build.py --base "/${{ github.event.repository.name }}"
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: public
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+          python3 build.py --base "/${{ github.event.repository.name }}"
+          git fetch origin gh-pages 2>/dev/null || true
+          git worktree add /tmp/gh-pages gh-pages 2>/dev/null || git worktree add --orphan -b gh-pages /tmp/gh-pages 2>/dev/null || true
+          cd /tmp/gh-pages
+          git rm -rf . 2>/dev/null || true
+          cp -r "$GITHUB_WORKSPACE/public/"* .
+          git add -A
+          git commit -m "deploy only $(date -u '+%Y-%m-%d %H:%M:%S UTC') [skip ci]" || true
+          git push origin gh-pages || true
