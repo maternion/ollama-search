@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/tulu3:latest/blobs/13573ab95b75",
+  "content": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|{{ .Role }}|>\n{{ .Content }}{{ if eq .Role \"assistant\" }}<|end_of_text|>{{ end }}{{ if not $last }}\n{{ end }}\n{{- if and (ne .Role \"assistant\") $last }}\n<|assistant|>\n{{ end }}\n{{- end }}",
+  "digest": "13573ab95b75",
+  "metadata": [],
+  "size": "272B",
+  "tensor_groups": [],
+  "tensors": []
+}
