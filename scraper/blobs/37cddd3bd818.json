@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/exaone-deep:latest/blobs/37cddd3bd818",
+  "content": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n{{ if eq .Role \"system\" }}[|system|]{{ .Content }}[|endofturn|]\n{{ continue }}\n{{ else if eq .Role \"user\" }}[|user|]{{ .Content }}\n{{ else if eq .Role \"assistant\" }}[|assistant|]{{ .Content }}[|endofturn|]\n{{ end }}\n{{- if and (ne .Role \"assistant\") $last }}[|assistant|]{{ end }}\n{{- end -}}",
+  "digest": "37cddd3bd818",
+  "metadata": [],
+  "size": "375B",
+  "tensor_groups": [],
+  "tensors": []
+}
