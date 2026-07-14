@@ -104,7 +104,7 @@
          <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
            <span class="flex items-center">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
-             <span x-test-pull-count>3.9M</span>
+             <span x-test-pull-count>4M</span>
              <span class="hidden sm:flex">&nbsp;Downloads</span>
           </span>
           <span class="flex items-center" title="Jun 2, 2026 12:38 AM UTC">
@@ -128,8 +128,1204 @@
     <div class="flex items-center justify-between mb-4">
       <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Tags</h2>
     </div>
-    
+    <div class="flex flex-wrap gap-2 mb-4">
+  <div class="relative inline-block">
+    <input type="radio" name="fmt" value="all" id="fmt-all" class="peer sr-only fmt-radio" data-fmt="all" checked>
+    <label for="fmt-all" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-300 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">All (30)</label>
+  </div>
+  <div class="relative inline-block">
+    <input type="radio" name="fmt" value="gguf" id="fmt-gguf" class="peer sr-only fmt-radio" data-fmt="gguf">
+    <label for="fmt-gguf" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-300 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">GGUF (18)</label>
+  </div>
+  <div class="relative inline-block">
+    <input type="radio" name="fmt" value="mlx" id="fmt-mlx" class="peer sr-only fmt-radio" data-fmt="mlx">
+    <label for="fmt-mlx" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-300 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">MLX (12)</label>
+  </div>
+</div>
     <div id="tags-table-all" class="fmt-table">
+  <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
+    <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
+      <div class="items-center grid bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs grid-cols-12 text-neutral-900 dark:text-neutral-100">
+        <p class="col-span-6 hidden md:block">Name</p>
+        <p class="block col-span-6 md:hidden">30 models</p>
+        <p class="col-span-2 hidden md:block">Size / Usage</p>
+        <p class="col-span-2 hidden md:block">Context</p>
+        <p class="col-span-2 hidden md:block">Input</p>
+      </div>
+      <div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:latest/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:latest</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">07d35212591f</span> • 24GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:latest/" class="group-hover:underline">qwen3.6:latest</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:latest" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">24GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">07d35212591f</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">a50eda8ed977</span> • 17GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b/" class="group-hover:underline">qwen3.6:27b</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">17GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">a50eda8ed977</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b</span>
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">07d35212591f</span> • 24GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b/" class="group-hover:underline">qwen3.6:35b</a>
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+        
+        <input class="command hidden" value="qwen3.6:35b" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">24GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">07d35212591f</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-coding-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-coding-mxfp8</span>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">a7185d39ff35</span> • 31GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-coding-mxfp8/" class="group-hover:underline">qwen3.6:27b-coding-mxfp8</a>
+        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        <input class="command hidden" value="qwen3.6:27b-coding-mxfp8" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">31GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">a7185d39ff35</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-coding-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-coding-nvfp4</span>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">42a2d9de99b0</span> • 20GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-coding-nvfp4/" class="group-hover:underline">qwen3.6:27b-coding-nvfp4</a>
+        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        <input class="command hidden" value="qwen3.6:27b-coding-nvfp4" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">20GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">42a2d9de99b0</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-coding-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-coding-bf16</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">aa7f9b4e8d3b</span> • 55GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-coding-bf16/" class="group-hover:underline">qwen3.6:27b-coding-bf16</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-coding-bf16" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">55GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">aa7f9b4e8d3b</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-mlx</span>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">60b0437bbd02</span> • 20GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 month ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 month ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-mlx/" class="group-hover:underline">qwen3.6:27b-mlx</a>
+        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        <input class="command hidden" value="qwen3.6:27b-mlx" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">20GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">60b0437bbd02</span>&nbsp;·&nbsp;1 month ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-mlx-bf16</span>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">2ae7c58c2cf4</span> • 55GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-mlx-bf16/" class="group-hover:underline">qwen3.6:27b-mlx-bf16</a>
+        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        <input class="command hidden" value="qwen3.6:27b-mlx-bf16" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">55GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">2ae7c58c2cf4</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-mtp-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-mtp-q4_K_M</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">21c6dd8f67de</span> • 18GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 month ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 month ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-mtp-q4_K_M/" class="group-hover:underline">qwen3.6:27b-mtp-q4_K_M</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-mtp-q4_K_M" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">18GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">21c6dd8f67de</span>&nbsp;·&nbsp;1 month ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-mtp-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-mtp-q8_0</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">7e11e6ecb134</span> • 30GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 month ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 month ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-mtp-q8_0/" class="group-hover:underline">qwen3.6:27b-mtp-q8_0</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-mtp-q8_0" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">30GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">7e11e6ecb134</span>&nbsp;·&nbsp;1 month ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-mtp-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-mtp-bf16</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">df430f32c9db</span> • 56GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 month ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 month ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-mtp-bf16/" class="group-hover:underline">qwen3.6:27b-mtp-bf16</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-mtp-bf16" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">56GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">df430f32c9db</span>&nbsp;·&nbsp;1 month ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-mxfp8</span>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">c2975bfaf500</span> • 31GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-mxfp8/" class="group-hover:underline">qwen3.6:27b-mxfp8</a>
+        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        <input class="command hidden" value="qwen3.6:27b-mxfp8" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">31GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">c2975bfaf500</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-nvfp4</span>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">60b0437bbd02</span> • 20GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-nvfp4/" class="group-hover:underline">qwen3.6:27b-nvfp4</a>
+        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        <input class="command hidden" value="qwen3.6:27b-nvfp4" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">20GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">60b0437bbd02</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-q4_K_M</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">a50eda8ed977</span> • 17GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-q4_K_M/" class="group-hover:underline">qwen3.6:27b-q4_K_M</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-q4_K_M" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">17GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">a50eda8ed977</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-q8_0</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">cd0210c667bf</span> • 30GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-q8_0/" class="group-hover:underline">qwen3.6:27b-q8_0</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-q8_0" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">30GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">cd0210c667bf</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-bf16</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">c3a702fca756</span> • 56GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-bf16/" class="group-hover:underline">qwen3.6:27b-bf16</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-bf16" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">56GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">c3a702fca756</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b</span>
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">07d35212591f</span> • 24GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b/" class="group-hover:underline">qwen3.6:35b-a3b</a>
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">24GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">07d35212591f</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-coding-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-coding-mxfp8</span>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">ccbab0f4045b</span> • 38GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-coding-mxfp8/" class="group-hover:underline">qwen3.6:35b-a3b-coding-mxfp8</a>
+        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        <input class="command hidden" value="qwen3.6:35b-a3b-coding-mxfp8" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">38GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">ccbab0f4045b</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-coding-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-coding-nvfp4</span>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">cd2692a833e6</span> • 22GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-coding-nvfp4/" class="group-hover:underline">qwen3.6:35b-a3b-coding-nvfp4</a>
+        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        <input class="command hidden" value="qwen3.6:35b-a3b-coding-nvfp4" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">22GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">cd2692a833e6</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-coding-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-coding-bf16</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">8d3c7ad727e7</span> • 70GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-coding-bf16/" class="group-hover:underline">qwen3.6:35b-a3b-coding-bf16</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-coding-bf16" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">70GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">8d3c7ad727e7</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-mlx-bf16</span>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">6d7a4cae9475</span> • 70GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-mlx-bf16/" class="group-hover:underline">qwen3.6:35b-a3b-mlx-bf16</a>
+        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        <input class="command hidden" value="qwen3.6:35b-a3b-mlx-bf16" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">70GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">6d7a4cae9475</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-mtp-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-mtp-q4_K_M</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">c7bd058dd977</span> • 23GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 month ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 month ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-mtp-q4_K_M/" class="group-hover:underline">qwen3.6:35b-a3b-mtp-q4_K_M</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-mtp-q4_K_M" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">23GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">c7bd058dd977</span>&nbsp;·&nbsp;1 month ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-q4_K_M</span>
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">07d35212591f</span> • 24GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-q4_K_M/" class="group-hover:underline">qwen3.6:35b-a3b-q4_K_M</a>
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-q4_K_M" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">24GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">07d35212591f</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-mtp-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-mtp-q8_0</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">c61138a79add</span> • 39GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 month ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 month ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-mtp-q8_0/" class="group-hover:underline">qwen3.6:35b-a3b-mtp-q8_0</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-mtp-q8_0" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">39GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">c61138a79add</span>&nbsp;·&nbsp;1 month ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-nvfp4</span>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">1b50c6fdc2d4</span> • 22GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-nvfp4/" class="group-hover:underline">qwen3.6:35b-a3b-nvfp4</a>
+        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        <input class="command hidden" value="qwen3.6:35b-a3b-nvfp4" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">22GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">1b50c6fdc2d4</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-q8_0</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">0218f872e86b</span> • 39GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-q8_0/" class="group-hover:underline">qwen3.6:35b-a3b-q8_0</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-q8_0" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">39GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">0218f872e86b</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-bf16</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">94061ddd23a7</span> • 71GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-bf16/" class="group-hover:underline">qwen3.6:35b-a3b-bf16</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-bf16" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">71GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">94061ddd23a7</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-mtp-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-mtp-bf16</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">42f15217f5ae</span> • 72GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 month ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 month ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-mtp-bf16/" class="group-hover:underline">qwen3.6:35b-a3b-mtp-bf16</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-mtp-bf16" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">72GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">42f15217f5ae</span>&nbsp;·&nbsp;1 month ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-mxfp8</span>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">d82a30588f1c</span> • 38GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-mxfp8/" class="group-hover:underline">qwen3.6:35b-a3b-mxfp8</a>
+        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        <input class="command hidden" value="qwen3.6:35b-a3b-mxfp8" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">38GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">d82a30588f1c</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-mlx</span>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">1b50c6fdc2d4</span> • 22GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 month ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 month ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-mlx/" class="group-hover:underline">qwen3.6:35b-mlx</a>
+        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        <input class="command hidden" value="qwen3.6:35b-mlx" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">22GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">1b50c6fdc2d4</span>&nbsp;·&nbsp;1 month ago
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+    <div id="tags-table-gguf" class="fmt-table hidden">
   <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
     <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
       <div class="items-center grid bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs grid-cols-12 text-neutral-900 dark:text-neutral-100">
@@ -139,12 +1335,1192 @@
         <p class="col-span-2 hidden md:block">Context</p>
         <p class="col-span-2 hidden md:block">Input</p>
       </div>
-      
+      <div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:latest/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:latest</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">07d35212591f</span> • 24GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:latest/" class="group-hover:underline">qwen3.6:latest</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:latest" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">24GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">07d35212591f</span>&nbsp;·&nbsp;2 months ago
     </div>
   </div>
 </div>
-    
-    
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">a50eda8ed977</span> • 17GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b/" class="group-hover:underline">qwen3.6:27b</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">17GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">a50eda8ed977</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b</span>
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">07d35212591f</span> • 24GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b/" class="group-hover:underline">qwen3.6:35b</a>
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+        
+        <input class="command hidden" value="qwen3.6:35b" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">24GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">07d35212591f</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-coding-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-coding-bf16</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">aa7f9b4e8d3b</span> • 55GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-coding-bf16/" class="group-hover:underline">qwen3.6:27b-coding-bf16</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-coding-bf16" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">55GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">aa7f9b4e8d3b</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-mtp-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-mtp-q4_K_M</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">21c6dd8f67de</span> • 18GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 month ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 month ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-mtp-q4_K_M/" class="group-hover:underline">qwen3.6:27b-mtp-q4_K_M</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-mtp-q4_K_M" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">18GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">21c6dd8f67de</span>&nbsp;·&nbsp;1 month ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-mtp-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-mtp-q8_0</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">7e11e6ecb134</span> • 30GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 month ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 month ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-mtp-q8_0/" class="group-hover:underline">qwen3.6:27b-mtp-q8_0</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-mtp-q8_0" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">30GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">7e11e6ecb134</span>&nbsp;·&nbsp;1 month ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-mtp-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-mtp-bf16</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">df430f32c9db</span> • 56GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 month ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 month ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-mtp-bf16/" class="group-hover:underline">qwen3.6:27b-mtp-bf16</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-mtp-bf16" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">56GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">df430f32c9db</span>&nbsp;·&nbsp;1 month ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-q4_K_M</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">a50eda8ed977</span> • 17GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-q4_K_M/" class="group-hover:underline">qwen3.6:27b-q4_K_M</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-q4_K_M" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">17GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">a50eda8ed977</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-q8_0</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">cd0210c667bf</span> • 30GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-q8_0/" class="group-hover:underline">qwen3.6:27b-q8_0</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-q8_0" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">30GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">cd0210c667bf</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-bf16</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">c3a702fca756</span> • 56GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-bf16/" class="group-hover:underline">qwen3.6:27b-bf16</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-bf16" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">56GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">c3a702fca756</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b</span>
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">07d35212591f</span> • 24GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b/" class="group-hover:underline">qwen3.6:35b-a3b</a>
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">24GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">07d35212591f</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-coding-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-coding-bf16</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">8d3c7ad727e7</span> • 70GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-coding-bf16/" class="group-hover:underline">qwen3.6:35b-a3b-coding-bf16</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-coding-bf16" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">70GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">8d3c7ad727e7</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-mtp-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-mtp-q4_K_M</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">c7bd058dd977</span> • 23GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 month ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 month ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-mtp-q4_K_M/" class="group-hover:underline">qwen3.6:35b-a3b-mtp-q4_K_M</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-mtp-q4_K_M" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">23GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">c7bd058dd977</span>&nbsp;·&nbsp;1 month ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-q4_K_M</span>
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">07d35212591f</span> • 24GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-q4_K_M/" class="group-hover:underline">qwen3.6:35b-a3b-q4_K_M</a>
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-q4_K_M" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">24GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">07d35212591f</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-mtp-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-mtp-q8_0</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">c61138a79add</span> • 39GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 month ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 month ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-mtp-q8_0/" class="group-hover:underline">qwen3.6:35b-a3b-mtp-q8_0</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-mtp-q8_0" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">39GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">c61138a79add</span>&nbsp;·&nbsp;1 month ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-q8_0</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">0218f872e86b</span> • 39GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-q8_0/" class="group-hover:underline">qwen3.6:35b-a3b-q8_0</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-q8_0" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">39GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">0218f872e86b</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-bf16</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">94061ddd23a7</span> • 71GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-bf16/" class="group-hover:underline">qwen3.6:35b-a3b-bf16</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-bf16" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">71GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">94061ddd23a7</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-mtp-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-mtp-bf16</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">42f15217f5ae</span> • 72GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 month ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 month ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-mtp-bf16/" class="group-hover:underline">qwen3.6:35b-a3b-mtp-bf16</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-mtp-bf16" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">72GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">42f15217f5ae</span>&nbsp;·&nbsp;1 month ago
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+    <div id="tags-table-mlx" class="fmt-table hidden">
+  <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
+    <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
+      <div class="items-center grid bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs grid-cols-12 text-neutral-900 dark:text-neutral-100">
+        <p class="col-span-6 hidden md:block">Name</p>
+        <p class="block col-span-6 md:hidden">0 models</p>
+        <p class="col-span-2 hidden md:block">Size / Usage</p>
+        <p class="col-span-2 hidden md:block">Context</p>
+        <p class="col-span-2 hidden md:block">Input</p>
+      </div>
+      <div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-coding-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-coding-mxfp8</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">a7185d39ff35</span> • 31GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-coding-mxfp8/" class="group-hover:underline">qwen3.6:27b-coding-mxfp8</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-coding-mxfp8" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">31GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">a7185d39ff35</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-coding-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-coding-nvfp4</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">42a2d9de99b0</span> • 20GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-coding-nvfp4/" class="group-hover:underline">qwen3.6:27b-coding-nvfp4</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-coding-nvfp4" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">20GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">42a2d9de99b0</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-mlx</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">60b0437bbd02</span> • 20GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 month ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 month ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-mlx/" class="group-hover:underline">qwen3.6:27b-mlx</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-mlx" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">20GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">60b0437bbd02</span>&nbsp;·&nbsp;1 month ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-mlx-bf16</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">2ae7c58c2cf4</span> • 55GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-mlx-bf16/" class="group-hover:underline">qwen3.6:27b-mlx-bf16</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-mlx-bf16" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">55GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">2ae7c58c2cf4</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-mxfp8</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">c2975bfaf500</span> • 31GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-mxfp8/" class="group-hover:underline">qwen3.6:27b-mxfp8</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-mxfp8" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">31GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">c2975bfaf500</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:27b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:27b-nvfp4</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">60b0437bbd02</span> • 20GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:27b-nvfp4/" class="group-hover:underline">qwen3.6:27b-nvfp4</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:27b-nvfp4" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">20GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">60b0437bbd02</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-coding-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-coding-mxfp8</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">ccbab0f4045b</span> • 38GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-coding-mxfp8/" class="group-hover:underline">qwen3.6:35b-a3b-coding-mxfp8</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-coding-mxfp8" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">38GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">ccbab0f4045b</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-coding-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-coding-nvfp4</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">cd2692a833e6</span> • 22GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-coding-nvfp4/" class="group-hover:underline">qwen3.6:35b-a3b-coding-nvfp4</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-coding-nvfp4" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">22GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">cd2692a833e6</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-mlx-bf16</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">6d7a4cae9475</span> • 70GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-mlx-bf16/" class="group-hover:underline">qwen3.6:35b-a3b-mlx-bf16</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-mlx-bf16" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">70GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">6d7a4cae9475</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-nvfp4</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">1b50c6fdc2d4</span> • 22GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-nvfp4/" class="group-hover:underline">qwen3.6:35b-a3b-nvfp4</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-nvfp4" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">22GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">1b50c6fdc2d4</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-a3b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-a3b-mxfp8</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">d82a30588f1c</span> • 38GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 2 months ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 2 months ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-a3b-mxfp8/" class="group-hover:underline">qwen3.6:35b-a3b-mxfp8</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:35b-a3b-mxfp8" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">38GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">d82a30588f1c</span>&nbsp;·&nbsp;2 months ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/qwen3.6/:35b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">qwen3.6:35b-mlx</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">1b50c6fdc2d4</span> • 22GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 month ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 month ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/qwen3.6/:35b-mlx/" class="group-hover:underline">qwen3.6:35b-mlx</a>
+        
+        
+        <input class="command hidden" value="qwen3.6:35b-mlx" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">22GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">1b50c6fdc2d4</span>&nbsp;·&nbsp;1 month ago
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
   </section>
 </main>
 

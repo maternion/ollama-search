@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <title>phi3:14b-medium-128k-instruct-q3_K_L</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="phi3:14b-medium-128k-instruct-q3_K_L — Phi-3 is a family of lightweight 3B (Mini) and 14B (Medium) state-of-the-art open models by Microsoft."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="phi3:14b-medium-128k-instruct-q3_K_L" />
+    <meta property="og:description" content="phi3:14b-medium-128k-instruct-q3_K_L — Phi-3 is a family of lightweight 3B (Mini) and 14B (Medium) state-of-the-art open models by Microsoft." />
+    <meta property="og:image" content="https://ollama.com/public/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content="phi3:14b-medium-128k-instruct-q3_K_L" />
+    <meta property="twitter:description" content="phi3:14b-medium-128k-instruct-q3_K_L — Phi-3 is a family of lightweight 3B (Mini) and 14B (Medium) state-of-the-art open models by Microsoft." />
+    <meta property="twitter:site" content="ollama" />
+    <meta property="twitter:image:src" content="https://ollama.com/public/og-twitter.png" />
+    <meta property="twitter:image:width" content="1200" />
+    <meta property="twitter:image:height" content="628" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ollama-search/assets/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/ollama-search/assets/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/ollama-search/assets/icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/ollama-search/assets/icon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x" href="/ollama-search/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/ollama-search/assets/android-chrome-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/ollama-search/assets/android-chrome-icon-512x512.png" />
+    <script>
+(function() {
+  var stored = localStorage.getItem('theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (stored === 'dark' || (!stored && prefersDark)) {
+    document.documentElement.classList.add('dark');
+  }
+})();
+</script>
+    <link href="/ollama-search/assets/tailwind.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/prism.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/extras.css" rel="stylesheet" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Ollama",
+        "url": "https://ollama.com"
+      }
+    </script>
+    <script defer src="/ollama-search/assets/htmx.bundle.js"></script>
+</head>
+<body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
+<header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
+  <nav class="flex w-full items-center justify-between px-6 py-[9px]">
+    <a href="/ollama-search/" class="z-50">
+      <img src="/ollama-search/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
+    </a>
+    <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
+    </div>
+    <div class="flex-grow justify-center items-center hidden lg:flex">
+      <div class="relative w-full xl:max-w-[28rem]">
+        <form action="/ollama-search/" autocomplete="off" id="nav-search-form">
+          <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full" hx-on:focusout="var rt=event.relatedTarget;if(rt&&(this.contains(rt)||document.getElementById('searchpreview').contains(rt)))return;var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');">
+            <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();var v=this.value.trim();window.location.href=v?'/ollama-search/?q='+encodeURIComponent(v):'/ollama-search/';return;}if(event.key==='Escape'){event.preventDefault();this.value='';this.blur();var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');return;}if(event.key==='Tab'){var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');return;}if(event.key==='ArrowDown'){var first=document.querySelector('#search-preview-list a:first-of-type');if(first)first.focus();event.preventDefault();}if(event.key==='ArrowUp'){var last=document.getElementById('view-all-link');if(last)last.focus();event.preventDefault();}var sp=document.getElementById('searchpreview');if(sp)sp.classList.remove('hidden');" hx-on:focus="var sp=document.getElementById('searchpreview');if(sp&&this.value.trim())sp.classList.remove('hidden');" />
+          </div>
+        </form>
+        <div id="searchpreview" class="hidden absolute left-0 right-0 top-12 z-50" style="width: calc(100% + 2px); margin-left: -1px;"></div>
+      </div>
+    </div>
+    <div class="hidden lg:flex xl:flex-1 items-center space-x-2 justify-end ml-6 xl:ml-0">
+      <button id="theme-toggle" class="flex cursor-pointer items-center rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 text-lg px-3 py-1.5 text-black dark:text-neutral-200 whitespace-nowrap" title="Toggle dark mode">
+        <span class="dark:hidden"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></span>
+        <span class="hidden dark:block"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25M18.364 17.614l-1.591-1.591M12 18.75V21M5.636 17.614l1.591-1.591M3 12h2.25M5.636 6.386l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg></span>
+      </button>
+      <a class="flex cursor-pointer items-center rounded-full bg-neutral-800 dark:bg-neutral-100 text-lg px-4 py-1.5 text-white dark:text-neutral-900 hover:bg-black dark:hover:bg-white whitespace-nowrap focus:bg-black dark:focus:bg-white" href="https://ollama.com/download">Download</a>
+    </div>
+    <div class="lg:hidden flex items-center">
+      <button id="theme-toggle-mobile" class="flex items-center rounded-full bg-black/5 dark:bg-white/10 px-3 py-1.5 mr-2 text-black dark:text-neutral-200">
+        <span class="dark:hidden"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></span>
+        <span class="hidden dark:block"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25M18.364 17.614l-1.591-1.591M12 18.75V21M5.636 17.614l1.591-1.591M3 12h2.25M5.636 6.386l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main class="relative mx-auto flex w-full max-w-[52rem] flex-col px-6 py-10 md:py-24 lg:px-8">
+  <a href="/ollama-search/library/phi3/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10" onclick="if(document.referrer&amp;&amp;document.referrer.includes(location.host)){history.back();return false;}">&larr; Back to tags</a>
+  <div class="flex flex-col space-y-3">
+    <div class="flex items-center min-w-0">
+      <div class="flex items-center min-w-0 space-x-2">
+        <div class="flex items-center min-w-0">
+          <span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
+            <a x-test-model-name href="/ollama-search/library/phi3" title="phi3" class="underline-offset-[5px] hover:underline">phi3</a>:14b-medium-128k-instruct-q3_K_L
+           </span>
+         </div>
+       </div>
+     </div>
+    <div class="flex flex-col space-y-2">
+      <div class="flex flex-col space-y-2">
+        <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
+          <span class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
+            <span x-test-pull-count>17.8M</span>
+            <span class="hidden sm:flex">&nbsp;Downloads</span>
+          </span>
+          <span class="flex items-center" title="Jul 30, 2024 6:53 PM UTC">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>
+            <span class="hidden sm:flex">Updated&nbsp;</span>
+            <span x-test-updated>1 year ago</span>
+          </span>
+        </p>
+      </div>
+      <h2 class="break-words text-neutral-800 dark:text-neutral-300">Phi-3 is a family of lightweight 3B (Mini) and 14B (Medium) state-of-the-art open models by Microsoft.</h2>
+      <div class="flex flex-wrap gap-2">
+        
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">3.8b</span>
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">14b</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="py-8">
+    <section data-usage-section class="mb-8">
+  <div class="relative rounded-lg border border-neutral-200 dark:border-neutral-800 overflow-hidden bg-white dark:bg-neutral-900">
+    <div class="flex items-center justify-between bg-white dark:bg-neutral-900 pt-1 pl-[7px] pr-3">
+      <div class="flex">
+        <button type="button" class="use-tab px-3 py-2 text-xs font-medium text-neutral-900 dark:text-neutral-100 underline decoration-1 underline-offset-[7px]" data-tab="cli" onclick="switchUsageTab(this, 'cli')">CLI</button>
+        <button type="button" class="use-tab px-3 py-2 text-xs text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300" data-tab="api" onclick="switchUsageTab(this, 'api')">cURL</button>
+        <button type="button" class="use-tab px-3 py-2 text-xs text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300" data-tab="python" onclick="switchUsageTab(this, 'python')">Python</button>
+        <button type="button" class="use-tab px-3 py-2 text-xs text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300" data-tab="javascript" onclick="switchUsageTab(this, 'javascript')">JavaScript</button>
+      </div>
+      <a href="https://github.com/ollama/ollama-python" target="_blank" rel="noopener noreferrer" class="use-link hidden py-2 text-xs text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300 inline-flex items-center gap-1" data-link="python"><span class="hidden sm:inline">Documentation</span> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg></a>
+      <a href="https://github.com/ollama/ollama-js" target="_blank" rel="noopener noreferrer" class="use-link hidden py-2 text-xs text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300 inline-flex items-center gap-1" data-link="javascript"><span class="hidden sm:inline">Documentation</span> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg></a>
+    </div>
+    <div class="relative">
+      <div class="absolute bottom-[10.5px] right-[10.5px] flex items-center gap-2 z-10">
+        <button type="button" class="use-copy-btn p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 rounded" onclick="copyUsageCode(this)" title="Copy">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </div>
+      <div class="use-panel p-4 font-mono text-[13px] text-neutral-700 dark:text-neutral-300" data-panel="cli">
+        <pre class="m-0 whitespace-pre-wrap">ollama run phi3:14b-medium-128k-instruct-q3_K_L</pre>
+      </div>
+      <div class="use-panel hidden p-4 font-mono text-[13px] text-neutral-700 dark:text-neutral-300" data-panel="api">
+        <pre class="m-0 whitespace-pre-wrap">curl http://localhost:11434/api/chat \
+  -d '{
+    "model": "phi3:14b-medium-128k-instruct-q3_K_L",
+    "messages": [{"role": "user", "content": "Hello!"}]
+  }'</pre>
+      </div>
+      <div class="use-panel hidden p-4 font-mono text-[13px] text-neutral-700 dark:text-neutral-300" data-panel="python">
+        <pre class="m-0 whitespace-pre-wrap"><span class="text-neutral-500">from</span> ollama <span class="text-neutral-500">import</span> chat
+
+response = chat(
+    model=<span class="text-green-700">'phi3:14b-medium-128k-instruct-q3_K_L'</span>,
+    messages=[{<span class="text-green-700">'role'</span>: <span class="text-green-700">'user'</span>, <span class="text-green-700">'content'</span>: <span class="text-green-700">'Hello!'</span>}],
+)
+<span class="text-neutral-500">print</span>(response.message.content)</pre>
+      </div>
+      <div class="use-panel hidden p-4 font-mono text-[13px] text-neutral-700 dark:text-neutral-300" data-panel="javascript">
+        <pre class="m-0 whitespace-pre-wrap"><span class="text-neutral-500">import</span> ollama <span class="text-neutral-500">from</span> <span class="text-green-700">'ollama'</span>
+
+<span class="text-neutral-500">const</span> response = <span class="text-neutral-500">await</span> ollama.chat({
+  model: <span class="text-green-700">'phi3:14b-medium-128k-instruct-q3_K_L'</span>,
+  messages: [{role: <span class="text-green-700">'user'</span>, content: <span class="text-green-700">'Hello!'</span>}],
+})
+console.log(response.message.content)</pre>
+      </div>
+    </div>
+  </div>
+</section>
+    
+    <section id="file-explorer" class="flex flex-1 flex-col">
+  <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100 mb-4">Details</h2>
+  <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
+    <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
+      <div class="flex items-center justify-between bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs text-neutral-900 dark:text-neutral-100">
+        <p class="hidden sm:block">Updated 1 year ago</p>
+        <p class="flex items-center sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>1 year ago</p>
+        <p>214c9ceb5140 · 7.5GB ·</p>
+      </div>
+      <div class="group block grid-cols-12 gap-2 px-4 py-3 sm:grid sm:grid-cols-12"><div class="truncate text-sm font-medium text-neutral-800 dark:text-neutral-200 group-hover:underline sm:col-span-2 sm:col-start-1"><a href="/ollama-search/library/phi3/:14b-medium-128k-instruct-q3_K_L/blobs/6e13a7b37705/" class="group-hover:underline">model</a></div><div class="truncate font-mono text-[13px] text-neutral-400 dark:text-neutral-500 subpixel-antialiased sm:col-span-8 sm:col-start-3"><div class="space-x-2 flex text-sm"><div class="flex sm:space-x-2 items-center"><span class="hidden sm:block">arch</span><span class="text-neutral-400 dark:text-neutral-500 sm:font-semibold sm:text-neutral-800 dark:sm:text-neutral-200 sm:text-xs">phi3</span></div><div>·</div><div class="flex sm:space-x-2 items-center"><span class="hidden sm:block">parameters</span><span class="text-neutral-400 dark:text-neutral-500 sm:font-semibold sm:text-neutral-800 dark:sm:text-neutral-200 sm:text-xs">14B</span></div><div>·</div><div class="flex sm:space-x-2 items-center"><span class="hidden sm:block">quantization</span><span class="text-neutral-400 dark:text-neutral-500 sm:font-semibold sm:text-neutral-800 dark:sm:text-neutral-200 sm:text-xs">Q3_K_L</span></div></div></div><div class="hidden text-right text-xs text-neutral-400 dark:text-neutral-500 sm:col-start-12 sm:block">7.5GB</div></div>
+<div class="group block grid-cols-12 gap-2 px-4 py-3 sm:grid sm:grid-cols-12"><div class="truncate text-sm font-medium text-neutral-800 dark:text-neutral-200 group-hover:underline sm:col-span-2 sm:col-start-1"><a href="/ollama-search/library/phi3/:14b-medium-128k-instruct-q3_K_L/blobs/fa8235e5b48f/" class="group-hover:underline">license</a></div><div class="truncate font-mono text-[13px] text-neutral-400 dark:text-neutral-500 subpixel-antialiased sm:col-span-8 sm:col-start-3">Microsoft.
+Copyright (c) Microsoft Corporation.
+MIT License
+Permission is hereby granted, free of ch</div><div class="hidden text-right text-xs text-neutral-400 dark:text-neutral-500 sm:col-start-12 sm:block">1.1kB</div></div>
+<div class="group block grid-cols-12 gap-2 px-4 py-3 sm:grid sm:grid-cols-12"><div class="truncate text-sm font-medium text-neutral-800 dark:text-neutral-200 group-hover:underline sm:col-span-2 sm:col-start-1"><a href="/ollama-search/library/phi3/:14b-medium-128k-instruct-q3_K_L/blobs/8dde1baf1db0/" class="group-hover:underline">params</a></div><div class="truncate font-mono text-[13px] text-neutral-400 dark:text-neutral-500 subpixel-antialiased sm:col-span-8 sm:col-start-3">{
+    &quot;stop&quot;: [
+        &quot;&lt;|end|&gt;&quot;,
+        &quot;&lt;|user|&gt;&quot;,
+        &quot;&lt;|assistant|&gt;&quot;
+    ]
+}</div><div class="hidden text-right text-xs text-neutral-400 dark:text-neutral-500 sm:col-start-12 sm:block">78B</div></div>
+<div class="group block grid-cols-12 gap-2 px-4 py-3 sm:grid sm:grid-cols-12"><div class="truncate text-sm font-medium text-neutral-800 dark:text-neutral-200 group-hover:underline sm:col-span-2 sm:col-start-1"><a href="/ollama-search/library/phi3/:14b-medium-128k-instruct-q3_K_L/blobs/542b217f179c/" class="group-hover:underline">template</a></div><div class="truncate font-mono text-[13px] text-neutral-400 dark:text-neutral-500 subpixel-antialiased sm:col-span-8 sm:col-start-3">{{ if .System }}&lt;|system|&gt;
+{{ .System }}&lt;|end|&gt;
+{{ end }}{{ if .Prompt }}&lt;|user|&gt;
+{{ .Prompt }}&lt;|end</div><div class="hidden text-right text-xs text-neutral-400 dark:text-neutral-500 sm:col-start-12 sm:block">148B</div></div>
+    </div>
+  </div>
+</section>
+  </div>
+  <div class="flex flex-1 flex-col py-8" id="readme">
+  <div class="flex items-center justify-between pb-1">
+    <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Readme</h2>
+  </div>
+  <div>
+    <div id="display" class="prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black dark:prose-headings:text-neutral-200 dark:prose-blockquote:text-neutral-400 dark:prose-code:bg-neutral-800 dark:prose-code:text-neutral-200 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-200 dark:prose-li:text-neutral-200 dark:prose-td:text-neutral-300 dark:prose-th:text-neutral-200 dark:prose-a:text-blue-400 dark:prose-strong:text-neutral-200 dark:marker:prose-ol:text-neutral-400 dark:marker:prose-ul:text-neutral-400 dark:text-neutral-200">
+      
+        
+          <p><img src="https://github.com/jmorganca/ollama/assets/251292/e06e1a36-97b2-417a-b2b2-028c980359b1" width="240"/></p>
+
+<p>Phi-3 is a family of open AI models developed by Microsoft.</p>
+
+<h2>Parameter sizes</h2>
+
+<ul>
+<li><a href="https://ollama.com/library/phi3:mini" rel="nofollow">Phi-3 Mini</a> – 3B parameters – <code>ollama run phi3:mini</code></li>
+<li><a href="https://ollama.com/library/phi3:medium" rel="nofollow">Phi-3 Medium</a> – 14B parameters – <code>ollama run phi3:medium</code></li>
+</ul>
+
+<h2>Context window sizes</h2>
+
+<blockquote>
+<p>Note: the 128k version of this model requires <a href="https://github.com/ollama/ollama/releases/tag/v0.1.39" rel="nofollow">Ollama 0.1.39</a> or later.</p>
+</blockquote>
+
+<ul>
+<li>4k <code>ollama run phi3:mini</code> <code>ollama run phi3:medium</code></li>
+<li>128k <code>ollama run phi3:medium-128k</code></li>
+</ul>
+
+<p><img src="https://ollama.com/assets/library/phi3/83b3de66-82d8-4455-9117-256802c1b82e" alt="image.png"/></p>
+
+<h2>Phi-3 Mini</h2>
+
+<p>Phi-3 Mini is a 3.8B parameters, lightweight, state-of-the-art open model trained with the Phi-3 datasets that includes both synthetic data and the filtered publicly available websites data with a focus on high-quality and reasoning dense properties.</p>
+
+<p>The model has underwent a post-training process that incorporates both supervised fine-tuning and direct preference optimization to ensure precise instruction adherence and robust safety measures.</p>
+
+<p>When assessed against benchmarks testing common sense, language understanding, math, code, long context and logical reasoning, Phi-3 Mini-4K-Instruct showcased a robust and state-of-the-art performance among models with less than 13 billion parameters.</p>
+
+<h2>Phi-3 Medium</h2>
+
+<p>Phi-3 Medium is a 14B parameter language model, and outperforms Gemini 1.0 Pro.</p>
+
+<p><img src="https://ollama.com/assets/library/phi3/2868e29b-3bba-4c4a-a6ed-1a27fb102867" alt="image.png"/></p>
+
+<h2>Intended Uses</h2>
+
+<p><strong>Primary use cases</strong></p>
+
+<p>The model is intended for commercial and research use in English. The model provides uses for applications which require
+1) memory/compute constrained environments
+2) latency bound scenarios
+3) strong reasoning (especially math and logic)
+4) long context</p>
+
+<p>Our model is designed to accelerate research on language and multimodal models, for use as a building block for generative AI powered features.</p>
+
+<p><strong>Use case considerations</strong></p>
+
+<p>Our models are not specifically designed or evaluated for all downstream purposes. Developers should consider common limitations of language models as they select use cases, and evaluate and mitigate for accuracy, safety, and fariness before using within a specific downstream use case, particularly for high risk scenarios.
+Developers  should be aware of and adhere to applicable laws or regulations (including privacy, trade compliance laws, etc.) that are relevant to their use case.
+Nothing contained in this Model Card should be interpreted as or deemed a restriction or modification to the license the model is released under.</p>
+
+<h2>Responsible AI Considerations</h2>
+
+<p>Like other language models, the Phi series models can potentially behave in ways that are unfair, unreliable, or offensive. Some of the limiting behaviors to be aware of include:</p>
+
+<ul>
+<li><p>Quality of Service: the Phi models are trained primarily on English text. Languages other than English will experience worse performance. English language varieties with less representation in the training data might experience worse performance than standard American English.</p></li>
+
+<li><p>Representation of Harms &amp; Perpetuation of Stereotypes: These models can over- or under-represent groups of people, erase representation of some groups, or reinforce demeaning or negative stereotypes. Despite safety post-training, these limitations may still be present due to differing levels of representation of different groups or prevalence of examples of negative stereotypes in training data that reflect real-world patterns and societal biases.</p></li>
+
+<li><p>Inappropriate or Offensive Content: these models may produce other types of inappropriate or offensive content, which may make it inappropriate to deploy for sensitive contexts without additional mitigations that are specific to the use case.</p></li>
+
+<li><p>Information Reliability: Language models can generate nonsensical content or fabricate content that might sound reasonable but is inaccurate or outdated.</p></li>
+
+<li><p>Limited Scope for Code: Majority of Phi-3 training data is based in Python and use common packages such as “typing, math, random, collections, datetime, itertools”. If the model generates Python scripts that utilize other packages or scripts in other languages, we strongly recommend users manually verify all API uses.</p></li>
+</ul>
+
+<p>Developers should apply responsible AI best practices and are responsible for ensuring that a specific use case complies with relevant laws and regulations (e.g. privacy, trade, etc.). Important areas for consideration include:
++ Allocation: Models may not be suitable for scenarios that could have consequential impact on legal status or the allocation of resources or life opportunities (ex: housing, employment, credit, etc.) without further assessments and additional debiasing techniques.</p>
+
+<ul>
+<li><p>High-Risk Scenarios: Developers should assess suitability of using models in high-risk scenarios where unfair, unreliable or offensive outputs might be extremely costly or lead to harm. This includes providing advice in sensitive or expert domains where accuracy and reliability are critical (ex: legal or health advice). Additional safeguards should be implemented at the application level according to the deployment context.</p></li>
+
+<li><p>Misinformation: Models may produce inaccurate information. Developers should follow transparency best practices and inform end-users they are interacting with an AI system. At the application level, developers can build feedback mechanisms and pipelines to ground responses in use-case specific, contextual information, a technique known as Retrieval Augmented Generation (RAG).</p></li>
+
+<li><p>Generation of Harmful Content: Developers should assess outputs for their context and use available safety classifiers or custom solutions appropriate for their use case.</p></li>
+
+<li><p>Misuse: Other forms of misuse such as fraud, spam, or malware production may be possible, and developers should ensure that their applications do not violate applicable laws and regulations.</p></li>
+</ul>
+
+<h2>Training</h2>
+
+<h3>Model</h3>
+
+<ul>
+<li>Architecture: Phi-3 Mini has 3.8B parameters and is a dense decoder-only Transformer model. The model is fine-tuned with Supervised fine-tuning (SFT) and Direct Preference Optimization (DPO) to ensure alignment with human preferences and safety guidelines.</li>
+<li>Inputs: Text. It is best suited for prompts using chat format.</li>
+<li>Context length: 128K tokens</li>
+<li>GPUS: 512 H100-80G</li>
+<li>Training time: 7 days</li>
+<li>Training data: 3.3T tokens</li>
+<li>Outputs: Generated text in response to the input</li>
+<li>Dates: Our models were trained between February and April 2024</li>
+<li>Status: This is a static model trained on an offline dataset with cutoff date October 2023. Future versions of the tuned models may be released as we improve models.</li>
+</ul>
+
+<h3>Datasets</h3>
+
+<p>Our training data includes a wide variety of sources, totaling 3.3 trillion tokens, and is a combination of
+1) publicly available documents filtered rigorously for quality, selected high-quality educational data, and code;
+2) newly created synthetic, “textbook-like” data for the purpose of teaching math, coding, common sense reasoning, general knowledge of the world (science, daily activities, theory of mind, etc.);
+3) high quality chat format supervised data covering various topics to reflect human preferences on different aspects such as instruct-following, truthfulness, honesty and helpfulness.</p>
+
+<h3>Software</h3>
+
+<ul>
+<li><a href="https://github.com/pytorch/pytorch" rel="nofollow">PyTorch</a></li>
+<li><a href="https://github.com/microsoft/DeepSpeed" rel="nofollow">DeepSpeed</a></li>
+<li><a href="https://github.com/huggingface/transformers" rel="nofollow">Transformers</a></li>
+<li><a href="https://github.com/HazyResearch/flash-attention" rel="nofollow">Flash-Attention</a></li>
+</ul>
+
+<h3>License</h3>
+
+<p>The model is licensed under the <a href="https://ollama.com/library/phi3:latest/blobs/fa8235e5b48fENSE" rel="nofollow">MIT license</a>.</p>
+
+<h2>Trademarks</h2>
+
+<p>This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft trademarks or logos is subject to and must follow <a href="https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks" rel="nofollow">Microsoft’s Trademark &amp; Brand Guidelines</a>. Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship. Any use of third-party trademarks or logos are subject to those third-party’s policies.</p>
+
+<h2>Resources</h2>
+
+<ul>
+<li><a href="https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf" rel="nofollow">HuggingFace</a></li>
+<li><a href="https://aka.ms/phi3-blog" rel="nofollow">Phi-3 Microsoft Blog</a></li>
+<li><a href="https://aka.ms/phi3-tech-report" rel="nofollow">Phi-3 Technical Report</a></li>
+<li><a href="https://aka.ms/phi3-azure-ai" rel="nofollow">Phi-3 on Azure AI Studio</a></li>
+<li><a href="https://aka.ms/phi3-hf" rel="nofollow">Phi-3 on Hugging Face</a></li>
+<li>Phi-3 ONNX: <a href="https://aka.ms/phi3-mini-4k-instruct-onnx" rel="nofollow">4K</a> and <a href="https://aka.ms/phi3-mini-128k-instruct-onnx" rel="nofollow">128K</a></li>
+</ul>
+
+        
+      
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="mt-auto">
+  <div class="underline-offset-4 hidden md:block">
+    <div class="flex items-center justify-between px-6 py-3.5">
+      <div class="text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="/ollama-search/maternion/" class="hover:underline">Maternion</a></div>
+      <div class="flex space-x-6 text-xs text-neutral-500 dark:text-neutral-400">
+        <a href="https://ollama.com/download" class="hover:underline">Download</a>
+        <a href="https://ollama.com/blog" class="hover:underline">Blog</a>
+        <a href="https://docs.ollama.com" class="hover:underline">Docs</a>
+        <a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a>
+        <a href="https://ollama.com/pricing" class="hover:underline">Pricing</a>
+      </div>
+    </div>
+  </div>
+  <div class="py-4 md:hidden">
+    <ul class="flex flex-col items-center space-y-2 text-xs text-neutral-500 dark:text-neutral-400">
+      <li><a href="https://ollama.com/download" class="hover:underline">Download</a></li>
+      <li><a href="https://ollama.com/blog" class="hover:underline">Blog</a></li>
+      <li><a href="https://docs.ollama.com" class="hover:underline">Docs</a></li>
+      <li><a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a></li>
+      <li><a href="https://ollama.com/pricing" class="hover:underline">Pricing</a></li>
+    </ul>
+    <div class="mt-4 text-center text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="/ollama-search/maternion/" class="hover:underline">Maternion</a></div>
+  </div>
+</footer>
+<script>
+(function() {
+  function toggle() {
+    var isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+var NAV_MODELS = null;
+var NAV_BASE = (function() {
+  var s = document.querySelector('script[src*="assets/app.js"]');
+  if (s) {
+    var src = s.getAttribute('src');
+    var idx = src.indexOf('assets/app.js');
+    if (idx > 0) return src.substring(0, idx);
+  }
+  return '/';
+})();
+
+function loadNavModels(cb) {
+  if (NAV_MODELS) { cb(NAV_MODELS); return; }
+  var cached = null;
+  try { cached = sessionStorage.getItem('nav-models'); } catch (e) {}
+  if (cached) {
+    try { NAV_MODELS = JSON.parse(cached); cb(NAV_MODELS); return; } catch (e) {}
+  }
+  fetch(NAV_BASE + 'assets/models.json').then(function(r) { return r.json(); }).then(function(data) {
+    NAV_MODELS = data;
+    try { sessionStorage.setItem('nav-models', JSON.stringify(data)); } catch (e) {}
+    cb(NAV_MODELS);
+  }).catch(function() { cb([]); });
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function renderNavSuggest(query) {
+  var sp = document.getElementById('searchpreview');
+  if (!sp) return;
+  var q = query.toLowerCase().trim();
+  if (!q) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
+
+  var html = '<div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl w-full shadow-2xl shadow-black/5 overflow-hidden" id="search-preview-container" tabindex="0">';
+  html += '<div role="list" id="search-preview-list" class="group">';
+
+  var results = [];
+  for (var i = 0; i < NAV_MODELS.length; i++) {
+    var m = NAV_MODELS[i];
+    var name = m.name || '';
+    var desc = m.description || '';
+    if (name.toLowerCase().indexOf(q) !== -1 || desc.toLowerCase().indexOf(q) !== -1) {
+      results.push(m);
+    }
+  }
+  results.sort(function(a, b) { return (b.pulls || 0) - (a.pulls || 0); });
+  var top = results.slice(0, 5);
+
+  if (top.length === 0) {
+    html += '<div class="px-6 py-4 text-neutral-800 dark:text-neutral-300 text-sm">No models found.</div>';
+  } else {
+    for (var i = 0; i < top.length; i++) {
+      var m = top[i];
+      var path = m.path || ('/library/' + m.name);
+      html += '<div result>';
+      html += '<a tabindex="0" href="' + NAV_BASE + path.replace(/^\//, '') + '" class="flex items-center h-16 px-6 py-4 hover:bg-neutral-50 dark:hover:bg-white/5 focus:ring-0 focus:outline-none focus:bg-neutral-50 dark:focus:bg-white/5">';
+      html += '<div class="min-w-0 flex-1">';
+      html += '<h2 class="text-sm font-medium truncate dark:text-neutral-100">' + escHtml(m.name) + '</h2>';
+      html += '<p class="text-xs text-gray-600 dark:text-gray-600 truncate">' + escHtml(m.description) + '</p>';
+      html += '</div></a></div>';
+    }
+  }
+
+  html += '</div>';
+  html += '<a tabindex="0" id="view-all-link" href="' + NAV_BASE + '?q=' + encodeURIComponent(query) + '" class="' + (top.length === 0 ? 'hidden' : '') + ' block px-6 py-3 border-t border-neutral-200 dark:border-neutral-800 text-center text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-white/5 focus:bg-neutral-50 dark:focus:bg-white/5 focus:outline-none focus:ring-0 dark:text-neutral-200">View all &#8594;</a>';
+  html += '</div>';
+
+  sp.innerHTML = html;
+  sp.classList.remove('hidden');
+}
+
+var navSuggestTimer = null;
+function initNavSuggest() {
+  var input = document.getElementById('navbar-input');
+  var sp = document.getElementById('searchpreview');
+  if (!input || !sp) return;
+
+  input.addEventListener('input', function() {
+    if (navSuggestTimer) clearTimeout(navSuggestTimer);
+    navSuggestTimer = setTimeout(function() {
+      var v = input.value;
+      if (!v.trim()) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
+      loadNavModels(function() { renderNavSuggest(v); });
+    }, 100);
+  });
+
+  sp.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      sp.classList.add('hidden');
+      input.focus();
+      e.preventDefault();
+      return;
+    }
+    if (e.key === 'Enter') {
+      var el = document.activeElement;
+      if (el && el.tagName === 'A') { el.click(); e.preventDefault(); return; }
+    }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      var items = Array.from(sp.querySelectorAll('#search-preview-list a, #view-all-link'));
+      var ci = items.indexOf(document.activeElement);
+      var ni = e.key === 'ArrowDown' ? ci + 1 : ci - 1;
+      if (ni >= items.length) ni = 0;
+      if (ni < 0) ni = items.length - 1;
+      if (items[ni]) items[ni].focus();
+      e.preventDefault();
+    }
+  });
+}
+
+function initSearch() {
+    document.getElementById('theme-toggle')?.addEventListener('click', toggle);
+    document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggle);
+  });
+})();
+</script>
+<script src="/ollama-search/assets/app.js"></script>
+</body>
+</html>

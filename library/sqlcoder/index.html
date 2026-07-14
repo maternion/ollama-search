@@ -176,7 +176,7 @@ console.log(response.message.content)</pre>
     <section class="flex flex-1 flex-col">
   <div class="flex items-center justify-between mb-4">
     <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Models</h2>
-    <a href="/ollama-search/library/sqlcoder/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all 0 &#8594;</a>
+    <a href="/ollama-search/library/sqlcoder/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all 48 &#8594;</a>
   </div>
   
   <div id="models-table-all" class="fmt-table">
@@ -184,18 +184,265 @@ console.log(response.message.content)</pre>
     <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
       <div class="items-center grid bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs grid-cols-12 text-neutral-900 dark:text-neutral-100">
         <p class="hidden sm:block col-span-6">Name</p>
-        <p class="sm:hidden col-span-6">0 models</p>
+        <p class="sm:hidden col-span-6">48 models</p>
         <p class="col-span-2 hidden sm:block">Size / Usage</p>
         <p class="col-span-2 hidden sm:block">Context</p>
         <p class="col-span-2 hidden sm:block">Input</p>
       </div>
-      
+            <a href="/ollama-search/library/sqlcoder/:latest/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">sqlcoder:latest</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">4.1GB · 32K context window · Text · 2 years ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/sqlcoder/:latest/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">sqlcoder:latest</a>
+          
+          
+          <input class="command hidden" value="sqlcoder:latest" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">4.1GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">32K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text</p>
+      </div>
+      <a href="/ollama-search/library/sqlcoder/:7b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">sqlcoder:7b</p>
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">4.1GB · 32K context window · Text · 2 years ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/sqlcoder/:7b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">sqlcoder:7b</a>
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+          
+          <input class="command hidden" value="sqlcoder:7b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">4.1GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">32K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text</p>
+      </div>
+      <a href="/ollama-search/library/sqlcoder/:15b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">sqlcoder:15b</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">9.0GB · 8K context window · Text · 2 years ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/sqlcoder/:15b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">sqlcoder:15b</a>
+          
+          
+          <input class="command hidden" value="sqlcoder:15b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">9.0GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">8K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text</p>
+      </div>
     </div>
   </div>
 </div>
 </section>
   </div>
-  
+  <div class="flex flex-1 flex-col py-8" id="readme">
+  <div class="flex items-center justify-between pb-1">
+    <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Readme</h2>
+  </div>
+  <div>
+    <div id="display" class="prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black dark:prose-headings:text-neutral-200 dark:prose-blockquote:text-neutral-400 dark:prose-code:bg-neutral-800 dark:prose-code:text-neutral-200 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-200 dark:prose-li:text-neutral-200 dark:prose-td:text-neutral-300 dark:prose-th:text-neutral-200 dark:prose-a:text-blue-400 dark:prose-strong:text-neutral-200 dark:marker:prose-ol:text-neutral-400 dark:marker:prose-ul:text-neutral-400 dark:text-neutral-200">
+      
+        
+          <p><img src="https://docs.defog.ai/img/logo.svg"/></p>
+
+<p>SQLCoder is a 15B parameter model that is fine-tuned on a base StarCoder model. It slightly outperforms gpt-3.5-turbo for natural language to SQL generation tasks on the sql-eval framework, and outperforms popular open-source models. It also significantly outperforms text-davinci-003, a model that’s more than 10 times its size.</p>
+
+<p>This 15B completion model generally requires at least 16GB of RAM.</p>
+
+<h2>Usage</h2>
+
+<h3>CLI</h3>
+
+<pre><code>ollama run sqlcoder 
+</code></pre>
+
+<p>Try the following prompt using triple quotes for multi-line input:</p>
+
+<p>Note: change the {question} to a SQL question you want to answer. Ex.) ‘which products generate the most sales.`</p>
+
+<pre><code>&#34;&#34;&#34; 
+### Instructions:
+Your task is to convert a question into a SQL query, given a Postgres database schema.
+Adhere to these rules:
+- **Deliberately go through the question and database schema word by word** to appropriately answer the question
+- **Use Table Aliases** to prevent ambiguity. For example, `SELECT table1.col1, table2.col1 FROM table1 JOIN table2 ON table1.id = table2.id`.
+- When creating a ratio, always cast the numerator as float
+
+### Input:
+Generate a SQL query that answers the question `{question}`.
+This query will run on a database whose schema is represented in this string:
+CREATE TABLE products (
+  product_id INTEGER PRIMARY KEY, -- Unique ID for each product
+  name VARCHAR(50), -- Name of the product
+  price DECIMAL(10,2), -- Price of each unit of the product
+  quantity INTEGER  -- Current quantity in stock
+);
+
+CREATE TABLE customers (
+   customer_id INTEGER PRIMARY KEY, -- Unique ID for each customer
+   name VARCHAR(50), -- Name of the customer
+   address VARCHAR(100) -- Mailing address of the customer
+);
+
+CREATE TABLE salespeople (
+  salesperson_id INTEGER PRIMARY KEY, -- Unique ID for each salesperson
+  name VARCHAR(50), -- Name of the salesperson
+  region VARCHAR(50) -- Geographic sales region
+);
+
+CREATE TABLE sales (
+  sale_id INTEGER PRIMARY KEY, -- Unique ID for each sale
+  product_id INTEGER, -- ID of product sold
+  customer_id INTEGER,  -- ID of customer who made purchase
+  salesperson_id INTEGER, -- ID of salesperson who made the sale
+  sale_date DATE, -- Date the sale occurred
+  quantity INTEGER -- Quantity of product sold
+);
+
+CREATE TABLE product_suppliers (
+  supplier_id INTEGER PRIMARY KEY, -- Unique ID for each supplier
+  product_id INTEGER, -- Product ID supplied
+  supply_price DECIMAL(10,2) -- Unit price charged by supplier
+);
+
+-- sales.product_id can be joined with products.product_id
+-- sales.customer_id can be joined with customers.customer_id
+-- sales.salesperson_id can be joined with salespeople.salesperson_id
+-- product_suppliers.product_id can be joined with products.product_id
+
+### Response:
+Based on your instructions, here is the SQL query I have generated to answer the question `{question}`:
+```sql
+&#34;&#34;&#34;
+</code></pre>
+
+<p><strong>Example output:</strong></p>
+
+<pre><code>SELECT customers.customer_id,
+       products.product_id,
+       (SUM(sales.quantity * product_suppliers.supply_price)) / (SELECT 
+SUM(quantity)
+                                                                FROM sales
+                                                                WHERE 
+sales.salesperson_id = &#39;{chosen_salesperson}&#39;) as profit
+FROM   sales
+  INNER JOIN customers on sales.customer_id = customers.customer_id
+  INNER JOIN products on sales.product_id = products.product_id
+  INNER JOIN product_suppliers on products.product_id = 
+product_suppliers.product_id
+WHERE  sales.salesperson_id = &#39;{chosen_salesperson}&#39;
+GROUP BY customers.customer_id, products.product_id
+HAVING COUNT(DISTINCT sales.sale_date) &gt;= {min_days}
+  AND (SELECT SUM(quantity * product_suppliers.supply_price)
+     FROM   sales
+     WHERE  sales.salesperson_id = &#39;{chosen_salesperson}&#39;
+        and sales.customer_id = customers.customer_id
+        and sales.product_id = products.product_id) &gt;= {min_total}
+ORDER BY profit DESC;
+```
+
+
+### Reasoning
+
+The query is broken down into two parts: the first one fetches information
+about each sale made by a specific salesman (`{chosen_salesperson}`), and 
+groups it by customer ID, product ID, and calculates how much money was 
+earned from each sale. The second part then filters out these results that
+occurred after a certain number of days (determined by the variable 
+`min_days`) and had an amount of money equal to or more than a certain 
+value (determined by the variable `min_total`). Finally, the query orders 
+the results in descending order based on the ratio between earned money 
+and total money.
+
+The first part relies on several tables from the database: salespeople, 
+products, customers, sales, and product_suppliers. The salespeople table 
+contains information about each salesperson&#39;s ID; the products table 
+contains information about each product&#39;s name and price; the customers 
+table contains information about each customer&#39;s address; the sales table 
+contains information about each sale, including the quantity sold, the ID 
+of the product sold, and the ID of the customer who made the purchase; and
+the product_suppliers table contains information about the unit price 
+charged by each supplier.
+
+The variables in the query can be interpreted as follows:
+
+- `{chosen_salesperson}` is a placeholder for the name of the salesman 
+whose performance is being evaluated. This value should be replaced with 
+an actual salesman&#39;s name or ID number.
+- `min_days` is the minimum number of days that must have passed since the
+sale in order to qualify for inclusion in the calculation. For example, if
+this variable were set to 30, then only sales made 30 days after the start
+date would be included in the calculation. This value should also be 
+replaced with an integer representing the minimum number of days.
+- `min_total` is a threshold amount that must have been earned by the 
+salesman for the sale to qualify for inclusion in the calculation. For 
+example, if this variable were set to 1000, then only sales worth at least
+$1000 would be included in the calculation. This value should also be 
+replaced with an integer representing the minimum amount of money that 
+must have been earned.
+
+The output is a table containing three columns: customer ID, product ID, 
+and profit per unit price (calculated as the total money earned divided by
+the quantity sold). The rows in this table are sorted in descending order 
+based on the ratio between earned money and total money. Rows that don&#39;t 
+meet both of these conditions will be dropped from the output.
+
+## Example
+
+```
+Input:
+min_days = 30
+min_total = 1000
+chosen_salesperson = &#39;&lt;NAME&gt;&#39;
+
+Output:
+  customer_id | product_id |         profit
+-------------+----------------------------+-----------------
+  987         |     456    | 2.1             
+  1029        |    1357    | 1.91            
+  89          |    1234    | 0.59            
+```
+
+## License
+
+The database is released under the [Open Database 
+License](https://opendatacommons.org/licenses/odbl/1-0/).
+</code></pre>
+
+<h2>References</h2>
+
+<p><a href="https://huggingface.co/defog/sqlcoder" rel="nofollow">Hugging Face</a></p>
+
+        
+      
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="mt-auto">

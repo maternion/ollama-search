@@ -103,7 +103,7 @@
          <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
            <span class="flex items-center">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
-             <span x-test-pull-count>866.9K</span>
+             <span x-test-pull-count>867.3K</span>
              <span class="hidden sm:flex">&nbsp;Downloads</span>
           </span>
           <span class="flex items-center" title="Jan 17, 2024 7:53 PM UTC">
@@ -175,7 +175,7 @@ console.log(response.message.content)</pre>
     <section class="flex flex-1 flex-col">
   <div class="flex items-center justify-between mb-4">
     <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Models</h2>
-    <a href="/ollama-search/library/nexusraven/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all 0 &#8594;</a>
+    <a href="/ollama-search/library/nexusraven/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all 32 &#8594;</a>
   </div>
   
   <div id="models-table-all" class="fmt-table">
@@ -183,18 +183,133 @@ console.log(response.message.content)</pre>
     <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
       <div class="items-center grid bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs grid-cols-12 text-neutral-900 dark:text-neutral-100">
         <p class="hidden sm:block col-span-6">Name</p>
-        <p class="sm:hidden col-span-6">0 models</p>
+        <p class="sm:hidden col-span-6">32 models</p>
         <p class="col-span-2 hidden sm:block">Size / Usage</p>
         <p class="col-span-2 hidden sm:block">Context</p>
         <p class="col-span-2 hidden sm:block">Input</p>
       </div>
-      
+            <a href="/ollama-search/library/nexusraven/:latest/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">nexusraven:latest</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">7.4GB · 16K context window · Text · 2 years ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/nexusraven/:latest/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">nexusraven:latest</a>
+          
+          
+          <input class="command hidden" value="nexusraven:latest" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">7.4GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">16K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text</p>
+      </div>
+      <a href="/ollama-search/library/nexusraven/:13b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">nexusraven:13b</p>
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">7.4GB · 16K context window · Text · 2 years ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/nexusraven/:13b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">nexusraven:13b</a>
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+          
+          <input class="command hidden" value="nexusraven:13b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">7.4GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">16K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text</p>
+      </div>
     </div>
   </div>
 </div>
 </section>
   </div>
-  
+  <div class="flex flex-1 flex-col py-8" id="readme">
+  <div class="flex items-center justify-between pb-1">
+    <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Readme</h2>
+  </div>
+  <div>
+    <div id="display" class="prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black dark:prose-headings:text-neutral-200 dark:prose-blockquote:text-neutral-400 dark:prose-code:bg-neutral-800 dark:prose-code:text-neutral-200 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-200 dark:prose-li:text-neutral-200 dark:prose-td:text-neutral-300 dark:prose-th:text-neutral-200 dark:prose-a:text-blue-400 dark:prose-strong:text-neutral-200 dark:marker:prose-ol:text-neutral-400 dark:marker:prose-ul:text-neutral-400 dark:text-neutral-200">
+      
+        
+          <p><img src="https://github.com/jmorganca/ollama/assets/251292/521dce62-4924-447b-b651-7457469e99bb" width="320"/></p>
+
+<p>Nexus Raven is a 13 billion parameter model designed for function calling tasks.</p>
+
+<p>Updated to NexusRaven-V2, this model is an updated open-source and commercially viable function calling model:</p>
+
+<ul>
+<li>Versatile Function Calling Capability: capable of generating single function calls, nested calls, and parallel calls in many challenging cases.</li>
+<li>Fully Explainable: capable of generating very detailed explanations for the function calls it generates. This behavior can be turned off, to save tokens during inference.</li>
+<li>Performance Highlights: surpasses GPT-4 by up to 7% in function calling success rates in human-generated use cases involving nested and composite functions.</li>
+<li>Generalization to the Unseen: has never been trained on the functions used in evaluation.</li>
+<li>Commercially Permissive: The training does not involve any data generated by proprietary LLMs such as GPT-4. You have full control of the model when deployed in commercial applications.</li>
+</ul>
+
+<h3>Example prompt</h3>
+
+<pre><code>Function:
+def get_weather_data(coordinates):
+    &#34;&#34;&#34;
+    Fetches weather data from the Open-Meteo API for the given latitude and longitude.
+
+    Args:
+    coordinates (tuple): The latitude of the location.
+
+    Returns:
+    float: The current temperature in the coordinates you&#39;ve asked for
+    &#34;&#34;&#34;
+
+Function:
+def get_coordinates_from_city(city_name):
+    &#34;&#34;&#34;
+    Fetches the latitude and longitude of a given city name using the Maps.co Geocoding API.
+
+    Args:
+    city_name (str): The name of the city.
+
+    Returns:
+    tuple: The latitude and longitude of the city.
+    &#34;&#34;&#34;
+
+User Query: {query}&lt;human_end&gt;
+</code></pre>
+
+<p>This will generate a response similar to:</p>
+
+<pre><code>Call: get_weather_data(coordinates=get_coordinates_from_city(city_name=&#39;Seattle&#39;))&lt;bot_end&gt;
+Thought: The function call `get_weather_data(coordinates=get_coordinates_from_city(city_name=&#39;Seattle&#39;))` answers the question &#34;What&#39;s the weather like in Seattle right now?&#34; by following these steps:
+
+1. `get_coordinates_from_city(city_name=&#39;Seattle&#39;)`: This function call fetches the latitude and longitude of the city &#34;Seattle&#34; using the Maps.co Geocoding API.
+2. `get_weather_data(coordinates=...)`: This function call fetches the current weather data for the coordinates returned by the previous function call.
+
+Therefore, the function call `get_weather_data(coordinates=get_coordinates_from_city(city_name=&#39;Seattle&#39;))` answers the question &#34;What&#39;s the weather like in Seattle right now?&#34; by first fetching the coordinates of the city &#34;Seattle&#34; and then fetching the current weather data for those coordinates.
+</code></pre>
+
+<h2>References</h2>
+
+<p><a href="https://github.com/nexusflowai/NexusRaven-V2" rel="nofollow">GitHub</a></p>
+
+<p><a href="https://huggingface.co/Nexusflow/NexusRaven-13B" rel="nofollow">Hugging Face</a></p>
+
+        
+      
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="mt-auto">

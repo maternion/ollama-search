@@ -103,7 +103,7 @@
          <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
            <span class="flex items-center">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
-             <span x-test-pull-count>607.7K</span>
+             <span x-test-pull-count>607.9K</span>
              <span class="hidden sm:flex">&nbsp;Downloads</span>
           </span>
           <span class="flex items-center" title="Nov 18, 2024 7:31 AM UTC">
@@ -176,7 +176,7 @@ console.log(response.message.content)</pre>
     <section class="flex flex-1 flex-col">
   <div class="flex items-center justify-between mb-4">
     <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Models</h2>
-    <a href="/ollama-search/library/opencoder/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all 0 &#8594;</a>
+    <a href="/ollama-search/library/opencoder/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all 9 &#8594;</a>
   </div>
   
   <div id="models-table-all" class="fmt-table">
@@ -184,18 +184,114 @@ console.log(response.message.content)</pre>
     <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
       <div class="items-center grid bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs grid-cols-12 text-neutral-900 dark:text-neutral-100">
         <p class="hidden sm:block col-span-6">Name</p>
-        <p class="sm:hidden col-span-6">0 models</p>
+        <p class="sm:hidden col-span-6">9 models</p>
         <p class="col-span-2 hidden sm:block">Size / Usage</p>
         <p class="col-span-2 hidden sm:block">Context</p>
         <p class="col-span-2 hidden sm:block">Input</p>
       </div>
-      
+            <a href="/ollama-search/library/opencoder/:latest/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">opencoder:latest</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">4.7GB · 8K context window · Text · 1 year ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/opencoder/:latest/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">opencoder:latest</a>
+          
+          
+          <input class="command hidden" value="opencoder:latest" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">4.7GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">8K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text</p>
+      </div>
+      <a href="/ollama-search/library/opencoder/:1.5b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">opencoder:1.5b</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">1.4GB · 4K context window · Text · 1 year ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/opencoder/:1.5b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">opencoder:1.5b</a>
+          
+          
+          <input class="command hidden" value="opencoder:1.5b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">1.4GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">4K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text</p>
+      </div>
+      <a href="/ollama-search/library/opencoder/:8b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">opencoder:8b</p>
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">4.7GB · 8K context window · Text · 1 year ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/opencoder/:8b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">opencoder:8b</a>
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+          
+          <input class="command hidden" value="opencoder:8b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">4.7GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">8K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text</p>
+      </div>
     </div>
   </div>
 </div>
 </section>
   </div>
-  
+  <div class="flex flex-1 flex-col py-8" id="readme">
+  <div class="flex items-center justify-between pb-1">
+    <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Readme</h2>
+  </div>
+  <div>
+    <div id="display" class="prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black dark:prose-headings:text-neutral-200 dark:prose-blockquote:text-neutral-400 dark:prose-code:bg-neutral-800 dark:prose-code:text-neutral-200 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-200 dark:prose-li:text-neutral-200 dark:prose-td:text-neutral-300 dark:prose-th:text-neutral-200 dark:prose-a:text-blue-400 dark:prose-strong:text-neutral-200 dark:marker:prose-ol:text-neutral-400 dark:marker:prose-ul:text-neutral-400 dark:text-neutral-200">
+      
+        
+          <p><img src="https://ollama.com/assets/library/opencoder/6078034f-fdbf-47c2-9b63-69ce506c0225" width="280"/></p>
+
+<p><strong>OpenCoder</strong> is an open and reproducible code LLM family which includes 1.5B and 8B  models, supporting both English and Chinese languages. Starting from scratch, OpenCoder is pretrained on 2.5 trillion tokens composed of 90% raw code and 10% code-related web data, and supervised finetuned on over 4.5M high-quality SFT examples, finally reaching the performance of top-tier code LLMs. We provide not only model weights and inference code, but also the reproducible training data, the complete data processing pipeline, rigorous experimental ablation results, and detailed training protocols. Empowering researchers to build and innovate, OpenCoder is your open foundation for advancing code AI.</p>
+
+<ul>
+<li><strong>Complete Open Source</strong>: OpenCoder ensures full transparency by releasing not only the model weights and forthcoming inference code but also the complete data-cleaning code for training. This release includes high-quality synthetic data, an extensive set of checkpoints, and a dataset of over 4.5 million supervised fine-tuning (SFT) entries, making OpenCoder one of the most comprehensively open-sourced models available.</li>
+<li><strong>Comprehensive Experimental Analysis</strong>: OpenCoder is rigorously tested through extensive ablation studies on various data-cleaning strategies and training processes, including file-level and repository-level deduplication experiments, ensuring thorough exploration and validation of the model’s performance.</li>
+<li><strong>High-Quality Synthetic Data</strong>: OpenCoder provides a fully developed synthetic data generation process and over 4.5 million SFT data entries, establishing a robust data foundation for model training and evaluation.</li>
+<li><strong>Exceptional Performance</strong>: OpenCoder achieves high performance across multiple language model benchmarks, positioning it among the leading open-source models for code.</li>
+</ul>
+
+<h2>References</h2>
+
+<p><a href="https://github.com/OpenCoder-llm/OpenCoder-llm" rel="nofollow">GitHub</a></p>
+
+<p><a href="https://arxiv.org/pdf/2411.04905" rel="nofollow">Paper</a></p>
+
+<p><a href="https://huggingface.co/collections/infly/opencoder-672cec44bbb86c39910fb55e" rel="nofollow">Hugging Face</a></p>
+
+        
+      
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="mt-auto">

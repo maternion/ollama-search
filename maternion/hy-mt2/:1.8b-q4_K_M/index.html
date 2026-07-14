@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <title>hy-mt2:1.8b-q4_K_M</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="hy-mt2:1.8b-q4_K_M — HY-MT2 1.8B, 7B, and 30B-A3B (MoE) multilingual translation models designed for complex real-world scenarios, it supports translation among 33 languages and effectively follows translation instructions."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="hy-mt2:1.8b-q4_K_M" />
+    <meta property="og:description" content="hy-mt2:1.8b-q4_K_M — HY-MT2 1.8B, 7B, and 30B-A3B (MoE) multilingual translation models designed for complex real-world scenarios, it supports translation among 33 languages and effectively follows translation instructions." />
+    <meta property="og:image" content="https://ollama.com/public/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content="hy-mt2:1.8b-q4_K_M" />
+    <meta property="twitter:description" content="hy-mt2:1.8b-q4_K_M — HY-MT2 1.8B, 7B, and 30B-A3B (MoE) multilingual translation models designed for complex real-world scenarios, it supports translation among 33 languages and effectively follows translation instructions." />
+    <meta property="twitter:site" content="ollama" />
+    <meta property="twitter:image:src" content="https://ollama.com/public/og-twitter.png" />
+    <meta property="twitter:image:width" content="1200" />
+    <meta property="twitter:image:height" content="628" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ollama-search/assets/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/ollama-search/assets/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/ollama-search/assets/icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/ollama-search/assets/icon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x" href="/ollama-search/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/ollama-search/assets/android-chrome-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/ollama-search/assets/android-chrome-icon-512x512.png" />
+    <script>
+(function() {
+  var stored = localStorage.getItem('theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (stored === 'dark' || (!stored && prefersDark)) {
+    document.documentElement.classList.add('dark');
+  }
+})();
+</script>
+    <link href="/ollama-search/assets/tailwind.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/prism.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/extras.css" rel="stylesheet" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Ollama",
+        "url": "https://ollama.com"
+      }
+    </script>
+    <script defer src="/ollama-search/assets/htmx.bundle.js"></script>
+</head>
+<body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
+<header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
+  <nav class="flex w-full items-center justify-between px-6 py-[9px]">
+    <a href="/ollama-search/" class="z-50">
+      <img src="/ollama-search/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
+    </a>
+    <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
+    </div>
+    <div class="flex-grow justify-center items-center hidden lg:flex">
+      <div class="relative w-full xl:max-w-[28rem]">
+        <form action="/ollama-search/" autocomplete="off" id="nav-search-form">
+          <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full" hx-on:focusout="var rt=event.relatedTarget;if(rt&&(this.contains(rt)||document.getElementById('searchpreview').contains(rt)))return;var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');">
+            <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();var v=this.value.trim();window.location.href=v?'/ollama-search/?q='+encodeURIComponent(v):'/ollama-search/';return;}if(event.key==='Escape'){event.preventDefault();this.value='';this.blur();var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');return;}if(event.key==='Tab'){var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');return;}if(event.key==='ArrowDown'){var first=document.querySelector('#search-preview-list a:first-of-type');if(first)first.focus();event.preventDefault();}if(event.key==='ArrowUp'){var last=document.getElementById('view-all-link');if(last)last.focus();event.preventDefault();}var sp=document.getElementById('searchpreview');if(sp)sp.classList.remove('hidden');" hx-on:focus="var sp=document.getElementById('searchpreview');if(sp&&this.value.trim())sp.classList.remove('hidden');" />
+          </div>
+        </form>
+        <div id="searchpreview" class="hidden absolute left-0 right-0 top-12 z-50" style="width: calc(100% + 2px); margin-left: -1px;"></div>
+      </div>
+    </div>
+    <div class="hidden lg:flex xl:flex-1 items-center space-x-2 justify-end ml-6 xl:ml-0">
+      <button id="theme-toggle" class="flex cursor-pointer items-center rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 text-lg px-3 py-1.5 text-black dark:text-neutral-200 whitespace-nowrap" title="Toggle dark mode">
+        <span class="dark:hidden"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></span>
+        <span class="hidden dark:block"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25M18.364 17.614l-1.591-1.591M12 18.75V21M5.636 17.614l1.591-1.591M3 12h2.25M5.636 6.386l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg></span>
+      </button>
+      <a class="flex cursor-pointer items-center rounded-full bg-neutral-800 dark:bg-neutral-100 text-lg px-4 py-1.5 text-white dark:text-neutral-900 hover:bg-black dark:hover:bg-white whitespace-nowrap focus:bg-black dark:focus:bg-white" href="https://ollama.com/download">Download</a>
+    </div>
+    <div class="lg:hidden flex items-center">
+      <button id="theme-toggle-mobile" class="flex items-center rounded-full bg-black/5 dark:bg-white/10 px-3 py-1.5 mr-2 text-black dark:text-neutral-200">
+        <span class="dark:hidden"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></span>
+        <span class="hidden dark:block"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25M18.364 17.614l-1.591-1.591M12 18.75V21M5.636 17.614l1.591-1.591M3 12h2.25M5.636 6.386l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main class="relative mx-auto flex w-full max-w-[52rem] flex-col px-6 py-10 md:py-24 lg:px-8">
+  <a href="/ollama-search/maternion/hy-mt2/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10" onclick="if(document.referrer&amp;&amp;document.referrer.includes(location.host)){history.back();return false;}">&larr; Back to tags</a>
+  <div class="flex flex-col space-y-3">
+    <div class="flex items-center min-w-0">
+      <div class="flex items-center min-w-0 space-x-2">
+        <div class="flex items-center min-w-0">
+          <a x-test-model-namespace class="text-xl sm:text-[28px] font-medium leading-normal decoration-1 underline-offset-4 hover:underline shrink-0" href="/ollama-search/maternion">maternion</a><span class="text-xl sm:text-[28px] font-medium px-1 shrink-0">/</span><span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
+            <a x-test-model-name href="/ollama-search/maternion/hy-mt2" title="hy-mt2" class="underline-offset-[5px] hover:underline">hy-mt2</a>:1.8b-q4_K_M
+           </span>
+         </div>
+       </div>
+     </div>
+    <div class="flex flex-col space-y-2">
+      <div class="flex flex-col space-y-2">
+        <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
+          <span class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
+            <span x-test-pull-count>1,494</span>
+            <span class="hidden sm:flex">&nbsp;Downloads</span>
+          </span>
+          <span class="flex items-center" title="May 28, 2026 7:30 PM UTC">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>
+            <span class="hidden sm:flex">Updated&nbsp;</span>
+            <span x-test-updated>1 month ago</span>
+          </span>
+        </p>
+      </div>
+      <h2 class="break-words text-neutral-800 dark:text-neutral-300">HY-MT2 1.8B, 7B, and 30B-A3B (MoE) multilingual translation models designed for complex real-world scenarios, it supports translation among 33 languages and effectively follows translation instructions.</h2>
+      <div class="flex flex-wrap gap-2">
+        
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">1.8b</span>
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">7b</span>
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">30b</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="py-8">
+    <section data-usage-section class="mb-8">
+  <div class="relative rounded-lg border border-neutral-200 dark:border-neutral-800 overflow-hidden bg-white dark:bg-neutral-900">
+    <div class="flex items-center justify-between bg-white dark:bg-neutral-900 pt-1 pl-[7px] pr-3">
+      <div class="flex">
+        <button type="button" class="use-tab px-3 py-2 text-xs font-medium text-neutral-900 dark:text-neutral-100 underline decoration-1 underline-offset-[7px]" data-tab="cli" onclick="switchUsageTab(this, 'cli')">CLI</button>
+        <button type="button" class="use-tab px-3 py-2 text-xs text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300" data-tab="api" onclick="switchUsageTab(this, 'api')">cURL</button>
+        <button type="button" class="use-tab px-3 py-2 text-xs text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300" data-tab="python" onclick="switchUsageTab(this, 'python')">Python</button>
+        <button type="button" class="use-tab px-3 py-2 text-xs text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300" data-tab="javascript" onclick="switchUsageTab(this, 'javascript')">JavaScript</button>
+      </div>
+      <a href="https://github.com/ollama/ollama-python" target="_blank" rel="noopener noreferrer" class="use-link hidden py-2 text-xs text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300 inline-flex items-center gap-1" data-link="python"><span class="hidden sm:inline">Documentation</span> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg></a>
+      <a href="https://github.com/ollama/ollama-js" target="_blank" rel="noopener noreferrer" class="use-link hidden py-2 text-xs text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300 inline-flex items-center gap-1" data-link="javascript"><span class="hidden sm:inline">Documentation</span> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg></a>
+    </div>
+    <div class="relative">
+      <div class="absolute bottom-[10.5px] right-[10.5px] flex items-center gap-2 z-10">
+        <button type="button" class="use-copy-btn p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 rounded" onclick="copyUsageCode(this)" title="Copy">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </div>
+      <div class="use-panel p-4 font-mono text-[13px] text-neutral-700 dark:text-neutral-300" data-panel="cli">
+        <pre class="m-0 whitespace-pre-wrap">ollama run hy-mt2:1.8b-q4_K_M</pre>
+      </div>
+      <div class="use-panel hidden p-4 font-mono text-[13px] text-neutral-700 dark:text-neutral-300" data-panel="api">
+        <pre class="m-0 whitespace-pre-wrap">curl http://localhost:11434/api/chat \
+  -d '{
+    "model": "hy-mt2:1.8b-q4_K_M",
+    "messages": [{"role": "user", "content": "Hello!"}]
+  }'</pre>
+      </div>
+      <div class="use-panel hidden p-4 font-mono text-[13px] text-neutral-700 dark:text-neutral-300" data-panel="python">
+        <pre class="m-0 whitespace-pre-wrap"><span class="text-neutral-500">from</span> ollama <span class="text-neutral-500">import</span> chat
+
+response = chat(
+    model=<span class="text-green-700">'hy-mt2:1.8b-q4_K_M'</span>,
+    messages=[{<span class="text-green-700">'role'</span>: <span class="text-green-700">'user'</span>, <span class="text-green-700">'content'</span>: <span class="text-green-700">'Hello!'</span>}],
+)
+<span class="text-neutral-500">print</span>(response.message.content)</pre>
+      </div>
+      <div class="use-panel hidden p-4 font-mono text-[13px] text-neutral-700 dark:text-neutral-300" data-panel="javascript">
+        <pre class="m-0 whitespace-pre-wrap"><span class="text-neutral-500">import</span> ollama <span class="text-neutral-500">from</span> <span class="text-green-700">'ollama'</span>
+
+<span class="text-neutral-500">const</span> response = <span class="text-neutral-500">await</span> ollama.chat({
+  model: <span class="text-green-700">'hy-mt2:1.8b-q4_K_M'</span>,
+  messages: [{role: <span class="text-green-700">'user'</span>, content: <span class="text-green-700">'Hello!'</span>}],
+})
+console.log(response.message.content)</pre>
+      </div>
+    </div>
+  </div>
+</section>
+    
+    <section id="file-explorer" class="flex flex-1 flex-col">
+  <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100 mb-4">Details</h2>
+  <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
+    <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
+      <div class="flex items-center justify-between bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs text-neutral-900 dark:text-neutral-100">
+        <p class="hidden sm:block">Updated 1 month ago</p>
+        <p class="flex items-center sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>1 month ago</p>
+        <p>e2e0cc44b2e5 · 1.1GB ·</p>
+      </div>
+      <div class="group block grid-cols-12 gap-2 px-4 py-3 sm:grid sm:grid-cols-12"><div class="truncate text-sm font-medium text-neutral-800 dark:text-neutral-200 group-hover:underline sm:col-span-2 sm:col-start-1"><a href="/ollama-search/maternion/hy-mt2/:1.8b-q4_K_M/blobs/dc5f44fcf1fa/" class="group-hover:underline">model</a></div><div class="truncate font-mono text-[13px] text-neutral-400 dark:text-neutral-500 subpixel-antialiased sm:col-span-8 sm:col-start-3"><div class="space-x-2 flex text-sm"><div class="flex sm:space-x-2 items-center"><span class="hidden sm:block">arch</span><span class="text-neutral-400 dark:text-neutral-500 sm:font-semibold sm:text-neutral-800 dark:sm:text-neutral-200 sm:text-xs">hunyuan-dense</span></div><div>·</div><div class="flex sm:space-x-2 items-center"><span class="hidden sm:block">parameters</span><span class="text-neutral-400 dark:text-neutral-500 sm:font-semibold sm:text-neutral-800 dark:sm:text-neutral-200 sm:text-xs">1.79B</span></div><div>·</div><div class="flex sm:space-x-2 items-center"><span class="hidden sm:block">quantization</span><span class="text-neutral-400 dark:text-neutral-500 sm:font-semibold sm:text-neutral-800 dark:sm:text-neutral-200 sm:text-xs">Q4_K_M</span></div></div></div><div class="hidden text-right text-xs text-neutral-400 dark:text-neutral-500 sm:col-start-12 sm:block">1.1GB</div></div>
+<div class="group block grid-cols-12 gap-2 px-4 py-3 sm:grid sm:grid-cols-12"><div class="truncate text-sm font-medium text-neutral-800 dark:text-neutral-200 group-hover:underline sm:col-span-2 sm:col-start-1"><a href="/ollama-search/maternion/hy-mt2/:1.8b-q4_K_M/blobs/ce76812f1438/" class="group-hover:underline">template</a></div><div class="truncate font-mono text-[13px] text-neutral-400 dark:text-neutral-500 subpixel-antialiased sm:col-span-8 sm:col-start-3">&lt;｜hy_begin▁of▁sentence｜&gt;
+{{- if .System }}{{ .System }}&lt;｜hy_place▁holder▁no▁3｜&gt;{{</div><div class="hidden text-right text-xs text-neutral-400 dark:text-neutral-500 sm:col-start-12 sm:block">510B</div></div>
+<div class="group block grid-cols-12 gap-2 px-4 py-3 sm:grid sm:grid-cols-12"><div class="truncate text-sm font-medium text-neutral-800 dark:text-neutral-200 group-hover:underline sm:col-span-2 sm:col-start-1"><a href="/ollama-search/maternion/hy-mt2/:1.8b-q4_K_M/blobs/5f07e7fd92eb/" class="group-hover:underline">params</a></div><div class="truncate font-mono text-[13px] text-neutral-400 dark:text-neutral-500 subpixel-antialiased sm:col-span-8 sm:col-start-3">{
+    &quot;stop&quot;: [
+        &quot;&lt;｜hy_place▁holder▁no▁8｜&gt;&quot;
+    ]
+}</div><div class="hidden text-right text-xs text-neutral-400 dark:text-neutral-500 sm:col-start-12 sm:block">58B</div></div>
+    </div>
+  </div>
+</section>
+  </div>
+  <div class="flex flex-1 flex-col py-8" id="readme">
+  <div class="flex items-center justify-between pb-1">
+    <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Readme</h2>
+  </div>
+  <div>
+    <div id="display" class="prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black dark:prose-headings:text-neutral-200 dark:prose-blockquote:text-neutral-400 dark:prose-code:bg-neutral-800 dark:prose-code:text-neutral-200 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-200 dark:prose-li:text-neutral-200 dark:prose-td:text-neutral-300 dark:prose-th:text-neutral-200 dark:prose-a:text-blue-400 dark:prose-strong:text-neutral-200 dark:marker:prose-ol:text-neutral-400 dark:marker:prose-ul:text-neutral-400 dark:text-neutral-200">
+      
+        
+          <p><img src="https://ollama.com/assets/maternion/hy-mt2/2dd58b79-e898-47ac-85e4-fce5b470dece" alt="image.png"/></p>
+
+<p>
+    🖥️ <a href="https://aistudio.tencent.com/llm/en?tabIndex=0" rel="nofollow"><b>Official Website</b></a>  |  
+    💬 <a href="https://github.com/Tencent-Hunyuan/Hy-MT2" rel="nofollow"><b>GitHub</b></a>  |  
+    🪡 <a href="https://github.com/Tencent/AngelSlim/tree/main" rel="nofollow"><b>AngelSlim</b></a>  |  
+    📚 <a href="https://arxiv.org/pdf/2605.22064" rel="nofollow"><b>Hy-MT2 Report</b></a></p>
+
+<h2>Model Introduction</h2>
+
+<p>Hy-MT2 is a family of “fast-thinking” multilingual translation models designed for complex real-world scenarios. It includes three model sizes: 1.8B, 7B, and 30B-A3B (MoE), all of which support translation among 33 languages and effectively follow translation instructions in multiple languages.
+For on-device deployment, AngelSlim 1.25-bit extreme quantization reduces the storage requirement of the 1.8B model to only 440 MB and improves inference speed by 1.5x.
+Multi-dimensional evaluations show that Hy-MT2 delivers outstanding performance across general, real-world business, domain-specific, and instruction-following translation tasks. The 7B and 30B-A3B models outperform open-source models such as DeepSeek-V4-Pro and Kimi K2.6 in fast-thinking mode, while the lightweight 1.8B model also surpasses mainstream commercial APIs from providers such as Microsoft and Doubao overall.</p>
+
+<p>In this release, we also open-source <a href="./IFMTBench/README.md" rel="nofollow">IFMTBench</a>, a benchmark for evaluating translation instruction-following capabilities.</p>
+
+<p>We also welcome everyone to use our released Hy-MT2-Translator Skill, which makes it easy to integrate Hy-MT2 series models for translation tasks. Download links: <a href="https://clawhub.ai/tencent-adm/hy-mt2-translator-skill" rel="nofollow">ClawHub</a> and <a href="https://skillhub.cn/skills/hy-mt2-translator" rel="nofollow">SkillHub</a>.</p>
+
+<p>Now, Tencent Hy is officially partnering with WMT26 for the “Video Subtitle Translation Task” (<a href="https://www2.statmt.org/wmt26/video-subtitle-translation.html" rel="nofollow">https://www2.statmt.org/wmt26/video-subtitle-translation.html</a>). Participants who use the Hy-MT model series to compete in the “General Machine Translation Task” (<a href="https://www2.statmt.org/wmt26/translation-task.html" rel="nofollow">https://www2.statmt.org/wmt26/translation-task.html</a>) and the “Video Subtitle Translation Task” will have the chance to win special awards sponsored by Hunyuan. We sincerely invite everyone to participate and jointly push the boundaries of machine translation technology!</p>
+
+<h2>News</h2>
+
+<ul>
+<li>2026.5.21  We open-sourced <strong>Hy-MT2-1.8B</strong>/<strong>Hy-MT2-7B</strong>/<strong>Hy-MT2-30B-A3B</strong>/<strong>IFMTBench</strong> on HuggingFace and ModelScope.</li>
+<li>2025.12.30 We open-sourced <strong>HY-MT1.5-1.8B</strong> and <strong>HY-MT1.5-7B</strong> on HuggingFace and ModelScope.</li>
+<li>2025.9.1 We open-sourced <strong>Hunyuan-MT-7B</strong> and <strong>Hunyuan-MT-Chimera-7B</strong> on HuggingFace and ModelScope.</li>
+</ul>
+
+<h2>Results</h2>
+
+<p><img src="https://ollama.com/assets/maternion/hy-mt2/e832dcf6-5e48-4933-bdbf-0a0fb394130f" alt="image.png"/></p>
+
+<p>For more experimental results and analysis, please refer to our <a href="https://arxiv.org/pdf/2605.22064" rel="nofollow">report</a>.</p>
+
+<h2>Model Links</h2>
+
+<table>
+<thead>
+<tr>
+<th>Model Name</th>
+<th>Description</th>
+<th>Download Link</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Hy-MT2-1.8B</td>
+<td>Hy 1.8B translation model</td>
+<td>🤗 <a href="https://huggingface.co/tencent/Hy-MT2-1.8B" rel="nofollow">Model</a></td>
+</tr>
+
+<tr>
+<td>Hy-MT2-1.8B-FP8</td>
+<td>Hy 1.8B translation model, FP8 quantization</td>
+<td>🤗 <a href="https://huggingface.co/tencent/Hy-MT2-1.8B-FP8" rel="nofollow">Model</a></td>
+</tr>
+
+<tr>
+<td>Hy-MT2-1.8B-GGUF</td>
+<td>Hy 1.8B translation model, llama.cpp</td>
+<td>🤗 <a href="https://huggingface.co/tencent/Hy-MT2-1.8B-GGUF" rel="nofollow">Model</a></td>
+</tr>
+
+<tr>
+<td>Hy-MT2-1.8B-2bit-GGUF</td>
+<td>Hy 1.8B translation model, llama.cpp, 2bit</td>
+<td>🤗 <a href="https://huggingface.co/tencent/Hy-MT2-1.8B-2bit-GGUF" rel="nofollow">Model</a></td>
+</tr>
+
+<tr>
+<td>Hy-MT2-1.8B-1.25bit-GGUF</td>
+<td>Hy 1.8B translation model, llama.cpp, 1.25bit</td>
+<td>🤗 <a href="https://huggingface.co/tencent/Hy-MT2-1.8B-1.25bit-GGUF" rel="nofollow">Model</a></td>
+</tr>
+
+<tr>
+<td>Hy-MT2-7B</td>
+<td>Hy 7B translation model</td>
+<td>🤗 <a href="https://huggingface.co/tencent/Hy-MT2-7B" rel="nofollow">Model</a></td>
+</tr>
+
+<tr>
+<td>Hy-MT2-7B-FP8</td>
+<td>Hy 7B translation model, FP8 quantization</td>
+<td>🤗 <a href="https://huggingface.co/tencent/Hy-MT2-7B-FP8" rel="nofollow">Model</a></td>
+</tr>
+
+<tr>
+<td>Hy-MT2-7B-GGUF</td>
+<td>Hy 7B translation model, llama.cpp</td>
+<td>🤗 <a href="https://huggingface.co/tencent/Hy-MT2-7B-GGUF" rel="nofollow">Model</a></td>
+</tr>
+
+<tr>
+<td>Hy-MT2-30B-A3B</td>
+<td>Hy 30B-A3B translation model</td>
+<td>🤗 <a href="https://huggingface.co/tencent/Hy-MT2-30B-A3B" rel="nofollow">Model</a></td>
+</tr>
+
+<tr>
+<td>Hy-MT2-30B-A3B-FP8</td>
+<td>Hy 30B-A3B translation model, FP8 quantization</td>
+<td>🤗 <a href="https://huggingface.co/tencent/Hy-MT2-30B-A3B-FP8" rel="nofollow">Model</a></td>
+</tr>
+</tbody>
+</table>
+
+<h2>Hy-MT2 Translation Task Instruction Examples (Chinese-English Comparison)</h2>
+
+<p><em>Note: In the following examples, both source_lang and target_lang should use the full language names. Chinese names should be used in Chinese prompts, and English names should be used in English prompts.</em></p>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Chinese prompt</th>
+<th>English prompt</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Default Translation</strong></td>
+<td>将以下文本翻译为 <code>{target_lang}</code>，注意<strong>只需要输出翻译后的结果，不要额外解释</strong>：<br><br><code>{source_text}</code></td>
+<td>Translate the following text into <code>{target_lang}</code>. Note that you should <strong>only output the translated result without any additional explanation</strong>:<br><br><code>{source_text}</code></td>
+</tr>
+
+<tr>
+<td><strong>Terminology</strong></td>
+<td><em>参考下面的翻译：</em><br><code>{text}</code> 翻译成 <code>{text}</code><br><code>{text}</code> 翻译成 <code>{text}</code><br><code>{text}</code> 翻译成 <code>{text}</code><br>将以下文本翻译为 <code>{target_lang}</code>，注意<strong>只需要输出翻译后的结果，不要额外解释</strong>：<br><br><code>{source_text}</code></td>
+<td><em>Reference the following translations:</em><br><code>{text}</code> translates to <code>{text}</code><br><code>{text}</code> translates to <code>{text}</code><br><code>{text}</code> translates to <code>{text}</code><br><br>Translate the following text into <code>{target_lang}</code>. Note that you must <strong>ONLY output the translated result without any additional explanation</strong>:<br><br><code>{source_text}</code></td>
+</tr>
+
+<tr>
+<td><strong>Style</strong></td>
+<td>请将以下文本翻译为 <code>{target_lang}</code>。<br>注意翻译的风格要严格符合【<strong><code>{target_style}</code></strong>】<br><br><code>{source_text}</code></td>
+<td>Please translate the following text into <code>{target_lang}</code>. Note that the translation style must strictly conform to [<strong><code>{target_style}</code></strong>]:<br><br><code>{source_text}</code></td>
+</tr>
+
+<tr>
+<td><strong>Personalization</strong></td>
+<td><em>【待翻译文本】</em><br><code>{source_text}</code><br><br><em>【翻译任务】</em><br>1、<strong><code>{user_preferences}</code></strong><br>2、<strong><code>{user_preferences}</code></strong><br>3、……<br>4、将【待翻译文本】翻译为 <code>{target_lang}</code>。</td>
+<td><em>[Source Text]</em><br><code>{source_text}</code><br><br><em>[Translation Tasks]</em><br>1. <strong><code>{user_preferences}</code></strong><br>2. <strong><code>{user_preferences}</code></strong><br>3. …<br>4. Translate the [Source Text] into <code>{target_lang}</code>.</td>
+</tr>
+
+<tr>
+<td><strong>Delimiters</strong></td>
+<td>请将以下文本准确翻译为 <code>{target_lang}</code>。<br>你必须在译文中<strong>保留等量的分隔符，绝对不可遗漏、转义或翻译该符号，并注意分隔符的位置</strong>。<br><br><code>{source_text}</code></td>
+<td>Please accurately translate the following text into <code>{target_lang}</code>.<br>You must <strong>retain the exact same number of delimiters in the translation. Strictly do not omit, escape, or translate these symbols, and pay close attention to their placement</strong>.<br><br><code>{source_text}</code></td>
+</tr>
+
+<tr>
+<td><strong>Structured Data 1</strong></td>
+<td><em># 任务目标</em><br>将下方 <code>{source_text}</code> 中的 <code>{format_type}</code> 格式数据翻译为 <code>{target_lang}</code>。<br><br><em># 严格约束</em><br>1. <strong>结构锁定</strong>：绝对保持原有的 <code>{format_type}</code> 数据结构、缩进和层级完全不变。<br>2. <strong>选择性翻译</strong>：仅翻译面向用户展示的可见文本内容。<br>3. <strong>禁止修改</strong>：<strong>严禁</strong>翻译或更改任何代码标签、键名 (Key)、变量占位符（如 <code>{{var}}</code>、<code>${var}</code>、<code>%s</code>、<code>%d</code> 等）或代码属性。<br><br><em># 数据输入</em><br><code>{source_text}</code></td>
+<td><em>### Task</em><br>Translate the user-facing text within the following <code>{format_type}</code> data into <code>{target_lang}</code>.<br><br><em>### Strict Rules</em><br>1. <strong>Structure Preservation:</strong> You MUST preserve the original <code>{format_type}</code> data structure, nesting, hierarchy, and indentation exactly as they are.<br>2. <strong>Selective Translation:</strong> Translate ONLY the visible, user-facing text content/values.<br>3. <strong>Strict Non-Translation:</strong> NEVER translate or alter code tags, keys, properties, object names, or variable placeholders. Leave them exactly in their original English/code form.<br><br><em>### Source Data</em><br><code>{source_text}</code></td>
+</tr>
+
+<tr>
+<td><strong>Structured Data 2</strong></td>
+<td><em>【背景信息】</em><br><code>{background_text}</code><br><br>请结合背景信息将以下文本翻译为 <code>{target_lang}</code>。<br><br><em>【待翻译文本】</em><br><code>{source_text}</code></td>
+<td><em>[Background Information]</em><br><code>{background_text}</code><br><br>Please translate the following text into <code>{target_lang}</code>, taking the provided background information into consideration.<br><br><em>[Source Text]</em><br><code>{source_text}</code></td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2>Inference and Deployment</h2>
+
+<p>For 1.8B and 7B, we recommend using the following parameters for inference. Note that our models do not have a default system_prompt.</p>
+
+<pre><code>
+{
+  &#34;temperature&#34;: 0.7,
+  &#34;top_p&#34;: 0.6,
+  &#34;top_k&#34;: 20,
+  &#34;repetition_penalty&#34;: 1.05,
+  &#34;max_tokens&#34;: 4096
+}
+</code></pre>
+
+<p>For 30B-A3B, we recommend using the following parameters for inference. Note that our models do not have a default system_prompt.</p>
+
+<pre><code>
+{
+  &#34;temperature&#34;: 0.7,
+  &#34;top_p&#34;: 1.0,
+  &#34;top_k&#34;: -1,
+  &#34;repetition_penalty&#34;: 1.0,
+  &#34;max_tokens&#34;: 4096
+}
+</code></pre>
+
+<h3>transformers</h3>
+
+<p>transformers&gt;=5.6.0</p>
+
+<pre><code>from transformers import AutoModelForCausalLM, AutoTokenizer
+import torch
+
+model_path = &#34;tencent/Hy-MT2-30B-A3B&#34;
+
+# Load tokenizer
+tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
+
+# Load model
+model = AutoModelForCausalLM.from_pretrained(
+    model_path,
+    dtype=torch.bfloat16,
+    device_map=&#34;auto&#34;,
+    trust_remote_code=True,
+)
+
+model.eval()
+
+# Example inference
+prompt = &#34;将以下文本翻译成英语,注意只需要输出翻译后的结果,不要额外解释:\n\n今天天气真好。&#34;
+messages = [{&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: prompt}]
+inputs = tokenizer.apply_chat_template(messages, add_generation_prompt=True, return_tensors=&#34;pt&#34;).to(model.device)
+
+with torch.no_grad():
+    outputs = model.generate(
+        **inputs,
+        max_new_tokens=4096,
+    )
+response = tokenizer.decode(outputs[0][inputs[&#34;input_ids&#34;].shape[-1]:], skip_special_tokens=True)
+print(response)
+</code></pre>
+
+<h3>vllm</h3>
+
+<p>Build vLLM from source:</p>
+
+<pre><code>uv venv --python 3.12 --seed --managed-python
+source .venv/bin/activate
+git clone https://github.com/vllm-project/vllm.git
+cd vllm
+uv pip install --editable . --torch-backend=auto
+</code></pre>
+
+<p>Start the vLLM server:</p>
+
+<pre><code>vllm serve tencent/Hy-MT2-30B-A3B --tensor-parallel-size 1
+</code></pre>
+
+<h3>sglang</h3>
+
+<p>Build SGLang from source:</p>
+
+<pre><code>git clone https://github.com/sgl-project/sglang
+cd sglang
+pip3 install pip --upgrade
+pip3 install &#34;transformers&gt;=5.6.0&#34;
+pip3 install -e &#34;python&#34;
+</code></pre>
+
+<p>Launch SGLang server:</p>
+
+<pre><code>python3 -m sglang.launch_server --model tencent/Hy-MT2-30B-A3B --tp 1
+</code></pre>
+
+<h2>Model Training</h2>
+
+<p>Hy-MT2 provides a complete model training pipeline, supporting both full-parameter fine-tuning and LoRA fine-tuning, as well as multiple DeepSpeed ZeRO configurations and LLaMA-Factory integration.</p>
+
+<p>For detailed training documentation, please refer to: <a href="./train/README.md" rel="nofollow">Model Training Guide</a></p>
+
+<h2>Quantization Tool</h2>
+
+<p>We provide <a href="https://github.com/tencent/AngelSlim" rel="nofollow">AngelSlim</a>, an easy-to-use, comprehensive, and efficient large model compression toolkit covering common quantization algorithms, low-bit quantization, speculative sampling, and more.</p>
+
+<h2>Supported Languages</h2>
+
+<table>
+<thead>
+<tr>
+<th>Languages</th>
+<th>Abbr.</th>
+<th>Chinese Names</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Chinese</td>
+<td>zh</td>
+<td>中文</td>
+</tr>
+
+<tr>
+<td>English</td>
+<td>en</td>
+<td>英语</td>
+</tr>
+
+<tr>
+<td>French</td>
+<td>fr</td>
+<td>法语</td>
+</tr>
+
+<tr>
+<td>Portuguese</td>
+<td>pt</td>
+<td>葡萄牙语</td>
+</tr>
+
+<tr>
+<td>Spanish</td>
+<td>es</td>
+<td>西班牙语</td>
+</tr>
+
+<tr>
+<td>Japanese</td>
+<td>ja</td>
+<td>日语</td>
+</tr>
+
+<tr>
+<td>Turkish</td>
+<td>tr</td>
+<td>土耳其语</td>
+</tr>
+
+<tr>
+<td>Russian</td>
+<td>ru</td>
+<td>俄语</td>
+</tr>
+
+<tr>
+<td>Arabic</td>
+<td>ar</td>
+<td>阿拉伯语</td>
+</tr>
+
+<tr>
+<td>Korean</td>
+<td>ko</td>
+<td>韩语</td>
+</tr>
+
+<tr>
+<td>Thai</td>
+<td>th</td>
+<td>泰语</td>
+</tr>
+
+<tr>
+<td>Italian</td>
+<td>it</td>
+<td>意大利语</td>
+</tr>
+
+<tr>
+<td>German</td>
+<td>de</td>
+<td>德语</td>
+</tr>
+
+<tr>
+<td>Vietnamese</td>
+<td>vi</td>
+<td>越南语</td>
+</tr>
+
+<tr>
+<td>Malay</td>
+<td>ms</td>
+<td>马来语</td>
+</tr>
+
+<tr>
+<td>Indonesian</td>
+<td>id</td>
+<td>印尼语</td>
+</tr>
+
+<tr>
+<td>Filipino</td>
+<td>tl</td>
+<td>菲律宾语</td>
+</tr>
+
+<tr>
+<td>Hindi</td>
+<td>hi</td>
+<td>印地语</td>
+</tr>
+
+<tr>
+<td>Traditional Chinese</td>
+<td>zh-Hant</td>
+<td>繁体中文</td>
+</tr>
+
+<tr>
+<td>Polish</td>
+<td>pl</td>
+<td>波兰语</td>
+</tr>
+
+<tr>
+<td>Czech</td>
+<td>cs</td>
+<td>捷克语</td>
+</tr>
+
+<tr>
+<td>Dutch</td>
+<td>nl</td>
+<td>荷兰语</td>
+</tr>
+
+<tr>
+<td>Khmer</td>
+<td>km</td>
+<td>高棉语</td>
+</tr>
+
+<tr>
+<td>Burmese</td>
+<td>my</td>
+<td>缅甸语</td>
+</tr>
+
+<tr>
+<td>Persian</td>
+<td>fa</td>
+<td>波斯语</td>
+</tr>
+
+<tr>
+<td>Gujarati</td>
+<td>gu</td>
+<td>古吉拉特语</td>
+</tr>
+
+<tr>
+<td>Urdu</td>
+<td>ur</td>
+<td>乌尔都语</td>
+</tr>
+
+<tr>
+<td>Telugu</td>
+<td>te</td>
+<td>泰卢固语</td>
+</tr>
+
+<tr>
+<td>Marathi</td>
+<td>mr</td>
+<td>马拉地语</td>
+</tr>
+
+<tr>
+<td>Hebrew</td>
+<td>he</td>
+<td>希伯来语</td>
+</tr>
+
+<tr>
+<td>Bengali</td>
+<td>bn</td>
+<td>孟加拉语</td>
+</tr>
+
+<tr>
+<td>Tamil</td>
+<td>ta</td>
+<td>泰米尔语</td>
+</tr>
+
+<tr>
+<td>Ukrainian</td>
+<td>uk</td>
+<td>乌克兰语</td>
+</tr>
+
+<tr>
+<td>Tibetan</td>
+<td>bo</td>
+<td>藏语</td>
+</tr>
+
+<tr>
+<td>Kazakh</td>
+<td>kk</td>
+<td>哈萨克语</td>
+</tr>
+
+<tr>
+<td>Mongolian</td>
+<td>mn</td>
+<td>蒙古语</td>
+</tr>
+
+<tr>
+<td>Uyghur</td>
+<td>ug</td>
+<td>维吾尔语</td>
+</tr>
+
+<tr>
+<td>Cantonese</td>
+<td>yue</td>
+<td>粤语</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Citing Hy-MT2</h2>
+
+<pre><code>@misc{zheng2026hymt2familyfastefficient,
+      title={Hy-MT2: A Family of Fast, Efficient and Powerful Multilingual Translation Models in the Wild}, 
+      author={Mao Zheng and Zheng Li and Tao Chen and Bo Lv and Mingrui Sun and Mingyang Song and Jinlong Song and Hong Huang and Decheng Wu and Hai Wang and Yifan Song and Yanfeng Chen and Guanwei Zhang},
+      year={2026},
+      eprint={2605.22064},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2605.22064}, 
+} 
+</code></pre>
+
+<h2>Contact Us</h2>
+
+<p>If you would like to leave feedback for our R&amp;D and product teams, you are welcome to contact the Tencent Hunyuan LLM team. You can reach us by email at hunyuan_opensource@tencent.com.</p>
+
+        
+      
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="mt-auto">
+  <div class="underline-offset-4 hidden md:block">
+    <div class="flex items-center justify-between px-6 py-3.5">
+      <div class="text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="/ollama-search/maternion/" class="hover:underline">Maternion</a></div>
+      <div class="flex space-x-6 text-xs text-neutral-500 dark:text-neutral-400">
+        <a href="https://ollama.com/download" class="hover:underline">Download</a>
+        <a href="https://ollama.com/blog" class="hover:underline">Blog</a>
+        <a href="https://docs.ollama.com" class="hover:underline">Docs</a>
+        <a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a>
+        <a href="https://ollama.com/pricing" class="hover:underline">Pricing</a>
+      </div>
+    </div>
+  </div>
+  <div class="py-4 md:hidden">
+    <ul class="flex flex-col items-center space-y-2 text-xs text-neutral-500 dark:text-neutral-400">
+      <li><a href="https://ollama.com/download" class="hover:underline">Download</a></li>
+      <li><a href="https://ollama.com/blog" class="hover:underline">Blog</a></li>
+      <li><a href="https://docs.ollama.com" class="hover:underline">Docs</a></li>
+      <li><a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a></li>
+      <li><a href="https://ollama.com/pricing" class="hover:underline">Pricing</a></li>
+    </ul>
+    <div class="mt-4 text-center text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="/ollama-search/maternion/" class="hover:underline">Maternion</a></div>
+  </div>
+</footer>
+<script>
+(function() {
+  function toggle() {
+    var isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+var NAV_MODELS = null;
+var NAV_BASE = (function() {
+  var s = document.querySelector('script[src*="assets/app.js"]');
+  if (s) {
+    var src = s.getAttribute('src');
+    var idx = src.indexOf('assets/app.js');
+    if (idx > 0) return src.substring(0, idx);
+  }
+  return '/';
+})();
+
+function loadNavModels(cb) {
+  if (NAV_MODELS) { cb(NAV_MODELS); return; }
+  var cached = null;
+  try { cached = sessionStorage.getItem('nav-models'); } catch (e) {}
+  if (cached) {
+    try { NAV_MODELS = JSON.parse(cached); cb(NAV_MODELS); return; } catch (e) {}
+  }
+  fetch(NAV_BASE + 'assets/models.json').then(function(r) { return r.json(); }).then(function(data) {
+    NAV_MODELS = data;
+    try { sessionStorage.setItem('nav-models', JSON.stringify(data)); } catch (e) {}
+    cb(NAV_MODELS);
+  }).catch(function() { cb([]); });
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function renderNavSuggest(query) {
+  var sp = document.getElementById('searchpreview');
+  if (!sp) return;
+  var q = query.toLowerCase().trim();
+  if (!q) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
+
+  var html = '<div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl w-full shadow-2xl shadow-black/5 overflow-hidden" id="search-preview-container" tabindex="0">';
+  html += '<div role="list" id="search-preview-list" class="group">';
+
+  var results = [];
+  for (var i = 0; i < NAV_MODELS.length; i++) {
+    var m = NAV_MODELS[i];
+    var name = m.name || '';
+    var desc = m.description || '';
+    if (name.toLowerCase().indexOf(q) !== -1 || desc.toLowerCase().indexOf(q) !== -1) {
+      results.push(m);
+    }
+  }
+  results.sort(function(a, b) { return (b.pulls || 0) - (a.pulls || 0); });
+  var top = results.slice(0, 5);
+
+  if (top.length === 0) {
+    html += '<div class="px-6 py-4 text-neutral-800 dark:text-neutral-300 text-sm">No models found.</div>';
+  } else {
+    for (var i = 0; i < top.length; i++) {
+      var m = top[i];
+      var path = m.path || ('/library/' + m.name);
+      html += '<div result>';
+      html += '<a tabindex="0" href="' + NAV_BASE + path.replace(/^\//, '') + '" class="flex items-center h-16 px-6 py-4 hover:bg-neutral-50 dark:hover:bg-white/5 focus:ring-0 focus:outline-none focus:bg-neutral-50 dark:focus:bg-white/5">';
+      html += '<div class="min-w-0 flex-1">';
+      html += '<h2 class="text-sm font-medium truncate dark:text-neutral-100">' + escHtml(m.name) + '</h2>';
+      html += '<p class="text-xs text-gray-600 dark:text-gray-600 truncate">' + escHtml(m.description) + '</p>';
+      html += '</div></a></div>';
+    }
+  }
+
+  html += '</div>';
+  html += '<a tabindex="0" id="view-all-link" href="' + NAV_BASE + '?q=' + encodeURIComponent(query) + '" class="' + (top.length === 0 ? 'hidden' : '') + ' block px-6 py-3 border-t border-neutral-200 dark:border-neutral-800 text-center text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-white/5 focus:bg-neutral-50 dark:focus:bg-white/5 focus:outline-none focus:ring-0 dark:text-neutral-200">View all &#8594;</a>';
+  html += '</div>';
+
+  sp.innerHTML = html;
+  sp.classList.remove('hidden');
+}
+
+var navSuggestTimer = null;
+function initNavSuggest() {
+  var input = document.getElementById('navbar-input');
+  var sp = document.getElementById('searchpreview');
+  if (!input || !sp) return;
+
+  input.addEventListener('input', function() {
+    if (navSuggestTimer) clearTimeout(navSuggestTimer);
+    navSuggestTimer = setTimeout(function() {
+      var v = input.value;
+      if (!v.trim()) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
+      loadNavModels(function() { renderNavSuggest(v); });
+    }, 100);
+  });
+
+  sp.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      sp.classList.add('hidden');
+      input.focus();
+      e.preventDefault();
+      return;
+    }
+    if (e.key === 'Enter') {
+      var el = document.activeElement;
+      if (el && el.tagName === 'A') { el.click(); e.preventDefault(); return; }
+    }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      var items = Array.from(sp.querySelectorAll('#search-preview-list a, #view-all-link'));
+      var ci = items.indexOf(document.activeElement);
+      var ni = e.key === 'ArrowDown' ? ci + 1 : ci - 1;
+      if (ni >= items.length) ni = 0;
+      if (ni < 0) ni = items.length - 1;
+      if (items[ni]) items[ni].focus();
+      e.preventDefault();
+    }
+  });
+}
+
+function initSearch() {
+    document.getElementById('theme-toggle')?.addEventListener('click', toggle);
+    document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggle);
+  });
+})();
+</script>
+<script src="/ollama-search/assets/app.js"></script>
+</body>
+</html>

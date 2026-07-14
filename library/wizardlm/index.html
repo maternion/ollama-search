@@ -103,7 +103,7 @@
          <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
            <span class="flex items-center">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
-             <span x-test-pull-count>855.5K</span>
+             <span x-test-pull-count>856.6K</span>
              <span class="hidden sm:flex">&nbsp;Downloads</span>
           </span>
           <span class="flex items-center" title="Oct 30, 2023 2:54 AM UTC">
@@ -175,7 +175,7 @@ console.log(response.message.content)</pre>
     <section class="flex flex-1 flex-col">
   <div class="flex items-center justify-between mb-4">
     <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Models</h2>
-    <a href="/ollama-search/library/wizardlm/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all 0 &#8594;</a>
+    <a href="/ollama-search/library/wizardlm/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all 73 &#8594;</a>
   </div>
   
   <div id="models-table-all" class="fmt-table">
@@ -183,7 +183,7 @@ console.log(response.message.content)</pre>
     <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
       <div class="items-center grid bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs grid-cols-12 text-neutral-900 dark:text-neutral-100">
         <p class="hidden sm:block col-span-6">Name</p>
-        <p class="sm:hidden col-span-6">0 models</p>
+        <p class="sm:hidden col-span-6">73 models</p>
         <p class="col-span-2 hidden sm:block">Size / Usage</p>
         <p class="col-span-2 hidden sm:block">Context</p>
         <p class="col-span-2 hidden sm:block">Input</p>
@@ -194,7 +194,71 @@ console.log(response.message.content)</pre>
 </div>
 </section>
   </div>
-  
+  <div class="flex flex-1 flex-col py-8" id="readme">
+  <div class="flex items-center justify-between pb-1">
+    <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Readme</h2>
+  </div>
+  <div>
+    <div id="display" class="prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black dark:prose-headings:text-neutral-200 dark:prose-blockquote:text-neutral-400 dark:prose-code:bg-neutral-800 dark:prose-code:text-neutral-200 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-200 dark:prose-li:text-neutral-200 dark:prose-td:text-neutral-300 dark:prose-th:text-neutral-200 dark:prose-a:text-blue-400 dark:prose-strong:text-neutral-200 dark:marker:prose-ol:text-neutral-400 dark:marker:prose-ul:text-neutral-400 dark:text-neutral-200">
+      
+        
+          <p><img src="https://user-images.githubusercontent.com/633681/263121166-8b16834a-1da2-4a68-8aac-13d19775e7d7.png"/></p>
+
+<p>WizardLM is a 70B parameter model based on Llama 2 trained by WizardLM.</p>
+
+<h2>Get started with WizardLM</h2>
+
+<p>The model used in the example below is the WizardLM model, with 70b parameters, which is a general-use model.</p>
+
+<h3>API</h3>
+
+<ol>
+<li>Start Ollama server (Run <code>ollama serve</code>)</li>
+<li>Run the model</li>
+</ol>
+
+<pre><code>curl -X POST http://localhost:11434/api/generate -d &#39;{
+  &#34;model&#34;: &#34;wizardlm:70b-llama2-q4_0&#34;,
+  &#34;prompt&#34;:&#34;Why is the sky blue?&#34;
+ }&#39;
+</code></pre>
+
+<h3>CLI</h3>
+
+<ol>
+<li>Install Ollama</li>
+<li>Open the terminal and run <code>ollama run wizardlm:70b-llama2-q4_0</code></li>
+</ol>
+
+<p>Note: The <code>ollama run</code> command performs an <code>ollama pull</code> if the model is not already downloaded. To download the model without running it, use <code>ollama pull wizardlm:70b-llama2-q4_0</code></p>
+
+<h2>Memory requirements</h2>
+
+<ul>
+<li>70b models generally require at least 64GB of RAM</li>
+</ul>
+
+<p>If you run into issues with higher quantization levels, try using the q4 model or shut down any other programs that are using a lot of memory.</p>
+
+<h2>Model variants</h2>
+
+<p>By default, Ollama uses 4-bit quantization. To try other quantization levels, please try the other tags. The number after the q represents the number of bits used for quantization (i.e. q4 means 4-bit quantization). The higher the number, the more accurate the model is, but the slower it runs, and the more memory it requires.</p>
+
+<h2>Model source</h2>
+
+<p><strong>WizardLM source on Ollama</strong></p>
+
+<p>70b parameters source:
+ <a href="https://huggingface.co/TheBloke/WizardLM-70B-V1.0-GGML" rel="nofollow">The Bloke</a></p>
+
+<p>70b parameters original source:
+ <a href="https://huggingface.co/WizardLM/WizardLM-70B-V1.0" rel="nofollow">WizardLM</a></p>
+
+        
+      
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="mt-auto">

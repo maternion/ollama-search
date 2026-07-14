@@ -103,7 +103,7 @@
          <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
            <span class="flex items-center">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
-             <span x-test-pull-count>984.1K</span>
+             <span x-test-pull-count>984.7K</span>
              <span class="hidden sm:flex">&nbsp;Downloads</span>
           </span>
           <span class="flex items-center" title="Jan 17, 2025 10:46 PM UTC">
@@ -173,10 +173,95 @@ console.log(response.message.content)</pre>
   </div>
 </section>
     
+<section class="flex flex-1 flex-col mb-8" id="external-tools-section">
+  <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100 mb-4">Applications</h2>
+  <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
+    <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
+      <div class="group flex items-center justify-between px-4 py-3">
+        <div class="flex items-center gap-3">
+          <img src="https://ollama.com/public/claude.png" class="w-8 h-8" alt="Claude Code" />
+          <div class="flex flex-col">
+            <span class="text-sm font-medium text-neutral-800 dark:text-neutral-200">Claude Code</span>
+            <code class="text-[13px] text-neutral-500 dark:text-neutral-400 font-mono">ollama launch claude --model granite3.1-dense</code>
+          </div>
+        </div>
+        <input class="command hidden" value="ollama launch claude --model granite3.1-dense" />
+        <button class="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 rounded" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();" title="Copy">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </div>
+      <div class="group flex items-center justify-between px-4 py-3">
+        <div class="flex items-center gap-3">
+          <img src="https://ollama.com/public/codex-app.png" class="w-8 h-8" alt="Codex App" />
+          <div class="flex flex-col">
+            <span class="text-sm font-medium text-neutral-800 dark:text-neutral-200">Codex App</span>
+            <code class="text-[13px] text-neutral-500 dark:text-neutral-400 font-mono">ollama launch codex-app --model granite3.1-dense</code>
+          </div>
+        </div>
+        <input class="command hidden" value="ollama launch codex-app --model granite3.1-dense" />
+        <button class="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 rounded" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();" title="Copy">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </div>
+      <div class="group flex items-center justify-between px-4 py-3">
+        <div class="flex items-center gap-3">
+          <img src="https://ollama.com/public/openclaw.png" class="w-8 h-8" alt="OpenClaw" />
+          <div class="flex flex-col">
+            <span class="text-sm font-medium text-neutral-800 dark:text-neutral-200">OpenClaw</span>
+            <code class="text-[13px] text-neutral-500 dark:text-neutral-400 font-mono">ollama launch openclaw --model granite3.1-dense</code>
+          </div>
+        </div>
+        <input class="command hidden" value="ollama launch openclaw --model granite3.1-dense" />
+        <button class="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 rounded" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();" title="Copy">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </div>
+      <div class="group flex items-center justify-between px-4 py-3">
+        <div class="flex items-center gap-3">
+          <img src="https://ollama.com/public/hermes.png" class="w-8 h-8" alt="Hermes Agent" />
+          <div class="flex flex-col">
+            <span class="text-sm font-medium text-neutral-800 dark:text-neutral-200">Hermes Agent</span>
+            <code class="text-[13px] text-neutral-500 dark:text-neutral-400 font-mono">ollama launch hermes --model granite3.1-dense</code>
+          </div>
+        </div>
+        <input class="command hidden" value="ollama launch hermes --model granite3.1-dense" />
+        <button class="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 rounded" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();" title="Copy">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </div>
+      <div class="group flex items-center justify-between px-4 py-3">
+        <div class="flex items-center gap-3">
+          <img src="https://ollama.com/public/openai.png" class="w-8 h-8" alt="Codex" />
+          <div class="flex flex-col">
+            <span class="text-sm font-medium text-neutral-800 dark:text-neutral-200">Codex</span>
+            <code class="text-[13px] text-neutral-500 dark:text-neutral-400 font-mono">ollama launch codex --model granite3.1-dense</code>
+          </div>
+        </div>
+        <input class="command hidden" value="ollama launch codex --model granite3.1-dense" />
+        <button class="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 rounded" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();" title="Copy">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </div>
+      <div class="group flex items-center justify-between px-4 py-3">
+        <div class="flex items-center gap-3">
+          <img src="https://ollama.com/public/opencode.png" class="w-8 h-8" alt="OpenCode" />
+          <div class="flex flex-col">
+            <span class="text-sm font-medium text-neutral-800 dark:text-neutral-200">OpenCode</span>
+            <code class="text-[13px] text-neutral-500 dark:text-neutral-400 font-mono">ollama launch opencode --model granite3.1-dense</code>
+          </div>
+        </div>
+        <input class="command hidden" value="ollama launch opencode --model granite3.1-dense" />
+        <button class="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 rounded" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();" title="Copy">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
     <section class="flex flex-1 flex-col">
   <div class="flex items-center justify-between mb-4">
     <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Models</h2>
-    <a href="/ollama-search/library/granite3.1-dense/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all 0 &#8594;</a>
+    <a href="/ollama-search/library/granite3.1-dense/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all 33 &#8594;</a>
   </div>
   
   <div id="models-table-all" class="fmt-table">
@@ -184,18 +269,145 @@ console.log(response.message.content)</pre>
     <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
       <div class="items-center grid bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs grid-cols-12 text-neutral-900 dark:text-neutral-100">
         <p class="hidden sm:block col-span-6">Name</p>
-        <p class="sm:hidden col-span-6">0 models</p>
+        <p class="sm:hidden col-span-6">33 models</p>
         <p class="col-span-2 hidden sm:block">Size / Usage</p>
         <p class="col-span-2 hidden sm:block">Context</p>
         <p class="col-span-2 hidden sm:block">Input</p>
       </div>
-      
+            <a href="/ollama-search/library/granite3.1-dense/:latest/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">granite3.1-dense:latest</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">5.0GB · 128K context window · Text · 1 year ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/granite3.1-dense/:latest/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">granite3.1-dense:latest</a>
+          
+          
+          <input class="command hidden" value="granite3.1-dense:latest" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">5.0GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">128K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text</p>
+      </div>
+      <a href="/ollama-search/library/granite3.1-dense/:2b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">granite3.1-dense:2b</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">1.6GB · 128K context window · Text · 1 year ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/granite3.1-dense/:2b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">granite3.1-dense:2b</a>
+          
+          
+          <input class="command hidden" value="granite3.1-dense:2b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">1.6GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">128K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text</p>
+      </div>
+      <a href="/ollama-search/library/granite3.1-dense/:8b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">granite3.1-dense:8b</p>
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">5.0GB · 128K context window · Text · 1 year ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/granite3.1-dense/:8b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">granite3.1-dense:8b</a>
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+          
+          <input class="command hidden" value="granite3.1-dense:8b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">5.0GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">128K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text</p>
+      </div>
     </div>
   </div>
 </div>
 </section>
   </div>
-  
+  <div class="flex flex-1 flex-col py-8" id="readme">
+  <div class="flex items-center justify-between pb-1">
+    <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Readme</h2>
+  </div>
+  <div>
+    <div id="display" class="prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black dark:prose-headings:text-neutral-200 dark:prose-blockquote:text-neutral-400 dark:prose-code:bg-neutral-800 dark:prose-code:text-neutral-200 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-200 dark:prose-li:text-neutral-200 dark:prose-td:text-neutral-300 dark:prose-th:text-neutral-200 dark:prose-a:text-blue-400 dark:prose-strong:text-neutral-200 dark:marker:prose-ol:text-neutral-400 dark:marker:prose-ul:text-neutral-400 dark:text-neutral-200">
+      
+        
+          <h2>Granite dense models</h2>
+
+<p>The IBM Granite <strong>2B</strong> and <strong>8B</strong> models are text-only dense LLMs trained on over 12 trillion tokens of data, demonstrated significant improvements over their predecessors in performance and speed in IBM’s initial testing.</p>
+
+<p><strong>They are designed to support tool-based use cases</strong> and for retrieval augmented generation (RAG), streamlining code generation, translation and bug fixing.</p>
+
+<h3>Parameter Sizes</h3>
+
+<p><strong>2B:</strong></p>
+
+<p><code>ollama run granite3.1-dense:2b</code></p>
+
+<p><strong>8B:</strong></p>
+
+<p><code>ollama run granite3.1-dense:8b</code></p>
+
+<h3>Supported Languages</h3>
+
+<p>English, German, Spanish, French, Japanese, Portuguese, Arabic, Czech, Italian, Korean, Dutch, Chinese (Simplified)</p>
+
+<h3>Capabilities</h3>
+
+<ul>
+<li>Summarization</li>
+<li>Text classification</li>
+<li>Text extraction</li>
+<li>Question-answering</li>
+<li>Retrieval Augmented Generation (RAG)</li>
+<li>Code related tasks</li>
+<li>Function-calling tasks</li>
+<li>Multilingual dialog use cases</li>
+<li>Long-context tasks including long document/meeting summarization, long document QA, etc.</li>
+</ul>
+
+<h2>Granite mixture of experts models</h2>
+
+<p>The Granite mixture of experts models are available in <strong>1B and 3B</strong> parameter sizes designed for <strong>low latency usage</strong>.</p>
+
+<p><a href="https://ollama.com/library/granite3-moe" rel="nofollow">See model page</a></p>
+
+<h2>Learn more</h2>
+
+<ul>
+<li><strong>Developers:</strong> IBM Research</li>
+<li><strong>GitHub Repository:</strong> <a href="https://github.com/ibm-granite/granite-3.1-language-models" rel="nofollow">ibm-granite/granite-language-models</a></li>
+<li><strong>Website</strong>: <a href="https://www.ibm.com/granite/docs/" rel="nofollow">Granite Docs</a></li>
+<li><strong>Release Date</strong>: December 18th, 2024</li>
+<li><strong>License:</strong> <a href="https://www.apache.org/licenses/LICENSE-2.0" rel="nofollow">Apache 2.0</a>.</li>
+</ul>
+
+        
+      
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="mt-auto">

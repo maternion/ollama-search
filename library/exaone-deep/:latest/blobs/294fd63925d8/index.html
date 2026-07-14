@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <title>exaone-deep:latest — license</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="exaone-deep:latest blob license"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="exaone-deep:latest — license" />
+    <meta property="og:description" content="exaone-deep:latest blob license" />
+    <meta property="og:image" content="https://ollama.com/public/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content="exaone-deep:latest — license" />
+    <meta property="twitter:description" content="exaone-deep:latest blob license" />
+    <meta property="twitter:site" content="ollama" />
+    <meta property="twitter:image:src" content="https://ollama.com/public/og-twitter.png" />
+    <meta property="twitter:image:width" content="1200" />
+    <meta property="twitter:image:height" content="628" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ollama-search/assets/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/ollama-search/assets/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/ollama-search/assets/icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/ollama-search/assets/icon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x" href="/ollama-search/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/ollama-search/assets/android-chrome-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/ollama-search/assets/android-chrome-icon-512x512.png" />
+    <script>
+(function() {
+  var stored = localStorage.getItem('theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (stored === 'dark' || (!stored && prefersDark)) {
+    document.documentElement.classList.add('dark');
+  }
+})();
+</script>
+    <link href="/ollama-search/assets/tailwind.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/prism.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/extras.css" rel="stylesheet" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Ollama",
+        "url": "https://ollama.com"
+      }
+    </script>
+    <script defer src="/ollama-search/assets/htmx.bundle.js"></script>
+</head>
+<body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
+<header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
+  <nav class="flex w-full items-center justify-between px-6 py-[9px]">
+    <a href="/ollama-search/" class="z-50">
+      <img src="/ollama-search/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
+    </a>
+    <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
+    </div>
+    <div class="flex-grow justify-center items-center hidden lg:flex">
+      <div class="relative w-full xl:max-w-[28rem]">
+        <form action="/ollama-search/" autocomplete="off" id="nav-search-form">
+          <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full" hx-on:focusout="var rt=event.relatedTarget;if(rt&&(this.contains(rt)||document.getElementById('searchpreview').contains(rt)))return;var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');">
+            <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();var v=this.value.trim();window.location.href=v?'/ollama-search/?q='+encodeURIComponent(v):'/ollama-search/';return;}if(event.key==='Escape'){event.preventDefault();this.value='';this.blur();var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');return;}if(event.key==='Tab'){var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');return;}if(event.key==='ArrowDown'){var first=document.querySelector('#search-preview-list a:first-of-type');if(first)first.focus();event.preventDefault();}if(event.key==='ArrowUp'){var last=document.getElementById('view-all-link');if(last)last.focus();event.preventDefault();}var sp=document.getElementById('searchpreview');if(sp)sp.classList.remove('hidden');" hx-on:focus="var sp=document.getElementById('searchpreview');if(sp&&this.value.trim())sp.classList.remove('hidden');" />
+          </div>
+        </form>
+        <div id="searchpreview" class="hidden absolute left-0 right-0 top-12 z-50" style="width: calc(100% + 2px); margin-left: -1px;"></div>
+      </div>
+    </div>
+    <div class="hidden lg:flex xl:flex-1 items-center space-x-2 justify-end ml-6 xl:ml-0">
+      <button id="theme-toggle" class="flex cursor-pointer items-center rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 text-lg px-3 py-1.5 text-black dark:text-neutral-200 whitespace-nowrap" title="Toggle dark mode">
+        <span class="dark:hidden"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></span>
+        <span class="hidden dark:block"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25M18.364 17.614l-1.591-1.591M12 18.75V21M5.636 17.614l1.591-1.591M3 12h2.25M5.636 6.386l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg></span>
+      </button>
+      <a class="flex cursor-pointer items-center rounded-full bg-neutral-800 dark:bg-neutral-100 text-lg px-4 py-1.5 text-white dark:text-neutral-900 hover:bg-black dark:hover:bg-white whitespace-nowrap focus:bg-black dark:focus:bg-white" href="https://ollama.com/download">Download</a>
+    </div>
+    <div class="lg:hidden flex items-center">
+      <button id="theme-toggle-mobile" class="flex items-center rounded-full bg-black/5 dark:bg-white/10 px-3 py-1.5 mr-2 text-black dark:text-neutral-200">
+        <span class="dark:hidden"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></span>
+        <span class="hidden dark:block"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25M18.364 17.614l-1.591-1.591M12 18.75V21M5.636 17.614l1.591-1.591M3 12h2.25M5.636 6.386l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main class="relative mx-auto flex w-full max-w-[52rem] flex-col px-6 py-10 md:py-24 lg:px-8">
+  <a href="/ollama-search/library/exaone-deep/:latest/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10" onclick="if(document.referrer&amp;&amp;document.referrer.includes(location.host)){history.back();return false;}">&larr; Back to library/exaone-deep:latest</a>
+  <div class="flex flex-col space-y-3">
+    <div class="flex items-center min-w-0">
+      <div class="flex items-center min-w-0 space-x-2">
+        <div class="flex items-center min-w-0">
+          <span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
+            <a x-test-model-name href="/ollama-search/library/exaone-deep" title="exaone-deep" class="underline-offset-[5px] hover:underline">exaone-deep</a>:latest
+           </span>
+         </div>
+       </div>
+     </div>
+    <div class="flex flex-col space-y-2">
+      <div class="flex flex-col space-y-2">
+        <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
+          <span class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
+            <span x-test-pull-count>747.8K</span>
+            <span class="hidden sm:flex">&nbsp;Downloads</span>
+          </span>
+          <span class="flex items-center" title="Mar 19, 2025 5:04 PM UTC">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>
+            <span class="hidden sm:flex">Updated&nbsp;</span>
+            <span x-test-updated>1 year ago</span>
+          </span>
+        </p>
+      </div>
+      <h2 class="break-words text-neutral-800 dark:text-neutral-300">EXAONE Deep exhibits superior capabilities in various reasoning tasks including math and coding benchmarks, ranging from 2.4B to 32B parameters developed and released by LG AI Research.</h2>
+      <div class="flex flex-wrap gap-2">
+        
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">2.4b</span>
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">7.8b</span>
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">32b</span>
+      </div>
+    </div>
+  </div>
+  <div id="file-explorer" class="pt-12 pb-10">
+    <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-200">
+      <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
+        <div class="flex items-center justify-between bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs text-neutral-900 dark:text-neutral-100">
+          <div class="flex items-center">
+            <a href="/ollama-search/library/exaone-deep/:latest/" class="min-w-0 font-medium text-black dark:text-neutral-100 hover:underline hover:decoration-[.75px] hover:underline-offset-[3px]">
+              <span class="hidden sm:block">exaone-deep:latest</span>
+              <span class="sm:hidden">...</span>
+            </a>
+            <span class="px-2 font-light text-neutral-300 dark:text-neutral-700">/</span>
+            <div>license</div>
+          </div>
+          <div>294fd63925d8 · 14kB</div>
+        </div>
+        <div class="text-[13px]">
+          <div class="px-4 py-2 relative overflow-x-scroll font-mono text-sm whitespace-pre-wrap [counter-reset:line] before:absolute before:left-0 before:inline-block before:w-12 before:select-none before:text-right before:text-gray-400 dark:text-neutral-300 [&>div]:pl-14 [&>div]:pr-4 [&>div]:[counter-increment:line] [&>div]:before:absolute [&>div]:before:left-0 [&>div]:before:inline-block [&>div]:before:w-12 [&>div]:before:select-none [&>div]:before:text-right [&>div]:before:text-gray-400 dark:[&>div]:before:text-gray-600 [&>div]:before:content-[counter(line)]"><div>EXAONE AI Model License Agreement 1.1 - NC</div><div></div><div>This License Agreement (“Agreement”) is entered into between you (“Licensee”) and LG Management Development</div><div>Institute Co., Ltd. (“Licensor”), governing the use of the EXAONE AI Model (“Model”). By downloading,</div><div>installing, copying, or using the Model, you agree to comply with and be bound by the terms of this Agreement.</div><div>If you do not agree to all the terms, you must not download, install, copy, or use the Model. This Agreement</div><div>constitutes a binding legal agreement between the Licensee and Licensor.</div><div></div><div>1. Definitions</div><div>1.1 Model: The artificial intelligence model provided by Licensor, which includes any software,</div><div>algorithms, machine learning models, or related components supplied by Licensor. This definition extends</div><div>to encompass all updates, enhancements, improvements, bug fixes, patches, or other modifications that may</div><div>be provided by Licensor from time to time, whether automatically or manually implemented.</div><div>1.2 Derivatives: Any modifications, alterations, enhancements, improvements, adaptations, or derivative</div><div>works of the Model created by Licensee or any third party. This includes changes made to the Model&#x27;s</div><div>architecture, parameters, data processing methods, or any other aspect of the Model that results in a</div><div>modification of its functionality or output.</div><div>1.3 Output: Any data, results, content, predictions, analyses, insights, or other materials generated by</div><div>the Model or Derivatives, regardless of whether they are in their original form or have been further</div><div>processed or modified by the Licensee. This includes, but is not limited to, textual or numerical produced</div><div>directly or indirectly through the use of the Model.</div><div>1.4 Licensor: LG Management Development Institute Co., Ltd., the owner, developer, and provider of the</div><div>EXAONE AI Model. The Licensor holds all rights, title, and interest in the Model and is responsible for</div><div>granting licenses to use the Model under the terms specified in this Agreement.</div><div>1.5 Licensee: The individual, organization, corporation, academic institution, government agency, or other</div><div>entity using or intending to use the Model under the terms and conditions of this Agreement. The Licensee</div><div>is responsible for ensuring compliance with the Agreement by all authorized users who access or utilize</div><div>the Model on behalf of the Licensee.</div><div></div><div>2. License Grant</div><div>2.1 Grant of License: Subject to the terms and conditions outlined in this Agreement, the Licensor hereby</div><div>grants the Licensee a limited, non-exclusive, non-transferable, worldwide, and revocable license to:</div><div>a. Access, download, install, and use the Model solely for research purposes. This includes</div><div>evaluation, testing, academic research, experimentation, and participation in competitions, provided</div><div>that such participation is in a non-commercial context. Notwithstanding Section 3.1, the Licensee may</div><div>only provide the Model or Derivatives for a competition if no commercial license is granted to the</div><div>competition organizer or any third party.</div><div>b. Publicly disclose research results and findings derived from the use of the Model or Derivatives,</div><div>including publishing papers or presentations.</div><div>c. Modify the Model and create Derivatives based on the Model, provided that such modifications and</div><div>Derivatives are used exclusively for research purposes. The Licensee may conduct experiments, perform</div><div>analyses, and apply custom modifications to the Model to explore its capabilities and performance</div><div>under various scenarios. If the Model is modified, the modified Model must include “EXAONE” at the</div><div>beginning of its name.</div><div>d. Distribute the Model and Derivatives in each case with a copy of this Agreement.</div><div>2.2 Scope of License: The license granted herein does not authorize the Licensee to use the Model for any</div><div>purpose not explicitly permitted under this Agreement. Any use beyond the scope of this license, including</div><div>any commercial application or external distribution, is strictly prohibited unless explicitly agreed upon</div><div>in writing by the Licensor.</div><div></div><div>3. Restrictions</div><div>3.1 Commercial Use: The Licensee is expressly prohibited from using the Model, Derivatives, or Output for</div><div>any commercial purposes, including but not limited to, developing or deploying products, services, or</div><div>applications that generate revenue, whether directly or indirectly. Any commercial exploitation of the</div><div>Model or its derivatives requires a separate commercial license agreement with the Licensor. Furthermore,</div><div>the Licensee shall not use the Model, Derivatives or Output to develop or improve other models.</div><div>3.2 Reverse Engineering: The Licensee shall not decompile, disassemble, reverse engineer, or attempt to</div><div>derive the source code, underlying ideas, algorithms, or structure of the Model, except to the extent that</div><div>such activities are expressly permitted by applicable law. Any attempt to bypass or circumvent</div><div>technological protection measures applied to the Model is strictly prohibited.</div><div>3.3 Unlawful Use: The Licensee shall not use the Model and Derivatives for any illegal, fraudulent, or</div><div>unauthorized activities, nor for any purpose that violates applicable laws or regulations. This includes</div><div>but is not limited to the creation, distribution, or dissemination of malicious, deceptive, or unlawful</div><div>content.</div><div>3.4 Ethical Use: The Licensee shall ensure that the Model or Derivatives is used in an ethical and</div><div>responsible manner, adhering to the following guidelines:</div><div>a. The Model and Derivatives shall not be used to generate, propagate, or amplify false, misleading,</div><div>or harmful information, including fake news, misinformation, or disinformation.</div><div>b. The Model and Derivatives shall not be employed to create, distribute, or promote content that is</div><div>discriminatory, harassing, defamatory, abusive, or otherwise offensive to individuals or groups based</div><div>on race, gender, sexual orientation, religion, nationality, or other protected characteristics.</div><div>c. The Model and Derivatives shall not infringe on the rights of others, including intellectual</div><div>property rights, privacy rights, or any other rights recognized by law. The Licensee shall obtain all</div><div>necessary permissions and consents before using the Model and Derivatives in a manner that may impact</div><div>the rights of third parties.</div><div>d. The Model and Derivatives shall not be used in a way that causes harm, whether physical, mental,</div><div>emotional, or financial, to individuals, organizations, or communities. The Licensee shall take all</div><div>reasonable measures to prevent misuse or abuse of the Model and Derivatives that could result in harm</div><div>or injury.</div><div></div><div>4. Ownership</div><div>4.1 Intellectual Property: All rights, title, and interest in and to the Model, including any</div><div>modifications, Derivatives, and associated documentation, are and shall remain the exclusive property of</div><div>the Licensor. The Licensee acknowledges that this Agreement does not transfer any ownership rights to the</div><div>Licensee. All trademarks, service marks, and logos associated with the Model are the property of the</div><div>Licensor.</div><div>4.2 Output: All rights, title, and interest in and to the Output generated by the Model and Derivatives</div><div>whether in its original form or modified, are and shall remain the exclusive property of the Licensor.</div><div>Licensee may use, modify, and distribute the Output and its derivatives for research purpose. The Licensee</div><div>shall not claim ownership of the Output except as expressly provided in this Agreement. The Licensee may</div><div>use the Output solely for the purposes permitted under this Agreement and shall not exploit the Output for</div><div>unauthorized or commercial purposes.</div><div>4.3 Attribution: In any publication or presentation of results obtained using the Model, the Licensee</div><div>shall provide appropriate attribution to the Licensor, citing the Model&#x27;s name and version, along with any</div><div>relevant documentation or references specified by the Licensor.</div><div></div><div>5. No Warranty</div><div>5.1 “As-Is” Basis: The Model, Derivatives, and Output are provided on an “as-is” and “as-available” basis,</div><div>without any warranties or representations of any kind, whether express, implied, or statutory. The</div><div>Licensor disclaims all warranties, including but not limited to, implied warranties of merchantability,</div><div>fitness for a particular purpose, accuracy, reliability, non-infringement, or any warranty arising from</div><div>the course of dealing or usage of trade.</div><div>5.2 Performance and Reliability: The Licensor does not warrant or guarantee that the Model, Derivatives or</div><div>Output will meet the Licensee’s requirements, that the operation of the Model, Derivatives or Output will</div><div>be uninterrupted or error-free, or that defects in the Model will be corrected. The Licensee acknowledges</div><div>that the use of the Model, Derivatives or Output is at its own risk and that the Model, Derivatives or</div><div>Output may contain bugs, errors, or other limitations.</div><div>5.3 No Endorsement: The Licensor does not endorse, approve, or certify any results, conclusions, or</div><div>recommendations derived from the use of the Model. The Licensee is solely responsible for evaluating the</div><div>accuracy, reliability, and suitability of the Model for its intended purposes.</div><div></div><div>6. Limitation of Liability</div><div>6.1 No Liability for Damages: To the fullest extent permitted by applicable law, in no event shall the</div><div>Licensor be liable for any special, incidental, indirect, consequential, exemplary, or punitive damages,</div><div>including but not limited to, damages for loss of business profits, business interruption, loss of</div><div>business information, loss of data, or any other pecuniary or non-pecuniary loss arising out of or in</div><div>connection with the use or inability to use the Model, Derivatives or any Output, even if the Licensor has</div><div>been advised of the possibility of such damages.</div><div>6.2 Indemnification: The Licensee agrees to indemnify, defend, and hold harmless the Licensor, its</div><div>affiliates, officers, directors, employees, and agents from and against any claims, liabilities, damages,</div><div>losses, costs, or expenses (including reasonable attorneys&#x27; fees) arising out of or related to the</div><div>Licensee&#x27;s use of the Model, any Derivatives, or any Output, including any violation of this Agreement or</div><div>applicable laws.</div><div></div><div>7. Termination</div><div>7.1 Termination by Licensor: The Licensor reserves the right to terminate this Agreement and revoke the</div><div>Licensee’s rights to use the Model at any time, with or without cause, and without prior notice if the</div><div>Licensee breaches any of the terms or conditions of this Agreement. Termination shall be effective</div><div>immediately upon notice.</div><div>7.2 Effect of Termination: Upon termination of this Agreement, the Licensee must immediately cease all use</div><div>of the Model, Derivatives, and Output and destroy all copies of the Model, Derivatives, and Output in its</div><div>possession or control, including any backup or archival copies. The Licensee shall certify in writing to</div><div>the Licensor that such destruction has been completed.</div><div>7.3 Survival: The provisions of this Agreement that by their nature should survive termination, including</div><div>but not limited to, Sections 4 (Ownership), 5 (No Warranty), 6 (Limitation of Liability), and this Section</div><div>7 (Termination), shall continue to apply after termination.</div><div></div><div>8. Governing Law</div><div>8.1 Governing Law: This Agreement shall be governed by and construed in accordance with the laws of the</div><div>Republic of Korea, without regard to its conflict of laws principles.</div><div>8.2 Arbitration: Any disputes, controversies, or claims arising out of or relating to this Agreement,</div><div>including its existence, validity, interpretation, performance, breach, or termination, shall be referred</div><div>to and finally resolved by arbitration administered by the Korean Commercial Arbitration Board (KCAB) in</div><div>accordance with the International Arbitration Rules of the Korean Commercial Arbitration Board in force at</div><div>the time of the commencement of the arbitration. The seat of arbitration shall be Seoul, Republic of</div><div>Korea. The tribunal shall consist of one arbitrator. The language of the arbitration shall be English.</div><div></div><div>9. Alterations</div><div>9.1 Modifications: The Licensor reserves the right to modify or amend this Agreement at any time, in its</div><div>sole discretion. Any modifications will be effective upon posting the updated Agreement on the Licensor’s</div><div>website or through other means of communication. The Licensee is responsible for reviewing the Agreement</div><div>periodically for changes. Continued use of the Model after any modifications have been made constitutes</div><div>acceptance of the revised Agreement.</div><div>9.2 Entire Agreement: This Agreement constitutes the entire agreement between the Licensee and Licensor</div><div>concerning the subject matter hereof and supersedes all prior or contemporaneous oral or written</div><div>agreements, representations, or understandings. Any terms or conditions of any purchase order or other</div><div>document submitted by the Licensee in connection with the Model that are in addition to, different from,</div><div>or inconsistent with the terms and conditions of this Agreement are not binding on the Licensor and are</div><div>void.</div><div></div><div>By downloading, installing, or using the EXAONE AI Model, the Licensee acknowledges that it has read,</div><div>understood, and agrees to be bound by the terms and conditions of this Agreement.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="mt-auto">
+  <div class="underline-offset-4 hidden md:block">
+    <div class="flex items-center justify-between px-6 py-3.5">
+      <div class="text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="/ollama-search/maternion/" class="hover:underline">Maternion</a></div>
+      <div class="flex space-x-6 text-xs text-neutral-500 dark:text-neutral-400">
+        <a href="https://ollama.com/download" class="hover:underline">Download</a>
+        <a href="https://ollama.com/blog" class="hover:underline">Blog</a>
+        <a href="https://docs.ollama.com" class="hover:underline">Docs</a>
+        <a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a>
+        <a href="https://ollama.com/pricing" class="hover:underline">Pricing</a>
+      </div>
+    </div>
+  </div>
+  <div class="py-4 md:hidden">
+    <ul class="flex flex-col items-center space-y-2 text-xs text-neutral-500 dark:text-neutral-400">
+      <li><a href="https://ollama.com/download" class="hover:underline">Download</a></li>
+      <li><a href="https://ollama.com/blog" class="hover:underline">Blog</a></li>
+      <li><a href="https://docs.ollama.com" class="hover:underline">Docs</a></li>
+      <li><a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a></li>
+      <li><a href="https://ollama.com/pricing" class="hover:underline">Pricing</a></li>
+    </ul>
+    <div class="mt-4 text-center text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="/ollama-search/maternion/" class="hover:underline">Maternion</a></div>
+  </div>
+</footer>
+<script>
+(function() {
+  function toggle() {
+    var isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+var NAV_MODELS = null;
+var NAV_BASE = (function() {
+  var s = document.querySelector('script[src*="assets/app.js"]');
+  if (s) {
+    var src = s.getAttribute('src');
+    var idx = src.indexOf('assets/app.js');
+    if (idx > 0) return src.substring(0, idx);
+  }
+  return '/';
+})();
+
+function loadNavModels(cb) {
+  if (NAV_MODELS) { cb(NAV_MODELS); return; }
+  var cached = null;
+  try { cached = sessionStorage.getItem('nav-models'); } catch (e) {}
+  if (cached) {
+    try { NAV_MODELS = JSON.parse(cached); cb(NAV_MODELS); return; } catch (e) {}
+  }
+  fetch(NAV_BASE + 'assets/models.json').then(function(r) { return r.json(); }).then(function(data) {
+    NAV_MODELS = data;
+    try { sessionStorage.setItem('nav-models', JSON.stringify(data)); } catch (e) {}
+    cb(NAV_MODELS);
+  }).catch(function() { cb([]); });
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function renderNavSuggest(query) {
+  var sp = document.getElementById('searchpreview');
+  if (!sp) return;
+  var q = query.toLowerCase().trim();
+  if (!q) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
+
+  var html = '<div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl w-full shadow-2xl shadow-black/5 overflow-hidden" id="search-preview-container" tabindex="0">';
+  html += '<div role="list" id="search-preview-list" class="group">';
+
+  var results = [];
+  for (var i = 0; i < NAV_MODELS.length; i++) {
+    var m = NAV_MODELS[i];
+    var name = m.name || '';
+    var desc = m.description || '';
+    if (name.toLowerCase().indexOf(q) !== -1 || desc.toLowerCase().indexOf(q) !== -1) {
+      results.push(m);
+    }
+  }
+  results.sort(function(a, b) { return (b.pulls || 0) - (a.pulls || 0); });
+  var top = results.slice(0, 5);
+
+  if (top.length === 0) {
+    html += '<div class="px-6 py-4 text-neutral-800 dark:text-neutral-300 text-sm">No models found.</div>';
+  } else {
+    for (var i = 0; i < top.length; i++) {
+      var m = top[i];
+      var path = m.path || ('/library/' + m.name);
+      html += '<div result>';
+      html += '<a tabindex="0" href="' + NAV_BASE + path.replace(/^\//, '') + '" class="flex items-center h-16 px-6 py-4 hover:bg-neutral-50 dark:hover:bg-white/5 focus:ring-0 focus:outline-none focus:bg-neutral-50 dark:focus:bg-white/5">';
+      html += '<div class="min-w-0 flex-1">';
+      html += '<h2 class="text-sm font-medium truncate dark:text-neutral-100">' + escHtml(m.name) + '</h2>';
+      html += '<p class="text-xs text-gray-600 dark:text-gray-600 truncate">' + escHtml(m.description) + '</p>';
+      html += '</div></a></div>';
+    }
+  }
+
+  html += '</div>';
+  html += '<a tabindex="0" id="view-all-link" href="' + NAV_BASE + '?q=' + encodeURIComponent(query) + '" class="' + (top.length === 0 ? 'hidden' : '') + ' block px-6 py-3 border-t border-neutral-200 dark:border-neutral-800 text-center text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-white/5 focus:bg-neutral-50 dark:focus:bg-white/5 focus:outline-none focus:ring-0 dark:text-neutral-200">View all &#8594;</a>';
+  html += '</div>';
+
+  sp.innerHTML = html;
+  sp.classList.remove('hidden');
+}
+
+var navSuggestTimer = null;
+function initNavSuggest() {
+  var input = document.getElementById('navbar-input');
+  var sp = document.getElementById('searchpreview');
+  if (!input || !sp) return;
+
+  input.addEventListener('input', function() {
+    if (navSuggestTimer) clearTimeout(navSuggestTimer);
+    navSuggestTimer = setTimeout(function() {
+      var v = input.value;
+      if (!v.trim()) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
+      loadNavModels(function() { renderNavSuggest(v); });
+    }, 100);
+  });
+
+  sp.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      sp.classList.add('hidden');
+      input.focus();
+      e.preventDefault();
+      return;
+    }
+    if (e.key === 'Enter') {
+      var el = document.activeElement;
+      if (el && el.tagName === 'A') { el.click(); e.preventDefault(); return; }
+    }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      var items = Array.from(sp.querySelectorAll('#search-preview-list a, #view-all-link'));
+      var ci = items.indexOf(document.activeElement);
+      var ni = e.key === 'ArrowDown' ? ci + 1 : ci - 1;
+      if (ni >= items.length) ni = 0;
+      if (ni < 0) ni = items.length - 1;
+      if (items[ni]) items[ni].focus();
+      e.preventDefault();
+    }
+  });
+}
+
+function initSearch() {
+    document.getElementById('theme-toggle')?.addEventListener('click', toggle);
+    document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggle);
+  });
+})();
+</script>
+<script src="/ollama-search/assets/app.js"></script>
+</body>
+</html>

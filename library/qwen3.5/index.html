@@ -181,29 +181,1722 @@ console.log(response.message.content)</pre>
   </div>
 </section>
     
+<section class="flex flex-1 flex-col mb-8" id="external-tools-section">
+  <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100 mb-4">Applications</h2>
+  <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
+    <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
+      <div class="group flex items-center justify-between px-4 py-3">
+        <div class="flex items-center gap-3">
+          <img src="https://ollama.com/public/claude.png" class="w-8 h-8" alt="Claude Code" />
+          <div class="flex flex-col">
+            <span class="text-sm font-medium text-neutral-800 dark:text-neutral-200">Claude Code</span>
+            <code class="text-[13px] text-neutral-500 dark:text-neutral-400 font-mono">ollama launch claude --model qwen3.5</code>
+          </div>
+        </div>
+        <input class="command hidden" value="ollama launch claude --model qwen3.5" />
+        <button class="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 rounded" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();" title="Copy">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </div>
+      <div class="group flex items-center justify-between px-4 py-3">
+        <div class="flex items-center gap-3">
+          <img src="https://ollama.com/public/codex-app.png" class="w-8 h-8" alt="Codex App" />
+          <div class="flex flex-col">
+            <span class="text-sm font-medium text-neutral-800 dark:text-neutral-200">Codex App</span>
+            <code class="text-[13px] text-neutral-500 dark:text-neutral-400 font-mono">ollama launch codex-app --model qwen3.5</code>
+          </div>
+        </div>
+        <input class="command hidden" value="ollama launch codex-app --model qwen3.5" />
+        <button class="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 rounded" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();" title="Copy">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </div>
+      <div class="group flex items-center justify-between px-4 py-3">
+        <div class="flex items-center gap-3">
+          <img src="https://ollama.com/public/openclaw.png" class="w-8 h-8" alt="OpenClaw" />
+          <div class="flex flex-col">
+            <span class="text-sm font-medium text-neutral-800 dark:text-neutral-200">OpenClaw</span>
+            <code class="text-[13px] text-neutral-500 dark:text-neutral-400 font-mono">ollama launch openclaw --model qwen3.5</code>
+          </div>
+        </div>
+        <input class="command hidden" value="ollama launch openclaw --model qwen3.5" />
+        <button class="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 rounded" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();" title="Copy">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </div>
+      <div class="group flex items-center justify-between px-4 py-3">
+        <div class="flex items-center gap-3">
+          <img src="https://ollama.com/public/hermes.png" class="w-8 h-8" alt="Hermes Agent" />
+          <div class="flex flex-col">
+            <span class="text-sm font-medium text-neutral-800 dark:text-neutral-200">Hermes Agent</span>
+            <code class="text-[13px] text-neutral-500 dark:text-neutral-400 font-mono">ollama launch hermes --model qwen3.5</code>
+          </div>
+        </div>
+        <input class="command hidden" value="ollama launch hermes --model qwen3.5" />
+        <button class="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 rounded" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();" title="Copy">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </div>
+      <div class="group flex items-center justify-between px-4 py-3">
+        <div class="flex items-center gap-3">
+          <img src="https://ollama.com/public/openai.png" class="w-8 h-8" alt="Codex" />
+          <div class="flex flex-col">
+            <span class="text-sm font-medium text-neutral-800 dark:text-neutral-200">Codex</span>
+            <code class="text-[13px] text-neutral-500 dark:text-neutral-400 font-mono">ollama launch codex --model qwen3.5</code>
+          </div>
+        </div>
+        <input class="command hidden" value="ollama launch codex --model qwen3.5" />
+        <button class="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 rounded" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();" title="Copy">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </div>
+      <div class="group flex items-center justify-between px-4 py-3">
+        <div class="flex items-center gap-3">
+          <img src="https://ollama.com/public/opencode.png" class="w-8 h-8" alt="OpenCode" />
+          <div class="flex flex-col">
+            <span class="text-sm font-medium text-neutral-800 dark:text-neutral-200">OpenCode</span>
+            <code class="text-[13px] text-neutral-500 dark:text-neutral-400 font-mono">ollama launch opencode --model qwen3.5</code>
+          </div>
+        </div>
+        <input class="command hidden" value="ollama launch opencode --model qwen3.5" />
+        <button class="p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 rounded" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();" title="Copy">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
     <section class="flex flex-1 flex-col">
   <div class="flex items-center justify-between mb-4">
     <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Models</h2>
-    <a href="/ollama-search/library/qwen3.5/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all 0 &#8594;</a>
+    <a href="/ollama-search/library/qwen3.5/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all 64 &#8594;</a>
   </div>
-  
+  <div class="flex flex-wrap gap-2 mb-4">
+  <div class="relative inline-block">
+    <input type="radio" name="fmt" value="all" id="fmt-all" class="peer sr-only fmt-radio" data-fmt="all" checked>
+    <label for="fmt-all" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-300 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">All (64)</label>
+  </div>
+  <div class="relative inline-block">
+    <input type="radio" name="fmt" value="gguf" id="fmt-gguf" class="peer sr-only fmt-radio" data-fmt="gguf">
+    <label for="fmt-gguf" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-300 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">GGUF (36)</label>
+  </div>
+  <div class="relative inline-block">
+    <input type="radio" name="fmt" value="mlx" id="fmt-mlx" class="peer sr-only fmt-radio" data-fmt="mlx">
+    <label for="fmt-mlx" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-300 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">MLX (28)</label>
+  </div>
+</div>
   <div id="models-table-all" class="fmt-table">
   <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
     <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
       <div class="items-center grid bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs grid-cols-12 text-neutral-900 dark:text-neutral-100">
         <p class="hidden sm:block col-span-6">Name</p>
-        <p class="sm:hidden col-span-6">0 models</p>
+        <p class="sm:hidden col-span-6">64 models</p>
         <p class="col-span-2 hidden sm:block">Size / Usage</p>
         <p class="col-span-2 hidden sm:block">Context</p>
         <p class="col-span-2 hidden sm:block">Input</p>
       </div>
-      
+            <a href="/ollama-search/library/qwen3.5/:latest/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:latest</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">6.6GB · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:latest/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:latest</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:latest" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">6.6GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:0.8b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">1.0GB · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:0.8b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:0.8b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">1.0GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:2b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">2.7GB · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:2b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:2b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">2.7GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:4b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">3.4GB · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:4b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:4b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">3.4GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:9b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b</p>
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">6.6GB · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:9b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b</a>
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+          
+          <input class="command hidden" value="qwen3.5:9b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">6.6GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:27b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">17GB · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:27b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:27b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">17GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:35b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">24GB · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:35b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:35b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">24GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:122b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:122b</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">81GB · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:122b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:122b</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:122b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">81GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:0.8b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b-mlx</p>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">1.2GB · 256K context window · Text, Image · 1 month ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:0.8b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b-mlx</a>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+          <input class="command hidden" value="qwen3.5:0.8b-mlx" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">1.2GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:2b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b-mlx</p>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">3.1GB · 256K context window · Text, Image · 1 month ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:2b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b-mlx</a>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+          <input class="command hidden" value="qwen3.5:2b-mlx" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">3.1GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:4b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b-mlx</p>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">4.0GB · 256K context window · Text, Image · 1 month ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:4b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b-mlx</a>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+          <input class="command hidden" value="qwen3.5:4b-mlx" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">4.0GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:9b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b-mlx</p>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">8.9GB · 256K context window · Text, Image · 1 month ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:9b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b-mlx</a>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+          <input class="command hidden" value="qwen3.5:9b-mlx" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">8.9GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:27b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b-mlx</p>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">20GB · 256K context window · Text, Image · 1 month ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:27b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b-mlx</a>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+          <input class="command hidden" value="qwen3.5:27b-mlx" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">20GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:35b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b-mlx</p>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">22GB · 256K context window · Text, Image · 1 month ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:35b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b-mlx</a>
+          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
+          <input class="command hidden" value="qwen3.5:35b-mlx" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">22GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:cloud/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:cloud</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">Medium Usage · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:cloud/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:cloud</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:cloud" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-cost class="col-span-2 flex items-center gap-0.5 text-neutral-500 dark:text-neutral-400"><span x-test-model-tag-usage-slot-active class="block h-1 w-4 rounded-full bg-neutral-800 dark:bg-neutral-200"></span><span x-test-model-tag-usage-slot-active class="block h-1 w-4 rounded-full bg-neutral-800 dark:bg-neutral-200"></span><span x-test-model-tag-usage-slot-inactive class="block h-1 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700"></span><span x-test-model-tag-usage-slot-inactive class="block h-1 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700"></span></p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:397b-cloud/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:397b-cloud</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">Medium Usage · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:397b-cloud/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:397b-cloud</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:397b-cloud" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-cost class="col-span-2 flex items-center gap-0.5 text-neutral-500 dark:text-neutral-400"><span x-test-model-tag-usage-slot-active class="block h-1 w-4 rounded-full bg-neutral-800 dark:bg-neutral-200"></span><span x-test-model-tag-usage-slot-active class="block h-1 w-4 rounded-full bg-neutral-800 dark:bg-neutral-200"></span><span x-test-model-tag-usage-slot-inactive class="block h-1 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700"></span><span x-test-model-tag-usage-slot-inactive class="block h-1 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700"></span></p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="models-table-gguf" class="fmt-table hidden">
+  <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
+    <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
+      <div class="items-center grid bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs grid-cols-12 text-neutral-900 dark:text-neutral-100">
+        <p class="hidden sm:block col-span-6">Name</p>
+        <p class="sm:hidden col-span-6">64 models</p>
+        <p class="col-span-2 hidden sm:block">Size / Usage</p>
+        <p class="col-span-2 hidden sm:block">Context</p>
+        <p class="col-span-2 hidden sm:block">Input</p>
+      </div>
+            <a href="/ollama-search/library/qwen3.5/:latest/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:latest</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">6.6GB · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:latest/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:latest</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:latest" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">6.6GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:0.8b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">1.0GB · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:0.8b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:0.8b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">1.0GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:2b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">2.7GB · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:2b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:2b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">2.7GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:4b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">3.4GB · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:4b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:4b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">3.4GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:9b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b</p>
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">6.6GB · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:9b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b</a>
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
+          
+          <input class="command hidden" value="qwen3.5:9b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">6.6GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:27b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">17GB · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:27b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:27b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">17GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:35b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">24GB · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:35b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:35b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">24GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:122b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:122b</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">81GB · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:122b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:122b</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:122b" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">81GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:cloud/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:cloud</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">Medium Usage · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:cloud/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:cloud</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:cloud" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-cost class="col-span-2 flex items-center gap-0.5 text-neutral-500 dark:text-neutral-400"><span x-test-model-tag-usage-slot-active class="block h-1 w-4 rounded-full bg-neutral-800 dark:bg-neutral-200"></span><span x-test-model-tag-usage-slot-active class="block h-1 w-4 rounded-full bg-neutral-800 dark:bg-neutral-200"></span><span x-test-model-tag-usage-slot-inactive class="block h-1 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700"></span><span x-test-model-tag-usage-slot-inactive class="block h-1 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700"></span></p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:397b-cloud/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:397b-cloud</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">Medium Usage · 256K context window · Text, Image · 4 months ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:397b-cloud/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:397b-cloud</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:397b-cloud" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-cost class="col-span-2 flex items-center gap-0.5 text-neutral-500 dark:text-neutral-400"><span x-test-model-tag-usage-slot-active class="block h-1 w-4 rounded-full bg-neutral-800 dark:bg-neutral-200"></span><span x-test-model-tag-usage-slot-active class="block h-1 w-4 rounded-full bg-neutral-800 dark:bg-neutral-200"></span><span x-test-model-tag-usage-slot-inactive class="block h-1 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700"></span><span x-test-model-tag-usage-slot-inactive class="block h-1 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700"></span></p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="models-table-mlx" class="fmt-table hidden">
+  <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
+    <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
+      <div class="items-center grid bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs grid-cols-12 text-neutral-900 dark:text-neutral-100">
+        <p class="hidden sm:block col-span-6">Name</p>
+        <p class="sm:hidden col-span-6">64 models</p>
+        <p class="col-span-2 hidden sm:block">Size / Usage</p>
+        <p class="col-span-2 hidden sm:block">Context</p>
+        <p class="col-span-2 hidden sm:block">Input</p>
+      </div>
+            <a href="/ollama-search/library/qwen3.5/:0.8b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b-mlx</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">1.2GB · 256K context window · Text, Image · 1 month ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:0.8b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b-mlx</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:0.8b-mlx" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">1.2GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:2b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b-mlx</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">3.1GB · 256K context window · Text, Image · 1 month ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:2b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b-mlx</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:2b-mlx" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">3.1GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:4b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b-mlx</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">4.0GB · 256K context window · Text, Image · 1 month ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:4b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b-mlx</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:4b-mlx" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">4.0GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:9b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b-mlx</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">8.9GB · 256K context window · Text, Image · 1 month ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:9b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b-mlx</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:9b-mlx" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">8.9GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:27b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b-mlx</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">20GB · 256K context window · Text, Image · 1 month ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:27b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b-mlx</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:27b-mlx" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">20GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
+      <a href="/ollama-search/library/qwen3.5/:35b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+        <span class="flex items-center">
+          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b-mlx</p>
+          
+          
+        </span>
+        <p class="flex text-neutral-500 dark:text-neutral-400">22GB · 256K context window · Text, Image · 1 month ago</p>
+      </a>
+      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
+        <span class="col-span-6 flex items-center">
+          <a href="/ollama-search/library/qwen3.5/:35b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b-mlx</a>
+          
+          
+          <input class="command hidden" value="qwen3.5:35b-mlx" />
+          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
+            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+          </button>
+        </span>
+        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">22GB</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
+        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
+      </div>
     </div>
   </div>
 </div>
 </section>
   </div>
-  
+  <div class="flex flex-1 flex-col py-8" id="readme">
+  <div class="flex items-center justify-between pb-1">
+    <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Readme</h2>
+  </div>
+  <div>
+    <div id="display" class="prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black dark:prose-headings:text-neutral-200 dark:prose-blockquote:text-neutral-400 dark:prose-code:bg-neutral-800 dark:prose-code:text-neutral-200 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-200 dark:prose-li:text-neutral-200 dark:prose-td:text-neutral-300 dark:prose-th:text-neutral-200 dark:prose-a:text-blue-400 dark:prose-strong:text-neutral-200 dark:marker:prose-ol:text-neutral-400 dark:marker:prose-ul:text-neutral-400 dark:text-neutral-200">
+      
+        
+          <p><img src="https://ollama.com/assets/library/qwen3.5/b6074711-2930-4f09-93b7-4f65ae7a3576" width="360"/></p>
+
+<p>Over recent months, we have intensified our focus on developing foundation models that deliver exceptional utility and performance. Qwen3.5 represents a significant leap forward, integrating breakthroughs in multimodal learning, architectural efficiency, reinforcement learning scale, and global accessibility to empower developers and enterprises with unprecedented capability and efficiency.</p>
+
+<h2>Highlights</h2>
+
+<p>Qwen3.5 features the following enhancement:</p>
+
+<ul>
+<li><p><strong>Unified Vision-Language Foundation</strong>: Early fusion training on multimodal tokens achieves cross-generational parity with Qwen3 and outperforms Qwen3-VL models across reasoning, coding, agents, and visual understanding benchmarks.</p></li>
+
+<li><p><strong>Efficient Hybrid Architecture</strong>: Gated Delta Networks combined with sparse Mixture-of-Experts deliver high-throughput inference with minimal latency and cost overhead.</p></li>
+
+<li><p><strong>Scalable RL Generalization</strong>: Reinforcement learning scaled across million-agent environments with progressively complex task distributions for robust real-world adaptability.</p></li>
+
+<li><p><strong>Global Linguistic Coverage</strong>: Expanded support to 201 languages and dialects, enabling inclusive, worldwide deployment with nuanced cultural and regional understanding.</p></li>
+
+<li><p><strong>Next-Generation Training Infrastructure</strong>: Near-100% multimodal training efficiency compared to text-only training and asynchronous RL frameworks supporting massive-scale agent scaffolds and environment orchestration.</p></li>
+</ul>
+
+<h2>Benchmarks</h2>
+
+<p><img src="https://ollama.com/assets/library/qwen3.5/1c5d9a27-97b2-4d6d-a1b1-d326259acae5" alt="benchmark"/></p>
+
+<h3>Language</h3>
+
+<div>
+<table>
+<thead><tr>
+<th></th>
+<th>GPT5.2</th>
+<th>Claude 4.5 Opus</th>
+<th>Gemini-3 Pro</th>
+<th>Qwen3-Max-Thinking</th>
+<th>K2.5-1T-A32B</th>
+<th>Qwen3.5-397B-A17B</th>
+</tr></thead>
+<tbody>
+<tr><td colspan="7">Knowledge</td></tr>
+<tr>
+<td>MMLU-Pro</td>
+<td>87.4</td>
+<td>89.5</td>
+<td>89.8</td>
+<td>85.7</td>
+<td>87.1</td>
+<td>87.8</td>
+</tr>
+<tr>
+<td>MMLU-Redux</td>
+<td>95.0</td>
+<td>95.6</td>
+<td>95.9</td>
+<td>92.8</td>
+<td>94.5</td>
+<td>94.9</td>
+</tr>
+<tr>
+<td>SuperGPQA</td>
+<td>67.9</td>
+<td>70.6</td>
+<td>74.0</td>
+<td>67.3</td>
+<td>69.2</td>
+<td>70.4</td>
+</tr>
+<tr>
+<td>C-Eval</td>
+<td>90.5</td>
+<td>92.2</td>
+<td>93.4</td>
+<td>93.7</td>
+<td>94.0</td>
+<td>93.0</td>
+</tr>
+<tr><td colspan="7">Instruction Following</td></tr>
+<tr>
+<td>IFEval</td>
+<td>94.8</td>
+<td>90.9</td>
+<td>93.5</td>
+<td>93.4</td>
+<td>93.9</td>
+<td>92.6</td>
+</tr>
+<tr>
+<td>IFBench</td>
+<td>75.4</td>
+<td>58.0</td>
+<td>70.4</td>
+<td>70.9</td>
+<td>70.2</td>
+<td>76.5</td>
+</tr>
+<tr>
+<td>MultiChallenge</td>
+<td>57.9</td>
+<td>54.2</td>
+<td>64.2</td>
+<td>63.3</td>
+<td>62.7</td>
+<td>67.6</td>
+</tr>
+<tr><td colspan="7">Long Context</td></tr>
+<tr>
+<td>AA-LCR</td>
+<td>72.7</td>
+<td>74.0</td>
+<td>70.7</td>
+<td>68.7</td>
+<td>70.0</td>
+<td>68.7</td>
+</tr>
+<tr>
+<td>LongBench v2</td>
+<td>54.5</td>
+<td>64.4</td>
+<td>68.2</td>
+<td>60.6</td>
+<td>61.0</td>
+<td>63.2</td>
+</tr>
+<tr><td colspan="7">STEM</td></tr>
+<tr>
+<td>GPQA</td>
+<td>92.4</td>
+<td>87.0</td>
+<td>91.9</td>
+<td>87.4</td>
+<td>87.6</td>
+<td>88.4</td>
+</tr>
+<tr>
+<td>HLE</td>
+<td>35.5</td>
+<td>30.8</td>
+<td>37.5</td>
+<td>30.2</td>
+<td>30.1</td>
+<td>28.7</td>
+</tr>
+<tr>
+<td>HLE-Verified¹</td>
+<td>43.3</td>
+<td>38.8</td>
+<td>48</td>
+<td>37.6</td>
+<td>--</td>
+<td>37.6</td>
+</tr>
+<tr><td colspan="7">Reasoning</td></tr>
+<tr>
+<td>LiveCodeBench v6</td>
+<td>87.7</td>
+<td>84.8</td>
+<td>90.7</td>
+<td>85.9</td>
+<td>85.0</td>
+<td>83.6</td>
+</tr>
+<tr>
+<td>HMMT Feb 25</td>
+<td>99.4</td>
+<td>92.9</td>
+<td>97.3</td>
+<td>98.0</td>
+<td>95.4</td>
+<td>94.8</td>
+</tr>
+<tr>
+<td>HMMT Nov 25</td>
+<td>100</td>
+<td>93.3</td>
+<td>93.3</td>
+<td>94.7</td>
+<td>91.1</td>
+<td>92.7</td>
+</tr>
+<tr>
+<td>IMOAnswerBench</td>
+<td>86.3</td>
+<td>84.0</td>
+<td>83.3</td>
+<td>83.9</td>
+<td>81.8</td>
+<td>80.9</td>
+</tr>
+<tr>
+<td>AIME26</td>
+<td>96.7</td>
+<td>93.3</td>
+<td>90.6</td>
+<td>93.3</td>
+<td>93.3</td>
+<td>91.3</td>
+</tr>
+<tr><td colspan="7">General Agent</td></tr>
+<tr>
+<td>BFCL-V4</td>
+<td>63.1</td>
+<td>77.5</td>
+<td>72.5</td>
+<td>67.7</td>
+<td>68.3</td>
+<td>72.9</td>
+</tr>
+<tr>
+<td>TAU2-Bench</td>
+<td>87.1</td>
+<td>91.6</td>
+<td>85.4</td>
+<td>84.6</td>
+<td>77.0</td>
+<td>86.7</td>
+</tr>
+<tr>
+<td>VITA-Bench</td>
+<td>38.2</td>
+<td>56.3</td>
+<td>51.6</td>
+<td>40.9</td>
+<td>41.9</td>
+<td>49.7</td>
+</tr>
+<tr>
+<td>DeepPlanning</td>
+<td>44.6</td>
+<td>33.9</td>
+<td>23.3</td>
+<td>28.7</td>
+<td>14.5</td>
+<td>34.3</td>
+</tr>
+<tr>
+<td>Tool Decathlon</td>
+<td>43.8</td>
+<td>43.5</td>
+<td>36.4</td>
+<td>18.8</td>
+<td>27.8</td>
+<td>38.3</td>
+</tr>
+<tr>
+<td>MCP-Mark</td>
+<td>57.5</td>
+<td>42.3</td>
+<td>53.9</td>
+<td>33.5</td>
+<td>29.5</td>
+<td>46.1</td>
+</tr>
+<tr><td colspan="7">Search Agent³</td></tr>
+<tr>
+<td>HLE w/ tool</td>
+<td>45.5</td>
+<td>43.4</td>
+<td>45.8</td>
+<td>49.8</td>
+<td>50.2</td>
+<td>48.3</td>
+</tr>
+<tr>
+<td>BrowseComp</td>
+<td>65.8</td>
+<td>67.8</td>
+<td>59.2</td>
+<td>53.9</td>
+<td>--/74.9</td>
+<td>69.0/78.6</td>
+</tr>
+<tr>
+<td>BrowseComp-zh</td>
+<td>76.1</td>
+<td>62.4</td>
+<td>66.8</td>
+<td>60.9</td>
+<td>--</td>
+<td>70.3</td>
+</tr>
+<tr>
+<td>WideSearch</td>
+<td>76.8</td>
+<td>76.4</td>
+<td>68.0</td>
+<td>57.9</td>
+<td>72.7</td>
+<td>74.0</td>
+</tr>
+<tr>
+<td>Seal-0</td>
+<td>45.0</td>
+<td>47.7</td>
+<td>45.5</td>
+<td>46.9</td>
+<td>57.4</td>
+<td>46.9</td>
+</tr>
+<tr><td colspan="7">Multilingualism</td></tr>
+<tr>
+<td>MMMLU</td>
+<td>89.5</td>
+<td>90.1</td>
+<td>90.6</td>
+<td>84.4</td>
+<td>86.0</td>
+<td>88.5</td>
+</tr>
+<tr>
+<td>MMLU-ProX</td>
+<td>83.7</td>
+<td>85.7</td>
+<td>87.7</td>
+<td>78.5</td>
+<td>82.3</td>
+<td>84.7</td>
+</tr>
+<tr>
+<td>NOVA-63</td>
+<td>54.6</td>
+<td>56.7</td>
+<td>56.7</td>
+<td>54.2</td>
+<td>56.0</td>
+<td>59.1</td>
+</tr>
+<tr>
+<td>INCLUDE</td>
+<td>87.5</td>
+<td>86.2</td>
+<td>90.5</td>
+<td>82.3</td>
+<td>83.3</td>
+<td>85.6</td>
+</tr>
+<tr>
+<td>Global PIQA</td>
+<td>90.9</td>
+<td>91.6</td>
+<td>93.2</td>
+<td>86.0</td>
+<td>89.3</td>
+<td>89.8</td>
+</tr>
+<tr>
+<td>PolyMATH</td>
+<td>62.5</td>
+<td>79.0</td>
+<td>81.6</td>
+<td>64.7</td>
+<td>43.1</td>
+<td>73.3</td>
+</tr>
+<tr>
+<td>WMT24++</td>
+<td>78.8</td>
+<td>79.7</td>
+<td>80.7</td>
+<td>77.6</td>
+<td>77.6</td>
+<td>78.9</td>
+</tr>
+<tr>
+<td>MAXIFE</td>
+<td>88.4</td>
+<td>79.2</td>
+<td>87.5</td>
+<td>84.0</td>
+<td>72.8</td>
+<td>88.2</td>
+</tr>
+<tr><td colspan="7">Coding Agent</td></tr>
+<tr>
+<td>SWE-bench Verified</td>
+<td>80.0</td>
+<td>80.9</td>
+<td>76.2</td>
+<td>75.3</td>
+<td>76.8</td>
+<td>76.2</td>
+</tr>
+<tr>
+<td>SWE-bench Multilingual</td>
+<td>72.0</td>
+<td>77.5</td>
+<td>65.0</td>
+<td>66.7</td>
+<td>73.0</td>
+<td>69.3</td>
+</tr>
+<tr>
+<td>SecCodeBench</td>
+<td>68.7</td>
+<td>68.6</td>
+<td>62.4</td>
+<td>57.5</td>
+<td>61.3</td>
+<td>68.3</td>
+</tr>
+<tr>
+<td>Terminal Bench 2</td>
+<td>54.0</td>
+<td>59.3</td>
+<td>54.2</td>
+<td>22.5</td>
+<td>50.8</td>
+<td>52.5</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+* HLE-Verified: a verified and revised version of Humanity’s Last Exam (HLE), accompanied by a transparent, component-wise verification protocol and a fine-grained error taxonomy. We open-source the dataset at https://huggingface.co/datasets/skylenage/HLE-Verified.<br>
+* TAU2-Bench: we follow the official setup except for the airline domain, where all models are evaluated by applying the fixes proposed in the Claude Opus 4.5 system card.<br>
+* MCPMark: GitHub MCP server uses v0.30.3 from api.githubcopilot.com; Playwright tool responses are truncated at 32k tokens.<br>
+* Search Agent: most search agents built on our model adopt a simple context-folding strategy(256k): once the cumulative Tool Response length reaches a preset threshold, earlier Tool Responses are pruned from the history to keep the context within limits.<br>
+* BrowseComp: we tested two strategies, simple context-folding achieved a score of 69.0, while using the same discard-all strategy as DeepSeek-V3.2 and Kimi K2.5 achieved 78.6.<br>
+* WideSearch: we use a 256k context window without any context management.<br>
+* MMLU-ProX: we report the averaged accuracy on 29 languages.<br>
+* WMT24++: a harder subset of WMT24 after difficulty labeling and rebalancing; we report the averaged scores on 55 languages using XCOMET-XXL.<br>
+* MAXIFE: we report the accuracy on English + multilingual original prompts (totally 23 settings).<br>
+* Empty cells (--) indicate scores not yet available or not applicable.<br>
+</p>
+
+</div>
+
+<h3>Vision Language</h3>
+
+<p><div>
+<table>
+<thead><tr>
+<th></th>
+<th>GPT5.2</th>
+<th>Claude 4.5 Opus</th>
+<th>Gemini-3 Pro</th>
+<th>Qwen3-VL-235B-A22B</th>
+<th>K2.5-1T-A32B</th>
+<th>Qwen3.5-397B-A17B</th>
+</tr></thead>
+<tbody>
+<tr><td colspan="7">STEM and Puzzle</td></tr>
+<tr>
+<td>MMMU</td>
+<td>86.7</td>
+<td>80.7</td>
+<td>87.2</td>
+<td>80.6</td>
+<td>84.3</td>
+<td>85.0</td>
+</tr>
+<tr>
+<td>MMMU-Pro</td>
+<td>79.5</td>
+<td>70.6</td>
+<td>81.0</td>
+<td>69.3</td>
+<td>78.5</td>
+<td>79.0</td>
+</tr>
+<tr>
+<td>MathVision</td>
+<td>83.0</td>
+<td>74.3</td>
+<td>86.6</td>
+<td>74.6</td>
+<td>84.2</td>
+<td>88.6</td>
+</tr>
+<tr>
+<td>Mathvista(mini)</td>
+<td>83.1</td>
+<td>80.0</td>
+<td>87.9</td>
+<td>85.8</td>
+<td>90.1</td>
+<td>90.3</td>
+</tr>
+<tr>
+<td>We-Math</td>
+<td>79.0</td>
+<td>70.0</td>
+<td>86.9</td>
+<td>74.8</td>
+<td>84.7</td>
+<td>87.9</td>
+</tr>
+<tr>
+<td>DynaMath</td>
+<td>86.8</td>
+<td>79.7</td>
+<td>85.1</td>
+<td>82.8</td>
+<td>84.4</td>
+<td>86.3</td>
+</tr>
+<tr>
+<td>ZEROBench</td>
+<td>9</td>
+<td>3</td>
+<td>10</td>
+<td>4</td>
+<td>9</td>
+<td>12</td>
+</tr>
+<tr>
+<td>ZEROBench_sub</td>
+<td>33.2</td>
+<td>28.4</td>
+<td>39.0</td>
+<td>28.4</td>
+<td>33.5</td>
+<td>41.0</td>
+</tr>
+<tr>
+<td>BabyVision</td>
+<td>34.4</td>
+<td>14.2</td>
+<td>49.7</td>
+<td>22.2</td>
+<td>36.5</td>
+<td>52.<sup>3</sup>⁄<sub>43</sub>.3</td>
+</tr>
+<tr><td colspan="7">General VQA</td></tr>
+<tr>
+<td>RealWorldQA</td>
+<td>83.3</td>
+<td>77.0</td>
+<td>83.3</td>
+<td>81.3</td>
+<td>81.0</td>
+<td>83.9</td>
+</tr>
+<tr>
+<td>MMStar</td>
+<td>77.1</td>
+<td>73.2</td>
+<td>83.1</td>
+<td>78.7</td>
+<td>80.5</td>
+<td>83.8</td>
+</tr>
+<tr>
+<td>HallusionBench</td>
+<td>65.2</td>
+<td>64.1</td>
+<td>68.6</td>
+<td>66.7</td>
+<td>69.8</td>
+<td>71.4</td>
+</tr>
+<tr>
+<td>MMBench<sub><small>EN-DEV-v1.1</small></sub></td>
+<td>88.2</td>
+<td>89.2</td>
+<td>93.7</td>
+<td>89.7</td>
+<td>94.2</td>
+<td>93.7</td>
+</tr>
+<tr>
+<td>SimpleVQA</td>
+<td>55.8</td>
+<td>65.7</td>
+<td>73.2</td>
+<td>61.3</td>
+<td>71.2</td>
+<td>67.1</td>
+</tr>
+<tr><td colspan="7">Text Recognition and Document Understanding</td></tr>
+<tr>
+<td>OmniDocBench1.5</td>
+<td>85.7</td>
+<td>87.7</td>
+<td>88.5</td>
+<td>84.5</td>
+<td>88.8</td>
+<td>90.8</td>
+</tr>
+<tr>
+<td>CharXiv(RQ)</td>
+<td>82.1</td>
+<td>68.5</td>
+<td>81.4</td>
+<td>66.1</td>
+<td>77.5</td>
+<td>80.8</td>
+</tr>
+<tr>
+<td>MMLongBench-Doc</td>
+<td>–</td>
+<td>61.9</td>
+<td>60.5</td>
+<td>56.2</td>
+<td>58.5</td>
+<td>61.5</td>
+</tr>
+<tr>
+<td>CC-OCR</td>
+<td>70.3</td>
+<td>76.9</td>
+<td>79.0</td>
+<td>81.5</td>
+<td>79.7</td>
+<td>82.0</td>
+</tr>
+<tr>
+<td>AI2D_TEST</td>
+<td>92.2</td>
+<td>87.7</td>
+<td>94.1</td>
+<td>89.2</td>
+<td>90.8</td>
+<td>93.9</td>
+</tr>
+<tr>
+<td>OCRBench</td>
+<td>80.7</td>
+<td>85.8</td>
+<td>90.4</td>
+<td>87.5</td>
+<td>92.3</td>
+<td>93.1</td>
+</tr>
+<tr><td colspan="7">Spatial Intelligence</td></tr>
+<tr>
+<td>ERQA</td>
+<td>59.8</td>
+<td>46.8</td>
+<td>70.5</td>
+<td>52.5</td>
+<td>–</td>
+<td>67.5</td>
+</tr>
+<tr>
+<td>CountBench</td>
+<td>91.9</td>
+<td>90.6</td>
+<td>97.3</td>
+<td>93.7</td>
+<td>94.1</td>
+<td>97.2</td>
+</tr>
+<tr>
+<td>RefCOCO(avg)</td>
+<td>–</td>
+<td>–</td>
+<td>84.1</td>
+<td>91.1</td>
+<td>87.8</td>
+<td>92.3</td>
+</tr>
+<tr>
+<td>ODInW13</td>
+<td>–</td>
+<td>–</td>
+<td>46.3</td>
+<td>43.2</td>
+<td>–</td>
+<td>47.0</td>
+</tr>
+<tr>
+<td>EmbSpatialBench</td>
+<td>81.3</td>
+<td>75.7</td>
+<td>61.2</td>
+<td>84.3</td>
+<td>77.4</td>
+<td>84.5</td>
+</tr>
+<tr>
+<td>RefSpatialBench</td>
+<td>–</td>
+<td>–</td>
+<td>65.5</td>
+<td>69.9</td>
+<td>–</td>
+<td>73.6</td>
+</tr>
+<tr>
+<td>LingoQA</td>
+<td>68.8</td>
+<td>78.8</td>
+<td>72.8</td>
+<td>66.8</td>
+<td>68.2</td>
+<td>81.6</td>
+</tr>
+<tr>
+<td>V*</td>
+<td>75.9</td>
+<td>67.0</td>
+<td>88.0</td>
+<td>85.9</td>
+<td>77.0</td>
+<td>95.<sup>8</sup>⁄<sub>91</sub>.1</td>
+</tr>
+<tr>
+<td>Hypersim</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+<td>11.0</td>
+<td>–</td>
+<td>12.5</td>
+</tr>
+<tr>
+<td>SUNRGBD</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+<td>34.9</td>
+<td>–</td>
+<td>38.3</td>
+</tr>
+<tr>
+<td>Nuscene</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+<td>13.9</td>
+<td>–</td>
+<td>16.0</td>
+</tr>
+<tr><td colspan="7">Video Understanding</td></tr>
+<tr>
+<td>VideoMME<sub><small>(w sub.)</sub></small></td>
+<td>86</td>
+<td>77.6</td>
+<td>88.4</td>
+<td>83.8</td>
+<td>87.4</td>
+<td>87.5</td>
+</tr>
+<tr>
+<td>VideoMME<sub><small>(w/o sub.)</sub></small></td>
+<td>85.8</td>
+<td>81.4</td>
+<td>87.7</td>
+<td>79.0</td>
+<td>83.2</td>
+<td>83.7</td>
+</tr>
+<tr>
+<td>VideoMMMU</td>
+<td>85.9</td>
+<td>84.4</td>
+<td>87.6</td>
+<td>80.0</td>
+<td>86.6</td>
+<td>84.7</td>
+</tr>
+<tr>
+<td>MLVU (M-Avg)</td>
+<td>85.6</td>
+<td>81.7</td>
+<td>83.0</td>
+<td>83.8</td>
+<td>85.0</td>
+<td>86.7</td>
+</tr>
+<tr>
+<td>MVBench</td>
+<td>78.1</td>
+<td>67.2</td>
+<td>74.1</td>
+<td>75.2</td>
+<td>73.5</td>
+<td>77.6</td>
+</tr>
+<tr>
+<td>LVBench</td>
+<td>73.7</td>
+<td>57.3</td>
+<td>76.2</td>
+<td>63.6</td>
+<td>75.9</td>
+<td>75.5</td>
+</tr>
+<tr>
+<td>MMVU</td>
+<td>80.8</td>
+<td>77.3</td>
+<td>77.5</td>
+<td>71.1</td>
+<td>80.4</td>
+<td>75.4</td>
+</tr>
+<tr><td colspan="7">Visual Agent</td></tr>
+<tr>
+<td>ScreenSpot Pro</td>
+<td>–</td>
+<td>45.7</td>
+<td>72.7</td>
+<td>62.0</td>
+<td>–</td>
+<td>65.6</td>
+</tr>
+<tr>
+<td>OSWorld-Verified</td>
+<td>38.2</td>
+<td>66.3</td>
+<td>–</td>
+<td>38.1</td>
+<td>63.3</td>
+<td>62.2</td>
+</tr>
+<tr>
+<td>AndroidWorld</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+<td>63.7</td>
+<td>–</td>
+<td>66.8</td>
+</tr>
+<tr><td colspan="7">Medical VQA</td></tr>
+<tr>
+<td>SLAKE</td>
+<td>76.9</td>
+<td>76.4</td>
+<td>81.3</td>
+<td>54.7</td>
+<td>81.6</td>
+<td>79.9</td>
+</tr>
+<tr>
+<td>PMC-VQA</td>
+<td>58.9</td>
+<td>59.9</td>
+<td>62.3</td>
+<td>41.2</td>
+<td>63.3</td>
+<td>64.2</td>
+</tr>
+<tr>
+<td>MedXpertQA-MM</td>
+<td>73.3</td>
+<td>63.6</td>
+<td>76.0</td>
+<td>47.6</td>
+<td>65.3</td>
+<td>70.0</td>
+</tr>
+</tbody>
+</table></p>
+
+<p>
+* MathVision：our model’s score is evaluated using a fixed prompt, e.g., “Please reason step by step, and put your final answer within \boxed{}.” For other models, we report the higher score between runs with and without the \boxed{} formatting.<br>
+* BabyVision: our model’s score is reported with CI (Code Interpreter) enabled; without CI, the result is 43.3.<br>
+* V*: our model’s score is reported with CI (Code Interpreter) enabled; without CI, the result is 91.1.<br>
+* Empty cells (--) indicate scores not yet available or not applicable.<br>
+</p>
+
+<p></div></p>
+
+        
+      
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="mt-auto">
