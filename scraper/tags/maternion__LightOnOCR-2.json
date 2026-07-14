@@ -1,31 +1,30 @@
 {
-  "path": "/maternion/LightOnOCR-2",
   "name": "LightOnOCR-2",
-  "scraped_at": "2026-07-14T14:50:18.551243+00:00",
+  "path": "/maternion/LightOnOCR-2",
   "tags": [
     {
+      "context": "16K",
+      "digest": "ee7d83c4eb67",
+      "format": "gguf",
+      "input_type": "Text, Image",
       "name": "latest",
       "size_bytes": 1500000000,
       "size_text": "1.5GB",
-      "context": "16K",
-      "input_type": "Text, Image",
-      "digest": "ee7d83c4eb67",
       "updated": "5 months ago",
-      "format": "gguf",
-      "usage_level": "",
-      "usage_active_slots": 0
+      "usage_active_slots": 0,
+      "usage_level": ""
     },
     {
+      "context": "16K",
+      "digest": "ee7d83c4eb67",
+      "format": "gguf",
+      "input_type": "Text, Image",
       "name": "1b",
       "size_bytes": 1500000000,
       "size_text": "1.5GB",
-      "context": "16K",
-      "input_type": "Text, Image",
-      "digest": "ee7d83c4eb67",
       "updated": "5 months ago",
-      "format": "gguf",
-      "usage_level": "",
-      "usage_active_slots": 0
+      "usage_active_slots": 0,
+      "usage_level": ""
     }
   ]
 }

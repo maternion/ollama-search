@@ -1,43 +1,42 @@
 {
-  "path": "/maternion/Qianfan-OCR",
   "name": "Qianfan-OCR",
-  "scraped_at": "2026-07-14T14:50:22.103743+00:00",
+  "path": "/maternion/Qianfan-OCR",
   "tags": [
     {
+      "context": "32K",
+      "digest": "55fb8527e2fb",
+      "format": "gguf",
+      "input_type": "Text, Image",
       "name": "4b",
       "size_bytes": 5300000000,
       "size_text": "5.3GB",
-      "context": "32K",
-      "input_type": "Text, Image",
-      "digest": "55fb8527e2fb",
       "updated": "3 months ago",
-      "format": "gguf",
-      "usage_level": "",
-      "usage_active_slots": 0
+      "usage_active_slots": 0,
+      "usage_level": ""
     },
     {
+      "context": "32K",
+      "digest": "65e2fd2d0254",
+      "format": "gguf",
+      "input_type": "Text, Image",
       "name": "4b-q4_K_M",
       "size_bytes": 3400000000,
       "size_text": "3.4GB",
-      "context": "32K",
-      "input_type": "Text, Image",
-      "digest": "65e2fd2d0254",
       "updated": "3 months ago",
-      "format": "gguf",
-      "usage_level": "",
-      "usage_active_slots": 0
+      "usage_active_slots": 0,
+      "usage_level": ""
     },
     {
+      "context": "32K",
+      "digest": "55fb8527e2fb",
+      "format": "gguf",
+      "input_type": "Text, Image",
       "name": "4b-q8_0",
       "size_bytes": 5300000000,
       "size_text": "5.3GB",
-      "context": "32K",
-      "input_type": "Text, Image",
-      "digest": "55fb8527e2fb",
       "updated": "3 months ago",
-      "format": "gguf",
-      "usage_level": "",
-      "usage_active_slots": 0
+      "usage_active_slots": 0,
+      "usage_level": ""
     }
   ]
 }

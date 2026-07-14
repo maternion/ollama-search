@@ -1,48 +1,47 @@
 {
-  "path": "/maternion/LightOnOCR-2",
-  "name": "LightOnOCR-2",
-  "scraped_at": "2026-07-14T15:13:46.474138+00:00",
-  "readme_html": "\n        \n          <h2>About LightOnOCR-2</h2>\n\n<p>LightOnOCR-2 is an efficient end-to-end 1B-parameter vision-language model for converting documents (PDFs, scans, images) into clean, naturally ordered text without relying on brittle pipelines. This second version is trained on a larger and higher-quality corpus with stronger French, arXiv, and scan coverage, improved LaTeX handling, and cleaner normalization. LightOnOCR-2 achieves state-of-the-art performance on OlmOCR-Bench while being ~9\u00d7 smaller and significantly faster than competing approaches.</p>\n\n<h2>Highlights</h2>\n\n<ul>\n<li>\u26a1 <strong>Speed:</strong> 3.3\u00d7 faster than Chandra OCR, 1.7\u00d7 faster than OlmOCR, 5\u00d7 faster than dots.ocr, 2\u00d7 faster than PaddleOCR-VL-0.9B, 1.73\u00d7 faster than DeepSeekOCR</li>\n<li>\ud83d\udcb8 <strong>Efficiency:</strong> Processes 5.71 pages/s on a single H100 (~493k pages/day) for <strong>&lt;$0.01 per 1,000 pages</strong></li>\n<li>\ud83e\udde0 <strong>End-to-End:</strong> Fully differentiable, no external OCR pipeline</li>\n<li>\ud83e\uddfe <strong>Versatile:</strong> Handles tables, receipts, forms, multi-column layouts, and math notation</li>\n<li>\ud83d\udccd <strong>Image detection:</strong> Predicts bounding boxes for embedded images (bbox variants)</li>\n</ul>\n\n<hr>\n\n<p>\ud83d\udcc4 <strong><a href=\"https://arxiv.org/pdf/2601.14251\" rel=\"nofollow\">Paper</a></strong> | \ud83d\udcdd <strong><a href=\"https://huggingface.co/blog/lightonai/lightonocr-2\" rel=\"nofollow\">Blog Post</a></strong> | \ud83d\ude80 <strong><a href=\"https://huggingface.co/spaces/lightonai/LightOnOCR-2-1B-Demo\" rel=\"nofollow\">Demo</a></strong> | \ud83d\udcca <strong><a href=\"https://huggingface.co/datasets/lightonai/LightOnOCR-mix-0126\" rel=\"nofollow\">Dataset</a></strong> | \ud83d\udcca <strong><a href=\"https://huggingface.co/datasets/lightonai/LightOnOCR-bbox-mix-0126\" rel=\"nofollow\">BBox Dataset</a></strong> | \ud83d\udcd3 <strong><a href=\"https://colab.research.google.com/drive/1WjbsFJZ4vOAAlKtcCauFLn_evo5UBRNa?usp=sharing\" rel=\"nofollow\">Finetuning Notebook</a></strong></p>\n\n<hr>\n\n<h2>Model Variants</h2>\n\n<table>\n<thead>\n<tr>\n<th>Variant</th>\n<th>Description</th>\n</tr>\n</thead>\n\n<tbody>\n<tr>\n<td><strong><a href=\"https://huggingface.co/lightonai/LightOnOCR-2-1B\" rel=\"nofollow\">LightOnOCR-2-1B</a></strong></td>\n<td>Best OCR model</td>\n</tr>\n\n<tr>\n<td><strong><a href=\"https://huggingface.co/lightonai/LightOnOCR-2-1B-base\" rel=\"nofollow\">LightOnOCR-2-1B-base</a></strong></td>\n<td>Base model, ideal for fine-tuning</td>\n</tr>\n\n<tr>\n<td><strong><a href=\"https://huggingface.co/lightonai/LightOnOCR-2-1B-bbox\" rel=\"nofollow\">LightOnOCR-2-1B-bbox</a></strong></td>\n<td>Best model with image bounding boxes</td>\n</tr>\n\n<tr>\n<td><strong><a href=\"https://huggingface.co/lightonai/LightOnOCR-2-1B-bbox-base\" rel=\"nofollow\">LightOnOCR-2-1B-bbox-base</a></strong></td>\n<td>Base bbox model, ideal for fine-tuning</td>\n</tr>\n\n<tr>\n<td><strong><a href=\"https://huggingface.co/lightonai/LightOnOCR-2-1B-ocr-soup\" rel=\"nofollow\">LightOnOCR-2-1B-ocr-soup</a></strong></td>\n<td>Merged variant for extra robustness</td>\n</tr>\n\n<tr>\n<td><strong><a href=\"https://huggingface.co/lightonai/LightOnOCR-2-1B-bbox-soup\" rel=\"nofollow\">LightOnOCR-2-1B-bbox-soup</a></strong></td>\n<td>Merged variant: OCR + bbox combined</td>\n</tr>\n</tbody>\n</table>\n\n<hr>\n\n<h2>Benchmarks</h2>\n\n<h2><img src=\"/assets/maternion/LightOnOCR-2/3b0b3976-7962-47a4-9c02-4de339c4d858\" alt=\"1000110436.png\"/></h2>\n\n<h2>Usage with Ollama</h2>\n\n<p><code>ollama run Maternion/LightOnOCR-2:1b</code></p>\n\n<hr>\n\n<h2>Rendering and Preprocessing Tips</h2>\n\n<ul>\n<li>Render PDFs to <strong>PNG</strong> or <strong>JPEG</strong> at a target longest dimension of <strong>1540px</strong></li>\n<li>Maintain aspect ratio to preserve text geometry</li>\n<li>Use one image per page; batching supported by vLLM</li>\n</ul>\n\n<hr>\n\n<h2>Fine-tuning</h2>\n\n<p>LightOnOCR-2 is fully differentiable and supports:</p>\n\n<ul>\n<li>LoRA fine-tuning</li>\n<li>Domain adaptation (receipts, scientific articles, forms, etc.)</li>\n<li>Multilingual fine-tuning with task-specific corpora</li>\n</ul>\n\n<p>For fine-tuning, we recommend starting with the <strong><a href=\"https://huggingface.co/lightonai/LightOnOCR-2-1B-base\" rel=\"nofollow\">LightOnOCR-2-1B-base</a></strong> variant.</p>\n\n<hr>\n\n<h2>License</h2>\n\n<p>Apache License 2.0</p>\n\n<hr>\n\n<h2>Citation</h2>\n\n<pre><code>@misc{lightonocr2_2026,\n  title        = {LightOnOCR: A 1B End-to-End Multilingual Vision-Language Model for State-of-the-Art OCR},\n  author       = {Said Taghadouini and Adrien Cavaill\\`{e}s and Baptiste Aubertin},\n  year         = {2026},\n  howpublished = {\\url{https://arxiv.org/pdf/2601.14251}}\n}\n</code></pre>\n\n        \n      ",
-  "manifest_updated": "",
-  "manifest_digest": "",
-  "manifest_size": "",
-  "files": [],
-  "cloud_usage_level": "",
-  "cloud_usage_active_slots": 0,
+  "applications": [
+    {
+      "command": "ollama launch claude --model maternion/LightOnOCR-2",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model maternion/LightOnOCR-2",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model maternion/LightOnOCR-2",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model maternion/LightOnOCR-2",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model maternion/LightOnOCR-2",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model maternion/LightOnOCR-2",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
   "cloud_context": "",
   "cloud_context_unit": "",
   "cloud_size": "",
   "cloud_size_unit": "",
-  "applications": [
-    {
-      "name": "Claude Code",
-      "icon_url": "/public/claude.png",
-      "command": "ollama launch claude --model maternion/LightOnOCR-2"
-    },
-    {
-      "name": "Codex App",
-      "icon_url": "/public/codex-app.png",
-      "command": "ollama launch codex-app --model maternion/LightOnOCR-2"
-    },
-    {
-      "name": "OpenClaw",
-      "icon_url": "/public/openclaw.png",
-      "command": "ollama launch openclaw --model maternion/LightOnOCR-2"
-    },
-    {
-      "name": "Hermes Agent",
-      "icon_url": "/public/hermes.png",
-      "command": "ollama launch hermes --model maternion/LightOnOCR-2"
-    },
-    {
-      "name": "Codex",
-      "icon_url": "/public/openai.png",
-      "command": "ollama launch codex --model maternion/LightOnOCR-2"
-    },
-    {
-      "name": "OpenCode",
-      "icon_url": "/public/opencode.png",
-      "command": "ollama launch opencode --model maternion/LightOnOCR-2"
-    }
-  ]
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "LightOnOCR-2",
+  "path": "/maternion/LightOnOCR-2",
+  "readme_html": "\n        \n          <h2>About LightOnOCR-2</h2>\n\n<p>LightOnOCR-2 is an efficient end-to-end 1B-parameter vision-language model for converting documents (PDFs, scans, images) into clean, naturally ordered text without relying on brittle pipelines. This second version is trained on a larger and higher-quality corpus with stronger French, arXiv, and scan coverage, improved LaTeX handling, and cleaner normalization. LightOnOCR-2 achieves state-of-the-art performance on OlmOCR-Bench while being ~9× smaller and significantly faster than competing approaches.</p>\n\n<h2>Highlights</h2>\n\n<ul>\n<li>⚡ <strong>Speed:</strong> 3.3× faster than Chandra OCR, 1.7× faster than OlmOCR, 5× faster than dots.ocr, 2× faster than PaddleOCR-VL-0.9B, 1.73× faster than DeepSeekOCR</li>\n<li>💸 <strong>Efficiency:</strong> Processes 5.71 pages/s on a single H100 (~493k pages/day) for <strong>&lt;$0.01 per 1,000 pages</strong></li>\n<li>🧠 <strong>End-to-End:</strong> Fully differentiable, no external OCR pipeline</li>\n<li>🧾 <strong>Versatile:</strong> Handles tables, receipts, forms, multi-column layouts, and math notation</li>\n<li>📍 <strong>Image detection:</strong> Predicts bounding boxes for embedded images (bbox variants)</li>\n</ul>\n\n<hr>\n\n<p>📄 <strong><a href=\"https://arxiv.org/pdf/2601.14251\" rel=\"nofollow\">Paper</a></strong> | 📝 <strong><a href=\"https://huggingface.co/blog/lightonai/lightonocr-2\" rel=\"nofollow\">Blog Post</a></strong> | 🚀 <strong><a href=\"https://huggingface.co/spaces/lightonai/LightOnOCR-2-1B-Demo\" rel=\"nofollow\">Demo</a></strong> | 📊 <strong><a href=\"https://huggingface.co/datasets/lightonai/LightOnOCR-mix-0126\" rel=\"nofollow\">Dataset</a></strong> | 📊 <strong><a href=\"https://huggingface.co/datasets/lightonai/LightOnOCR-bbox-mix-0126\" rel=\"nofollow\">BBox Dataset</a></strong> | 📓 <strong><a href=\"https://colab.research.google.com/drive/1WjbsFJZ4vOAAlKtcCauFLn_evo5UBRNa?usp=sharing\" rel=\"nofollow\">Finetuning Notebook</a></strong></p>\n\n<hr>\n\n<h2>Model Variants</h2>\n\n<table>\n<thead>\n<tr>\n<th>Variant</th>\n<th>Description</th>\n</tr>\n</thead>\n\n<tbody>\n<tr>\n<td><strong><a href=\"https://huggingface.co/lightonai/LightOnOCR-2-1B\" rel=\"nofollow\">LightOnOCR-2-1B</a></strong></td>\n<td>Best OCR model</td>\n</tr>\n\n<tr>\n<td><strong><a href=\"https://huggingface.co/lightonai/LightOnOCR-2-1B-base\" rel=\"nofollow\">LightOnOCR-2-1B-base</a></strong></td>\n<td>Base model, ideal for fine-tuning</td>\n</tr>\n\n<tr>\n<td><strong><a href=\"https://huggingface.co/lightonai/LightOnOCR-2-1B-bbox\" rel=\"nofollow\">LightOnOCR-2-1B-bbox</a></strong></td>\n<td>Best model with image bounding boxes</td>\n</tr>\n\n<tr>\n<td><strong><a href=\"https://huggingface.co/lightonai/LightOnOCR-2-1B-bbox-base\" rel=\"nofollow\">LightOnOCR-2-1B-bbox-base</a></strong></td>\n<td>Base bbox model, ideal for fine-tuning</td>\n</tr>\n\n<tr>\n<td><strong><a href=\"https://huggingface.co/lightonai/LightOnOCR-2-1B-ocr-soup\" rel=\"nofollow\">LightOnOCR-2-1B-ocr-soup</a></strong></td>\n<td>Merged variant for extra robustness</td>\n</tr>\n\n<tr>\n<td><strong><a href=\"https://huggingface.co/lightonai/LightOnOCR-2-1B-bbox-soup\" rel=\"nofollow\">LightOnOCR-2-1B-bbox-soup</a></strong></td>\n<td>Merged variant: OCR + bbox combined</td>\n</tr>\n</tbody>\n</table>\n\n<hr>\n\n<h2>Benchmarks</h2>\n\n<h2><img src=\"/assets/maternion/LightOnOCR-2/3b0b3976-7962-47a4-9c02-4de339c4d858\" alt=\"1000110436.png\"/></h2>\n\n<h2>Usage with Ollama</h2>\n\n<p><code>ollama run Maternion/LightOnOCR-2:1b</code></p>\n\n<hr>\n\n<h2>Rendering and Preprocessing Tips</h2>\n\n<ul>\n<li>Render PDFs to <strong>PNG</strong> or <strong>JPEG</strong> at a target longest dimension of <strong>1540px</strong></li>\n<li>Maintain aspect ratio to preserve text geometry</li>\n<li>Use one image per page; batching supported by vLLM</li>\n</ul>\n\n<hr>\n\n<h2>Fine-tuning</h2>\n\n<p>LightOnOCR-2 is fully differentiable and supports:</p>\n\n<ul>\n<li>LoRA fine-tuning</li>\n<li>Domain adaptation (receipts, scientific articles, forms, etc.)</li>\n<li>Multilingual fine-tuning with task-specific corpora</li>\n</ul>\n\n<p>For fine-tuning, we recommend starting with the <strong><a href=\"https://huggingface.co/lightonai/LightOnOCR-2-1B-base\" rel=\"nofollow\">LightOnOCR-2-1B-base</a></strong> variant.</p>\n\n<hr>\n\n<h2>License</h2>\n\n<p>Apache License 2.0</p>\n\n<hr>\n\n<h2>Citation</h2>\n\n<pre><code>@misc{lightonocr2_2026,\n  title        = {LightOnOCR: A 1B End-to-End Multilingual Vision-Language Model for State-of-the-Art OCR},\n  author       = {Said Taghadouini and Adrien Cavaill\\`{e}s and Baptiste Aubertin},\n  year         = {2026},\n  howpublished = {\\url{https://arxiv.org/pdf/2601.14251}}\n}\n</code></pre>\n\n        \n      "
 }

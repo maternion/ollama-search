@@ -1,55 +1,54 @@
 {
-  "path": "/maternion/fara",
   "name": "fara",
-  "scraped_at": "2026-07-14T14:50:19.909408+00:00",
+  "path": "/maternion/fara",
   "tags": [
     {
+      "context": "125K",
+      "digest": "6440ede84bf6",
+      "format": "gguf",
+      "input_type": "Text, Image",
       "name": "latest",
       "size_bytes": 6000000000,
       "size_text": "6.0GB",
-      "context": "125K",
-      "input_type": "Text, Image",
-      "digest": "6440ede84bf6",
       "updated": "7 months ago",
-      "format": "gguf",
-      "usage_level": "",
-      "usage_active_slots": 0
+      "usage_active_slots": 0,
+      "usage_level": ""
     },
     {
+      "context": "125K",
+      "digest": "6440ede84bf6",
+      "format": "gguf",
+      "input_type": "Text, Image",
       "name": "7b",
       "size_bytes": 6000000000,
       "size_text": "6.0GB",
-      "context": "125K",
-      "input_type": "Text, Image",
-      "digest": "6440ede84bf6",
       "updated": "7 months ago",
-      "format": "gguf",
-      "usage_level": "",
-      "usage_active_slots": 0
+      "usage_active_slots": 0,
+      "usage_level": ""
     },
     {
+      "context": "125K",
+      "digest": "6440ede84bf6",
+      "format": "gguf",
+      "input_type": "Text, Image",
       "name": "7b-Q4_K_M",
       "size_bytes": 6000000000,
       "size_text": "6.0GB",
-      "context": "125K",
-      "input_type": "Text, Image",
-      "digest": "6440ede84bf6",
       "updated": "7 months ago",
-      "format": "gguf",
-      "usage_level": "",
-      "usage_active_slots": 0
+      "usage_active_slots": 0,
+      "usage_level": ""
     },
     {
+      "context": "125K",
+      "digest": "e34a0d3a40d7",
+      "format": "gguf",
+      "input_type": "Text, Image",
       "name": "7b-Q8_0",
       "size_bytes": 9500000000,
       "size_text": "9.5GB",
-      "context": "125K",
-      "input_type": "Text, Image",
-      "digest": "e34a0d3a40d7",
       "updated": "7 months ago",
-      "format": "gguf",
-      "usage_level": "",
-      "usage_active_slots": 0
+      "usage_active_slots": 0,
+      "usage_level": ""
     }
   ]
 }

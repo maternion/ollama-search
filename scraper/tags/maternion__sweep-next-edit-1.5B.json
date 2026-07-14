@@ -1,19 +1,18 @@
 {
-  "path": "/maternion/sweep-next-edit-1.5B",
   "name": "sweep-next-edit-1.5B",
-  "scraped_at": "2026-07-14T14:50:31.402161+00:00",
+  "path": "/maternion/sweep-next-edit-1.5B",
   "tags": [
     {
+      "context": "32K",
+      "digest": "6a6bbfafb2cf",
+      "format": "gguf",
+      "input_type": "Text",
       "name": "latest",
       "size_bytes": 1500000000,
       "size_text": "1.5GB",
-      "context": "32K",
-      "input_type": "Text",
-      "digest": "6a6bbfafb2cf",
       "updated": "5 months ago",
-      "format": "gguf",
-      "usage_level": "",
-      "usage_active_slots": 0
+      "usage_active_slots": 0,
+      "usage_level": ""
     }
   ]
 }
