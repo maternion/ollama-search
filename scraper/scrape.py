@@ -149,17 +149,23 @@ class Client:
 # Parsing helpers
 # --------------------------------------------------------------------------- #
 
-_COUNT_RE = re.compile(r"([\d.]+)\s*([KMB]?)", re.IGNORECASE)
+_COUNT_RE = re.compile(r"([\d.,]+)\s*([KMB]?)", re.IGNORECASE)
 
 
 def parse_count(text: str) -> int:
-    """Parse '236.5K', '1.2M', '117M', '4' -> int."""
+    """Parse '236.5K', '1.2M', '117M', '5,402', '4' -> int.
+
+    Handles thousands separators (commas) as used on ollama.com for
+    exact pull counts like '5,402', and suffixes K/M/B for compact
+    forms like '11.5K'.
+    """
     if not text:
         return 0
     m = _COUNT_RE.search(text.strip())
     if not m:
         return 0
-    num = float(m.group(1))
+    # Strip commas so '5,402' -> 5402. Dots remain as decimal points.
+    num = float(m.group(1).replace(",", ""))
     suffix = m.group(2).upper()
     mult = {"": 1, "K": 1_000, "M": 1_000_000, "B": 1_000_000_000}[suffix]
     return int(num * mult)
@@ -1489,6 +1495,7 @@ def save_blob_page(blob_url: str, page: BlobPage) -> None:
     _atomic_write(fp, json.dumps(out, indent=2))
     log.debug("saved %s", fp)
 
+
 # --------------------------------------------------------------------------- #
 # Profile page scraping (e.g. /maternion)
 # --------------------------------------------------------------------------- #
@@ -1511,7 +1518,7 @@ def fetch_profile_page(client: Client, username: str) -> dict | None:
     }
 
     # Bio
-    bio_m = re.search(r'<span x-test-bio>(.*?)</span>', html, re.DOTALL)
+    bio_m = re.search(r"<span x-test-bio>(.*?)</span>", html, re.DOTALL)
     if bio_m:
         profile["bio"] = strip_tags(bio_m.group(1)).strip()
 
@@ -1973,24 +1980,45 @@ def main(argv: list[str] | None = None) -> int:
             pdata = fetch_profile_page(client, username)
             if pdata:
                 save_profile_page(username, pdata)
-                # Add profile models to the models dict if not already there
-                for mpath in pdata.get("models", []):
+                # Add profile models to the models dict if not already there.
+                # fetch_profile_page stores each model as a dict (asdict(card)),
+                # so we must extract the path string and map fields explicitly.
+                for entry in pdata.get("models", []):
+                    mpath = entry["path"] if isinstance(entry, dict) else entry
                     if mpath not in models:
-                        m = Model(
-                            name=mpath.rsplit("/", 1)[-1],
-                            path=mpath,
-                            description="",
-                            capabilities=[],
-                            cloud=False,
-                            sizes=[],
-                            pulls=0,
-                            tag_count=0,
-                            updated="",
-                            updated_title="",
-                            official=False,
-                            owner=username,
-                            source_url=BASE + mpath,
-                        )
+                        if isinstance(entry, dict):
+                            m = Model(
+                                name=entry.get("name", mpath.rsplit("/", 1)[-1]),
+                                path=mpath,
+                                description=entry.get("description", ""),
+                                capabilities=entry.get("capabilities", []),
+                                cloud=entry.get("cloud", False),
+                                sizes=entry.get("sizes", []),
+                                pulls=entry.get("pulls", 0),
+                                tag_count=entry.get("tag_count", 0),
+                                updated=entry.get("updated", ""),
+                                updated_title=entry.get("updated_title", ""),
+                                official=False,
+                                owner=username,
+                                source_url=entry.get("source_url", BASE + mpath),
+                                cloud_only=entry.get("cloud_only", False),
+                            )
+                        else:
+                            m = Model(
+                                name=mpath.rsplit("/", 1)[-1],
+                                path=mpath,
+                                description="",
+                                capabilities=[],
+                                cloud=False,
+                                sizes=[],
+                                pulls=0,
+                                tag_count=0,
+                                updated="",
+                                updated_title="",
+                                official=False,
+                                owner=username,
+                                source_url=BASE + mpath,
+                            )
                         models[mpath] = m
                 git_checkpoint(f"profile {username}")
             time.sleep(DELAY)
@@ -2140,7 +2168,11 @@ def main(argv: list[str] | None = None) -> int:
         if not args.skip_pages:
             log.info("=== fetching model pages ===")
             PAGES_DIR.mkdir(parents=True, exist_ok=True)
-            fetch_models = [m for m in models.values() if m.official or m.path in profile_model_paths]
+            fetch_models = [
+                m
+                for m in models.values()
+                if m.official or m.path in profile_model_paths
+            ]
             total = len(fetch_models)
             pages_done = 0
             for i, m in enumerate(fetch_models, 1):
@@ -2177,14 +2209,16 @@ def main(argv: list[str] | None = None) -> int:
         if not args.skip_tag_pages:
             log.info("=== fetching tag pages ===")
             TAG_PAGES_DIR.mkdir(parents=True, exist_ok=True)
-            fetch_models_tp = [m for m in models.values() if m.official or m.path in profile_model_paths]
+            fetch_models_tp = [
+                m
+                for m in models.values()
+                if m.official or m.path in profile_model_paths
+            ]
             total_tag_pages = 0
             tag_pages_done = 0
             for i, m in enumerate(fetch_models_tp, 1):
                 if client.bail_out or _time_up():
-                    log.warning(
-                        "STOPPING at tag pages %d/%d", i, len(fetch_models_tp)
-                    )
+                    log.warning("STOPPING at tag pages %d/%d", i, len(fetch_models_tp))
                     break
                 if not m.tags:
                     continue
@@ -2222,7 +2256,11 @@ def main(argv: list[str] | None = None) -> int:
         if not args.skip_blobs:
             log.info("=== fetching blob pages ===")
             BLOBS_DIR.mkdir(parents=True, exist_ok=True)
-            fetch_models_blobs = [m for m in models.values() if m.official or m.path in profile_model_paths]
+            fetch_models_blobs = [
+                m
+                for m in models.values()
+                if m.official or m.path in profile_model_paths
+            ]
             total_blobs = 0
             blobs_done = 0
             for i, m in enumerate(fetch_models_blobs, 1):

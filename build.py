@@ -149,12 +149,29 @@ def slug_url(path: str) -> str:
 
 
 def format_count(n: int) -> str:
-    if n >= 1_000_000:
-        v = n / 1_000_000
-        return f"{v:.1f}M" if v < 100 else f"{int(v)}M"
-    if n >= 1_000:
-        v = n / 1_000
-        return f"{v:.1f}K" if v < 100 else f"{int(v)}K"
+    """Format a pull count the way ollama.com does.
+
+    - n < 10,000: exact with thousands separators (e.g. 5402 -> "5,402").
+    - 10,000 <= n < 1,000,000: K suffix with one decimal, dropping a
+      trailing ".0" (e.g. 11500 -> "11.5K", 986700 -> "986.7K").
+    - n >= 1,000,000: M suffix with one decimal, dropping ".0"
+      (e.g. 10900000 -> "10.9M", 31000000 -> "31M").
+    - n >= 1,000,000,000: B suffix (same rounding rules).
+    """
+    if n < 10_000:
+        return f"{n:,}"
+    for threshold, divisor, suffix in (
+        (1_000_000_000, 1_000_000_000, "B"),
+        (1_000_000, 1_000_000, "M"),
+        (10_000, 1_000, "K"),
+    ):
+        if n >= threshold:
+            v = n / divisor
+            s = f"{v:.1f}{suffix}"
+            # Drop a trailing ".0" so "31.0M" becomes "31M".
+            if s.endswith(f".0{suffix}"):
+                s = s.replace(f".0{suffix}", suffix)
+            return s
     return str(n)
 
 
@@ -1006,7 +1023,11 @@ def _readme_section(page_data: dict) -> str:
 
 
 def _header_section(m: dict) -> str:
-    """Section 1: model name + stats + summary + badges."""
+    """Section 1: model name + stats + summary + badges.
+
+    For user (non-official) models, ollama.com renders a namespace link followed
+    by a "/" separator before the model name (e.g. "maternion / LightOnOCR-2").
+    """
     name = esc(m["name"])
     desc = esc(m["description"])
     pulls = format_count(m["pulls"])
@@ -1015,11 +1036,23 @@ def _header_section(m: dict) -> str:
     model_link = url(esc(m["path"]))
     caps = capability_spans(m["capabilities"], m["cloud"])
     sizes = size_spans(m["sizes"])
+
+    # For user models, prepend the namespace link + "/" separator.
+    namespace_html = ""
+    if not m.get("official") and "/" in m["path"].strip("/"):
+        namespace = m["path"].strip("/").split("/")[0]
+        namespace_esc = esc(namespace)
+        namespace_link = url("/" + namespace_esc)
+        namespace_html = (
+            f'<a x-test-model-namespace class="text-xl sm:text-[28px] font-medium leading-normal decoration-1 underline-offset-4 hover:underline shrink-0" href="{namespace_link}">{namespace_esc}</a>'
+            f'<span class="text-xl sm:text-[28px] font-medium px-1 shrink-0">/</span>'
+        )
+
     return f"""<div class="flex flex-col space-y-3">
     <div class="flex items-center min-w-0">
       <div class="flex items-center min-w-0 space-x-2">
         <div class="flex items-center min-w-0">
-          <span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
+          {namespace_html}<span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
             <a x-test-model-name href="{model_link}" title="{name}" class="underline-offset-[5px] hover:underline">{name}</a>
            </span>
          </div>
@@ -1118,10 +1151,13 @@ def build_detail(m: dict, tags: list[dict]) -> None:
     cloud_metrics = _cloud_metrics_section(page_data) if page_data else ""
     apps_section = _applications_section(page_data) if page_data else ""
 
+    # Title: official models use just name, user models use owner/name
+    title = name if m.get("official") else path.strip("/")
+
     page = f"""<!DOCTYPE html>
 <html lang="en" class="">
 <head>
-{head_html(name, desc)}
+{head_html(title, desc)}
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 {nav_html()}
@@ -1341,7 +1377,11 @@ def build_tags_page(m: dict, tags: list[dict]) -> None:
 
 
 def _tag_header_section(m: dict, tag_name: str) -> str:
-    """Header section for a tag page: shows <model_name>:<tag_name> with model name linking back."""
+    """Header section for a tag page: shows <model_name>:<tag_name> with model name linking back.
+
+    For user (non-official) models, prepend the namespace link + "/" separator
+    before the model name (e.g. "maternion / LightOnOCR-2:latest").
+    """
     name = esc(m["name"])
     desc = esc(m["description"])
     pulls = format_count(m["pulls"])
@@ -1350,16 +1390,28 @@ def _tag_header_section(m: dict, tag_name: str) -> str:
     model_link = url(esc(m["path"]))
     caps = capability_spans(m["capabilities"], m["cloud"])
     sizes = size_spans(m["sizes"])
+
+    # For user models, prepend the namespace link + "/" separator.
+    namespace_html = ""
+    if not m.get("official") and "/" in m["path"].strip("/"):
+        namespace = m["path"].strip("/").split("/")[0]
+        namespace_esc = esc(namespace)
+        namespace_link = url("/" + namespace_esc)
+        namespace_html = (
+            f'<a x-test-model-namespace class="text-xl sm:text-[28px] font-medium leading-normal decoration-1 underline-offset-4 hover:underline shrink-0" href="{namespace_link}">{namespace_esc}</a>'
+            f'<span class="text-xl sm:text-[28px] font-medium px-1 shrink-0">/</span>'
+        )
+
     return f"""<div class="flex flex-col space-y-3">
     <div class="flex items-center min-w-0">
       <div class="flex items-center min-w-0 space-x-2">
         <div class="flex items-center min-w-0">
-          <span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
+          {namespace_html}<span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
             <a x-test-model-name href="{model_link}" title="{name}" class="underline-offset-[5px] hover:underline">{name}</a>:{esc(tag_name)}
-          </span>
-        </div>
-      </div>
-    </div>
+           </span>
+         </div>
+       </div>
+     </div>
     <div class="flex flex-col space-y-2">
       <div class="flex flex-col space-y-2">
         <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
@@ -1703,20 +1755,27 @@ def copy_assets() -> None:
             continue
         try:
             import urllib.request
-            urllib.request.urlretrieve(f"https://ollama.com/public/social/{icon}.svg", dst)
+
+            urllib.request.urlretrieve(
+                f"https://ollama.com/public/social/{icon}.svg", dst
+            )
             print(f"  downloaded social/{icon}.svg")
         except Exception as e:
             print(f"  WARN: could not download social/{icon}.svg: {e}", file=sys.stderr)
 
     # Profile images (download if missing)
     for name, url in [
-        ("maternion-profile.png", "https://ollama.com/public/assets/63fc5cbb-8a8d-4a1a-a991-1ae0c4ed6e99/27b965ab-5457-4bcf-974d-4c3074bf536b.png"),
+        (
+            "maternion-profile.png",
+            "https://ollama.com/public/assets/63fc5cbb-8a8d-4a1a-a991-1ae0c4ed6e99/27b965ab-5457-4bcf-974d-4c3074bf536b.png",
+        ),
     ]:
         dst = assets / name
         if dst.exists():
             continue
         try:
             import urllib.request
+
             urllib.request.urlretrieve(url, dst)
             print(f"  downloaded {name}")
         except Exception as e:
@@ -1753,6 +1812,14 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 .dark .placeholder\:text-neutral-500::placeholder { color: #737373; }
 .dark .text-black { color: #fafafa; }
 .dark a:focus\:underline:focus { text-decoration: underline; }
+
+/* --- Prose table borders: match ollama.com style --- */
+#display table { border-collapse: collapse; }
+#display td, #display th { border-bottom: 1px solid #e5e7e0; }
+#display thead th { border-bottom: 2px solid #d1d5db; }
+#display tr:last-child td { border-bottom: 0; }
+.dark #display td, .dark #display th { border-bottom-color: #262626; }
+.dark #display thead th { border-bottom-color: #404040; }
 
 /* --- Dark: neutral classes (official Tailwind v3 palette) --- */
 .dark .dark\:bg-neutral-900 { background-color: #171717; }
@@ -2121,14 +2188,63 @@ def build_profile_page(username: str) -> None:
             profile_models.append(models_by_path[m])
 
     # Build model cards (reuse render_card)
-    ranks = load_ranks()
+    # Compute profile-specific ranks: popular = pulls desc, newest = updated_title desc.
+    # Merge with global ranks so models present there keep their global ranks; the
+    # rest get local ranks so the sort dropdown works on the profile page too.
+    global_ranks = load_ranks()
+    profile_ranks = dict(global_ranks)
+
+    # Popular rank from pulls (descending)
+    popular_order = sorted(
+        profile_models,
+        key=lambda m: m.get("pulls", 0),
+        reverse=True,
+    )
+    for rank, m in enumerate(popular_order):
+        nm = m["name"]
+        pr = profile_ranks.setdefault(nm, {})
+        pr["popular_rank"] = rank
+
+    # Newest rank from updated_title (descending date)
+    from datetime import datetime as _dt
+
+    def _parse_updated(s: str) -> _dt:
+        try:
+            return _dt.strptime(s, "%b %d, %Y %I:%M %p UTC")
+        except Exception:
+            return _dt.min
+
+    newest_order = sorted(
+        profile_models,
+        key=lambda m: _parse_updated(m.get("updated_title") or ""),
+        reverse=True,
+    )
+    for rank, m in enumerate(newest_order):
+        nm = m["name"]
+        pr = profile_ranks.setdefault(nm, {})
+        pr["newest_rank"] = rank
+
+    # Default server-side order: popular (pulls descending) — matches ?sort=popular default
+    sorted_models = sorted(
+        profile_models,
+        key=lambda m: profile_ranks.get(m["name"], {}).get("popular_rank", 9999),
+    )
     cards_html = ""
-    for m in profile_models:
+    for m in sorted_models:
         tags = load_tags(m["path"])
-        cards_html += render_card(m, tags, ranks)
+        cards_html += render_card(m, tags, profile_ranks)
 
     if not cards_html:
         cards_html = '<p class="text-neutral-500 dark:text-neutral-400 py-8">No models found.</p>'
+
+    # Sort options — profile page only has Popular / Newest (per ollama.com)
+    sort_options = [
+        ("popular", "Popular"),
+        ("newest", "Newest"),
+    ]
+    opt_html = "\n".join(
+        f'        <option value="{v}">{l}</option>' for v, l in sort_options
+    )
 
     # Links HTML
     links_html = ""
@@ -2169,7 +2285,6 @@ def build_profile_page(username: str) -> None:
     </script>
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
-{theme_script_head()}
 {nav_html("")}
 
 <main class="mx-auto flex w-full max-w-2xl flex-col px-6 py-5 md:py-12 lg:px-8">
@@ -2199,10 +2314,29 @@ def build_profile_page(username: str) -> None:
     </div>
   </div>
 
-  <div class="mt-8">
-    <ul role="list" class="grid grid-cols-1 gap-y-3">
+  <input type="hidden" id="sort-value" name="o" value="popular">
+
+  <div id="searchresults" class="w-full space-y-2 mt-8">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <div class="sm:hidden relative">
+        <select id="mobile-sort-select" class="absolute inset-0 w-6 px-3 py-1 opacity-0 appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600">
+{opt_html}
+        </select>
+        <div class="w-6 px-3.5 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex items-center justify-center pointer-events-none">
+          <span class="text-neutral-900 dark:text-neutral-100 text-xs font-medium">&#x21C5;</span>
+        </div>
+      </div>
+      <div class="hidden sm:block ml-auto">
+        <select id="desktop-sort-select" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600 min-w-[120px] text-sm px-3 py-1.5">
+{opt_html}
+        </select>
+      </div>
+    </div>
+
+    <ul role="list" id="card-list" class="grid grid-cols-1 gap-y-3">
 {cards_html}
     </ul>
+    <p id="no-results" class="hidden py-12 text-center text-neutral-400 dark:text-neutral-600">No models found.</p>
   </div>
 </main>
 
@@ -2255,6 +2389,7 @@ def main() -> int:
 
     # Load profile models and add them to the build list
     import json as _json
+
     _all_models = list(models)
     for _username in ["maternion"]:
         _pf = HERE / "scraper" / f"profile_{_username}.json"
