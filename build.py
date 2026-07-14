@@ -2,7 +2,7 @@
 """Build a static site from scraped ollama.com data.
 
 Generates:
-  public/index.html                       library/search page (mirror)
+  public/index.html                       search page (main page)
   public/library/<slug>/index.html        model detail page
   public/library/<slug>/tags/index.html    tags page with GGUF/MLX tabs
   public/assets/models.json                embedded catalog for client-side filter/sort
@@ -270,20 +270,20 @@ def nav_html(active: str = "") -> str:
     del active
     return f"""<header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
   <nav class="flex w-full items-center justify-between px-6 py-[9px]">
-    <a href="{url("/search/")}" class="z-50">
+    <a href="{url("/")}" class="z-50">
       <img src="{url("/assets/ollama.png")}" class="w-8 dark:invert" alt="Ollama" />
     </a>
     <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
-      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="{url("/search/")}">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="{url("/")}">Models</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
     </div>
     <div class="flex-grow justify-center items-center hidden lg:flex">
       <div class="relative w-full xl:max-w-[28rem]">
-        <form action="{url("/search")}" autocomplete="off" id="nav-search-form">
+        <form action="{url("")}" autocomplete="off" id="nav-search-form">
           <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full">
             <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400">{SVG_SEARCH}</span>
-            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){{event.preventDefault();window.location.href='{url("/search/?q=")}'+encodeURIComponent(this.value);}}" />
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){{event.preventDefault();window.location.href='{url("/?q=")}'+encodeURIComponent(this.value);}}" />
           </div>
         </form>
       </div>
@@ -570,8 +570,8 @@ def build_index(models: list[dict], ranks: dict) -> None:
 </body>
 </html>"""
 
-    (PUBLIC / "search").mkdir(parents=True, exist_ok=True)
-    (PUBLIC / "search" / "index.html").write_text(page)
+    (PUBLIC).mkdir(parents=True, exist_ok=True)
+    (PUBLIC / "index.html").write_text(page)
 
 
 # --------------------------------------------------------------------------- #
@@ -1313,7 +1313,7 @@ def build_tags_page(m: dict, tags: list[dict]) -> None:
 {nav_html()}
 
 <main class="relative mx-auto flex w-full max-w-[52rem] flex-col px-6 py-10 md:py-24 lg:px-8">
-  <a href="{url(esc(m["path"]) + "/")}" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to {esc(name)}</a>
+  <a href="{url(esc(m["path"]) + "/")}" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10" onclick="if(document.referrer&amp;&amp;document.referrer.includes(location.host)){{history.back();return false;}}">&larr; Back to {esc(name)}</a>
   {header}
   <section class="w-full max-w-full mt-8 mb-4 md:mt-16 md:mb-2">
     <div class="flex items-center justify-between mb-4">
@@ -1442,7 +1442,7 @@ def build_tag_page(m: dict, tag: dict, tp: dict | None) -> None:
 {nav_html()}
 
 <main class="relative mx-auto flex w-full max-w-[52rem] flex-col px-6 py-10 md:py-24 lg:px-8">
-  <a href="{url(esc(path) + "/tags/")}" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to tags</a>
+  <a href="{url(esc(path) + "/tags/")}" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10" onclick="if(document.referrer&amp;&amp;document.referrer.includes(location.host)){{history.back();return false;}}">&larr; Back to tags</a>
   {header}
   {cloud_metrics}
   <div class="py-8">
@@ -1620,7 +1620,7 @@ def build_blob_page(blob: dict) -> None:
 {nav_html()}
 
 <main class="relative mx-auto flex w-full max-w-[52rem] flex-col px-6 py-10 md:py-24 lg:px-8">
-  <a href="{tag_page_url}" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to {tag_full_esc}</a>
+  <a href="{tag_page_url}" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10" onclick="if(document.referrer&amp;&amp;document.referrer.includes(location.host)){{history.back();return false;}}">&larr; Back to {tag_full_esc}</a>
   {header}
   <div id="file-explorer" class="pt-12 pb-10">
     <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-200">
@@ -2082,21 +2082,22 @@ def main() -> int:
     PUBLIC.mkdir(parents=True, exist_ok=True)
     copy_assets()
 
-    # index/search page -> /search/index.html
-    print("building search/index.html ...")
+    # index/search page -> /index.html (main page)
+    print("building index.html ...")
     build_index(models, load_ranks())
 
-    # root redirect -> /search/
-    print("building root redirect ...")
-    search_url = url("/search/")
-    (PUBLIC / "index.html").write_text(
+    # /search/ redirect -> / (backwards compat)
+    print("building /search/ redirect ...")
+    root_url = url("/")
+    (PUBLIC / "search").mkdir(parents=True, exist_ok=True)
+    (PUBLIC / "search" / "index.html").write_text(
         "<!DOCTYPE html>\n"
         "<html>\n"
         "<head>\n"
-        f'<meta http-equiv="refresh" content="0; url={search_url}">\n'
+        f'<meta http-equiv="refresh" content="0; url={root_url}">\n'
         "<title>Ollama Search</title>\n"
         "</head>\n"
-        f'<body>Redirecting to <a href="{search_url}">search</a>...</body>\n'
+        f'<body>Redirecting to <a href="{root_url}">search</a>...</body>\n'
         "</html>\n"
     )
 
