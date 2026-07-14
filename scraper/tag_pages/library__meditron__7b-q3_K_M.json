@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/meditron:7b-q3_K_M/blobs/b18e7afca105",
+      "content_preview": "arch  llama",
+      "parameters": "6.74B",
+      "quantization": "Q3_K_M",
+      "size": "3.3GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/meditron:7b-q3_K_M/blobs/a47b02e00552",
+      "content_preview": "<|im_start|>system\n{{ .System }}<|im_end|>\n<|im_start|>user\n{{ .Prompt }}<|im_end|>\n<|im_start|>assi",
+      "parameters": "",
+      "quantization": "",
+      "size": "106B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/meditron:7b-q3_K_M/blobs/e3d94d483bb9",
+      "content_preview": "A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful,",
+      "parameters": "",
+      "quantization": "",
+      "size": "155B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/meditron:7b-q3_K_M/blobs/6ee262b64276",
+      "content_preview": "{\n    \"num_ctx\": 2048,\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "74B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/meditron:7b-q3_K_M",
+  "manifest_digest": "9c9c4636a4b8",
+  "manifest_size": "3.3GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/meditron",
+  "scraped_at": "2026-07-13T21:11:15.448214+00:00",
+  "tag_name": "7b-q3_K_M"
+}

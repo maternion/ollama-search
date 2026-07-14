@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/yarn-llama2:13b-64k-q5_K_M/blobs/f25f3d5d01f8",
+      "content_preview": "arch  llama",
+      "parameters": "13B",
+      "quantization": "Q5_K_M",
+      "size": "9.2GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/yarn-llama2:13b-64k-q5_K_M/blobs/e9d3a814cdd6",
+      "content_preview": "{\n    \"num_ctx\": 65536\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "17B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/yarn-llama2:13b-64k-q5_K_M",
+  "manifest_digest": "0cdae1412098",
+  "manifest_size": "9.2GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/yarn-llama2",
+  "scraped_at": "2026-07-13T21:03:57.551735+00:00",
+  "tag_name": "13b-64k-q5_K_M"
+}

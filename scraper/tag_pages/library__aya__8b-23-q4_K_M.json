@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "command-r",
+      "blob_url": "/library/aya:8b-23-q4_K_M/blobs/b78ff6a9a6d6",
+      "content_preview": "arch  command-r",
+      "parameters": "8.03B",
+      "quantization": "Q4_K_M",
+      "size": "5.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/aya:8b-23-q4_K_M/blobs/f0624a2393a5",
+      "content_preview": "Creative Commons Attribution-NonCommercial 4.0 International Public\nLicense with Acceptable Use Adde",
+      "parameters": "",
+      "quantization": "",
+      "size": "14kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/aya:8b-23-q4_K_M/blobs/36b9655abe6a",
+      "content_preview": "{\n    \"stop\": [\n        \"<|START_OF_TURN_TOKEN|>\",\n        \"<|END_OF_TURN_TOKEN|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "81B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/aya:8b-23-q4_K_M/blobs/42499e38acdf",
+      "content_preview": "{{ if .System }}<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|>{{ .System }}<|END_OF_TURN_TOKEN|>{{ end }}{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "270B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/aya:8b-23-q4_K_M",
+  "manifest_digest": "c757782816f1",
+  "manifest_size": "5.1GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/aya",
+  "scraped_at": "2026-07-13T20:45:20.596687+00:00",
+  "tag_name": "8b-23-q4_K_M"
+}

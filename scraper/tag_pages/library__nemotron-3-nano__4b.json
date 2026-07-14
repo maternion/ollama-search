@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "nemotron_h",
+      "blob_url": "/library/nemotron-3-nano:4b/blobs/527db2cf6c70",
+      "content_preview": "arch  nemotron_h",
+      "parameters": "3.97B",
+      "quantization": "Q4_K_M",
+      "size": "2.8GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nemotron-3-nano:4b/blobs/355e036064fa",
+      "content_preview": "NVIDIA Open Model License Agreement\nLast Modified: October 24, 2025\nThis NVIDIA Open Model License A",
+      "parameters": "",
+      "quantization": "",
+      "size": "10kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nemotron-3-nano:4b/blobs/12e88b2a8727",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_p\": 1\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "28B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/nemotron-3-nano:4b",
+  "manifest_digest": "6cc467f05439",
+  "manifest_size": "2.8GB",
+  "manifest_updated": "3 months ago",
+  "path": "/library/nemotron-3-nano",
+  "scraped_at": "2026-07-13T21:14:27.775104+00:00",
+  "tag_name": "4b"
+}

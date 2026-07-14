@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/nexusraven:13b-v2-q3_K_M/blobs/3a9bb01c92a1",
+      "content_preview": "arch  llama",
+      "parameters": "13B",
+      "quantization": "Q3_K_M",
+      "size": "6.3GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nexusraven:13b-v2-q3_K_M/blobs/cf200ab0155f",
+      "content_preview": "{{ .System }}\nUser Query: {{ .Prompt }}<human_end>",
+      "parameters": "",
+      "quantization": "",
+      "size": "52B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nexusraven:13b-v2-q3_K_M/blobs/d0b8774a6ecd",
+      "content_preview": "Nexusflow.ai License Terms\nNexusRaven-V2 Version Release Date: December 5, 2023\n“Agreement” mean",
+      "parameters": "",
+      "quantization": "",
+      "size": "6.7kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/nexusraven:13b-v2-q3_K_M",
+  "manifest_digest": "9c3abc556fee",
+  "manifest_size": "6.3GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/nexusraven",
+  "scraped_at": "2026-07-13T21:08:45.972340+00:00",
+  "tag_name": "13b-v2-q3_K_M"
+}

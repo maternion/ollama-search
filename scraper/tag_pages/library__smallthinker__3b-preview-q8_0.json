@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/library/smallthinker:3b-preview-q8_0/blobs/ad361f123f77",
+      "content_preview": "arch  qwen2",
+      "parameters": "3.4B",
+      "quantization": "Q8_0",
+      "size": "3.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/smallthinker:3b-preview-q8_0/blobs/75357d685f23",
+      "content_preview": "You are a helpful assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "28B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/smallthinker:3b-preview-q8_0/blobs/cf0bf78141c7",
+      "content_preview": "Qwen RESEARCH LICENSE AGREEMENT\nQwen RESEARCH LICENSE AGREEMENT Release Date: September 19, 2024\nBy",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.4kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/smallthinker:3b-preview-q8_0/blobs/4b01fbe300da",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|im_start|>{{ .R",
+      "parameters": "",
+      "quantization": "",
+      "size": "255B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/smallthinker:3b-preview-q8_0",
+  "manifest_digest": "945eb1864589",
+  "manifest_size": "3.6GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/smallthinker",
+  "scraped_at": "2026-07-13T21:23:22.710730+00:00",
+  "tag_name": "3b-preview-q8_0"
+}

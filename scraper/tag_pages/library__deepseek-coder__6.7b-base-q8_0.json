@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/deepseek-coder:6.7b-base-q8_0/blobs/7bff935013c3",
+      "content_preview": "arch  llama",
+      "parameters": "6.74B",
+      "quantization": "Q8_0",
+      "size": "7.2GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-coder:6.7b-base-q8_0/blobs/ccfee4895df0",
+      "content_preview": "DEEPSEEK LICENSE AGREEMENT\nVersion 1.0, 23 October 2023\nCopyright (c) 2023 DeepSeek\nSection I: PREAM",
+      "parameters": "",
+      "quantization": "",
+      "size": "14kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/deepseek-coder:6.7b-base-q8_0",
+  "manifest_digest": "570c490f997d",
+  "manifest_size": "7.2GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/deepseek-coder",
+  "scraped_at": "2026-07-13T20:05:50.484061+00:00",
+  "tag_name": "6.7b-base-q8_0"
+}

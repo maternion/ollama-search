@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "deepseek2",
+      "blob_url": "/library/glm-4.7-flash:bf16/blobs/5521508cdd10",
+      "content_preview": "arch  deepseek2",
+      "parameters": "29.9B",
+      "quantization": "F16",
+      "size": "60GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/glm-4.7-flash:bf16/blobs/543c6a8262f9",
+      "content_preview": "{\n    \"min_p\": 0.01,\n    \"repeat_penalty\": 1,\n    \"temperature\": 1,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "63B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/glm-4.7-flash:bf16/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/glm-4.7-flash:bf16",
+  "manifest_digest": "b0f42cc1a612",
+  "manifest_size": "60GB",
+  "manifest_updated": "1 month ago",
+  "path": "/library/glm-4.7-flash",
+  "scraped_at": "2026-07-13T19:33:53.444769+00:00",
+  "tag_name": "bf16"
+}

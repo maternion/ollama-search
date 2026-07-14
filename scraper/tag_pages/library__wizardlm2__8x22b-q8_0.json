@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/wizardlm2:8x22b-q8_0/blobs/ac0654749901",
+      "content_preview": "arch  llama",
+      "parameters": "141B",
+      "quantization": "Q8_0",
+      "size": "149GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardlm2:8x22b-q8_0/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardlm2:8x22b-q8_0/blobs/1fa69e2371b7",
+      "content_preview": "A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful,",
+      "parameters": "",
+      "quantization": "",
+      "size": "154B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardlm2:8x22b-q8_0/blobs/f4c99b0ffe2c",
+      "content_preview": "{\n    \"stop\": [\n        \"USER:\",\n        \"ASSISTANT:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "32B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardlm2:8x22b-q8_0/blobs/245f91e42bbb",
+      "content_preview": "{{ if .System }}{{ .System }} {{ end }}{{ if .Prompt }}USER: {{ .Prompt }} {{ end }}ASSISTANT: {{ .R",
+      "parameters": "",
+      "quantization": "",
+      "size": "110B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/wizardlm2:8x22b-q8_0",
+  "manifest_digest": "07d5ea336544",
+  "manifest_size": "149GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/wizardlm2",
+  "scraped_at": "2026-07-13T20:37:55.605740+00:00",
+  "tag_name": "8x22b-q8_0"
+}

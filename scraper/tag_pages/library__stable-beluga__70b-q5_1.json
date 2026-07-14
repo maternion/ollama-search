@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/stable-beluga:70b-q5_1/blobs/2d47b8694388",
+      "content_preview": "arch  llama",
+      "parameters": "69B",
+      "quantization": "Q5_1",
+      "size": "52GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stable-beluga:70b-q5_1/blobs/deadd617ffad",
+      "content_preview": "STABLE BELUGA NON-COMMERCIAL COMMUNITY LICENSE AGREEMENT\nDated: July 27, 2023\n\"Agreement\" means the",
+      "parameters": "",
+      "quantization": "",
+      "size": "5.2kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stable-beluga:70b-q5_1/blobs/3278224b6cda",
+      "content_preview": "This is a system prompt, please behave and help the user.",
+      "parameters": "",
+      "quantization": "",
+      "size": "57B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stable-beluga:70b-q5_1/blobs/cddc6041acf5",
+      "content_preview": "{\n    \"num_gqa\": 8,\n    \"stop\": [\n        \"### System:\",\n        \"### User:\",\n        \"### Assistant",
+      "parameters": "",
+      "quantization": "",
+      "size": "65B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stable-beluga:70b-q5_1/blobs/354152d2dd7a",
+      "content_preview": "{{- if .System }}\n### System:\n{{ .System }}\n{{- end }}\n### User:\n{{ .Prompt }}\n### Assistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "96B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/stable-beluga:70b-q5_1",
+  "manifest_digest": "312114b54a99",
+  "manifest_size": "52GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/stable-beluga",
+  "scraped_at": "2026-07-13T21:05:58.851476+00:00",
+  "tag_name": "70b-q5_1"
+}

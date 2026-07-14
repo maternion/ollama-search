@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/library/qwen2.5-coder:1.5b-instruct/blobs/29d8c98fa6b0",
+      "content_preview": "arch  qwen2",
+      "parameters": "1.54B",
+      "quantization": "Q4_K_M",
+      "size": "986MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen2.5-coder:1.5b-instruct/blobs/66b9ea09bd5b",
+      "content_preview": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "68B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen2.5-coder:1.5b-instruct/blobs/832dd9e00a68",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen2.5-coder:1.5b-instruct/blobs/1e65450c3067",
+      "content_preview": "{{- if .Suffix }}<|fim_prefix|>{{ .Prompt }}<|fim_suffix|>{{ .Suffix }}<|fim_middle|>\n{{- else if .M",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.6kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/qwen2.5-coder:1.5b-instruct",
+  "manifest_digest": "d7372fd82851",
+  "manifest_size": "986MB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/qwen2.5-coder",
+  "scraped_at": "2026-07-13T19:44:23.157911+00:00",
+  "tag_name": "1.5b-instruct"
+}

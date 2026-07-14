@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llama3.3:70b-instruct-q4_0/blobs/a671f3cc9cec",
+      "content_preview": "arch  llama",
+      "parameters": "70.6B",
+      "quantization": "Q4_0",
+      "size": "40GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama3.3:70b-instruct-q4_0/blobs/bc371a43ce90",
+      "content_preview": "LLAMA 3.3 COMMUNITY LICENSE AGREEMENT\nLlama 3.3 Version Release Date: December 6, 2024\n“Agreement�",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.6kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama3.3:70b-instruct-q4_0/blobs/53a87df39647",
+      "content_preview": "Llama 3.3 Acceptable Use Policy\nMeta is committed to promoting safe and fair use of its tools and fe",
+      "parameters": "",
+      "quantization": "",
+      "size": "5.6kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama3.3:70b-instruct-q4_0/blobs/56bb8bd477a5",
+      "content_preview": "{\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",\n        \"<|eot_id|>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "96B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama3.3:70b-instruct-q4_0/blobs/948af2743fc7",
+      "content_preview": "{{- if or .System .Tools }}<|start_header_id|>system<|end_header_id|>\n{{- if .System }}\n{{ .System }",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/llama3.3:70b-instruct-q4_0",
+  "manifest_digest": "e5afe30ba419",
+  "manifest_size": "40GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/llama3.3",
+  "scraped_at": "2026-07-13T20:06:40.575818+00:00",
+  "tag_name": "70b-instruct-q4_0"
+}

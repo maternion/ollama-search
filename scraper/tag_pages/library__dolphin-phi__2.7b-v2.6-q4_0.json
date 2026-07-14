@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "phi2",
+      "blob_url": "/library/dolphin-phi:2.7b-v2.6-q4_0/blobs/4eca7304a07a",
+      "content_preview": "arch  phi2",
+      "parameters": "2.78B",
+      "quantization": "Q4_0",
+      "size": "1.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphin-phi:2.7b-v2.6-q4_0/blobs/876a8d805b60",
+      "content_preview": "MICROSOFT RESEARCH LICENSE TERMS\nIF YOU LIVE IN THE UNITED STATES, PLEASE READ THE “BINDING ARBITR",
+      "parameters": "",
+      "quantization": "",
+      "size": "10kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphin-phi:2.7b-v2.6-q4_0/blobs/8b586b146d99",
+      "content_preview": "You are Dolphin, a helpful AI assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "40B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphin-phi:2.7b-v2.6-q4_0/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphin-phi:2.7b-v2.6-q4_0/blobs/a47b02e00552",
+      "content_preview": "<|im_start|>system\n{{ .System }}<|im_end|>\n<|im_start|>user\n{{ .Prompt }}<|im_end|>\n<|im_start|>assi",
+      "parameters": "",
+      "quantization": "",
+      "size": "106B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/dolphin-phi:2.7b-v2.6-q4_0",
+  "manifest_digest": "c5761fc77240",
+  "manifest_size": "1.6GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/dolphin-phi",
+  "scraped_at": "2026-07-13T20:21:18.747910+00:00",
+  "tag_name": "2.7b-v2.6-q4_0"
+}

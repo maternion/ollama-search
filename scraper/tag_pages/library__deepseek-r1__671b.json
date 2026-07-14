@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "deepseek2",
+      "blob_url": "/library/deepseek-r1:671b/blobs/439dd1a5e052",
+      "content_preview": "arch  deepseek2",
+      "parameters": "671B",
+      "quantization": "Q4_K_M",
+      "size": "404GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-r1:671b/blobs/7162a2550b7a",
+      "content_preview": "{{- if .System }}{{ .System }}{{ end }}\n{{- if .Tools }}\n## Tools\n### Function\nYou have the followin",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.7kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-r1:671b/blobs/6e4c38e1172f",
+      "content_preview": "MIT License\nCopyright (c) 2023 DeepSeek\nPermission is hereby granted, free of charge, to any person",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-r1:671b/blobs/ed8474dc73db",
+      "content_preview": "{\n    \"stop\": [\n        \"<｜begin▁of▁sentence｜>\",\n        \"<｜end▁of▁sentence｜>\",",
+      "parameters": "",
+      "quantization": "",
+      "size": "179B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/deepseek-r1:671b",
+  "manifest_digest": "14a4e575643d",
+  "manifest_size": "404GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/deepseek-r1",
+  "scraped_at": "2026-07-13T19:35:24.701255+00:00",
+  "tag_name": "671b"
+}

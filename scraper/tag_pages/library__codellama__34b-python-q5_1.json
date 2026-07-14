@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/codellama:34b-python-q5_1/blobs/a0401af812ef",
+      "content_preview": "arch  llama",
+      "parameters": "33.7B",
+      "quantization": "Q5_1",
+      "size": "25GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:34b-python-q5_1/blobs/590d74a5569b",
+      "content_preview": "# Llama Code Acceptable Use Policy\nMeta is committed to promoting safe and fair use of its tools and",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.8kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:34b-python-q5_1/blobs/ff29d10ee099",
+      "content_preview": "{\n    \"num_gqa\": 8,\n    \"rope_frequency_base\": 1000000\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "43B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/codellama:34b-python-q5_1",
+  "manifest_digest": "2d27ad19cb5e",
+  "manifest_size": "25GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/codellama",
+  "scraped_at": "2026-07-13T20:02:04.603465+00:00",
+  "tag_name": "34b-python-q5_1"
+}

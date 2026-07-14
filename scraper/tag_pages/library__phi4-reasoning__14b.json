@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "phi3",
+      "blob_url": "/library/phi4-reasoning:14b/blobs/89f38c5f78de",
+      "content_preview": "arch  phi3",
+      "parameters": "14.7B",
+      "quantization": "Q4_K_M",
+      "size": "11GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phi4-reasoning:14b/blobs/88df15fe1f34",
+      "content_preview": "You are Phi, a language model trained by Microsoft to help users. Your role as an assistant involves",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.2kB",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phi4-reasoning:14b/blobs/fa8235e5b48f",
+      "content_preview": "Microsoft.\nCopyright (c) Microsoft Corporation.\nMIT License\nPermission is hereby granted, free of ch",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phi4-reasoning:14b/blobs/45a1c652dddc",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\",\n        \"<|im_sep|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "82B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phi4-reasoning:14b/blobs/32695b892af8",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|im_start|>{{ .R",
+      "parameters": "",
+      "quantization": "",
+      "size": "275B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/phi4-reasoning:14b",
+  "manifest_digest": "47e2630ccbcd",
+  "manifest_size": "11GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/phi4-reasoning",
+  "scraped_at": "2026-07-13T20:21:04.669670+00:00",
+  "tag_name": "14b"
+}

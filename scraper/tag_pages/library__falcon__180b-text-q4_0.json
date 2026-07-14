@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "falcon",
+      "blob_url": "/library/falcon:180b-text-q4_0/blobs/fcdc1ef247ba",
+      "content_preview": "arch  falcon",
+      "parameters": "180B",
+      "quantization": "Q4_0",
+      "size": "101GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/falcon:180b-text-q4_0/blobs/8e8cf4b25d47",
+      "content_preview": "FALCON 180B TII LICENSE VERSION 1.0\nSeptember 2023\nfalconllm.tii.ae\nINTRODUCTORY NOTE\nThis license i",
+      "parameters": "",
+      "quantization": "",
+      "size": "16kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/falcon:180b-text-q4_0",
+  "manifest_digest": "f5905a53ed4b",
+  "manifest_size": "101GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/falcon",
+  "scraped_at": "2026-07-13T20:43:15.192679+00:00",
+  "tag_name": "180b-text-q4_0"
+}

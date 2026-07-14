@@ -1,0 +1,17 @@
+{
+  "path": "/library/marco-o1",
+  "name": "marco-o1",
+  "scraped_at": "2026-07-13T19:30:40.221341+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/marco-o1/93bea833-d0c0-48b6-8ece-9c2de26cba27\" width=\"200\"/></p>\n\n<ul>\n<li><strong>Fine-Tuning with CoT Data:</strong> We develop <ins>Marco-o1-CoT</ins> by performing full-parameter fine-tuning on the base model using open-source CoT dataset combined with our self-developed synthetic data.</li>\n<li><strong>Solution Space Expansion via MCTS:</strong> We integrate LLMs with MCTS (<ins>Marco-o1-MCTS</ins>), using the model\u2019s output confidence to guide the search and expand the solution space.</li>\n<li><strong>Reasoning Action Strategy:</strong> We implement novel reasoning action strategies and a reflection mechanism (<ins>Marco-o1-MCTS mini-step</ins>), including exploring different action granularities within the MCTS framework and prompting the model to self-reflect, thereby significantly enhancing the model\u2019s ability to solve complex problems.</li>\n<li><strong>Application in Translation Tasks:</strong> We are the first to apply Large Reasoning Models (LRM) to <ins>Machine Translation task</ins>, exploring inference time scaling laws in the multilingual and translation domain.</li>\n</ul>\n\n<h2>Usage</h2>\n\n<pre><code>ollama run marco-o1 &#34;How many Rs are in strawberry?&#34;\n</code></pre>\n\n<p>Parse the resulting string between <code>&lt;Output&gt;</code> and <code>&lt;/Output&gt;</code>:</p>\n\n<pre><code>...\n&lt;Output&gt;\nThere are 3 Rs in strawberry.\n&lt;/Output&gt;\n</code></pre>\n\n<h2>References</h2>\n\n<p><a href=\"https://github.com/AIDC-AI/Marco-o1?tab=readme-ov-file\" rel=\"nofollow\">GitHub</a></p>\n\n<p><a href=\"https://huggingface.co/AIDC-AI/Marco-o1\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

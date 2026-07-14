@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/solar:10.7b-text-v1-q5_1/blobs/49f34c065d15",
+      "content_preview": "arch  llama",
+      "parameters": "10.7B",
+      "quantization": "Q5_1",
+      "size": "8.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/solar:10.7b-text-v1-q5_1/blobs/a8b1d5dcb88c",
+      "content_preview": "{\n    \"num_ctx\": 4096,\n    \"stop\": [\n        \"</s>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "43B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/solar:10.7b-text-v1-q5_1",
+  "manifest_digest": "80cc2ecfe373",
+  "manifest_size": "8.1GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/solar",
+  "scraped_at": "2026-07-13T21:02:43.616177+00:00",
+  "tag_name": "10.7b-text-v1-q5_1"
+}

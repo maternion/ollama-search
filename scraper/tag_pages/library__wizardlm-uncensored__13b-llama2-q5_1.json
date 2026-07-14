@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/wizardlm-uncensored:13b-llama2-q5_1/blobs/3017595d081b",
+      "content_preview": "arch  llama",
+      "parameters": "13B",
+      "quantization": "Q5_1",
+      "size": "9.8GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardlm-uncensored:13b-llama2-q5_1/blobs/b1571c5cbd28",
+      "content_preview": "{{ .System }}\nUSER: {{ .Prompt }}\nASSISTANT:",
+      "parameters": "",
+      "quantization": "",
+      "size": "45B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardlm-uncensored:13b-llama2-q5_1/blobs/c8472cd9daed",
+      "content_preview": "You are a helpful AI assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardlm-uncensored:13b-llama2-q5_1/blobs/d14264189a8a",
+      "content_preview": "{\n    \"stop\": [\n        \"USER:\",\n        \"ASSISTANT:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/wizardlm-uncensored:13b-llama2-q5_1",
+  "manifest_digest": "c229574569e6",
+  "manifest_size": "9.8GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/wizardlm-uncensored",
+  "scraped_at": "2026-07-13T21:13:15.475656+00:00",
+  "tag_name": "13b-llama2-q5_1"
+}

@@ -1,0 +1,27 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/codellama:70b-code-q5_K_S/blobs/0a7f07fca596",
+      "content_preview": "arch  llama",
+      "parameters": "69B",
+      "quantization": "Q5_K_S",
+      "size": "47GB",
+      "type": "model"
+    }
+  ],
+  "full_path": "/library/codellama:70b-code-q5_K_S",
+  "manifest_digest": "f7a6b036969c",
+  "manifest_size": "47GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/codellama",
+  "scraped_at": "2026-07-13T20:02:19.549691+00:00",
+  "tag_name": "70b-code-q5_K_S"
+}

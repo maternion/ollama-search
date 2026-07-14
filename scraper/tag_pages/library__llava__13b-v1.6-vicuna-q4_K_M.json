@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llava:13b-v1.6-vicuna-q4_K_M/blobs/0b8c8265e78b",
+      "content_preview": "arch  llama",
+      "parameters": "13B",
+      "quantization": "Q4_K_M",
+      "size": "7.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llava:13b-v1.6-vicuna-q4_K_M/blobs/42037f9f4c1b",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "645MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llava:13b-v1.6-vicuna-q4_K_M/blobs/9fb057c3f08a",
+      "content_preview": "{{ .System }}\nUSER: {{ .Prompt }}\nASSSISTANT:",
+      "parameters": "",
+      "quantization": "",
+      "size": "45B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llava:13b-v1.6-vicuna-q4_K_M/blobs/41774062cd34",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llava:13b-v1.6-vicuna-q4_K_M/blobs/7215dae26124",
+      "content_preview": "{\n    \"stop\": [\n        \"USER:\",\n        \"ASSSISTANT:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "33B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/llava:13b-v1.6-vicuna-q4_K_M",
+  "manifest_digest": "0843119c3874",
+  "manifest_size": "8.5GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/llava",
+  "scraped_at": "2026-07-13T19:48:43.082443+00:00",
+  "tag_name": "13b-v1.6-vicuna-q4_K_M"
+}

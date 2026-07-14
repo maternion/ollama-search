@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/library/qwen2-math:72b-instruct-fp16/blobs/d781a8056018",
+      "content_preview": "arch  qwen2",
+      "parameters": "72.7B",
+      "quantization": "F16",
+      "size": "145GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen2-math:72b-instruct-fp16/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen2-math:72b-instruct-fp16/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen2-math:72b-instruct-fp16/blobs/029b87c88d24",
+      "content_preview": "{{- range .Messages }}<|im_start|>{{ .Role }}\n{{ .Content }}<|im_end|>\n{{- end }}<|im_start|>assista",
+      "parameters": "",
+      "quantization": "",
+      "size": "102B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/qwen2-math:72b-instruct-fp16",
+  "manifest_digest": "119fdb055da9",
+  "manifest_size": "145GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/qwen2-math",
+  "scraped_at": "2026-07-13T20:45:06.063451+00:00",
+  "tag_name": "72b-instruct-fp16"
+}

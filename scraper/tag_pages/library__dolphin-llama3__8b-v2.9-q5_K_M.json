@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/dolphin-llama3:8b-v2.9-q5_K_M/blobs/574b2e7bee4e",
+      "content_preview": "arch  llama",
+      "parameters": "8.03B",
+      "quantization": "Q5_K_M",
+      "size": "5.7GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphin-llama3:8b-v2.9-q5_K_M/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphin-llama3:8b-v2.9-q5_K_M/blobs/9640c2212a51",
+      "content_preview": "You are Dolphin, a helpful AI assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "41B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphin-llama3:8b-v2.9-q5_K_M/blobs/4fa551d4f938",
+      "content_preview": "META LLAMA 3 COMMUNITY LICENSE AGREEMENT\nMeta Llama 3 Version Release Date: April 18, 2024\n“Agreem",
+      "parameters": "",
+      "quantization": "",
+      "size": "12kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphin-llama3:8b-v2.9-q5_K_M/blobs/62fbfd9ed093",
+      "content_preview": "{{ if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}{{ if .Prompt }}<|im_start|>user",
+      "parameters": "",
+      "quantization": "",
+      "size": "182B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/dolphin-llama3:8b-v2.9-q5_K_M",
+  "manifest_digest": "ff5532bbdbfd",
+  "manifest_size": "5.7GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/dolphin-llama3",
+  "scraped_at": "2026-07-13T20:17:49.600016+00:00",
+  "tag_name": "8b-v2.9-q5_K_M"
+}

@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/cogito:8b/blobs/75e23a78e375",
+      "content_preview": "arch  llama",
+      "parameters": "8.03B",
+      "quantization": "Q4_K_M",
+      "size": "4.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/cogito:8b/blobs/fcc5a6bec9da",
+      "content_preview": "LLAMA 3.2 COMMUNITY LICENSE AGREEMENT\nLlama 3.2 Version Release Date: September 25, 2024\n“Agreemen",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.7kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/cogito:8b/blobs/783adfd1d253",
+      "content_preview": "{{- if or .System .Tools }}<|start_header_id|>system<|end_header_id|>\n{{- if .System }}\n{{ .System }",
+      "parameters": "",
+      "quantization": "",
+      "size": "976B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/cogito:8b",
+  "manifest_digest": "75b508ddece1",
+  "manifest_size": "4.9GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/cogito",
+  "scraped_at": "2026-07-13T20:17:03.334896+00:00",
+  "tag_name": "8b"
+}

@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "solar",
+      "blob_url": "/library/solar-pro:22b-preview-instruct-q2_K/blobs/d0293700fee0",
+      "content_preview": "arch  solar",
+      "parameters": "22.1B",
+      "quantization": "Q2_K",
+      "size": "8.2GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/solar-pro:22b-preview-instruct-q2_K/blobs/066b2e5383b4",
+      "content_preview": "MIT License\nCopyright (c) Upstage Corporation.\nPermission is hereby granted, free of charge, to any",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/solar-pro:22b-preview-instruct-q2_K/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/solar-pro:22b-preview-instruct-q2_K/blobs/b997696d9c92",
+      "content_preview": "{{- range $index, $_ := .Messages }}<|im_start|>{{ .Role }}\n{{ .Content }}\n{{- if eq (len (slice $.M",
+      "parameters": "",
+      "quantization": "",
+      "size": "232B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/solar-pro:22b-preview-instruct-q2_K",
+  "manifest_digest": "565afa7ef255",
+  "manifest_size": "8.2GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/solar-pro",
+  "scraped_at": "2026-07-13T21:16:18.300892+00:00",
+  "tag_name": "22b-preview-instruct-q2_K"
+}

@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/codellama:34b-instruct-q4_K_M/blobs/4f2cbdf81848",
+      "content_preview": "arch  llama",
+      "parameters": "33.7B",
+      "quantization": "Q4_K_M",
+      "size": "20GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:34b-instruct-q4_K_M/blobs/c60122cb2728",
+      "content_preview": "{\n    \"num_gqa\": 8,\n    \"rope_frequency_base\": 1000000,\n    \"stop\": [\n        \"[INST]\",\n        \"[/I",
+      "parameters": "",
+      "quantization": "",
+      "size": "132B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:34b-instruct-q4_K_M/blobs/2e0493f67d0c",
+      "content_preview": "[INST] <<SYS>>{{ .System }}<</SYS>>\n{{ .Prompt }} [/INST]",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/codellama:34b-instruct-q4_K_M",
+  "manifest_digest": "e12e86e65362",
+  "manifest_size": "20GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/codellama",
+  "scraped_at": "2026-07-13T20:01:47.217815+00:00",
+  "tag_name": "34b-instruct-q4_K_M"
+}

@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "lfm2moe",
+      "blob_url": "/maternion/lfm2:8b/blobs/d2185b22630f",
+      "content_preview": "arch  lfm2moe",
+      "parameters": "8.34B",
+      "quantization": "Q4_K_M",
+      "size": "5.0GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/lfm2:8b/blobs/4fdc90d4e9b5",
+      "content_preview": "{\n    \"min_p\": 0.15,\n    \"repeat_penalty\": 1.05,\n    \"temperature\": 0.3\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "55B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/lfm2:8b/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/maternion/lfm2:8b",
+  "manifest_digest": "66cb8a6af115",
+  "manifest_size": "5.0GB",
+  "manifest_updated": "4 months ago",
+  "path": "/maternion/lfm2",
+  "scraped_at": "2026-07-14T15:15:37.766501+00:00",
+  "tag_name": "8b"
+}

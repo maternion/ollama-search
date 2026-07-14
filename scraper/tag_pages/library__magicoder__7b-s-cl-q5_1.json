@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/magicoder:7b-s-cl-q5_1/blobs/3c78c9fdc950",
+      "content_preview": "arch  llama",
+      "parameters": "6.74B",
+      "quantization": "Q5_1",
+      "size": "5.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/magicoder:7b-s-cl-q5_1/blobs/832698dc48ba",
+      "content_preview": "{{ .System }}\n@@ Instruction\n{{ .Prompt }}\n@@ Response",
+      "parameters": "",
+      "quantization": "",
+      "size": "57B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/magicoder:7b-s-cl-q5_1/blobs/58e1b82a691f",
+      "content_preview": "{\n    \"num_ctx\": 16384\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "18B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/magicoder:7b-s-cl-q5_1/blobs/317b1d8baaaa",
+      "content_preview": "You are an exceptionally intelligent coding assistant that consistently delivers accurate and reliab",
+      "parameters": "",
+      "quantization": "",
+      "size": "134B",
+      "type": "system"
+    }
+  ],
+  "full_path": "/library/magicoder:7b-s-cl-q5_1",
+  "manifest_digest": "7da1fdad5251",
+  "manifest_size": "5.1GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/magicoder",
+  "scraped_at": "2026-07-13T21:16:44.392955+00:00",
+  "tag_name": "7b-s-cl-q5_1"
+}

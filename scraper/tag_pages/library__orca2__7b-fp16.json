@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/orca2:7b-fp16/blobs/d3fef0adaea6",
+      "content_preview": "arch  llama",
+      "parameters": "6.74B",
+      "quantization": "F16",
+      "size": "13GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/orca2:7b-fp16/blobs/81e26ab42787",
+      "content_preview": "{\n    \"num_ctx\": 4096,\n    \"stop\": [\n        \"<|im_start\",\n        \"<|im_end\",\n        \"|im_start\",",
+      "parameters": "",
+      "quantization": "",
+      "size": "82B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/orca2:7b-fp16/blobs/8d08f5d44700",
+      "content_preview": "MICROSOFT RESEARCH LICENSE TERMS\nIF YOU LIVE IN THE UNITED STATES, PLEASE READ THE “BINDING ARBITR",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/orca2:7b-fp16/blobs/8c5fa8319707",
+      "content_preview": "You are Orca, an AI language model created by Microsoft. You are a cautious assistant. You carefully",
+      "parameters": "",
+      "quantization": "",
+      "size": "215B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/orca2:7b-fp16/blobs/a47b02e00552",
+      "content_preview": "<|im_start|>system\n{{ .System }}<|im_end|>\n<|im_start|>user\n{{ .Prompt }}<|im_end|>\n<|im_start|>assi",
+      "parameters": "",
+      "quantization": "",
+      "size": "106B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/orca2:7b-fp16",
+  "manifest_digest": "61bd6364c766",
+  "manifest_size": "13GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/orca2",
+  "scraped_at": "2026-07-13T21:04:59.491038+00:00",
+  "tag_name": "7b-fp16"
+}

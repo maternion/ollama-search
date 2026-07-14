@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/wizardlm2:8x22b-q2_K/blobs/502d8aaa7627",
+      "content_preview": "arch  llama",
+      "parameters": "141B",
+      "quantization": "Q2_K",
+      "size": "52GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardlm2:8x22b-q2_K/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardlm2:8x22b-q2_K/blobs/1fa69e2371b7",
+      "content_preview": "A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful,",
+      "parameters": "",
+      "quantization": "",
+      "size": "154B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardlm2:8x22b-q2_K/blobs/f4c99b0ffe2c",
+      "content_preview": "{\n    \"stop\": [\n        \"USER:\",\n        \"ASSISTANT:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "32B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardlm2:8x22b-q2_K/blobs/245f91e42bbb",
+      "content_preview": "{{ if .System }}{{ .System }} {{ end }}{{ if .Prompt }}USER: {{ .Prompt }} {{ end }}ASSISTANT: {{ .R",
+      "parameters": "",
+      "quantization": "",
+      "size": "110B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/wizardlm2:8x22b-q2_K",
+  "manifest_digest": "9f09573d18b6",
+  "manifest_size": "52GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/wizardlm2",
+  "scraped_at": "2026-07-13T20:37:54.383865+00:00",
+  "tag_name": "8x22b-q2_K"
+}

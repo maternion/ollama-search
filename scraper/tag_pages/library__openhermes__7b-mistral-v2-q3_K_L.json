@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/openhermes:7b-mistral-v2-q3_K_L/blobs/7fb961d9eb5c",
+      "content_preview": "arch  llama",
+      "parameters": "7.24B",
+      "quantization": "Q3_K_L",
+      "size": "3.8GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/openhermes:7b-mistral-v2-q3_K_L/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/openhermes:7b-mistral-v2-q3_K_L/blobs/a47b02e00552",
+      "content_preview": "<|im_start|>system\n{{ .System }}<|im_end|>\n<|im_start|>user\n{{ .Prompt }}<|im_end|>\n<|im_start|>assi",
+      "parameters": "",
+      "quantization": "",
+      "size": "106B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/openhermes:7b-mistral-v2-q3_K_L",
+  "manifest_digest": "92639a59090e",
+  "manifest_size": "3.8GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/openhermes",
+  "scraped_at": "2026-07-13T20:43:49.972881+00:00",
+  "tag_name": "7b-mistral-v2-q3_K_L"
+}

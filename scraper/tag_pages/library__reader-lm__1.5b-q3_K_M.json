@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/library/reader-lm:1.5b-q3_K_M/blobs/69dd226d3d4b",
+      "content_preview": "arch  qwen2",
+      "parameters": "1.54B",
+      "quantization": "Q3_K_M",
+      "size": "824MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/reader-lm:1.5b-q3_K_M/blobs/94baea11f788",
+      "content_preview": "Creative Commons Attribution-NonCommercial 4.0 International\nBy exercising the Licensed Rights (defi",
+      "parameters": "",
+      "quantization": "",
+      "size": "13kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/reader-lm:1.5b-q3_K_M/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/reader-lm:1.5b-q3_K_M/blobs/60ed67c565f8",
+      "content_preview": "{{- if .Messages }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -",
+      "parameters": "",
+      "quantization": "",
+      "size": "506B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/reader-lm:1.5b-q3_K_M",
+  "manifest_digest": "04d6fa1b5675",
+  "manifest_size": "824MB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/reader-lm",
+  "scraped_at": "2026-07-13T21:06:23.921277+00:00",
+  "tag_name": "1.5b-q3_K_M"
+}

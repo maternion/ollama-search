@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/open-orca-platypus2:13b-q5_1/blobs/2869ec57db42",
+      "content_preview": "arch  llama",
+      "parameters": "13B",
+      "quantization": "Q5_1",
+      "size": "9.8GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/open-orca-platypus2:13b-q5_1/blobs/55540d7c14b7",
+      "content_preview": "{\n    \"stop\": [\n        \"### Instruction:\",\n        \"### Response:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "45B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/open-orca-platypus2:13b-q5_1/blobs/7bf57aba0a70",
+      "content_preview": "{{ .System }}\n### Instruction:\n{{ .Prompt }}\n### Response:",
+      "parameters": "",
+      "quantization": "",
+      "size": "63B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/open-orca-platypus2:13b-q5_1",
+  "manifest_digest": "a94fe59f659f",
+  "manifest_size": "9.8GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/open-orca-platypus2",
+  "scraped_at": "2026-07-13T21:20:27.498301+00:00",
+  "tag_name": "13b-q5_1"
+}

@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/wizardcoder:7b-python-q8_0/blobs/381d0606403a",
+      "content_preview": "arch  llama",
+      "parameters": "6.74B",
+      "quantization": "Q8_0",
+      "size": "7.2GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardcoder:7b-python-q8_0/blobs/8fadb9ad1206",
+      "content_preview": "Below is an instruction that describes a task. Write a response that appropriately completes the req",
+      "parameters": "",
+      "quantization": "",
+      "size": "106B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardcoder:7b-python-q8_0/blobs/58e1b82a691f",
+      "content_preview": "{\n    \"num_ctx\": 16384\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "18B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardcoder:7b-python-q8_0/blobs/2d836d77287d",
+      "content_preview": "{{ .System }}\n### Instruction:\n{{ .Prompt }}\n### Response:",
+      "parameters": "",
+      "quantization": "",
+      "size": "61B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/wizardcoder:7b-python-q8_0",
+  "manifest_digest": "711202346249",
+  "manifest_size": "7.2GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/wizardcoder",
+  "scraped_at": "2026-07-13T20:48:26.470833+00:00",
+  "tag_name": "7b-python-q8_0"
+}

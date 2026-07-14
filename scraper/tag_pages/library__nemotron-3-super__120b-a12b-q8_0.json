@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "nemotron_h_moe",
+      "blob_url": "/library/nemotron-3-super:120b-a12b-q8_0/blobs/7e614521d8bc",
+      "content_preview": "arch  nemotron_h_moe",
+      "parameters": "124B",
+      "quantization": "Q8_0",
+      "size": "132GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nemotron-3-super:120b-a12b-q8_0/blobs/d02d998e5ae6",
+      "content_preview": "NVIDIA Software and Model Evaluation License\nIMPORTANT NOTICE – PLEASE READ AND AGREE BEFORE USING",
+      "parameters": "",
+      "quantization": "",
+      "size": "24kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nemotron-3-super:120b-a12b-q8_0/blobs/02897ca0d6a3",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/nemotron-3-super:120b-a12b-q8_0",
+  "manifest_digest": "b935f8ec0f40",
+  "manifest_size": "132GB",
+  "manifest_updated": "4 months ago",
+  "path": "/library/nemotron-3-super",
+  "scraped_at": "2026-07-13T19:33:24.947938+00:00",
+  "tag_name": "120b-a12b-q8_0"
+}

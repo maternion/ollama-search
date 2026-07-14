@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gemma3n",
+      "blob_url": "/library/gemma3n:latest/blobs/38e8dcc30df4",
+      "content_preview": "arch  gemma3n",
+      "parameters": "6.87B",
+      "quantization": "Q4_K_M",
+      "size": "7.5GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma3n:latest/blobs/1adbfec9dcf0",
+      "content_preview": "Gemma Terms of Use\nLast modified: March 24, 2025\nBy using, reproducing, modifying, distributing, per",
+      "parameters": "",
+      "quantization": "",
+      "size": "8.4kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma3n:latest/blobs/e0a42594d802",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if or (eq .Rol",
+      "parameters": "",
+      "quantization": "",
+      "size": "358B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/gemma3n:latest",
+  "manifest_digest": "15cb39fd9394",
+  "manifest_size": "7.5GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/gemma3n",
+  "scraped_at": "2026-07-13T20:19:36.287123+00:00",
+  "tag_name": "latest"
+}

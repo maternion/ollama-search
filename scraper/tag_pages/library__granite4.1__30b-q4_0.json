@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "granite",
+      "blob_url": "/library/granite4.1:30b-q4_0/blobs/03796ec23dc2",
+      "content_preview": "arch  granite",
+      "parameters": "28.9B",
+      "quantization": "Q4_0",
+      "size": "16GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite4.1:30b-q4_0/blobs/58d1e17ffe51",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite4.1:30b-q4_0/blobs/89a0ab46e638",
+      "content_preview": "{{- /*\n------ MESSAGE PARSING ------\n*/}}\n{{- /*\nDeclare the system prompt chunks used for different",
+      "parameters": "",
+      "quantization": "",
+      "size": "6.8kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/granite4.1:30b-q4_0",
+  "manifest_digest": "402200215ef1",
+  "manifest_size": "16GB",
+  "manifest_updated": "2 months ago",
+  "path": "/library/granite4.1",
+  "scraped_at": "2026-07-13T21:24:08.194954+00:00",
+  "tag_name": "30b-q4_0"
+}

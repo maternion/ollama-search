@@ -1,0 +1,27 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llama-pro:8b-text-fp16/blobs/dff579ef9777",
+      "content_preview": "arch  llama",
+      "parameters": "8.36B",
+      "quantization": "F16",
+      "size": "17GB",
+      "type": "model"
+    }
+  ],
+  "full_path": "/library/llama-pro:8b-text-fp16",
+  "manifest_digest": "9b790fecf7f8",
+  "manifest_size": "17GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/llama-pro",
+  "scraped_at": "2026-07-13T21:08:06.462740+00:00",
+  "tag_name": "8b-text-fp16"
+}

@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "deepseek2",
+      "blob_url": "/library/deepseek-v2:16b-lite-chat-q4_1/blobs/c82ca62f3aec",
+      "content_preview": "arch  deepseek2",
+      "parameters": "15.7B",
+      "quantization": "Q4_1",
+      "size": "9.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-v2:16b-lite-chat-q4_1/blobs/4bb71764481f",
+      "content_preview": "DEEPSEEK LICENSE AGREEMENT\nVersion 1.0, 23 October 2023\nCopyright (c) 2023 DeepSeek\nSection I: PREAM",
+      "parameters": "",
+      "quantization": "",
+      "size": "14kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-v2:16b-lite-chat-q4_1/blobs/19f2fb9e8bc6",
+      "content_preview": "{\n    \"stop\": [\n        \"User:\",\n        \"Assistant:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "32B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-v2:16b-lite-chat-q4_1/blobs/b321cd7de6c7",
+      "content_preview": "{{ if .System }}{{ .System }}\n{{ end }}{{ if .Prompt }}User: {{ .Prompt }}\n{{ end }}Assistant:{{ .Re",
+      "parameters": "",
+      "quantization": "",
+      "size": "111B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/deepseek-v2:16b-lite-chat-q4_1",
+  "manifest_digest": "af64dfc98c26",
+  "manifest_size": "9.9GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/deepseek-v2",
+  "scraped_at": "2026-07-13T20:38:23.026053+00:00",
+  "tag_name": "16b-lite-chat-q4_1"
+}

@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/megadolphin:120b/blobs/c3fb7b7af35d",
+      "content_preview": "arch  llama",
+      "parameters": "120B",
+      "quantization": "Q4_0",
+      "size": "68GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/megadolphin:120b/blobs/8e76cdb0b2ac",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.2kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/megadolphin:120b/blobs/9640c2212a51",
+      "content_preview": "You are Dolphin, a helpful AI assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "41B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/megadolphin:120b/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/megadolphin:120b/blobs/a47b02e00552",
+      "content_preview": "<|im_start|>system\n{{ .System }}<|im_end|>\n<|im_start|>user\n{{ .Prompt }}<|im_end|>\n<|im_start|>assi",
+      "parameters": "",
+      "quantization": "",
+      "size": "106B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/megadolphin:120b",
+  "manifest_digest": "8fa55398527b",
+  "manifest_size": "68GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/megadolphin",
+  "scraped_at": "2026-07-13T21:15:39.600086+00:00",
+  "tag_name": "120b"
+}

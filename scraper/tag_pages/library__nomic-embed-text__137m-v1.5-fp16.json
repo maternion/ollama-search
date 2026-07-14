@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "nomic-bert",
+      "blob_url": "/library/nomic-embed-text:137m-v1.5-fp16/blobs/970aa74c0a90",
+      "content_preview": "arch  nomic-bert",
+      "parameters": "137M",
+      "quantization": "F16",
+      "size": "274MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nomic-embed-text:137m-v1.5-fp16/blobs/c71d239df917",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nomic-embed-text:137m-v1.5-fp16/blobs/ce4a164fc046",
+      "content_preview": "{\n    \"num_ctx\": 8192\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "17B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/nomic-embed-text:137m-v1.5-fp16",
+  "manifest_digest": "0a109f422b47",
+  "manifest_size": "274MB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/nomic-embed-text",
+  "scraped_at": "2026-07-13T19:35:50.141331+00:00",
+  "tag_name": "137m-v1.5-fp16"
+}

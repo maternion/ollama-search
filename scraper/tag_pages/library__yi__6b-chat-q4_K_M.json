@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/yi:6b-chat-q4_K_M/blobs/66c63f53e34b",
+      "content_preview": "arch  llama",
+      "parameters": "6.06B",
+      "quantization": "Q4_K_M",
+      "size": "3.7GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/yi:6b-chat-q4_K_M/blobs/d9247556ada8",
+      "content_preview": "Yi Series Models Community License Agreement\nVersion: 2.1\nDate of Release: November 23, 2023\n1. Defi",
+      "parameters": "",
+      "quantization": "",
+      "size": "17kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/yi:6b-chat-q4_K_M/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/yi:6b-chat-q4_K_M/blobs/a47b02e00552",
+      "content_preview": "<|im_start|>system\n{{ .System }}<|im_end|>\n<|im_start|>user\n{{ .Prompt }}<|im_end|>\n<|im_start|>assi",
+      "parameters": "",
+      "quantization": "",
+      "size": "106B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/yi:6b-chat-q4_K_M",
+  "manifest_digest": "1f6e9f4f5ed0",
+  "manifest_size": "3.7GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/yi",
+  "scraped_at": "2026-07-13T20:29:21.664344+00:00",
+  "tag_name": "6b-chat-q4_K_M"
+}

@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gptoss",
+      "blob_url": "/library/gpt-oss:120b/blobs/6be6d66a3f54",
+      "content_preview": "arch  gptoss",
+      "parameters": "117B",
+      "quantization": "MXFP4",
+      "size": "65GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gpt-oss:120b/blobs/f60356777647",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gpt-oss:120b/blobs/d8ba2f9a17b3",
+      "content_preview": "{\n    \"temperature\": 1\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "18B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gpt-oss:120b/blobs/fa6710a93d78",
+      "content_preview": "<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.\nKnowledge cutof",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.2kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/gpt-oss:120b",
+  "manifest_digest": "a951a23b46a1",
+  "manifest_size": "65GB",
+  "manifest_updated": "9 months ago",
+  "path": "/library/gpt-oss",
+  "scraped_at": "2026-07-13T19:49:09.332188+00:00",
+  "tag_name": "120b"
+}

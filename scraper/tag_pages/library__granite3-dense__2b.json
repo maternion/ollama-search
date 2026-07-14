@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "granite",
+      "blob_url": "/library/granite3-dense:2b/blobs/63dd4fe4571a",
+      "content_preview": "arch  granite",
+      "parameters": "2.63B",
+      "quantization": "Q4_K_M",
+      "size": "1.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite3-dense:2b/blobs/492069a62c25",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite3-dense:2b/blobs/31ad3abb7dce",
+      "content_preview": "You are Granite, an AI language model developed by IBM in 2024.",
+      "parameters": "",
+      "quantization": "",
+      "size": "63B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite3-dense:2b/blobs/604785e698e9",
+      "content_preview": "{{- if .Tools }}<|start_of_role|>available_tools<|end_of_role|>\n{{- range .Tools }}\n{{ . }}\n{{ end }",
+      "parameters": "",
+      "quantization": "",
+      "size": "664B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/granite3-dense:2b",
+  "manifest_digest": "5c2e6f3112f4",
+  "manifest_size": "1.6GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/granite3-dense",
+  "scraped_at": "2026-07-13T20:51:46.430165+00:00",
+  "tag_name": "2b"
+}

@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/medllama2:7b-q3_K_M/blobs/4d0960b439e7",
+      "content_preview": "arch  llama",
+      "parameters": "6.74B",
+      "quantization": "Q3_K_M",
+      "size": "3.3GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/medllama2:7b-q3_K_M/blobs/0644cce03f93",
+      "content_preview": "{\n    \"stop\": [\n        \"User:\",\n        \"Assistant:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/medllama2:7b-q3_K_M/blobs/4dec76bb1a47",
+      "content_preview": "{{ .System }}\nUser: {{ .Prompt }}\nAssistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "45B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/medllama2:7b-q3_K_M",
+  "manifest_digest": "c9fba0828b5e",
+  "manifest_size": "3.3GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/medllama2",
+  "scraped_at": "2026-07-13T21:13:35.651698+00:00",
+  "tag_name": "7b-q3_K_M"
+}

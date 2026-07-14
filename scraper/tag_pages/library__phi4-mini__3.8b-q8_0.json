@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "phi3",
+      "blob_url": "/library/phi4-mini:3.8b-q8_0/blobs/85f399230549",
+      "content_preview": "arch  phi3",
+      "parameters": "3.84B",
+      "quantization": "Q8_0",
+      "size": "4.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phi4-mini:3.8b-q8_0/blobs/fa8235e5b48f",
+      "content_preview": "Microsoft.\nCopyright (c) Microsoft Corporation.\nMIT License\nPermission is hereby granted, free of ch",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phi4-mini:3.8b-q8_0/blobs/813f53fdc6e5",
+      "content_preview": "{{- if or .System .Tools }}<|system|>{{ if .System }}{{ .System }}{{ end }}\n{{- if .Tools }}{{ if no",
+      "parameters": "",
+      "quantization": "",
+      "size": "655B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/phi4-mini:3.8b-q8_0",
+  "manifest_digest": "0be8e6979181",
+  "manifest_size": "4.1GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/phi4-mini",
+  "scraped_at": "2026-07-13T20:31:53.759341+00:00",
+  "tag_name": "3.8b-q8_0"
+}

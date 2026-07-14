@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen3",
+      "blob_url": "/library/minicpm-v4.5:q4_1/blobs/7d6c59dc41db",
+      "content_preview": "arch  qwen3",
+      "parameters": "8.19B",
+      "quantization": "Q4_1",
+      "size": "5.2GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/minicpm-v4.5:q4_1/blobs/7a7225a32e8d",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1GB",
+      "type": "projector"
+    }
+  ],
+  "full_path": "/library/minicpm-v4.5:q4_1",
+  "manifest_digest": "e48898b0d902",
+  "manifest_size": "6.3GB",
+  "manifest_updated": "1 month ago",
+  "path": "/library/minicpm-v4.5",
+  "scraped_at": "2026-07-13T21:25:50.928335+00:00",
+  "tag_name": "q4_1"
+}

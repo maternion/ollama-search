@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/orca-mini:70b-v3-q3_K_S/blobs/d7b3fc8c89fd",
+      "content_preview": "arch  llama",
+      "parameters": "69B",
+      "quantization": "Q3_K_S",
+      "size": "30GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/orca-mini:70b-v3-q3_K_S/blobs/93ca9b3d83dc",
+      "content_preview": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
+      "parameters": "",
+      "quantization": "",
+      "size": "89B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/orca-mini:70b-v3-q3_K_S/blobs/cddc6041acf5",
+      "content_preview": "{\n    \"num_gqa\": 8,\n    \"stop\": [\n        \"### System:\",\n        \"### User:\",\n        \"### Assistant",
+      "parameters": "",
+      "quantization": "",
+      "size": "65B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/orca-mini:70b-v3-q3_K_S/blobs/354152d2dd7a",
+      "content_preview": "{{- if .System }}\n### System:\n{{ .System }}\n{{- end }}\n### User:\n{{ .Prompt }}\n### Assistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "96B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/orca-mini:70b-v3-q3_K_S",
+  "manifest_digest": "5df07f064756",
+  "manifest_size": "30GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/orca-mini",
+  "scraped_at": "2026-07-13T20:12:18.469969+00:00",
+  "tag_name": "70b-v3-q3_K_S"
+}

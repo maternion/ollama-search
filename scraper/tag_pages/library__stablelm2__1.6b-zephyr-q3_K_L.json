@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "stablelm",
+      "blob_url": "/library/stablelm2:1.6b-zephyr-q3_K_L/blobs/88c437ed9f1d",
+      "content_preview": "arch  stablelm",
+      "parameters": "1.64B",
+      "quantization": "Q3_K_L",
+      "size": "915MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stablelm2:1.6b-zephyr-q3_K_L/blobs/9509b94e411e",
+      "content_preview": "STABILITY AI NON-COMMERCIAL RESEARCH COMMUNITY LICENSE AGREEMENT\nDated: December 06, 2023\nBy using o",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.5kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stablelm2:1.6b-zephyr-q3_K_L/blobs/8c205fccfc04",
+      "content_preview": "{\n    \"stop\": [\n        \"<|endoftext|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "37B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stablelm2:1.6b-zephyr-q3_K_L/blobs/07b75c465eaf",
+      "content_preview": "<|system|>\n{{ .System }}<|endoftext|>\n<|user|>\n{{ .Prompt }}<|endoftext|>\n<|assistant|>",
+      "parameters": "",
+      "quantization": "",
+      "size": "88B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/stablelm2:1.6b-zephyr-q3_K_L",
+  "manifest_digest": "5b4670930e20",
+  "manifest_size": "915MB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/stablelm2",
+  "scraped_at": "2026-07-13T20:50:47.432764+00:00",
+  "tag_name": "1.6b-zephyr-q3_K_L"
+}

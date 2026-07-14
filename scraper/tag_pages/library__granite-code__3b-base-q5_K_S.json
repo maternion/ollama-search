@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/granite-code:3b-base-q5_K_S/blobs/17bafbe2be17",
+      "content_preview": "arch  llama",
+      "parameters": "3.48B",
+      "quantization": "Q5_K_S",
+      "size": "2.4GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite-code:3b-base-q5_K_S/blobs/58d1e17ffe51",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/granite-code:3b-base-q5_K_S",
+  "manifest_digest": "c2b4985e3261",
+  "manifest_size": "2.4GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/granite-code",
+  "scraped_at": "2026-07-13T20:25:30.512245+00:00",
+  "tag_name": "3b-base-q5_K_S"
+}

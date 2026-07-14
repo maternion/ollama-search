@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/codellama:34b-code-q4_K_M/blobs/39bac65d5f14",
+      "content_preview": "arch  llama",
+      "parameters": "33.7B",
+      "quantization": "Q4_K_M",
+      "size": "20GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:34b-code-q4_K_M/blobs/8c17c2ebb0ea",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:34b-code-q4_K_M/blobs/590d74a5569b",
+      "content_preview": "# Llama Code Acceptable Use Policy\nMeta is committed to promoting safe and fair use of its tools and",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.8kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:34b-code-q4_K_M/blobs/ff29d10ee099",
+      "content_preview": "{\n    \"num_gqa\": 8,\n    \"rope_frequency_base\": 1000000\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "43B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/codellama:34b-code-q4_K_M",
+  "manifest_digest": "ab557c194836",
+  "manifest_size": "20GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/codellama",
+  "scraped_at": "2026-07-13T20:01:33.377820+00:00",
+  "tag_name": "34b-code-q4_K_M"
+}

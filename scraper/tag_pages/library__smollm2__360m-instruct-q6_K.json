@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/smollm2:360m-instruct-q6_K/blobs/b7264fe252f2",
+      "content_preview": "arch  llama",
+      "parameters": "362M",
+      "quantization": "Q6_K",
+      "size": "367MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/smollm2:360m-instruct-q6_K/blobs/fbacade46b4d",
+      "content_preview": "You are a helpful AI assistant named SmolLM, trained by Hugging Face",
+      "parameters": "",
+      "quantization": "",
+      "size": "68B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/smollm2:360m-instruct-q6_K/blobs/58d1e17ffe51",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/smollm2:360m-instruct-q6_K/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/smollm2:360m-instruct-q6_K/blobs/d502d55c1d60",
+      "content_preview": "{{- if .Messages }}\n{{- if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}\n{{- range",
+      "parameters": "",
+      "quantization": "",
+      "size": "675B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/smollm2:360m-instruct-q6_K",
+  "manifest_digest": "0b45c0118489",
+  "manifest_size": "367MB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/smollm2",
+  "scraped_at": "2026-07-13T20:07:33.956390+00:00",
+  "tag_name": "360m-instruct-q6_K"
+}

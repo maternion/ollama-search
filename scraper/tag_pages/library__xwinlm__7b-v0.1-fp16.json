@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/xwinlm:7b-v0.1-fp16/blobs/ae5ea2138c9c",
+      "content_preview": "arch  llama",
+      "parameters": "6.74B",
+      "quantization": "F16",
+      "size": "13GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/xwinlm:7b-v0.1-fp16/blobs/4dec76bb1a47",
+      "content_preview": "{{ .System }}\nUser: {{ .Prompt }}\nAssistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "45B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/xwinlm:7b-v0.1-fp16/blobs/3c428d00cdeb",
+      "content_preview": "{\n    \"num_ctx\": 4096,\n    \"stop\": [\n        \"User:\",\n        \"Assistant:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "46B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/xwinlm:7b-v0.1-fp16",
+  "manifest_digest": "16c93bccfbd5",
+  "manifest_size": "13GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/xwinlm",
+  "scraped_at": "2026-07-13T21:00:27.824084+00:00",
+  "tag_name": "7b-v0.1-fp16"
+}

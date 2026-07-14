@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "starcoder",
+      "blob_url": "/library/starcoder:7b-base-q3_K_M/blobs/79f27ebdaf3b",
+      "content_preview": "arch  starcoder",
+      "parameters": "7.53B",
+      "quantization": "Q3_K_M",
+      "size": "3.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starcoder:7b-base-q3_K_M/blobs/1576480a555b",
+      "content_preview": "{\n    \"stop\": [\n        \"<|endoftext|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "36B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/starcoder:7b-base-q3_K_M",
+  "manifest_digest": "bb8083ca1497",
+  "manifest_size": "3.9GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/starcoder",
+  "scraped_at": "2026-07-13T20:36:39.749317+00:00",
+  "tag_name": "7b-base-q3_K_M"
+}

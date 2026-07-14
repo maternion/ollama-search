@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "command-r",
+      "blob_url": "/library/command-r:v0.1/blobs/8a9611e7bca1",
+      "content_preview": "arch  command-r",
+      "parameters": "35B",
+      "quantization": "Q4_0",
+      "size": "20GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/command-r:v0.1/blobs/f0624a2393a5",
+      "content_preview": "Creative Commons Attribution-NonCommercial 4.0 International Public\nLicense with Acceptable Use Adde",
+      "parameters": "",
+      "quantization": "",
+      "size": "14kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/command-r:v0.1/blobs/36b9655abe6a",
+      "content_preview": "{\n    \"stop\": [\n        \"<|START_OF_TURN_TOKEN|>\",\n        \"<|END_OF_TURN_TOKEN|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "81B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/command-r:v0.1/blobs/42499e38acdf",
+      "content_preview": "{{ if .System }}<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|>{{ .System }}<|END_OF_TURN_TOKEN|>{{ end }}{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "270B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/command-r:v0.1",
+  "manifest_digest": "b8cdfff0263c",
+  "manifest_size": "20GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/command-r",
+  "scraped_at": "2026-07-13T20:24:39.997485+00:00",
+  "tag_name": "v0.1"
+}

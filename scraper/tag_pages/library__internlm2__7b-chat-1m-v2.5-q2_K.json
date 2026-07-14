@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "internlm2",
+      "blob_url": "/library/internlm2:7b-chat-1m-v2.5-q2_K/blobs/9bbef6b1b9ac",
+      "content_preview": "arch  internlm2",
+      "parameters": "7.74B",
+      "quantization": "Q2_K",
+      "size": "3.0GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/internlm2:7b-chat-1m-v2.5-q2_K/blobs/75357d685f23",
+      "content_preview": "You are a helpful assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "28B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/internlm2:7b-chat-1m-v2.5-q2_K/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/internlm2:7b-chat-1m-v2.5-q2_K/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/internlm2:7b-chat-1m-v2.5-q2_K/blobs/3e9c19662c62",
+      "content_preview": "{{- range .Messages }}<|im_start|>{{ .Role }}\n{{ .Content }}<|im_end|>\n{{ end }}<|im_start|>assistan",
+      "parameters": "",
+      "quantization": "",
+      "size": "101B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/internlm2:7b-chat-1m-v2.5-q2_K",
+  "manifest_digest": "d84dd7a28059",
+  "manifest_size": "3.0GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/internlm2",
+  "scraped_at": "2026-07-13T20:58:11.142194+00:00",
+  "tag_name": "7b-chat-1m-v2.5-q2_K"
+}

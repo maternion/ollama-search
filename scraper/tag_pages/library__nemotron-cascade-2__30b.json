@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "nemotron_h_moe",
+      "blob_url": "/library/nemotron-cascade-2:30b/blobs/9e0c827cfd6a",
+      "content_preview": "arch  nemotron_h_moe",
+      "parameters": "31.6B",
+      "quantization": "Q4_K_M",
+      "size": "24GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nemotron-cascade-2:30b/blobs/355e036064fa",
+      "content_preview": "NVIDIA Open Model License Agreement\nLast Modified: October 24, 2025\nThis NVIDIA Open Model License A",
+      "parameters": "",
+      "quantization": "",
+      "size": "10kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nemotron-cascade-2:30b/blobs/02897ca0d6a3",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/nemotron-cascade-2:30b",
+  "manifest_digest": "e0705e3fe8f7",
+  "manifest_size": "24GB",
+  "manifest_updated": "3 months ago",
+  "path": "/library/nemotron-cascade-2",
+  "scraped_at": "2026-07-13T21:25:14.280636+00:00",
+  "tag_name": "30b"
+}

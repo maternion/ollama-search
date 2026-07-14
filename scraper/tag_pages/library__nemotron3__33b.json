@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "nemotron_h_omni",
+      "blob_url": "/library/nemotron3:33b/blobs/02025860ddde",
+      "content_preview": "arch  nemotron_h_omni",
+      "parameters": "33B",
+      "quantization": "Q4_K_M",
+      "size": "28GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nemotron3:33b/blobs/aab95a9bd775",
+      "content_preview": "NVIDIA Open Model License Agreement\nLast Modified: October 24, 2025\nThis NVIDIA Open Model License A",
+      "parameters": "",
+      "quantization": "",
+      "size": "10kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/nemotron3:33b",
+  "manifest_digest": "f6d8b7ff496c",
+  "manifest_size": "28GB",
+  "manifest_updated": "2 months ago",
+  "path": "/library/nemotron3",
+  "scraped_at": "2026-07-13T19:33:28.844841+00:00",
+  "tag_name": "33b"
+}

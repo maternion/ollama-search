@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llama3:8b-text-q5_1/blobs/3e3a0f153003",
+      "content_preview": "arch  llama",
+      "parameters": "8.03B",
+      "quantization": "Q5_1",
+      "size": "6.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama3:8b-text-q5_1/blobs/4fa551d4f938",
+      "content_preview": "META LLAMA 3 COMMUNITY LICENSE AGREEMENT\nMeta Llama 3 Version Release Date: April 18, 2024\n“Agreem",
+      "parameters": "",
+      "quantization": "",
+      "size": "12kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/llama3:8b-text-q5_1",
+  "manifest_digest": "3c3ab90050f5",
+  "manifest_size": "6.1GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/llama3",
+  "scraped_at": "2026-07-13T19:42:58.510557+00:00",
+  "tag_name": "8b-text-q5_1"
+}

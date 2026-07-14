@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/library/deepscaler:latest/blobs/95ff0bccfe60",
+      "content_preview": "arch  qwen2",
+      "parameters": "1.78B",
+      "quantization": "F16",
+      "size": "3.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepscaler:latest/blobs/834c38322a81",
+      "content_preview": "MIT License\nCopyright (c) 2025 Agentica\nPermission is hereby granted, free of charge, to any person",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepscaler:latest/blobs/ed8474dc73db",
+      "content_preview": "{\n    \"stop\": [\n        \"<｜begin▁of▁sentence｜>\",\n        \"<｜end▁of▁sentence｜>\",",
+      "parameters": "",
+      "quantization": "",
+      "size": "179B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepscaler:latest/blobs/369ca498f347",
+      "content_preview": "{{- if .System }}{{ .System }}{{ end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice",
+      "parameters": "",
+      "quantization": "",
+      "size": "387B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/deepscaler:latest",
+  "manifest_digest": "0031bcf7459f",
+  "manifest_size": "3.6GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/deepscaler",
+  "scraped_at": "2026-07-13T20:31:54.970113+00:00",
+  "tag_name": "latest"
+}

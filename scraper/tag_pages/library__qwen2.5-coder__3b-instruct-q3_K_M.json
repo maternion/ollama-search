@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/library/qwen2.5-coder:3b-instruct-q3_K_M/blobs/9bb5d28b842a",
+      "content_preview": "arch  qwen2",
+      "parameters": "3.09B",
+      "quantization": "Q3_K_M",
+      "size": "1.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen2.5-coder:3b-instruct-q3_K_M/blobs/66b9ea09bd5b",
+      "content_preview": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "68B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen2.5-coder:3b-instruct-q3_K_M/blobs/45fc3ea7579a",
+      "content_preview": "Qwen RESEARCH LICENSE AGREEMENT\nQwen RESEARCH LICENSE AGREEMENT Release Date: September 19, 2024\nBy",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.4kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen2.5-coder:3b-instruct-q3_K_M/blobs/1e65450c3067",
+      "content_preview": "{{- if .Suffix }}<|fim_prefix|>{{ .Prompt }}<|fim_suffix|>{{ .Suffix }}<|fim_middle|>\n{{- else if .M",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.6kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/qwen2.5-coder:3b-instruct-q3_K_M",
+  "manifest_digest": "65ff2bc170f3",
+  "manifest_size": "1.6GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/qwen2.5-coder",
+  "scraped_at": "2026-07-13T19:44:55.192918+00:00",
+  "tag_name": "3b-instruct-q3_K_M"
+}

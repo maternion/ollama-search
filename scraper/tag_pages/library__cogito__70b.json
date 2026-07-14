@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/cogito:70b/blobs/f6bac484a6f0",
+      "content_preview": "arch  llama",
+      "parameters": "70.6B",
+      "quantization": "Q4_K_M",
+      "size": "43GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/cogito:70b/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/cogito:70b/blobs/783adfd1d253",
+      "content_preview": "{{- if or .System .Tools }}<|start_header_id|>system<|end_header_id|>\n{{- if .System }}\n{{ .System }",
+      "parameters": "",
+      "quantization": "",
+      "size": "976B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/cogito:70b",
+  "manifest_digest": "8f2632d0faa4",
+  "manifest_size": "43GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/cogito",
+  "scraped_at": "2026-07-13T20:17:05.133765+00:00",
+  "tag_name": "70b"
+}

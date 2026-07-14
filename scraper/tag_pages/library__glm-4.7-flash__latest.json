@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "glm4moelite",
+      "blob_url": "/library/glm-4.7-flash:latest/blobs/9eba2761cf0b",
+      "content_preview": "arch  glm4moelite",
+      "parameters": "29.9B",
+      "quantization": "Q4_K_M",
+      "size": "19GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/glm-4.7-flash:latest/blobs/b1bca6ec8117",
+      "content_preview": "MIT License\nCopyright (c) [year] [fullname]\nPermission is hereby granted, free of charge, to any per",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/glm-4.7-flash:latest/blobs/543c6a8262f9",
+      "content_preview": "{\n    \"min_p\": 0.01,\n    \"repeat_penalty\": 1,\n    \"temperature\": 1,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "63B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/glm-4.7-flash:latest",
+  "manifest_digest": "4475827791a2",
+  "manifest_size": "19GB",
+  "manifest_updated": "1 month ago",
+  "path": "/library/glm-4.7-flash",
+  "scraped_at": "2026-07-13T19:33:50.408262+00:00",
+  "tag_name": "latest"
+}

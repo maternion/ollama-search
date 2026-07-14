@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/yi:6b-200k-q5_K_M/blobs/d477c46c667c",
+      "content_preview": "arch  llama",
+      "parameters": "6.06B",
+      "quantization": "Q5_K_M",
+      "size": "4.3GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/yi:6b-200k-q5_K_M/blobs/8773f7716220",
+      "content_preview": "Yi Series Models License Agreement\nVersion: 2.0\nDate of Release: November 4, 2023\n1. Definition\n“A",
+      "parameters": "",
+      "quantization": "",
+      "size": "17kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/yi:6b-200k-q5_K_M/blobs/b3736cdce03e",
+      "content_preview": "{\n    \"num_ctx\": 200000\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "18B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/yi:6b-200k-q5_K_M",
+  "manifest_digest": "093ee7887620",
+  "manifest_size": "4.3GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/yi",
+  "scraped_at": "2026-07-13T20:29:03.079747+00:00",
+  "tag_name": "6b-200k-q5_K_M"
+}

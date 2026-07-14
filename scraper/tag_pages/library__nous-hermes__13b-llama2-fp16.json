@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/nous-hermes:13b-llama2-fp16/blobs/26654cc901ac",
+      "content_preview": "arch  llama",
+      "parameters": "13B",
+      "quantization": "F16",
+      "size": "26GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nous-hermes:13b-llama2-fp16/blobs/419da6f50092",
+      "content_preview": "{\n    \"stop\": [\n        \"### Instruction:\",\n        \"### Input:\",\n        \"### Response:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "58B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nous-hermes:13b-llama2-fp16/blobs/0ba4455c4f46",
+      "content_preview": "### Instruction:\n{{ .Prompt }}\n{{- if .System }}\n### Input:\n{{ .System }}\n{{- end }}\n### Response:",
+      "parameters": "",
+      "quantization": "",
+      "size": "101B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nous-hermes:13b-llama2-fp16/blobs/1678ff0c9fe5",
+      "content_preview": "Below is an instruction that describes a task. Write a response that appropriately completes the req",
+      "parameters": "",
+      "quantization": "",
+      "size": "105B",
+      "type": "system"
+    }
+  ],
+  "full_path": "/library/nous-hermes:13b-llama2-fp16",
+  "manifest_digest": "0e2f44eb0773",
+  "manifest_size": "26GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/nous-hermes",
+  "scraped_at": "2026-07-13T20:39:22.464229+00:00",
+  "tag_name": "13b-llama2-fp16"
+}

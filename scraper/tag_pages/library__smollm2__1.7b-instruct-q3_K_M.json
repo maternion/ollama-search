@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/smollm2:1.7b-instruct-q3_K_M/blobs/3e7a86352638",
+      "content_preview": "arch  llama",
+      "parameters": "1.71B",
+      "quantization": "Q3_K_M",
+      "size": "860MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/smollm2:1.7b-instruct-q3_K_M/blobs/fbacade46b4d",
+      "content_preview": "You are a helpful AI assistant named SmolLM, trained by Hugging Face",
+      "parameters": "",
+      "quantization": "",
+      "size": "68B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/smollm2:1.7b-instruct-q3_K_M/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/smollm2:1.7b-instruct-q3_K_M/blobs/58d1e17ffe51",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/smollm2:1.7b-instruct-q3_K_M/blobs/dfebd0343bdd",
+      "content_preview": "{{- if .Messages }}\n{{- if .Tools }}<|im_start|>system\nYou are an expert in composing functions. You",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.8kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/smollm2:1.7b-instruct-q3_K_M",
+  "manifest_digest": "995c3b9124da",
+  "manifest_size": "860MB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/smollm2",
+  "scraped_at": "2026-07-13T20:07:38.470999+00:00",
+  "tag_name": "1.7b-instruct-q3_K_M"
+}

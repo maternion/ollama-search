@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen3vl",
+      "blob_url": "/library/qwen3-vl:8b-instruct-bf16/blobs/9b99cf8ef107",
+      "content_preview": "arch  qwen3vl",
+      "parameters": "8.77B",
+      "quantization": "F16",
+      "size": "18GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3-vl:8b-instruct-bf16/blobs/7339fa418c9a",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3-vl:8b-instruct-bf16/blobs/f6417cb1e269",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_k\": 20,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "42B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/qwen3-vl:8b-instruct-bf16",
+  "manifest_digest": "55aa31bad4e2",
+  "manifest_size": "18GB",
+  "manifest_updated": "8 months ago",
+  "path": "/library/qwen3-vl",
+  "scraped_at": "2026-07-13T20:04:34.172939+00:00",
+  "tag_name": "8b-instruct-bf16"
+}

@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/codellama:13b-instruct/blobs/e73cc17c7181",
+      "content_preview": "arch  llama",
+      "parameters": "13B",
+      "quantization": "Q4_0",
+      "size": "7.4GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:13b-instruct/blobs/8c17c2ebb0ea",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:13b-instruct/blobs/590d74a5569b",
+      "content_preview": "# Llama Code Acceptable Use Policy\nMeta is committed to promoting safe and fair use of its tools and",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.8kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:13b-instruct/blobs/7f6a57943a88",
+      "content_preview": "{\n    \"rope_frequency_base\": 1000000,\n    \"stop\": [\n        \"[INST]\",\n        \"[/INST]\",\n        \"<<",
+      "parameters": "",
+      "quantization": "",
+      "size": "120B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:13b-instruct/blobs/2e0493f67d0c",
+      "content_preview": "[INST] <<SYS>>{{ .System }}<</SYS>>\n{{ .Prompt }} [/INST]",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/codellama:13b-instruct",
+  "manifest_digest": "9f438cb9cd58",
+  "manifest_size": "7.4GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/codellama",
+  "scraped_at": "2026-07-13T20:00:56.221450+00:00",
+  "tag_name": "13b-instruct"
+}

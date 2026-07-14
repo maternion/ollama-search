@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen35",
+      "blob_url": "/library/qwen3.6:27b-q8_0/blobs/005f96c1e053",
+      "content_preview": "arch  qwen35",
+      "parameters": "27.8B",
+      "quantization": "Q8_0",
+      "size": "30GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.6:27b-q8_0/blobs/5f3a3c817e78",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.6:27b-q8_0/blobs/86eff881e8d2",
+      "content_preview": "{\n    \"min_p\": 0,\n    \"presence_penalty\": 1.5,\n    \"repeat_penalty\": 1,\n    \"temperature\": 1,\n    \"t",
+      "parameters": "",
+      "quantization": "",
+      "size": "94B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/qwen3.6:27b-q8_0",
+  "manifest_digest": "cd0210c667bf",
+  "manifest_size": "30GB",
+  "manifest_updated": "2 months ago",
+  "path": "/library/qwen3.6",
+  "scraped_at": "2026-07-13T19:33:03.192687+00:00",
+  "tag_name": "27b-q8_0"
+}

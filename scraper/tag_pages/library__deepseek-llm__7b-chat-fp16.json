@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/deepseek-llm:7b-chat-fp16/blobs/0b797423b4d5",
+      "content_preview": "arch  llama",
+      "parameters": "6.91B",
+      "quantization": "F16",
+      "size": "14GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-llm:7b-chat-fp16/blobs/d1c131da816c",
+      "content_preview": "{{ .System }}\nUser: {{ .Prompt }}\nAssistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "45B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-llm:7b-chat-fp16/blobs/a00920c28dfd",
+      "content_preview": "{\n    \"num_ctx\": 4096\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "17B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/deepseek-llm:7b-chat-fp16",
+  "manifest_digest": "ae8dc23002ea",
+  "manifest_size": "14GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/deepseek-llm",
+  "scraped_at": "2026-07-13T20:40:23.391144+00:00",
+  "tag_name": "7b-chat-fp16"
+}

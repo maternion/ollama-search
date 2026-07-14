@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/deepseek-llm:67b-chat-q4_0/blobs/0449aade56f5",
+      "content_preview": "arch  llama",
+      "parameters": "67.4B",
+      "quantization": "Q4_0",
+      "size": "38GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-llm:67b-chat-q4_0/blobs/d1c131da816c",
+      "content_preview": "{{ .System }}\nUser: {{ .Prompt }}\nAssistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "45B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-llm:67b-chat-q4_0/blobs/a00920c28dfd",
+      "content_preview": "{\n    \"num_ctx\": 4096\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "17B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/deepseek-llm:67b-chat-q4_0",
+  "manifest_digest": "52e3a994907e",
+  "manifest_size": "38GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/deepseek-llm",
+  "scraped_at": "2026-07-13T20:40:43.928355+00:00",
+  "tag_name": "67b-chat-q4_0"
+}

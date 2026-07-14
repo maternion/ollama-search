@@ -1,0 +1,48 @@
+{
+  "path": "/maternion/mai-ui",
+  "name": "mai-ui",
+  "scraped_at": "2026-07-14T15:17:43.507514+00:00",
+  "readme_html": "\n        \n          <h1>MAI-UI: Real-World Centric Foundation GUI Agents.</h1>\n\n<p>[<a href=\"https://arxiv.org/abs/2512.22047\" rel=\"nofollow\">\ud83d\udcc4 Paper</a>] [<a href=\"https://tongyi-mai.github.io/MAI-UI/\" rel=\"nofollow\">\ud83c\udf10 Website</a>] [<a href=\"https://github.com/Tongyi-MAI/MAI-UI\" rel=\"nofollow\">\ud83d\udcbb GitHub</a>]</p>\n\n<p><img src=\"https://cdn-uploads.huggingface.co/production/uploads/63525c3a6cfb8f1498127a34/_ibfeHy_31ZRanQ3xxlnn.png\" alt=\"overview\"/></p>\n\n<h2>\ud83d\udcd6 Background</h2>\n\n<p>The development of GUI agents could revolutionize the next generation of human-computer interaction. Motivated by this vision, we present MAI-UI, a family of foundation GUI agents spanning the full spectrum of sizes, including 2B, 8B, 32B, and 235B-A22B variants. We identify four key challenges to realistic deployment: the lack of native agent\u2013user interaction, the limits of UI-only operation, the absence of a practical deployment architecture, and brittleness in dynamic environments. MAI-UI addresses these issues with a unified methodology: a self-evolving data pipeline that expands the navigation data to include user interaction and MCP tool calls, a native device\u2013cloud collaboration system that routes execution by task state, and an online RL framework with advanced optimizations to scale parallel environments and context length.</p>\n\n<h2>\ud83d\ude80 Quick Start</h2>\n\n<h3>Deployment with Ollama</h3>\n\n<p>You can deploy the model using Ollama (requires <code>ollama&gt;=0.12.7</code>):</p>\n\n<pre><code># Install Ollama\nhttps://ollama.com/download \n# Start Ollama API server\nollama run Maternion/mai-ui:8b\n</code></pre>\n\n<p>The model will be served at <code>http://localhost:11434/v1</code>.</p>\n\n<h2>\ud83c\udfc6 Results</h2>\n\n<h3>Grounding</h3>\n\n<p>MAI-UI establishes new state-of-the-art across GUI grounding and mobile navigation.</p>\n\n<ul>\n<li>On grounding benchmarks, it reaches 73.5% on ScreenSpot-Pro, 91.3% on MMBench GUI L2, 70.9% on OSWorld-G, and 49.2% on UI-Vision, surpassing Gemini-3-Pro and Seed1.8 on ScreenSpot-Pro.\n<img src=\"https://cdn-uploads.huggingface.co/production/uploads/63525c3a6cfb8f1498127a34/oNggS-XoVZSiiLitn8nD3.jpeg\" alt=\"sspro\"/>\n<img src=\"https://cdn-uploads.huggingface.co/production/uploads/63525c3a6cfb8f1498127a34/8t_oRozJ51aw5rKojqlOu.jpeg\" alt=\"uivision\"/>\n<img src=\"https://cdn-uploads.huggingface.co/production/uploads/63525c3a6cfb8f1498127a34/dwc8np4JLxTWoNS8wu18p.jpeg\" alt=\"mmbench\"/>\n<img src=\"https://cdn-uploads.huggingface.co/production/uploads/63525c3a6cfb8f1498127a34/lff2k7ZkMgCrgt3lPZChb.jpeg\" alt=\"osworld-g\"/></li>\n</ul>\n\n<h3>Mobile Navigation</h3>\n\n<ul>\n<li>On mobile GUI navigation, it sets a new SOTA of 76.7% on AndroidWorld, surpassing UI-Tars-2, Gemini-2.5-Pro and Seed1.8. On MobileWorld, MAI-UI obtains 41.7% success rate, significantly outperforming end-to-end GUI models and competitive with Gemini-3-Pro based agentic frameworks.\n<img src=\"https://cdn-uploads.huggingface.co/production/uploads/63525c3a6cfb8f1498127a34/EUXl1osfQ26WGYcV4hhsG.jpeg\" alt=\"aw\"/>\n<img src=\"https://cdn-uploads.huggingface.co/production/uploads/63525c3a6cfb8f1498127a34/gsbjUtIoUFWyR6Nw3qRz6.jpeg\" alt=\"mw\"/></li>\n</ul>\n\n<h3>Online RL</h3>\n\n<ul>\n<li>Our online RL experiments show significant gains from scaling parallel environments from 32 to 512 (+5.2 points) and increasing environment step budget from 15 to 50 (+4.3 points).\n<img src=\"https://cdn-uploads.huggingface.co/production/uploads/63525c3a6cfb8f1498127a34/BO8GnYXsJ51ZTvVRLxn6u.jpeg\" alt=\"rl\"/>\n<img src=\"https://cdn-uploads.huggingface.co/production/uploads/63525c3a6cfb8f1498127a34/39mhKfUvt7159dKM_oeGa.jpeg\" alt=\"rl_env\"/></li>\n</ul>\n\n<h3>Device-Cloud Collaboration</h3>\n\n<ul>\n<li>Our device-cloud collaboration framework can dynamically select on-device or cloud execution based on task execution state and data sensitivity. It improves on-device performance by 33% and reduces cloud API calls by over 40%.\n<img src=\"https://cdn-uploads.huggingface.co/production/uploads/63525c3a6cfb8f1498127a34/Fm2PPxbRpASfdvVBxkjLw.jpeg\" alt=\"dcc\"/></li>\n</ul>\n\n<h2>\ud83d\udcdd Citation</h2>\n\n<p>If you find this project useful for your research, please consider citing our work:</p>\n\n<pre><code>@misc{zhou2025maiuitechnicalreportrealworld,\n      title={MAI-UI Technical Report: Real-World Centric Foundation GUI Agents}, \n      author={Hanzhang Zhou and Xu Zhang and Panrong Tong and Jianan Zhang and Liangyu Chen and Quyu Kong and Chenglin Cai and Chen Liu and Yue Wang and Jingren Zhou and Steven Hoi},\n      year={2025},\n      eprint={2512.22047},\n      archivePrefix={arXiv},\n      primaryClass={cs.CV},\n      url={https://arxiv.org/abs/2512.22047}, \n}\n</code></pre>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model maternion/mai-ui:2b"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model maternion/mai-ui:2b"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model maternion/mai-ui:2b"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model maternion/mai-ui:2b"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model maternion/mai-ui:2b"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model maternion/mai-ui:2b"
+    }
+  ]
+}

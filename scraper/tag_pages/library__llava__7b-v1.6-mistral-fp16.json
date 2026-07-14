@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llava:7b-v1.6-mistral-fp16/blobs/7cc48bc30284",
+      "content_preview": "arch  llama",
+      "parameters": "7.24B",
+      "quantization": "F16",
+      "size": "14GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llava:7b-v1.6-mistral-fp16/blobs/72d6f08a42f6",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "624MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llava:7b-v1.6-mistral-fp16/blobs/c43332387573",
+      "content_preview": "[INST] {{ if .System }}{{ .System }} {{ end }}{{ .Prompt }} [/INST]",
+      "parameters": "",
+      "quantization": "",
+      "size": "67B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llava:7b-v1.6-mistral-fp16/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llava:7b-v1.6-mistral-fp16/blobs/ed11eda7790d",
+      "content_preview": "{\n    \"stop\": [\n        \"[INST]\",\n        \"[/INST]\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "30B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/llava:7b-v1.6-mistral-fp16",
+  "manifest_digest": "9fd1e5417c5f",
+  "manifest_size": "15GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/llava",
+  "scraped_at": "2026-07-13T19:48:07.734703+00:00",
+  "tag_name": "7b-v1.6-mistral-fp16"
+}

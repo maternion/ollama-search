@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen3next",
+      "blob_url": "/library/qwen3-next:80b-a3b-thinking-q8_0/blobs/b8224da39b83",
+      "content_preview": "arch  qwen3next",
+      "parameters": "79.7B",
+      "quantization": "Q8_0",
+      "size": "85GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3-next:80b-a3b-thinking-q8_0/blobs/b87250e4478f",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3-next:80b-a3b-thinking-q8_0/blobs/cff3f395ef37",
+      "content_preview": "{\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ],\n    \"te",
+      "parameters": "",
+      "quantization": "",
+      "size": "120B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3-next:80b-a3b-thinking-q8_0/blobs/2d54db2b9bb2",
+      "content_preview": "{{- $lastUserIdx := -1 -}}\n{{- range $idx, $msg := .Messages -}}\n{{- if eq $msg.Role \"user\" }}{{ $la",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/qwen3-next:80b-a3b-thinking-q8_0",
+  "manifest_digest": "033d9a6ae231",
+  "manifest_size": "85GB",
+  "manifest_updated": "7 months ago",
+  "path": "/library/qwen3-next",
+  "scraped_at": "2026-07-13T21:14:59.810977+00:00",
+  "tag_name": "80b-a3b-thinking-q8_0"
+}

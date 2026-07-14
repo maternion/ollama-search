@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen25vl",
+      "blob_url": "/library/qwen2.5vl:7b/blobs/a99b7f834d75",
+      "content_preview": "arch  qwen25vl",
+      "parameters": "8.29B",
+      "quantization": "Q4_K_M",
+      "size": "6.0GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen2.5vl:7b/blobs/a242d8dfdc8f",
+      "content_preview": "{{- if .System -}}\n<|im_start|>system\n{{ .System }}<|im_end|>\n{{- end -}}\n{{- range $i, $_ := .Messa",
+      "parameters": "",
+      "quantization": "",
+      "size": "487B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen2.5vl:7b/blobs/75357d685f23",
+      "content_preview": "You are a helpful assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "28B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen2.5vl:7b/blobs/832dd9e00a68",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen2.5vl:7b/blobs/52d2a7aa3a38",
+      "content_preview": "{\n    \"temperature\": 0.0001\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "23B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/qwen2.5vl:7b",
+  "manifest_digest": "5ced39dfa4ba",
+  "manifest_size": "6.0GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/qwen2.5vl",
+  "scraped_at": "2026-07-13T20:08:01.529214+00:00",
+  "tag_name": "7b"
+}

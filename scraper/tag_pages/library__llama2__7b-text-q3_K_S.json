@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llama2:7b-text-q3_K_S/blobs/e8290431b121",
+      "content_preview": "arch  llama",
+      "parameters": "6.74B",
+      "quantization": "Q3_K_S",
+      "size": "2.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2:7b-text-q3_K_S/blobs/8c17c2ebb0ea",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2:7b-text-q3_K_S/blobs/7c23fb36d801",
+      "content_preview": "# Llama 2 Acceptable Use Policy\nMeta is committed to promoting safe and fair use of its tools and fe",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.8kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/llama2:7b-text-q3_K_S",
+  "manifest_digest": "2f3ee65fe92a",
+  "manifest_size": "2.9GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/llama2",
+  "scraped_at": "2026-07-13T19:57:11.495336+00:00",
+  "tag_name": "7b-text-q3_K_S"
+}

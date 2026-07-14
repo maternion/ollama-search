@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen3",
+      "blob_url": "/maternion/LightOnOCR-2:1b/blobs/062cc44af0b9",
+      "content_preview": "arch  qwen3",
+      "parameters": "596M",
+      "quantization": "Q8_0",
+      "size": "639MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/LightOnOCR-2:1b/blobs/b30a935ce0d3",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "829MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/LightOnOCR-2:1b/blobs/54a429282c75",
+      "content_preview": "{\n    \"temperature\": 0.2,\n    \"top_p\": 0.9\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "32B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/LightOnOCR-2:1b/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/maternion/LightOnOCR-2:1b",
+  "manifest_digest": "ee7d83c4eb67",
+  "manifest_size": "1.5GB",
+  "manifest_updated": "5 months ago",
+  "path": "/maternion/LightOnOCR-2",
+  "scraped_at": "2026-07-14T15:14:35.463632+00:00",
+  "tag_name": "1b"
+}

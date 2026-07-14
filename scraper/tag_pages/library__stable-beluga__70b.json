@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/stable-beluga:70b/blobs/0f92b23de15d",
+      "content_preview": "arch  llama",
+      "parameters": "69B",
+      "quantization": "Q4_0",
+      "size": "39GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stable-beluga:70b/blobs/354152d2dd7a",
+      "content_preview": "{{- if .System }}\n### System:\n{{ .System }}\n{{- end }}\n### User:\n{{ .Prompt }}\n### Assistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "96B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stable-beluga:70b/blobs/deadd617ffad",
+      "content_preview": "STABLE BELUGA NON-COMMERCIAL COMMUNITY LICENSE AGREEMENT\nDated: July 27, 2023\n\"Agreement\" means the",
+      "parameters": "",
+      "quantization": "",
+      "size": "5.2kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stable-beluga:70b/blobs/3278224b6cda",
+      "content_preview": "This is a system prompt, please behave and help the user.",
+      "parameters": "",
+      "quantization": "",
+      "size": "57B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stable-beluga:70b/blobs/cddc6041acf5",
+      "content_preview": "{\n    \"num_gqa\": 8,\n    \"stop\": [\n        \"### System:\",\n        \"### User:\",\n        \"### Assistant",
+      "parameters": "",
+      "quantization": "",
+      "size": "65B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/stable-beluga:70b",
+  "manifest_digest": "31f4bfb3a050",
+  "manifest_size": "39GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/stable-beluga",
+  "scraped_at": "2026-07-13T21:05:19.093380+00:00",
+  "tag_name": "70b"
+}

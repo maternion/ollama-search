@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "bert",
+      "blob_url": "/library/all-minilm:22m-l6-v2-fp16/blobs/797b70c4edf8",
+      "content_preview": "arch  bert",
+      "parameters": "22.6M",
+      "quantization": "F16",
+      "size": "46MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/all-minilm:22m-l6-v2-fp16/blobs/c71d239df917",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/all-minilm:22m-l6-v2-fp16/blobs/85011998c600",
+      "content_preview": "{\n    \"num_ctx\": 256\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "16B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/all-minilm:22m-l6-v2-fp16",
+  "manifest_digest": "1b226e2802db",
+  "manifest_size": "46MB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/all-minilm",
+  "scraped_at": "2026-07-13T20:07:56.289316+00:00",
+  "tag_name": "22m-l6-v2-fp16"
+}

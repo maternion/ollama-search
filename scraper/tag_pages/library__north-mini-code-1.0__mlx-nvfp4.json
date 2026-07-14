@@ -1,0 +1,81 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "",
+      "blob_url": "/library/north-mini-code-1.0:mlx-nvfp4/blobs/1bbfc76080a7",
+      "content_preview": "{\n\"_from_model_config\": true,\n\"bos_token_id\": 2,\n\"eos_token_id\": 255001,\n\"pad_token_id\": 0,\n\"transfo",
+      "parameters": "",
+      "quantization": "",
+      "size": "136B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/north-mini-code-1.0:mlx-nvfp4/blobs/82b62b61b9cc",
+      "content_preview": "{\n\"bos_token\": {\n\"content\": \"<BOS_TOKEN>\",\n\"lstrip\": false,\n\"normalized\": false,\n\"rstrip\": false,\n\"s",
+      "parameters": "",
+      "quantization": "",
+      "size": "672B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/north-mini-code-1.0:mlx-nvfp4/blobs/14bd1c49d7d1",
+      "content_preview": "{\n\"version\": \"1.0\",\n\"truncation\": null,\n\"padding\": null,\n\"added_tokens\": [\n{\n\"id\": 0,\n\"content\": \"<P",
+      "parameters": "",
+      "quantization": "",
+      "size": "28MB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/north-mini-code-1.0:mlx-nvfp4/blobs/1f45bd13ca86",
+      "content_preview": "{\n\"add_bos_token\": true,\n\"add_eos_token\": false,\n\"add_prefix_space\": false,\n\"clean_up_tokenization_s",
+      "parameters": "",
+      "quantization": "",
+      "size": "9.0kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/north-mini-code-1.0:mlx-nvfp4/blobs/cfc7749b96f6",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/north-mini-code-1.0:mlx-nvfp4/blobs/02897ca0d6a3",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/north-mini-code-1.0:mlx-nvfp4/blobs/0c987a88193e",
+      "content_preview": "{\n\"architectures\": [\n\"Cohere2MoeForCausalLM\"\n],\n\"attention_bias\": false,\n\"attention_dropout\": 0.0,\n\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.3kB",
+      "type": "json"
+    }
+  ],
+  "full_path": "/library/north-mini-code-1.0:mlx-nvfp4",
+  "manifest_digest": "83c9952930e0",
+  "manifest_size": "20GB",
+  "manifest_updated": "3 weeks ago",
+  "path": "/library/north-mini-code-1.0",
+  "scraped_at": "2026-07-13T19:31:08.541566+00:00",
+  "tag_name": "mlx-nvfp4"
+}

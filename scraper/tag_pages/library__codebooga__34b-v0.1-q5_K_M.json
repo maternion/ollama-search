@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/codebooga:34b-v0.1-q5_K_M/blobs/ee1e5228c9ce",
+      "content_preview": "arch  llama",
+      "parameters": "33.7B",
+      "quantization": "Q5_K_M",
+      "size": "24GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codebooga:34b-v0.1-q5_K_M/blobs/2d836d77287d",
+      "content_preview": "{{ .System }}\n### Instruction:\n{{ .Prompt }}\n### Response:",
+      "parameters": "",
+      "quantization": "",
+      "size": "61B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codebooga:34b-v0.1-q5_K_M/blobs/1678ff0c9fe5",
+      "content_preview": "Below is an instruction that describes a task. Write a response that appropriately completes the req",
+      "parameters": "",
+      "quantization": "",
+      "size": "105B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codebooga:34b-v0.1-q5_K_M/blobs/ff29d10ee099",
+      "content_preview": "{\n    \"num_gqa\": 8,\n    \"rope_frequency_base\": 1000000\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "43B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/codebooga:34b-v0.1-q5_K_M",
+  "manifest_digest": "4545d39783a5",
+  "manifest_size": "24GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/codebooga",
+  "scraped_at": "2026-07-13T21:20:54.316776+00:00",
+  "tag_name": "34b-v0.1-q5_K_M"
+}

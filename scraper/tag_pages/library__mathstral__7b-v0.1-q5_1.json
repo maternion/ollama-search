@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/mathstral:7b-v0.1-q5_1/blobs/b6e0697ee3e3",
+      "content_preview": "arch  llama",
+      "parameters": "7.25B",
+      "quantization": "Q5_1",
+      "size": "5.4GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mathstral:7b-v0.1-q5_1/blobs/c71d239df917",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mathstral:7b-v0.1-q5_1/blobs/ed11eda7790d",
+      "content_preview": "{\n    \"stop\": [\n        \"[INST]\",\n        \"[/INST]\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "30B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mathstral:7b-v0.1-q5_1/blobs/36ee4ce5634b",
+      "content_preview": "[INST] {{ if .System }}{{ .System }} {{ end }}{{ .Prompt }} [/INST] {{ .Response }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "83B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/mathstral:7b-v0.1-q5_1",
+  "manifest_digest": "f0082439d2ba",
+  "manifest_size": "5.4GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/mathstral",
+  "scraped_at": "2026-07-13T21:17:02.649276+00:00",
+  "tag_name": "7b-v0.1-q5_1"
+}

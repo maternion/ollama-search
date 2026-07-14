@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen3moe",
+      "blob_url": "/library/qwen3:235b-instruct/blobs/3578a992f125",
+      "content_preview": "arch  qwen3moe",
+      "parameters": "235B",
+      "quantization": "Q4_K_M",
+      "size": "142GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3:235b-instruct/blobs/d18a5cc71b84",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3:235b-instruct/blobs/0914c7781e00",
+      "content_preview": "{\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ],\n    \"te",
+      "parameters": "",
+      "quantization": "",
+      "size": "119B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3:235b-instruct/blobs/eade0a07cac7",
+      "content_preview": "{{- $lastUserIdx := -1 -}}\n{{- range $idx, $msg := .Messages -}}\n{{- if eq $msg.Role \"user\" }}{{ $la",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.4kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/qwen3:235b-instruct",
+  "manifest_digest": "88c401cdc877",
+  "manifest_size": "142GB",
+  "manifest_updated": "9 months ago",
+  "path": "/library/qwen3",
+  "scraped_at": "2026-07-13T19:39:56.595588+00:00",
+  "tag_name": "235b-instruct"
+}

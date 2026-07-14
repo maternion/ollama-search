@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "phi2",
+      "blob_url": "/library/phi:2.7b-chat-v2-fp16/blobs/edcdc2f26e5d",
+      "content_preview": "arch  phi2",
+      "parameters": "2.78B",
+      "quantization": "F16",
+      "size": "5.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phi:2.7b-chat-v2-fp16/blobs/7908abcab772",
+      "content_preview": "MIT License\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this sof",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phi:2.7b-chat-v2-fp16/blobs/3188becd6bae",
+      "content_preview": "A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful",
+      "parameters": "",
+      "quantization": "",
+      "size": "132B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phi:2.7b-chat-v2-fp16/blobs/0b8127ddf5ee",
+      "content_preview": "{\n    \"stop\": [\n        \"User:\",\n        \"Assistant:\",\n        \"System:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "42B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phi:2.7b-chat-v2-fp16/blobs/774a15e6f1e5",
+      "content_preview": "{{ if .System }}System: {{ .System }}{{ end }}\nUser: {{ .Prompt }}\nAssistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "77B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/phi:2.7b-chat-v2-fp16",
+  "manifest_digest": "6b283248a801",
+  "manifest_size": "5.6GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/phi",
+  "scraped_at": "2026-07-13T20:23:35.787822+00:00",
+  "tag_name": "2.7b-chat-v2-fp16"
+}

@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/deepscaler:1.5b-preview-q4_K_M/blobs/369ca498f347",
+  "content": "{{- if .System }}{{ .System }}{{ end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1}}\n{{- if eq .Role \"user\" }}<｜User｜>{{ .Content }}\n{{- else if eq .Role \"assistant\" }}<｜Assistant｜>{{ .Content }}{{- if not $last }}<｜end▁of▁sentence｜>{{- end }}\n{{- end }}\n{{- if and $last (ne .Role \"assistant\") }}<｜Assistant｜>{{- end }}\n{{- end }}",
+  "digest": "369ca498f347",
+  "metadata": [],
+  "size": "387B",
+  "tensor_groups": [],
+  "tensors": []
+}

@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/nous-hermes:13b-q5_K_M/blobs/aeaea7fb088b",
+      "content_preview": "arch  llama",
+      "parameters": "13B",
+      "quantization": "Q5_K_M",
+      "size": "9.2GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nous-hermes:13b-q5_K_M/blobs/419da6f50092",
+      "content_preview": "{\n    \"stop\": [\n        \"### Instruction:\",\n        \"### Input:\",\n        \"### Response:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "58B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nous-hermes:13b-q5_K_M/blobs/0ba4455c4f46",
+      "content_preview": "### Instruction:\n{{ .Prompt }}\n{{- if .System }}\n### Input:\n{{ .System }}\n{{- end }}\n### Response:",
+      "parameters": "",
+      "quantization": "",
+      "size": "101B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/nous-hermes:13b-q5_K_M",
+  "manifest_digest": "00a91bb87bab",
+  "manifest_size": "9.2GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/nous-hermes",
+  "scraped_at": "2026-07-13T20:39:34.760240+00:00",
+  "tag_name": "13b-q5_K_M"
+}

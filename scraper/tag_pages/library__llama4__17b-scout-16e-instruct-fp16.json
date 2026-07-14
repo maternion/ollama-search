@@ -1,0 +1,72 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama4",
+      "blob_url": "/library/llama4:17b-scout-16e-instruct-fp16/blobs/6681b640eb2e",
+      "content_preview": "arch  llama4",
+      "parameters": "109B",
+      "quantization": "F16",
+      "size": "217GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama4:17b-scout-16e-instruct-fp16/blobs/399a8a5a36db",
+      "content_preview": "**LLAMA 4 COMMUNITY LICENSE AGREEMENT**\nLlama 4 Version Effective Date: April 5, 2025\n\"**Agreement**",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.8kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama4:17b-scout-16e-instruct-fp16/blobs/24ca191a372b",
+      "content_preview": "**Llama 4** **Acceptable Use Policy**\nMeta is committed to promoting safe and fair use of its tools",
+      "parameters": "",
+      "quantization": "",
+      "size": "6.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama4:17b-scout-16e-instruct-fp16/blobs/fc1ffc71ab8e",
+      "content_preview": "You are an expert conversationalist who responds to the best of your ability. You are companionable",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.6kB",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama4:17b-scout-16e-instruct-fp16/blobs/bee89e20d457",
+      "content_preview": "{\n    \"stop\": [\n        \"<|eom|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama4:17b-scout-16e-instruct-fp16/blobs/161e5d878840",
+      "content_preview": "{{- if or .System .Tools }}<|header_start|>system<|header_end|>\n{{- if and (.System) (not (.Tools))",
+      "parameters": "",
+      "quantization": "",
+      "size": "3.7kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/llama4:17b-scout-16e-instruct-fp16",
+  "manifest_digest": "f390ec6c1a81",
+  "manifest_size": "217GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/llama4",
+  "scraped_at": "2026-07-13T20:21:00.966726+00:00",
+  "tag_name": "17b-scout-16e-instruct-fp16"
+}

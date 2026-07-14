@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/openchat:7b-v3.5-q5_K_M/blobs/d06b4f3341c4",
+      "content_preview": "arch  llama",
+      "parameters": "7.24B",
+      "quantization": "Q5_K_M",
+      "size": "5.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/openchat:7b-v3.5-q5_K_M/blobs/f507449d49be",
+      "content_preview": "{\n    \"stop\": [\n        \"<|endoftext|>\",\n        \"<|end_of_turn|>\",\n        \"Human:\",\n        \"Assis",
+      "parameters": "",
+      "quantization": "",
+      "size": "87B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/openchat:7b-v3.5-q5_K_M/blobs/1d0bbc3c6e4c",
+      "content_preview": "{{ .System }}<|end_of_turn|>Human: {{ .Prompt }}<|end_of_turn|>Assistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "73B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/openchat:7b-v3.5-q5_K_M",
+  "manifest_digest": "6b9271b7e00e",
+  "manifest_size": "5.1GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/openchat",
+  "scraped_at": "2026-07-13T20:35:26.780858+00:00",
+  "tag_name": "7b-v3.5-q5_K_M"
+}

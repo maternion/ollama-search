@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/library/qwen:14b-chat-v1.5-q5_K_M/blobs/76cdff78072f",
+      "content_preview": "arch  qwen2",
+      "parameters": "14.2B",
+      "quantization": "Q5_K_M",
+      "size": "11GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen:14b-chat-v1.5-q5_K_M/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen:14b-chat-v1.5-q5_K_M/blobs/7c7b8e244f6a",
+      "content_preview": "Tongyi Qianwen LICENSE AGREEMENT\nTongyi Qianwen Release Date: August 3, 2023\nBy clicking to agree or",
+      "parameters": "",
+      "quantization": "",
+      "size": "6.9kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen:14b-chat-v1.5-q5_K_M/blobs/1da0581fd4ce",
+      "content_preview": "{{ if .System }}<|im_start|>system\n{{ .System }}<|im_end|>{{ end }}<|im_start|>user\n{{ .Prompt }}<|i",
+      "parameters": "",
+      "quantization": "",
+      "size": "130B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/qwen:14b-chat-v1.5-q5_K_M",
+  "manifest_digest": "ba0e61d66b27",
+  "manifest_size": "11GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/qwen",
+  "scraped_at": "2026-07-13T19:52:49.770286+00:00",
+  "tag_name": "14b-chat-v1.5-q5_K_M"
+}

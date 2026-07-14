@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "falcon",
+      "blob_url": "/library/alfred:40b-1023-q5_1/blobs/8fe50f6e3dd4",
+      "content_preview": "arch  falcon",
+      "parameters": "41.8B",
+      "quantization": "Q5_1",
+      "size": "32GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/alfred:40b-1023-q5_1/blobs/b50dbd9341cc",
+      "content_preview": "You are Alfred, a helpful assistant trained by LightOn.",
+      "parameters": "",
+      "quantization": "",
+      "size": "56B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/alfred:40b-1023-q5_1/blobs/c5eb2f6a710c",
+      "content_preview": "{\n    \"stop\": [\n        \"<end_message>\",\n        \"</end_message>\",\n        \"<start_user>\",\n        \"",
+      "parameters": "",
+      "quantization": "",
+      "size": "201B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/alfred:40b-1023-q5_1/blobs/99e602c5c919",
+      "content_preview": "<start_system>{{ .System }}<end_message><start_user>{{ .Prompt }}<end_message><start_assistant>",
+      "parameters": "",
+      "quantization": "",
+      "size": "95B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/alfred:40b-1023-q5_1",
+  "manifest_digest": "a0820dcbecfe",
+  "manifest_size": "32GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/alfred",
+  "scraped_at": "2026-07-13T21:24:26.543701+00:00",
+  "tag_name": "40b-1023-q5_1"
+}

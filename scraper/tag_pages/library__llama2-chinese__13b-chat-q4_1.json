@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llama2-chinese:13b-chat-q4_1/blobs/1eac74a27409",
+      "content_preview": "arch  llama",
+      "parameters": "13B",
+      "quantization": "Q4_1",
+      "size": "8.2GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2-chinese:13b-chat-q4_1/blobs/dd36891f03a0",
+      "content_preview": "{\n    \"stop\": [\n        \"Name:\",\n        \"Assistant:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2-chinese:13b-chat-q4_1/blobs/65c6ec5c6ff0",
+      "content_preview": "{{ .System }}\nName: {{ .Prompt }}\nAssistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "45B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/llama2-chinese:13b-chat-q4_1",
+  "manifest_digest": "b71960852385",
+  "manifest_size": "8.2GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/llama2-chinese",
+  "scraped_at": "2026-07-13T20:47:25.561972+00:00",
+  "tag_name": "13b-chat-q4_1"
+}

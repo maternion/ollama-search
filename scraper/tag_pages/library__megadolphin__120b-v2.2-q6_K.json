@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/megadolphin:120b-v2.2-q6_K/blobs/5bd93c9eda87",
+      "content_preview": "arch  llama",
+      "parameters": "120B",
+      "quantization": "Q6_K",
+      "size": "99GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/megadolphin:120b-v2.2-q6_K/blobs/a47b02e00552",
+      "content_preview": "<|im_start|>system\n{{ .System }}<|im_end|>\n<|im_start|>user\n{{ .Prompt }}<|im_end|>\n<|im_start|>assi",
+      "parameters": "",
+      "quantization": "",
+      "size": "106B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/megadolphin:120b-v2.2-q6_K/blobs/8e76cdb0b2ac",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.2kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/megadolphin:120b-v2.2-q6_K/blobs/9640c2212a51",
+      "content_preview": "You are Dolphin, a helpful AI assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "41B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/megadolphin:120b-v2.2-q6_K/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/megadolphin:120b-v2.2-q6_K",
+  "manifest_digest": "dcaaf2d5d42c",
+  "manifest_size": "99GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/megadolphin",
+  "scraped_at": "2026-07-13T21:15:54.170093+00:00",
+  "tag_name": "120b-v2.2-q6_K"
+}

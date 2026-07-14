@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/wizardcoder:7b-python-fp16/blobs/c10b5824f960",
+      "content_preview": "arch  llama",
+      "parameters": "6.74B",
+      "quantization": "F16",
+      "size": "13GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardcoder:7b-python-fp16/blobs/8fadb9ad1206",
+      "content_preview": "Below is an instruction that describes a task. Write a response that appropriately completes the req",
+      "parameters": "",
+      "quantization": "",
+      "size": "106B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardcoder:7b-python-fp16/blobs/58e1b82a691f",
+      "content_preview": "{\n    \"num_ctx\": 16384\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "18B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardcoder:7b-python-fp16/blobs/2d836d77287d",
+      "content_preview": "{{ .System }}\n### Instruction:\n{{ .Prompt }}\n### Response:",
+      "parameters": "",
+      "quantization": "",
+      "size": "61B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/wizardcoder:7b-python-fp16",
+  "manifest_digest": "c7922dcf56f4",
+  "manifest_size": "13GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/wizardcoder",
+  "scraped_at": "2026-07-13T20:48:27.086626+00:00",
+  "tag_name": "7b-python-fp16"
+}

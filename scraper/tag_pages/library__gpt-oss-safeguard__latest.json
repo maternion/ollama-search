@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gptoss",
+      "blob_url": "/library/gpt-oss-safeguard:latest/blobs/c4016c9e54d0",
+      "content_preview": "arch  gptoss",
+      "parameters": "20.9B",
+      "quantization": "MXFP4",
+      "size": "14GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gpt-oss-safeguard:latest/blobs/f60356777647",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gpt-oss-safeguard:latest/blobs/12e88b2a8727",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_p\": 1\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "28B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gpt-oss-safeguard:latest/blobs/fa6710a93d78",
+      "content_preview": "<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.\nKnowledge cutof",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.2kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/gpt-oss-safeguard:latest",
+  "manifest_digest": "f2e795d0099c",
+  "manifest_size": "14GB",
+  "manifest_updated": "8 months ago",
+  "path": "/library/gpt-oss-safeguard",
+  "scraped_at": "2026-07-13T21:25:09.884317+00:00",
+  "tag_name": "latest"
+}

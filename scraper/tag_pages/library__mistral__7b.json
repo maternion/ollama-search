@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/mistral:7b/blobs/f5074b1221da",
+      "content_preview": "arch  llama",
+      "parameters": "7.25B",
+      "quantization": "Q4_K_M",
+      "size": "4.4GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral:7b/blobs/ed11eda7790d",
+      "content_preview": "{\n    \"stop\": [\n        \"[INST]\",\n        \"[/INST]\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "30B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral:7b/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral:7b/blobs/1ff5b64b61b9",
+      "content_preview": "{{- if .Messages }}\n{{- range $index, $_ := .Messages }}\n{{- if eq .Role \"user\" }}\n{{- if and (eq (l",
+      "parameters": "",
+      "quantization": "",
+      "size": "799B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/mistral:7b",
+  "manifest_digest": "6577803aa9a0",
+  "manifest_size": "4.4GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/mistral",
+  "scraped_at": "2026-07-13T19:40:03.915271+00:00",
+  "tag_name": "7b"
+}

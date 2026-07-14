@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "bert",
+      "blob_url": "/library/bge-large:335m/blobs/92b37e50807d",
+      "content_preview": "arch  bert",
+      "parameters": "334M",
+      "quantization": "F16",
+      "size": "671MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/bge-large:335m/blobs/a406579cd136",
+      "content_preview": "MIT License\nCopyright (c) [year] [fullname]\nPermission is hereby granted, free of charge, to any per",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/bge-large:335m",
+  "manifest_digest": "b3d71c928059",
+  "manifest_size": "671MB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/bge-large",
+  "scraped_at": "2026-07-13T21:23:10.322424+00:00",
+  "tag_name": "335m"
+}

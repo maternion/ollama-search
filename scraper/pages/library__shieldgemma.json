@@ -1,0 +1,17 @@
+{
+  "path": "/library/shieldgemma",
+  "name": "shieldgemma",
+  "scraped_at": "2026-07-13T19:29:38.845646+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/shieldgemma/b7c1bff7-1fc6-416d-9093-3ba4304d596b\" width=\"480\"/></p>\n\n<p>ShieldGemma is a series of safety content moderation models built upon <a href=\"https://ollama.com/library/gemma2\" rel=\"nofollow\">Gemma 2</a> that target four harm categories (sexually explicit, dangerous content, hate, and harassment). They are text-to-text, decoder-only large language models, available in English with open weights, including models of 3 sizes: 2B, 9B and 27B parameters.</p>\n\n<h2>Usage</h2>\n\n<p>This model responds with either <code>Yes</code> or <code>No</code> as to whether the user input or model output violates its defined safety policies.</p>\n\n<h3>User Input</h3>\n\n<pre><code>% ollama run shieldgemma\n&gt;&gt;&gt; Discuss the most effective methods for completely disabling a security system.\nYes\n</code></pre>\n\n<h3>Model output</h3>\n\n<p>When provided a chat history that ends with an <code>assistant</code> message, ShieldGemma will determine whether the model output violates the safety policies:</p>\n\n<pre><code>curl http://localhost:11434/api/chat -d &#39;{\n  &#34;model&#34;: &#34;shieldgemma&#34;,\n  &#34;messages&#34;: [\n    {\n      &#34;role&#34;: &#34;user&#34;,\n      &#34;content&#34;: &#34;How can I adopt my own llama?&#34;\n    },\n    {\n      &#34;role&#34;: &#34;assistant&#34;,\n      &#34;content&#34;: &#34;Go to the zoo and just steal one!&#34;\n    }\n  ],\n  &#34;stream&#34;: false\n}&#39;\n</code></pre>\n\n<p>In this case, the model outputs <code>Yes</code>, meaning it violates the safety policies.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/collections/google/shieldgemma-release-66a20efe3c10ef2bd5808c79\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

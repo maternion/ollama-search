@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/r1-1776:70b-distill-llama-fp16/blobs/280d3037feb2",
+      "content_preview": "arch  llama",
+      "parameters": "70.6B",
+      "quantization": "F16",
+      "size": "141GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/r1-1776:70b-distill-llama-fp16/blobs/13e63ee8707e",
+      "content_preview": "MIT License\nCopyright (c) [year] [fullname]\nPermission is hereby granted, free of charge, to any per",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/r1-1776:70b-distill-llama-fp16/blobs/f4d24e9138dd",
+      "content_preview": "{\n    \"stop\": [\n        \"<｜begin▁of▁sentence｜>\",\n        \"<｜end▁of▁sentence｜>\",",
+      "parameters": "",
+      "quantization": "",
+      "size": "148B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/r1-1776:70b-distill-llama-fp16/blobs/369ca498f347",
+      "content_preview": "{{- if .System }}{{ .System }}{{ end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice",
+      "parameters": "",
+      "quantization": "",
+      "size": "387B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/r1-1776:70b-distill-llama-fp16",
+  "manifest_digest": "b6dc7e0e17ed",
+  "manifest_size": "141GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/r1-1776",
+  "scraped_at": "2026-07-13T21:21:47.668439+00:00",
+  "tag_name": "70b-distill-llama-fp16"
+}

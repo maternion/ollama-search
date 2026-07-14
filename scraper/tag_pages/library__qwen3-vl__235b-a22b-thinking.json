@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen3vlmoe",
+      "blob_url": "/library/qwen3-vl:235b-a22b-thinking/blobs/02e588929c87",
+      "content_preview": "arch  qwen3vlmoe",
+      "parameters": "236B",
+      "quantization": "Q4_K_M",
+      "size": "143GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3-vl:235b-a22b-thinking/blobs/7339fa418c9a",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3-vl:235b-a22b-thinking/blobs/f6417cb1e269",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_k\": 20,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "42B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/qwen3-vl:235b-a22b-thinking",
+  "manifest_digest": "dc44c5b88b17",
+  "manifest_size": "143GB",
+  "manifest_updated": "8 months ago",
+  "path": "/library/qwen3-vl",
+  "scraped_at": "2026-07-13T20:04:58.016774+00:00",
+  "tag_name": "235b-a22b-thinking"
+}

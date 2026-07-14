@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llama-pro:8b-instruct-q6_K/blobs/0e97a8073e61",
+      "content_preview": "arch  llama",
+      "parameters": "8.36B",
+      "quantization": "Q6_K",
+      "size": "6.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama-pro:8b-instruct-q6_K/blobs/4134f3eb0516",
+      "content_preview": "{\n    \"stop\": [\n        \"<|system|>\",\n        \"<|user|>\",\n        \"<|assistant|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "81B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama-pro:8b-instruct-q6_K/blobs/688a68728634",
+      "content_preview": "<|system|>\n{{ .System }}\n<|user|>\n{{ .Prompt }}\n<|assistant|>",
+      "parameters": "",
+      "quantization": "",
+      "size": "62B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/llama-pro:8b-instruct-q6_K",
+  "manifest_digest": "7df5d721dbc0",
+  "manifest_size": "6.9GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/llama-pro",
+  "scraped_at": "2026-07-13T21:07:50.454059+00:00",
+  "tag_name": "8b-instruct-q6_K"
+}

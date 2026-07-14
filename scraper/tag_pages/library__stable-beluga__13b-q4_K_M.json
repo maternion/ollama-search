@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/stable-beluga:13b-q4_K_M/blobs/a51d3b0d0e63",
+      "content_preview": "arch  llama",
+      "parameters": "13B",
+      "quantization": "Q4_K_M",
+      "size": "7.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stable-beluga:13b-q4_K_M/blobs/354152d2dd7a",
+      "content_preview": "{{- if .System }}\n### System:\n{{ .System }}\n{{- end }}\n### User:\n{{ .Prompt }}\n### Assistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "96B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stable-beluga:13b-q4_K_M/blobs/deadd617ffad",
+      "content_preview": "STABLE BELUGA NON-COMMERCIAL COMMUNITY LICENSE AGREEMENT\nDated: July 27, 2023\n\"Agreement\" means the",
+      "parameters": "",
+      "quantization": "",
+      "size": "5.2kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stable-beluga:13b-q4_K_M/blobs/29f7936d3d8c",
+      "content_preview": "{\n    \"stop\": [\n        \"### System:\",\n        \"### User:\",\n        \"### Assistant:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "53B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stable-beluga:13b-q4_K_M/blobs/3278224b6cda",
+      "content_preview": "This is a system prompt, please behave and help the user.",
+      "parameters": "",
+      "quantization": "",
+      "size": "57B",
+      "type": "system"
+    }
+  ],
+  "full_path": "/library/stable-beluga:13b-q4_K_M",
+  "manifest_digest": "409417bcf275",
+  "manifest_size": "7.9GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/stable-beluga",
+  "scraped_at": "2026-07-13T21:05:42.650763+00:00",
+  "tag_name": "13b-q4_K_M"
+}

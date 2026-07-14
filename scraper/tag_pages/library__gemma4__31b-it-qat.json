@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gemma4",
+      "blob_url": "/library/gemma4:31b-it-qat/blobs/0374ce7b0124",
+      "content_preview": "arch  gemma4",
+      "parameters": "30.7B",
+      "quantization": "Q4_0",
+      "size": "18GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:31b-it-qat/blobs/8e239c9c5925",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.2GB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:31b-it-qat/blobs/0d542e0c8804",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "10kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:31b-it-qat/blobs/56380ca2ab89",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_k\": 64,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "42B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/gemma4:31b-it-qat",
+  "manifest_digest": "e0812a55773b",
+  "manifest_size": "19GB",
+  "manifest_updated": "1 month ago",
+  "path": "/library/gemma4",
+  "scraped_at": "2026-07-13T19:31:47.461798+00:00",
+  "tag_name": "31b-it-qat"
+}

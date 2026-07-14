@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gemma2",
+      "blob_url": "/library/shieldgemma:27b-q4_K_S/blobs/042ba2a75700",
+      "content_preview": "arch  gemma2",
+      "parameters": "27.2B",
+      "quantization": "Q4_K_S",
+      "size": "16GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/shieldgemma:27b-q4_K_S/blobs/1b667144a522",
+      "content_preview": "{{- $hq := \"\" }}\n{{- $cr := \"\" }}\n{{- range $i, $m := .Messages }}\n{{- if eq .Role \"user\" }}\n{{- $hq",
+      "parameters": "",
+      "quantization": "",
+      "size": "3.4kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/shieldgemma:27b-q4_K_S/blobs/48973fa9715c",
+      "content_preview": "Gemma Terms of Use\nLast modified: April 1, 2024\nBy using, reproducing, modifying, distributing, perf",
+      "parameters": "",
+      "quantization": "",
+      "size": "8.4kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/shieldgemma:27b-q4_K_S/blobs/ae40a217c1c4",
+      "content_preview": "{\n    \"temperature\": 0\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "18B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/shieldgemma:27b-q4_K_S",
+  "manifest_digest": "4eb28893980b",
+  "manifest_size": "16GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/shieldgemma",
+  "scraped_at": "2026-07-13T21:07:16.980037+00:00",
+  "tag_name": "27b-q4_K_S"
+}

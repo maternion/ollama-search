@@ -1,0 +1,72 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "",
+      "blob_url": "/library/laguna-xs.2:mxfp8/blobs/f42d36014db8",
+      "content_preview": "{\n\"architectures\": [\n\"LagunaForCausalLM\"\n],\n\"auto_map\": {\n\"AutoConfig\": \"configuration_laguna.Laguna",
+      "parameters": "",
+      "quantization": "",
+      "size": "3.7kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/laguna-xs.2:mxfp8/blobs/010529242088",
+      "content_preview": "{\n\"bos_token_id\": 2,\n\"do_sample\": true,\n\"eos_token_id\": [\n2,\n24\n],\n\"max_new_tokens\": 2048,\n\"pad_toke",
+      "parameters": "",
+      "quantization": "",
+      "size": "168B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/laguna-xs.2:mxfp8/blobs/70cd3459fde6",
+      "content_preview": "{\n\"bos_token\": \"〈|EOS|〉\",\n\"cls_token\": \"〈|CLS|〉\",\n\"eos_token\": \"〈|EOS|〉\",\n\"mask_token\":",
+      "parameters": "",
+      "quantization": "",
+      "size": "214B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/laguna-xs.2:mxfp8/blobs/807c53a95141",
+      "content_preview": "{\n\"version\": \"1.0\",\n\"truncation\": null,\n\"padding\": null,\n\"added_tokens\": [\n{\n\"id\": 0,\n\"content\": \"�",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.3MB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/laguna-xs.2:mxfp8/blobs/ce5c24f821c9",
+      "content_preview": "{\n\"added_tokens_decoder\": {\n\"0\": {\n\"content\": \"〈|UNK|〉\",\n\"lstrip\": false,\n\"normalized\": false,\n\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "13kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/laguna-xs.2:mxfp8/blobs/bd9df84b6904",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/laguna-xs.2:mxfp8",
+  "manifest_digest": "d978dfa2896b",
+  "manifest_size": "36GB",
+  "manifest_updated": "2 months ago",
+  "path": "/library/laguna-xs.2",
+  "scraped_at": "2026-07-13T21:25:30.035723+00:00",
+  "tag_name": "mxfp8"
+}

@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/phind-codellama:34b-q2_K/blobs/d16b5c70d70c",
+      "content_preview": "arch  llama",
+      "parameters": "33.7B",
+      "quantization": "Q2_K",
+      "size": "14GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phind-codellama:34b-q2_K/blobs/41774062cd34",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.0kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/phind-codellama:34b-q2_K",
+  "manifest_digest": "28dc02b3983c",
+  "manifest_size": "14GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/phind-codellama",
+  "scraped_at": "2026-07-13T21:02:02.474840+00:00",
+  "tag_name": "34b-q2_K"
+}

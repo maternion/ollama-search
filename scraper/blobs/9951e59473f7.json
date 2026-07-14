@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/starcoder2:15b-instruct-q4_0/blobs/9951e59473f7",
+  "content": "{{ if .System }}{{ .System }}\n\n{{ end }}### Instruction\n{{ if .Prompt }}{{ .Prompt }}\n\n{{ end }}### Response\n{{ .Response }}\n",
+  "digest": "9951e59473f7",
+  "metadata": [],
+  "size": "126B",
+  "tensor_groups": [],
+  "tensors": []
+}

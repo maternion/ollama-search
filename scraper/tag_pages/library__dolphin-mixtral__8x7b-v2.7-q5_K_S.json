@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/dolphin-mixtral:8x7b-v2.7-q5_K_S/blobs/742a7d46f7c6",
+      "content_preview": "arch  llama",
+      "parameters": "46.7B",
+      "quantization": "Q5_K_S",
+      "size": "32GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphin-mixtral:8x7b-v2.7-q5_K_S/blobs/9640c2212a51",
+      "content_preview": "You are Dolphin, a helpful AI assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "41B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphin-mixtral:8x7b-v2.7-q5_K_S/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphin-mixtral:8x7b-v2.7-q5_K_S/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphin-mixtral:8x7b-v2.7-q5_K_S/blobs/62fbfd9ed093",
+      "content_preview": "{{ if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}{{ if .Prompt }}<|im_start|>user",
+      "parameters": "",
+      "quantization": "",
+      "size": "182B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/dolphin-mixtral:8x7b-v2.7-q5_K_S",
+  "manifest_digest": "6b10b15cfd86",
+  "manifest_size": "32GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/dolphin-mixtral",
+  "scraped_at": "2026-07-13T20:20:29.071475+00:00",
+  "tag_name": "8x7b-v2.7-q5_K_S"
+}

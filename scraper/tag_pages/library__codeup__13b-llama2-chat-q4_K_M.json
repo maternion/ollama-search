@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/codeup:13b-llama2-chat-q4_K_M/blobs/843d506c69ee",
+      "content_preview": "arch  llama",
+      "parameters": "13B",
+      "quantization": "Q4_K_M",
+      "size": "7.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codeup:13b-llama2-chat-q4_K_M/blobs/1678ff0c9fe5",
+      "content_preview": "Below is an instruction that describes a task. Write a response that appropriately completes the req",
+      "parameters": "",
+      "quantization": "",
+      "size": "105B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codeup:13b-llama2-chat-q4_K_M/blobs/2d836d77287d",
+      "content_preview": "{{ .System }}\n### Instruction:\n{{ .Prompt }}\n### Response:",
+      "parameters": "",
+      "quantization": "",
+      "size": "61B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codeup:13b-llama2-chat-q4_K_M/blobs/55540d7c14b7",
+      "content_preview": "{\n    \"stop\": [\n        \"### Instruction:\",\n        \"### Response:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "45B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/codeup:13b-llama2-chat-q4_K_M",
+  "manifest_digest": "fe7c559371e0",
+  "manifest_size": "7.9GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/codeup",
+  "scraped_at": "2026-07-13T21:15:13.485278+00:00",
+  "tag_name": "13b-llama2-chat-q4_K_M"
+}

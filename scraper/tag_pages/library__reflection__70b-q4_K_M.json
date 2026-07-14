@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/reflection:70b-q4_K_M/blobs/869f8b234e8c",
+      "content_preview": "arch  llama",
+      "parameters": "70.6B",
+      "quantization": "Q4_K_M",
+      "size": "43GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/reflection:70b-q4_K_M/blobs/6a340fffade7",
+      "content_preview": "{{- range $i, $_ := .Messages }}<|start_header_id|>{{ .Role }}<|end_header_id|>\n{{ .Content }}\n{{- i",
+      "parameters": "",
+      "quantization": "",
+      "size": "297B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/reflection:70b-q4_K_M/blobs/c782799f4377",
+      "content_preview": "You are a world-class AI system, capable of complex reasoning and reflection. Reason through the que",
+      "parameters": "",
+      "quantization": "",
+      "size": "298B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/reflection:70b-q4_K_M/blobs/0ba8f0e314b4",
+      "content_preview": "LLAMA 3.1 COMMUNITY LICENSE AGREEMENT\nLlama 3.1 Version Release Date: July 23, 2024\n“Agreement”",
+      "parameters": "",
+      "quantization": "",
+      "size": "12kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/reflection:70b-q4_K_M/blobs/290615e13f21",
+      "content_preview": "{\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",\n        \"<|eot_id|>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "127B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/reflection:70b-q4_K_M",
+  "manifest_digest": "be39ad6154f4",
+  "manifest_size": "43GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/reflection",
+  "scraped_at": "2026-07-13T21:13:59.812314+00:00",
+  "tag_name": "70b-q4_K_M"
+}

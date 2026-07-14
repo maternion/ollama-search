@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/yi-coder:1.5b-base-q6_K/blobs/2315384ec7d4",
+      "content_preview": "arch  llama",
+      "parameters": "1.48B",
+      "quantization": "Q6_K",
+      "size": "1.3GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/yi-coder:1.5b-base-q6_K/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/yi-coder:1.5b-base-q6_K",
+  "manifest_digest": "25f35d89eb70",
+  "manifest_size": "1.3GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/yi-coder",
+  "scraped_at": "2026-07-13T20:49:34.323758+00:00",
+  "tag_name": "1.5b-base-q6_K"
+}

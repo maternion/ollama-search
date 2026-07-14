@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/goliath:120b-q2_K/blobs/7409a526630d",
+      "content_preview": "arch  llama",
+      "parameters": "118B",
+      "quantization": "Q2_K",
+      "size": "50GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/goliath:120b-q2_K/blobs/c8472cd9daed",
+      "content_preview": "You are a helpful AI assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/goliath:120b-q2_K/blobs/31eff39f9e45",
+      "content_preview": "{\n    \"num_ctx\": 4096,\n    \"stop\": [\n        \"USER:\",\n        \"ASSISTANT:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "47B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/goliath:120b-q2_K/blobs/7b5f7b8fe4ed",
+      "content_preview": "{{ .System }}\nUSER: {{ .Prompt }}\nASSISTANT:",
+      "parameters": "",
+      "quantization": "",
+      "size": "45B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/goliath:120b-q2_K",
+  "manifest_digest": "1ffc35257417",
+  "manifest_size": "50GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/goliath",
+  "scraped_at": "2026-07-13T21:20:59.510128+00:00",
+  "tag_name": "120b-q2_K"
+}

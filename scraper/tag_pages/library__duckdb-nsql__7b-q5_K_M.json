@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/duckdb-nsql:7b-q5_K_M/blobs/6cbf12704bd7",
+      "content_preview": "arch  llama",
+      "parameters": "6.74B",
+      "quantization": "Q5_K_M",
+      "size": "4.8GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/duckdb-nsql:7b-q5_K_M/blobs/cc23c3fcb197",
+      "content_preview": "### Instruction:\nYour task is to generate valid duckdb SQL to answer the following question, given a",
+      "parameters": "",
+      "quantization": "",
+      "size": "230B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/duckdb-nsql:7b-q5_K_M",
+  "manifest_digest": "084b49941207",
+  "manifest_size": "4.8GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/duckdb-nsql",
+  "scraped_at": "2026-07-13T21:19:20.905776+00:00",
+  "tag_name": "7b-q5_K_M"
+}

@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/maternion/sweep-next-edit-1.5B:latest/blobs/1321ea5e5d75",
+      "content_preview": "arch  qwen2",
+      "parameters": "1.45B",
+      "quantization": "Q8_0",
+      "size": "1.5GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/sweep-next-edit-1.5B:latest/blobs/eb4402837c78",
+      "content_preview": "{{- if .Messages }}\n{{- if or .System .Tools }}<|im_start|>system\n{{- if .System }}\n{{ .System }}\n{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/maternion/sweep-next-edit-1.5B:latest",
+  "manifest_digest": "6a6bbfafb2cf",
+  "manifest_size": "1.5GB",
+  "manifest_updated": "5 months ago",
+  "path": "/maternion/sweep-next-edit-1.5B",
+  "scraped_at": "2026-07-14T15:18:51.343030+00:00",
+  "tag_name": "latest"
+}

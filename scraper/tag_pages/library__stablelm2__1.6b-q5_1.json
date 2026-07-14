@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "stablelm",
+      "blob_url": "/library/stablelm2:1.6b-q5_1/blobs/809297dbf0d7",
+      "content_preview": "arch  stablelm",
+      "parameters": "1.64B",
+      "quantization": "Q5_1",
+      "size": "1.3GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stablelm2:1.6b-q5_1/blobs/bf0b0c95994a",
+      "content_preview": "STABILITY AI NON-COMMERCIAL RESEARCH COMMUNITY LICENSE AGREEMENT\nDated: December 06, 2023\nBy using o",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.4kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/stablelm2:1.6b-q5_1",
+  "manifest_digest": "dd3bae8dbffd",
+  "manifest_size": "1.3GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/stablelm2",
+  "scraped_at": "2026-07-13T20:51:07.698900+00:00",
+  "tag_name": "1.6b-q5_1"
+}

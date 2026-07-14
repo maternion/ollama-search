@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "olmo3",
+      "blob_url": "/library/olmo-3.1:32b-instruct-q4_K_M/blobs/a892dffd5cb1",
+      "content_preview": "arch  olmo3",
+      "parameters": "32.2B",
+      "quantization": "Q4_K_M",
+      "size": "19GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/olmo-3.1:32b-instruct-q4_K_M/blobs/cfc7749b96f6",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/olmo-3.1:32b-instruct-q4_K_M/blobs/ceaa5f78afb8",
+      "content_preview": "{\n    \"temperature\": 0.6,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "33B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/olmo-3.1:32b-instruct-q4_K_M",
+  "manifest_digest": "a16b6a5be6cf",
+  "manifest_size": "19GB",
+  "manifest_updated": "6 months ago",
+  "path": "/library/olmo-3.1",
+  "scraped_at": "2026-07-13T21:22:49.107851+00:00",
+  "tag_name": "32b-instruct-q4_K_M"
+}

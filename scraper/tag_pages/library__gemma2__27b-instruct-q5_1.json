@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gemma2",
+      "blob_url": "/library/gemma2:27b-instruct-q5_1/blobs/01df85d9db47",
+      "content_preview": "arch  gemma2",
+      "parameters": "27.2B",
+      "quantization": "Q5_1",
+      "size": "21GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma2:27b-instruct-q5_1/blobs/097a36493f71",
+      "content_preview": "Gemma Terms of Use\nLast modified: February 21, 2024\nBy using, reproducing, modifying, distributing,",
+      "parameters": "",
+      "quantization": "",
+      "size": "8.4kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma2:27b-instruct-q5_1/blobs/2490e7468436",
+      "content_preview": "{\n    \"stop\": [\n        \"<start_of_turn>\",\n        \"<end_of_turn>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "65B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma2:27b-instruct-q5_1/blobs/109037bec39c",
+      "content_preview": "<start_of_turn>user\n{{ if .System }}{{ .System }} {{ end }}{{ .Prompt }}<end_of_turn>\n<start_of_turn",
+      "parameters": "",
+      "quantization": "",
+      "size": "136B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/gemma2:27b-instruct-q5_1",
+  "manifest_digest": "2945f01919f8",
+  "manifest_size": "21GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/gemma2",
+  "scraped_at": "2026-07-13T19:42:14.023703+00:00",
+  "tag_name": "27b-instruct-q5_1"
+}

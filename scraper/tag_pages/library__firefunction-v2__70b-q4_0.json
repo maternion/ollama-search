@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/firefunction-v2:70b-q4_0/blobs/753c611024aa",
+      "content_preview": "arch  llama",
+      "parameters": "70.6B",
+      "quantization": "Q4_0",
+      "size": "40GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/firefunction-v2:70b-q4_0/blobs/d0d33e34ecdb",
+      "content_preview": "{{- if .Messages }}\n{{- if or .System .Tools }}<|start_header_id|>system<|end_header_id|>\n{{ if .Sys",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.0kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/firefunction-v2:70b-q4_0/blobs/475211637354",
+      "content_preview": "META LLAMA 3 COMMUNITY LICENSE AGREEMENT\nMeta Llama 3 Version Release Date: April 18, 2024\n“Agreem",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.8kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/firefunction-v2:70b-q4_0/blobs/56bb8bd477a5",
+      "content_preview": "{\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",\n        \"<|eot_id|>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "96B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/firefunction-v2:70b-q4_0",
+  "manifest_digest": "b1ed6b22fb67",
+  "manifest_size": "40GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/firefunction-v2",
+  "scraped_at": "2026-07-13T21:19:47.366438+00:00",
+  "tag_name": "70b-q4_0"
+}

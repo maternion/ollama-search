@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llama2-uncensored:70b-chat-q5_K_M/blobs/e6d603bce502",
+      "content_preview": "arch  llama",
+      "parameters": "69B",
+      "quantization": "Q5_K_M",
+      "size": "49GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2-uncensored:70b-chat-q5_K_M/blobs/ddaa351c1f3d",
+      "content_preview": "{\n    \"num_gqa\": 8,\n    \"stop\": [\n        \"### HUMAN:\",\n        \"### RESPONSE:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "51B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2-uncensored:70b-chat-q5_K_M/blobs/9224016baa40",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2-uncensored:70b-chat-q5_K_M/blobs/1195ea171610",
+      "content_preview": "# Llama 2 Acceptable Use Policy\nMeta is committed to promoting safe and fair use of its tools and fe",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.8kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2-uncensored:70b-chat-q5_K_M/blobs/28577ba2177f",
+      "content_preview": "{{ .System }}\n### HUMAN:\n{{ .Prompt }}\n### RESPONSE:",
+      "parameters": "",
+      "quantization": "",
+      "size": "55B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/llama2-uncensored:70b-chat-q5_K_M",
+  "manifest_digest": "cb930df97107",
+  "manifest_size": "49GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/llama2-uncensored",
+  "scraped_at": "2026-07-13T20:16:10.863032+00:00",
+  "tag_name": "70b-chat-q5_K_M"
+}

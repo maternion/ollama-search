@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gemma",
+      "blob_url": "/library/codegemma:7b-code-q6_K/blobs/68a70bce19e7",
+      "content_preview": "arch  gemma",
+      "parameters": "8.54B",
+      "quantization": "Q6_K",
+      "size": "7.0GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codegemma:7b-code-q6_K/blobs/9be8862a3637",
+      "content_preview": "{\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"<|fim_prefix|>\",\n        \"<|fim_suffix|>\",",
+      "parameters": "",
+      "quantization": "",
+      "size": "142B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codegemma:7b-code-q6_K/blobs/48d9a8140749",
+      "content_preview": "{{- if .Suffix }}<|fim_prefix|>{{ .Prompt }}<|fim_suffix|>{{ .Suffix }}<|fim_middle|>\n{{- else }}{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "121B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codegemma:7b-code-q6_K/blobs/097a36493f71",
+      "content_preview": "Gemma Terms of Use\nLast modified: February 21, 2024\nBy using, reproducing, modifying, distributing,",
+      "parameters": "",
+      "quantization": "",
+      "size": "8.4kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/codegemma:7b-code-q6_K",
+  "manifest_digest": "d00cdbfa8157",
+  "manifest_size": "7.0GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/codegemma",
+  "scraped_at": "2026-07-13T20:09:39.332514+00:00",
+  "tag_name": "7b-code-q6_K"
+}

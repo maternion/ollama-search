@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llama3-chatqa:latest/blobs/df02d0708a46",
+      "content_preview": "arch  llama",
+      "parameters": "8.03B",
+      "quantization": "Q4_0",
+      "size": "4.7GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama3-chatqa:latest/blobs/4fa551d4f938",
+      "content_preview": "META LLAMA 3 COMMUNITY LICENSE AGREEMENT\nMeta Llama 3 Version Release Date: April 18, 2024\n“Agreem",
+      "parameters": "",
+      "quantization": "",
+      "size": "12kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama3-chatqa:latest/blobs/9f8fe93c9748",
+      "content_preview": "This is a chat between a user and an artificial intelligence assistant. The assistant gives helpful,",
+      "parameters": "",
+      "quantization": "",
+      "size": "260B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama3-chatqa:latest/blobs/79500bc18291",
+      "content_preview": "{{ if .System }}System: {{ .System }}\n{{ end }}{{ if .Prompt }}User: {{ .Prompt }}\n{{ end }}Assistan",
+      "parameters": "",
+      "quantization": "",
+      "size": "139B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/llama3-chatqa:latest",
+  "manifest_digest": "b37a98d204b2",
+  "manifest_size": "4.7GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/llama3-chatqa",
+  "scraped_at": "2026-07-13T20:52:16.647335+00:00",
+  "tag_name": "latest"
+}

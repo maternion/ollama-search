@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/qwen2-math:7b-instruct-q5_0/blobs/029b87c88d24",
+  "content": "{{- range .Messages }}<|im_start|>{{ .Role }}\n{{ .Content }}<|im_end|>\n{{- end }}<|im_start|>assistant",
+  "digest": "029b87c88d24",
+  "metadata": [],
+  "size": "102B",
+  "tensor_groups": [],
+  "tensors": []
+}

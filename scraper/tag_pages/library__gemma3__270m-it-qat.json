@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gemma3",
+      "blob_url": "/library/gemma3:270m-it-qat/blobs/29005e200100",
+      "content_preview": "arch  gemma3",
+      "parameters": "268M",
+      "quantization": "Q4_0",
+      "size": "241MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma3:270m-it-qat/blobs/3e2c24001f9e",
+      "content_preview": "Gemma Terms of Use\nLast modified: February 21, 2024\nBy using, reproducing, modifying, distributing,",
+      "parameters": "",
+      "quantization": "",
+      "size": "8.4kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma3:270m-it-qat/blobs/339e884a40f6",
+      "content_preview": "{\n    \"stop\": [\n        \"<end_of_turn>\"\n    ],\n    \"top_k\": 64,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "61B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma3:270m-it-qat/blobs/4b19ac7dd2fb",
+      "content_preview": "{{- $systemPromptAdded := false }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Me",
+      "parameters": "",
+      "quantization": "",
+      "size": "476B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/gemma3:270m-it-qat",
+  "manifest_digest": "b16d6d39dfbd",
+  "manifest_size": "241MB",
+  "manifest_updated": "11 months ago",
+  "path": "/library/gemma3",
+  "scraped_at": "2026-07-13T19:36:50.275297+00:00",
+  "tag_name": "270m-it-qat"
+}

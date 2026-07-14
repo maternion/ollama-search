@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "starcoder",
+      "blob_url": "/library/granite-code:20b-instruct-8k-q3_K_M/blobs/d7412a9ac080",
+      "content_preview": "arch  starcoder",
+      "parameters": "20.1B",
+      "quantization": "Q3_K_M",
+      "size": "11GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite-code:20b-instruct-8k-q3_K_M/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite-code:20b-instruct-8k-q3_K_M/blobs/f1406f0e20d0",
+      "content_preview": "{\n    \"stop\": [\n        \"System:\",\n        \"Question:\",\n        \"Answer:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "43B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite-code:20b-instruct-8k-q3_K_M/blobs/56bc87f0f05e",
+      "content_preview": "{{ if .Messages }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "592B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/granite-code:20b-instruct-8k-q3_K_M",
+  "manifest_digest": "9a3be6de6096",
+  "manifest_size": "11GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/granite-code",
+  "scraped_at": "2026-07-13T20:26:58.123787+00:00",
+  "tag_name": "20b-instruct-8k-q3_K_M"
+}

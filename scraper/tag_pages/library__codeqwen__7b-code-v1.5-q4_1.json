@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/library/codeqwen:7b-code-v1.5-q4_1/blobs/45a8924fbed4",
+      "content_preview": "arch  qwen2",
+      "parameters": "7.25B",
+      "quantization": "Q4_1",
+      "size": "4.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codeqwen:7b-code-v1.5-q4_1/blobs/6b53223f338a",
+      "content_preview": "Tongyi Qianwen LICENSE AGREEMENT\nTongyi Qianwen Release Date: August 3, 2023\nBy clicking to agree or",
+      "parameters": "",
+      "quantization": "",
+      "size": "6.9kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/codeqwen:7b-code-v1.5-q4_1",
+  "manifest_digest": "1054e6ce1430",
+  "manifest_size": "4.6GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/codeqwen",
+  "scraped_at": "2026-07-13T20:43:36.572413+00:00",
+  "tag_name": "7b-code-v1.5-q4_1"
+}

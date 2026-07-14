@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/maternion/NuMarkdown-Thinking:latest/blobs/ae03851fe7be",
+  "content": "{{- if .System -}}\n<|im_start|>system\n{{ .System }}<|im_end|>\n{{- end -}}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n{{- if eq .Role \"user\" -}}\n<|im_start|>user\n{{ .Content }}<|im_end|>\n{{- else if eq .Role \"assistant\" -}}\n<|im_start|>assistant\n{{- if and $.IsThinkSet .Thinking -}}\n<think>{{ .Thinking }}</think>\n{{- end }}\n{{ if .Content }}{{ .Content }}{{ if not $last }}<|im_end|>\n{{- else -}}<|im_end|>{{- end -}}\n{{- end -}}\n{{- end -}}\n{{- if and (ne .Role \"assistant\") $last }}\n<|im_start|>assistant\n{{- if and $.IsThinkSet $.Think }}\n<think>\n{{- end }}\n{{ end -}}\n{{- end }}",
+  "digest": "ae03851fe7be",
+  "metadata": [],
+  "size": "623B",
+  "tensor_groups": [],
+  "tensors": []
+}

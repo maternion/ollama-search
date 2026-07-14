@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/dolphin-mistral:7b-v2.6-dpo-laser-q4_0/blobs/a49e13d9e328",
+      "content_preview": "arch  llama",
+      "parameters": "7.24B",
+      "quantization": "Q4_0",
+      "size": "4.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphin-mistral:7b-v2.6-dpo-laser-q4_0/blobs/a47b02e00552",
+      "content_preview": "<|im_start|>system\n{{ .System }}<|im_end|>\n<|im_start|>user\n{{ .Prompt }}<|im_end|>\n<|im_start|>assi",
+      "parameters": "",
+      "quantization": "",
+      "size": "106B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphin-mistral:7b-v2.6-dpo-laser-q4_0/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphin-mistral:7b-v2.6-dpo-laser-q4_0/blobs/9640c2212a51",
+      "content_preview": "You are Dolphin, a helpful AI assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "41B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphin-mistral:7b-v2.6-dpo-laser-q4_0/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/dolphin-mistral:7b-v2.6-dpo-laser-q4_0",
+  "manifest_digest": "ecbf896611f5",
+  "manifest_size": "4.1GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/dolphin-mistral",
+  "scraped_at": "2026-07-13T20:22:43.424332+00:00",
+  "tag_name": "7b-v2.6-dpo-laser-q4_0"
+}

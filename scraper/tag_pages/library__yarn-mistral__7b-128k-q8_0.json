@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/yarn-mistral:7b-128k-q8_0/blobs/80cb7c3076bc",
+      "content_preview": "arch  llama",
+      "parameters": "7.24B",
+      "quantization": "Q8_0",
+      "size": "7.7GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/yarn-mistral:7b-128k-q8_0/blobs/1639d5c1f004",
+      "content_preview": "{\n    \"num_ctx\": 131072\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "18B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/yarn-mistral:7b-128k-q8_0",
+  "manifest_digest": "c7d7fcc635b3",
+  "manifest_size": "7.7GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/yarn-mistral",
+  "scraped_at": "2026-07-13T21:08:22.390551+00:00",
+  "tag_name": "7b-128k-q8_0"
+}

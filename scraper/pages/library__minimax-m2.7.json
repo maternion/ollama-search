@@ -1,0 +1,48 @@
+{
+  "path": "/library/minimax-m2.7",
+  "name": "minimax-m2.7",
+  "scraped_at": "2026-07-13T19:27:41.692204+00:00",
+  "readme_html": "\n        \n          <blockquote>\n<p>Ollama\u2019s cloud is officially licensed with MiniMax for commercial usage</p>\n</blockquote>\n\n<p><img src=\"/assets/library/minimax-m2.7/61a451bd-290c-4802-9f2e-f63cb4ab6c68\" alt=\"logo\"/></p>\n\n<p>MiniMax M2.7 is the first model in the M2-series to deeply participate in its own evolution, capable of building complex agent harnesses and completing highly elaborate productivity tasks through Agent Teams, complex Skills, and dynamic tool search.</p>\n\n<h3>Highlights</h3>\n\n<ul>\n<li><p><strong>Professional software engineering</strong>. M2.7 delivers outstanding performance in real-world engineering scenarios including end-to-end project delivery, log analysis and bug troubleshooting, code security, and machine learning. On SWE-Pro it scored 56.22%, matching GPT-5.3-Codex and nearly approaching Opus\u2019s best level. On VIBE-Pro (55.6%) and Terminal Bench 2 (57.0%), it demonstrates deep understanding of complex engineering systems.</p></li>\n\n<li><p><strong>Professional work and complex environments</strong>. In the GDPval-AA evaluation across 45 models, M2.7 achieved an ELO score of 1495, the highest among open-source models. It handles complex editing in Excel, PPT, and Word with multi-round high-fidelity revisions, and maintains a 97% skill adherence rate across 40 complex skills (each exceeding 2,000 tokens). On Toolathon, M2.7 reached 46.3% accuracy, a global top-tier result.</p></li>\n\n<li><p><strong>Character consistency and entertainment</strong>. M2.7 possesses excellent character consistency and emotional intelligence. MiniMax has open-sourced OpenRoom, a Web GUI interaction system where conversation drives real-time visual feedback and scene interactions with characters proactively engaging their environment.</p></li>\n</ul>\n\n<p><img src=\"/assets/library/minimax-m2.7/16c931f9-54ad-4605-8d05-4ac517f5a607\" alt=\"benchmark overview\"/></p>\n\n<h3>Benchmarks</h3>\n\n<p><strong>Software Engineering</strong></p>\n\n<p>M2.7 reaches the level of state-of-the-art models across real-world programming tasks spanning multiple languages and system-level comprehension.</p>\n\n<table>\n<thead>\n<tr>\n<th>Benchmark</th>\n<th>M2.7</th>\n<th>Notes</th>\n</tr>\n</thead>\n\n<tbody>\n<tr>\n<td>SWE-Pro</td>\n<td>56.22%</td>\n<td>Matches GPT-5.3-Codex</td>\n</tr>\n\n<tr>\n<td>VIBE-Pro</td>\n<td>55.6%</td>\n<td>Nearly on par with Opus 4.6</td>\n</tr>\n\n<tr>\n<td>Terminal Bench 2</td>\n<td>57.0%</td>\n<td>Deep system-level understanding</td>\n</tr>\n\n<tr>\n<td>SWE Multilingual</td>\n<td>76.5</td>\n<td>Multi-language engineering</td>\n</tr>\n\n<tr>\n<td>Multi SWE Bench</td>\n<td>52.7</td>\n<td>Multi-repo tasks</td>\n</tr>\n\n<tr>\n<td>NL2Repo</td>\n<td>39.8</td>\n<td>Natural language to repository</td>\n</tr>\n</tbody>\n</table>\n<p><strong>Professional Work &amp; Office</strong></p>\n\n<table>\n<thead>\n<tr>\n<th>Benchmark</th>\n<th>M2.7</th>\n<th>Notes</th>\n</tr>\n</thead>\n\n<tbody>\n<tr>\n<td>GDPval-AA (ELO)</td>\n<td>1495</td>\n<td>Highest among open-source models</td>\n</tr>\n\n<tr>\n<td>Toolathon</td>\n<td>46.3%</td>\n<td>Global top tier</td>\n</tr>\n\n<tr>\n<td>MM Claw</td>\n<td>62.7%</td>\n<td>Close to Sonnet 4.6</td>\n</tr>\n\n<tr>\n<td>Skill Adherence (40 skills)</td>\n<td>97%</td>\n<td>Each skill &gt;2,000 tokens</td>\n</tr>\n</tbody>\n</table>\n<p><strong>Machine Learning (MLE Bench Lite)</strong></p>\n\n<p>In exploratory self-evolution tests across 22 ML competitions, M2.7 achieved an average medal rate of 66.6% across three 24-hour autonomous runs, second only to Opus 4.6 (75.7%) and GPT-5.4 (71.2%), tying with Gemini 3.1.</p>\n\n<h3>Reference</h3>\n\n<ul>\n<li><a href=\"https://www.minimax.io/news/minimax-m27-en\" rel=\"nofollow\">MiniMax M2.7 announcement</a></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "medium",
+  "cloud_usage_active_slots": 2,
+  "cloud_context": "200K",
+  "cloud_context_unit": "tokens",
+  "cloud_size": "229B",
+  "cloud_size_unit": "parameters",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model minimax-m2.7:cloud"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model minimax-m2.7:cloud"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model minimax-m2.7:cloud"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model minimax-m2.7:cloud"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model minimax-m2.7:cloud"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model minimax-m2.7:cloud"
+    }
+  ]
+}

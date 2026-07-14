@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "chatglm",
+      "blob_url": "/library/glm4:9b-text-q4_1/blobs/277d91c41e06",
+      "content_preview": "arch  chatglm",
+      "parameters": "9.4B",
+      "quantization": "Q4_1",
+      "size": "6.0GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/glm4:9b-text-q4_1/blobs/e4f0dc83900a",
+      "content_preview": "The glm-4-9b License\n1. 定义\n“许可方”是指分发其软件的 glm-4-9b 模型团队。\n“�",
+      "parameters": "",
+      "quantization": "",
+      "size": "6.5kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/glm4:9b-text-q4_1",
+  "manifest_digest": "2e39b551484c",
+  "manifest_size": "6.0GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/glm4",
+  "scraped_at": "2026-07-13T20:35:52.479023+00:00",
+  "tag_name": "9b-text-q4_1"
+}

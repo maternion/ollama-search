@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/yi:6b-chat-v1.5-q5_K_M/blobs/62fbfd9ed093",
+  "content": "{{ if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}{{ if .Prompt }}<|im_start|>user\n{{ .Prompt }}<|im_end|>\n{{ end }}<|im_start|>assistant\n{{ .Response }}<|im_end|>",
+  "digest": "62fbfd9ed093",
+  "metadata": [],
+  "size": "182B",
+  "tensor_groups": [],
+  "tensors": []
+}

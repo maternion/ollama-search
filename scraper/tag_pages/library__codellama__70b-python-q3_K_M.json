@@ -1,0 +1,27 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/codellama:70b-python-q3_K_M/blobs/eb477ee216e7",
+      "content_preview": "arch  llama",
+      "parameters": "69B",
+      "quantization": "Q3_K_M",
+      "size": "33GB",
+      "type": "model"
+    }
+  ],
+  "full_path": "/library/codellama:70b-python-q3_K_M",
+  "manifest_digest": "130b1c22d82c",
+  "manifest_size": "33GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/codellama",
+  "scraped_at": "2026-07-13T20:02:42.928582+00:00",
+  "tag_name": "70b-python-q3_K_M"
+}

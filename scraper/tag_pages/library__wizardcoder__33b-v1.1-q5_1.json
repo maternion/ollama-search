@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/wizardcoder:33b-v1.1-q5_1/blobs/9d4da8a4145a",
+      "content_preview": "arch  llama",
+      "parameters": "33.3B",
+      "quantization": "Q5_1",
+      "size": "25GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardcoder:33b-v1.1-q5_1/blobs/2d836d77287d",
+      "content_preview": "{{ .System }}\n### Instruction:\n{{ .Prompt }}\n### Response:",
+      "parameters": "",
+      "quantization": "",
+      "size": "61B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardcoder:33b-v1.1-q5_1/blobs/876a8d805b60",
+      "content_preview": "MICROSOFT RESEARCH LICENSE TERMS\nIF YOU LIVE IN THE UNITED STATES, PLEASE READ THE “BINDING ARBITR",
+      "parameters": "",
+      "quantization": "",
+      "size": "10kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardcoder:33b-v1.1-q5_1/blobs/1678ff0c9fe5",
+      "content_preview": "Below is an instruction that describes a task. Write a response that appropriately completes the req",
+      "parameters": "",
+      "quantization": "",
+      "size": "105B",
+      "type": "system"
+    }
+  ],
+  "full_path": "/library/wizardcoder:33b-v1.1-q5_1",
+  "manifest_digest": "a7061aa66c60",
+  "manifest_size": "25GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/wizardcoder",
+  "scraped_at": "2026-07-13T20:48:56.131176+00:00",
+  "tag_name": "33b-v1.1-q5_1"
+}

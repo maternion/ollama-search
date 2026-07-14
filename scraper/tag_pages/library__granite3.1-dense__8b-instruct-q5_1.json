@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "granite",
+      "blob_url": "/library/granite3.1-dense:8b-instruct-q5_1/blobs/3a2978e7d2a9",
+      "content_preview": "arch  granite",
+      "parameters": "8.17B",
+      "quantization": "Q5_1",
+      "size": "6.2GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite3.1-dense:8b-instruct-q5_1/blobs/f7b956e70ca3",
+      "content_preview": "Knowledge Cutoff Date: April 2024.\nYou are Granite, developed by IBM.",
+      "parameters": "",
+      "quantization": "",
+      "size": "69B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite3.1-dense:8b-instruct-q5_1/blobs/492069a62c25",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite3.1-dense:8b-instruct-q5_1/blobs/f76a906816c4",
+      "content_preview": "<|start_of_role|>system<|end_of_role|>\n{{- if and (gt (len .Messages) 0) (eq (index .Messages 0).Rol",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.4kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/granite3.1-dense:8b-instruct-q5_1",
+  "manifest_digest": "5f3faea362a7",
+  "manifest_size": "6.2GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/granite3.1-dense",
+  "scraped_at": "2026-07-13T20:53:17.162032+00:00",
+  "tag_name": "8b-instruct-q5_1"
+}

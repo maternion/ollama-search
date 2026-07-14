@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gemma2",
+      "blob_url": "/library/shieldgemma:9b-fp16/blobs/cd411662f55b",
+      "content_preview": "arch  gemma2",
+      "parameters": "9.24B",
+      "quantization": "F16",
+      "size": "18GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/shieldgemma:9b-fp16/blobs/ae40a217c1c4",
+      "content_preview": "{\n    \"temperature\": 0\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "18B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/shieldgemma:9b-fp16/blobs/1b667144a522",
+      "content_preview": "{{- $hq := \"\" }}\n{{- $cr := \"\" }}\n{{- range $i, $m := .Messages }}\n{{- if eq .Role \"user\" }}\n{{- $hq",
+      "parameters": "",
+      "quantization": "",
+      "size": "3.4kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/shieldgemma:9b-fp16/blobs/48973fa9715c",
+      "content_preview": "Gemma Terms of Use\nLast modified: April 1, 2024\nBy using, reproducing, modifying, distributing, perf",
+      "parameters": "",
+      "quantization": "",
+      "size": "8.4kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/shieldgemma:9b-fp16",
+  "manifest_digest": "5ad5e824db94",
+  "manifest_size": "18GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/shieldgemma",
+  "scraped_at": "2026-07-13T21:07:11.076755+00:00",
+  "tag_name": "9b-fp16"
+}

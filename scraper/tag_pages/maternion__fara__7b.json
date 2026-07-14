@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2vl",
+      "blob_url": "/maternion/fara:7b/blobs/4597788eca33",
+      "content_preview": "arch  qwen2vl",
+      "parameters": "7.62B",
+      "quantization": "Q4_K_M",
+      "size": "4.7GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/fara:7b/blobs/148cc0a76f0f",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.4GB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/fara:7b/blobs/b19a24f7ca8a",
+      "content_preview": "{{- if or .System .Tools }}<|im_start|>system\n{{ if .System }}{{ .System }}{{ else }}You are a helpf",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.2kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/fara:7b/blobs/745716c48912",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ],\n    \"temperature\": 0.0001\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "80B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/maternion/fara:7b",
+  "manifest_digest": "6440ede84bf6",
+  "manifest_size": "6.0GB",
+  "manifest_updated": "7 months ago",
+  "path": "/maternion/fara",
+  "scraped_at": "2026-07-14T15:14:53.155537+00:00",
+  "tag_name": "7b"
+}

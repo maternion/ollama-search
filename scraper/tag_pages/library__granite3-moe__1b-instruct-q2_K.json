@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "granitemoe",
+      "blob_url": "/library/granite3-moe:1b-instruct-q2_K/blobs/48e2bf8ea29a",
+      "content_preview": "arch  granitemoe",
+      "parameters": "1.33B",
+      "quantization": "Q2_K",
+      "size": "512MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite3-moe:1b-instruct-q2_K/blobs/492069a62c25",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite3-moe:1b-instruct-q2_K/blobs/5d4667f097b4",
+      "content_preview": "{\n    \"num_gpu\": 23\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "15B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite3-moe:1b-instruct-q2_K/blobs/31ad3abb7dce",
+      "content_preview": "You are Granite, an AI language model developed by IBM in 2024.",
+      "parameters": "",
+      "quantization": "",
+      "size": "63B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite3-moe:1b-instruct-q2_K/blobs/604785e698e9",
+      "content_preview": "{{- if .Tools }}<|start_of_role|>available_tools<|end_of_role|>\n{{- range .Tools }}\n{{ . }}\n{{ end }",
+      "parameters": "",
+      "quantization": "",
+      "size": "664B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/granite3-moe:1b-instruct-q2_K",
+  "manifest_digest": "5965f707577c",
+  "manifest_size": "512MB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/granite3-moe",
+  "scraped_at": "2026-07-13T21:04:07.428306+00:00",
+  "tag_name": "1b-instruct-q2_K"
+}

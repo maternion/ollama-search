@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/sqlcoder:70b-alpha-q5_K_M/blobs/a43d59f21b39",
+      "content_preview": "arch  llama",
+      "parameters": "69B",
+      "quantization": "Q5_K_M",
+      "size": "49GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/sqlcoder:70b-alpha-q5_K_M/blobs/8c205fccfc04",
+      "content_preview": "{\n    \"stop\": [\n        \"<|endoftext|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "37B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/sqlcoder:70b-alpha-q5_K_M",
+  "manifest_digest": "fdc1971644d8",
+  "manifest_size": "49GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/sqlcoder",
+  "scraped_at": "2026-07-13T20:32:41.362351+00:00",
+  "tag_name": "70b-alpha-q5_K_M"
+}

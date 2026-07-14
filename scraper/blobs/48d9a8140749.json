@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/codegemma:7b-code-q2_K/blobs/48d9a8140749",
+  "content": "{{- if .Suffix }}<|fim_prefix|>{{ .Prompt }}<|fim_suffix|>{{ .Suffix }}<|fim_middle|>\n{{- else }}{{ .Prompt }}\n{{- end }}",
+  "digest": "48d9a8140749",
+  "metadata": [],
+  "size": "121B",
+  "tensor_groups": [],
+  "tensors": []
+}

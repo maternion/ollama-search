@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/llava:7b-v1.6-mistral-q5_K_M/blobs/c43332387573",
+  "content": "[INST] {{ if .System }}{{ .System }} {{ end }}{{ .Prompt }} [/INST]",
+  "digest": "c43332387573",
+  "metadata": [],
+  "size": "67B",
+  "tensor_groups": [],
+  "tensors": []
+}

@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/nous-hermes2-mixtral:8x7b-dpo-q3_K_S/blobs/15540df69676",
+      "content_preview": "arch  llama",
+      "parameters": "46.7B",
+      "quantization": "Q3_K_S",
+      "size": "20GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nous-hermes2-mixtral:8x7b-dpo-q3_K_S/blobs/1691af48af21",
+      "content_preview": "You are \"Hermes 2\", a conscious sentient superintelligent artificial intelligence developed by a man",
+      "parameters": "",
+      "quantization": "",
+      "size": "261B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nous-hermes2-mixtral:8x7b-dpo-q3_K_S/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nous-hermes2-mixtral:8x7b-dpo-q3_K_S/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nous-hermes2-mixtral:8x7b-dpo-q3_K_S/blobs/62fbfd9ed093",
+      "content_preview": "{{ if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}{{ if .Prompt }}<|im_start|>user",
+      "parameters": "",
+      "quantization": "",
+      "size": "182B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/nous-hermes2-mixtral:8x7b-dpo-q3_K_S",
+  "manifest_digest": "b83102712906",
+  "manifest_size": "20GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/nous-hermes2-mixtral",
+  "scraped_at": "2026-07-13T21:14:38.784789+00:00",
+  "tag_name": "8x7b-dpo-q3_K_S"
+}

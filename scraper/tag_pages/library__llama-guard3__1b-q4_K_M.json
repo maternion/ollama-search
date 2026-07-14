@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llama-guard3:1b-q4_K_M/blobs/7e3cd7a9ac9c",
+      "content_preview": "arch  llama",
+      "parameters": "1.5B",
+      "quantization": "Q4_K_M",
+      "size": "955MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama-guard3:1b-q4_K_M/blobs/fcc5a6bec9da",
+      "content_preview": "LLAMA 3.2 COMMUNITY LICENSE AGREEMENT\nLlama 3.2 Version Release Date: September 25, 2024\n“Agreemen",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.7kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama-guard3:1b-q4_K_M/blobs/df4213aeab74",
+      "content_preview": "**Llama 3.2** **Acceptable Use Policy**\nMeta is committed to promoting safe and fair use of its tool",
+      "parameters": "",
+      "quantization": "",
+      "size": "6.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama-guard3:1b-q4_K_M/blobs/ae40a217c1c4",
+      "content_preview": "{\n    \"temperature\": 0\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "18B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama-guard3:1b-q4_K_M/blobs/c66236bdb6a5",
+      "content_preview": "{{- $lastIndex := (len (slice .Messages 1)) }}\n{{- $last := index .Messages $lastIndex }}\n{{- $role",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.2kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/llama-guard3:1b-q4_K_M",
+  "manifest_digest": "f00008beff55",
+  "manifest_size": "955MB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/llama-guard3",
+  "scraped_at": "2026-07-13T20:53:33.104871+00:00",
+  "tag_name": "1b-q4_K_M"
+}

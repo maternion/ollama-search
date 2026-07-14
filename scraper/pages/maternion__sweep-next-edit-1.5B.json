@@ -1,0 +1,48 @@
+{
+  "path": "/maternion/sweep-next-edit-1.5B",
+  "name": "sweep-next-edit-1.5B",
+  "scraped_at": "2026-07-14T15:18:50.350992+00:00",
+  "readme_html": "\n        \n          <h2>Model Description</h2>\n\n<p>Sweep Next-Edit predicts your next code edit before you make it. It runs locally on your laptop in under 500ms (with speculative decoding) and outperforms models over 4x its size on next-edit benchmarks. More details <a href=\"https://blog.sweep.dev/posts/oss-next-edit\" rel=\"nofollow\">here</a>.</p>\n\n<h2>Usage</h2>\n\n<p>Download <a href=\"https://ollama.com/download\" rel=\"nofollow\">ollama</a> and then:</p>\n\n<pre><code>ollama run maternion/sweep-next-edit-1.5B\n</code></pre>\n\n<h2>Model Details</h2>\n\n<ul>\n<li><strong>Format</strong>: GGUF (Q8_0 quantization)</li>\n<li><strong>Parameters</strong>: 1.5B</li>\n<li><strong>Context Length</strong>: 8192 tokens</li>\n<li><strong>Base Model</strong>: Qwen2.5-Coder</li>\n</ul>\n\n<h2>Example</h2>\n\n<p>The model uses a specific prompt format with file context, recent diffs, and current state to predict the next edit.</p>\n\n<h2>Links</h2>\n\n<ul>\n<li><a href=\"https://blog.sweep.dev/posts/oss-next-edit\" rel=\"nofollow\">Blog Post</a> - Technical details and benchmarks</li>\n<li><a href=\"https://plugins.jetbrains.com/plugin/26860-sweep-ai-autocomplete--coding-agent\" rel=\"nofollow\">JetBrains Plugin</a> - Sweep AI JetBrains Plugin</li>\n<li><a href=\"https://news.ycombinator.com/item?id=46713106\" rel=\"nofollow\">HN Thread</a> - Discuss implementation for VSCode, Neovim &amp; Emacs</li>\n<li><a href=\"https://x.com/sweepai/status/2014045512417345883\" rel=\"nofollow\">Twitter Post</a> - Ask us any other questions</li>\n</ul>\n\n<h2>License</h2>\n\n<p>Apache 2.0</p>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model maternion/sweep-next-edit-1.5B"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model maternion/sweep-next-edit-1.5B"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model maternion/sweep-next-edit-1.5B"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model maternion/sweep-next-edit-1.5B"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model maternion/sweep-next-edit-1.5B"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model maternion/sweep-next-edit-1.5B"
+    }
+  ]
+}

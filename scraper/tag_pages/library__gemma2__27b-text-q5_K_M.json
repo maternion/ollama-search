@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gemma2",
+      "blob_url": "/library/gemma2:27b-text-q5_K_M/blobs/925208c9e9fc",
+      "content_preview": "arch  gemma2",
+      "parameters": "27.2B",
+      "quantization": "Q5_K_M",
+      "size": "19GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma2:27b-text-q5_K_M/blobs/097a36493f71",
+      "content_preview": "Gemma Terms of Use\nLast modified: February 21, 2024\nBy using, reproducing, modifying, distributing,",
+      "parameters": "",
+      "quantization": "",
+      "size": "8.4kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/gemma2:27b-text-q5_K_M",
+  "manifest_digest": "bd157e89aea0",
+  "manifest_size": "19GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/gemma2",
+  "scraped_at": "2026-07-13T19:42:29.405287+00:00",
+  "tag_name": "27b-text-q5_K_M"
+}

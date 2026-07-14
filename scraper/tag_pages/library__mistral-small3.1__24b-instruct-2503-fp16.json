@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "mistral3",
+      "blob_url": "/library/mistral-small3.1:24b-instruct-2503-fp16/blobs/e77b96cf6204",
+      "content_preview": "arch  mistral3",
+      "parameters": "24B",
+      "quantization": "F16",
+      "size": "48GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-small3.1:24b-instruct-2503-fp16/blobs/70a4dab5e1d1",
+      "content_preview": "You are Mistral Small 3.1, a Large Language Model (LLM) created by Mistral AI, a French startup head",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-small3.1:24b-instruct-2503-fp16/blobs/a00920c28dfd",
+      "content_preview": "{\n    \"num_ctx\": 4096\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "17B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-small3.1:24b-instruct-2503-fp16/blobs/6db27cd4e277",
+      "content_preview": "{{- range $index, $_ := .Messages }}\n{{- if eq .Role \"system\" }}[SYSTEM_PROMPT]{{ .Content }}[/SYSTE",
+      "parameters": "",
+      "quantization": "",
+      "size": "695B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/mistral-small3.1:24b-instruct-2503-fp16",
+  "manifest_digest": "5b05d65a969a",
+  "manifest_size": "48GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/mistral-small3.1",
+  "scraped_at": "2026-07-13T21:11:09.868448+00:00",
+  "tag_name": "24b-instruct-2503-fp16"
+}

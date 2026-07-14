@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/falcon3:10b-instruct-fp16/blobs/44f35eb377af",
+      "content_preview": "arch  llama",
+      "parameters": "10.3B",
+      "quantization": "F16",
+      "size": "21GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/falcon3:10b-instruct-fp16/blobs/58f83c52a4e3",
+      "content_preview": "Falcon 3 TII Falcon License\nDecember 2024\nFalconLLM.tii.ae\nIntroductory note\nThis license is, in par",
+      "parameters": "",
+      "quantization": "",
+      "size": "13kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/falcon3:10b-instruct-fp16/blobs/35e31ed4c388",
+      "content_preview": "{\n    \"stop\": [\n        \"<|system|>\",\n        \"<|user|>\",\n        \"<|end|>\",\n        \"<|assistant|>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "101B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/falcon3:10b-instruct-fp16/blobs/803b5adc3448",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|{{ .Role }}|>\n{",
+      "parameters": "",
+      "quantization": "",
+      "size": "218B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/falcon3:10b-instruct-fp16",
+  "manifest_digest": "bbe05566f48a",
+  "manifest_size": "21GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/falcon3",
+  "scraped_at": "2026-07-13T20:16:27.748300+00:00",
+  "tag_name": "10b-instruct-fp16"
+}

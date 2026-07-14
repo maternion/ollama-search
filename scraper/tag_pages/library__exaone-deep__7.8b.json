@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "exaone",
+      "blob_url": "/library/exaone-deep:7.8b/blobs/383cc0823946",
+      "content_preview": "arch  exaone",
+      "parameters": "7.82B",
+      "quantization": "Q4_K_M",
+      "size": "4.8GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/exaone-deep:7.8b/blobs/37cddd3bd818",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n{{ if eq .Role \"s",
+      "parameters": "",
+      "quantization": "",
+      "size": "375B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/exaone-deep:7.8b/blobs/294fd63925d8",
+      "content_preview": "EXAONE AI Model License Agreement 1.1 - NC\nThis License Agreement (“Agreement”) is entered into",
+      "parameters": "",
+      "quantization": "",
+      "size": "14kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/exaone-deep:7.8b/blobs/db5a752e264f",
+      "content_preview": "{\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"[|endofturn|]\"\n    ],\n    \"temperature\": 0.6,",
+      "parameters": "",
+      "quantization": "",
+      "size": "77B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/exaone-deep:7.8b",
+  "manifest_digest": "106afe416a9e",
+  "manifest_size": "4.8GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/exaone-deep",
+  "scraped_at": "2026-07-13T21:11:35.602217+00:00",
+  "tag_name": "7.8b"
+}

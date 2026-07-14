@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/deepseek-llm:7b-base-q4_1/blobs/2feb871bae5f",
+      "content_preview": "arch  llama",
+      "parameters": "6.91B",
+      "quantization": "Q4_1",
+      "size": "4.4GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-llm:7b-base-q4_1/blobs/a00920c28dfd",
+      "content_preview": "{\n    \"num_ctx\": 4096\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "17B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/deepseek-llm:7b-base-q4_1",
+  "manifest_digest": "46f074d9e65d",
+  "manifest_size": "4.4GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/deepseek-llm",
+  "scraped_at": "2026-07-13T20:39:59.573978+00:00",
+  "tag_name": "7b-base-q4_1"
+}

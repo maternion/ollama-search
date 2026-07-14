@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/zephyr:141b-v0.1-fp16/blobs/61d013a3209b",
+      "content_preview": "arch  llama",
+      "parameters": "141B",
+      "quantization": "F16",
+      "size": "281GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/zephyr:141b-v0.1-fp16/blobs/fa956ab37b8c",
+      "content_preview": "{\n    \"stop\": [\n        \"<|system|>\",\n        \"<|user|>\",\n        \"<|assistant|>\",\n        \"</s>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "98B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/zephyr:141b-v0.1-fp16/blobs/52a83090beeb",
+      "content_preview": "{{ if .System }}<|system|>\n{{ .System }}</s>\n{{ end }}{{ if .Prompt }}<|user|>\n{{ .Prompt }}</s>\n{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "139B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/zephyr:141b-v0.1-fp16/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/zephyr:141b-v0.1-fp16",
+  "manifest_digest": "7bc5b262ff30",
+  "manifest_size": "281GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/zephyr",
+  "scraped_at": "2026-07-13T20:34:11.226921+00:00",
+  "tag_name": "141b-v0.1-fp16"
+}

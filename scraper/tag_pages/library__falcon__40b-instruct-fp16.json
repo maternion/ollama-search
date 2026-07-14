@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "falcon",
+      "blob_url": "/library/falcon:40b-instruct-fp16/blobs/cfdd0494ed3d",
+      "content_preview": "arch  falcon",
+      "parameters": "41.8B",
+      "quantization": "F16",
+      "size": "84GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/falcon:40b-instruct-fp16/blobs/d5311aab7c4c",
+      "content_preview": "{{- if and .First .System }}\n{{ .System }}\n{{- end }}\nUser: {{ .Prompt }}\nAssistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "84B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/falcon:40b-instruct-fp16",
+  "manifest_digest": "7cbd92dfea70",
+  "manifest_size": "84GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/falcon",
+  "scraped_at": "2026-07-13T20:43:03.490050+00:00",
+  "tag_name": "40b-instruct-fp16"
+}

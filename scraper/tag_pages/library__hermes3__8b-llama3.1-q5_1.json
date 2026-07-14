@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/hermes3:8b-llama3.1-q5_1/blobs/f679a49f57da",
+      "content_preview": "arch  llama",
+      "parameters": "8.03B",
+      "quantization": "Q5_1",
+      "size": "6.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/hermes3:8b-llama3.1-q5_1/blobs/475211637354",
+      "content_preview": "META LLAMA 3 COMMUNITY LICENSE AGREEMENT\nMeta Llama 3 Version Release Date: April 18, 2024\n“Agreem",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.8kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/hermes3:8b-llama3.1-q5_1/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/hermes3:8b-llama3.1-q5_1/blobs/c7ec478a7939",
+      "content_preview": "{{- if .Messages }}\n{{- if or .System .Tools }}<|im_start|>system\n{{- if .Tools }}\nYou are a functio",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.9kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/hermes3:8b-llama3.1-q5_1",
+  "manifest_digest": "bebd5029ac2b",
+  "manifest_size": "6.1GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/hermes3",
+  "scraped_at": "2026-07-13T20:24:04.890610+00:00",
+  "tag_name": "8b-llama3.1-q5_1"
+}

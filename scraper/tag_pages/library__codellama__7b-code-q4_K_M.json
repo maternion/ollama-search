@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/codellama:7b-code-q4_K_M/blobs/b7c56e728fbe",
+      "content_preview": "arch  llama",
+      "parameters": "6.74B",
+      "quantization": "Q4_K_M",
+      "size": "4.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:7b-code-q4_K_M/blobs/80d21c2229c0",
+      "content_preview": "{{- if .Suffix }}<PRE> {{ .Prompt }} <SUF>{{ .Suffix }} <MID>\n{{- else }}{{ .Prompt }}\n{{- end }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "97B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:7b-code-q4_K_M/blobs/8c17c2ebb0ea",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:7b-code-q4_K_M/blobs/590d74a5569b",
+      "content_preview": "# Llama Code Acceptable Use Policy\nMeta is committed to promoting safe and fair use of its tools and",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.8kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:7b-code-q4_K_M/blobs/d2b44be9e121",
+      "content_preview": "{\n    \"rope_frequency_base\": 1000000\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/codellama:7b-code-q4_K_M",
+  "manifest_digest": "e0f44d809bb4",
+  "manifest_size": "4.1GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/codellama",
+  "scraped_at": "2026-07-13T20:00:04.959404+00:00",
+  "tag_name": "7b-code-q4_K_M"
+}

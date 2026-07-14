@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "command-r",
+      "blob_url": "/library/aya-expanse:32b-q5_K_M/blobs/315dafd8e8f0",
+      "content_preview": "arch  command-r",
+      "parameters": "32.3B",
+      "quantization": "Q5_K_M",
+      "size": "23GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/aya-expanse:32b-q5_K_M/blobs/1389d9c2c1f4",
+      "content_preview": "You are Aya, a brilliant, sophisticated, multilingual AI-assistant trained to assist human users by",
+      "parameters": "",
+      "quantization": "",
+      "size": "263B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/aya-expanse:32b-q5_K_M/blobs/945eaa8b1428",
+      "content_preview": "Creative Commons Attribution-NonCommercial 4.0 International Public\nLicense with Acceptable Use Adde",
+      "parameters": "",
+      "quantization": "",
+      "size": "14kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/aya-expanse:32b-q5_K_M/blobs/36b9655abe6a",
+      "content_preview": "{\n    \"stop\": [\n        \"<|START_OF_TURN_TOKEN|>\",\n        \"<|END_OF_TURN_TOKEN|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "81B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/aya-expanse:32b-q5_K_M/blobs/922095537bc1",
+      "content_preview": "{{- if or .Tools .System }}<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|>\n{{- if .Tools }}# Safety Preamble",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.9kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/aya-expanse:32b-q5_K_M",
+  "manifest_digest": "3283f75f7ad8",
+  "manifest_size": "23GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/aya-expanse",
+  "scraped_at": "2026-07-13T20:57:00.083845+00:00",
+  "tag_name": "32b-q5_K_M"
+}

@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "mistral3",
+      "blob_url": "/library/mistral-small3.2:24b-instruct-2506-fp16/blobs/bcc191efb8a8",
+      "content_preview": "arch  mistral3",
+      "parameters": "24B",
+      "quantization": "F16",
+      "size": "48GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-small3.2:24b-instruct-2506-fp16/blobs/9c810f69c610",
+      "content_preview": "You are Mistral Small 3.2, a Large Language Model (LLM) created by Mistral AI, a French startup head",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.3kB",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-small3.2:24b-instruct-2506-fp16/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-small3.2:24b-instruct-2506-fp16/blobs/e0daf17ff83e",
+      "content_preview": "{\n    \"temperature\": 0.15\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "21B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-small3.2:24b-instruct-2506-fp16/blobs/706c4d1164f7",
+      "content_preview": "{{- range $index, $_ := .Messages }}\n{{- if eq .Role \"system\" }}[SYSTEM_PROMPT]{{ .Content }}[/SYSTE",
+      "parameters": "",
+      "quantization": "",
+      "size": "699B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/mistral-small3.2:24b-instruct-2506-fp16",
+  "manifest_digest": "f904f36f6f02",
+  "manifest_size": "48GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/mistral-small3.2",
+  "scraped_at": "2026-07-13T20:16:44.178732+00:00",
+  "tag_name": "24b-instruct-2506-fp16"
+}

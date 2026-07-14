@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/phind-codellama:34b-v2-q5_0/blobs/7ae2fcb97430",
+      "content_preview": "arch  llama",
+      "parameters": "33.7B",
+      "quantization": "Q5_0",
+      "size": "23GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phind-codellama:34b-v2-q5_0/blobs/41774062cd34",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phind-codellama:34b-v2-q5_0/blobs/c26c7db9206c",
+      "content_preview": "You are an intelligent programming assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "46B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phind-codellama:34b-v2-q5_0/blobs/62ab78abadd6",
+      "content_preview": "{\n    \"stop\": [\n        \"### System Prompt:\",\n        \"### User Message:\",\n        \"### Assistant:\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "69B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phind-codellama:34b-v2-q5_0/blobs/fb9390528638",
+      "content_preview": "{{- if .System }}\n### System Prompt\n{{ .System }}\n{{- end }}\n### User Message\n{{ .Prompt }}\n### Assi",
+      "parameters": "",
+      "quantization": "",
+      "size": "108B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/phind-codellama:34b-v2-q5_0",
+  "manifest_digest": "6f980beef3c6",
+  "manifest_size": "23GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/phind-codellama",
+  "scraped_at": "2026-07-13T21:01:54.208897+00:00",
+  "tag_name": "34b-v2-q5_0"
+}

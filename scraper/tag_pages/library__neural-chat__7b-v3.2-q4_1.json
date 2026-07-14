@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/neural-chat:7b-v3.2-q4_1/blobs/a7c4d02636cb",
+      "content_preview": "arch  llama",
+      "parameters": "7.24B",
+      "quantization": "Q4_1",
+      "size": "4.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/neural-chat:7b-v3.2-q4_1/blobs/98784415b097",
+      "content_preview": "{\n    \"num_ctx\": 4096,\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "74B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/neural-chat:7b-v3.2-q4_1/blobs/bf99dec66c97",
+      "content_preview": "### System:\n{{ .System }}\n### User:\n{{ .Prompt }}\n### Assistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "67B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/neural-chat:7b-v3.2-q4_1",
+  "manifest_digest": "7a06e87d4696",
+  "manifest_size": "4.6GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/neural-chat",
+  "scraped_at": "2026-07-13T20:46:04.516508+00:00",
+  "tag_name": "7b-v3.2-q4_1"
+}

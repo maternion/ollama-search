@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/bakllava:7b-v1-q4_K_S/blobs/3de18c142f77",
+      "content_preview": "arch  llama",
+      "parameters": "7.24B",
+      "quantization": "Q4_K_S",
+      "size": "4.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/bakllava:7b-v1-q4_K_S/blobs/addb9fdda3a5",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "624MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/bakllava:7b-v1-q4_K_S/blobs/17b7e63fbe77",
+      "content_preview": "{\n    \"num_ctx\": 4096,\n    \"stop\": [\n        \"</s>\",\n        \"USER:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "51B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/bakllava:7b-v1-q4_K_S/blobs/d5ca8c59f62d",
+      "content_preview": "{{ .System }}\nUSER: {{ .Prompt }}\nASSSISTANT:",
+      "parameters": "",
+      "quantization": "",
+      "size": "46B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/bakllava:7b-v1-q4_K_S",
+  "manifest_digest": "7bde2065bef9",
+  "manifest_size": "4.8GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/bakllava",
+  "scraped_at": "2026-07-13T21:09:23.924102+00:00",
+  "tag_name": "7b-v1-q4_K_S"
+}

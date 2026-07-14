@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gemma3",
+      "blob_url": "/library/gemma3:4b-it-fp16/blobs/2e1715faf889",
+      "content_preview": "arch  gemma3",
+      "parameters": "4.3B",
+      "quantization": "F16",
+      "size": "8.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma3:4b-it-fp16/blobs/dd084c7d92a3",
+      "content_preview": "Gemma Terms of Use\nLast modified: February 21, 2024\nBy using, reproducing, modifying, distributing,",
+      "parameters": "",
+      "quantization": "",
+      "size": "8.4kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma3:4b-it-fp16/blobs/3116c5225075",
+      "content_preview": "{\n    \"stop\": [\n        \"<end_of_turn>\"\n    ],\n    \"temperature\": 1,\n    \"top_k\": 64,\n    \"top_p\": 0",
+      "parameters": "",
+      "quantization": "",
+      "size": "77B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma3:4b-it-fp16/blobs/e0a42594d802",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if or (eq .Rol",
+      "parameters": "",
+      "quantization": "",
+      "size": "358B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/gemma3:4b-it-fp16",
+  "manifest_digest": "c4da438ae756",
+  "manifest_size": "8.6GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/gemma3",
+  "scraped_at": "2026-07-13T19:37:00.338416+00:00",
+  "tag_name": "4b-it-fp16"
+}

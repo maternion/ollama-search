@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/notux:8x7b-v1-q6_K/blobs/c352e106bbc7",
+      "content_preview": "arch  llama",
+      "parameters": "46.7B",
+      "quantization": "Q6_K",
+      "size": "38GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/notux:8x7b-v1-q6_K/blobs/79b7eca19f7a",
+      "content_preview": "[INST] {{ .System }} {{ .Prompt }} [/INST]",
+      "parameters": "",
+      "quantization": "",
+      "size": "43B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/notux:8x7b-v1-q6_K/blobs/002c2696d92b",
+      "content_preview": "MIT License\nCopyright (c) [year] [fullname]\nPermission is hereby granted, free of charge, to any per",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/notux:8x7b-v1-q6_K/blobs/ed11eda7790d",
+      "content_preview": "{\n    \"stop\": [\n        \"[INST]\",\n        \"[/INST]\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "30B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/notux:8x7b-v1-q6_K",
+  "manifest_digest": "ecaacfc45d90",
+  "manifest_size": "38GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/notux",
+  "scraped_at": "2026-07-13T21:18:10.395901+00:00",
+  "tag_name": "8x7b-v1-q6_K"
+}

@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "internlm2",
+      "blob_url": "/library/internlm2:1.8b-chat-v2.5-q3_K_M/blobs/d3af116855b8",
+      "content_preview": "arch  internlm2",
+      "parameters": "1.89B",
+      "quantization": "Q3_K_M",
+      "size": "964MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/internlm2:1.8b-chat-v2.5-q3_K_M/blobs/75357d685f23",
+      "content_preview": "You are a helpful assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "28B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/internlm2:1.8b-chat-v2.5-q3_K_M/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/internlm2:1.8b-chat-v2.5-q3_K_M/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/internlm2:1.8b-chat-v2.5-q3_K_M/blobs/3e9c19662c62",
+      "content_preview": "{{- range .Messages }}<|im_start|>{{ .Role }}\n{{ .Content }}<|im_end|>\n{{ end }}<|im_start|>assistan",
+      "parameters": "",
+      "quantization": "",
+      "size": "101B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/internlm2:1.8b-chat-v2.5-q3_K_M",
+  "manifest_digest": "f141c9a50fc5",
+  "manifest_size": "964MB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/internlm2",
+  "scraped_at": "2026-07-13T20:57:58.645286+00:00",
+  "tag_name": "1.8b-chat-v2.5-q3_K_M"
+}

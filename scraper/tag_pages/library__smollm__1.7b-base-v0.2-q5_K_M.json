@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/smollm:1.7b-base-v0.2-q5_K_M/blobs/2dbf44c91f9d",
+      "content_preview": "arch  llama",
+      "parameters": "1.71B",
+      "quantization": "Q5_K_M",
+      "size": "1.2GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/smollm:1.7b-base-v0.2-q5_K_M/blobs/cfc7749b96f6",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/smollm:1.7b-base-v0.2-q5_K_M",
+  "manifest_digest": "7daaf6f561d8",
+  "manifest_size": "1.2GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/smollm",
+  "scraped_at": "2026-07-13T20:19:18.085613+00:00",
+  "tag_name": "1.7b-base-v0.2-q5_K_M"
+}

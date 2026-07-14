@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/starling-lm:7b-alpha-q5_K_M/blobs/004936dc83cb",
+      "content_preview": "arch  llama",
+      "parameters": "7.24B",
+      "quantization": "Q5_K_M",
+      "size": "5.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starling-lm:7b-alpha-q5_K_M/blobs/f507449d49be",
+      "content_preview": "{\n    \"stop\": [\n        \"<|endoftext|>\",\n        \"<|end_of_turn|>\",\n        \"Human:\",\n        \"Assis",
+      "parameters": "",
+      "quantization": "",
+      "size": "87B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starling-lm:7b-alpha-q5_K_M/blobs/bd8cd7c70595",
+      "content_preview": "{{ .System }}<|end_of_turn|>GPT4 Correct User: {{ .Prompt}}<|end_of_turn|>GPT4 Correct Assistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "97B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/starling-lm:7b-alpha-q5_K_M",
+  "manifest_digest": "dcfc2f49cbc2",
+  "manifest_size": "5.1GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/starling-lm",
+  "scraped_at": "2026-07-13T20:59:48.633550+00:00",
+  "tag_name": "7b-alpha-q5_K_M"
+}

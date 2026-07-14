@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/wizardlm:7b-q3_K_S/blobs/be67435297a4",
+      "content_preview": "arch  llama",
+      "parameters": "6.74B",
+      "quantization": "Q3_K_S",
+      "size": "2.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardlm:7b-q3_K_S/blobs/2bc26986c1fd",
+      "content_preview": "{{ .System }} USER: {{ .Prompt }} ASSISTANT:",
+      "parameters": "",
+      "quantization": "",
+      "size": "45B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardlm:7b-q3_K_S/blobs/1fa69e2371b7",
+      "content_preview": "A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful,",
+      "parameters": "",
+      "quantization": "",
+      "size": "154B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardlm:7b-q3_K_S/blobs/d14264189a8a",
+      "content_preview": "{\n    \"stop\": [\n        \"USER:\",\n        \"ASSISTANT:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/wizardlm:7b-q3_K_S",
+  "manifest_digest": "2f4e28f337fb",
+  "manifest_size": "2.9GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/wizardlm",
+  "scraped_at": "2026-07-13T21:09:34.098311+00:00",
+  "tag_name": "7b-q3_K_S"
+}

@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "olmo2",
+      "blob_url": "/library/olmo2:7b-1124-instruct-fp16/blobs/c40a8a2160d2",
+      "content_preview": "arch  olmo2",
+      "parameters": "7.3B",
+      "quantization": "F16",
+      "size": "15GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/olmo2:7b-1124-instruct-fp16/blobs/8b89eea08a53",
+      "content_preview": "You are OLMo 2, a helpful and harmless AI Assistant built by the Allen Institute for AI.",
+      "parameters": "",
+      "quantization": "",
+      "size": "88B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/olmo2:7b-1124-instruct-fp16/blobs/803b5adc3448",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|{{ .Role }}|>\n{",
+      "parameters": "",
+      "quantization": "",
+      "size": "218B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/olmo2:7b-1124-instruct-fp16/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/olmo2:7b-1124-instruct-fp16",
+  "manifest_digest": "fa483f2d5cc7",
+  "manifest_size": "15GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/olmo2",
+  "scraped_at": "2026-07-13T20:07:01.692297+00:00",
+  "tag_name": "7b-1124-instruct-fp16"
+}

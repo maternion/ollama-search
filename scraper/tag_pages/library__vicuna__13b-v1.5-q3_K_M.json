@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/vicuna:13b-v1.5-q3_K_M/blobs/01443544f4b0",
+      "content_preview": "arch  llama",
+      "parameters": "13B",
+      "quantization": "Q3_K_M",
+      "size": "6.3GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/vicuna:13b-v1.5-q3_K_M/blobs/d14264189a8a",
+      "content_preview": "{\n    \"stop\": [\n        \"USER:\",\n        \"ASSISTANT:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/vicuna:13b-v1.5-q3_K_M/blobs/e3d94d483bb9",
+      "content_preview": "A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful,",
+      "parameters": "",
+      "quantization": "",
+      "size": "155B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/vicuna:13b-v1.5-q3_K_M/blobs/b1571c5cbd28",
+      "content_preview": "{{ .System }}\nUSER: {{ .Prompt }}\nASSISTANT:",
+      "parameters": "",
+      "quantization": "",
+      "size": "45B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/vicuna:13b-v1.5-q3_K_M",
+  "manifest_digest": "112a0a219973",
+  "manifest_size": "6.3GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/vicuna",
+  "scraped_at": "2026-07-13T20:41:45.581200+00:00",
+  "tag_name": "13b-v1.5-q3_K_M"
+}

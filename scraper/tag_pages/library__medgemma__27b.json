@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gemma3",
+      "blob_url": "/library/medgemma:27b/blobs/4b97da6b21a8",
+      "content_preview": "arch  gemma3",
+      "parameters": "27.4B",
+      "quantization": "Q4_K_M",
+      "size": "17GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/medgemma:27b/blobs/12cef37dd827",
+      "content_preview": "# Health AI Developer Foundations Terms of Use\nLast modified: November 15, 2024\nBy using, reproducin",
+      "parameters": "",
+      "quantization": "",
+      "size": "12kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/medgemma:27b/blobs/d3a76cb8c4a0",
+      "content_preview": "{\n    \"stop\": [\n        \"<end_of_turn>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "37B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/medgemma:27b/blobs/f79eab3dd094",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if eq .Role \"u",
+      "parameters": "",
+      "quantization": "",
+      "size": "394B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/medgemma:27b",
+  "manifest_digest": "58238ae38f99",
+  "manifest_size": "17GB",
+  "manifest_updated": "2 months ago",
+  "path": "/library/medgemma",
+  "scraped_at": "2026-07-13T21:25:03.568308+00:00",
+  "tag_name": "27b"
+}

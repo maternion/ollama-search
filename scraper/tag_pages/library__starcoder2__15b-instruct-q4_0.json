@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "starcoder2",
+      "blob_url": "/library/starcoder2:15b-instruct-q4_0/blobs/4688154b6ed3",
+      "content_preview": "arch  starcoder2",
+      "parameters": "16B",
+      "quantization": "Q4_0",
+      "size": "9.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starcoder2:15b-instruct-q4_0/blobs/4ec42cd966c9",
+      "content_preview": "BigCode Open RAIL-M v1 License Agreement\nSection I: Preamble\nThis OpenRAIL-M License Agreement was c",
+      "parameters": "",
+      "quantization": "",
+      "size": "13kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starcoder2:15b-instruct-q4_0/blobs/708c319c4125",
+      "content_preview": "You are an exceptionally intelligent coding assistant that consistently delivers accurate and reliab",
+      "parameters": "",
+      "quantization": "",
+      "size": "136B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starcoder2:15b-instruct-q4_0/blobs/9951e59473f7",
+      "content_preview": "{{ if .System }}{{ .System }}\n{{ end }}### Instruction\n{{ if .Prompt }}{{ .Prompt }}\n{{ end }}### Re",
+      "parameters": "",
+      "quantization": "",
+      "size": "126B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/starcoder2:15b-instruct-q4_0",
+  "manifest_digest": "a2349551dfd4",
+  "manifest_size": "9.1GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/starcoder2",
+  "scraped_at": "2026-07-13T20:13:07.664310+00:00",
+  "tag_name": "15b-instruct-q4_0"
+}

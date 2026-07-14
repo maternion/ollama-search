@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/library/openthinker:7b-v2-q4_K_M/blobs/8c43c12af507",
+      "content_preview": "arch  qwen2",
+      "parameters": "7.62B",
+      "quantization": "Q4_K_M",
+      "size": "4.7GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/openthinker:7b-v2-q4_K_M/blobs/dc885fd25f28",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "10kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/openthinker:7b-v2-q4_K_M/blobs/32695b892af8",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|im_start|>{{ .R",
+      "parameters": "",
+      "quantization": "",
+      "size": "275B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/openthinker:7b-v2-q4_K_M",
+  "manifest_digest": "4e61774f7d1c",
+  "manifest_size": "4.7GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/openthinker",
+  "scraped_at": "2026-07-13T20:38:00.630924+00:00",
+  "tag_name": "7b-v2-q4_K_M"
+}

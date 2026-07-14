@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/deepseek-v2:16b-lite-chat-q4_1/blobs/b321cd7de6c7",
+  "content": "{{ if .System }}{{ .System }}\n\n{{ end }}{{ if .Prompt }}User: {{ .Prompt }}\n\n{{ end }}Assistant:{{ .Response }}",
+  "digest": "b321cd7de6c7",
+  "metadata": [],
+  "size": "111B",
+  "tensor_groups": [],
+  "tensors": []
+}

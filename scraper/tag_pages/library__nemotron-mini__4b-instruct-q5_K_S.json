@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "nemotron",
+      "blob_url": "/library/nemotron-mini:4b-instruct-q5_K_S/blobs/902c9afaad13",
+      "content_preview": "arch  nemotron",
+      "parameters": "4.19B",
+      "quantization": "Q5_K_S",
+      "size": "3.0GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nemotron-mini:4b-instruct-q5_K_S/blobs/3436c20529fb",
+      "content_preview": "NVIDIA AI Foundation Models Community License Agreement\nIMPORTANT NOTICE – PLEASE READ AND AGREE B",
+      "parameters": "",
+      "quantization": "",
+      "size": "15kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nemotron-mini:4b-instruct-q5_K_S/blobs/fd80a52b9db8",
+      "content_preview": "{{- if (or .Tools .System) }}<extra_id_0>System\n{{ if .System }}{{ .System }}\n{{ end }}\n{{- if .Tool",
+      "parameters": "",
+      "quantization": "",
+      "size": "773B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/nemotron-mini:4b-instruct-q5_K_S",
+  "manifest_digest": "072f4b7daa17",
+  "manifest_size": "3.0GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/nemotron-mini",
+  "scraped_at": "2026-07-13T21:12:24.998074+00:00",
+  "tag_name": "4b-instruct-q5_K_S"
+}

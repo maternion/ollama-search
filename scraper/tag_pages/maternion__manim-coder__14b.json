@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/maternion/manim-coder:14b/blobs/0432e3341380",
+      "content_preview": "arch  qwen2",
+      "parameters": "14.8B",
+      "quantization": "Q6_K",
+      "size": "12GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/manim-coder:14b/blobs/6f975bbdc98a",
+      "content_preview": "{\n    \"repeat_penalty\": 1.1,\n    \"stop\": [\n        \"<|im_end|>\",\n        \"<|endoftext|>\"\n    ],",
+      "parameters": "",
+      "quantization": "",
+      "size": "122B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/manim-coder:14b/blobs/1e65450c3067",
+      "content_preview": "{{- if .Suffix }}<|fim_prefix|>{{ .Prompt }}<|fim_suffix|>{{ .Suffix }}<|fim_middle|>\n{{- else if .M",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.6kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/maternion/manim-coder:14b",
+  "manifest_digest": "4b8212769932",
+  "manifest_size": "12GB",
+  "manifest_updated": "4 months ago",
+  "path": "/maternion/manim-coder",
+  "scraped_at": "2026-07-14T15:18:41.353921+00:00",
+  "tag_name": "14b"
+}

@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/starling-lm:7b-beta-fp16/blobs/dffc55d05558",
+      "content_preview": "arch  llama",
+      "parameters": "7.24B",
+      "quantization": "F16",
+      "size": "14GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starling-lm:7b-beta-fp16/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starling-lm:7b-beta-fp16/blobs/f507449d49be",
+      "content_preview": "{\n    \"stop\": [\n        \"<|endoftext|>\",\n        \"<|end_of_turn|>\",\n        \"Human:\",\n        \"Assis",
+      "parameters": "",
+      "quantization": "",
+      "size": "87B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starling-lm:7b-beta-fp16/blobs/4b21bfc435b4",
+      "content_preview": "{{ if .System }}GPT4 Correct System: {{ .System }}<|end_of_turn|>{{ end }}{{ if .Prompt }}GPT4 Corre",
+      "parameters": "",
+      "quantization": "",
+      "size": "200B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/starling-lm:7b-beta-fp16",
+  "manifest_digest": "b7752a962ae0",
+  "manifest_size": "14GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/starling-lm",
+  "scraped_at": "2026-07-13T21:00:08.297037+00:00",
+  "tag_name": "7b-beta-fp16"
+}

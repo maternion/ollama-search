@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/phind-codellama:34b-v2-q3_K_S/blobs/8af7e6dba3e1",
+      "content_preview": "arch  llama",
+      "parameters": "33.7B",
+      "quantization": "Q3_K_S",
+      "size": "15GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phind-codellama:34b-v2-q3_K_S/blobs/41774062cd34",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phind-codellama:34b-v2-q3_K_S/blobs/c26c7db9206c",
+      "content_preview": "You are an intelligent programming assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "46B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phind-codellama:34b-v2-q3_K_S/blobs/62ab78abadd6",
+      "content_preview": "{\n    \"stop\": [\n        \"### System Prompt:\",\n        \"### User Message:\",\n        \"### Assistant:\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "69B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phind-codellama:34b-v2-q3_K_S/blobs/fb9390528638",
+      "content_preview": "{{- if .System }}\n### System Prompt\n{{ .System }}\n{{- end }}\n### User Message\n{{ .Prompt }}\n### Assi",
+      "parameters": "",
+      "quantization": "",
+      "size": "108B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/phind-codellama:34b-v2-q3_K_S",
+  "manifest_digest": "a199982685d4",
+  "manifest_size": "15GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/phind-codellama",
+  "scraped_at": "2026-07-13T21:01:47.933885+00:00",
+  "tag_name": "34b-v2-q3_K_S"
+}

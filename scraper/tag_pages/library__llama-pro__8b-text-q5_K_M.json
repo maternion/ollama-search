@@ -1,0 +1,27 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llama-pro:8b-text-q5_K_M/blobs/34ee404375cb",
+      "content_preview": "arch  llama",
+      "parameters": "8.36B",
+      "quantization": "Q5_K_M",
+      "size": "5.9GB",
+      "type": "model"
+    }
+  ],
+  "full_path": "/library/llama-pro:8b-text-q5_K_M",
+  "manifest_digest": "36d45bb71a26",
+  "manifest_size": "5.9GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/llama-pro",
+  "scraped_at": "2026-07-13T21:08:02.613602+00:00",
+  "tag_name": "8b-text-q5_K_M"
+}

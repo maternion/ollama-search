@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "mistral3",
+      "blob_url": "/library/mistral-medium-3.5:128b-q4_K_M/blobs/a46088eccd0d",
+      "content_preview": "arch  mistral3",
+      "parameters": "128B",
+      "quantization": "Q4_K_M",
+      "size": "80GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-medium-3.5:128b-q4_K_M/blobs/a11f7cb278dd",
+      "content_preview": "You are Mistral-Small-4-119B-2603, a Large Language Model (LLM) created by Mistral AI, a French star",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.4kB",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-medium-3.5:128b-q4_K_M/blobs/20c887c0de3e",
+      "content_preview": "{{- define \"jsonValue\" -}}\n{{- if eq (printf \"%T\" .) \"template.templateArgs\" -}}{{ template \"jsonMap",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.0kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/mistral-medium-3.5:128b-q4_K_M",
+  "manifest_digest": "0341632adb05",
+  "manifest_size": "80GB",
+  "manifest_updated": "2 months ago",
+  "path": "/library/mistral-medium-3.5",
+  "scraped_at": "2026-07-13T21:24:58.554781+00:00",
+  "tag_name": "128b-q4_K_M"
+}

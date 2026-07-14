@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "chatglm",
+      "blob_url": "/library/glm4:9b-chat-q3_K_M/blobs/f55c20635387",
+      "content_preview": "arch  chatglm",
+      "parameters": "9.4B",
+      "quantization": "Q3_K_M",
+      "size": "5.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/glm4:9b-chat-q3_K_M/blobs/e7e7aebd710c",
+      "content_preview": "[gMASK]<sop>{{ if .System }}<|system|>\n{{ .System }}{{ end }}{{ if .Prompt }}<|user|>\n{{ .Prompt }}{",
+      "parameters": "",
+      "quantization": "",
+      "size": "137B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/glm4:9b-chat-q3_K_M/blobs/e4f0dc83900a",
+      "content_preview": "The glm-4-9b License\n1. 定义\n“许可方”是指分发其软件的 glm-4-9b 模型团队。\n“�",
+      "parameters": "",
+      "quantization": "",
+      "size": "6.5kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/glm4:9b-chat-q3_K_M/blobs/4134f3eb0516",
+      "content_preview": "{\n    \"stop\": [\n        \"<|system|>\",\n        \"<|user|>\",\n        \"<|assistant|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "81B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/glm4:9b-chat-q3_K_M",
+  "manifest_digest": "f61310a4c544",
+  "manifest_size": "5.1GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/glm4",
+  "scraped_at": "2026-07-13T20:35:36.654126+00:00",
+  "tag_name": "9b-chat-q3_K_M"
+}

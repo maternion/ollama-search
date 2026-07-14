@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "cohere2moe",
+      "blob_url": "/library/north-mini-code-1.0:q8_0/blobs/8105e9b0b000",
+      "content_preview": "arch  cohere2moe",
+      "parameters": "30.5B",
+      "quantization": "Q8_0",
+      "size": "32GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/north-mini-code-1.0:q8_0/blobs/cfc7749b96f6",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/north-mini-code-1.0:q8_0/blobs/02897ca0d6a3",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/north-mini-code-1.0:q8_0",
+  "manifest_digest": "b6c144236e03",
+  "manifest_size": "32GB",
+  "manifest_updated": "3 weeks ago",
+  "path": "/library/north-mini-code-1.0",
+  "scraped_at": "2026-07-13T19:31:06.389963+00:00",
+  "tag_name": "q8_0"
+}

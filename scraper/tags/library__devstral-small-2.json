@@ -1,0 +1,79 @@
+{
+  "path": "/library/devstral-small-2",
+  "name": "devstral-small-2",
+  "scraped_at": "2026-07-14T04:09:02.040334+00:00",
+  "tags": [
+    {
+      "name": "latest",
+      "size_bytes": 15000000000,
+      "size_text": "15GB",
+      "context": "384K",
+      "input_type": "Text, Image",
+      "digest": "24277f07f62d",
+      "updated": "7 months ago",
+      "format": "gguf",
+      "usage_level": "",
+      "usage_active_slots": 0
+    },
+    {
+      "name": "24b",
+      "size_bytes": 15000000000,
+      "size_text": "15GB",
+      "context": "384K",
+      "input_type": "Text, Image",
+      "digest": "24277f07f62d",
+      "updated": "7 months ago",
+      "format": "gguf",
+      "usage_level": "",
+      "usage_active_slots": 0
+    },
+    {
+      "name": "24b-cloud",
+      "size_bytes": 24,
+      "size_text": "24b",
+      "context": "256K",
+      "input_type": "Text, Image",
+      "digest": "ec4a591da58a",
+      "updated": "7 months ago",
+      "format": "gguf",
+      "usage_level": "low",
+      "usage_active_slots": 1
+    },
+    {
+      "name": "24b-instruct-2512-q4_K_M",
+      "size_bytes": 15000000000,
+      "size_text": "15GB",
+      "context": "384K",
+      "input_type": "Text, Image",
+      "digest": "24277f07f62d",
+      "updated": "7 months ago",
+      "format": "gguf",
+      "usage_level": "",
+      "usage_active_slots": 0
+    },
+    {
+      "name": "24b-instruct-2512-q8_0",
+      "size_bytes": 26000000000,
+      "size_text": "26GB",
+      "context": "384K",
+      "input_type": "Text, Image",
+      "digest": "691a8e03a6dd",
+      "updated": "7 months ago",
+      "format": "gguf",
+      "usage_level": "",
+      "usage_active_slots": 0
+    },
+    {
+      "name": "24b-instruct-2512-fp16",
+      "size_bytes": 48000000000,
+      "size_text": "48GB",
+      "context": "384K",
+      "input_type": "Text, Image",
+      "digest": "15c77ff5438a",
+      "updated": "7 months ago",
+      "format": "gguf",
+      "usage_level": "",
+      "usage_active_slots": 0
+    }
+  ]
+}

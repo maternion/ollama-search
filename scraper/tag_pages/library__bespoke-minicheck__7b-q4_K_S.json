@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "internlm2",
+      "blob_url": "/library/bespoke-minicheck:7b-q4_K_S/blobs/7520e5e85083",
+      "content_preview": "arch  internlm2",
+      "parameters": "7.74B",
+      "quantization": "Q4_K_S",
+      "size": "4.5GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/bespoke-minicheck:7b-q4_K_S/blobs/016aea4b585f",
+      "content_preview": "Determine whether the provided claim is consistent with the corresponding document. Consistency in t",
+      "parameters": "",
+      "quantization": "",
+      "size": "340B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/bespoke-minicheck:7b-q4_K_S/blobs/7a3775deddf8",
+      "content_preview": "{\n    \"stop\": [\n        \"<|eot_id|>\"\n    ],\n    \"temperature\": 0\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "50B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/bespoke-minicheck:7b-q4_K_S/blobs/60ed67c565f8",
+      "content_preview": "{{- if .Messages }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -",
+      "parameters": "",
+      "quantization": "",
+      "size": "506B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/bespoke-minicheck:7b-q4_K_S",
+  "manifest_digest": "f0921a474a27",
+  "manifest_size": "4.5GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/bespoke-minicheck",
+  "scraped_at": "2026-07-13T21:18:57.455274+00:00",
+  "tag_name": "7b-q4_K_S"
+}

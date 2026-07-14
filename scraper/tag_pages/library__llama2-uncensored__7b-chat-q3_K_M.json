@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llama2-uncensored:7b-chat-q3_K_M/blobs/b6c657bf26aa",
+      "content_preview": "arch  llama",
+      "parameters": "6.74B",
+      "quantization": "Q3_K_M",
+      "size": "3.3GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2-uncensored:7b-chat-q3_K_M/blobs/8c17c2ebb0ea",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2-uncensored:7b-chat-q3_K_M/blobs/7c23fb36d801",
+      "content_preview": "# Llama 2 Acceptable Use Policy\nMeta is committed to promoting safe and fair use of its tools and fe",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.8kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2-uncensored:7b-chat-q3_K_M/blobs/0025f348941e",
+      "content_preview": "{\n    \"stop\": [\n        \"### HUMAN:\",\n        \"### RESPONSE:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "39B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2-uncensored:7b-chat-q3_K_M/blobs/28577ba2177f",
+      "content_preview": "{{ .System }}\n### HUMAN:\n{{ .Prompt }}\n### RESPONSE:",
+      "parameters": "",
+      "quantization": "",
+      "size": "55B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/llama2-uncensored:7b-chat-q3_K_M",
+  "manifest_digest": "e74d204469c8",
+  "manifest_size": "3.3GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/llama2-uncensored",
+  "scraped_at": "2026-07-13T20:15:47.728774+00:00",
+  "tag_name": "7b-chat-q3_K_M"
+}

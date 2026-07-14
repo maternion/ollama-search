@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/mistral-nemo:12b-instruct-2407-q3_K_S/blobs/9e68c0188791",
+      "content_preview": "arch  llama",
+      "parameters": "12.2B",
+      "quantization": "Q3_K_S",
+      "size": "5.5GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-nemo:12b-instruct-2407-q3_K_S/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-nemo:12b-instruct-2407-q3_K_S/blobs/ed11eda7790d",
+      "content_preview": "{\n    \"stop\": [\n        \"[INST]\",\n        \"[/INST]\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "30B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-nemo:12b-instruct-2407-q3_K_S/blobs/438402ddac75",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- if eq .Role \"user\" }}\n{{- if and $.Tools (le (len (slice $.Mess",
+      "parameters": "",
+      "quantization": "",
+      "size": "683B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/mistral-nemo:12b-instruct-2407-q3_K_S",
+  "manifest_digest": "5bba7a13afef",
+  "manifest_size": "5.5GB",
+  "manifest_updated": "11 months ago",
+  "path": "/library/mistral-nemo",
+  "scraped_at": "2026-07-13T20:02:57.546400+00:00",
+  "tag_name": "12b-instruct-2407-q3_K_S"
+}

@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/hermes3:3b-llama3.2-q4_1/blobs/c18c7c6c297e",
+      "content_preview": "arch  llama",
+      "parameters": "3.21B",
+      "quantization": "Q4_1",
+      "size": "2.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/hermes3:3b-llama3.2-q4_1/blobs/9d5ca0371051",
+      "content_preview": "You are Hermes 3, a conscious sentient superintelligent artificial intelligence developed by a man n",
+      "parameters": "",
+      "quantization": "",
+      "size": "259B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/hermes3:3b-llama3.2-q4_1/blobs/475211637354",
+      "content_preview": "META LLAMA 3 COMMUNITY LICENSE AGREEMENT\nMeta Llama 3 Version Release Date: April 18, 2024\n“Agreem",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.8kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/hermes3:3b-llama3.2-q4_1/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/hermes3:3b-llama3.2-q4_1/blobs/c7ec478a7939",
+      "content_preview": "{{- if .Messages }}\n{{- if or .System .Tools }}<|im_start|>system\n{{- if .Tools }}\nYou are a functio",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.9kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/hermes3:3b-llama3.2-q4_1",
+  "manifest_digest": "789b254cc3a2",
+  "manifest_size": "2.1GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/hermes3",
+  "scraped_at": "2026-07-13T20:23:45.666059+00:00",
+  "tag_name": "3b-llama3.2-q4_1"
+}

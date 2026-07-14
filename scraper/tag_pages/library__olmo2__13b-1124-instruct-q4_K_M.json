@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "olmo2",
+      "blob_url": "/library/olmo2:13b-1124-instruct-q4_K_M/blobs/cd836509a1a0",
+      "content_preview": "arch  olmo2",
+      "parameters": "13.7B",
+      "quantization": "Q4_K_M",
+      "size": "8.4GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/olmo2:13b-1124-instruct-q4_K_M/blobs/8b89eea08a53",
+      "content_preview": "You are OLMo 2, a helpful and harmless AI Assistant built by the Allen Institute for AI.",
+      "parameters": "",
+      "quantization": "",
+      "size": "88B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/olmo2:13b-1124-instruct-q4_K_M/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/olmo2:13b-1124-instruct-q4_K_M/blobs/803b5adc3448",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|{{ .Role }}|>\n{",
+      "parameters": "",
+      "quantization": "",
+      "size": "218B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/olmo2:13b-1124-instruct-q4_K_M",
+  "manifest_digest": "6c279ebc980f",
+  "manifest_size": "8.4GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/olmo2",
+  "scraped_at": "2026-07-13T20:07:04.049290+00:00",
+  "tag_name": "13b-1124-instruct-q4_K_M"
+}

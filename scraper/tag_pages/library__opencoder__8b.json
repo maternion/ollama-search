@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/opencoder:8b/blobs/27d438e34eba",
+      "content_preview": "arch  llama",
+      "parameters": "7.77B",
+      "quantization": "Q4_K_M",
+      "size": "4.7GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/opencoder:8b/blobs/df8e2f9e9db0",
+      "content_preview": "You are OpenCoder, created by OpenCoder Team.",
+      "parameters": "",
+      "quantization": "",
+      "size": "45B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/opencoder:8b/blobs/3587f7eb49ec",
+      "content_preview": "Version Release Date: July 16, 2024\nBy engaging in any of the following activities with the Model or",
+      "parameters": "",
+      "quantization": "",
+      "size": "6.2kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/opencoder:8b/blobs/cbf9ec2a53c6",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\",\n        \"<|fim_prefix|>\",\n        \"<|f",
+      "parameters": "",
+      "quantization": "",
+      "size": "164B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/opencoder:8b/blobs/870f96a6e22f",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|im_start|>{{ .R",
+      "parameters": "",
+      "quantization": "",
+      "size": "241B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/opencoder:8b",
+  "manifest_digest": "cd882db52297",
+  "manifest_size": "4.7GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/opencoder",
+  "scraped_at": "2026-07-13T21:13:24.447111+00:00",
+  "tag_name": "8b"
+}

@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/library/deepseek-r1:7b/blobs/96c415656d37",
+      "content_preview": "arch  qwen2",
+      "parameters": "7.62B",
+      "quantization": "Q4_K_M",
+      "size": "4.7GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-r1:7b/blobs/6e4c38e1172f",
+      "content_preview": "MIT License\nCopyright (c) 2023 DeepSeek\nPermission is hereby granted, free of charge, to any person",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-r1:7b/blobs/f4d24e9138dd",
+      "content_preview": "{\n    \"stop\": [\n        \"<｜begin▁of▁sentence｜>\",\n        \"<｜end▁of▁sentence｜>\",",
+      "parameters": "",
+      "quantization": "",
+      "size": "148B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-r1:7b/blobs/c5ad996bda6e",
+      "content_preview": "{{- if .System }}{{ .System }}{{ end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice",
+      "parameters": "",
+      "quantization": "",
+      "size": "556B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/deepseek-r1:7b",
+  "manifest_digest": "755ced02ce7b",
+  "manifest_size": "4.7GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/deepseek-r1",
+  "scraped_at": "2026-07-13T19:35:20.288765+00:00",
+  "tag_name": "7b"
+}

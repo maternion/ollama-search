@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "starcoder",
+      "blob_url": "/library/granite-code:34b-instruct-q4_K_M/blobs/81baf1c476b1",
+      "content_preview": "arch  starcoder",
+      "parameters": "33.7B",
+      "quantization": "Q4_K_M",
+      "size": "21GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite-code:34b-instruct-q4_K_M/blobs/9893bb2c2917",
+      "content_preview": "{\n    \"stop\": [\n        \"<fim_prefix>\",\n        \"<fim_middle>\",\n        \"<fim_suffix>\",\n        \"<fi",
+      "parameters": "",
+      "quantization": "",
+      "size": "108B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite-code:34b-instruct-q4_K_M/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite-code:34b-instruct-q4_K_M/blobs/e50df8490144",
+      "content_preview": "{{ if .System }}\nSystem:\n{{ .System }}\n{{ end }}{{ if .Prompt }}Question:\n{{ .Prompt }}\n{{ end }}Ans",
+      "parameters": "",
+      "quantization": "",
+      "size": "123B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/granite-code:34b-instruct-q4_K_M",
+  "manifest_digest": "74723d97951a",
+  "manifest_size": "21GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/granite-code",
+  "scraped_at": "2026-07-13T20:27:43.362765+00:00",
+  "tag_name": "34b-instruct-q4_K_M"
+}

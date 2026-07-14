@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/codestral:22b-v0.1-q4_K_M/blobs/0bbfda8e64c1",
+      "content_preview": "arch  llama",
+      "parameters": "22.2B",
+      "quantization": "Q4_K_M",
+      "size": "13GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codestral:22b-v0.1-q4_K_M/blobs/5b68668f65de",
+      "content_preview": "# Mistral AI Non-Production License\n## 1. Scope and acceptance\n**1.1. Scope of the Agreement.**\nThis",
+      "parameters": "",
+      "quantization": "",
+      "size": "12kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codestral:22b-v0.1-q4_K_M/blobs/5dea4f4d0fff",
+      "content_preview": "{\n    \"stop\": [\n        \"[INST]\",\n        \"[/INST]\",\n        \"[PREFIX]\",\n        \"[MIDDLE]\",",
+      "parameters": "",
+      "quantization": "",
+      "size": "63B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codestral:22b-v0.1-q4_K_M/blobs/51707752a87c",
+      "content_preview": "{{- if .Suffix }}[SUFFIX]{{ .Suffix }}[PREFIX] {{ .Prompt }}\n{{- else if .Messages }}\n{{- range $ind",
+      "parameters": "",
+      "quantization": "",
+      "size": "480B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/codestral:22b-v0.1-q4_K_M",
+  "manifest_digest": "9a43e868fd2c",
+  "manifest_size": "13GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/codestral",
+  "scraped_at": "2026-07-13T20:31:44.488538+00:00",
+  "tag_name": "22b-v0.1-q4_K_M"
+}

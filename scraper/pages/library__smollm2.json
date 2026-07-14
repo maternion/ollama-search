@@ -1,0 +1,48 @@
+{
+  "path": "/library/smollm2",
+  "name": "smollm2",
+  "scraped_at": "2026-07-13T19:28:18.837908+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/smollm2/2616a6ce-5645-48c3-bd5d-9a00f1dd0c9e\" alt=\"y45hIMNREW7w_XpHYB_0q.png\"/></p>\n\n<p>SmolLM2 is a family of compact language models available in three size: 135M, 360M, and 1.7B parameters. They are capable of solving a wide range of tasks while being lightweight enough to run on-device.</p>\n\n<p><img src=\"/assets/library/smollm2/1a637eca-6f07-4572-8e01-011339c072d8\" alt=\"benchmark\"/></p>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/collections/HuggingFaceTB/smollm2-6723884218bcda64b34d7db9\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model smollm2"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model smollm2"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model smollm2"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model smollm2"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model smollm2"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model smollm2"
+    }
+  ]
+}

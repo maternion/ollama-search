@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/notus:7b-v1-q3_K_L/blobs/fa2758c358cd",
+      "content_preview": "arch  llama",
+      "parameters": "7.24B",
+      "quantization": "Q3_K_L",
+      "size": "3.8GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/notus:7b-v1-q3_K_L/blobs/59c048b3d405",
+      "content_preview": "<|system|>\n{{ .System }}\n</s>\n<|user|>\n{{ .Prompt }}\n</s>\n<|assistant|>",
+      "parameters": "",
+      "quantization": "",
+      "size": "71B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/notus:7b-v1-q3_K_L/blobs/002c2696d92b",
+      "content_preview": "MIT License\nCopyright (c) [year] [fullname]\nPermission is hereby granted, free of charge, to any per",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/notus:7b-v1-q3_K_L/blobs/c8472cd9daed",
+      "content_preview": "You are a helpful AI assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/notus:7b-v1-q3_K_L/blobs/fa956ab37b8c",
+      "content_preview": "{\n    \"stop\": [\n        \"<|system|>\",\n        \"<|user|>\",\n        \"<|assistant|>\",\n        \"</s>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "98B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/notus:7b-v1-q3_K_L",
+  "manifest_digest": "fba4029e7992",
+  "manifest_size": "3.8GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/notus",
+  "scraped_at": "2026-07-13T21:17:44.005719+00:00",
+  "tag_name": "7b-v1-q3_K_L"
+}

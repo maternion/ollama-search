@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "mistral3",
+      "blob_url": "/library/devstral-small-2:24b/blobs/c580819bed79",
+      "content_preview": "arch  mistral3",
+      "parameters": "24B",
+      "quantization": "Q4_K_M",
+      "size": "15GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/devstral-small-2:24b/blobs/e0daf17ff83e",
+      "content_preview": "{\n    \"temperature\": 0.15\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "21B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/devstral-small-2:24b/blobs/580f051b6624",
+      "content_preview": "{{- $lastUserIndex := -1 }}\n{{- $hasSystemPrompt := false }}\n{{- range $index, $_ := .Messages }}\n{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "3.4kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/devstral-small-2:24b",
+  "manifest_digest": "24277f07f62d",
+  "manifest_size": "15GB",
+  "manifest_updated": "7 months ago",
+  "path": "/library/devstral-small-2",
+  "scraped_at": "2026-07-13T21:04:37.584349+00:00",
+  "tag_name": "24b"
+}

@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/wizardcoder:34b-python-fp16/blobs/e3007886f828",
+      "content_preview": "arch  llama",
+      "parameters": "33.7B",
+      "quantization": "F16",
+      "size": "67GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardcoder:34b-python-fp16/blobs/55b9a4423948",
+      "content_preview": "{\n    \"num_gqa\": 8,\n    \"rope_frequency_base\": 100000\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "42B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/wizardcoder:34b-python-fp16",
+  "manifest_digest": "06ce62e380d8",
+  "manifest_size": "67GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/wizardcoder",
+  "scraped_at": "2026-07-13T20:49:16.891191+00:00",
+  "tag_name": "34b-python-fp16"
+}

@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/tinydolphin:1.1b-v2.8-q3_K_S/blobs/50555f09c7e8",
+      "content_preview": "arch  llama",
+      "parameters": "1.1B",
+      "quantization": "Q3_K_S",
+      "size": "499MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/tinydolphin:1.1b-v2.8-q3_K_S/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/tinydolphin:1.1b-v2.8-q3_K_S/blobs/9640c2212a51",
+      "content_preview": "You are Dolphin, a helpful AI assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "41B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/tinydolphin:1.1b-v2.8-q3_K_S/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/tinydolphin:1.1b-v2.8-q3_K_S/blobs/a47b02e00552",
+      "content_preview": "<|im_start|>system\n{{ .System }}<|im_end|>\n<|im_start|>user\n{{ .Prompt }}<|im_end|>\n<|im_start|>assi",
+      "parameters": "",
+      "quantization": "",
+      "size": "106B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/tinydolphin:1.1b-v2.8-q3_K_S",
+  "manifest_digest": "1334375595f1",
+  "manifest_size": "499MB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/tinydolphin",
+  "scraped_at": "2026-07-13T21:11:59.416695+00:00",
+  "tag_name": "1.1b-v2.8-q3_K_S"
+}

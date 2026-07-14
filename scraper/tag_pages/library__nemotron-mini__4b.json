@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "nemotron",
+      "blob_url": "/library/nemotron-mini:4b/blobs/1dcbd925825b",
+      "content_preview": "arch  nemotron",
+      "parameters": "4.19B",
+      "quantization": "Q4_K_M",
+      "size": "2.7GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nemotron-mini:4b/blobs/fd80a52b9db8",
+      "content_preview": "{{- if (or .Tools .System) }}<extra_id_0>System\n{{ if .System }}{{ .System }}\n{{ end }}\n{{- if .Tool",
+      "parameters": "",
+      "quantization": "",
+      "size": "773B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nemotron-mini:4b/blobs/3436c20529fb",
+      "content_preview": "NVIDIA AI Foundation Models Community License Agreement\nIMPORTANT NOTICE – PLEASE READ AND AGREE B",
+      "parameters": "",
+      "quantization": "",
+      "size": "15kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/nemotron-mini:4b",
+  "manifest_digest": "ed76ab18784f",
+  "manifest_size": "2.7GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/nemotron-mini",
+  "scraped_at": "2026-07-13T21:12:14.501645+00:00",
+  "tag_name": "4b"
+}

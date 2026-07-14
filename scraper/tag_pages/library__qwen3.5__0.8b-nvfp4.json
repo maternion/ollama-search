@@ -1,0 +1,90 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b-nvfp4/blobs/27225450ac9c",
+      "content_preview": "{\n\"size\": {\n\"longest_edge\": 16777216,\n\"shortest_edge\": 65536\n},\n\"patch_size\": 16,\n\"temporal_patch_si",
+      "parameters": "",
+      "quantization": "",
+      "size": "390B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b-nvfp4/blobs/5f9e4d4901a9",
+      "content_preview": "{\n\"version\": \"1.0\",\n\"truncation\": null,\n\"padding\": null,\n\"added_tokens\": [\n{\n\"id\": 248044,\n\"content\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "13MB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b-nvfp4/blobs/49e2b6e395f9",
+      "content_preview": "{\n\"add_prefix_space\": false,\n\"added_tokens_decoder\": {\n\"248044\": {\n\"content\": \"<|endoftext|>\",\n\"lstr",
+      "parameters": "",
+      "quantization": "",
+      "size": "17kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b-nvfp4/blobs/7768af27c1fa",
+      "content_preview": "{\n\"size\": {\n\"longest_edge\": 25165824,\n\"shortest_edge\": 4096\n},\n\"patch_size\": 16,\n\"temporal_patch_siz",
+      "parameters": "",
+      "quantization": "",
+      "size": "385B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b-nvfp4/blobs/ce99b4cb2983",
+      "content_preview": "{\n\"!\": 0,\n\"\\\"\": 1,\n\"#\": 2,\n\"$\": 3,\n\"%\": 4,\n\"&\": 5,\n\"'\": 6,\n\"(\": 7,\n\")\": 8,\n\"*\": 9,\n\"+\": 10,\n\",\": 11,",
+      "parameters": "",
+      "quantization": "",
+      "size": "6.7MB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b-nvfp4/blobs/5f3a3c817e78",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b-nvfp4/blobs/86eff881e8d2",
+      "content_preview": "{\n    \"min_p\": 0,\n    \"presence_penalty\": 1.5,\n    \"repeat_penalty\": 1,\n    \"temperature\": 1,\n    \"t",
+      "parameters": "",
+      "quantization": "",
+      "size": "94B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b-nvfp4/blobs/b90b86f35c8e",
+      "content_preview": "{\n\"architectures\": [\n\"Qwen3_5ForConditionalGeneration\"\n],\n\"image_token_id\": 248056,\n\"model_type\": \"q",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.9kB",
+      "type": "json"
+    }
+  ],
+  "full_path": "/library/qwen3.5:0.8b-nvfp4",
+  "manifest_digest": "6d2b253cfc04",
+  "manifest_size": "1.0GB",
+  "manifest_updated": "3 months ago",
+  "path": "/library/qwen3.5",
+  "scraped_at": "2026-07-13T19:32:04.691498+00:00",
+  "tag_name": "0.8b-nvfp4"
+}

@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "granitemoe",
+      "blob_url": "/library/granite3.1-moe:3b-instruct-q3_K_M/blobs/c20cf918d944",
+      "content_preview": "arch  granitemoe",
+      "parameters": "3.3B",
+      "quantization": "Q3_K_M",
+      "size": "1.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite3.1-moe:3b-instruct-q3_K_M/blobs/f7b956e70ca3",
+      "content_preview": "Knowledge Cutoff Date: April 2024.\nYou are Granite, developed by IBM.",
+      "parameters": "",
+      "quantization": "",
+      "size": "69B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite3.1-moe:3b-instruct-q3_K_M/blobs/492069a62c25",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite3.1-moe:3b-instruct-q3_K_M/blobs/f76a906816c4",
+      "content_preview": "<|start_of_role|>system<|end_of_role|>\n{{- if and (gt (len .Messages) 0) (eq (index .Messages 0).Rol",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.4kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/granite3.1-moe:3b-instruct-q3_K_M",
+  "manifest_digest": "216dcd8f0222",
+  "manifest_size": "1.6GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/granite3.1-moe",
+  "scraped_at": "2026-07-13T20:10:29.427555+00:00",
+  "tag_name": "3b-instruct-q3_K_M"
+}

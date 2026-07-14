@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llama2:7b-chat-q8_0/blobs/022a2bdff9ea",
+      "content_preview": "arch  llama",
+      "parameters": "6.74B",
+      "quantization": "Q8_0",
+      "size": "7.2GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2:7b-chat-q8_0/blobs/8c17c2ebb0ea",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2:7b-chat-q8_0/blobs/7c23fb36d801",
+      "content_preview": "# Llama 2 Acceptable Use Policy\nMeta is committed to promoting safe and fair use of its tools and fe",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.8kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2:7b-chat-q8_0/blobs/fa304d675061",
+      "content_preview": "{\n    \"stop\": [\n        \"[INST]\",\n        \"[/INST]\",\n        \"<<SYS>>\",\n        \"<</SYS>>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "91B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2:7b-chat-q8_0/blobs/2e0493f67d0c",
+      "content_preview": "[INST] <<SYS>>{{ .System }}<</SYS>>\n{{ .Prompt }} [/INST]",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/llama2:7b-chat-q8_0",
+  "manifest_digest": "fc35dd6c8370",
+  "manifest_size": "7.2GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/llama2",
+  "scraped_at": "2026-07-13T19:57:07.722490+00:00",
+  "tag_name": "7b-chat-q8_0"
+}

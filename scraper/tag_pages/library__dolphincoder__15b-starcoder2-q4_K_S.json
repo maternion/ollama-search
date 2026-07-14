@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "starcoder2",
+      "blob_url": "/library/dolphincoder:15b-starcoder2-q4_K_S/blobs/0a95d6bbf461",
+      "content_preview": "arch  starcoder2",
+      "parameters": "16B",
+      "quantization": "Q4_K_S",
+      "size": "9.3GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphincoder:15b-starcoder2-q4_K_S/blobs/4ec42cd966c9",
+      "content_preview": "BigCode Open RAIL-M v1 License Agreement\nSection I: Preamble\nThis OpenRAIL-M License Agreement was c",
+      "parameters": "",
+      "quantization": "",
+      "size": "13kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphincoder:15b-starcoder2-q4_K_S/blobs/a702f7302290",
+      "content_preview": "You are DolphinCoder, a helpful AI programming assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "57B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/dolphincoder:15b-starcoder2-q4_K_S/blobs/62fbfd9ed093",
+      "content_preview": "{{ if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}{{ if .Prompt }}<|im_start|>user",
+      "parameters": "",
+      "quantization": "",
+      "size": "182B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/dolphincoder:15b-starcoder2-q4_K_S",
+  "manifest_digest": "c2b8d84e8ce3",
+  "manifest_size": "9.3GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/dolphincoder",
+  "scraped_at": "2026-07-13T20:55:47.665655+00:00",
+  "tag_name": "15b-starcoder2-q4_K_S"
+}

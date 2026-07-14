@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/llama3:8b-instruct-q2_K/blobs/8ab4849b038c",
+  "content": "{{ if .System }}<|start_header_id|>system<|end_header_id|>\n\n{{ .System }}<|eot_id|>{{ end }}{{ if .Prompt }}<|start_header_id|>user<|end_header_id|>\n\n{{ .Prompt }}<|eot_id|>{{ end }}<|start_header_id|>assistant<|end_header_id|>\n\n{{ .Response }}<|eot_id|>",
+  "digest": "8ab4849b038c",
+  "metadata": [],
+  "size": "254B",
+  "tensor_groups": [],
+  "tensors": []
+}

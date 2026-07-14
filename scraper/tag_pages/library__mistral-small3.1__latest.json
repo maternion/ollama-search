@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "mistral3",
+      "blob_url": "/library/mistral-small3.1:latest/blobs/1fa8532d986d",
+      "content_preview": "arch  mistral3",
+      "parameters": "24B",
+      "quantization": "Q4_K_M",
+      "size": "15GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-small3.1:latest/blobs/70a4dab5e1d1",
+      "content_preview": "You are Mistral Small 3.1, a Large Language Model (LLM) created by Mistral AI, a French startup head",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-small3.1:latest/blobs/a00920c28dfd",
+      "content_preview": "{\n    \"num_ctx\": 4096\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "17B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-small3.1:latest/blobs/6db27cd4e277",
+      "content_preview": "{{- range $index, $_ := .Messages }}\n{{- if eq .Role \"system\" }}[SYSTEM_PROMPT]{{ .Content }}[/SYSTE",
+      "parameters": "",
+      "quantization": "",
+      "size": "695B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/mistral-small3.1:latest",
+  "manifest_digest": "b9aaf0c2586a",
+  "manifest_size": "15GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/mistral-small3.1",
+  "scraped_at": "2026-07-13T21:11:05.555947+00:00",
+  "tag_name": "latest"
+}

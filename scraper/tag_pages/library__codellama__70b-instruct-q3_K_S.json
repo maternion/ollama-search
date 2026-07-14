@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/codellama:70b-instruct-q3_K_S/blobs/cdeacb6872eb",
+      "content_preview": "arch  llama",
+      "parameters": "69B",
+      "quantization": "Q3_K_S",
+      "size": "30GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:70b-instruct-q3_K_S/blobs/8d452cd1939c",
+      "content_preview": "{\n    \"stop\": [\n        \"Source:\",\n        \"Destination:\",\n        \"<step>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "55B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:70b-instruct-q3_K_S/blobs/f5e5dd93ac9a",
+      "content_preview": "{{ if .System }} Source: system\n{{ .System }} <step>{{ end }} Source: user\n{{ .Prompt }} <step> Sour",
+      "parameters": "",
+      "quantization": "",
+      "size": "138B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/codellama:70b-instruct-q3_K_S",
+  "manifest_digest": "9eaafc67a1e9",
+  "manifest_size": "30GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/codellama",
+  "scraped_at": "2026-07-13T20:02:25.530887+00:00",
+  "tag_name": "70b-instruct-q3_K_S"
+}

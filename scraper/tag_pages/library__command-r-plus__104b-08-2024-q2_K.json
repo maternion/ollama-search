@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "command-r",
+      "blob_url": "/library/command-r-plus:104b-08-2024-q2_K/blobs/48e063a5bb3a",
+      "content_preview": "arch  command-r",
+      "parameters": "104B",
+      "quantization": "Q2_K",
+      "size": "39GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/command-r-plus:104b-08-2024-q2_K/blobs/945eaa8b1428",
+      "content_preview": "Creative Commons Attribution-NonCommercial 4.0 International Public\nLicense with Acceptable Use Adde",
+      "parameters": "",
+      "quantization": "",
+      "size": "14kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/command-r-plus:104b-08-2024-q2_K/blobs/36b9655abe6a",
+      "content_preview": "{\n    \"stop\": [\n        \"<|START_OF_TURN_TOKEN|>\",\n        \"<|END_OF_TURN_TOKEN|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "81B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/command-r-plus:104b-08-2024-q2_K/blobs/922095537bc1",
+      "content_preview": "{{- if or .Tools .System }}<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|>\n{{- if .Tools }}# Safety Preamble",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.9kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/command-r-plus:104b-08-2024-q2_K/blobs/b3741b7b9ce5",
+      "content_preview": "You are a knowledgable assistant. You can answer questions and perform tasks.",
+      "parameters": "",
+      "quantization": "",
+      "size": "77B",
+      "type": "system"
+    }
+  ],
+  "full_path": "/library/command-r-plus:104b-08-2024-q2_K",
+  "manifest_digest": "d6cf75a11d66",
+  "manifest_size": "39GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/command-r-plus",
+  "scraped_at": "2026-07-13T21:10:47.913485+00:00",
+  "tag_name": "104b-08-2024-q2_K"
+}

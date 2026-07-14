@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/wizard-vicuna-uncensored:30b-q4_0/blobs/06de597291b8",
+      "content_preview": "arch  llama",
+      "parameters": "32.5B",
+      "quantization": "Q4_0",
+      "size": "18GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizard-vicuna-uncensored:30b-q4_0/blobs/d14264189a8a",
+      "content_preview": "{\n    \"stop\": [\n        \"USER:\",\n        \"ASSISTANT:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizard-vicuna-uncensored:30b-q4_0/blobs/b1571c5cbd28",
+      "content_preview": "{{ .System }}\nUSER: {{ .Prompt }}\nASSISTANT:",
+      "parameters": "",
+      "quantization": "",
+      "size": "45B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/wizard-vicuna-uncensored:30b-q4_0",
+  "manifest_digest": "5a7102e25304",
+  "manifest_size": "18GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/wizard-vicuna-uncensored",
+  "scraped_at": "2026-07-13T20:33:20.302615+00:00",
+  "tag_name": "30b-q4_0"
+}

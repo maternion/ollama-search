@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/library/minicpm-v:8b-2.6-q4_1/blobs/12e6b9a27b91",
+      "content_preview": "arch  qwen2",
+      "parameters": "7.61B",
+      "quantization": "Q4_1",
+      "size": "4.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/minicpm-v:8b-2.6-q4_1/blobs/f8a805e9e620",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.0GB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/minicpm-v:8b-2.6-q4_1/blobs/60ed67c565f8",
+      "content_preview": "{{- if .Messages }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -",
+      "parameters": "",
+      "quantization": "",
+      "size": "506B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/minicpm-v:8b-2.6-q4_1/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/minicpm-v:8b-2.6-q4_1/blobs/8603ca877636",
+      "content_preview": "Version 1.0, June 5, 2024\n© 2024 OpenBMB. All rights reserved.\n## Part One: Preamble\nWe are opening",
+      "parameters": "",
+      "quantization": "",
+      "size": "5.7kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/minicpm-v:8b-2.6-q4_1",
+  "manifest_digest": "1e17cbffa666",
+  "manifest_size": "5.9GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/minicpm-v",
+  "scraped_at": "2026-07-13T20:03:17.364354+00:00",
+  "tag_name": "8b-2.6-q4_1"
+}

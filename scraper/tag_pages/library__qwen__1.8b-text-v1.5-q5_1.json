@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/library/qwen:1.8b-text-v1.5-q5_1/blobs/30c318985de5",
+      "content_preview": "arch  qwen2",
+      "parameters": "1.84B",
+      "quantization": "Q5_1",
+      "size": "1.4GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen:1.8b-text-v1.5-q5_1/blobs/1a2fa30c2d2f",
+      "content_preview": "Tongyi Qianwen RESEARCH LICENSE AGREEMENT\nTongyi Qianwen Release Date: November 30, 2023\nBy clicking",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.3kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/qwen:1.8b-text-v1.5-q5_1",
+  "manifest_digest": "110bb7065fe0",
+  "manifest_size": "1.4GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/qwen",
+  "scraped_at": "2026-07-13T19:50:50.000870+00:00",
+  "tag_name": "1.8b-text-v1.5-q5_1"
+}

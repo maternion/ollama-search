@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "stablelm",
+      "blob_url": "/library/stable-code:3b-instruct-q3_K_M/blobs/41523db95127",
+      "content_preview": "arch  stablelm",
+      "parameters": "2.8B",
+      "quantization": "Q3_K_M",
+      "size": "1.4GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stable-code:3b-instruct-q3_K_M/blobs/cdf767b699c7",
+      "content_preview": "STABILITY AI NON-COMMERCIAL RESEARCH COMMUNITY LICENSE AGREEMENT\nDated: December 06, 2023\nBy using o",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.5kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stable-code:3b-instruct-q3_K_M/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/stable-code:3b-instruct-q3_K_M/blobs/62fbfd9ed093",
+      "content_preview": "{{ if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}{{ if .Prompt }}<|im_start|>user",
+      "parameters": "",
+      "quantization": "",
+      "size": "182B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/stable-code:3b-instruct-q3_K_M",
+  "manifest_digest": "d7e1f3aa3424",
+  "manifest_size": "1.4GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/stable-code",
+  "scraped_at": "2026-07-13T20:47:57.723895+00:00",
+  "tag_name": "3b-instruct-q3_K_M"
+}

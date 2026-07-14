@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/codellama:34b-instruct-fp16/blobs/d5950bfe077c",
+      "content_preview": "arch  llama",
+      "parameters": "33.7B",
+      "quantization": "F16",
+      "size": "67GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:34b-instruct-fp16/blobs/c60122cb2728",
+      "content_preview": "{\n    \"num_gqa\": 8,\n    \"rope_frequency_base\": 1000000,\n    \"stop\": [\n        \"[INST]\",\n        \"[/I",
+      "parameters": "",
+      "quantization": "",
+      "size": "132B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:34b-instruct-fp16/blobs/2e0493f67d0c",
+      "content_preview": "[INST] <<SYS>>{{ .System }}<</SYS>>\n{{ .Prompt }} [/INST]",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/codellama:34b-instruct-fp16",
+  "manifest_digest": "63f5f2314d06",
+  "manifest_size": "67GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/codellama",
+  "scraped_at": "2026-07-13T20:01:53.289463+00:00",
+  "tag_name": "34b-instruct-fp16"
+}

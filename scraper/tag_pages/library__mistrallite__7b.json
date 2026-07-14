@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/mistrallite:7b/blobs/fcfc737faf6b",
+      "content_preview": "arch  llama",
+      "parameters": "7.24B",
+      "quantization": "Q4_0",
+      "size": "4.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistrallite:7b/blobs/437fd6dee5dd",
+      "content_preview": "{\n    \"num_ctx\": 32768,\n    \"stop\": [\n        \"<|prompter|>\",\n        \"<|assistant|>\",\n        \"</s>",
+      "parameters": "",
+      "quantization": "",
+      "size": "94B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistrallite:7b/blobs/2511cfa9ebda",
+      "content_preview": "<|prompter|>{{ .System }} {{ .Prompt }}</s><|assistant|>",
+      "parameters": "",
+      "quantization": "",
+      "size": "57B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/mistrallite:7b",
+  "manifest_digest": "5393d4f5f262",
+  "manifest_size": "4.1GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/mistrallite",
+  "scraped_at": "2026-07-13T21:19:25.779071+00:00",
+  "tag_name": "7b"
+}

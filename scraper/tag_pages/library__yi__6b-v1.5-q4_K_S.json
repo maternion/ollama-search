@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/yi:6b-v1.5-q4_K_S/blobs/f1fd19af2240",
+      "content_preview": "arch  llama",
+      "parameters": "6.06B",
+      "quantization": "Q4_K_S",
+      "size": "3.5GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/yi:6b-v1.5-q4_K_S/blobs/c71d239df917",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/yi:6b-v1.5-q4_K_S",
+  "manifest_digest": "2ce0b1a6c5cf",
+  "manifest_size": "3.5GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/yi",
+  "scraped_at": "2026-07-13T20:29:44.407530+00:00",
+  "tag_name": "6b-v1.5-q4_K_S"
+}

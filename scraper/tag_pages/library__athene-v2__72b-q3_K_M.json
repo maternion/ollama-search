@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/library/athene-v2:72b-q3_K_M/blobs/77848b8e9863",
+      "content_preview": "arch  qwen2",
+      "parameters": "72.7B",
+      "quantization": "Q3_K_M",
+      "size": "38GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/athene-v2:72b-q3_K_M/blobs/212eb82a7c73",
+      "content_preview": "Nexusflow.ai License Terms for Personal Use\nRelease Date: 08/19/2024\n\"Agreement\" means these terms a",
+      "parameters": "",
+      "quantization": "",
+      "size": "6.8kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/athene-v2:72b-q3_K_M/blobs/66b9ea09bd5b",
+      "content_preview": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "68B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/athene-v2:72b-q3_K_M/blobs/eb4402837c78",
+      "content_preview": "{{- if .Messages }}\n{{- if or .System .Tools }}<|im_start|>system\n{{- if .System }}\n{{ .System }}\n{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/athene-v2:72b-q3_K_M",
+  "manifest_digest": "f74199e5b2ed",
+  "manifest_size": "38GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/athene-v2",
+  "scraped_at": "2026-07-13T21:15:24.378291+00:00",
+  "tag_name": "72b-q3_K_M"
+}

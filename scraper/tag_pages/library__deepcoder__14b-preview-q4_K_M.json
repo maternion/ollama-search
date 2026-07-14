@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/library/deepcoder:14b-preview-q4_K_M/blobs/a814bd1f5db7",
+      "content_preview": "arch  qwen2",
+      "parameters": "14.8B",
+      "quantization": "Q4_K_M",
+      "size": "9.0GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepcoder:14b-preview-q4_K_M/blobs/834c38322a81",
+      "content_preview": "MIT License\nCopyright (c) 2025 Agentica\nPermission is hereby granted, free of charge, to any person",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepcoder:14b-preview-q4_K_M/blobs/ceaa5f78afb8",
+      "content_preview": "{\n    \"temperature\": 0.6,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "33B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepcoder:14b-preview-q4_K_M/blobs/369ca498f347",
+      "content_preview": "{{- if .System }}{{ .System }}{{ end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice",
+      "parameters": "",
+      "quantization": "",
+      "size": "387B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/deepcoder:14b-preview-q4_K_M",
+  "manifest_digest": "12bdda054d23",
+  "manifest_size": "9.0GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/deepcoder",
+  "scraped_at": "2026-07-13T21:07:32.080124+00:00",
+  "tag_name": "14b-preview-q4_K_M"
+}

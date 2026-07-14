@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "falcon",
+      "blob_url": "/library/falcon:7b-instruct-q4_1/blobs/9edb55e62542",
+      "content_preview": "arch  falcon",
+      "parameters": "7.22B",
+      "quantization": "Q4_1",
+      "size": "4.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/falcon:7b-instruct-q4_1/blobs/4dec76bb1a47",
+      "content_preview": "{{ .System }}\nUser: {{ .Prompt }}\nAssistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "45B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/falcon:7b-instruct-q4_1/blobs/0644cce03f93",
+      "content_preview": "{\n    \"stop\": [\n        \"User:\",\n        \"Assistant:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/falcon:7b-instruct-q4_1",
+  "manifest_digest": "f06a70f0b7d2",
+  "manifest_size": "4.6GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/falcon",
+  "scraped_at": "2026-07-13T20:42:47.312281+00:00",
+  "tag_name": "7b-instruct-q4_1"
+}

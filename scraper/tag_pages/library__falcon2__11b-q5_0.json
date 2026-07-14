@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "falcon",
+      "blob_url": "/library/falcon2:11b-q5_0/blobs/8505dcfacdce",
+      "content_preview": "arch  falcon",
+      "parameters": "11.1B",
+      "quantization": "Q5_0",
+      "size": "7.7GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/falcon2:11b-q5_0/blobs/d0d9cd9278c2",
+      "content_preview": "Falcon 2 11B TII License Version 1.0\nTerms and Conditions\nMay 2024\nFalconLLM.tii.ae\nIntroductory not",
+      "parameters": "",
+      "quantization": "",
+      "size": "13kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/falcon2:11b-q5_0/blobs/4d48a029ff4a",
+      "content_preview": "{{ if .System }}\nSystem:\n{{ .System }}\n{{ end }}\n{{ if .Prompt }}\nUser:\n{{ .Prompt }}\n{{ end }}\nFalc",
+      "parameters": "",
+      "quantization": "",
+      "size": "122B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/falcon2:11b-q5_0/blobs/2f94c00edd32",
+      "content_preview": "{\n    \"stop\": [\n        \"System:\",\n        \"User:\",\n        \"Assistant:\",\n        \"<|endoftext|>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "84B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/falcon2:11b-q5_0",
+  "manifest_digest": "634fd8a33a16",
+  "manifest_size": "7.7GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/falcon2",
+  "scraped_at": "2026-07-13T21:17:30.556626+00:00",
+  "tag_name": "11b-q5_0"
+}

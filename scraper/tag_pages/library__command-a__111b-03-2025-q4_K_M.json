@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "cohere2",
+      "blob_url": "/library/command-a:111b-03-2025-q4_K_M/blobs/ffd0081a9718",
+      "content_preview": "arch  cohere2",
+      "parameters": "111B",
+      "quantization": "Q4_K_M",
+      "size": "67GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/command-a:111b-03-2025-q4_K_M/blobs/0d8282caa612",
+      "content_preview": "{{- if or .Tools .System }}<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|>\n{{- if .Tools }}# System Preamble",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.2kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/command-a:111b-03-2025-q4_K_M/blobs/945eaa8b1428",
+      "content_preview": "Creative Commons Attribution-NonCommercial 4.0 International Public\nLicense with Acceptable Use Adde",
+      "parameters": "",
+      "quantization": "",
+      "size": "14kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/command-a:111b-03-2025-q4_K_M/blobs/d8455b5dce0b",
+      "content_preview": "{\n    \"stop\": [\n        \"<|START_OF_TURN_TOKEN|>\",\n        \"<|END_OF_TURN_TOKEN|>\",\n        \"<|END_R",
+      "parameters": "",
+      "quantization": "",
+      "size": "110B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/command-a:111b-03-2025-q4_K_M",
+  "manifest_digest": "cd22bd484599",
+  "manifest_size": "67GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/command-a",
+  "scraped_at": "2026-07-13T21:24:33.346226+00:00",
+  "tag_name": "111b-03-2025-q4_K_M"
+}

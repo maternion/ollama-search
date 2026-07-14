@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen3next",
+      "blob_url": "/library/qwen3-coder-next:latest/blobs/30e51a7cb1cf",
+      "content_preview": "arch  qwen3next",
+      "parameters": "79.7B",
+      "quantization": "Q4_K_M",
+      "size": "52GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3-coder-next:latest/blobs/7339fa418c9a",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3-coder-next:latest/blobs/d3cd8304aca0",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_k\": 40,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "42B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/qwen3-coder-next:latest",
+  "manifest_digest": "ca06e9e4087c",
+  "manifest_size": "52GB",
+  "manifest_updated": "5 months ago",
+  "path": "/library/qwen3-coder-next",
+  "scraped_at": "2026-07-13T20:20:49.418025+00:00",
+  "tag_name": "latest"
+}

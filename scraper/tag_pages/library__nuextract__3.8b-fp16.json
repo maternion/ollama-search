@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "phi3",
+      "blob_url": "/library/nuextract:3.8b-fp16/blobs/d1dba21b2691",
+      "content_preview": "arch  phi3",
+      "parameters": "3.82B",
+      "quantization": "F16",
+      "size": "7.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nuextract:3.8b-fp16/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nuextract:3.8b-fp16/blobs/8dde1baf1db0",
+      "content_preview": "{\n    \"stop\": [\n        \"<|end|>\",\n        \"<|user|>\",\n        \"<|assistant|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "78B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nuextract:3.8b-fp16/blobs/e3e379c2858c",
+      "content_preview": "{{- range .Messages }}\n{{- if eq .Role \"user\" }}<|user|>\n{{ .Content }}<|end|>\n<|assistant|>\n{{- els",
+      "parameters": "",
+      "quantization": "",
+      "size": "172B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/nuextract:3.8b-fp16",
+  "manifest_digest": "d8bc760a64ed",
+  "manifest_size": "7.6GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/nuextract",
+  "scraped_at": "2026-07-13T21:18:49.826232+00:00",
+  "tag_name": "3.8b-fp16"
+}

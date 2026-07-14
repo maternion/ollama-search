@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "deepseekocr",
+      "blob_url": "/library/deepseek-ocr:3b-bf16/blobs/3a18673ff291",
+      "content_preview": "arch  deepseekocr",
+      "parameters": "3.34B",
+      "quantization": "F16",
+      "size": "6.7GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-ocr:3b-bf16/blobs/a406579cd136",
+      "content_preview": "MIT License\nCopyright (c) [year] [fullname]\nPermission is hereby granted, free of charge, to any per",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-ocr:3b-bf16/blobs/ae40a217c1c4",
+      "content_preview": "{\n    \"temperature\": 0\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "18B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/deepseek-ocr:3b-bf16",
+  "manifest_digest": "0e7b018b8a22",
+  "manifest_size": "6.7GB",
+  "manifest_updated": "7 months ago",
+  "path": "/library/deepseek-ocr",
+  "scraped_at": "2026-07-13T21:20:37.518922+00:00",
+  "tag_name": "3b-bf16"
+}

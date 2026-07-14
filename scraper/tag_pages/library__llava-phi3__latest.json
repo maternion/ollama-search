@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llava-phi3:latest/blobs/377876be20ba",
+      "content_preview": "arch  llama",
+      "parameters": "3.82B",
+      "quantization": "Q4_K_M",
+      "size": "2.3GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llava-phi3:latest/blobs/004fc0969720",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "608MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llava-phi3:latest/blobs/cadf483f03b5",
+      "content_preview": "{\n    \"num_ctx\": 4096,\n    \"num_keep\": 4,\n    \"stop\": [\n        \"<|user|>\",\n        \"<|assistant|>\",",
+      "parameters": "",
+      "quantization": "",
+      "size": "155B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llava-phi3:latest/blobs/c608dc615584",
+      "content_preview": "{{ if .System }}<|system|>\n{{ .System }}<|end|>\n{{ end }}{{ if .Prompt }}<|user|>\n{{ .Prompt }}<|end",
+      "parameters": "",
+      "quantization": "",
+      "size": "149B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/llava-phi3:latest",
+  "manifest_digest": "c7edd7b87593",
+  "manifest_size": "2.9GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/llava-phi3",
+  "scraped_at": "2026-07-13T21:22:38.216100+00:00",
+  "tag_name": "latest"
+}

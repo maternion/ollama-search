@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/codellama:13b-python-q5_K_M/blobs/563ace9ac1b0",
+      "content_preview": "arch  llama",
+      "parameters": "13B",
+      "quantization": "Q5_K_M",
+      "size": "9.2GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:13b-python-q5_K_M/blobs/8c17c2ebb0ea",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:13b-python-q5_K_M/blobs/590d74a5569b",
+      "content_preview": "# Llama Code Acceptable Use Policy\nMeta is committed to promoting safe and fair use of its tools and",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.8kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/codellama:13b-python-q5_K_M/blobs/d2b44be9e121",
+      "content_preview": "{\n    \"rope_frequency_base\": 1000000\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/codellama:13b-python-q5_K_M",
+  "manifest_digest": "bee3e1199c6e",
+  "manifest_size": "9.2GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/codellama",
+  "scraped_at": "2026-07-13T20:01:22.803642+00:00",
+  "tag_name": "13b-python-q5_K_M"
+}

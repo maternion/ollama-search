@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "starcoder",
+      "blob_url": "/library/sqlcoder:15b-q6_K/blobs/e9b086447e11",
+      "content_preview": "arch  starcoder",
+      "parameters": "15.8B",
+      "quantization": "Q6_K",
+      "size": "13GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/sqlcoder:15b-q6_K/blobs/a67353d85e36",
+      "content_preview": "# Creative Commons Attribution-ShareAlike 4.0 International\nCreative Commons Corporation (“Creativ",
+      "parameters": "",
+      "quantization": "",
+      "size": "21kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/sqlcoder:15b-q6_K/blobs/1576480a555b",
+      "content_preview": "{\n    \"stop\": [\n        \"<|endoftext|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "36B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/sqlcoder:15b-q6_K",
+  "manifest_digest": "cd5d9138d61e",
+  "manifest_size": "13GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/sqlcoder",
+  "scraped_at": "2026-07-13T20:32:27.786796+00:00",
+  "tag_name": "15b-q6_K"
+}

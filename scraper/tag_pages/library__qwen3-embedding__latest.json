@@ -1,0 +1,27 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen3",
+      "blob_url": "/library/qwen3-embedding:latest/blobs/3fcd3febec8b",
+      "content_preview": "arch  qwen3",
+      "parameters": "7.57B",
+      "quantization": "Q4_K_M",
+      "size": "4.7GB",
+      "type": "model"
+    }
+  ],
+  "full_path": "/library/qwen3-embedding:latest",
+  "manifest_digest": "64b933495768",
+  "manifest_size": "4.7GB",
+  "manifest_updated": "9 months ago",
+  "path": "/library/qwen3-embedding",
+  "scraped_at": "2026-07-13T20:16:29.764727+00:00",
+  "tag_name": "latest"
+}

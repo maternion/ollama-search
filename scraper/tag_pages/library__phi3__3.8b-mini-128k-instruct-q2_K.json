@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "phi3",
+      "blob_url": "/library/phi3:3.8b-mini-128k-instruct-q2_K/blobs/ed1bf09164f3",
+      "content_preview": "arch  phi3",
+      "parameters": "3.82B",
+      "quantization": "Q2_K",
+      "size": "1.4GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phi3:3.8b-mini-128k-instruct-q2_K/blobs/8dde1baf1db0",
+      "content_preview": "{\n    \"stop\": [\n        \"<|end|>\",\n        \"<|user|>\",\n        \"<|assistant|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "78B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phi3:3.8b-mini-128k-instruct-q2_K/blobs/fa8235e5b48f",
+      "content_preview": "Microsoft.\nCopyright (c) Microsoft Corporation.\nMIT License\nPermission is hereby granted, free of ch",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phi3:3.8b-mini-128k-instruct-q2_K/blobs/542b217f179c",
+      "content_preview": "{{ if .System }}<|system|>\n{{ .System }}<|end|>\n{{ end }}{{ if .Prompt }}<|user|>\n{{ .Prompt }}<|end",
+      "parameters": "",
+      "quantization": "",
+      "size": "148B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/phi3:3.8b-mini-128k-instruct-q2_K",
+  "manifest_digest": "0dc429b5761b",
+  "manifest_size": "1.4GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/phi3",
+  "scraped_at": "2026-07-13T19:46:40.074600+00:00",
+  "tag_name": "3.8b-mini-128k-instruct-q2_K"
+}

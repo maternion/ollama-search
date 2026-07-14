@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/tinyllama:1.1b-chat-v0.6-q4_1/blobs/ebae117aae6a",
+      "content_preview": "arch  llama",
+      "parameters": "1.1B",
+      "quantization": "Q4_1",
+      "size": "702MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/tinyllama:1.1b-chat-v0.6-q4_1/blobs/fa956ab37b8c",
+      "content_preview": "{\n    \"stop\": [\n        \"<|system|>\",\n        \"<|user|>\",\n        \"<|assistant|>\",\n        \"</s>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "98B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/tinyllama:1.1b-chat-v0.6-q4_1/blobs/c8472cd9daed",
+      "content_preview": "You are a helpful AI assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/tinyllama:1.1b-chat-v0.6-q4_1/blobs/af0ddbdaaa26",
+      "content_preview": "<|system|>\n{{ .System }}</s>\n<|user|>\n{{ .Prompt }}</s>\n<|assistant|>",
+      "parameters": "",
+      "quantization": "",
+      "size": "70B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/tinyllama:1.1b-chat-v0.6-q4_1",
+  "manifest_digest": "ad5344d40d22",
+  "manifest_size": "702MB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/tinyllama",
+  "scraped_at": "2026-07-13T20:03:36.150733+00:00",
+  "tag_name": "1.1b-chat-v0.6-q4_1"
+}

@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llava:7b-v1.5-q3_K_S/blobs/487c74e465da",
+      "content_preview": "arch  llama",
+      "parameters": "6.74B",
+      "quantization": "Q3_K_S",
+      "size": "2.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llava:7b-v1.5-q3_K_S/blobs/64c2234f0395",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "624MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llava:7b-v1.5-q3_K_S/blobs/41774062cd34",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llava:7b-v1.5-q3_K_S/blobs/7215dae26124",
+      "content_preview": "{\n    \"stop\": [\n        \"USER:\",\n        \"ASSSISTANT:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "33B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llava:7b-v1.5-q3_K_S/blobs/d5ca8c59f62d",
+      "content_preview": "{{ .System }}\nUSER: {{ .Prompt }}\nASSSISTANT:",
+      "parameters": "",
+      "quantization": "",
+      "size": "46B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/llava:7b-v1.5-q3_K_S",
+  "manifest_digest": "605b68e0b568",
+  "manifest_size": "3.6GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/llava",
+  "scraped_at": "2026-07-13T19:47:42.072263+00:00",
+  "tag_name": "7b-v1.5-q3_K_S"
+}

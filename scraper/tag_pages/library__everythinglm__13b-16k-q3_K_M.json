@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/everythinglm:13b-16k-q3_K_M/blobs/e76b2a313bc2",
+      "content_preview": "arch  llama",
+      "parameters": "13B",
+      "quantization": "Q3_K_M",
+      "size": "6.3GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/everythinglm:13b-16k-q3_K_M/blobs/c8472cd9daed",
+      "content_preview": "You are a helpful AI assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/everythinglm:13b-16k-q3_K_M/blobs/19f2fb9e8bc6",
+      "content_preview": "{\n    \"stop\": [\n        \"User:\",\n        \"Assistant:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "32B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/everythinglm:13b-16k-q3_K_M/blobs/41774062cd34",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/everythinglm:13b-16k-q3_K_M/blobs/4dec76bb1a47",
+      "content_preview": "{{ .System }}\nUser: {{ .Prompt }}\nAssistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "45B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/everythinglm:13b-16k-q3_K_M",
+  "manifest_digest": "abcd3603349c",
+  "manifest_size": "6.3GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/everythinglm",
+  "scraped_at": "2026-07-13T21:16:02.827872+00:00",
+  "tag_name": "13b-16k-q3_K_M"
+}

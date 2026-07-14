@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "starcoder2",
+      "blob_url": "/library/starcoder2:instruct/blobs/4688154b6ed3",
+      "content_preview": "arch  starcoder2",
+      "parameters": "16B",
+      "quantization": "Q4_0",
+      "size": "9.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starcoder2:instruct/blobs/3d98b2e71868",
+      "content_preview": "{{ if .System }}{{ .System }}\n{{ end }}{{ if .Prompt }}### Instruction\n{{ .Prompt }}\n{{ end }}### Re",
+      "parameters": "",
+      "quantization": "",
+      "size": "141B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starcoder2:instruct/blobs/0aeac66f19bf",
+      "content_preview": "{\n    \"stop\": [\n        \"###\",\n        \"<|endoftext|>\",\n        \"<file_sep>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "66B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starcoder2:instruct/blobs/4ec42cd966c9",
+      "content_preview": "BigCode Open RAIL-M v1 License Agreement\nSection I: Preamble\nThis OpenRAIL-M License Agreement was c",
+      "parameters": "",
+      "quantization": "",
+      "size": "13kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starcoder2:instruct/blobs/708c319c4125",
+      "content_preview": "You are an exceptionally intelligent coding assistant that consistently delivers accurate and reliab",
+      "parameters": "",
+      "quantization": "",
+      "size": "136B",
+      "type": "system"
+    }
+  ],
+  "full_path": "/library/starcoder2:instruct",
+  "manifest_digest": "432973cfbc4c",
+  "manifest_size": "9.1GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/starcoder2",
+  "scraped_at": "2026-07-13T20:12:32.097065+00:00",
+  "tag_name": "instruct"
+}

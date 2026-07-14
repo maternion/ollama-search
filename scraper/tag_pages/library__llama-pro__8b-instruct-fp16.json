@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llama-pro:8b-instruct-fp16/blobs/65b5981aada0",
+      "content_preview": "arch  llama",
+      "parameters": "8.36B",
+      "quantization": "F16",
+      "size": "17GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama-pro:8b-instruct-fp16/blobs/4134f3eb0516",
+      "content_preview": "{\n    \"stop\": [\n        \"<|system|>\",\n        \"<|user|>\",\n        \"<|assistant|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "81B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama-pro:8b-instruct-fp16/blobs/688a68728634",
+      "content_preview": "<|system|>\n{{ .System }}\n<|user|>\n{{ .Prompt }}\n<|assistant|>",
+      "parameters": "",
+      "quantization": "",
+      "size": "62B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/llama-pro:8b-instruct-fp16",
+  "manifest_digest": "df774285c05f",
+  "manifest_size": "17GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/llama-pro",
+  "scraped_at": "2026-07-13T21:07:51.680373+00:00",
+  "tag_name": "8b-instruct-fp16"
+}

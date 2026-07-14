@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gemma3",
+      "blob_url": "/library/rnj-1:8b/blobs/e0785291058c",
+      "content_preview": "arch  gemma3",
+      "parameters": "8.31B",
+      "quantization": "Q4_K_M",
+      "size": "5.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/rnj-1:8b/blobs/e559197fae99",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/rnj-1:8b/blobs/3685c9d39c8b",
+      "content_preview": "{\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",\n        \"<|eot_id|>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "114B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/rnj-1:8b/blobs/d588893e14d0",
+      "content_preview": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\nYou are rnj-1, a foundation model traine",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.4kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/rnj-1:8b",
+  "manifest_digest": "d20e29ab8d0f",
+  "manifest_size": "5.1GB",
+  "manifest_updated": "7 months ago",
+  "path": "/library/rnj-1",
+  "scraped_at": "2026-07-13T21:20:39.009359+00:00",
+  "tag_name": "8b"
+}

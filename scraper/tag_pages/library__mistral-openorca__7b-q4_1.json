@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/mistral-openorca:7b-q4_1/blobs/064dfab23831",
+      "content_preview": "arch  llama",
+      "parameters": "7.24B",
+      "quantization": "Q4_1",
+      "size": "4.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-openorca:7b-q4_1/blobs/ecf1d3ca1fb5",
+      "content_preview": "{{- if .System }}\n<|im_start|>system {{ .System }}<|im_end|>\n{{- end }}\n<|im_start|>user\n{{ .Prompt",
+      "parameters": "",
+      "quantization": "",
+      "size": "135B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-openorca:7b-q4_1/blobs/de6bcd73f9b4",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "58B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/mistral-openorca:7b-q4_1",
+  "manifest_digest": "185461182e00",
+  "manifest_size": "4.6GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/mistral-openorca",
+  "scraped_at": "2026-07-13T21:12:54.525559+00:00",
+  "tag_name": "7b-q4_1"
+}

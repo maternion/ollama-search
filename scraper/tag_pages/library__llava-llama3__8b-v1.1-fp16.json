@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llava-llama3:8b-v1.1-fp16/blobs/6658f7332be8",
+      "content_preview": "arch  llama",
+      "parameters": "8.03B",
+      "quantization": "F16",
+      "size": "16GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llava-llama3:8b-v1.1-fp16/blobs/eb569aba7d65",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "624MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llava-llama3:8b-v1.1-fp16/blobs/f49343bde93f",
+      "content_preview": "{\n    \"num_ctx\": 4096,\n    \"num_keep\": 4,\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|en",
+      "parameters": "",
+      "quantization": "",
+      "size": "124B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llava-llama3:8b-v1.1-fp16/blobs/8ab4849b038c",
+      "content_preview": "{{ if .System }}<|start_header_id|>system<|end_header_id|>\n{{ .System }}<|eot_id|>{{ end }}{{ if .Pr",
+      "parameters": "",
+      "quantization": "",
+      "size": "254B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/llava-llama3:8b-v1.1-fp16",
+  "manifest_digest": "7d4b165b1c5e",
+  "manifest_size": "17GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/llava-llama3",
+  "scraped_at": "2026-07-13T20:16:48.322765+00:00",
+  "tag_name": "8b-v1.1-fp16"
+}

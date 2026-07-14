@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "exaone",
+      "blob_url": "/library/exaone3.5:7.8b-instruct-q8_0/blobs/47a46598455e",
+      "content_preview": "arch  exaone",
+      "parameters": "7.82B",
+      "quantization": "Q8_0",
+      "size": "8.3GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/exaone3.5:7.8b-instruct-q8_0/blobs/8cd06db3b613",
+      "content_preview": "You are EXAONE model from LG AI Research, a helpful assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "62B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/exaone3.5:7.8b-instruct-q8_0/blobs/294fd63925d8",
+      "content_preview": "EXAONE AI Model License Agreement 1.1 - NC\nThis License Agreement (“Agreement”) is entered into",
+      "parameters": "",
+      "quantization": "",
+      "size": "14kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/exaone3.5:7.8b-instruct-q8_0/blobs/a64d9e642d7b",
+      "content_preview": "{\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"[|endofturn|]\"\n    ],\n    \"temperature\": 1\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "62B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/exaone3.5:7.8b-instruct-q8_0/blobs/37cddd3bd818",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n{{ if eq .Role \"s",
+      "parameters": "",
+      "quantization": "",
+      "size": "375B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/exaone3.5:7.8b-instruct-q8_0",
+  "manifest_digest": "dc6fcd786b42",
+  "manifest_size": "8.3GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/exaone3.5",
+  "scraped_at": "2026-07-13T21:17:14.714460+00:00",
+  "tag_name": "7.8b-instruct-q8_0"
+}

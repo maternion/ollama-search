@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "mistral3",
+      "blob_url": "/library/ministral-3:latest/blobs/3ea32f882c99",
+      "content_preview": "arch  mistral3",
+      "parameters": "8.92B",
+      "quantization": "Q4_K_M",
+      "size": "6.0GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/ministral-3:latest/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/ministral-3:latest/blobs/e0daf17ff83e",
+      "content_preview": "{\n    \"temperature\": 0.15\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "21B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/ministral-3:latest/blobs/5b74c26b9e0b",
+      "content_preview": "{{- $lastUserIndex := -1 }}\n{{- $hasSystemPrompt := false }}\n{{- range $index, $_ := .Messages }}\n{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "3.4kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/ministral-3:latest",
+  "manifest_digest": "1922accd5827",
+  "manifest_size": "6.0GB",
+  "manifest_updated": "7 months ago",
+  "path": "/library/ministral-3",
+  "scraped_at": "2026-07-13T20:28:29.020094+00:00",
+  "tag_name": "latest"
+}

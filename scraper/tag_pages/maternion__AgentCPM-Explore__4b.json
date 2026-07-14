@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen3",
+      "blob_url": "/maternion/AgentCPM-Explore:4b/blobs/83ad33f5f6af",
+      "content_preview": "arch  qwen3",
+      "parameters": "4.41B",
+      "quantization": "Q4_K_M",
+      "size": "2.7GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/AgentCPM-Explore:4b/blobs/4a6ce91d86a8",
+      "content_preview": "{\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ],\n    \"te",
+      "parameters": "",
+      "quantization": "",
+      "size": "99B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/AgentCPM-Explore:4b/blobs/2d54db2b9bb2",
+      "content_preview": "{{- $lastUserIdx := -1 -}}\n{{- range $idx, $msg := .Messages -}}\n{{- if eq $msg.Role \"user\" }}{{ $la",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/maternion/AgentCPM-Explore:4b",
+  "manifest_digest": "6a9799940345",
+  "manifest_size": "2.7GB",
+  "manifest_updated": "5 months ago",
+  "path": "/maternion/AgentCPM-Explore",
+  "scraped_at": "2026-07-14T15:18:21.039402+00:00",
+  "tag_name": "4b"
+}

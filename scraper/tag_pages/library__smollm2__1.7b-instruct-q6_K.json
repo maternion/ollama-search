@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/smollm2:1.7b-instruct-q6_K/blobs/88448bf3bb7e",
+      "content_preview": "arch  llama",
+      "parameters": "1.71B",
+      "quantization": "Q6_K",
+      "size": "1.4GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/smollm2:1.7b-instruct-q6_K/blobs/fbacade46b4d",
+      "content_preview": "You are a helpful AI assistant named SmolLM, trained by Hugging Face",
+      "parameters": "",
+      "quantization": "",
+      "size": "68B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/smollm2:1.7b-instruct-q6_K/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/smollm2:1.7b-instruct-q6_K/blobs/58d1e17ffe51",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/smollm2:1.7b-instruct-q6_K/blobs/dfebd0343bdd",
+      "content_preview": "{{- if .Messages }}\n{{- if .Tools }}<|im_start|>system\nYou are an expert in composing functions. You",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.8kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/smollm2:1.7b-instruct-q6_K",
+  "manifest_digest": "d334c54e8df6",
+  "manifest_size": "1.4GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/smollm2",
+  "scraped_at": "2026-07-13T20:07:47.866225+00:00",
+  "tag_name": "1.7b-instruct-q6_K"
+}

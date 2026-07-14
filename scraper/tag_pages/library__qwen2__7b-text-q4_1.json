@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/library/qwen2:7b-text-q4_1/blobs/150572e170bb",
+      "content_preview": "arch  qwen2",
+      "parameters": "7.62B",
+      "quantization": "Q4_1",
+      "size": "4.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen2:7b-text-q4_1/blobs/623abe0aa07d",
+      "content_preview": "../../../Qwen/Qwen2-7B/LICENSE",
+      "parameters": "",
+      "quantization": "",
+      "size": "30B",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/qwen2:7b-text-q4_1",
+  "manifest_digest": "b765b8677fb7",
+  "manifest_size": "4.9GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/qwen2",
+  "scraped_at": "2026-07-13T19:59:14.777746+00:00",
+  "tag_name": "7b-text-q4_1"
+}

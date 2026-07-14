@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/solar:10.7b-instruct-v1-q6_K/blobs/ffadcfa90bb2",
+      "content_preview": "arch  llama",
+      "parameters": "10.7B",
+      "quantization": "Q6_K",
+      "size": "8.8GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/solar:10.7b-instruct-v1-q6_K/blobs/e399adb0b8c6",
+      "content_preview": "{\n    \"num_ctx\": 4096,\n    \"stop\": [\n        \"</s>\",\n        \"### System:\",\n        \"### User:\",",
+      "parameters": "",
+      "quantization": "",
+      "size": "86B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/solar:10.7b-instruct-v1-q6_K/blobs/bf99dec66c97",
+      "content_preview": "### System:\n{{ .System }}\n### User:\n{{ .Prompt }}\n### Assistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "67B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/solar:10.7b-instruct-v1-q6_K",
+  "manifest_digest": "286aebb3baa2",
+  "manifest_size": "8.8GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/solar",
+  "scraped_at": "2026-07-13T21:02:32.257133+00:00",
+  "tag_name": "10.7b-instruct-v1-q6_K"
+}

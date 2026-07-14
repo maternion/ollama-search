@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/wizard-math:7b-v1.1-fp16/blobs/a96e57114d8f",
+      "content_preview": "arch  llama",
+      "parameters": "7.24B",
+      "quantization": "F16",
+      "size": "14GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizard-math:7b-v1.1-fp16/blobs/876a8d805b60",
+      "content_preview": "MICROSOFT RESEARCH LICENSE TERMS\nIF YOU LIVE IN THE UNITED STATES, PLEASE READ THE “BINDING ARBITR",
+      "parameters": "",
+      "quantization": "",
+      "size": "10kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizard-math:7b-v1.1-fp16/blobs/2d836d77287d",
+      "content_preview": "{{ .System }}\n### Instruction:\n{{ .Prompt }}\n### Response:",
+      "parameters": "",
+      "quantization": "",
+      "size": "61B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizard-math:7b-v1.1-fp16/blobs/8fadb9ad1206",
+      "content_preview": "Below is an instruction that describes a task. Write a response that appropriately completes the req",
+      "parameters": "",
+      "quantization": "",
+      "size": "106B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizard-math:7b-v1.1-fp16/blobs/7127df314ab9",
+      "content_preview": "{\n    \"num_ctx\": 4096,\n    \"stop\": [\n        \"</s>\",\n        \"### Instruction:\",\n        \"### Respon",
+      "parameters": "",
+      "quantization": "",
+      "size": "78B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/wizard-math:7b-v1.1-fp16",
+  "manifest_digest": "9ba9081b8e33",
+  "manifest_size": "14GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/wizard-math",
+  "scraped_at": "2026-07-13T20:54:37.873963+00:00",
+  "tag_name": "7b-v1.1-fp16"
+}

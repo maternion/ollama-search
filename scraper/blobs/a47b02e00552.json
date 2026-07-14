@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/qwen:14b-chat-q5_K_S/blobs/a47b02e00552",
+  "content": "<|im_start|>system\n{{ .System }}<|im_end|>\n<|im_start|>user\n{{ .Prompt }}<|im_end|>\n<|im_start|>assistant",
+  "digest": "a47b02e00552",
+  "metadata": [],
+  "size": "106B",
+  "tensor_groups": [],
+  "tensors": []
+}

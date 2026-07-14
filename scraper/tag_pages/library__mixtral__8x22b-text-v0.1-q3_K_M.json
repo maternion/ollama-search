@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/mixtral:8x22b-text-v0.1-q3_K_M/blobs/a172aebf3583",
+      "content_preview": "arch  llama",
+      "parameters": "141B",
+      "quantization": "Q3_K_M",
+      "size": "68GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mixtral:8x22b-text-v0.1-q3_K_M/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/mixtral:8x22b-text-v0.1-q3_K_M",
+  "manifest_digest": "a45b937d5d88",
+  "manifest_size": "68GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/mixtral",
+  "scraped_at": "2026-07-13T20:15:29.296818+00:00",
+  "tag_name": "8x22b-text-v0.1-q3_K_M"
+}

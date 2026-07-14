@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/mistral-small:22b-instruct-2409-q5_0/blobs/512df9fdacac",
+      "content_preview": "arch  llama",
+      "parameters": "22.2B",
+      "quantization": "Q5_0",
+      "size": "15GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-small:22b-instruct-2409-q5_0/blobs/cfee52e2391b",
+      "content_preview": "{{- if .Messages }}\n{{- range $index, $_ := .Messages }}\n{{- if eq .Role \"user\" }}\n{{- if and (le (l",
+      "parameters": "",
+      "quantization": "",
+      "size": "900B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-small:22b-instruct-2409-q5_0/blobs/06a6f77f3e95",
+      "content_preview": "# Mistral AI Research License\nIf You want to use a Mistral Model, a Derivative or an Output for any",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mistral-small:22b-instruct-2409-q5_0/blobs/ac9aa3c4956d",
+      "content_preview": "{\n    \"stop\": [\n        \"[INST]\",\n        \"[/INST]\",\n        \"</s>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "47B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/mistral-small:22b-instruct-2409-q5_0",
+  "manifest_digest": "04c315f44b8c",
+  "manifest_size": "15GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/mistral-small",
+  "scraped_at": "2026-07-13T20:08:43.248211+00:00",
+  "tag_name": "22b-instruct-2409-q5_0"
+}

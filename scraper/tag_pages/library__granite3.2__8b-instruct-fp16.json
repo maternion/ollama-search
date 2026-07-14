@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "granite",
+      "blob_url": "/library/granite3.2:8b-instruct-fp16/blobs/2feccae02d63",
+      "content_preview": "arch  granite",
+      "parameters": "8.17B",
+      "quantization": "F16",
+      "size": "16GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite3.2:8b-instruct-fp16/blobs/2e68075caee4",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite3.2:8b-instruct-fp16/blobs/3e7ca51acd6e",
+      "content_preview": "{{- /*\n------ MESSAGE PARSING ------\n*/}}\n{{- /*\nDeclare the prompt structure variables to be filled",
+      "parameters": "",
+      "quantization": "",
+      "size": "6.0kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/granite3.2:8b-instruct-fp16",
+  "manifest_digest": "b9679f6ae759",
+  "manifest_size": "16GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/granite3.2",
+  "scraped_at": "2026-07-13T21:21:23.212581+00:00",
+  "tag_name": "8b-instruct-fp16"
+}

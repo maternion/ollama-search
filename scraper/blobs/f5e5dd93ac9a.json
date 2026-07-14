@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/codellama:70b-instruct-q3_K_L/blobs/f5e5dd93ac9a",
+  "content": "{{ if .System }} Source: system\n\n{{ .System }} <step>{{ end }} Source: user\n\n{{ .Prompt }} <step> Source: assistant\nDestination: user\n\n",
+  "digest": "f5e5dd93ac9a",
+  "metadata": [],
+  "size": "138B",
+  "tensor_groups": [],
+  "tensors": []
+}

@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "starcoder2",
+      "blob_url": "/library/starcoder2:15b-fp16/blobs/dde7c68d1581",
+      "content_preview": "arch  starcoder2",
+      "parameters": "16B",
+      "quantization": "F16",
+      "size": "32GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starcoder2:15b-fp16/blobs/4ec42cd966c9",
+      "content_preview": "BigCode Open RAIL-M v1 License Agreement\nSection I: Preamble\nThis OpenRAIL-M License Agreement was c",
+      "parameters": "",
+      "quantization": "",
+      "size": "13kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starcoder2:15b-fp16/blobs/37c99d4c7b60",
+      "content_preview": "{\n    \"stop\": [\n        \"<file_sep>\",\n        \"<|end_of_text|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "41B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starcoder2:15b-fp16/blobs/3b190e68fefe",
+      "content_preview": "<file_sep>\n{{- if .Suffix }}<fim_prefix>\n{{ .Prompt }}<fim_suffix>{{ .Suffix }}<fim_middle>\n{{- else",
+      "parameters": "",
+      "quantization": "",
+      "size": "142B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/starcoder2:15b-fp16",
+  "manifest_digest": "d0355c6e6d3a",
+  "manifest_size": "32GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/starcoder2",
+  "scraped_at": "2026-07-13T20:13:34.121397+00:00",
+  "tag_name": "15b-fp16"
+}

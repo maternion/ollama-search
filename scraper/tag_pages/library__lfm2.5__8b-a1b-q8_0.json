@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "lfm2moe",
+      "blob_url": "/library/lfm2.5:8b-a1b-q8_0/blobs/54f4b9e9b1ad",
+      "content_preview": "arch  lfm2moe",
+      "parameters": "8.47B",
+      "quantization": "Q8_0",
+      "size": "9.0GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/lfm2.5:8b-a1b-q8_0/blobs/058cb51ed3d5",
+      "content_preview": "LFM Open License v1.0\nTERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n1. Definitions.\n\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/lfm2.5:8b-a1b-q8_0/blobs/e57cad4daa6c",
+      "content_preview": "{\n    \"repeat_penalty\": 1.05,\n    \"temperature\": 0.2,\n    \"top_k\": 80\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "53B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/lfm2.5:8b-a1b-q8_0",
+  "manifest_digest": "4fa3787050ca",
+  "manifest_size": "9.0GB",
+  "manifest_updated": "1 month ago",
+  "path": "/library/lfm2.5",
+  "scraped_at": "2026-07-13T21:25:25.138713+00:00",
+  "tag_name": "8b-a1b-q8_0"
+}

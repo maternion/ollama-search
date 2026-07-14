@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/openchat:7b-v3.5-1210-q2_K/blobs/7471f722ea3d",
+      "content_preview": "arch  llama",
+      "parameters": "7.24B",
+      "quantization": "Q2_K",
+      "size": "3.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/openchat:7b-v3.5-1210-q2_K/blobs/d68706c17530",
+      "content_preview": "{{ .System }}<|end_of_turn|>GPT4 Correct User: {{ .Prompt }}<|end_of_turn|>GPT4 Correct Assistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "98B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/openchat:7b-v3.5-1210-q2_K/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/openchat:7b-v3.5-1210-q2_K/blobs/415f0f6b43dd",
+      "content_preview": "{\n    \"stop\": [\n        \"<|endoftext|>\",\n        \"<|end_of_turn|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "65B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/openchat:7b-v3.5-1210-q2_K",
+  "manifest_digest": "90cfa4fd3ee4",
+  "manifest_size": "3.1GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/openchat",
+  "scraped_at": "2026-07-13T20:35:13.680666+00:00",
+  "tag_name": "7b-v3.5-1210-q2_K"
+}

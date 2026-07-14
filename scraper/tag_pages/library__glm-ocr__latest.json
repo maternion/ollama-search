@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "glmocr",
+      "blob_url": "/library/glm-ocr:latest/blobs/65493e1f85b9",
+      "content_preview": "arch  glmocr",
+      "parameters": "1.11B",
+      "quantization": "F16",
+      "size": "2.2GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/glm-ocr:latest/blobs/ae40a217c1c4",
+      "content_preview": "{\n    \"temperature\": 0\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "18B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/glm-ocr:latest",
+  "manifest_digest": "6effedd0dc8a",
+  "manifest_size": "2.2GB",
+  "manifest_updated": "5 months ago",
+  "path": "/library/glm-ocr",
+  "scraped_at": "2026-07-13T19:33:16.572306+00:00",
+  "tag_name": "latest"
+}

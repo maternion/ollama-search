@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/granite-code:3b-instruct-128k-fp16/blobs/a1c270cabae8",
+      "content_preview": "arch  llama",
+      "parameters": "3.48B",
+      "quantization": "F16",
+      "size": "7.0GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite-code:3b-instruct-128k-fp16/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite-code:3b-instruct-128k-fp16/blobs/f1406f0e20d0",
+      "content_preview": "{\n    \"stop\": [\n        \"System:\",\n        \"Question:\",\n        \"Answer:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "43B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/granite-code:3b-instruct-128k-fp16/blobs/977871d28ce4",
+      "content_preview": "{{ if .Suffix }}<fim_prefix> {{ .Prompt }}<fim_suffix> {{ .Suffix }}<fim_middle>\n{{- else if .Messag",
+      "parameters": "",
+      "quantization": "",
+      "size": "679B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/granite-code:3b-instruct-128k-fp16",
+  "manifest_digest": "0a85292e9c4c",
+  "manifest_size": "7.0GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/granite-code",
+  "scraped_at": "2026-07-13T20:26:02.486698+00:00",
+  "tag_name": "3b-instruct-128k-fp16"
+}

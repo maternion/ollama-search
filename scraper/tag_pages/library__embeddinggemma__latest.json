@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gemma3",
+      "blob_url": "/library/embeddinggemma:latest/blobs/0800cbac9c20",
+      "content_preview": "arch  gemma3",
+      "parameters": "308M",
+      "quantization": "BF16",
+      "size": "622MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/embeddinggemma:latest/blobs/1adbfec9dcf0",
+      "content_preview": "Gemma Terms of Use\nLast modified: March 24, 2025\nBy using, reproducing, modifying, distributing, per",
+      "parameters": "",
+      "quantization": "",
+      "size": "8.4kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/embeddinggemma:latest/blobs/45dc10444b87",
+      "content_preview": "{\n    \"num_batch\": 2048,\n    \"num_ctx\": 2048\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "34B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/embeddinggemma:latest",
+  "manifest_digest": "85462619ee72",
+  "manifest_size": "622MB",
+  "manifest_updated": "10 months ago",
+  "path": "/library/embeddinggemma",
+  "scraped_at": "2026-07-13T20:28:07.210385+00:00",
+  "tag_name": "latest"
+}

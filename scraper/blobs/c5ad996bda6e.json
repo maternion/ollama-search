@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/deepseek-r1:1.5b-qwen-distill-q4_K_M/blobs/c5ad996bda6e",
+  "content": "{{- if .System }}{{ .System }}{{ end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1}}\n{{- if eq .Role \"user\" }}<｜User｜>{{ .Content }}\n{{- else if eq .Role \"assistant\" }}<｜Assistant｜>\n{{- if and $.IsThinkSet (and $last .Thinking) -}}\n<think>\n{{ .Thinking }}\n</think>\n{{- end }}{{ .Content }}{{- if not $last }}<｜end▁of▁sentence｜>{{- end }}\n{{- end }}\n{{- if and $last (ne .Role \"assistant\") }}<｜Assistant｜>\n{{- if and $.IsThinkSet (not $.Think) -}}\n<think>\n\n</think>\n\n{{ end }}\n{{- end -}}\n{{- end }}",
+  "digest": "c5ad996bda6e",
+  "metadata": [],
+  "size": "556B",
+  "tensor_groups": [],
+  "tensors": []
+}

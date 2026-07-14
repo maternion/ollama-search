@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llama3-groq-tool-use:70b/blobs/0bf4ff8dd2ee",
+      "content_preview": "arch  llama",
+      "parameters": "70.6B",
+      "quantization": "Q4_0",
+      "size": "40GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama3-groq-tool-use:70b/blobs/d5f55f09bfc5",
+      "content_preview": "META LLAMA 3 COMMUNITY LICENSE AGREEMENT – Adapted For Groq 8B/70B Tool Use\nMeta Llama 3 Version R",
+      "parameters": "",
+      "quantization": "",
+      "size": "9.8kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama3-groq-tool-use:70b/blobs/56bb8bd477a5",
+      "content_preview": "{\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",\n        \"<|eot_id|>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "96B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama3-groq-tool-use:70b/blobs/4d1abb94190b",
+      "content_preview": "{{- if .Messages }}\n{{- if or .System .Tools }}<|start_header_id|>system<|end_header_id|>\n{{ .System",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.7kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/llama3-groq-tool-use:70b",
+  "manifest_digest": "696d50e6fc55",
+  "manifest_size": "40GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/llama3-groq-tool-use",
+  "scraped_at": "2026-07-13T20:58:58.137807+00:00",
+  "tag_name": "70b"
+}

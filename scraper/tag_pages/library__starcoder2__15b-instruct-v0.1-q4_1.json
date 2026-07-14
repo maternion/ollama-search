@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "starcoder2",
+      "blob_url": "/library/starcoder2:15b-instruct-v0.1-q4_1/blobs/7f651c2ef43f",
+      "content_preview": "arch  starcoder2",
+      "parameters": "16B",
+      "quantization": "Q4_1",
+      "size": "10GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starcoder2:15b-instruct-v0.1-q4_1/blobs/3d98b2e71868",
+      "content_preview": "{{ if .System }}{{ .System }}\n{{ end }}{{ if .Prompt }}### Instruction\n{{ .Prompt }}\n{{ end }}### Re",
+      "parameters": "",
+      "quantization": "",
+      "size": "141B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starcoder2:15b-instruct-v0.1-q4_1/blobs/4ec42cd966c9",
+      "content_preview": "BigCode Open RAIL-M v1 License Agreement\nSection I: Preamble\nThis OpenRAIL-M License Agreement was c",
+      "parameters": "",
+      "quantization": "",
+      "size": "13kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starcoder2:15b-instruct-v0.1-q4_1/blobs/708c319c4125",
+      "content_preview": "You are an exceptionally intelligent coding assistant that consistently delivers accurate and reliab",
+      "parameters": "",
+      "quantization": "",
+      "size": "136B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/starcoder2:15b-instruct-v0.1-q4_1/blobs/0aeac66f19bf",
+      "content_preview": "{\n    \"stop\": [\n        \"###\",\n        \"<|endoftext|>\",\n        \"<file_sep>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "66B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/starcoder2:15b-instruct-v0.1-q4_1",
+  "manifest_digest": "d7b4b40c5e4c",
+  "manifest_size": "10GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/starcoder2",
+  "scraped_at": "2026-07-13T20:13:10.575658+00:00",
+  "tag_name": "15b-instruct-v0.1-q4_1"
+}

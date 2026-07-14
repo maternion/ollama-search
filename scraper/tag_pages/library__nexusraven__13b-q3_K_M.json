@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/nexusraven:13b-q3_K_M/blobs/d2a2a85e4b39",
+      "content_preview": "arch  llama",
+      "parameters": "13B",
+      "quantization": "Q3_K_M",
+      "size": "6.3GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nexusraven:13b-q3_K_M/blobs/f3eb5f676185",
+      "content_preview": "<human>:\n{{ .System }}\nUser Query: Question: {{ .Prompt }}\nPlease pick a function from the above opt",
+      "parameters": "",
+      "quantization": "",
+      "size": "207B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nexusraven:13b-q3_K_M/blobs/63383decc5d4",
+      "content_preview": "{\n    \"stop\": [\n        \"Reflection:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "24B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/nexusraven:13b-q3_K_M",
+  "manifest_digest": "32ee186898d8",
+  "manifest_size": "6.3GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/nexusraven",
+  "scraped_at": "2026-07-13T21:09:03.263687+00:00",
+  "tag_name": "13b-q3_K_M"
+}

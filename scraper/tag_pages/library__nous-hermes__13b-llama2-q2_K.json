@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/nous-hermes:13b-llama2-q2_K/blobs/5e2766b6f312",
+      "content_preview": "arch  llama",
+      "parameters": "13B",
+      "quantization": "Q2_K",
+      "size": "5.4GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nous-hermes:13b-llama2-q2_K/blobs/0ba4455c4f46",
+      "content_preview": "### Instruction:\n{{ .Prompt }}\n{{- if .System }}\n### Input:\n{{ .System }}\n{{- end }}\n### Response:",
+      "parameters": "",
+      "quantization": "",
+      "size": "101B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nous-hermes:13b-llama2-q2_K/blobs/1678ff0c9fe5",
+      "content_preview": "Below is an instruction that describes a task. Write a response that appropriately completes the req",
+      "parameters": "",
+      "quantization": "",
+      "size": "105B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nous-hermes:13b-llama2-q2_K/blobs/419da6f50092",
+      "content_preview": "{\n    \"stop\": [\n        \"### Instruction:\",\n        \"### Input:\",\n        \"### Response:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "58B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/nous-hermes:13b-llama2-q2_K",
+  "manifest_digest": "351d072134ee",
+  "manifest_size": "5.4GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/nous-hermes",
+  "scraped_at": "2026-07-13T20:39:10.668637+00:00",
+  "tag_name": "13b-llama2-q2_K"
+}

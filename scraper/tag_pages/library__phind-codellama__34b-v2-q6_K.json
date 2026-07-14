@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/phind-codellama:34b-v2-q6_K/blobs/2574628e17dc",
+      "content_preview": "arch  llama",
+      "parameters": "33.7B",
+      "quantization": "Q6_K",
+      "size": "28GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phind-codellama:34b-v2-q6_K/blobs/fb9390528638",
+      "content_preview": "{{- if .System }}\n### System Prompt\n{{ .System }}\n{{- end }}\n### User Message\n{{ .Prompt }}\n### Assi",
+      "parameters": "",
+      "quantization": "",
+      "size": "108B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phind-codellama:34b-v2-q6_K/blobs/41774062cd34",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phind-codellama:34b-v2-q6_K/blobs/c26c7db9206c",
+      "content_preview": "You are an intelligent programming assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "46B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/phind-codellama:34b-v2-q6_K/blobs/62ab78abadd6",
+      "content_preview": "{\n    \"stop\": [\n        \"### System Prompt:\",\n        \"### User Message:\",\n        \"### Assistant:\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "69B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/phind-codellama:34b-v2-q6_K",
+  "manifest_digest": "c8e2f15ce087",
+  "manifest_size": "28GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/phind-codellama",
+  "scraped_at": "2026-07-13T21:01:58.815775+00:00",
+  "tag_name": "34b-v2-q6_K"
+}

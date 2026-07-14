@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/nous-hermes:70b-llama2-q3_K_M/blobs/6aaef0200085",
+      "content_preview": "arch  llama",
+      "parameters": "69B",
+      "quantization": "Q3_K_M",
+      "size": "33GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nous-hermes:70b-llama2-q3_K_M/blobs/1678ff0c9fe5",
+      "content_preview": "Below is an instruction that describes a task. Write a response that appropriately completes the req",
+      "parameters": "",
+      "quantization": "",
+      "size": "105B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nous-hermes:70b-llama2-q3_K_M/blobs/86db6b72d17d",
+      "content_preview": "{\n    \"num_gqa\": 8,\n    \"stop\": [\n        \"### Instruction:\",\n        \"### Input:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "54B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nous-hermes:70b-llama2-q3_K_M/blobs/0ba4455c4f46",
+      "content_preview": "### Instruction:\n{{ .Prompt }}\n{{- if .System }}\n### Input:\n{{ .System }}\n{{- end }}\n### Response:",
+      "parameters": "",
+      "quantization": "",
+      "size": "101B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/nous-hermes:70b-llama2-q3_K_M",
+  "manifest_digest": "32c31c64cdbf",
+  "manifest_size": "33GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/nous-hermes",
+  "scraped_at": "2026-07-13T20:39:40.366103+00:00",
+  "tag_name": "70b-llama2-q3_K_M"
+}

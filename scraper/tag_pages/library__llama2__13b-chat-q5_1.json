@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/llama2:13b-chat-q5_1/blobs/fa45a93f059c",
+      "content_preview": "arch  llama",
+      "parameters": "13B",
+      "quantization": "Q5_1",
+      "size": "9.8GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2:13b-chat-q5_1/blobs/8c17c2ebb0ea",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2:13b-chat-q5_1/blobs/7c23fb36d801",
+      "content_preview": "# Llama 2 Acceptable Use Policy\nMeta is committed to promoting safe and fair use of its tools and fe",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.8kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2:13b-chat-q5_1/blobs/fa304d675061",
+      "content_preview": "{\n    \"stop\": [\n        \"[INST]\",\n        \"[/INST]\",\n        \"<<SYS>>\",\n        \"<</SYS>>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "91B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama2:13b-chat-q5_1/blobs/2e0493f67d0c",
+      "content_preview": "[INST] <<SYS>>{{ .System }}<</SYS>>\n{{ .Prompt }} [/INST]",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/llama2:13b-chat-q5_1",
+  "manifest_digest": "76c91147b201",
+  "manifest_size": "9.8GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/llama2",
+  "scraped_at": "2026-07-13T19:57:32.008578+00:00",
+  "tag_name": "13b-chat-q5_1"
+}

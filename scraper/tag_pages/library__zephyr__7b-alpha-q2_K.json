@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/zephyr:7b-alpha-q2_K/blobs/616468d80b56",
+      "content_preview": "arch  llama",
+      "parameters": "7.24B",
+      "quantization": "Q2_K",
+      "size": "3.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/zephyr:7b-alpha-q2_K/blobs/a406579cd136",
+      "content_preview": "MIT License\nCopyright (c) [year] [fullname]\nPermission is hereby granted, free of charge, to any per",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/zephyr:7b-alpha-q2_K/blobs/fa956ab37b8c",
+      "content_preview": "{\n    \"stop\": [\n        \"<|system|>\",\n        \"<|user|>\",\n        \"<|assistant|>\",\n        \"</s>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "98B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/zephyr:7b-alpha-q2_K/blobs/a96be15318d6",
+      "content_preview": "{{- if .System }}\n<|system|>\n{{ .System }}\n</s>\n{{- end }}\n<|user|>\n{{ .Prompt }}\n</s>\n<|assistant|>",
+      "parameters": "",
+      "quantization": "",
+      "size": "101B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/zephyr:7b-alpha-q2_K",
+  "manifest_digest": "499c406f90e6",
+  "manifest_size": "3.1GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/zephyr",
+  "scraped_at": "2026-07-13T20:33:37.723600+00:00",
+  "tag_name": "7b-alpha-q2_K"
+}

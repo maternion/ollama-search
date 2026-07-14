@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/samantha-mistral:7b-v1.2-text-q3_K_L/blobs/6112f747cc4b",
+      "content_preview": "arch  llama",
+      "parameters": "7.24B",
+      "quantization": "Q3_K_L",
+      "size": "3.8GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/samantha-mistral:7b-v1.2-text-q3_K_L/blobs/10a191ba2399",
+      "content_preview": "<|im_start|>system\n{{ .System }}<|im_end|>\n<|im_start|>user\n{{ .Prompt }}<|im_end|>\n<|im_start|>assi",
+      "parameters": "",
+      "quantization": "",
+      "size": "107B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/samantha-mistral:7b-v1.2-text-q3_K_L/blobs/0ada08ebc54f",
+      "content_preview": "You are a caring and empathetic sentient AI companion named Samantha.",
+      "parameters": "",
+      "quantization": "",
+      "size": "70B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/samantha-mistral:7b-v1.2-text-q3_K_L/blobs/de6bcd73f9b4",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "58B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/samantha-mistral:7b-v1.2-text-q3_K_L",
+  "manifest_digest": "58fb1513b0bd",
+  "manifest_size": "3.8GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/samantha-mistral",
+  "scraped_at": "2026-07-13T20:57:39.512278+00:00",
+  "tag_name": "7b-v1.2-text-q3_K_L"
+}

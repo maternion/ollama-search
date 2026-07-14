@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gemma3",
+      "blob_url": "/library/medgemma:4b-it-bf16/blobs/ccb3af1e9a87",
+      "content_preview": "arch  gemma3",
+      "parameters": "4.3B",
+      "quantization": "F16",
+      "size": "8.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/medgemma:4b-it-bf16/blobs/f79eab3dd094",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if eq .Role \"u",
+      "parameters": "",
+      "quantization": "",
+      "size": "394B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/medgemma:4b-it-bf16/blobs/12cef37dd827",
+      "content_preview": "# Health AI Developer Foundations Terms of Use\nLast modified: November 15, 2024\nBy using, reproducin",
+      "parameters": "",
+      "quantization": "",
+      "size": "12kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/medgemma:4b-it-bf16/blobs/d3a76cb8c4a0",
+      "content_preview": "{\n    \"stop\": [\n        \"<end_of_turn>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "37B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/medgemma:4b-it-bf16",
+  "manifest_digest": "38229e514edc",
+  "manifest_size": "8.6GB",
+  "manifest_updated": "2 months ago",
+  "path": "/library/medgemma",
+  "scraped_at": "2026-07-13T21:25:05.642499+00:00",
+  "tag_name": "4b-it-bf16"
+}

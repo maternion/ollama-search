@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/goliath:120b-q8_0/blobs/688216ed2253",
+      "content_preview": "arch  llama",
+      "parameters": "118B",
+      "quantization": "Q8_0",
+      "size": "125GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/goliath:120b-q8_0/blobs/7b5f7b8fe4ed",
+      "content_preview": "{{ .System }}\nUSER: {{ .Prompt }}\nASSISTANT:",
+      "parameters": "",
+      "quantization": "",
+      "size": "45B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/goliath:120b-q8_0/blobs/c8472cd9daed",
+      "content_preview": "You are a helpful AI assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/goliath:120b-q8_0/blobs/31eff39f9e45",
+      "content_preview": "{\n    \"num_ctx\": 4096,\n    \"stop\": [\n        \"USER:\",\n        \"ASSISTANT:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "47B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/goliath:120b-q8_0",
+  "manifest_digest": "cb41bc287b73",
+  "manifest_size": "125GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/goliath",
+  "scraped_at": "2026-07-13T21:21:13.320615+00:00",
+  "tag_name": "120b-q8_0"
+}

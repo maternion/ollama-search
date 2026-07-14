@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/deepseek-r1:671b-0528-q4_K_M/blobs/7162a2550b7a",
+  "content": "\n{{- if .System }}{{ .System }}{{ end }}\n{{- if .Tools }}\n\n## Tools\n\n### Function\n\nYou have the following functions available:\n\n{{- range .Tools }}\n- {{ .Function.Name }}\n```json\n{{ .Function }}\n```\n{{- end }}\n\nFor function call returns, you should first print <｜tool▁calls▁begin｜>\n\nFor each function call, you must return:\n\n<｜tool▁call▁begin｜>function<｜tool▁sep｜><function_name>\\n```json\\n<function_arguments_in_json_format>\\n```<｜tool▁call▁end｜>\n\nDo not forget the function name or arguments. If more than one function call is required, return them in the same response instead of separately.\n\nAt the end of function call returns, you should print <｜tool▁calls▁end｜>.\n\n{{ end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1}}\n{{- if eq .Role \"user\" }}<｜User｜>{{ .Content }}\n{{- else if eq .Role \"tool\" }}<｜User｜><｜tool▁outputs▁begin｜><｜tool▁output▁begin｜>{{ .Content }}<｜tool▁output▁end｜><｜tool▁outputs▁end｜>\n{{- else if eq .Role \"assistant\" }}<｜Assistant｜>\n{{- if and $.IsThinkSet (and $last .Thinking) -}}\n<think>\n{{ .Thinking }}\n</think>\n{{- end }}\n{{- if .ToolCalls }}<｜tool▁calls▁begin｜>\n{{- range .ToolCalls }}<｜tool▁call▁begin｜>function<｜tool▁sep｜>{{ .Function.Name }}\n```json\n{{ .Function.Arguments }}\n```<｜tool▁call▁end｜>{{ end }}<｜tool▁calls▁end｜>\n{{- else if .Content }}{{ .Content }}{{- end }}\n{{- if not $last }}<｜end▁of▁sentence｜>{{ end }}\n{{- end }}\n{{- if and $last (ne .Role \"assistant\") }}<｜Assistant｜>\n{{- if and $.IsThinkSet (not $.Think) -}}\n<think>\n</think>\n{{ end }}\n{{- end }}\n{{- end }}",
+  "digest": "7162a2550b7a",
+  "metadata": [],
+  "size": "1.7kB",
+  "tensor_groups": [],
+  "tensors": []
+}

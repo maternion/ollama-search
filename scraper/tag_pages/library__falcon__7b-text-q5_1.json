@@ -1,0 +1,27 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "falcon",
+      "blob_url": "/library/falcon:7b-text-q5_1/blobs/100277a75181",
+      "content_preview": "arch  falcon",
+      "parameters": "7.22B",
+      "quantization": "Q5_1",
+      "size": "5.5GB",
+      "type": "model"
+    }
+  ],
+  "full_path": "/library/falcon:7b-text-q5_1",
+  "manifest_digest": "3a4e772d215e",
+  "manifest_size": "5.5GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/falcon",
+  "scraped_at": "2026-07-13T20:42:56.276589+00:00",
+  "tag_name": "7b-text-q5_1"
+}

@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/neural-chat:7b-v3.1-q5_K_S/blobs/ac4de3e38f2a",
+      "content_preview": "arch  llama",
+      "parameters": "7.24B",
+      "quantization": "Q5_K_S",
+      "size": "5.0GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/neural-chat:7b-v3.1-q5_K_S/blobs/bf99dec66c97",
+      "content_preview": "### System:\n{{ .System }}\n### User:\n{{ .Prompt }}\n### Assistant:",
+      "parameters": "",
+      "quantization": "",
+      "size": "67B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/neural-chat:7b-v3.1-q5_K_S/blobs/98784415b097",
+      "content_preview": "{\n    \"num_ctx\": 4096,\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "74B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/neural-chat:7b-v3.1-q5_K_S",
+  "manifest_digest": "d2c083566569",
+  "manifest_size": "5.0GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/neural-chat",
+  "scraped_at": "2026-07-13T20:45:53.766937+00:00",
+  "tag_name": "7b-v3.1-q5_K_S"
+}

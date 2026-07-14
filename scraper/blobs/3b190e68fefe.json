@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/starcoder2:3b-q3_K_M/blobs/3b190e68fefe",
+  "content": "<file_sep>\n{{- if .Suffix }}<fim_prefix>\n{{ .Prompt }}<fim_suffix>{{ .Suffix }}<fim_middle>\n{{- else }}{{ .Prompt }}\n{{- end }}<|end_of_text|>",
+  "digest": "3b190e68fefe",
+  "metadata": [],
+  "size": "142B",
+  "tensor_groups": [],
+  "tensors": []
+}

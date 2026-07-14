@@ -1,0 +1,27 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "falcon",
+      "blob_url": "/library/falcon:40b-text-fp16/blobs/2b75797cb7f5",
+      "content_preview": "arch  falcon",
+      "parameters": "41.8B",
+      "quantization": "F16",
+      "size": "84GB",
+      "type": "model"
+    }
+  ],
+  "full_path": "/library/falcon:40b-text-fp16",
+  "manifest_digest": "bc0d50593221",
+  "manifest_size": "84GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/falcon",
+  "scraped_at": "2026-07-13T20:43:11.097481+00:00",
+  "tag_name": "40b-text-fp16"
+}

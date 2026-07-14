@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/wizardcoder:34b-python-q3_K_S/blobs/9d0483d2bf65",
+      "content_preview": "arch  llama",
+      "parameters": "33.7B",
+      "quantization": "Q3_K_S",
+      "size": "15GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardcoder:34b-python-q3_K_S/blobs/8fadb9ad1206",
+      "content_preview": "Below is an instruction that describes a task. Write a response that appropriately completes the req",
+      "parameters": "",
+      "quantization": "",
+      "size": "106B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardcoder:34b-python-q3_K_S/blobs/bf6237d30a42",
+      "content_preview": "{\n    \"num_ctx\": 16384,\n    \"num_gqa\": 8\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "30B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/wizardcoder:34b-python-q3_K_S/blobs/2d836d77287d",
+      "content_preview": "{{ .System }}\n### Instruction:\n{{ .Prompt }}\n### Response:",
+      "parameters": "",
+      "quantization": "",
+      "size": "61B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/wizardcoder:34b-python-q3_K_S",
+  "manifest_digest": "5e0df15140c3",
+  "manifest_size": "15GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/wizardcoder",
+  "scraped_at": "2026-07-13T20:49:04.886128+00:00",
+  "tag_name": "34b-python-q3_K_S"
+}

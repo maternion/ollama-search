@@ -1,0 +1,48 @@
+{
+  "path": "/library/mistral-large",
+  "name": "mistral-large",
+  "scraped_at": "2026-07-13T19:28:59.131019+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/mistral-large/1b9ab956-d5ea-4927-a54a-3f969021d3db\" width=\"320\"/></p>\n\n<p>Mistral-Large-Instruct-2411 is an advanced dense Large Language Model (LLM) of 123B parameters with state-of-the-art reasoning, knowledge and coding capabilities.</p>\n\n<h3>Key features</h3>\n\n<ul>\n<li>Multi-lingual by design: Dozens of languages supported, including English, French, German, Spanish, Italian, Chinese, Japanese, Korean, Portuguese, Dutch and Polish.</li>\n<li>Proficient in coding: Trained on 80+ coding languages such as Python, Java, C, C++, JavacScript, and Bash. Also trained on more specific languages such as Swift and Fortran.</li>\n<li>Agentic-centric: Best-in-class agentic capabilities with native function calling and JSON outputting.</li>\n<li>Advanced Reasoning: State-of-the-art mathematical and reasoning capabilities.</li>\n<li>Mistral Research License: Allows usage and modification for research and non-commercial usages.</li>\n<li>Large Context: A large 128k context window.</li>\n</ul>\n\n<h2>References</h2>\n\n<p><a href=\"https://mistral.ai/news/mistral-large-2407/\" rel=\"nofollow\">Blog post</a></p>\n\n<p><a href=\"https://huggingface.co/mistralai/Mistral-Large-Instruct-2411\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model mistral-large"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model mistral-large"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model mistral-large"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model mistral-large"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model mistral-large"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model mistral-large"
+    }
+  ]
+}

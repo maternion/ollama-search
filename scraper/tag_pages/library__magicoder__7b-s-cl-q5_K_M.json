@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/library/magicoder:7b-s-cl-q5_K_M/blobs/6c866e48e381",
+      "content_preview": "arch  llama",
+      "parameters": "6.74B",
+      "quantization": "Q5_K_M",
+      "size": "4.8GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/magicoder:7b-s-cl-q5_K_M/blobs/317b1d8baaaa",
+      "content_preview": "You are an exceptionally intelligent coding assistant that consistently delivers accurate and reliab",
+      "parameters": "",
+      "quantization": "",
+      "size": "134B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/magicoder:7b-s-cl-q5_K_M/blobs/58e1b82a691f",
+      "content_preview": "{\n    \"num_ctx\": 16384\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "18B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/magicoder:7b-s-cl-q5_K_M/blobs/832698dc48ba",
+      "content_preview": "{{ .System }}\n@@ Instruction\n{{ .Prompt }}\n@@ Response",
+      "parameters": "",
+      "quantization": "",
+      "size": "57B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/magicoder:7b-s-cl-q5_K_M",
+  "manifest_digest": "057c4f587f41",
+  "manifest_size": "4.8GB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/magicoder",
+  "scraped_at": "2026-07-13T21:16:47.830023+00:00",
+  "tag_name": "7b-s-cl-q5_K_M"
+}

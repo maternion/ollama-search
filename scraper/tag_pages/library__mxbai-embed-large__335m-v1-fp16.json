@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "bert",
+      "blob_url": "/library/mxbai-embed-large:335m-v1-fp16/blobs/819c2adf5ce6",
+      "content_preview": "arch  bert",
+      "parameters": "334M",
+      "quantization": "F16",
+      "size": "670MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mxbai-embed-large:335m-v1-fp16/blobs/c71d239df917",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/mxbai-embed-large:335m-v1-fp16/blobs/b837481ff855",
+      "content_preview": "{\n    \"num_ctx\": 512\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "16B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/mxbai-embed-large:335m-v1-fp16",
+  "manifest_digest": "468836162de7",
+  "manifest_size": "670MB",
+  "manifest_updated": "2 years ago",
+  "path": "/library/mxbai-embed-large",
+  "scraped_at": "2026-07-13T19:49:06.153371+00:00",
+  "tag_name": "335m-v1-fp16"
+}

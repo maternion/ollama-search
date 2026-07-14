@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "deepseek2",
+      "blob_url": "/library/deepseek-v3:671b-q8_0/blobs/832c4e4d49ef",
+      "content_preview": "arch  deepseek2",
+      "parameters": "671B",
+      "quantization": "Q8_0",
+      "size": "713GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-v3:671b-q8_0/blobs/3a7c2cf04638",
+      "content_preview": "DEEPSEEK LICENSE AGREEMENT\nVersion 1.0, 23 October 2023\nCopyright (c) 2023 DeepSeek\nSection I: PREAM",
+      "parameters": "",
+      "quantization": "",
+      "size": "14kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-v3:671b-q8_0/blobs/f4d24e9138dd",
+      "content_preview": "{\n    \"stop\": [\n        \"<｜begin▁of▁sentence｜>\",\n        \"<｜end▁of▁sentence｜>\",",
+      "parameters": "",
+      "quantization": "",
+      "size": "148B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-v3:671b-q8_0/blobs/c5ce92dfece1",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- if eq .Role \"user\" }}<｜User｜>\n{{- else if eq .Role \"assista",
+      "parameters": "",
+      "quantization": "",
+      "size": "359B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/deepseek-v3:671b-q8_0",
+  "manifest_digest": "96061c74c1a5",
+  "manifest_size": "713GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/deepseek-v3",
+  "scraped_at": "2026-07-13T20:06:55.478064+00:00",
+  "tag_name": "671b-q8_0"
+}

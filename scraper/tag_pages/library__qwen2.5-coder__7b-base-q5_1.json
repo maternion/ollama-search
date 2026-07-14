@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/library/qwen2.5-coder:7b-base-q5_1/blobs/4dffb5770a5a",
+      "content_preview": "arch  qwen2",
+      "parameters": "7.62B",
+      "quantization": "Q5_1",
+      "size": "5.8GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen2.5-coder:7b-base-q5_1/blobs/832dd9e00a68",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen2.5-coder:7b-base-q5_1/blobs/96f5a2272876",
+      "content_preview": "{{- if .Suffix }}<|fim_prefix|>{{ .Prompt }}<|fim_suffix|>{{ .Suffix }}<|fim_middle|>{{ else }}{{ .P",
+      "parameters": "",
+      "quantization": "",
+      "size": "117B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/qwen2.5-coder:7b-base-q5_1",
+  "manifest_digest": "91c4eefa305c",
+  "manifest_size": "5.8GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/qwen2.5-coder",
+  "scraped_at": "2026-07-13T19:45:16.704570+00:00",
+  "tag_name": "7b-base-q5_1"
+}

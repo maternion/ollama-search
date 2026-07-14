@@ -1,0 +1,63 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "deepseek2",
+      "blob_url": "/library/deepseek-coder-v2:236b-instruct-q3_K_S/blobs/54d13c98d321",
+      "content_preview": "arch  deepseek2",
+      "parameters": "236B",
+      "quantization": "Q3_K_S",
+      "size": "102GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-coder-v2:236b-instruct-q3_K_S/blobs/4bb71764481f",
+      "content_preview": "DEEPSEEK LICENSE AGREEMENT\nVersion 1.0, 23 October 2023\nCopyright (c) 2023 DeepSeek\nSection I: PREAM",
+      "parameters": "",
+      "quantization": "",
+      "size": "14kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-coder-v2:236b-instruct-q3_K_S/blobs/1c8f573e830c",
+      "content_preview": "MIT License\nCopyright (c) 2023 DeepSeek\nPermission is hereby granted, free of charge, to any person",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-coder-v2:236b-instruct-q3_K_S/blobs/19f2fb9e8bc6",
+      "content_preview": "{\n    \"stop\": [\n        \"User:\",\n        \"Assistant:\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "32B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/deepseek-coder-v2:236b-instruct-q3_K_S/blobs/22091531faf0",
+      "content_preview": "{{- if .Suffix }}<｜fim▁begin｜>{{ .Prompt }}<｜fim▁hole｜>{{ .Suffix }}<｜fim▁end｜>\n{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "705B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/deepseek-coder-v2:236b-instruct-q3_K_S",
+  "manifest_digest": "d7317e5ddd3f",
+  "manifest_size": "102GB",
+  "manifest_updated": "1 year ago",
+  "path": "/library/deepseek-coder-v2",
+  "scraped_at": "2026-07-13T20:14:24.954141+00:00",
+  "tag_name": "236b-instruct-q3_K_S"
+}

@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "deepseek2",
+      "blob_url": "/library/cogito-2.1:671b-q8_0/blobs/8242e2dd2bc0",
+      "content_preview": "arch  deepseek2",
+      "parameters": "671B",
+      "quantization": "Q8_0",
+      "size": "713GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/cogito-2.1:671b-q8_0/blobs/ed3a11db19ba",
+      "content_preview": "MIT License\nCopyright (c) 2025 Deep Cogito\nPermission is hereby granted, free of charge, to any pers",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/cogito-2.1:671b-q8_0/blobs/f4d24e9138dd",
+      "content_preview": "{\n    \"stop\": [\n        \"<｜begin▁of▁sentence｜>\",\n        \"<｜end▁of▁sentence｜>\",",
+      "parameters": "",
+      "quantization": "",
+      "size": "148B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/cogito-2.1:671b-q8_0",
+  "manifest_digest": "958631d5989d",
+  "manifest_size": "713GB",
+  "manifest_updated": "7 months ago",
+  "path": "/library/cogito-2.1",
+  "scraped_at": "2026-07-13T21:24:44.406914+00:00",
+  "tag_name": "671b-q8_0"
+}
