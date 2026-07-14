@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/devstral:latest/blobs/ea9ec42474e0",
+  "content": "{{- $lastUserIndex := -1 }}\n{{- range $index, $_ := .Messages }}\n{{- if eq .Role \"user\" }}{{ $lastUserIndex = $index }}{{ end }}\n{{- end }}\n{{- range $index, $_ := .Messages }}\n{{- if eq .Role \"system\" }}[SYSTEM_PROMPT]{{ .Content }}[/SYSTEM_PROMPT]\n{{- else if eq .Role \"user\" }}\n{{- if and (eq $lastUserIndex $index) $.Tools }}[AVAILABLE_TOOLS]{{ $.Tools }}[/AVAILABLE_TOOLS]\n{{- end }}[INST]{{ .Content }}[/INST]\n{{- else if eq .Role \"assistant\" }}\n{{- if .Content }}{{ .Content }}\n{{- if not (eq (len (slice $.Messages $index)) 1) }}</s>\n{{- end }}\n{{- else if .ToolCalls }}[TOOL_CALLS][\n{{- range .ToolCalls }}{\"name\": \"{{ .Function.Name }}\", \"arguments\": {{ .Function.Arguments }}}\n{{- end }}]</s>\n{{- end }}\n{{- else if eq .Role \"tool\" }}[TOOL_RESULTS]{\"content\": {{ .Content }}}[/TOOL_RESULTS]\n{{- end }}\n{{- end }}",
+  "digest": "ea9ec42474e0",
+  "metadata": [],
+  "size": "823B",
+  "tensor_groups": [],
+  "tensors": []
+}
