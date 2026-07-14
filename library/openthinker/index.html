@@ -27,6 +27,15 @@
     <link rel="apple-touch-icon" sizes="180x" href="/ollama-search/assets/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/ollama-search/assets/android-chrome-icon-192x192.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/ollama-search/assets/android-chrome-icon-512x512.png" />
+    <script>
+(function() {
+  var stored = localStorage.getItem('theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (stored === 'dark' || (!stored && prefersDark)) {
+    document.documentElement.classList.add('dark');
+  }
+})();
+</script>
     <link href="/ollama-search/assets/tailwind.css" rel="stylesheet" />
     <link href="/ollama-search/assets/prism.css" rel="stylesheet" />
     <link href="/ollama-search/assets/extras.css" rel="stylesheet" />
@@ -38,7 +47,7 @@
         "url": "https://ollama.com"
       }
     </script>
-    <script src="/ollama-search/assets/htmx.bundle.js"></script>
+    <script defer src="/ollama-search/assets/htmx.bundle.js"></script>
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 <header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
@@ -453,13 +462,8 @@ console.log(response.message.content)</pre>
 </footer>
 <script>
 (function() {
-  const stored = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if (stored === 'dark' || (!stored && prefersDark)) {
-    document.documentElement.classList.add('dark');
-  }
   function toggle() {
-    const isDark = document.documentElement.classList.toggle('dark');
+    var isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }
   document.addEventListener('DOMContentLoaded', function() {
