@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/mistral-openorca:latest/blobs/ecf1d3ca1fb5",
+  "content": "{{- if .System }}\n<|im_start|>system {{ .System }}<|im_end|>\n{{- end }}\n<|im_start|>user\n{{ .Prompt }}<|im_end|>\n<|im_start|>assistant",
+  "digest": "ecf1d3ca1fb5",
+  "metadata": [],
+  "size": "135B",
+  "tensor_groups": [],
+  "tensors": []
+}
