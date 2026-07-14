@@ -1,48 +1,47 @@
 {
-  "path": "/maternion/context-1",
-  "name": "context-1",
-  "scraped_at": "2026-07-14T15:18:54.281109+00:00",
-  "readme_html": "\n        \n          <h1>Chroma Context-1</h1>\n\n<p>Context-1 is a 20B parameter agentic search model trained\nto retrieve supporting documents for complex, multi-hop\nqueries. It is designed to be used as a retrieval subagent\nalongside a frontier reasoning model: given a query,\nContext-1 decomposes it into subqueries, iteratively\nsearches a corpus, and selectively edits its own context\nto free capacity for further exploration.</p>\n\n<p>Context-1 achieves retrieval performance comparable to\nfrontier LLMs at a fraction of the cost and up to 10x\nfaster inference speed.</p>\n\n<p><strong>Technical report:</strong>\n<a href=\"https://trychroma.com/research/context-1\" rel=\"nofollow\">Chroma Context-1: Training a Self-Editing Search Agent</a></p>\n\n<h2>Model Details</h2>\n\n<ul>\n<li><strong>Base model:</strong> gpt-oss-20b</li>\n<li><strong>Parameters:</strong> 20B (Mixture of Experts)</li>\n<li><strong>Training:</strong> SFT + RL (CISPO) with a staged curriculum</li>\n<li><strong>Precision:</strong> BF16 (MXFP4 quantized checkpoint coming soon)</li>\n</ul>\n\n<h2>Key Capabilities</h2>\n\n<ul>\n<li><strong>Query decomposition:</strong> Breaks complex multi-constraint\nquestions into targeted subqueries.</li>\n<li><strong>Parallel tool calling:</strong> Averages 2.56 tool calls per\nturn, reducing total turns and end-to-end latency.</li>\n<li><strong>Self-editing context:</strong> Selectively prunes irrelevant\ndocuments mid-search to sustain retrieval quality over\nlong horizons within a bounded context window (0.94\nprune accuracy).</li>\n<li><strong>Cross-domain generalization:</strong> Trained on web, legal,\nand finance tasks; generalizes to held-out domains and\npublic benchmarks (BrowseComp-Plus, SealQA, FRAMES,\nHLE).</li>\n</ul>\n\n<h2>Important: Agent Harness Required</h2>\n\n<p>Context-1 is trained to operate within a specific agent\nharness that manages tool execution, token budgets, context\npruning, and deduplication. <strong>The harness is not yet\npublic.</strong> Running the model without it will not reproduce\nthe results reported in the technical report.</p>\n\n<p>We plan to release the full agent harness and evaluation\ncode soon. In the meantime, the technical report describes\nthe harness design in detail.</p>\n\n<h2>Citation</h2>\n\n<pre><code>@techreport{bashir2026context1,\n  title = {Chroma Context-1: Training a Self-Editing Search Agent},\n  author = {Bashir, Hammad and Hong, Kelly and Jiang, Patrick and Shi, Zhiyi},\n  year = {2026},\n  month = {March},\n  institution = {Chroma},\n  url = {https://trychroma.com/research/context-1},\n}\n</code></pre>\n\n<h2>License</h2>\n\n<p>Apache 2.0</p>\n\n        \n      ",
-  "manifest_updated": "",
-  "manifest_digest": "",
-  "manifest_size": "",
-  "files": [],
-  "cloud_usage_level": "",
-  "cloud_usage_active_slots": 0,
+  "applications": [
+    {
+      "command": "ollama launch claude --model maternion/context-1",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model maternion/context-1",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model maternion/context-1",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model maternion/context-1",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model maternion/context-1",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model maternion/context-1",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
   "cloud_context": "",
   "cloud_context_unit": "",
   "cloud_size": "",
   "cloud_size_unit": "",
-  "applications": [
-    {
-      "name": "Claude Code",
-      "icon_url": "/public/claude.png",
-      "command": "ollama launch claude --model maternion/context-1"
-    },
-    {
-      "name": "Codex App",
-      "icon_url": "/public/codex-app.png",
-      "command": "ollama launch codex-app --model maternion/context-1"
-    },
-    {
-      "name": "OpenClaw",
-      "icon_url": "/public/openclaw.png",
-      "command": "ollama launch openclaw --model maternion/context-1"
-    },
-    {
-      "name": "Hermes Agent",
-      "icon_url": "/public/hermes.png",
-      "command": "ollama launch hermes --model maternion/context-1"
-    },
-    {
-      "name": "Codex",
-      "icon_url": "/public/openai.png",
-      "command": "ollama launch codex --model maternion/context-1"
-    },
-    {
-      "name": "OpenCode",
-      "icon_url": "/public/opencode.png",
-      "command": "ollama launch opencode --model maternion/context-1"
-    }
-  ]
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "context-1",
+  "path": "/maternion/context-1",
+  "readme_html": "\n        \n          <h1>Chroma Context-1</h1>\n\n<p>Context-1 is a 20B parameter agentic search model trained\nto retrieve supporting documents for complex, multi-hop\nqueries. It is designed to be used as a retrieval subagent\nalongside a frontier reasoning model: given a query,\nContext-1 decomposes it into subqueries, iteratively\nsearches a corpus, and selectively edits its own context\nto free capacity for further exploration.</p>\n\n<p>Context-1 achieves retrieval performance comparable to\nfrontier LLMs at a fraction of the cost and up to 10x\nfaster inference speed.</p>\n\n<p><strong>Technical report:</strong>\n<a href=\"https://trychroma.com/research/context-1\" rel=\"nofollow\">Chroma Context-1: Training a Self-Editing Search Agent</a></p>\n\n<h2>Model Details</h2>\n\n<ul>\n<li><strong>Base model:</strong> gpt-oss-20b</li>\n<li><strong>Parameters:</strong> 20B (Mixture of Experts)</li>\n<li><strong>Training:</strong> SFT + RL (CISPO) with a staged curriculum</li>\n<li><strong>Precision:</strong> BF16 (MXFP4 quantized checkpoint coming soon)</li>\n</ul>\n\n<h2>Key Capabilities</h2>\n\n<ul>\n<li><strong>Query decomposition:</strong> Breaks complex multi-constraint\nquestions into targeted subqueries.</li>\n<li><strong>Parallel tool calling:</strong> Averages 2.56 tool calls per\nturn, reducing total turns and end-to-end latency.</li>\n<li><strong>Self-editing context:</strong> Selectively prunes irrelevant\ndocuments mid-search to sustain retrieval quality over\nlong horizons within a bounded context window (0.94\nprune accuracy).</li>\n<li><strong>Cross-domain generalization:</strong> Trained on web, legal,\nand finance tasks; generalizes to held-out domains and\npublic benchmarks (BrowseComp-Plus, SealQA, FRAMES,\nHLE).</li>\n</ul>\n\n<h2>Important: Agent Harness Required</h2>\n\n<p>Context-1 is trained to operate within a specific agent\nharness that manages tool execution, token budgets, context\npruning, and deduplication. <strong>The harness is not yet\npublic.</strong> Running the model without it will not reproduce\nthe results reported in the technical report.</p>\n\n<p>We plan to release the full agent harness and evaluation\ncode soon. In the meantime, the technical report describes\nthe harness design in detail.</p>\n\n<h2>Citation</h2>\n\n<pre><code>@techreport{bashir2026context1,\n  title = {Chroma Context-1: Training a Self-Editing Search Agent},\n  author = {Bashir, Hammad and Hong, Kelly and Jiang, Patrick and Shi, Zhiyi},\n  year = {2026},\n  month = {March},\n  institution = {Chroma},\n  url = {https://trychroma.com/research/context-1},\n}\n</code></pre>\n\n<h2>License</h2>\n\n<p>Apache 2.0</p>\n\n        \n      "
 }

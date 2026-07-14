@@ -1,48 +1,47 @@
 {
-  "path": "/maternion/manim-coder",
-  "name": "manim-coder",
-  "scraped_at": "2026-07-14T15:18:36.530807+00:00",
-  "readme_html": "\n        \n          <h1>Manim-Coder: Math Animation Code Generator</h1>\n\n<p>Fine-tuned <a href=\"https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct\" rel=\"nofollow\">Qwen2.5-Coder-14B-Instruct</a> model specialized for generating clean,\nexecutable Manim code for mathematical visualizations and educational animations.\nTrained on <a href=\"https://huggingface.co/datasets/BibbyResearch/3blue1brown-manim\" rel=\"nofollow\">BibbyResearch/3blue1brown-manim</a> dataset with 2,407 high-quality examples.</p>\n\n<h2>\ud83d\ude80 Quick Start</h2>\n\n<p><code>ollama run Maternion/manim-coder:14b</code></p>\n\n<h2>\ud83d\udca1 Example Usage</h2>\n\n<p>Input: \u201cCreate a circle that transforms into a square\u201d</p>\n\n<p>Output:</p>\n\n<pre><code>from manim import *\nclass CircleToSquare(Scene):\n    def construct(self):\n        circle = Circle(radius=2, color=BLUE)\n        square = Square(side_length=4, color=RED)\n        self.play(Create(circle))\n        self.wait(1)\n        self.play(Transform(circle, square), run_time=2)\n        self.wait(2)\n</code></pre>\n\n<h2>\ud83d\udd27 Model Details</h2>\n\n<ul>\n<li>Base Model: Qwen/Qwen2.5-Coder-14B-Instruct (14.7B parameters)</li>\n<li>Training Dataset: BibbyResearch/3blue1brown-manim (2,407 examples)</li>\n<li>Context Length: 131,072 tokens</li>\n<li>Format: GGUF F16 (~15GB)</li>\n<li>Fine-tuning: QLoRA with LoRA rank 8</li>\n</ul>\n\n<h2>\u2699\ufe0f Recommended Settings</h2>\n\n<ul>\n<li>Temperature: 0.3 (balance accuracy with creativity)</li>\n<li>Top-p: 0.8</li>\n<li>Top-k: 40</li>\n<li>Repeat penalty: 1.1</li>\n</ul>\n\n<h2>\ud83d\udcdd Modelfile</h2>\n\n<pre><code>FROM ./qwen-manim-complete-2-f16.gguf\nPARAMETER temperature 0.3\nPARAMETER top_p 0.8\nPARAMETER top_k 40\nPARAMETER repeat_penalty 1.1\nPARAMETER stop &#34;&lt;|im_end|&gt;&#34;\nPARAMETER stop &#34;&lt;|endoftext|&gt;&#34;\nTEMPLATE &#34;&#34;&#34;&lt;|im_start|&gt;system\nYou are an expert in Manim version 0.19.0. Generate clean, executable code for mathematical animations based on user requests.&lt;|im_end|&gt;\n&lt;|im_start|&gt;user\n{{ .Prompt }}&lt;|im_end|&gt;\n&lt;|im_start|&gt;assistant\n&#34;&#34;&#34;\n</code></pre>\n\n<h2>\ud83c\udf93 Applications</h2>\n\n<ul>\n<li>Mathematical concept visualization</li>\n<li>Educational animations (3Blue1Brown style)</li>\n<li>Physics simulations and demonstrations</li>\n<li>Algorithm visualization</li>\n<li>Data science animations</li>\n<li>Lecture content creation</li>\n</ul>\n\n<h2>\u26a0\ufe0f Limitations</h2>\n\n<ul>\n<li>Optimized for Manim v0.19.0 syntax</li>\n<li>Best suited for mathematical/educational content</li>\n<li>English prompts work best</li>\n<li>May need adjustments for newer Manim versions</li>\n</ul>\n\n<p>Built for mathematical education and beautiful animation generation!</p>\n\n        \n      ",
-  "manifest_updated": "",
-  "manifest_digest": "",
-  "manifest_size": "",
-  "files": [],
-  "cloud_usage_level": "",
-  "cloud_usage_active_slots": 0,
+  "applications": [
+    {
+      "command": "ollama launch claude --model maternion/manim-coder",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model maternion/manim-coder",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model maternion/manim-coder",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model maternion/manim-coder",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model maternion/manim-coder",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model maternion/manim-coder",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
   "cloud_context": "",
   "cloud_context_unit": "",
   "cloud_size": "",
   "cloud_size_unit": "",
-  "applications": [
-    {
-      "name": "Claude Code",
-      "icon_url": "/public/claude.png",
-      "command": "ollama launch claude --model maternion/manim-coder"
-    },
-    {
-      "name": "Codex App",
-      "icon_url": "/public/codex-app.png",
-      "command": "ollama launch codex-app --model maternion/manim-coder"
-    },
-    {
-      "name": "OpenClaw",
-      "icon_url": "/public/openclaw.png",
-      "command": "ollama launch openclaw --model maternion/manim-coder"
-    },
-    {
-      "name": "Hermes Agent",
-      "icon_url": "/public/hermes.png",
-      "command": "ollama launch hermes --model maternion/manim-coder"
-    },
-    {
-      "name": "Codex",
-      "icon_url": "/public/openai.png",
-      "command": "ollama launch codex --model maternion/manim-coder"
-    },
-    {
-      "name": "OpenCode",
-      "icon_url": "/public/opencode.png",
-      "command": "ollama launch opencode --model maternion/manim-coder"
-    }
-  ]
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "manim-coder",
+  "path": "/maternion/manim-coder",
+  "readme_html": "\n        \n          <h1>Manim-Coder: Math Animation Code Generator</h1>\n\n<p>Fine-tuned <a href=\"https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct\" rel=\"nofollow\">Qwen2.5-Coder-14B-Instruct</a> model specialized for generating clean,\nexecutable Manim code for mathematical visualizations and educational animations.\nTrained on <a href=\"https://huggingface.co/datasets/BibbyResearch/3blue1brown-manim\" rel=\"nofollow\">BibbyResearch/3blue1brown-manim</a> dataset with 2,407 high-quality examples.</p>\n\n<h2>🚀 Quick Start</h2>\n\n<p><code>ollama run Maternion/manim-coder:14b</code></p>\n\n<h2>💡 Example Usage</h2>\n\n<p>Input: “Create a circle that transforms into a square”</p>\n\n<p>Output:</p>\n\n<pre><code>from manim import *\nclass CircleToSquare(Scene):\n    def construct(self):\n        circle = Circle(radius=2, color=BLUE)\n        square = Square(side_length=4, color=RED)\n        self.play(Create(circle))\n        self.wait(1)\n        self.play(Transform(circle, square), run_time=2)\n        self.wait(2)\n</code></pre>\n\n<h2>🔧 Model Details</h2>\n\n<ul>\n<li>Base Model: Qwen/Qwen2.5-Coder-14B-Instruct (14.7B parameters)</li>\n<li>Training Dataset: BibbyResearch/3blue1brown-manim (2,407 examples)</li>\n<li>Context Length: 131,072 tokens</li>\n<li>Format: GGUF F16 (~15GB)</li>\n<li>Fine-tuning: QLoRA with LoRA rank 8</li>\n</ul>\n\n<h2>⚙️ Recommended Settings</h2>\n\n<ul>\n<li>Temperature: 0.3 (balance accuracy with creativity)</li>\n<li>Top-p: 0.8</li>\n<li>Top-k: 40</li>\n<li>Repeat penalty: 1.1</li>\n</ul>\n\n<h2>📝 Modelfile</h2>\n\n<pre><code>FROM ./qwen-manim-complete-2-f16.gguf\nPARAMETER temperature 0.3\nPARAMETER top_p 0.8\nPARAMETER top_k 40\nPARAMETER repeat_penalty 1.1\nPARAMETER stop &#34;&lt;|im_end|&gt;&#34;\nPARAMETER stop &#34;&lt;|endoftext|&gt;&#34;\nTEMPLATE &#34;&#34;&#34;&lt;|im_start|&gt;system\nYou are an expert in Manim version 0.19.0. Generate clean, executable code for mathematical animations based on user requests.&lt;|im_end|&gt;\n&lt;|im_start|&gt;user\n{{ .Prompt }}&lt;|im_end|&gt;\n&lt;|im_start|&gt;assistant\n&#34;&#34;&#34;\n</code></pre>\n\n<h2>🎓 Applications</h2>\n\n<ul>\n<li>Mathematical concept visualization</li>\n<li>Educational animations (3Blue1Brown style)</li>\n<li>Physics simulations and demonstrations</li>\n<li>Algorithm visualization</li>\n<li>Data science animations</li>\n<li>Lecture content creation</li>\n</ul>\n\n<h2>⚠️ Limitations</h2>\n\n<ul>\n<li>Optimized for Manim v0.19.0 syntax</li>\n<li>Best suited for mathematical/educational content</li>\n<li>English prompts work best</li>\n<li>May need adjustments for newer Manim versions</li>\n</ul>\n\n<p>Built for mathematical education and beautiful animation generation!</p>\n\n        \n      "
 }
