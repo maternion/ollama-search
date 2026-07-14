@@ -33,7 +33,10 @@ function getSort() {
 }
 
 function getQuery() {
-  var input = document.getElementById('form-input') || document.getElementById('navbar-input');
+  var a = document.activeElement;
+  var input = (a && (a.id === 'form-input' || a.id === 'navbar-input'))
+    ? a
+    : (document.getElementById('form-input') || document.getElementById('navbar-input'));
   return input ? input.value.toLowerCase().trim() : '';
 }
 
@@ -169,8 +172,14 @@ document.addEventListener('DOMContentLoaded', function() {
   if (document.getElementById('card-list')) {
     var formInput = document.getElementById('form-input');
     var navInput = document.getElementById('navbar-input');
-    if (formInput) formInput.addEventListener('input', applyFilters);
-    if (navInput) navInput.addEventListener('input', applyFilters);
+    if (formInput) formInput.addEventListener('input', function() {
+      if (navInput) navInput.value = formInput.value;
+      applyFilters();
+    });
+    if (navInput) navInput.addEventListener('input', function() {
+      if (formInput) formInput.value = navInput.value;
+      applyFilters();
+    });
     document.querySelectorAll('.cap-filter').forEach(function(cb) { cb.addEventListener('change', applyFilters); });
     var cloudFilter = document.getElementById('cloud-filter');
     if (cloudFilter) cloudFilter.addEventListener('change', applyFilters);
@@ -185,5 +194,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     applyFilters();
   }
+
+  // --- Navbar search preview dropdown (non-search pages only) ---
+  if (!document.getElementById('card-list')) {
+    initNavSuggest();
+  }
   initFmtFilters();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSearch);
+} else {
+  initSearch();
+}

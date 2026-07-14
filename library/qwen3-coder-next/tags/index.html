@@ -63,11 +63,12 @@
     <div class="flex-grow justify-center items-center hidden lg:flex">
       <div class="relative w-full xl:max-w-[28rem]">
         <form action="/ollama-search/" autocomplete="off" id="nav-search-form">
-          <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full">
+          <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full" hx-on:focusout="var rt=event.relatedTarget;if(rt&&(this.contains(rt)||document.getElementById('searchpreview').contains(rt)))return;var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');">
             <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
-            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/ollama-search/?q='+encodeURIComponent(this.value);}" />
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();var v=this.value.trim();window.location.href=v?'/ollama-search/?q='+encodeURIComponent(v):'/ollama-search/';return;}if(event.key==='Escape'){event.preventDefault();this.value='';this.blur();var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');return;}if(event.key==='Tab'){var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');return;}if(event.key==='ArrowDown'){var first=document.querySelector('#search-preview-list a:first-of-type');if(first)first.focus();event.preventDefault();}if(event.key==='ArrowUp'){var last=document.getElementById('view-all-link');if(last)last.focus();event.preventDefault();}var sp=document.getElementById('searchpreview');if(sp)sp.classList.remove('hidden');" hx-on:focus="var sp=document.getElementById('searchpreview');if(sp&&this.value.trim())sp.classList.remove('hidden');" />
           </div>
         </form>
+        <div id="searchpreview" class="hidden absolute left-0 right-0 top-12 z-50" style="width: calc(100% + 2px); margin-left: -1px;"></div>
       </div>
     </div>
     <div class="hidden lg:flex xl:flex-1 items-center space-x-2 justify-end ml-6 xl:ml-0">
@@ -131,167 +132,12 @@
     <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
       <div class="items-center grid bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs grid-cols-12 text-neutral-900 dark:text-neutral-100">
         <p class="col-span-6 hidden md:block">Name</p>
-        <p class="block col-span-6 md:hidden">4 models</p>
+        <p class="block col-span-6 md:hidden">0 models</p>
         <p class="col-span-2 hidden md:block">Size / Usage</p>
         <p class="col-span-2 hidden md:block">Context</p>
         <p class="col-span-2 hidden md:block">Input</p>
       </div>
-      <div class="group px-4 py-3">
-  <a href="/ollama-search/library/qwen3-coder-next/:latest/" class="md:hidden flex flex-col space-y-[6px] group">
-    <div class="flex items-center font-medium">
-      <div class="flex items-center justify-between w-full">
-        <div>
-          <span class="group-hover:underline">qwen3-coder-next:latest</span>
-          
-          
-        </div>
-      </div>
-    </div>
-    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
-      <span>
-        <span class="font-mono">ca06e9e4087c</span> • 52GB • 256K context window •
-        <span class="hidden sm:inline">Text input • 5 months ago</span>
-      </span>
-      <div class="flex sm:hidden">Text input • 5 months ago</div>
-    </div>
-  </a>
-  <div class="hidden md:flex flex-col space-y-[6px]">
-    <div class="grid grid-cols-12 items-center">
-      <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/ollama-search/library/qwen3-coder-next/:latest/" class="group-hover:underline">qwen3-coder-next:latest</a>
-        
-        
-        <input class="command hidden" value="qwen3-coder-next:latest" />
-        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
-          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-        </button>
-      </span>
-      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">52GB</p>
-      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
-      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text</div>
-    </div>
-    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
-      <span class="font-mono text-[11px]">ca06e9e4087c</span>&nbsp;·&nbsp;5 months ago
-    </div>
-  </div>
-</div>
-<div class="group px-4 py-3">
-  <a href="/ollama-search/library/qwen3-coder-next/:cloud/" class="md:hidden flex flex-col space-y-[6px] group">
-    <div class="flex items-center font-medium">
-      <div class="flex items-center justify-between w-full">
-        <div>
-          <span class="group-hover:underline">qwen3-coder-next:cloud</span>
-          
-          
-        </div>
-      </div>
-    </div>
-    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
-      <span>
-        <span class="font-mono">aa626c11ae8d</span> • Medium Usage • 256K context window •
-        <span class="hidden sm:inline">Text input • 5 months ago</span>
-      </span>
-      <div class="flex sm:hidden">Text input • 5 months ago</div>
-    </div>
-  </a>
-  <div class="hidden md:flex flex-col space-y-[6px]">
-    <div class="grid grid-cols-12 items-center">
-      <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/ollama-search/library/qwen3-coder-next/:cloud/" class="group-hover:underline">qwen3-coder-next:cloud</a>
-        
-        
-        <input class="command hidden" value="qwen3-coder-next:cloud" />
-        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
-          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-        </button>
-      </span>
-      <p x-test-model-tag-cost class="col-span-2 flex items-center gap-0.5 text-neutral-500 dark:text-neutral-400 text-[13px]"><span x-test-model-tag-usage-slot-active class="block h-1 w-4 rounded-full bg-neutral-800 dark:bg-neutral-200"></span><span x-test-model-tag-usage-slot-active class="block h-1 w-4 rounded-full bg-neutral-800 dark:bg-neutral-200"></span><span x-test-model-tag-usage-slot-inactive class="block h-1 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700"></span><span x-test-model-tag-usage-slot-inactive class="block h-1 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700"></span></p>
-      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
-      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text</div>
-    </div>
-    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
-      <span class="font-mono text-[11px]">aa626c11ae8d</span>&nbsp;·&nbsp;5 months ago
-    </div>
-  </div>
-</div>
-<div class="group px-4 py-3">
-  <a href="/ollama-search/library/qwen3-coder-next/:q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
-    <div class="flex items-center font-medium">
-      <div class="flex items-center justify-between w-full">
-        <div>
-          <span class="group-hover:underline">qwen3-coder-next:q4_K_M</span>
-          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
-          
-        </div>
-      </div>
-    </div>
-    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
-      <span>
-        <span class="font-mono">ca06e9e4087c</span> • 52GB • 256K context window •
-        <span class="hidden sm:inline">Text input • 5 months ago</span>
-      </span>
-      <div class="flex sm:hidden">Text input • 5 months ago</div>
-    </div>
-  </a>
-  <div class="hidden md:flex flex-col space-y-[6px]">
-    <div class="grid grid-cols-12 items-center">
-      <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/ollama-search/library/qwen3-coder-next/:q4_K_M/" class="group-hover:underline">qwen3-coder-next:q4_K_M</a>
-        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
-        
-        <input class="command hidden" value="qwen3-coder-next:q4_K_M" />
-        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
-          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-        </button>
-      </span>
-      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">52GB</p>
-      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
-      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text</div>
-    </div>
-    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
-      <span class="font-mono text-[11px]">ca06e9e4087c</span>&nbsp;·&nbsp;5 months ago
-    </div>
-  </div>
-</div>
-<div class="group px-4 py-3">
-  <a href="/ollama-search/library/qwen3-coder-next/:q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
-    <div class="flex items-center font-medium">
-      <div class="flex items-center justify-between w-full">
-        <div>
-          <span class="group-hover:underline">qwen3-coder-next:q8_0</span>
-          
-          
-        </div>
-      </div>
-    </div>
-    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
-      <span>
-        <span class="font-mono">3f68e12b44ee</span> • 85GB • 256K context window •
-        <span class="hidden sm:inline">Text input • 5 months ago</span>
-      </span>
-      <div class="flex sm:hidden">Text input • 5 months ago</div>
-    </div>
-  </a>
-  <div class="hidden md:flex flex-col space-y-[6px]">
-    <div class="grid grid-cols-12 items-center">
-      <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/ollama-search/library/qwen3-coder-next/:q8_0/" class="group-hover:underline">qwen3-coder-next:q8_0</a>
-        
-        
-        <input class="command hidden" value="qwen3-coder-next:q8_0" />
-        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
-          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-        </button>
-      </span>
-      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">85GB</p>
-      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
-      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text</div>
-    </div>
-    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
-      <span class="font-mono text-[11px]">3f68e12b44ee</span>&nbsp;·&nbsp;5 months ago
-    </div>
-  </div>
-</div>
+      
     </div>
   </div>
 </div>
@@ -330,7 +176,118 @@
     var isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }
-  document.addEventListener('DOMContentLoaded', function() {
+var NAV_MODELS = null;
+var NAV_BASE = (function() {
+  var s = document.querySelector('script[src*="assets/app.js"]');
+  if (s) {
+    var src = s.getAttribute('src');
+    var idx = src.indexOf('assets/app.js');
+    if (idx > 0) return src.substring(0, idx);
+  }
+  return '/';
+})();
+
+function loadNavModels(cb) {
+  if (NAV_MODELS) { cb(NAV_MODELS); return; }
+  var cached = null;
+  try { cached = sessionStorage.getItem('nav-models'); } catch (e) {}
+  if (cached) {
+    try { NAV_MODELS = JSON.parse(cached); cb(NAV_MODELS); return; } catch (e) {}
+  }
+  fetch(NAV_BASE + 'assets/models.json').then(function(r) { return r.json(); }).then(function(data) {
+    NAV_MODELS = data;
+    try { sessionStorage.setItem('nav-models', JSON.stringify(data)); } catch (e) {}
+    cb(NAV_MODELS);
+  }).catch(function() { cb([]); });
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function renderNavSuggest(query) {
+  var sp = document.getElementById('searchpreview');
+  if (!sp) return;
+  var q = query.toLowerCase().trim();
+  if (!q) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
+
+  var html = '<div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl w-full shadow-2xl shadow-black/5 overflow-hidden" id="search-preview-container" tabindex="0">';
+  html += '<div role="list" id="search-preview-list" class="group">';
+
+  var results = [];
+  for (var i = 0; i < NAV_MODELS.length; i++) {
+    var m = NAV_MODELS[i];
+    var name = m.name || '';
+    var desc = m.description || '';
+    if (name.toLowerCase().indexOf(q) !== -1 || desc.toLowerCase().indexOf(q) !== -1) {
+      results.push(m);
+    }
+  }
+  results.sort(function(a, b) { return (b.pulls || 0) - (a.pulls || 0); });
+  var top = results.slice(0, 5);
+
+  if (top.length === 0) {
+    html += '<div class="px-6 py-4 text-neutral-800 dark:text-neutral-300 text-sm">No models found.</div>';
+  } else {
+    for (var i = 0; i < top.length; i++) {
+      var m = top[i];
+      var path = m.path || ('/library/' + m.name);
+      html += '<div result>';
+      html += '<a tabindex="0" href="' + NAV_BASE + path.replace(/^\//, '') + '" class="flex items-center h-16 px-6 py-4 hover:bg-neutral-50 dark:hover:bg-white/5 focus:ring-0 focus:outline-none focus:bg-neutral-50 dark:focus:bg-white/5">';
+      html += '<div class="min-w-0 flex-1">';
+      html += '<h2 class="text-sm font-medium truncate dark:text-neutral-100">' + escHtml(m.name) + '</h2>';
+      html += '<p class="text-xs text-gray-600 dark:text-gray-600 truncate">' + escHtml(m.description) + '</p>';
+      html += '</div></a></div>';
+    }
+  }
+
+  html += '</div>';
+  html += '<a tabindex="0" id="view-all-link" href="' + NAV_BASE + '?q=' + encodeURIComponent(query) + '" class="' + (top.length === 0 ? 'hidden' : '') + ' block px-6 py-3 border-t border-neutral-200 dark:border-neutral-800 text-center text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-white/5 focus:bg-neutral-50 dark:focus:bg-white/5 focus:outline-none focus:ring-0 dark:text-neutral-200">View all &#8594;</a>';
+  html += '</div>';
+
+  sp.innerHTML = html;
+  sp.classList.remove('hidden');
+}
+
+var navSuggestTimer = null;
+function initNavSuggest() {
+  var input = document.getElementById('navbar-input');
+  var sp = document.getElementById('searchpreview');
+  if (!input || !sp) return;
+
+  input.addEventListener('input', function() {
+    if (navSuggestTimer) clearTimeout(navSuggestTimer);
+    navSuggestTimer = setTimeout(function() {
+      var v = input.value;
+      if (!v.trim()) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
+      loadNavModels(function() { renderNavSuggest(v); });
+    }, 100);
+  });
+
+  sp.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      sp.classList.add('hidden');
+      input.focus();
+      e.preventDefault();
+      return;
+    }
+    if (e.key === 'Enter') {
+      var el = document.activeElement;
+      if (el && el.tagName === 'A') { el.click(); e.preventDefault(); return; }
+    }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      var items = Array.from(sp.querySelectorAll('#search-preview-list a, #view-all-link'));
+      var ci = items.indexOf(document.activeElement);
+      var ni = e.key === 'ArrowDown' ? ci + 1 : ci - 1;
+      if (ni >= items.length) ni = 0;
+      if (ni < 0) ni = items.length - 1;
+      if (items[ni]) items[ni].focus();
+      e.preventDefault();
+    }
+  });
+}
+
+function initSearch() {
     document.getElementById('theme-toggle')?.addEventListener('click', toggle);
     document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggle);
   });

@@ -63,11 +63,12 @@
     <div class="flex-grow justify-center items-center hidden lg:flex">
       <div class="relative w-full xl:max-w-[28rem]">
         <form action="/ollama-search/" autocomplete="off" id="nav-search-form">
-          <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full">
+          <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full" hx-on:focusout="var rt=event.relatedTarget;if(rt&&(this.contains(rt)||document.getElementById('searchpreview').contains(rt)))return;var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');">
             <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
-            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/ollama-search/?q='+encodeURIComponent(this.value);}" />
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();var v=this.value.trim();window.location.href=v?'/ollama-search/?q='+encodeURIComponent(v):'/ollama-search/';return;}if(event.key==='Escape'){event.preventDefault();this.value='';this.blur();var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');return;}if(event.key==='Tab'){var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');return;}if(event.key==='ArrowDown'){var first=document.querySelector('#search-preview-list a:first-of-type');if(first)first.focus();event.preventDefault();}if(event.key==='ArrowUp'){var last=document.getElementById('view-all-link');if(last)last.focus();event.preventDefault();}var sp=document.getElementById('searchpreview');if(sp)sp.classList.remove('hidden');" hx-on:focus="var sp=document.getElementById('searchpreview');if(sp&&this.value.trim())sp.classList.remove('hidden');" />
           </div>
         </form>
+        <div id="searchpreview" class="hidden absolute left-0 right-0 top-12 z-50" style="width: calc(100% + 2px); margin-left: -1px;"></div>
       </div>
     </div>
     <div class="hidden lg:flex xl:flex-1 items-center space-x-2 justify-end ml-6 xl:ml-0">
@@ -102,7 +103,7 @@
          <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
            <span class="flex items-center">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
-             <span x-test-pull-count>172.1K</span>
+             <span x-test-pull-count>172K</span>
              <span class="hidden sm:flex">&nbsp;Downloads</span>
           </span>
           <span class="flex items-center" title="Dec 18, 2025 7:03 AM UTC">
@@ -174,7 +175,7 @@ console.log(response.message.content)</pre>
     <section class="flex flex-1 flex-col">
   <div class="flex items-center justify-between mb-4">
     <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Models</h2>
-    <a href="/ollama-search/library/functiongemma/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all 4 &#8594;</a>
+    <a href="/ollama-search/library/functiongemma/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all 0 &#8594;</a>
   </div>
   
   <div id="models-table-all" class="fmt-table">
@@ -182,315 +183,18 @@ console.log(response.message.content)</pre>
     <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
       <div class="items-center grid bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs grid-cols-12 text-neutral-900 dark:text-neutral-100">
         <p class="hidden sm:block col-span-6">Name</p>
-        <p class="sm:hidden col-span-6">4 models</p>
+        <p class="sm:hidden col-span-6">0 models</p>
         <p class="col-span-2 hidden sm:block">Size / Usage</p>
         <p class="col-span-2 hidden sm:block">Context</p>
         <p class="col-span-2 hidden sm:block">Input</p>
       </div>
-            <a href="/ollama-search/library/functiongemma/:latest/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
-        <span class="flex items-center">
-          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">functiongemma:latest</p>
-          
-          
-        </span>
-        <p class="flex text-neutral-500 dark:text-neutral-400">301MB · 32K context window · Text · 6 months ago</p>
-      </a>
-      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
-        <span class="col-span-6 flex items-center">
-          <a href="/ollama-search/library/functiongemma/:latest/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">functiongemma:latest</a>
-          
-          
-          <input class="command hidden" value="functiongemma:latest" />
-          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
-            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-          </button>
-        </span>
-        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">301MB</p>
-        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">32K</p>
-        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text</p>
-      </div>
-      <a href="/ollama-search/library/functiongemma/:270m/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
-        <span class="flex items-center">
-          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">functiongemma:270m</p>
-          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
-          
-        </span>
-        <p class="flex text-neutral-500 dark:text-neutral-400">301MB · 32K context window · Text · 6 months ago</p>
-      </a>
-      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
-        <span class="col-span-6 flex items-center">
-          <a href="/ollama-search/library/functiongemma/:270m/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">functiongemma:270m</a>
-          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
-          
-          <input class="command hidden" value="functiongemma:270m" />
-          <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this); event.preventDefault(); event.stopPropagation();">
-            <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-          </button>
-        </span>
-        <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400">301MB</p>
-        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">32K</p>
-        <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text</p>
-      </div>
+      
     </div>
   </div>
 </div>
 </section>
   </div>
-  <div class="flex flex-1 flex-col py-8" id="readme">
-  <div class="flex items-center justify-between pb-1">
-    <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Readme</h2>
-  </div>
-  <div>
-    <div id="display" class="prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black dark:prose-headings:text-neutral-200 dark:prose-blockquote:text-neutral-400 dark:prose-code:bg-neutral-800 dark:prose-code:text-neutral-200 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-200 dark:prose-li:text-neutral-200 dark:prose-td:text-neutral-300 dark:prose-th:text-neutral-200 dark:prose-a:text-blue-400 dark:prose-strong:text-neutral-200 dark:marker:prose-ol:text-neutral-400 dark:marker:prose-ul:text-neutral-400 dark:text-neutral-200">
-      
-        
-          <blockquote>
-<p>Requires Ollama v0.13.5 or later</p>
-</blockquote>
-
-<h3>FunctionGemma</h3>
-
-<p>FunctionGemma is a lightweight, open model from Google, built as a foundation for creating your own specialized function calling models. The model is well suited for text-only function calling. The uniquely small size makes it possible to deploy in environments with limited resources such as laptops, desktops or your own cloud infrastructure, democratizing access to state of the art AI models and helping foster innovation for everyone.</p>
-
-<p>FunctionGemma is not intended for use as a direct dialogue model, and is designed to be highly performant after further fine-tuning, as is typical of models this size.</p>
-
-<p>Built on the Gemma 3 270M model and with the same research and technology used to create the Gemini models, FunctionGemma has been trained specifically for function calling. The model has the same architecture as Gemma 3, but uses a different chat format.</p>
-
-<p>Furthermore, akin to the base Gemma 270M, the model has been optimized to be extremely versatile, performant on a variety of hardware in single turn scenarios, but should be finetuned on single turn or multiturn task specific data to achieve best accuracy in specific domains.</p>
-
-<h3>Examples</h3>
-
-<h4>Python</h4>
-
-<p>Run the python example with <code>uv run tool.py</code></p>
-
-<pre><code># /// script
-# requires-python = &#34;&gt;=3.11&#34;
-# dependencies = [
-#     &#34;ollama&#34;,
-#     &#34;rich&#34;,
-# ]
-# ///
-&#34;&#34;&#34;
-Single tool, single turn example.
-Run with: uv run tool.py
-&#34;&#34;&#34;
-
-import json
-
-from rich import print
-
-from ollama import chat
-
-model = &#39;functiongemma&#39;
-
-
-def get_weather(city: str) -&gt; str:
-  &#34;&#34;&#34;
-  Get the current weather for a city.
-
-  Args:
-    city: The name of the city
-
-  Returns:
-    A string describing the weather
-  &#34;&#34;&#34;
-  return json.dumps({&#39;city&#39;: city, &#39;temperature&#39;: 22, &#39;unit&#39;: &#39;celsius&#39;, &#39;condition&#39;: &#39;sunny&#39;})
-
-
-messages = [{&#39;role&#39;: &#39;user&#39;, &#39;content&#39;: &#39;What is the weather in Paris?&#39;}]
-print(&#39;Prompt:&#39;, messages[0][&#39;content&#39;])
-
-response = chat(model, messages=messages, tools=[get_weather])
-
-if response.message.tool_calls:
-  tool = response.message.tool_calls[0]
-  print(f&#39;Calling: {tool.function.name}({tool.function.arguments})&#39;)
-
-  result = get_weather(**tool.function.arguments)
-  print(f&#39;Result: {result}&#39;)
-
-  messages.append(response.message)
-  messages.append({&#39;role&#39;: &#39;tool&#39;, &#39;content&#39;: result})
-
-  final = chat(model, messages=messages)
-  print(&#39;Response:&#39;, final.message.content)
-else:
-  print(&#39;Response:&#39;, response.message.content)
-
-</code></pre>
-
-<h3>TypeScript</h3>
-
-<p>Run the TypeScript example with <code>bun run tool.ts</code> or <code>npx tsx tool.ts</code></p>
-
-<pre><code>/**
- * Single tool, single turn example.
- * Run with: bun run tool.ts or npx tsx tool.ts
- */
-
-const OLLAMA_HOST = process.env.OLLAMA_HOST || &#39;http://localhost:11434&#39;;
-const MODEL = &#39;functiongemma&#39;;
-
-function getWeather(city: string): string {
-  return JSON.stringify({ city, temperature: 22, unit: &#39;celsius&#39;, condition: &#39;sunny&#39; });
-}
-
-const tools = [
-  {
-    type: &#39;function&#39;,
-    function: {
-      name: &#39;get_weather&#39;,
-      description: &#39;Get the current weather for a city.&#39;,
-      parameters: {
-        type: &#39;object&#39;,
-        properties: {
-          city: { type: &#39;string&#39;, description: &#39;The name of the city&#39; },
-        },
-        required: [&#39;city&#39;],
-      },
-    },
-  },
-];
-
-interface Message {
-  role: string;
-  content: string;
-  tool_calls?: { function: { name: string; arguments: Record&lt;string, string&gt; } }[];
-}
-
-interface ChatResponse {
-  message: Message;
-}
-
-async function chat(messages: Message[]): Promise&lt;ChatResponse&gt; {
-  const response = await fetch(`${OLLAMA_HOST}/api/chat`, {
-    method: &#39;POST&#39;,
-    headers: { &#39;Content-Type&#39;: &#39;application/json&#39; },
-    body: JSON.stringify({ model: MODEL, messages, tools, stream: false }),
-  });
-
-  if (!response.ok) {
-    throw new Error(`HTTP error: ${response.status} ${await response.text()}`);
-  }
-
-  return response.json();
-}
-
-async function main() {
-  const messages: Message[] = [{ role: &#39;user&#39;, content: &#39;What is the weather in Paris?&#39; }];
-  console.log(&#39;Prompt:&#39;, messages[0].content);
-
-  const response = await chat(messages);
-
-  if (response.message.tool_calls?.length) {
-    const tool = response.message.tool_calls[0];
-    console.log(`Calling: ${tool.function.name}(${JSON.stringify(tool.function.arguments)})\n`);
-
-    const result = getWeather(tool.function.arguments.city);
-    console.log(&#39;Function Result:&#39;, result);
-
-    messages.push(response.message);
-    messages.push({ role: &#39;tool&#39;, content: result });
-
-    const final = await chat(messages);
-    console.log(&#39;Response:&#39;, final.message.content);
-  } else {
-    console.log(&#39;Response:&#39;, response.message.content);
-  }
-}
-
-main().catch(console.error);
-</code></pre>
-
-<h3>Benchmark</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th><strong>Benchmark</strong></th>
-      <th><strong>n-shot</strong></th>
-      <th><strong>Function Gemma 270m</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>BFCL Simple</td>
-      <td>0-shot</td>
-      <td>61.6</td>
-    </tr>
-    <tr>
-      <td>BFCL Multiple</td>
-      <td>0-shot</td>
-      <td>63.5</td>
-    </tr>
-    <tr>
-      <td>BFCL Parallel</td>
-      <td>0-shot</td>
-      <td>39</td>
-    </tr>
-    <tr>
-      <td>BFCL Parallel Multiple</td>
-      <td>0-shot</td>
-      <td>29.5</td>
-    </tr>
-    <tr>
-      <td>BFCL Live Simple</td>
-      <td>0-shot</td>
-      <td>36.2</td>
-    </tr>
-    <tr>
-      <td>BFCL Live Multiple</td>
-      <td>0-shot</td>
-      <td>25.7</td>
-    </tr>
-    <tr>
-      <td>BFCL Live Parallel</td>
-      <td>0-shot</td>
-      <td>22.9</td>
-    </tr>
-    <tr>
-      <td>BFCL Live Parallel Multiple</td>
-      <td>0-shot</td>
-      <td>20.8</td>
-    </tr>
-    <tr>
-      <td>BFCL Relevance</td>
-      <td>0-shot</td>
-      <td>61.1</td>
-    </tr>
-    <tr>
-      <td>BFCL Irrelevance</td>
-      <td>0-shot</td>
-      <td>73.7</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3>Training Dataset</h3>
-
-<p>These models were trained on a dataset of text data that includes a wide variety of sources. The model was trained with 6T tokens. The knowledge cutoff date for the training data was August 2024. There are the key components:</p>
-
-<ul>
-<li>Public Tool Definitions - Common APIs found on the web</li>
-<li>Tool Use Interactions - These are a mix of prompts, function calls, function responses, and natural language responses from the model to summarise the function call response, or request clarifications when the prompt is ambiguous or incomplete.</li>
-</ul>
-
-<h3>Data Preprocessing</h3>
-
-<p>Here are the key data cleaning and filtering methods applied to the training data:</p>
-
-<ul>
-<li>CSAM Filtering: Rigorous CSAM (Child Sexual Abuse Material) filtering was applied at multiple stages in the data preparation process to ensure the exclusion of harmful and illegal content.</li>
-<li>Sensitive Data Filtering: As part of making Gemma pre-trained models safe and reliable, automated techniques were used to filter out certain personal information and other sensitive data from training sets.</li>
-<li>Additional methods: Filtering based on content quality and safety in line with Google’s <a href="https://ai.google/static/documents/ai-responsibility-update-published-february-2025.pdf" rel="nofollow">policies</a>.</li>
-</ul>
-
-        
-      
-    </div>
-  </div>
-</div>
+  
 </main>
 
 <footer class="mt-auto">
@@ -523,7 +227,118 @@ main().catch(console.error);
     var isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }
-  document.addEventListener('DOMContentLoaded', function() {
+var NAV_MODELS = null;
+var NAV_BASE = (function() {
+  var s = document.querySelector('script[src*="assets/app.js"]');
+  if (s) {
+    var src = s.getAttribute('src');
+    var idx = src.indexOf('assets/app.js');
+    if (idx > 0) return src.substring(0, idx);
+  }
+  return '/';
+})();
+
+function loadNavModels(cb) {
+  if (NAV_MODELS) { cb(NAV_MODELS); return; }
+  var cached = null;
+  try { cached = sessionStorage.getItem('nav-models'); } catch (e) {}
+  if (cached) {
+    try { NAV_MODELS = JSON.parse(cached); cb(NAV_MODELS); return; } catch (e) {}
+  }
+  fetch(NAV_BASE + 'assets/models.json').then(function(r) { return r.json(); }).then(function(data) {
+    NAV_MODELS = data;
+    try { sessionStorage.setItem('nav-models', JSON.stringify(data)); } catch (e) {}
+    cb(NAV_MODELS);
+  }).catch(function() { cb([]); });
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function renderNavSuggest(query) {
+  var sp = document.getElementById('searchpreview');
+  if (!sp) return;
+  var q = query.toLowerCase().trim();
+  if (!q) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
+
+  var html = '<div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl w-full shadow-2xl shadow-black/5 overflow-hidden" id="search-preview-container" tabindex="0">';
+  html += '<div role="list" id="search-preview-list" class="group">';
+
+  var results = [];
+  for (var i = 0; i < NAV_MODELS.length; i++) {
+    var m = NAV_MODELS[i];
+    var name = m.name || '';
+    var desc = m.description || '';
+    if (name.toLowerCase().indexOf(q) !== -1 || desc.toLowerCase().indexOf(q) !== -1) {
+      results.push(m);
+    }
+  }
+  results.sort(function(a, b) { return (b.pulls || 0) - (a.pulls || 0); });
+  var top = results.slice(0, 5);
+
+  if (top.length === 0) {
+    html += '<div class="px-6 py-4 text-neutral-800 dark:text-neutral-300 text-sm">No models found.</div>';
+  } else {
+    for (var i = 0; i < top.length; i++) {
+      var m = top[i];
+      var path = m.path || ('/library/' + m.name);
+      html += '<div result>';
+      html += '<a tabindex="0" href="' + NAV_BASE + path.replace(/^\//, '') + '" class="flex items-center h-16 px-6 py-4 hover:bg-neutral-50 dark:hover:bg-white/5 focus:ring-0 focus:outline-none focus:bg-neutral-50 dark:focus:bg-white/5">';
+      html += '<div class="min-w-0 flex-1">';
+      html += '<h2 class="text-sm font-medium truncate dark:text-neutral-100">' + escHtml(m.name) + '</h2>';
+      html += '<p class="text-xs text-gray-600 dark:text-gray-600 truncate">' + escHtml(m.description) + '</p>';
+      html += '</div></a></div>';
+    }
+  }
+
+  html += '</div>';
+  html += '<a tabindex="0" id="view-all-link" href="' + NAV_BASE + '?q=' + encodeURIComponent(query) + '" class="' + (top.length === 0 ? 'hidden' : '') + ' block px-6 py-3 border-t border-neutral-200 dark:border-neutral-800 text-center text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-white/5 focus:bg-neutral-50 dark:focus:bg-white/5 focus:outline-none focus:ring-0 dark:text-neutral-200">View all &#8594;</a>';
+  html += '</div>';
+
+  sp.innerHTML = html;
+  sp.classList.remove('hidden');
+}
+
+var navSuggestTimer = null;
+function initNavSuggest() {
+  var input = document.getElementById('navbar-input');
+  var sp = document.getElementById('searchpreview');
+  if (!input || !sp) return;
+
+  input.addEventListener('input', function() {
+    if (navSuggestTimer) clearTimeout(navSuggestTimer);
+    navSuggestTimer = setTimeout(function() {
+      var v = input.value;
+      if (!v.trim()) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
+      loadNavModels(function() { renderNavSuggest(v); });
+    }, 100);
+  });
+
+  sp.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      sp.classList.add('hidden');
+      input.focus();
+      e.preventDefault();
+      return;
+    }
+    if (e.key === 'Enter') {
+      var el = document.activeElement;
+      if (el && el.tagName === 'A') { el.click(); e.preventDefault(); return; }
+    }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      var items = Array.from(sp.querySelectorAll('#search-preview-list a, #view-all-link'));
+      var ci = items.indexOf(document.activeElement);
+      var ni = e.key === 'ArrowDown' ? ci + 1 : ci - 1;
+      if (ni >= items.length) ni = 0;
+      if (ni < 0) ni = items.length - 1;
+      if (items[ni]) items[ni].focus();
+      e.preventDefault();
+    }
+  });
+}
+
+function initSearch() {
     document.getElementById('theme-toggle')?.addEventListener('click', toggle);
     document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggle);
   });

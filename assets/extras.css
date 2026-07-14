@@ -80,11 +80,6 @@
 .dark .dark\:border-blue-600 { border-color: #2563eb; }
 /* Focus state */
 .dark .dark\:focus\:border-blue-600:focus { border-color: #2563eb; }
-/* Emerald (reserved for future use) */
-.dark .dark\:bg-emerald-950\/50 { background-color: rgba(2, 44, 34, 0.5); }
-.dark .dark\:bg-emerald-950 { background-color: #022c22; }
-.dark .dark\:text-emerald-400 { color: #34d399; }
-
 /* --- Usage section dark mode --- */
 .dark section[data-usage-section] .border-neutral-200 { border-color: #262626 !important; }
 .dark .use-tab.text-neutral-900 { color: #fafafa; }
@@ -106,7 +101,7 @@
    The vendored tailwind.css includes the `.prose` base styles and most
    `prose-*` variant utilities, but is missing a handful used by ollama.com's
    `<div id="display">` (the bracket/precise-value heading margins, the
-   `prose-code:py-1` and `prose-code:text-[85%]` utilities, and the
+   `prose-code:text-[85%]` utility, and the
    `prose-td code:*` descendant compound variants). It also contains NO
    `dark:` variants at all, so every dark:prose-* utility on the readme
    container is implemented here. */
@@ -125,7 +120,6 @@
 .prose-headings\:mt-\[1\.25em\] :is(:where(h5):not(:where([class~=not-prose],[class~=not-prose] *))),
 .prose-headings\:mt-\[1\.25em\] :is(:where(h6):not(:where([class~=not-prose],[class~=not-prose] *))) { margin-top: 1.25em; }
 .prose-code\:text-\[85\%\] :is(:where(code):not(:where([class~=not-prose],[class~=not-prose] *))) { font-size: 85%; }
-.prose-code\:py-1 :is(:where(code):not(:where([class~=not-prose],[class~=not-prose] *))) { padding-top: 0.25rem; padding-bottom: 0.25rem; }
 /* `prose-td code:*` — code elements inside td cells within .prose tables */
 .prose-td code\:display-inline-block :is(:where(td code):not(:where([class~=not-prose],[class~=not-prose] *))) { display: inline-block; }
 .prose-td code\:bg-gray-200 :is(:where(td code):not(:where([class~=not-prose],[class~=not-prose] *))) { background-color: #e5e7eb; }
@@ -177,3 +171,10 @@
 
 /* --- fmt pill radio dark mode --- */
 .dark .peer:checked ~ label { background-color: #1e1b4b; border-color: #6366f1; }
+
+/* --- search preview dropdown --- */
+#searchpreview { max-height: 24rem; overflow-y: auto; }
+.dark select option { background-color: #0a0a0a; color: #e5e5e5; }
+.dark .dark\:text-gray-600 { color: #a3a3a3; }
+.dark .dark\:hover\:bg-white\/5:hover { background-color: rgba(255,255,255,0.05); }
+.dark .dark\:focus\:bg-white\/5:focus { background-color: rgba(255,255,255,0.05); }
