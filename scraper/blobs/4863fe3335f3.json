@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/nemotron:latest/blobs/4863fe3335f3",
+  "content": "<|start_header_id|>system<|end_header_id|>\n\n{{ if .Tools }}You have access to the following functions. To call a function, please respond with JSON for a function call. Respond in the format {\"name\": function name, \"parameters\": dictionary of argument name and its value}. Do not use variables.\n\n{{ range .Tools }}{{ . }}\n\n{{ end }}\n{{- end }}{{ .System }}<|eot_id|>\n{{- range $i, $_ := .Messages }}\n{{- $isLastMessage := eq (len (slice $.Messages $i)) 1 -}}\n{{- if eq .Role \"system\" }}\n{{- else if eq .Role \"assistant\" }}<|start_header_id|>assistant<|end_header_id|>\n\n{{ if .Content }}{{ .Content }}\n{{- else if .ToolCalls }}\n{{- range .ToolCalls }}{\"name\": \"{{ .Function.Name }}\", \"parameters\": {{ .Function.Arguments }} }\n{{- end }}\n{{- end }}\n{{- if not $isLastMessage }}<|eot_id|>\n{{- end }}\n{{- else if eq .Role \"tool\" }}<|start_header_id|>ipython<|end_header_id|>\n\n{{ .Content }}<|eot_id|>\n{{- if $isLastMessage }}<|start_header_id|>assistant<|end_header_id|>\n\n{{ end }}\n{{- else }}<|start_header_id|>{{ .Role }}<|end_header_id|>\n\n{{ .Content }}<|eot_id|>\n{{- if $isLastMessage }}<|start_header_id|>assistant<|end_header_id|>\n\n{{ end }}\n{{- end }}\n{{- end }}",
+  "digest": "4863fe3335f3",
+  "metadata": [],
+  "size": "1.2kB",
+  "tensor_groups": [],
+  "tensors": []
+}
