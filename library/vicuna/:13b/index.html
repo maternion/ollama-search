@@ -52,20 +52,20 @@
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 <header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
   <nav class="flex w-full items-center justify-between px-6 py-[9px]">
-    <a href="/ollama-search/search/" class="z-50">
+    <a href="/ollama-search/" class="z-50">
       <img src="/ollama-search/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
     </a>
     <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
-      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/search/">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/">Models</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
     </div>
     <div class="flex-grow justify-center items-center hidden lg:flex">
       <div class="relative w-full xl:max-w-[28rem]">
-        <form action="/ollama-search/search" autocomplete="off" id="nav-search-form">
+        <form action="/ollama-search/" autocomplete="off" id="nav-search-form">
           <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full">
             <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
-            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/ollama-search/search/?q='+encodeURIComponent(this.value);}" />
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/ollama-search/?q='+encodeURIComponent(this.value);}" />
           </div>
         </form>
       </div>
@@ -87,17 +87,17 @@
 </header>
 
 <main class="relative mx-auto flex w-full max-w-[52rem] flex-col px-6 py-10 md:py-24 lg:px-8">
-  <a href="/ollama-search/library/vicuna/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to tags</a>
+  <a href="/ollama-search/library/vicuna/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10" onclick="if(document.referrer&amp;&amp;document.referrer.includes(location.host)){history.back();return false;}">&larr; Back to tags</a>
   <div class="flex flex-col space-y-3">
     <div class="flex items-center min-w-0">
       <div class="flex items-center min-w-0 space-x-2">
         <div class="flex items-center min-w-0">
           <span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
             <a x-test-model-name href="/ollama-search/library/vicuna" title="vicuna" class="underline-offset-[5px] hover:underline">vicuna</a>:13b
-          </span>
-        </div>
-      </div>
-    </div>
+           </span>
+         </div>
+       </div>
+     </div>
     <div class="flex flex-col space-y-2">
       <div class="flex flex-col space-y-2">
         <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
@@ -227,7 +227,7 @@ ASSISTANT:</div><div class="hidden text-right text-xs text-neutral-400 dark:text
 <footer class="mt-auto">
   <div class="underline-offset-4 hidden md:block">
     <div class="flex items-center justify-between px-6 py-3.5">
-      <div class="text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="https://ollama.com/maternion" class="hover:underline">Maternion</a></div>
+      <div class="text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="/ollama-search/maternion/" class="hover:underline">Maternion</a></div>
       <div class="flex space-x-6 text-xs text-neutral-500 dark:text-neutral-400">
         <a href="https://ollama.com/download" class="hover:underline">Download</a>
         <a href="https://ollama.com/blog" class="hover:underline">Blog</a>
@@ -245,7 +245,7 @@ ASSISTANT:</div><div class="hidden text-right text-xs text-neutral-400 dark:text
       <li><a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a></li>
       <li><a href="https://ollama.com/pricing" class="hover:underline">Pricing</a></li>
     </ul>
-    <div class="mt-4 text-center text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="https://ollama.com/maternion" class="hover:underline">Maternion</a></div>
+    <div class="mt-4 text-center text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="/ollama-search/maternion/" class="hover:underline">Maternion</a></div>
   </div>
 </footer>
 <script>

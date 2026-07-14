@@ -24,6 +24,14 @@
 .dark .text-black { color: #fafafa; }
 .dark a:focus\:underline:focus { text-decoration: underline; }
 
+/* --- Prose table borders: match ollama.com style --- */
+#display table { border-collapse: collapse; }
+#display td, #display th { border-bottom: 1px solid #e5e7e0; }
+#display thead th { border-bottom: 2px solid #d1d5db; }
+#display tr:last-child td { border-bottom: 0; }
+.dark #display td, .dark #display th { border-bottom-color: #262626; }
+.dark #display thead th { border-bottom-color: #404040; }
+
 /* --- Dark: neutral classes (official Tailwind v3 palette) --- */
 .dark .dark\:bg-neutral-900 { background-color: #171717; }
 .dark .dark\:bg-neutral-950 { background-color: #0a0a0a; }
