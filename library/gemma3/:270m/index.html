@@ -20,16 +20,16 @@
     <meta property="twitter:image:src" content="https://ollama.com/public/og-twitter.png" />
     <meta property="twitter:image:width" content="1200" />
     <meta property="twitter:image:height" content="628" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48x48.png" />
-    <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64x64.png" />
-    <link rel="apple-touch-icon" sizes="180x" href="/assets/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/assets/android-chrome-icon-512x512.png" />
-    <link href="/assets/tailwind.css" rel="stylesheet" />
-    <link href="/assets/prism.css" rel="stylesheet" />
-    <link href="/assets/extras.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ollama-search/assets/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/ollama-search/assets/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/ollama-search/assets/icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/ollama-search/assets/icon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x" href="/ollama-search/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/ollama-search/assets/android-chrome-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/ollama-search/assets/android-chrome-icon-512x512.png" />
+    <link href="/ollama-search/assets/tailwind.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/prism.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/extras.css" rel="stylesheet" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -38,25 +38,25 @@
         "url": "https://ollama.com"
       }
     </script>
-    <script src="/assets/htmx.bundle.js"></script>
+    <script src="/ollama-search/assets/htmx.bundle.js"></script>
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 <header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
   <nav class="flex w-full items-center justify-between px-6 py-[9px]">
-    <a href="/search/" class="z-50">
-      <img src="/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
+    <a href="/ollama-search/search/" class="z-50">
+      <img src="/ollama-search/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
     </a>
     <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
-      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/search/">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/search/">Models</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
     </div>
     <div class="flex-grow justify-center items-center hidden lg:flex">
       <div class="relative w-full xl:max-w-[28rem]">
-        <form action="/search" autocomplete="off" id="nav-search-form">
+        <form action="/ollama-search/search" autocomplete="off" id="nav-search-form">
           <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full">
             <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
-            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/search/?q='+encodeURIComponent(this.value);}" />
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/ollama-search/search/?q='+encodeURIComponent(this.value);}" />
           </div>
         </form>
       </div>
@@ -78,13 +78,13 @@
 </header>
 
 <main class="relative mx-auto flex w-full max-w-[52rem] flex-col px-6 py-10 md:py-24 lg:px-8">
-  <a href="/library/gemma3/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to tags</a>
+  <a href="/ollama-search/library/gemma3/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to tags</a>
   <div class="flex flex-col space-y-3">
     <div class="flex items-center min-w-0">
       <div class="flex items-center min-w-0 space-x-2">
         <div class="flex items-center min-w-0">
           <span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
-            <a x-test-model-name href="/library/gemma3" title="gemma3" class="underline-offset-[5px] hover:underline">gemma3</a>:270m
+            <a x-test-model-name href="/ollama-search/library/gemma3" title="gemma3" class="underline-offset-[5px] hover:underline">gemma3</a>:270m
           </span>
         </div>
       </div>
@@ -173,19 +173,562 @@ console.log(response.message.content)</pre>
   <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
     <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
       <div class="flex items-center justify-between bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs text-neutral-900 dark:text-neutral-100">
-        <p>Updated 11 months ago</p>
+        <p class="hidden sm:block">Updated 11 months ago</p>
+        <p class="flex items-center sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>11 months ago</p>
         <p>e7d36fb2c3b3 · 292MB ·</p>
       </div>
-      <div class="px-4 py-3 text-[13px] text-neutral-500 dark:text-neutral-400 grid grid-cols-12 gap-2">
-        <p class="col-span-3">Context</p><p class="col-span-9">32K</p>
-        <p class="col-span-3">Input</p><p class="col-span-9">Text</p>
-        <p class="col-span-3">Size / Usage</p><p class="col-span-9">292MB</p>
-      </div>
+      <div class="group block grid-cols-12 gap-2 px-4 py-3 sm:grid sm:grid-cols-12"><div class="truncate text-sm font-medium text-neutral-800 dark:text-neutral-200 group-hover:underline sm:col-span-2 sm:col-start-1"><a href="/ollama-search/library/gemma3/:270m/blobs/735af2139dc6/" class="group-hover:underline">model</a></div><div class="truncate font-mono text-[13px] text-neutral-400 dark:text-neutral-500 subpixel-antialiased sm:col-span-8 sm:col-start-3"><div class="space-x-2 flex text-sm"><div class="flex sm:space-x-2 items-center"><span class="hidden sm:block">arch</span><span class="text-neutral-400 dark:text-neutral-500 sm:font-semibold sm:text-neutral-800 dark:sm:text-neutral-200 sm:text-xs">gemma3</span></div><div>·</div><div class="flex sm:space-x-2 items-center"><span class="hidden sm:block">parameters</span><span class="text-neutral-400 dark:text-neutral-500 sm:font-semibold sm:text-neutral-800 dark:sm:text-neutral-200 sm:text-xs">268M</span></div><div>·</div><div class="flex sm:space-x-2 items-center"><span class="hidden sm:block">quantization</span><span class="text-neutral-400 dark:text-neutral-500 sm:font-semibold sm:text-neutral-800 dark:sm:text-neutral-200 sm:text-xs">Q8_0</span></div></div></div><div class="hidden text-right text-xs text-neutral-400 dark:text-neutral-500 sm:col-start-12 sm:block">292MB</div></div>
+<div class="group block grid-cols-12 gap-2 px-4 py-3 sm:grid sm:grid-cols-12"><div class="truncate text-sm font-medium text-neutral-800 dark:text-neutral-200 group-hover:underline sm:col-span-2 sm:col-start-1"><a href="/ollama-search/library/gemma3/:270m/blobs/339e884a40f6/" class="group-hover:underline">params</a></div><div class="truncate font-mono text-[13px] text-neutral-400 dark:text-neutral-500 subpixel-antialiased sm:col-span-8 sm:col-start-3">{
+    &quot;stop&quot;: [
+        &quot;&lt;end_of_turn&gt;&quot;
+    ],
+    &quot;top_k&quot;: 64,
+    &quot;top_p&quot;: 0.95
+}</div><div class="hidden text-right text-xs text-neutral-400 dark:text-neutral-500 sm:col-start-12 sm:block">61B</div></div>
+<div class="group block grid-cols-12 gap-2 px-4 py-3 sm:grid sm:grid-cols-12"><div class="truncate text-sm font-medium text-neutral-800 dark:text-neutral-200 group-hover:underline sm:col-span-2 sm:col-start-1"><a href="/ollama-search/library/gemma3/:270m/blobs/3e2c24001f9e/" class="group-hover:underline">license</a></div><div class="truncate font-mono text-[13px] text-neutral-400 dark:text-neutral-500 subpixel-antialiased sm:col-span-8 sm:col-start-3">Gemma Terms of Use
+Last modified: February 21, 2024
+By using, reproducing, modifying, distributing,</div><div class="hidden text-right text-xs text-neutral-400 dark:text-neutral-500 sm:col-start-12 sm:block">8.4kB</div></div>
+<div class="group block grid-cols-12 gap-2 px-4 py-3 sm:grid sm:grid-cols-12"><div class="truncate text-sm font-medium text-neutral-800 dark:text-neutral-200 group-hover:underline sm:col-span-2 sm:col-start-1"><a href="/ollama-search/library/gemma3/:270m/blobs/4b19ac7dd2fb/" class="group-hover:underline">template</a></div><div class="truncate font-mono text-[13px] text-neutral-400 dark:text-neutral-500 subpixel-antialiased sm:col-span-8 sm:col-start-3">{{- $systemPromptAdded := false }}
+{{- range $i, $_ := .Messages }}
+{{- $last := eq (len (slice $.Me</div><div class="hidden text-right text-xs text-neutral-400 dark:text-neutral-500 sm:col-start-12 sm:block">476B</div></div>
     </div>
   </div>
 </section>
   </div>
-  
+  <div class="flex flex-1 flex-col py-8" id="readme">
+  <div class="flex items-center justify-between pb-1">
+    <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Readme</h2>
+  </div>
+  <div>
+    <div id="display" class="prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black dark:prose-headings:text-neutral-200 dark:prose-blockquote:text-neutral-400 dark:prose-code:bg-neutral-800 dark:prose-code:text-neutral-200 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-200 dark:prose-li:text-neutral-200 dark:prose-td:text-neutral-300 dark:prose-th:text-neutral-200 dark:prose-a:text-blue-400 dark:prose-strong:text-neutral-200 dark:marker:prose-ol:text-neutral-400 dark:marker:prose-ul:text-neutral-400 dark:text-neutral-200">
+      
+        
+          <p><img src="https://ollama.com/assets/library/gemma3/b54bf767-f9c5-4284-b551-a49aebe3a3c2" alt="Google Gemma 3 logo"/></p>
+
+<blockquote>
+<p>This model requires Ollama 0.6 or later. <a href="https://ollama.com/download" rel="nofollow">Download Ollama</a></p>
+</blockquote>
+
+<p>Gemma is a lightweight, family of models from Google built on Gemini technology. The Gemma 3 models are multimodal—processing text and images—and feature a 128K context window with support for over 140 languages. Available in 270M, 1B, 4B, 12B, and 27B parameter sizes, they excel in tasks like question answering, summarization, and reasoning, while their compact design allows deployment on resource-limited devices.</p>
+
+<h2>Models</h2>
+
+<h3>Text</h3>
+
+<p><strong>270M parameter model</strong> (32k context window)</p>
+
+<pre><code>ollama run gemma3:270m
+</code></pre>
+
+<p><strong>1B parameter model</strong> (32k context window)</p>
+
+<pre><code>ollama run gemma3:1b 
+</code></pre>
+
+<h3>Multimodal (Vision)</h3>
+
+<p><strong>4B parameter model</strong> (128k context window)</p>
+
+<pre><code>ollama run gemma3:4b
+</code></pre>
+
+<p><strong>12B parameter model</strong> (128k context window)</p>
+
+<pre><code>ollama run gemma3:12b
+</code></pre>
+
+<p><strong>27B parameter model</strong> (128k context window)</p>
+
+<pre><code>ollama run gemma3:27b
+</code></pre>
+
+<h3>Quantization aware trained models (QAT)</h3>
+
+<p>The quantization aware trained Gemma 3 models preserves similar quality as half precision models (BF16) while maintaining a lower memory footprint (3x less compared to non-quantized models).</p>
+
+<p><strong>1B parameter model</strong></p>
+
+<pre><code>ollama run gemma3:1b-it-qat
+</code></pre>
+
+<p><strong>4B parameter model</strong></p>
+
+<pre><code>ollama run gemma3:4b-it-qat
+</code></pre>
+
+<p><strong>12B parameter model</strong></p>
+
+<pre><code>ollama run gemma3:12b-it-qat
+</code></pre>
+
+<p><strong>27B parameter model</strong></p>
+
+<pre><code>ollama run gemma3:27b-it-qat
+</code></pre>
+
+<h2>Evaluation</h2>
+
+<p><img src="https://ollama.com/assets/library/gemma3/89dc5a19-179e-4dd3-8e5d-12ad54973148" alt="Chatbot Arena ELO Score"/></p>
+
+<h3>Benchmark Results</h3>
+
+<p><strong>Gemma 3 270M</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Benchmark</strong></th>
+<th align="center"><strong>n-shot</strong></th>
+<th align="right"><strong>Gemma 3 270m instruction tuned</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><a href="https://arxiv.org/abs/1905.07830" rel="nofollow">HellaSwag</a></td>
+<td align="center">0-shot</td>
+<td align="right">37.7</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://arxiv.org/abs/1911.11641" rel="nofollow">PIQA</a></td>
+<td align="center">0-shot</td>
+<td align="right">66.2</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://arxiv.org/abs/1911.01547" rel="nofollow">ARC-c</a></td>
+<td align="center">0-shot</td>
+<td align="right">28.2</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://arxiv.org/abs/1907.10641" rel="nofollow">WinoGrande</a></td>
+<td align="center">0-shot</td>
+<td align="right">52.3</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://paperswithcode.com/dataset/bbh" rel="nofollow">BIG-Bench Hard</a></td>
+<td align="center">few-shot</td>
+<td align="right">26.7</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://arxiv.org/abs/2311.07911" rel="nofollow">IF Eval</a></td>
+<td align="center">0-shot</td>
+<td align="right">51.2</td>
+</tr>
+</tbody>
+</table>
+<p>These models were evaluated against a large collection of different datasets and
+metrics to cover different aspects of text generation:</p>
+
+<h4>Reasoning, logic and code capabilities</h4>
+
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Metric</th>
+<th align="center">Gemma 3 PT 1B</th>
+<th align="center">Gemma 3 PT 4B</th>
+<th align="center">Gemma 3 PT 12B</th>
+<th align="center">Gemma 3 PT 27B</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://arxiv.org/abs/1905.07830" rel="nofollow">HellaSwag</a></td>
+<td>10-shot</td>
+<td align="center">62.3</td>
+<td align="center">77.2</td>
+<td align="center">84.2</td>
+<td align="center">85.6</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/1905.10044" rel="nofollow">BoolQ</a></td>
+<td>0-shot</td>
+<td align="center">63.2</td>
+<td align="center">72.3</td>
+<td align="center">78.8</td>
+<td align="center">82.4</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/1911.11641" rel="nofollow">PIQA</a></td>
+<td>0-shot</td>
+<td align="center">73.8</td>
+<td align="center">79.6</td>
+<td align="center">81.8</td>
+<td align="center">83.3</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/1904.09728" rel="nofollow">SocialIQA</a></td>
+<td>0-shot</td>
+<td align="center">48.9</td>
+<td align="center">51.9</td>
+<td align="center">53.4</td>
+<td align="center">54.9</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/1705.03551" rel="nofollow">TriviaQA</a></td>
+<td>5-shot</td>
+<td align="center">39.8</td>
+<td align="center">65.8</td>
+<td align="center">78.2</td>
+<td align="center">85.5</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/google-research-datasets/natural-questions" rel="nofollow">Natural Questions</a></td>
+<td>5-shot</td>
+<td align="center">9.48</td>
+<td align="center">20.0</td>
+<td align="center">31.4</td>
+<td align="center">36.1</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/1911.01547" rel="nofollow">ARC-c</a></td>
+<td>25-shot</td>
+<td align="center">38.4</td>
+<td align="center">56.2</td>
+<td align="center">68.9</td>
+<td align="center">70.6</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/1911.01547" rel="nofollow">ARC-e</a></td>
+<td>0-shot</td>
+<td align="center">73.0</td>
+<td align="center">82.4</td>
+<td align="center">88.3</td>
+<td align="center">89.0</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/1907.10641" rel="nofollow">WinoGrande</a></td>
+<td>5-shot</td>
+<td align="center">58.2</td>
+<td align="center">64.7</td>
+<td align="center">74.3</td>
+<td align="center">78.8</td>
+</tr>
+
+<tr>
+<td><a href="https://paperswithcode.com/dataset/bbh" rel="nofollow">BIG-Bench Hard</a></td>
+<td></td>
+<td align="center">28.4</td>
+<td align="center">50.9</td>
+<td align="center">72.6</td>
+<td align="center">77.7</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/1903.00161" rel="nofollow">DROP</a></td>
+<td>3-shot, F1</td>
+<td align="center">42.4</td>
+<td align="center">60.1</td>
+<td align="center">72.2</td>
+<td align="center">77.2</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2304.06364" rel="nofollow">AGIEval</a></td>
+<td>3-5-shot</td>
+<td align="center">22.2</td>
+<td align="center">42.1</td>
+<td align="center">57.4</td>
+<td align="center">66.2</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2009.03300" rel="nofollow">MMLU</a></td>
+<td>5-shot, top-1</td>
+<td align="center">26.5</td>
+<td align="center">59.6</td>
+<td align="center">74.5</td>
+<td align="center">78.6</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2103.03874" rel="nofollow">MATH</a></td>
+<td>4-shot</td>
+<td align="center">–</td>
+<td align="center">24.2</td>
+<td align="center">43.3</td>
+<td align="center">50.0</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2110.14168" rel="nofollow">GSM8K</a></td>
+<td>5-shot, maj@1</td>
+<td align="center">1.36</td>
+<td align="center">38.4</td>
+<td align="center">71.0</td>
+<td align="center">82.6</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2311.12022" rel="nofollow">GPQA</a></td>
+<td></td>
+<td align="center">9.38</td>
+<td align="center">15.0</td>
+<td align="center">25.4</td>
+<td align="center">24.3</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2009.03300" rel="nofollow">MMLU</a> (Pro)</td>
+<td>5-shot</td>
+<td align="center">11.2</td>
+<td align="center">23.7</td>
+<td align="center">40.8</td>
+<td align="center">43.9</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2108.07732" rel="nofollow">MBPP</a></td>
+<td>3-shot</td>
+<td align="center">9.80</td>
+<td align="center">46.0</td>
+<td align="center">60.4</td>
+<td align="center">65.6</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2107.03374" rel="nofollow">HumanEval</a></td>
+<td>pass@1</td>
+<td align="center">6.10</td>
+<td align="center">36.0</td>
+<td align="center">45.7</td>
+<td align="center">48.8</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2009.03300" rel="nofollow">MMLU</a> (Pro COT)</td>
+<td>5-shot</td>
+<td align="center">9.7</td>
+<td align="center">NaN</td>
+<td align="center">NaN</td>
+<td align="center">NaN</td>
+</tr>
+</tbody>
+</table>
+
+<h4>Multilingual capabilities</h4>
+
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th align="center">Gemma 3 PT 1B</th>
+<th align="center">Gemma 3 PT 4B</th>
+<th align="center">Gemma 3 PT 12B</th>
+<th align="center">Gemma 3 PT 27B</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://arxiv.org/abs/2210.03057" rel="nofollow">MGSM</a></td>
+<td align="center">2.04</td>
+<td align="center">34.7</td>
+<td align="center">64.3</td>
+<td align="center">74.3</td>
+</tr>
+
+<tr>
+<td><a href="https://huggingface.co/datasets/CohereForAI/Global-MMLU-Lite" rel="nofollow">Global-MMLU-Lite</a></td>
+<td align="center">24.9</td>
+<td align="center">57.0</td>
+<td align="center">69.4</td>
+<td align="center">75.7</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2308.16884" rel="nofollow">Belebele</a></td>
+<td align="center">26.6</td>
+<td align="center">59.4</td>
+<td align="center">78.0</td>
+<td align="center">–</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2502.12404v1" rel="nofollow">WMT24++</a> (ChrF)</td>
+<td align="center">36.7</td>
+<td align="center">48.4</td>
+<td align="center">53.9</td>
+<td align="center">55.7</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2106.03193" rel="nofollow">FloRes</a></td>
+<td align="center">29.5</td>
+<td align="center">39.2</td>
+<td align="center">46.0</td>
+<td align="center">48.8</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2106.13822" rel="nofollow">XL-Sum</a></td>
+<td align="center">4.82</td>
+<td align="center">8.55</td>
+<td align="center">12.2</td>
+<td align="center">14.9</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/1910.11856v3" rel="nofollow">XQuAD</a> (all)</td>
+<td align="center">43.9</td>
+<td align="center">68.0</td>
+<td align="center">74.5</td>
+<td align="center">76.8</td>
+</tr>
+</tbody>
+</table>
+
+<h4>Multimodal capabilities</h4>
+
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th align="center">Gemma 3 PT 4B</th>
+<th align="center">Gemma 3 PT 12B</th>
+<th align="center">Gemma 3 PT 27B</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://cocodataset.org/#home" rel="nofollow">COCOcap</a></td>
+<td align="center">102</td>
+<td align="center">111</td>
+<td align="center">116</td>
+</tr>
+
+<tr>
+<td><a href="https://www.docvqa.org/" rel="nofollow">DocVQA</a> (val)</td>
+<td align="center">72.8</td>
+<td align="center">82.3</td>
+<td align="center">85.6</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2104.12756" rel="nofollow">InfoVQA</a> (val)</td>
+<td align="center">44.1</td>
+<td align="center">54.8</td>
+<td align="center">59.4</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2311.16502" rel="nofollow">MMMU</a> (pt)</td>
+<td align="center">39.2</td>
+<td align="center">50.3</td>
+<td align="center">56.1</td>
+</tr>
+
+<tr>
+<td><a href="https://textvqa.org/" rel="nofollow">TextVQA</a> (val)</td>
+<td align="center">58.9</td>
+<td align="center">66.5</td>
+<td align="center">68.6</td>
+</tr>
+
+<tr>
+<td><a href="https://paperswithcode.com/dataset/realworldqa" rel="nofollow">RealWorldQA</a></td>
+<td align="center">45.5</td>
+<td align="center">52.2</td>
+<td align="center">53.9</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/html/2406.09175v1" rel="nofollow">ReMI</a></td>
+<td align="center">27.3</td>
+<td align="center">38.5</td>
+<td align="center">44.8</td>
+</tr>
+
+<tr>
+<td><a href="https://allenai.org/data/diagrams" rel="nofollow">AI2D</a></td>
+<td align="center">63.2</td>
+<td align="center">75.2</td>
+<td align="center">79.0</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2203.10244" rel="nofollow">ChartQA</a></td>
+<td align="center">45.4</td>
+<td align="center">60.9</td>
+<td align="center">63.8</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2203.10244" rel="nofollow">ChartQA</a> (augmented)</td>
+<td align="center">81.8</td>
+<td align="center">88.5</td>
+<td align="center">88.7</td>
+</tr>
+
+<tr>
+<td><a href="https://visualqa.org/index.html" rel="nofollow">VQAv2</a></td>
+<td align="center">–</td>
+<td align="center">–</td>
+<td align="center">–</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/2404.12390" rel="nofollow">BLINK</a></td>
+<td align="center">38.0</td>
+<td align="center">35.9</td>
+<td align="center">39.6</td>
+</tr>
+
+<tr>
+<td><a href="https://okvqa.allenai.org/" rel="nofollow">OKVQA</a></td>
+<td align="center">51.0</td>
+<td align="center">58.7</td>
+<td align="center">60.2</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/1810.12440" rel="nofollow">TallyQA</a></td>
+<td align="center">42.5</td>
+<td align="center">51.8</td>
+<td align="center">54.3</td>
+</tr>
+
+<tr>
+<td><a href="https://arxiv.org/abs/1908.02660" rel="nofollow">SpatialSense VQA</a></td>
+<td align="center">50.9</td>
+<td align="center">60.0</td>
+<td align="center">59.4</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/google-research/big_vision/blob/main/big_vision/datasets/countbenchqa/" rel="nofollow">CountBenchQA</a></td>
+<td align="center">26.1</td>
+<td align="center">17.8</td>
+<td align="center">68.0</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Reference</h2>
+
+<p><a href="https://ai.google.dev/gemma/terms" rel="nofollow">Gemma Terms of Use</a></p>
+
+        
+      
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="mt-auto">
@@ -229,6 +772,6 @@ console.log(response.message.content)</pre>
   });
 })();
 </script>
-<script src="/assets/app.js"></script>
+<script src="/ollama-search/assets/app.js"></script>
 </body>
 </html>

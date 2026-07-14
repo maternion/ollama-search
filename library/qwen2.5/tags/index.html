@@ -20,16 +20,16 @@
     <meta property="twitter:image:src" content="https://ollama.com/public/og-twitter.png" />
     <meta property="twitter:image:width" content="1200" />
     <meta property="twitter:image:height" content="628" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48x48.png" />
-    <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64x64.png" />
-    <link rel="apple-touch-icon" sizes="180x" href="/assets/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/assets/android-chrome-icon-512x512.png" />
-    <link href="/assets/tailwind.css" rel="stylesheet" />
-    <link href="/assets/prism.css" rel="stylesheet" />
-    <link href="/assets/extras.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ollama-search/assets/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/ollama-search/assets/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/ollama-search/assets/icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/ollama-search/assets/icon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x" href="/ollama-search/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/ollama-search/assets/android-chrome-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/ollama-search/assets/android-chrome-icon-512x512.png" />
+    <link href="/ollama-search/assets/tailwind.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/prism.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/extras.css" rel="stylesheet" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -38,25 +38,25 @@
         "url": "https://ollama.com"
       }
     </script>
-    <script src="/assets/htmx.bundle.js"></script>
+    <script src="/ollama-search/assets/htmx.bundle.js"></script>
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 <header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
   <nav class="flex w-full items-center justify-between px-6 py-[9px]">
-    <a href="/search/" class="z-50">
-      <img src="/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
+    <a href="/ollama-search/search/" class="z-50">
+      <img src="/ollama-search/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
     </a>
     <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
-      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/search/">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/search/">Models</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
     </div>
     <div class="flex-grow justify-center items-center hidden lg:flex">
       <div class="relative w-full xl:max-w-[28rem]">
-        <form action="/search" autocomplete="off" id="nav-search-form">
+        <form action="/ollama-search/search" autocomplete="off" id="nav-search-form">
           <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full">
             <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
-            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/search/?q='+encodeURIComponent(this.value);}" />
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/ollama-search/search/?q='+encodeURIComponent(this.value);}" />
           </div>
         </form>
       </div>
@@ -78,13 +78,13 @@
 </header>
 
 <main class="relative mx-auto flex w-full max-w-[52rem] flex-col px-6 py-10 md:py-24 lg:px-8">
-  <a href="/library/qwen2.5/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to qwen2.5</a>
+  <a href="/ollama-search/library/qwen2.5/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to qwen2.5</a>
   <div class="flex flex-col space-y-3">
     <div class="flex items-center min-w-0">
       <div class="flex items-center min-w-0 space-x-2">
         <div class="flex items-center min-w-0">
           <span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
-            <a x-test-model-name href="/library/qwen2.5" title="qwen2.5" class="underline-offset-[5px] hover:underline">qwen2.5</a>
+            <a x-test-model-name href="/ollama-search/library/qwen2.5" title="qwen2.5" class="underline-offset-[5px] hover:underline">qwen2.5</a>
            </span>
          </div>
        </div>
@@ -94,7 +94,7 @@
          <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
            <span class="flex items-center">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
-             <span x-test-pull-count>34.5M</span>
+             <span x-test-pull-count>34.6M</span>
              <span class="hidden sm:flex">&nbsp;Downloads</span>
           </span>
           <span class="flex items-center" title="Sep 19, 2024 4:42 PM UTC">
@@ -133,7 +133,7 @@
         <p class="col-span-2 hidden md:block">Input</p>
       </div>
       <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:latest/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:latest/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -154,7 +154,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:latest/" class="group-hover:underline">qwen2.5:latest</a>
+        <a href="/ollama-search/library/qwen2.5/:latest/" class="group-hover:underline">qwen2.5:latest</a>
         
         
         <input class="command hidden" value="qwen2.5:latest" />
@@ -172,7 +172,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -193,7 +193,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b/" class="group-hover:underline">qwen2.5:0.5b</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b/" class="group-hover:underline">qwen2.5:0.5b</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b" />
@@ -211,7 +211,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:1.5b/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:1.5b/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -232,7 +232,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:1.5b/" class="group-hover:underline">qwen2.5:1.5b</a>
+        <a href="/ollama-search/library/qwen2.5/:1.5b/" class="group-hover:underline">qwen2.5:1.5b</a>
         
         
         <input class="command hidden" value="qwen2.5:1.5b" />
@@ -250,7 +250,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:3b/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:3b/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -271,7 +271,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:3b/" class="group-hover:underline">qwen2.5:3b</a>
+        <a href="/ollama-search/library/qwen2.5/:3b/" class="group-hover:underline">qwen2.5:3b</a>
         
         
         <input class="command hidden" value="qwen2.5:3b" />
@@ -289,7 +289,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:7b/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:7b/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -310,7 +310,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:7b/" class="group-hover:underline">qwen2.5:7b</a>
+        <a href="/ollama-search/library/qwen2.5/:7b/" class="group-hover:underline">qwen2.5:7b</a>
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
         
         <input class="command hidden" value="qwen2.5:7b" />
@@ -328,7 +328,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:14b/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:14b/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -349,7 +349,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:14b/" class="group-hover:underline">qwen2.5:14b</a>
+        <a href="/ollama-search/library/qwen2.5/:14b/" class="group-hover:underline">qwen2.5:14b</a>
         
         
         <input class="command hidden" value="qwen2.5:14b" />
@@ -367,7 +367,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:32b/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:32b/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -388,7 +388,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:32b/" class="group-hover:underline">qwen2.5:32b</a>
+        <a href="/ollama-search/library/qwen2.5/:32b/" class="group-hover:underline">qwen2.5:32b</a>
         
         
         <input class="command hidden" value="qwen2.5:32b" />
@@ -406,7 +406,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:72b/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:72b/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -427,7 +427,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:72b/" class="group-hover:underline">qwen2.5:72b</a>
+        <a href="/ollama-search/library/qwen2.5/:72b/" class="group-hover:underline">qwen2.5:72b</a>
         
         
         <input class="command hidden" value="qwen2.5:72b" />
@@ -445,7 +445,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-base/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-base/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -466,7 +466,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-base/" class="group-hover:underline">qwen2.5:0.5b-base</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-base/" class="group-hover:underline">qwen2.5:0.5b-base</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-base" />
@@ -484,7 +484,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-base-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-base-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -505,7 +505,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-base-q2_K/" class="group-hover:underline">qwen2.5:0.5b-base-q2_K</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-base-q2_K/" class="group-hover:underline">qwen2.5:0.5b-base-q2_K</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-base-q2_K" />
@@ -523,7 +523,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-base-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-base-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -544,7 +544,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-base-q3_K_S/" class="group-hover:underline">qwen2.5:0.5b-base-q3_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-base-q3_K_S/" class="group-hover:underline">qwen2.5:0.5b-base-q3_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-base-q3_K_S" />
@@ -562,7 +562,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-base-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-base-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -583,7 +583,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-base-q3_K_M/" class="group-hover:underline">qwen2.5:0.5b-base-q3_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-base-q3_K_M/" class="group-hover:underline">qwen2.5:0.5b-base-q3_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-base-q3_K_M" />
@@ -601,7 +601,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-base-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-base-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -622,7 +622,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-base-q3_K_L/" class="group-hover:underline">qwen2.5:0.5b-base-q3_K_L</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-base-q3_K_L/" class="group-hover:underline">qwen2.5:0.5b-base-q3_K_L</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-base-q3_K_L" />
@@ -640,7 +640,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-base-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-base-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -661,7 +661,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-base-q4_0/" class="group-hover:underline">qwen2.5:0.5b-base-q4_0</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-base-q4_0/" class="group-hover:underline">qwen2.5:0.5b-base-q4_0</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-base-q4_0" />
@@ -679,7 +679,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-base-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-base-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -700,7 +700,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-base-q4_1/" class="group-hover:underline">qwen2.5:0.5b-base-q4_1</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-base-q4_1/" class="group-hover:underline">qwen2.5:0.5b-base-q4_1</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-base-q4_1" />
@@ -718,7 +718,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-base-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-base-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -739,7 +739,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-base-q4_K_S/" class="group-hover:underline">qwen2.5:0.5b-base-q4_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-base-q4_K_S/" class="group-hover:underline">qwen2.5:0.5b-base-q4_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-base-q4_K_S" />
@@ -757,7 +757,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-base-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-base-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -778,7 +778,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-base-q4_K_M/" class="group-hover:underline">qwen2.5:0.5b-base-q4_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-base-q4_K_M/" class="group-hover:underline">qwen2.5:0.5b-base-q4_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-base-q4_K_M" />
@@ -796,7 +796,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-base-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-base-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -817,7 +817,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-base-q5_0/" class="group-hover:underline">qwen2.5:0.5b-base-q5_0</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-base-q5_0/" class="group-hover:underline">qwen2.5:0.5b-base-q5_0</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-base-q5_0" />
@@ -835,7 +835,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-base-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-base-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -856,7 +856,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-base-q5_1/" class="group-hover:underline">qwen2.5:0.5b-base-q5_1</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-base-q5_1/" class="group-hover:underline">qwen2.5:0.5b-base-q5_1</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-base-q5_1" />
@@ -874,7 +874,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-base-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-base-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -895,7 +895,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-base-q5_K_S/" class="group-hover:underline">qwen2.5:0.5b-base-q5_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-base-q5_K_S/" class="group-hover:underline">qwen2.5:0.5b-base-q5_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-base-q5_K_S" />
@@ -913,7 +913,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-base-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-base-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -934,7 +934,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-base-q8_0/" class="group-hover:underline">qwen2.5:0.5b-base-q8_0</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-base-q8_0/" class="group-hover:underline">qwen2.5:0.5b-base-q8_0</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-base-q8_0" />
@@ -952,7 +952,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-instruct/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-instruct/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -973,7 +973,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-instruct/" class="group-hover:underline">qwen2.5:0.5b-instruct</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-instruct/" class="group-hover:underline">qwen2.5:0.5b-instruct</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-instruct" />
@@ -991,7 +991,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-instruct-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1012,7 +1012,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-instruct-q2_K/" class="group-hover:underline">qwen2.5:0.5b-instruct-q2_K</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q2_K/" class="group-hover:underline">qwen2.5:0.5b-instruct-q2_K</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-instruct-q2_K" />
@@ -1030,7 +1030,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-instruct-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1051,7 +1051,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-instruct-q3_K_S/" class="group-hover:underline">qwen2.5:0.5b-instruct-q3_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q3_K_S/" class="group-hover:underline">qwen2.5:0.5b-instruct-q3_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-instruct-q3_K_S" />
@@ -1069,7 +1069,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-instruct-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1090,7 +1090,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-instruct-q3_K_M/" class="group-hover:underline">qwen2.5:0.5b-instruct-q3_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q3_K_M/" class="group-hover:underline">qwen2.5:0.5b-instruct-q3_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-instruct-q3_K_M" />
@@ -1108,7 +1108,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-instruct-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1129,7 +1129,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-instruct-q3_K_L/" class="group-hover:underline">qwen2.5:0.5b-instruct-q3_K_L</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q3_K_L/" class="group-hover:underline">qwen2.5:0.5b-instruct-q3_K_L</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-instruct-q3_K_L" />
@@ -1147,7 +1147,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-instruct-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1168,7 +1168,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-instruct-q4_0/" class="group-hover:underline">qwen2.5:0.5b-instruct-q4_0</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q4_0/" class="group-hover:underline">qwen2.5:0.5b-instruct-q4_0</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-instruct-q4_0" />
@@ -1186,7 +1186,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-instruct-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1207,7 +1207,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-instruct-q4_1/" class="group-hover:underline">qwen2.5:0.5b-instruct-q4_1</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q4_1/" class="group-hover:underline">qwen2.5:0.5b-instruct-q4_1</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-instruct-q4_1" />
@@ -1225,7 +1225,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-instruct-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1246,7 +1246,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-instruct-q4_K_S/" class="group-hover:underline">qwen2.5:0.5b-instruct-q4_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q4_K_S/" class="group-hover:underline">qwen2.5:0.5b-instruct-q4_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-instruct-q4_K_S" />
@@ -1264,7 +1264,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-instruct-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1285,7 +1285,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-instruct-q4_K_M/" class="group-hover:underline">qwen2.5:0.5b-instruct-q4_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q4_K_M/" class="group-hover:underline">qwen2.5:0.5b-instruct-q4_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-instruct-q4_K_M" />
@@ -1303,7 +1303,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-instruct-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1324,7 +1324,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-instruct-q5_0/" class="group-hover:underline">qwen2.5:0.5b-instruct-q5_0</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q5_0/" class="group-hover:underline">qwen2.5:0.5b-instruct-q5_0</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-instruct-q5_0" />
@@ -1342,7 +1342,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-instruct-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1363,7 +1363,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-instruct-q5_1/" class="group-hover:underline">qwen2.5:0.5b-instruct-q5_1</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q5_1/" class="group-hover:underline">qwen2.5:0.5b-instruct-q5_1</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-instruct-q5_1" />
@@ -1381,7 +1381,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-instruct-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1402,7 +1402,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-instruct-q5_K_S/" class="group-hover:underline">qwen2.5:0.5b-instruct-q5_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q5_K_S/" class="group-hover:underline">qwen2.5:0.5b-instruct-q5_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-instruct-q5_K_S" />
@@ -1420,7 +1420,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-instruct-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1441,7 +1441,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-instruct-q5_K_M/" class="group-hover:underline">qwen2.5:0.5b-instruct-q5_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q5_K_M/" class="group-hover:underline">qwen2.5:0.5b-instruct-q5_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-instruct-q5_K_M" />
@@ -1459,7 +1459,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-instruct-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1480,7 +1480,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-instruct-q6_K/" class="group-hover:underline">qwen2.5:0.5b-instruct-q6_K</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q6_K/" class="group-hover:underline">qwen2.5:0.5b-instruct-q6_K</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-instruct-q6_K" />
@@ -1498,7 +1498,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-instruct-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1519,7 +1519,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-instruct-q8_0/" class="group-hover:underline">qwen2.5:0.5b-instruct-q8_0</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-q8_0/" class="group-hover:underline">qwen2.5:0.5b-instruct-q8_0</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-instruct-q8_0" />
@@ -1537,7 +1537,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:0.5b-instruct-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1558,7 +1558,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:0.5b-instruct-fp16/" class="group-hover:underline">qwen2.5:0.5b-instruct-fp16</a>
+        <a href="/ollama-search/library/qwen2.5/:0.5b-instruct-fp16/" class="group-hover:underline">qwen2.5:0.5b-instruct-fp16</a>
         
         
         <input class="command hidden" value="qwen2.5:0.5b-instruct-fp16" />
@@ -1576,7 +1576,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:1.5b-instruct/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:1.5b-instruct/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1597,7 +1597,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:1.5b-instruct/" class="group-hover:underline">qwen2.5:1.5b-instruct</a>
+        <a href="/ollama-search/library/qwen2.5/:1.5b-instruct/" class="group-hover:underline">qwen2.5:1.5b-instruct</a>
         
         
         <input class="command hidden" value="qwen2.5:1.5b-instruct" />
@@ -1615,7 +1615,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:1.5b-instruct-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1636,7 +1636,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:1.5b-instruct-q2_K/" class="group-hover:underline">qwen2.5:1.5b-instruct-q2_K</a>
+        <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q2_K/" class="group-hover:underline">qwen2.5:1.5b-instruct-q2_K</a>
         
         
         <input class="command hidden" value="qwen2.5:1.5b-instruct-q2_K" />
@@ -1654,7 +1654,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:1.5b-instruct-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1675,7 +1675,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:1.5b-instruct-q3_K_S/" class="group-hover:underline">qwen2.5:1.5b-instruct-q3_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q3_K_S/" class="group-hover:underline">qwen2.5:1.5b-instruct-q3_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:1.5b-instruct-q3_K_S" />
@@ -1693,7 +1693,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:1.5b-instruct-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1714,7 +1714,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:1.5b-instruct-q3_K_M/" class="group-hover:underline">qwen2.5:1.5b-instruct-q3_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q3_K_M/" class="group-hover:underline">qwen2.5:1.5b-instruct-q3_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:1.5b-instruct-q3_K_M" />
@@ -1732,7 +1732,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:1.5b-instruct-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1753,7 +1753,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:1.5b-instruct-q3_K_L/" class="group-hover:underline">qwen2.5:1.5b-instruct-q3_K_L</a>
+        <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q3_K_L/" class="group-hover:underline">qwen2.5:1.5b-instruct-q3_K_L</a>
         
         
         <input class="command hidden" value="qwen2.5:1.5b-instruct-q3_K_L" />
@@ -1771,7 +1771,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:1.5b-instruct-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1792,7 +1792,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:1.5b-instruct-q4_0/" class="group-hover:underline">qwen2.5:1.5b-instruct-q4_0</a>
+        <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q4_0/" class="group-hover:underline">qwen2.5:1.5b-instruct-q4_0</a>
         
         
         <input class="command hidden" value="qwen2.5:1.5b-instruct-q4_0" />
@@ -1810,7 +1810,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:1.5b-instruct-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1831,7 +1831,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:1.5b-instruct-q4_1/" class="group-hover:underline">qwen2.5:1.5b-instruct-q4_1</a>
+        <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q4_1/" class="group-hover:underline">qwen2.5:1.5b-instruct-q4_1</a>
         
         
         <input class="command hidden" value="qwen2.5:1.5b-instruct-q4_1" />
@@ -1849,7 +1849,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:1.5b-instruct-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1870,7 +1870,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:1.5b-instruct-q4_K_S/" class="group-hover:underline">qwen2.5:1.5b-instruct-q4_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q4_K_S/" class="group-hover:underline">qwen2.5:1.5b-instruct-q4_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:1.5b-instruct-q4_K_S" />
@@ -1888,7 +1888,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:1.5b-instruct-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1909,7 +1909,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:1.5b-instruct-q4_K_M/" class="group-hover:underline">qwen2.5:1.5b-instruct-q4_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q4_K_M/" class="group-hover:underline">qwen2.5:1.5b-instruct-q4_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:1.5b-instruct-q4_K_M" />
@@ -1927,7 +1927,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:1.5b-instruct-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1948,7 +1948,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:1.5b-instruct-q5_0/" class="group-hover:underline">qwen2.5:1.5b-instruct-q5_0</a>
+        <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q5_0/" class="group-hover:underline">qwen2.5:1.5b-instruct-q5_0</a>
         
         
         <input class="command hidden" value="qwen2.5:1.5b-instruct-q5_0" />
@@ -1966,7 +1966,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:1.5b-instruct-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1987,7 +1987,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:1.5b-instruct-q5_1/" class="group-hover:underline">qwen2.5:1.5b-instruct-q5_1</a>
+        <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q5_1/" class="group-hover:underline">qwen2.5:1.5b-instruct-q5_1</a>
         
         
         <input class="command hidden" value="qwen2.5:1.5b-instruct-q5_1" />
@@ -2005,7 +2005,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:1.5b-instruct-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2026,7 +2026,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:1.5b-instruct-q5_K_S/" class="group-hover:underline">qwen2.5:1.5b-instruct-q5_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q5_K_S/" class="group-hover:underline">qwen2.5:1.5b-instruct-q5_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:1.5b-instruct-q5_K_S" />
@@ -2044,7 +2044,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:1.5b-instruct-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2065,7 +2065,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:1.5b-instruct-q5_K_M/" class="group-hover:underline">qwen2.5:1.5b-instruct-q5_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q5_K_M/" class="group-hover:underline">qwen2.5:1.5b-instruct-q5_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:1.5b-instruct-q5_K_M" />
@@ -2083,7 +2083,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:1.5b-instruct-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2104,7 +2104,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:1.5b-instruct-q6_K/" class="group-hover:underline">qwen2.5:1.5b-instruct-q6_K</a>
+        <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q6_K/" class="group-hover:underline">qwen2.5:1.5b-instruct-q6_K</a>
         
         
         <input class="command hidden" value="qwen2.5:1.5b-instruct-q6_K" />
@@ -2122,7 +2122,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:1.5b-instruct-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2143,7 +2143,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:1.5b-instruct-q8_0/" class="group-hover:underline">qwen2.5:1.5b-instruct-q8_0</a>
+        <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-q8_0/" class="group-hover:underline">qwen2.5:1.5b-instruct-q8_0</a>
         
         
         <input class="command hidden" value="qwen2.5:1.5b-instruct-q8_0" />
@@ -2161,7 +2161,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:1.5b-instruct-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2182,7 +2182,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:1.5b-instruct-fp16/" class="group-hover:underline">qwen2.5:1.5b-instruct-fp16</a>
+        <a href="/ollama-search/library/qwen2.5/:1.5b-instruct-fp16/" class="group-hover:underline">qwen2.5:1.5b-instruct-fp16</a>
         
         
         <input class="command hidden" value="qwen2.5:1.5b-instruct-fp16" />
@@ -2200,7 +2200,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:3b-instruct/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:3b-instruct/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2221,7 +2221,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:3b-instruct/" class="group-hover:underline">qwen2.5:3b-instruct</a>
+        <a href="/ollama-search/library/qwen2.5/:3b-instruct/" class="group-hover:underline">qwen2.5:3b-instruct</a>
         
         
         <input class="command hidden" value="qwen2.5:3b-instruct" />
@@ -2239,7 +2239,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:3b-instruct-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:3b-instruct-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2260,7 +2260,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:3b-instruct-q2_K/" class="group-hover:underline">qwen2.5:3b-instruct-q2_K</a>
+        <a href="/ollama-search/library/qwen2.5/:3b-instruct-q2_K/" class="group-hover:underline">qwen2.5:3b-instruct-q2_K</a>
         
         
         <input class="command hidden" value="qwen2.5:3b-instruct-q2_K" />
@@ -2278,7 +2278,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:3b-instruct-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:3b-instruct-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2299,7 +2299,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:3b-instruct-q3_K_S/" class="group-hover:underline">qwen2.5:3b-instruct-q3_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:3b-instruct-q3_K_S/" class="group-hover:underline">qwen2.5:3b-instruct-q3_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:3b-instruct-q3_K_S" />
@@ -2317,7 +2317,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:3b-instruct-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:3b-instruct-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2338,7 +2338,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:3b-instruct-q3_K_M/" class="group-hover:underline">qwen2.5:3b-instruct-q3_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:3b-instruct-q3_K_M/" class="group-hover:underline">qwen2.5:3b-instruct-q3_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:3b-instruct-q3_K_M" />
@@ -2356,7 +2356,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:3b-instruct-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:3b-instruct-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2377,7 +2377,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:3b-instruct-q3_K_L/" class="group-hover:underline">qwen2.5:3b-instruct-q3_K_L</a>
+        <a href="/ollama-search/library/qwen2.5/:3b-instruct-q3_K_L/" class="group-hover:underline">qwen2.5:3b-instruct-q3_K_L</a>
         
         
         <input class="command hidden" value="qwen2.5:3b-instruct-q3_K_L" />
@@ -2395,7 +2395,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:3b-instruct-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:3b-instruct-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2416,7 +2416,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:3b-instruct-q4_0/" class="group-hover:underline">qwen2.5:3b-instruct-q4_0</a>
+        <a href="/ollama-search/library/qwen2.5/:3b-instruct-q4_0/" class="group-hover:underline">qwen2.5:3b-instruct-q4_0</a>
         
         
         <input class="command hidden" value="qwen2.5:3b-instruct-q4_0" />
@@ -2434,7 +2434,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:3b-instruct-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:3b-instruct-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2455,7 +2455,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:3b-instruct-q4_1/" class="group-hover:underline">qwen2.5:3b-instruct-q4_1</a>
+        <a href="/ollama-search/library/qwen2.5/:3b-instruct-q4_1/" class="group-hover:underline">qwen2.5:3b-instruct-q4_1</a>
         
         
         <input class="command hidden" value="qwen2.5:3b-instruct-q4_1" />
@@ -2473,7 +2473,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:3b-instruct-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:3b-instruct-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2494,7 +2494,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:3b-instruct-q4_K_S/" class="group-hover:underline">qwen2.5:3b-instruct-q4_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:3b-instruct-q4_K_S/" class="group-hover:underline">qwen2.5:3b-instruct-q4_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:3b-instruct-q4_K_S" />
@@ -2512,7 +2512,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:3b-instruct-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:3b-instruct-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2533,7 +2533,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:3b-instruct-q4_K_M/" class="group-hover:underline">qwen2.5:3b-instruct-q4_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:3b-instruct-q4_K_M/" class="group-hover:underline">qwen2.5:3b-instruct-q4_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:3b-instruct-q4_K_M" />
@@ -2551,7 +2551,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:3b-instruct-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:3b-instruct-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2572,7 +2572,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:3b-instruct-q5_0/" class="group-hover:underline">qwen2.5:3b-instruct-q5_0</a>
+        <a href="/ollama-search/library/qwen2.5/:3b-instruct-q5_0/" class="group-hover:underline">qwen2.5:3b-instruct-q5_0</a>
         
         
         <input class="command hidden" value="qwen2.5:3b-instruct-q5_0" />
@@ -2590,7 +2590,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:3b-instruct-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:3b-instruct-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2611,7 +2611,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:3b-instruct-q5_1/" class="group-hover:underline">qwen2.5:3b-instruct-q5_1</a>
+        <a href="/ollama-search/library/qwen2.5/:3b-instruct-q5_1/" class="group-hover:underline">qwen2.5:3b-instruct-q5_1</a>
         
         
         <input class="command hidden" value="qwen2.5:3b-instruct-q5_1" />
@@ -2629,7 +2629,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:3b-instruct-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:3b-instruct-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2650,7 +2650,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:3b-instruct-q5_K_S/" class="group-hover:underline">qwen2.5:3b-instruct-q5_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:3b-instruct-q5_K_S/" class="group-hover:underline">qwen2.5:3b-instruct-q5_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:3b-instruct-q5_K_S" />
@@ -2668,7 +2668,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:3b-instruct-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:3b-instruct-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2689,7 +2689,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:3b-instruct-q5_K_M/" class="group-hover:underline">qwen2.5:3b-instruct-q5_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:3b-instruct-q5_K_M/" class="group-hover:underline">qwen2.5:3b-instruct-q5_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:3b-instruct-q5_K_M" />
@@ -2707,7 +2707,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:3b-instruct-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:3b-instruct-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2728,7 +2728,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:3b-instruct-q6_K/" class="group-hover:underline">qwen2.5:3b-instruct-q6_K</a>
+        <a href="/ollama-search/library/qwen2.5/:3b-instruct-q6_K/" class="group-hover:underline">qwen2.5:3b-instruct-q6_K</a>
         
         
         <input class="command hidden" value="qwen2.5:3b-instruct-q6_K" />
@@ -2746,7 +2746,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:3b-instruct-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:3b-instruct-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2767,7 +2767,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:3b-instruct-q8_0/" class="group-hover:underline">qwen2.5:3b-instruct-q8_0</a>
+        <a href="/ollama-search/library/qwen2.5/:3b-instruct-q8_0/" class="group-hover:underline">qwen2.5:3b-instruct-q8_0</a>
         
         
         <input class="command hidden" value="qwen2.5:3b-instruct-q8_0" />
@@ -2785,7 +2785,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:3b-instruct-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:3b-instruct-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2806,7 +2806,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:3b-instruct-fp16/" class="group-hover:underline">qwen2.5:3b-instruct-fp16</a>
+        <a href="/ollama-search/library/qwen2.5/:3b-instruct-fp16/" class="group-hover:underline">qwen2.5:3b-instruct-fp16</a>
         
         
         <input class="command hidden" value="qwen2.5:3b-instruct-fp16" />
@@ -2824,7 +2824,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:7b-instruct/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:7b-instruct/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2845,7 +2845,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:7b-instruct/" class="group-hover:underline">qwen2.5:7b-instruct</a>
+        <a href="/ollama-search/library/qwen2.5/:7b-instruct/" class="group-hover:underline">qwen2.5:7b-instruct</a>
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
         
         <input class="command hidden" value="qwen2.5:7b-instruct" />
@@ -2863,7 +2863,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:7b-instruct-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:7b-instruct-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2884,7 +2884,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:7b-instruct-q2_K/" class="group-hover:underline">qwen2.5:7b-instruct-q2_K</a>
+        <a href="/ollama-search/library/qwen2.5/:7b-instruct-q2_K/" class="group-hover:underline">qwen2.5:7b-instruct-q2_K</a>
         
         
         <input class="command hidden" value="qwen2.5:7b-instruct-q2_K" />
@@ -2902,7 +2902,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:7b-instruct-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:7b-instruct-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2923,7 +2923,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:7b-instruct-q3_K_S/" class="group-hover:underline">qwen2.5:7b-instruct-q3_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:7b-instruct-q3_K_S/" class="group-hover:underline">qwen2.5:7b-instruct-q3_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:7b-instruct-q3_K_S" />
@@ -2941,7 +2941,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:7b-instruct-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:7b-instruct-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2962,7 +2962,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:7b-instruct-q3_K_M/" class="group-hover:underline">qwen2.5:7b-instruct-q3_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:7b-instruct-q3_K_M/" class="group-hover:underline">qwen2.5:7b-instruct-q3_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:7b-instruct-q3_K_M" />
@@ -2980,7 +2980,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:7b-instruct-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:7b-instruct-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3001,7 +3001,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:7b-instruct-q3_K_L/" class="group-hover:underline">qwen2.5:7b-instruct-q3_K_L</a>
+        <a href="/ollama-search/library/qwen2.5/:7b-instruct-q3_K_L/" class="group-hover:underline">qwen2.5:7b-instruct-q3_K_L</a>
         
         
         <input class="command hidden" value="qwen2.5:7b-instruct-q3_K_L" />
@@ -3019,7 +3019,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:7b-instruct-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:7b-instruct-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3040,7 +3040,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:7b-instruct-q4_0/" class="group-hover:underline">qwen2.5:7b-instruct-q4_0</a>
+        <a href="/ollama-search/library/qwen2.5/:7b-instruct-q4_0/" class="group-hover:underline">qwen2.5:7b-instruct-q4_0</a>
         
         
         <input class="command hidden" value="qwen2.5:7b-instruct-q4_0" />
@@ -3058,7 +3058,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:7b-instruct-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:7b-instruct-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3079,7 +3079,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:7b-instruct-q4_1/" class="group-hover:underline">qwen2.5:7b-instruct-q4_1</a>
+        <a href="/ollama-search/library/qwen2.5/:7b-instruct-q4_1/" class="group-hover:underline">qwen2.5:7b-instruct-q4_1</a>
         
         
         <input class="command hidden" value="qwen2.5:7b-instruct-q4_1" />
@@ -3097,7 +3097,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:7b-instruct-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:7b-instruct-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3118,7 +3118,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:7b-instruct-q4_K_S/" class="group-hover:underline">qwen2.5:7b-instruct-q4_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:7b-instruct-q4_K_S/" class="group-hover:underline">qwen2.5:7b-instruct-q4_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:7b-instruct-q4_K_S" />
@@ -3136,7 +3136,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:7b-instruct-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:7b-instruct-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3157,7 +3157,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:7b-instruct-q4_K_M/" class="group-hover:underline">qwen2.5:7b-instruct-q4_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:7b-instruct-q4_K_M/" class="group-hover:underline">qwen2.5:7b-instruct-q4_K_M</a>
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
         
         <input class="command hidden" value="qwen2.5:7b-instruct-q4_K_M" />
@@ -3175,7 +3175,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:7b-instruct-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:7b-instruct-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3196,7 +3196,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:7b-instruct-q5_0/" class="group-hover:underline">qwen2.5:7b-instruct-q5_0</a>
+        <a href="/ollama-search/library/qwen2.5/:7b-instruct-q5_0/" class="group-hover:underline">qwen2.5:7b-instruct-q5_0</a>
         
         
         <input class="command hidden" value="qwen2.5:7b-instruct-q5_0" />
@@ -3214,7 +3214,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:7b-instruct-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:7b-instruct-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3235,7 +3235,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:7b-instruct-q5_1/" class="group-hover:underline">qwen2.5:7b-instruct-q5_1</a>
+        <a href="/ollama-search/library/qwen2.5/:7b-instruct-q5_1/" class="group-hover:underline">qwen2.5:7b-instruct-q5_1</a>
         
         
         <input class="command hidden" value="qwen2.5:7b-instruct-q5_1" />
@@ -3253,7 +3253,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:7b-instruct-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:7b-instruct-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3274,7 +3274,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:7b-instruct-q5_K_S/" class="group-hover:underline">qwen2.5:7b-instruct-q5_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:7b-instruct-q5_K_S/" class="group-hover:underline">qwen2.5:7b-instruct-q5_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:7b-instruct-q5_K_S" />
@@ -3292,7 +3292,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:7b-instruct-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:7b-instruct-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3313,7 +3313,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:7b-instruct-q5_K_M/" class="group-hover:underline">qwen2.5:7b-instruct-q5_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:7b-instruct-q5_K_M/" class="group-hover:underline">qwen2.5:7b-instruct-q5_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:7b-instruct-q5_K_M" />
@@ -3331,7 +3331,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:7b-instruct-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:7b-instruct-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3352,7 +3352,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:7b-instruct-q6_K/" class="group-hover:underline">qwen2.5:7b-instruct-q6_K</a>
+        <a href="/ollama-search/library/qwen2.5/:7b-instruct-q6_K/" class="group-hover:underline">qwen2.5:7b-instruct-q6_K</a>
         
         
         <input class="command hidden" value="qwen2.5:7b-instruct-q6_K" />
@@ -3370,7 +3370,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:7b-instruct-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:7b-instruct-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3391,7 +3391,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:7b-instruct-q8_0/" class="group-hover:underline">qwen2.5:7b-instruct-q8_0</a>
+        <a href="/ollama-search/library/qwen2.5/:7b-instruct-q8_0/" class="group-hover:underline">qwen2.5:7b-instruct-q8_0</a>
         
         
         <input class="command hidden" value="qwen2.5:7b-instruct-q8_0" />
@@ -3409,7 +3409,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:7b-instruct-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:7b-instruct-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3430,7 +3430,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:7b-instruct-fp16/" class="group-hover:underline">qwen2.5:7b-instruct-fp16</a>
+        <a href="/ollama-search/library/qwen2.5/:7b-instruct-fp16/" class="group-hover:underline">qwen2.5:7b-instruct-fp16</a>
         
         
         <input class="command hidden" value="qwen2.5:7b-instruct-fp16" />
@@ -3448,7 +3448,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:14b-instruct/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:14b-instruct/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3469,7 +3469,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:14b-instruct/" class="group-hover:underline">qwen2.5:14b-instruct</a>
+        <a href="/ollama-search/library/qwen2.5/:14b-instruct/" class="group-hover:underline">qwen2.5:14b-instruct</a>
         
         
         <input class="command hidden" value="qwen2.5:14b-instruct" />
@@ -3487,7 +3487,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:14b-instruct-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:14b-instruct-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3508,7 +3508,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:14b-instruct-q2_K/" class="group-hover:underline">qwen2.5:14b-instruct-q2_K</a>
+        <a href="/ollama-search/library/qwen2.5/:14b-instruct-q2_K/" class="group-hover:underline">qwen2.5:14b-instruct-q2_K</a>
         
         
         <input class="command hidden" value="qwen2.5:14b-instruct-q2_K" />
@@ -3526,7 +3526,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:14b-instruct-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:14b-instruct-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3547,7 +3547,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:14b-instruct-q3_K_S/" class="group-hover:underline">qwen2.5:14b-instruct-q3_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:14b-instruct-q3_K_S/" class="group-hover:underline">qwen2.5:14b-instruct-q3_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:14b-instruct-q3_K_S" />
@@ -3565,7 +3565,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:14b-instruct-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:14b-instruct-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3586,7 +3586,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:14b-instruct-q3_K_M/" class="group-hover:underline">qwen2.5:14b-instruct-q3_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:14b-instruct-q3_K_M/" class="group-hover:underline">qwen2.5:14b-instruct-q3_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:14b-instruct-q3_K_M" />
@@ -3604,7 +3604,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:14b-instruct-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:14b-instruct-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3625,7 +3625,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:14b-instruct-q3_K_L/" class="group-hover:underline">qwen2.5:14b-instruct-q3_K_L</a>
+        <a href="/ollama-search/library/qwen2.5/:14b-instruct-q3_K_L/" class="group-hover:underline">qwen2.5:14b-instruct-q3_K_L</a>
         
         
         <input class="command hidden" value="qwen2.5:14b-instruct-q3_K_L" />
@@ -3643,7 +3643,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:14b-instruct-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:14b-instruct-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3664,7 +3664,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:14b-instruct-q4_0/" class="group-hover:underline">qwen2.5:14b-instruct-q4_0</a>
+        <a href="/ollama-search/library/qwen2.5/:14b-instruct-q4_0/" class="group-hover:underline">qwen2.5:14b-instruct-q4_0</a>
         
         
         <input class="command hidden" value="qwen2.5:14b-instruct-q4_0" />
@@ -3682,7 +3682,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:14b-instruct-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:14b-instruct-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3703,7 +3703,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:14b-instruct-q4_1/" class="group-hover:underline">qwen2.5:14b-instruct-q4_1</a>
+        <a href="/ollama-search/library/qwen2.5/:14b-instruct-q4_1/" class="group-hover:underline">qwen2.5:14b-instruct-q4_1</a>
         
         
         <input class="command hidden" value="qwen2.5:14b-instruct-q4_1" />
@@ -3721,7 +3721,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:14b-instruct-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:14b-instruct-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3742,7 +3742,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:14b-instruct-q4_K_S/" class="group-hover:underline">qwen2.5:14b-instruct-q4_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:14b-instruct-q4_K_S/" class="group-hover:underline">qwen2.5:14b-instruct-q4_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:14b-instruct-q4_K_S" />
@@ -3760,7 +3760,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:14b-instruct-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:14b-instruct-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3781,7 +3781,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:14b-instruct-q4_K_M/" class="group-hover:underline">qwen2.5:14b-instruct-q4_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:14b-instruct-q4_K_M/" class="group-hover:underline">qwen2.5:14b-instruct-q4_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:14b-instruct-q4_K_M" />
@@ -3799,7 +3799,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:14b-instruct-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:14b-instruct-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3820,7 +3820,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:14b-instruct-q5_0/" class="group-hover:underline">qwen2.5:14b-instruct-q5_0</a>
+        <a href="/ollama-search/library/qwen2.5/:14b-instruct-q5_0/" class="group-hover:underline">qwen2.5:14b-instruct-q5_0</a>
         
         
         <input class="command hidden" value="qwen2.5:14b-instruct-q5_0" />
@@ -3838,7 +3838,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:14b-instruct-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:14b-instruct-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3859,7 +3859,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:14b-instruct-q5_1/" class="group-hover:underline">qwen2.5:14b-instruct-q5_1</a>
+        <a href="/ollama-search/library/qwen2.5/:14b-instruct-q5_1/" class="group-hover:underline">qwen2.5:14b-instruct-q5_1</a>
         
         
         <input class="command hidden" value="qwen2.5:14b-instruct-q5_1" />
@@ -3877,7 +3877,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:14b-instruct-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:14b-instruct-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3898,7 +3898,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:14b-instruct-q5_K_S/" class="group-hover:underline">qwen2.5:14b-instruct-q5_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:14b-instruct-q5_K_S/" class="group-hover:underline">qwen2.5:14b-instruct-q5_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:14b-instruct-q5_K_S" />
@@ -3916,7 +3916,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:14b-instruct-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:14b-instruct-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3937,7 +3937,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:14b-instruct-q5_K_M/" class="group-hover:underline">qwen2.5:14b-instruct-q5_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:14b-instruct-q5_K_M/" class="group-hover:underline">qwen2.5:14b-instruct-q5_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:14b-instruct-q5_K_M" />
@@ -3955,7 +3955,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:14b-instruct-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:14b-instruct-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3976,7 +3976,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:14b-instruct-q6_K/" class="group-hover:underline">qwen2.5:14b-instruct-q6_K</a>
+        <a href="/ollama-search/library/qwen2.5/:14b-instruct-q6_K/" class="group-hover:underline">qwen2.5:14b-instruct-q6_K</a>
         
         
         <input class="command hidden" value="qwen2.5:14b-instruct-q6_K" />
@@ -3994,7 +3994,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:14b-instruct-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:14b-instruct-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4015,7 +4015,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:14b-instruct-q8_0/" class="group-hover:underline">qwen2.5:14b-instruct-q8_0</a>
+        <a href="/ollama-search/library/qwen2.5/:14b-instruct-q8_0/" class="group-hover:underline">qwen2.5:14b-instruct-q8_0</a>
         
         
         <input class="command hidden" value="qwen2.5:14b-instruct-q8_0" />
@@ -4033,7 +4033,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:14b-instruct-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:14b-instruct-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4054,7 +4054,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:14b-instruct-fp16/" class="group-hover:underline">qwen2.5:14b-instruct-fp16</a>
+        <a href="/ollama-search/library/qwen2.5/:14b-instruct-fp16/" class="group-hover:underline">qwen2.5:14b-instruct-fp16</a>
         
         
         <input class="command hidden" value="qwen2.5:14b-instruct-fp16" />
@@ -4072,7 +4072,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:32b-instruct/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:32b-instruct/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4093,7 +4093,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:32b-instruct/" class="group-hover:underline">qwen2.5:32b-instruct</a>
+        <a href="/ollama-search/library/qwen2.5/:32b-instruct/" class="group-hover:underline">qwen2.5:32b-instruct</a>
         
         
         <input class="command hidden" value="qwen2.5:32b-instruct" />
@@ -4111,7 +4111,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:32b-instruct-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:32b-instruct-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4132,7 +4132,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:32b-instruct-q2_K/" class="group-hover:underline">qwen2.5:32b-instruct-q2_K</a>
+        <a href="/ollama-search/library/qwen2.5/:32b-instruct-q2_K/" class="group-hover:underline">qwen2.5:32b-instruct-q2_K</a>
         
         
         <input class="command hidden" value="qwen2.5:32b-instruct-q2_K" />
@@ -4150,7 +4150,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:32b-instruct-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:32b-instruct-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4171,7 +4171,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:32b-instruct-q3_K_S/" class="group-hover:underline">qwen2.5:32b-instruct-q3_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:32b-instruct-q3_K_S/" class="group-hover:underline">qwen2.5:32b-instruct-q3_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:32b-instruct-q3_K_S" />
@@ -4189,7 +4189,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:32b-instruct-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:32b-instruct-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4210,7 +4210,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:32b-instruct-q3_K_M/" class="group-hover:underline">qwen2.5:32b-instruct-q3_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:32b-instruct-q3_K_M/" class="group-hover:underline">qwen2.5:32b-instruct-q3_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:32b-instruct-q3_K_M" />
@@ -4228,7 +4228,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:32b-instruct-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:32b-instruct-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4249,7 +4249,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:32b-instruct-q3_K_L/" class="group-hover:underline">qwen2.5:32b-instruct-q3_K_L</a>
+        <a href="/ollama-search/library/qwen2.5/:32b-instruct-q3_K_L/" class="group-hover:underline">qwen2.5:32b-instruct-q3_K_L</a>
         
         
         <input class="command hidden" value="qwen2.5:32b-instruct-q3_K_L" />
@@ -4267,7 +4267,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:32b-instruct-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:32b-instruct-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4288,7 +4288,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:32b-instruct-q4_0/" class="group-hover:underline">qwen2.5:32b-instruct-q4_0</a>
+        <a href="/ollama-search/library/qwen2.5/:32b-instruct-q4_0/" class="group-hover:underline">qwen2.5:32b-instruct-q4_0</a>
         
         
         <input class="command hidden" value="qwen2.5:32b-instruct-q4_0" />
@@ -4306,7 +4306,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:32b-instruct-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:32b-instruct-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4327,7 +4327,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:32b-instruct-q4_1/" class="group-hover:underline">qwen2.5:32b-instruct-q4_1</a>
+        <a href="/ollama-search/library/qwen2.5/:32b-instruct-q4_1/" class="group-hover:underline">qwen2.5:32b-instruct-q4_1</a>
         
         
         <input class="command hidden" value="qwen2.5:32b-instruct-q4_1" />
@@ -4345,7 +4345,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:32b-instruct-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:32b-instruct-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4366,7 +4366,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:32b-instruct-q4_K_S/" class="group-hover:underline">qwen2.5:32b-instruct-q4_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:32b-instruct-q4_K_S/" class="group-hover:underline">qwen2.5:32b-instruct-q4_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:32b-instruct-q4_K_S" />
@@ -4384,7 +4384,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:32b-instruct-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:32b-instruct-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4405,7 +4405,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:32b-instruct-q4_K_M/" class="group-hover:underline">qwen2.5:32b-instruct-q4_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:32b-instruct-q4_K_M/" class="group-hover:underline">qwen2.5:32b-instruct-q4_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:32b-instruct-q4_K_M" />
@@ -4423,7 +4423,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:32b-instruct-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:32b-instruct-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4444,7 +4444,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:32b-instruct-q5_0/" class="group-hover:underline">qwen2.5:32b-instruct-q5_0</a>
+        <a href="/ollama-search/library/qwen2.5/:32b-instruct-q5_0/" class="group-hover:underline">qwen2.5:32b-instruct-q5_0</a>
         
         
         <input class="command hidden" value="qwen2.5:32b-instruct-q5_0" />
@@ -4462,7 +4462,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:32b-instruct-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:32b-instruct-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4483,7 +4483,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:32b-instruct-q5_1/" class="group-hover:underline">qwen2.5:32b-instruct-q5_1</a>
+        <a href="/ollama-search/library/qwen2.5/:32b-instruct-q5_1/" class="group-hover:underline">qwen2.5:32b-instruct-q5_1</a>
         
         
         <input class="command hidden" value="qwen2.5:32b-instruct-q5_1" />
@@ -4501,7 +4501,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:32b-instruct-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:32b-instruct-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4522,7 +4522,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:32b-instruct-q5_K_S/" class="group-hover:underline">qwen2.5:32b-instruct-q5_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:32b-instruct-q5_K_S/" class="group-hover:underline">qwen2.5:32b-instruct-q5_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:32b-instruct-q5_K_S" />
@@ -4540,7 +4540,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:32b-instruct-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:32b-instruct-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4561,7 +4561,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:32b-instruct-q5_K_M/" class="group-hover:underline">qwen2.5:32b-instruct-q5_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:32b-instruct-q5_K_M/" class="group-hover:underline">qwen2.5:32b-instruct-q5_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:32b-instruct-q5_K_M" />
@@ -4579,7 +4579,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:32b-instruct-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:32b-instruct-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4600,7 +4600,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:32b-instruct-q6_K/" class="group-hover:underline">qwen2.5:32b-instruct-q6_K</a>
+        <a href="/ollama-search/library/qwen2.5/:32b-instruct-q6_K/" class="group-hover:underline">qwen2.5:32b-instruct-q6_K</a>
         
         
         <input class="command hidden" value="qwen2.5:32b-instruct-q6_K" />
@@ -4618,7 +4618,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:32b-instruct-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:32b-instruct-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4639,7 +4639,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:32b-instruct-q8_0/" class="group-hover:underline">qwen2.5:32b-instruct-q8_0</a>
+        <a href="/ollama-search/library/qwen2.5/:32b-instruct-q8_0/" class="group-hover:underline">qwen2.5:32b-instruct-q8_0</a>
         
         
         <input class="command hidden" value="qwen2.5:32b-instruct-q8_0" />
@@ -4657,7 +4657,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:32b-instruct-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:32b-instruct-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4678,7 +4678,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:32b-instruct-fp16/" class="group-hover:underline">qwen2.5:32b-instruct-fp16</a>
+        <a href="/ollama-search/library/qwen2.5/:32b-instruct-fp16/" class="group-hover:underline">qwen2.5:32b-instruct-fp16</a>
         
         
         <input class="command hidden" value="qwen2.5:32b-instruct-fp16" />
@@ -4696,7 +4696,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:72b-instruct/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:72b-instruct/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4717,7 +4717,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:72b-instruct/" class="group-hover:underline">qwen2.5:72b-instruct</a>
+        <a href="/ollama-search/library/qwen2.5/:72b-instruct/" class="group-hover:underline">qwen2.5:72b-instruct</a>
         
         
         <input class="command hidden" value="qwen2.5:72b-instruct" />
@@ -4735,7 +4735,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:72b-instruct-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:72b-instruct-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4756,7 +4756,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:72b-instruct-q2_K/" class="group-hover:underline">qwen2.5:72b-instruct-q2_K</a>
+        <a href="/ollama-search/library/qwen2.5/:72b-instruct-q2_K/" class="group-hover:underline">qwen2.5:72b-instruct-q2_K</a>
         
         
         <input class="command hidden" value="qwen2.5:72b-instruct-q2_K" />
@@ -4774,7 +4774,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:72b-instruct-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:72b-instruct-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4795,7 +4795,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:72b-instruct-q3_K_S/" class="group-hover:underline">qwen2.5:72b-instruct-q3_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:72b-instruct-q3_K_S/" class="group-hover:underline">qwen2.5:72b-instruct-q3_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:72b-instruct-q3_K_S" />
@@ -4813,7 +4813,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:72b-instruct-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:72b-instruct-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4834,7 +4834,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:72b-instruct-q3_K_M/" class="group-hover:underline">qwen2.5:72b-instruct-q3_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:72b-instruct-q3_K_M/" class="group-hover:underline">qwen2.5:72b-instruct-q3_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:72b-instruct-q3_K_M" />
@@ -4852,7 +4852,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:72b-instruct-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:72b-instruct-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4873,7 +4873,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:72b-instruct-q3_K_L/" class="group-hover:underline">qwen2.5:72b-instruct-q3_K_L</a>
+        <a href="/ollama-search/library/qwen2.5/:72b-instruct-q3_K_L/" class="group-hover:underline">qwen2.5:72b-instruct-q3_K_L</a>
         
         
         <input class="command hidden" value="qwen2.5:72b-instruct-q3_K_L" />
@@ -4891,7 +4891,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:72b-instruct-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:72b-instruct-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4912,7 +4912,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:72b-instruct-q4_0/" class="group-hover:underline">qwen2.5:72b-instruct-q4_0</a>
+        <a href="/ollama-search/library/qwen2.5/:72b-instruct-q4_0/" class="group-hover:underline">qwen2.5:72b-instruct-q4_0</a>
         
         
         <input class="command hidden" value="qwen2.5:72b-instruct-q4_0" />
@@ -4930,7 +4930,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:72b-instruct-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:72b-instruct-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4951,7 +4951,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:72b-instruct-q4_1/" class="group-hover:underline">qwen2.5:72b-instruct-q4_1</a>
+        <a href="/ollama-search/library/qwen2.5/:72b-instruct-q4_1/" class="group-hover:underline">qwen2.5:72b-instruct-q4_1</a>
         
         
         <input class="command hidden" value="qwen2.5:72b-instruct-q4_1" />
@@ -4969,7 +4969,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:72b-instruct-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:72b-instruct-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -4990,7 +4990,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:72b-instruct-q4_K_S/" class="group-hover:underline">qwen2.5:72b-instruct-q4_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:72b-instruct-q4_K_S/" class="group-hover:underline">qwen2.5:72b-instruct-q4_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:72b-instruct-q4_K_S" />
@@ -5008,7 +5008,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:72b-instruct-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:72b-instruct-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -5029,7 +5029,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:72b-instruct-q4_K_M/" class="group-hover:underline">qwen2.5:72b-instruct-q4_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:72b-instruct-q4_K_M/" class="group-hover:underline">qwen2.5:72b-instruct-q4_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:72b-instruct-q4_K_M" />
@@ -5047,7 +5047,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:72b-instruct-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:72b-instruct-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -5068,7 +5068,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:72b-instruct-q5_0/" class="group-hover:underline">qwen2.5:72b-instruct-q5_0</a>
+        <a href="/ollama-search/library/qwen2.5/:72b-instruct-q5_0/" class="group-hover:underline">qwen2.5:72b-instruct-q5_0</a>
         
         
         <input class="command hidden" value="qwen2.5:72b-instruct-q5_0" />
@@ -5086,7 +5086,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:72b-instruct-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:72b-instruct-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -5107,7 +5107,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:72b-instruct-q5_1/" class="group-hover:underline">qwen2.5:72b-instruct-q5_1</a>
+        <a href="/ollama-search/library/qwen2.5/:72b-instruct-q5_1/" class="group-hover:underline">qwen2.5:72b-instruct-q5_1</a>
         
         
         <input class="command hidden" value="qwen2.5:72b-instruct-q5_1" />
@@ -5125,7 +5125,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:72b-instruct-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:72b-instruct-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -5146,7 +5146,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:72b-instruct-q5_K_S/" class="group-hover:underline">qwen2.5:72b-instruct-q5_K_S</a>
+        <a href="/ollama-search/library/qwen2.5/:72b-instruct-q5_K_S/" class="group-hover:underline">qwen2.5:72b-instruct-q5_K_S</a>
         
         
         <input class="command hidden" value="qwen2.5:72b-instruct-q5_K_S" />
@@ -5164,7 +5164,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:72b-instruct-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:72b-instruct-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -5185,7 +5185,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:72b-instruct-q5_K_M/" class="group-hover:underline">qwen2.5:72b-instruct-q5_K_M</a>
+        <a href="/ollama-search/library/qwen2.5/:72b-instruct-q5_K_M/" class="group-hover:underline">qwen2.5:72b-instruct-q5_K_M</a>
         
         
         <input class="command hidden" value="qwen2.5:72b-instruct-q5_K_M" />
@@ -5203,7 +5203,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:72b-instruct-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:72b-instruct-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -5224,7 +5224,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:72b-instruct-q6_K/" class="group-hover:underline">qwen2.5:72b-instruct-q6_K</a>
+        <a href="/ollama-search/library/qwen2.5/:72b-instruct-q6_K/" class="group-hover:underline">qwen2.5:72b-instruct-q6_K</a>
         
         
         <input class="command hidden" value="qwen2.5:72b-instruct-q6_K" />
@@ -5242,7 +5242,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:72b-instruct-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:72b-instruct-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -5263,7 +5263,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:72b-instruct-q8_0/" class="group-hover:underline">qwen2.5:72b-instruct-q8_0</a>
+        <a href="/ollama-search/library/qwen2.5/:72b-instruct-q8_0/" class="group-hover:underline">qwen2.5:72b-instruct-q8_0</a>
         
         
         <input class="command hidden" value="qwen2.5:72b-instruct-q8_0" />
@@ -5281,7 +5281,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/qwen2.5/:72b-instruct-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/qwen2.5/:72b-instruct-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -5302,7 +5302,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/qwen2.5/:72b-instruct-fp16/" class="group-hover:underline">qwen2.5:72b-instruct-fp16</a>
+        <a href="/ollama-search/library/qwen2.5/:72b-instruct-fp16/" class="group-hover:underline">qwen2.5:72b-instruct-fp16</a>
         
         
         <input class="command hidden" value="qwen2.5:72b-instruct-fp16" />
@@ -5368,6 +5368,6 @@
   });
 })();
 </script>
-<script src="/assets/app.js"></script>
+<script src="/ollama-search/assets/app.js"></script>
 </body>
 </html>

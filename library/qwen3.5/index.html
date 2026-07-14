@@ -20,16 +20,16 @@
     <meta property="twitter:image:src" content="https://ollama.com/public/og-twitter.png" />
     <meta property="twitter:image:width" content="1200" />
     <meta property="twitter:image:height" content="628" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48x48.png" />
-    <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64x64.png" />
-    <link rel="apple-touch-icon" sizes="180x" href="/assets/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/assets/android-chrome-icon-512x512.png" />
-    <link href="/assets/tailwind.css" rel="stylesheet" />
-    <link href="/assets/prism.css" rel="stylesheet" />
-    <link href="/assets/extras.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ollama-search/assets/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/ollama-search/assets/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/ollama-search/assets/icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/ollama-search/assets/icon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x" href="/ollama-search/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/ollama-search/assets/android-chrome-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/ollama-search/assets/android-chrome-icon-512x512.png" />
+    <link href="/ollama-search/assets/tailwind.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/prism.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/extras.css" rel="stylesheet" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -38,25 +38,25 @@
         "url": "https://ollama.com"
       }
     </script>
-    <script src="/assets/htmx.bundle.js"></script>
+    <script src="/ollama-search/assets/htmx.bundle.js"></script>
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 <header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
   <nav class="flex w-full items-center justify-between px-6 py-[9px]">
-    <a href="/search/" class="z-50">
-      <img src="/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
+    <a href="/ollama-search/search/" class="z-50">
+      <img src="/ollama-search/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
     </a>
     <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
-      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/search/">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/search/">Models</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
     </div>
     <div class="flex-grow justify-center items-center hidden lg:flex">
       <div class="relative w-full xl:max-w-[28rem]">
-        <form action="/search" autocomplete="off" id="nav-search-form">
+        <form action="/ollama-search/search" autocomplete="off" id="nav-search-form">
           <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full">
             <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
-            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/search/?q='+encodeURIComponent(this.value);}" />
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/ollama-search/search/?q='+encodeURIComponent(this.value);}" />
           </div>
         </form>
       </div>
@@ -83,7 +83,7 @@
       <div class="flex items-center min-w-0 space-x-2">
         <div class="flex items-center min-w-0">
           <span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
-            <a x-test-model-name href="/library/qwen3.5" title="qwen3.5" class="underline-offset-[5px] hover:underline">qwen3.5</a>
+            <a x-test-model-name href="/ollama-search/library/qwen3.5" title="qwen3.5" class="underline-offset-[5px] hover:underline">qwen3.5</a>
            </span>
          </div>
        </div>
@@ -93,7 +93,7 @@
          <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
            <span class="flex items-center">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
-             <span x-test-pull-count>15.4M</span>
+             <span x-test-pull-count>15.5M</span>
              <span class="hidden sm:flex">&nbsp;Downloads</span>
           </span>
           <span class="flex items-center" title="May 21, 2026 7:08 PM UTC">
@@ -259,7 +259,7 @@ console.log(response.message.content)</pre>
     <section class="flex flex-1 flex-col">
   <div class="flex items-center justify-between mb-4">
     <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Models</h2>
-    <a href="/library/qwen3.5/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all 64 &#8594;</a>
+    <a href="/ollama-search/library/qwen3.5/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all 64 &#8594;</a>
   </div>
   <div class="flex flex-wrap gap-2 mb-4">
   <div class="relative inline-block">
@@ -285,7 +285,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 hidden sm:block">Context</p>
         <p class="col-span-2 hidden sm:block">Input</p>
       </div>
-            <a href="/library/qwen3.5/:latest/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+            <a href="/ollama-search/library/qwen3.5/:latest/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:latest</p>
           
@@ -295,7 +295,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:latest/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:latest</a>
+          <a href="/ollama-search/library/qwen3.5/:latest/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:latest</a>
           
           
           <input class="command hidden" value="qwen3.5:latest" />
@@ -307,7 +307,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:0.8b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:0.8b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b</p>
           
@@ -317,7 +317,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:0.8b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b</a>
+          <a href="/ollama-search/library/qwen3.5/:0.8b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b</a>
           
           
           <input class="command hidden" value="qwen3.5:0.8b" />
@@ -329,7 +329,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:2b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:2b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b</p>
           
@@ -339,7 +339,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:2b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b</a>
+          <a href="/ollama-search/library/qwen3.5/:2b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b</a>
           
           
           <input class="command hidden" value="qwen3.5:2b" />
@@ -351,7 +351,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:4b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:4b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b</p>
           
@@ -361,7 +361,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:4b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b</a>
+          <a href="/ollama-search/library/qwen3.5/:4b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b</a>
           
           
           <input class="command hidden" value="qwen3.5:4b" />
@@ -373,7 +373,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:9b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:9b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b</p>
           <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
@@ -383,7 +383,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:9b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b</a>
+          <a href="/ollama-search/library/qwen3.5/:9b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b</a>
           <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
           
           <input class="command hidden" value="qwen3.5:9b" />
@@ -395,7 +395,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:27b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:27b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b</p>
           
@@ -405,7 +405,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:27b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b</a>
+          <a href="/ollama-search/library/qwen3.5/:27b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b</a>
           
           
           <input class="command hidden" value="qwen3.5:27b" />
@@ -417,7 +417,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:35b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:35b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b</p>
           
@@ -427,7 +427,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:35b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b</a>
+          <a href="/ollama-search/library/qwen3.5/:35b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b</a>
           
           
           <input class="command hidden" value="qwen3.5:35b" />
@@ -439,7 +439,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:122b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:122b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:122b</p>
           
@@ -449,7 +449,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:122b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:122b</a>
+          <a href="/ollama-search/library/qwen3.5/:122b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:122b</a>
           
           
           <input class="command hidden" value="qwen3.5:122b" />
@@ -461,7 +461,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:0.8b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:0.8b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b-mlx</p>
           
@@ -471,7 +471,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:0.8b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b-mlx</a>
+          <a href="/ollama-search/library/qwen3.5/:0.8b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b-mlx</a>
           
           <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
           <input class="command hidden" value="qwen3.5:0.8b-mlx" />
@@ -483,7 +483,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:2b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:2b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b-mlx</p>
           
@@ -493,7 +493,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:2b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b-mlx</a>
+          <a href="/ollama-search/library/qwen3.5/:2b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b-mlx</a>
           
           <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
           <input class="command hidden" value="qwen3.5:2b-mlx" />
@@ -505,7 +505,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:4b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:4b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b-mlx</p>
           
@@ -515,7 +515,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:4b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b-mlx</a>
+          <a href="/ollama-search/library/qwen3.5/:4b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b-mlx</a>
           
           <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
           <input class="command hidden" value="qwen3.5:4b-mlx" />
@@ -527,7 +527,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:9b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:9b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b-mlx</p>
           
@@ -537,7 +537,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:9b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b-mlx</a>
+          <a href="/ollama-search/library/qwen3.5/:9b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b-mlx</a>
           
           <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
           <input class="command hidden" value="qwen3.5:9b-mlx" />
@@ -549,7 +549,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:27b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:27b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b-mlx</p>
           
@@ -559,7 +559,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:27b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b-mlx</a>
+          <a href="/ollama-search/library/qwen3.5/:27b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b-mlx</a>
           
           <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
           <input class="command hidden" value="qwen3.5:27b-mlx" />
@@ -571,7 +571,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:35b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:35b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b-mlx</p>
           
@@ -581,7 +581,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:35b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b-mlx</a>
+          <a href="/ollama-search/library/qwen3.5/:35b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b-mlx</a>
           
           <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
           <input class="command hidden" value="qwen3.5:35b-mlx" />
@@ -593,7 +593,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:cloud/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:cloud/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:cloud</p>
           
@@ -603,7 +603,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:cloud/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:cloud</a>
+          <a href="/ollama-search/library/qwen3.5/:cloud/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:cloud</a>
           
           
           <input class="command hidden" value="qwen3.5:cloud" />
@@ -615,7 +615,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:397b-cloud/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:397b-cloud/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:397b-cloud</p>
           
@@ -625,7 +625,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:397b-cloud/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:397b-cloud</a>
+          <a href="/ollama-search/library/qwen3.5/:397b-cloud/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:397b-cloud</a>
           
           
           <input class="command hidden" value="qwen3.5:397b-cloud" />
@@ -650,7 +650,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 hidden sm:block">Context</p>
         <p class="col-span-2 hidden sm:block">Input</p>
       </div>
-            <a href="/library/qwen3.5/:latest/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+            <a href="/ollama-search/library/qwen3.5/:latest/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:latest</p>
           
@@ -660,7 +660,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:latest/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:latest</a>
+          <a href="/ollama-search/library/qwen3.5/:latest/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:latest</a>
           
           
           <input class="command hidden" value="qwen3.5:latest" />
@@ -672,7 +672,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:0.8b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:0.8b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b</p>
           
@@ -682,7 +682,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:0.8b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b</a>
+          <a href="/ollama-search/library/qwen3.5/:0.8b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b</a>
           
           
           <input class="command hidden" value="qwen3.5:0.8b" />
@@ -694,7 +694,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:2b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:2b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b</p>
           
@@ -704,7 +704,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:2b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b</a>
+          <a href="/ollama-search/library/qwen3.5/:2b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b</a>
           
           
           <input class="command hidden" value="qwen3.5:2b" />
@@ -716,7 +716,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:4b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:4b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b</p>
           
@@ -726,7 +726,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:4b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b</a>
+          <a href="/ollama-search/library/qwen3.5/:4b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b</a>
           
           
           <input class="command hidden" value="qwen3.5:4b" />
@@ -738,7 +738,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:9b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:9b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b</p>
           <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
@@ -748,7 +748,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:9b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b</a>
+          <a href="/ollama-search/library/qwen3.5/:9b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b</a>
           <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
           
           <input class="command hidden" value="qwen3.5:9b" />
@@ -760,7 +760,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:27b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:27b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b</p>
           
@@ -770,7 +770,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:27b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b</a>
+          <a href="/ollama-search/library/qwen3.5/:27b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b</a>
           
           
           <input class="command hidden" value="qwen3.5:27b" />
@@ -782,7 +782,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:35b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:35b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b</p>
           
@@ -792,7 +792,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:35b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b</a>
+          <a href="/ollama-search/library/qwen3.5/:35b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b</a>
           
           
           <input class="command hidden" value="qwen3.5:35b" />
@@ -804,7 +804,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:122b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:122b/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:122b</p>
           
@@ -814,7 +814,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:122b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:122b</a>
+          <a href="/ollama-search/library/qwen3.5/:122b/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:122b</a>
           
           
           <input class="command hidden" value="qwen3.5:122b" />
@@ -826,7 +826,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:cloud/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:cloud/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:cloud</p>
           
@@ -836,7 +836,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:cloud/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:cloud</a>
+          <a href="/ollama-search/library/qwen3.5/:cloud/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:cloud</a>
           
           
           <input class="command hidden" value="qwen3.5:cloud" />
@@ -848,7 +848,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:397b-cloud/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:397b-cloud/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:397b-cloud</p>
           
@@ -858,7 +858,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:397b-cloud/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:397b-cloud</a>
+          <a href="/ollama-search/library/qwen3.5/:397b-cloud/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:397b-cloud</a>
           
           
           <input class="command hidden" value="qwen3.5:397b-cloud" />
@@ -883,7 +883,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 hidden sm:block">Context</p>
         <p class="col-span-2 hidden sm:block">Input</p>
       </div>
-            <a href="/library/qwen3.5/:0.8b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+            <a href="/ollama-search/library/qwen3.5/:0.8b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b-mlx</p>
           
@@ -893,7 +893,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:0.8b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b-mlx</a>
+          <a href="/ollama-search/library/qwen3.5/:0.8b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:0.8b-mlx</a>
           
           
           <input class="command hidden" value="qwen3.5:0.8b-mlx" />
@@ -905,7 +905,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:2b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:2b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b-mlx</p>
           
@@ -915,7 +915,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:2b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b-mlx</a>
+          <a href="/ollama-search/library/qwen3.5/:2b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:2b-mlx</a>
           
           
           <input class="command hidden" value="qwen3.5:2b-mlx" />
@@ -927,7 +927,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:4b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:4b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b-mlx</p>
           
@@ -937,7 +937,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:4b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b-mlx</a>
+          <a href="/ollama-search/library/qwen3.5/:4b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:4b-mlx</a>
           
           
           <input class="command hidden" value="qwen3.5:4b-mlx" />
@@ -949,7 +949,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:9b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:9b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b-mlx</p>
           
@@ -959,7 +959,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:9b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b-mlx</a>
+          <a href="/ollama-search/library/qwen3.5/:9b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:9b-mlx</a>
           
           
           <input class="command hidden" value="qwen3.5:9b-mlx" />
@@ -971,7 +971,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:27b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:27b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b-mlx</p>
           
@@ -981,7 +981,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:27b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b-mlx</a>
+          <a href="/ollama-search/library/qwen3.5/:27b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:27b-mlx</a>
           
           
           <input class="command hidden" value="qwen3.5:27b-mlx" />
@@ -993,7 +993,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">256K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text, Image</p>
       </div>
-      <a href="/library/qwen3.5/:35b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/qwen3.5/:35b-mlx/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b-mlx</p>
           
@@ -1003,7 +1003,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/qwen3.5/:35b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b-mlx</a>
+          <a href="/ollama-search/library/qwen3.5/:35b-mlx/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">qwen3.5:35b-mlx</a>
           
           
           <input class="command hidden" value="qwen3.5:35b-mlx" />
@@ -1930,6 +1930,6 @@ console.log(response.message.content)</pre>
   });
 })();
 </script>
-<script src="/assets/app.js"></script>
+<script src="/ollama-search/assets/app.js"></script>
 </body>
 </html>

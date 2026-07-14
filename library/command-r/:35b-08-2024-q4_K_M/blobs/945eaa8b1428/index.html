@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <title>library/command-r:35b-08-2024-q4_K_M - license</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="library/command-r:35b-08-2024-q4_K_M blob license"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="library/command-r:35b-08-2024-q4_K_M - license" />
+    <meta property="og:description" content="library/command-r:35b-08-2024-q4_K_M blob license" />
+    <meta property="og:image" content="https://ollama.com/public/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content="library/command-r:35b-08-2024-q4_K_M - license" />
+    <meta property="twitter:description" content="library/command-r:35b-08-2024-q4_K_M blob license" />
+    <meta property="twitter:site" content="ollama" />
+    <meta property="twitter:image:src" content="https://ollama.com/public/og-twitter.png" />
+    <meta property="twitter:image:width" content="1200" />
+    <meta property="twitter:image:height" content="628" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ollama-search/assets/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/ollama-search/assets/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/ollama-search/assets/icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/ollama-search/assets/icon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x" href="/ollama-search/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/ollama-search/assets/android-chrome-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/ollama-search/assets/android-chrome-icon-512x512.png" />
+    <link href="/ollama-search/assets/tailwind.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/prism.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/extras.css" rel="stylesheet" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Ollama",
+        "url": "https://ollama.com"
+      }
+    </script>
+    <script src="/ollama-search/assets/htmx.bundle.js"></script>
+</head>
+<body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
+<header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
+  <nav class="flex w-full items-center justify-between px-6 py-[9px]">
+    <a href="/ollama-search/search/" class="z-50">
+      <img src="/ollama-search/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
+    </a>
+    <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/search/">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
+    </div>
+    <div class="flex-grow justify-center items-center hidden lg:flex">
+      <div class="relative w-full xl:max-w-[28rem]">
+        <form action="/ollama-search/search" autocomplete="off" id="nav-search-form">
+          <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full">
+            <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/ollama-search/search/?q='+encodeURIComponent(this.value);}" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="hidden lg:flex xl:flex-1 items-center space-x-2 justify-end ml-6 xl:ml-0">
+      <button id="theme-toggle" class="flex cursor-pointer items-center rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 text-lg px-3 py-1.5 text-black dark:text-neutral-200 whitespace-nowrap" title="Toggle dark mode">
+        <span class="dark:hidden"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></span>
+        <span class="hidden dark:block"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25M18.364 17.614l-1.591-1.591M12 18.75V21M5.636 17.614l1.591-1.591M3 12h2.25M5.636 6.386l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg></span>
+      </button>
+      <a class="flex cursor-pointer items-center rounded-full bg-neutral-800 dark:bg-neutral-100 text-lg px-4 py-1.5 text-white dark:text-neutral-900 hover:bg-black dark:hover:bg-white whitespace-nowrap focus:bg-black dark:focus:bg-white" href="https://ollama.com/download">Download</a>
+    </div>
+    <div class="lg:hidden flex items-center">
+      <button id="theme-toggle-mobile" class="flex items-center rounded-full bg-black/5 dark:bg-white/10 px-3 py-1.5 mr-2 text-black dark:text-neutral-200">
+        <span class="dark:hidden"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></span>
+        <span class="hidden dark:block"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25M18.364 17.614l-1.591-1.591M12 18.75V21M5.636 17.614l1.591-1.591M3 12h2.25M5.636 6.386l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main class="relative mx-auto flex w-full max-w-[52rem] flex-col px-6 py-10 md:py-24 lg:px-8">
+  <a href="/ollama-search/library/command-r/:35b-08-2024-q4_K_M/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to library/command-r:35b-08-2024-q4_K_M</a>
+  <div class="flex flex-col space-y-3">
+    <div class="flex items-center min-w-0">
+      <div class="flex items-center min-w-0 space-x-2">
+        <div class="flex items-center min-w-0">
+          <span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
+            <a x-test-model-name href="/ollama-search/library/command-r" title="command-r" class="underline-offset-[5px] hover:underline">command-r</a>:35b-08-2024-q4_K_M
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col space-y-2">
+      <div class="flex flex-col space-y-2">
+        <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
+          <span class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
+            <span x-test-pull-count>1.5M</span>
+            <span class="hidden sm:flex">&nbsp;Downloads</span>
+          </span>
+          <span class="flex items-center" title="Aug 30, 2024 11:38 PM UTC">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>
+            <span class="hidden sm:flex">Updated&nbsp;</span>
+            <span x-test-updated>1 year ago</span>
+          </span>
+        </p>
+      </div>
+      <h2 class="break-words text-neutral-800 dark:text-neutral-300">Command R is a Large Language Model optimized for conversational interaction and long context tasks.</h2>
+      <div class="flex flex-wrap gap-2">
+        <span x-test-capability class="inline-flex items-center rounded-md bg-indigo-50 dark:bg-indigo-950/50 px-2 py-0.5 text-xs font-medium text-indigo-600 dark:text-indigo-400 sm:text-[13px]">tools</span>
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">35b</span>
+      </div>
+    </div>
+  </div>
+  <div id="file-explorer" class="pt-12 pb-10">
+    <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-200">
+      <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
+        <div class="flex items-center justify-between bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs text-neutral-900 dark:text-neutral-100">
+          <div class="flex items-center">
+            <a href="/ollama-search/library/command-r/:35b-08-2024-q4_K_M/" class="min-w-0 font-medium text-black dark:text-neutral-100 hover:underline hover:decoration-[.75px] hover:underline-offset-[3px]">
+              <span class="hidden sm:block">command-r:35b-08-2024-q4_K_M</span>
+              <span class="sm:hidden">...</span>
+            </a>
+            <span class="px-2 font-light text-neutral-300 dark:text-neutral-700">/</span>
+            <div>license</div>
+          </div>
+          <div>945eaa8b1428 · 14kB</div>
+        </div>
+        <div class="text-[13px]">
+          <div class="px-4 py-2 relative overflow-x-scroll font-mono text-sm whitespace-pre-wrap [counter-reset:line] before:absolute before:left-0 before:inline-block before:w-12 before:select-none before:text-right before:text-gray-400 dark:text-neutral-300 [&>div]:pl-14 [&>div]:pr-4 [&>div]:[counter-increment:line] [&>div]:before:absolute [&>div]:before:left-0 [&>div]:before:inline-block [&>div]:before:w-12 [&>div]:before:select-none [&>div]:before:text-right [&>div]:before:text-gray-400 dark:[&>div]:before:text-gray-600 [&>div]:before:content-[counter(line)]"><div>Creative Commons Attribution-NonCommercial 4.0 International Public</div><div></div><div>License with Acceptable Use Addendum</div><div></div><div></div><div>By exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-NonCommercial 4.0 International Public License, including the Acceptable Use Addendum (&quot;Public License&quot;). To the extent this Public License may be interpreted  as a contract, You are granted the Licensed Rights in  consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.</div><div></div><div></div><div></div><div>Section 1 -- Definitions.</div><div></div><div></div><div>Adapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.</div><div></div><div>Adapter&#x27;s License means the license You apply to Your Copyright and Similar Rights in Your contributions to Adapted Material in accordance with the terms and conditions of this Public License.</div><div></div><div>Copyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.</div><div></div><div>Effective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.</div><div></div><div>Exceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.</div><div></div><div>Licensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.</div><div></div><div>Licensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.</div><div></div><div>Licensor means the individual(s) or entity(ies) granting rights under this Public License.</div><div></div><div>NonCommercial means not primarily intended for or directed towards commercial advantage or monetary compensation. For purposes of this Public License, the exchange of the Licensed Material for other material subject to Copyright and Similar Rights by digital file-sharing or similar means is NonCommercial provided there is no payment of monetary compensation in connection with the exchange.</div><div></div><div>Share means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.</div><div></div><div>Sui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.</div><div></div><div>You means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.</div><div></div><div></div><div>Section 2 -- Scope.</div><div></div><div></div><div>License grant.</div><div></div><div>Subject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:</div><div>reproduce and Share the Licensed Material, in whole or in part, for NonCommercial purposes only; and</div><div>produce, reproduce, and Share Adapted Material for NonCommercial purposes only.</div><div></div><div>Exceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.</div><div></div><div>Term. The term of this Public License is specified in Section 6(a).</div><div></div><div>Media and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted Material.</div><div></div><div>Downstream recipients.</div><div>Offer from the Licensor -- Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.</div><div></div><div>No downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.</div><div></div><div>No endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).</div><div></div><div>b. Other rights.</div><div></div><div>Moral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.</div><div></div><div>Patent and trademark rights are not licensed under this Public License.</div><div>To the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties, including when the Licensed Material is used other than for NonCommercial purposes.</div><div></div><div></div><div>Section 3 -- License Conditions.</div><div></div><div></div><div>Your exercise of the Licensed Rights is expressly made subject to the following conditions.</div><div></div><div></div><div>a. Attribution.</div><div></div><div></div><div>If You Share the Licensed Material (including in modified form), You must:</div><div>retain the following if it is supplied by the Licensor with the Licensed Material:</div><div>identification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);</div><div>a copyright notice;</div><div>a notice that refers to this Public License;</div><div>a notice that refers to the disclaimer of warranties;</div><div>a URI or hyperlink to the Licensed Material to the extent reasonably practicable;</div><div></div><div>indicate if You modified the Licensed Material and retain an indication of any previous modifications; and</div><div></div><div>indicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.</div><div>You may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.</div><div></div><div>If requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.</div><div></div><div>If You Share Adapted Material You produce, the Adapter&#x27;s License You apply must not prevent recipients of the Adapted Material from complying with this Public License.</div><div></div><div></div><div>Section 4 -- Sui Generis Database Rights.</div><div></div><div></div><div>Where the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:</div><div></div><div></div><div>for the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database for NonCommercial purposes only;</div><div></div><div>if You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material; and</div><div></div><div>You must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.</div><div></div><div>For the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.</div><div></div><div></div><div></div><div>Section 5 -- Disclaimer of Warranties and Limitation of Liability.</div><div></div><div></div><div>UNLESS OTHERWISE SEPARATELY UNDERTAKEN BY THE LICENSOR, TO THE EXTENT POSSIBLE, THE LICENSOR OFFERS THE LICENSED MATERIAL AS-IS AND AS-AVAILABLE, AND MAKES NO REPRESENTATIONS OR WARRANTIES OF ANY KIND CONCERNING THE LICENSED MATERIAL, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHER. THIS INCLUDES, WITHOUT LIMITATION, WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, ABSENCE OF LATENT OR OTHER DEFECTS, ACCURACY, OR THE PRESENCE OR ABSENCE OF ERRORS, WHETHER OR NOT KNOWN OR DISCOVERABLE. WHERE DISCLAIMERS OF WARRANTIES ARE NOT ALLOWED IN FULL OR IN PART, THIS DISCLAIMER MAY NOT APPLY TO YOU.</div><div></div><div>TO THE EXTENT POSSIBLE, IN NO EVENT WILL THE LICENSOR BE LIABLE TO YOU ON ANY LEGAL THEORY (INCLUDING, WITHOUT LIMITATION, NEGLIGENCE) OR OTHERWISE FOR ANY DIRECT, SPECIAL, INDIRECT, INCIDENTAL, CONSEQUENTIAL, PUNITIVE, EXEMPLARY, OR OTHER LOSSES, COSTS, EXPENSES, OR DAMAGES ARISING OUT OF THIS PUBLIC LICENSE OR USE OF THE LICENSED MATERIAL, EVEN IF THE LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH LOSSES, COSTS, EXPENSES, OR DAMAGES. WHERE A LIMITATION OF LIABILITY IS NOT ALLOWED IN FULL OR IN PART, THIS LIMITATION MAY NOT APPLY TO YOU.</div><div></div><div>The disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.</div><div></div><div></div><div>Section 6 -- Term and Termination.</div><div></div><div></div><div>This Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.</div><div></div><div>Where Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:</div><div>automatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or</div><div>upon express reinstatement by the Licensor.</div><div></div><div>For the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.</div><div></div><div></div><div>For the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.</div><div></div><div>Sections 1, 5, 6, 7, and 8 survive termination of this Public License.</div><div></div><div></div><div>Section 7 -- Other Terms and Conditions.</div><div></div><div></div><div>The Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.</div><div></div><div>Any arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.</div><div></div><div></div><div>Section 8 -- Interpretation.</div><div></div><div></div><div>For the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.</div><div>To the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.</div><div>No term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.</div><div>Nothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.</div><div></div><div></div><div>ACCEPTABLE USE ADDENDUM</div><div></div><div>-----------------------</div><div></div><div>In addition to the terms and conditions set out above, the license granted pursuant to Section 2.a is subject to your compliance with Cohere for AI (C4AI)&#x27;s acceptable use policy available at https://docs.cohere.com/docs/c4ai-acceptable-use-policy, which is hereby incorporated by reference into this Public License.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="mt-auto">
+  <div class="underline-offset-4 hidden md:block">
+    <div class="flex items-center justify-between px-6 py-3.5">
+      <div class="text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="https://ollama.com/maternion" class="hover:underline">Maternion</a></div>
+      <div class="flex space-x-6 text-xs text-neutral-500 dark:text-neutral-400">
+        <a href="https://ollama.com/download" class="hover:underline">Download</a>
+        <a href="https://ollama.com/blog" class="hover:underline">Blog</a>
+        <a href="https://docs.ollama.com" class="hover:underline">Docs</a>
+        <a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a>
+        <a href="https://ollama.com/pricing" class="hover:underline">Pricing</a>
+      </div>
+    </div>
+  </div>
+  <div class="py-4 md:hidden">
+    <ul class="flex flex-col items-center space-y-2 text-xs text-neutral-500 dark:text-neutral-400">
+      <li><a href="https://ollama.com/download" class="hover:underline">Download</a></li>
+      <li><a href="https://ollama.com/blog" class="hover:underline">Blog</a></li>
+      <li><a href="https://docs.ollama.com" class="hover:underline">Docs</a></li>
+      <li><a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a></li>
+      <li><a href="https://ollama.com/pricing" class="hover:underline">Pricing</a></li>
+    </ul>
+    <div class="mt-4 text-center text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="https://ollama.com/maternion" class="hover:underline">Maternion</a></div>
+  </div>
+</footer>
+<script>
+(function() {
+  const stored = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (stored === 'dark' || (!stored && prefersDark)) {
+    document.documentElement.classList.add('dark');
+  }
+  function toggle() {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('theme-toggle')?.addEventListener('click', toggle);
+    document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggle);
+  });
+})();
+</script>
+<script src="/ollama-search/assets/app.js"></script>
+</body>
+</html>

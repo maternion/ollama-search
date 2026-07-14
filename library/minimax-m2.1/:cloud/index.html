@@ -20,16 +20,16 @@
     <meta property="twitter:image:src" content="https://ollama.com/public/og-twitter.png" />
     <meta property="twitter:image:width" content="1200" />
     <meta property="twitter:image:height" content="628" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48x48.png" />
-    <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64x64.png" />
-    <link rel="apple-touch-icon" sizes="180x" href="/assets/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/assets/android-chrome-icon-512x512.png" />
-    <link href="/assets/tailwind.css" rel="stylesheet" />
-    <link href="/assets/prism.css" rel="stylesheet" />
-    <link href="/assets/extras.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ollama-search/assets/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/ollama-search/assets/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/ollama-search/assets/icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/ollama-search/assets/icon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x" href="/ollama-search/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/ollama-search/assets/android-chrome-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/ollama-search/assets/android-chrome-icon-512x512.png" />
+    <link href="/ollama-search/assets/tailwind.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/prism.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/extras.css" rel="stylesheet" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -38,25 +38,25 @@
         "url": "https://ollama.com"
       }
     </script>
-    <script src="/assets/htmx.bundle.js"></script>
+    <script src="/ollama-search/assets/htmx.bundle.js"></script>
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 <header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
   <nav class="flex w-full items-center justify-between px-6 py-[9px]">
-    <a href="/search/" class="z-50">
-      <img src="/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
+    <a href="/ollama-search/search/" class="z-50">
+      <img src="/ollama-search/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
     </a>
     <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
-      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/search/">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/search/">Models</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
     </div>
     <div class="flex-grow justify-center items-center hidden lg:flex">
       <div class="relative w-full xl:max-w-[28rem]">
-        <form action="/search" autocomplete="off" id="nav-search-form">
+        <form action="/ollama-search/search" autocomplete="off" id="nav-search-form">
           <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full">
             <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
-            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/search/?q='+encodeURIComponent(this.value);}" />
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/ollama-search/search/?q='+encodeURIComponent(this.value);}" />
           </div>
         </form>
       </div>
@@ -78,13 +78,13 @@
 </header>
 
 <main class="relative mx-auto flex w-full max-w-[52rem] flex-col px-6 py-10 md:py-24 lg:px-8">
-  <a href="/library/minimax-m2.1/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to tags</a>
+  <a href="/ollama-search/library/minimax-m2.1/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to tags</a>
   <div class="flex flex-col space-y-3">
     <div class="flex items-center min-w-0">
       <div class="flex items-center min-w-0 space-x-2">
         <div class="flex items-center min-w-0">
           <span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
-            <a x-test-model-name href="/library/minimax-m2.1" title="minimax-m2.1" class="underline-offset-[5px] hover:underline">minimax-m2.1</a>:cloud
+            <a x-test-model-name href="/ollama-search/library/minimax-m2.1" title="minimax-m2.1" class="underline-offset-[5px] hover:underline">minimax-m2.1</a>:cloud
           </span>
         </div>
       </div>
@@ -112,7 +112,31 @@
       </div>
     </div>
   </div>
-  
+  <div x-test-model-metrics class="!mt-8 grid grid-cols-3 overflow-hidden rounded-lg border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+  <div x-test-model-cost x-test-model-metric="usage" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4 border-r">
+    <div class="text-[13px] font-medium text-neutral-500">Usage</div>
+    <div class="mt-3 flex min-w-0 flex-col gap-1">
+      <div x-test-model-cost-value x-test-model-cost-level class="flex h-5 items-center gap-1">
+        <span x-test-model-cost-slot-active class="block h-1.5 w-5 rounded-full bg-neutral-900 dark:bg-neutral-100"></span><span x-test-model-cost-slot-active class="block h-1.5 w-5 rounded-full bg-neutral-900 dark:bg-neutral-100"></span><span x-test-model-cost-slot-inactive class="block h-1.5 w-5 rounded-full bg-neutral-200 dark:bg-neutral-700"></span><span x-test-model-cost-slot-inactive class="block h-1.5 w-5 rounded-full bg-neutral-200 dark:bg-neutral-700"></span>
+      </div>
+      <span class="min-w-0 break-words text-xs leading-tight text-neutral-700 dark:text-neutral-300 sm:text-[14px] sm:leading-5">medium</span>
+    </div>
+  </div>
+  <div x-test-model-metric="context" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4 border-r">
+    <div class="text-[13px] font-medium text-neutral-500">Context</div>
+    <div class="mt-3 flex min-w-0 flex-col gap-1">
+      <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">200K</span>
+      <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm">tokens</span>
+    </div>
+  </div>
+  <div x-test-model-metric="size" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4">
+    <div class="text-[13px] font-medium text-neutral-500">Size</div>
+    <div class="mt-3 flex min-w-0 flex-col gap-1">
+      <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">230B</span>
+      <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm">parameters</span>
+    </div>
+  </div>
+</div>
   <div class="py-8">
     <section data-usage-section class="mb-8">
   <div class="relative rounded-lg border border-neutral-200 dark:border-neutral-800 overflow-hidden bg-white dark:bg-neutral-900">
@@ -164,24 +188,456 @@ console.log(response.message.content)</pre>
   </div>
 </section>
     
-    <section id="file-explorer" class="flex flex-1 flex-col">
-  <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100 mb-4">Details</h2>
-  <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
-    <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
-      <div class="flex items-center justify-between bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs text-neutral-900 dark:text-neutral-100">
-        <p>Updated 6 months ago</p>
-        <p>4ada3a038304 · — ·</p>
-      </div>
-      <div class="px-4 py-3 text-[13px] text-neutral-500 dark:text-neutral-400 grid grid-cols-12 gap-2">
-        <p class="col-span-3">Context</p><p class="col-span-9">200K</p>
-        <p class="col-span-3">Input</p><p class="col-span-9">Text</p>
-        <p class="col-span-3">Size / Usage</p><p class="col-span-9">—</p>
-      </div>
+    
+  </div>
+  <div class="flex flex-1 flex-col py-8" id="readme">
+  <div class="flex items-center justify-between pb-1">
+    <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Readme</h2>
+  </div>
+  <div>
+    <div id="display" class="prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black dark:prose-headings:text-neutral-200 dark:prose-blockquote:text-neutral-400 dark:prose-code:bg-neutral-800 dark:prose-code:text-neutral-200 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-200 dark:prose-li:text-neutral-200 dark:prose-td:text-neutral-300 dark:prose-th:text-neutral-200 dark:prose-a:text-blue-400 dark:prose-strong:text-neutral-200 dark:marker:prose-ol:text-neutral-400 dark:marker:prose-ul:text-neutral-400 dark:text-neutral-200">
+      
+        
+          <p><img src="https://ollama.com/assets/library/minimax-m2.1/8e6a3ede-ffe9-430f-b3d2-ca3af4fd4a76" alt="image.png"/></p>
+
+<h3>Get started</h3>
+
+<pre><code>ollama run minimax-m2.1:cloud
+</code></pre>
+
+<h3>Model Highlights</h3>
+
+<p><strong>1. Multilingual Coding Excellence (Beyond Python)</strong></p>
+
+<p>While many models focus primarily on Python, real-world engineering requires cross-language proficiency. M2.1 delivers significant performance gains across <strong>Rust, Java, Golang, C++, Kotlin, Objective-C, TypeScript, and JavaScript</strong>.</p>
+
+<ul>
+<li><strong>Web3 Dominance:</strong> Special optimization for Web3 protocols, offering superior performance for blockchain and decentralized projects.</li>
+<li><strong>Benchmark Leadership:</strong> Achieved <strong>49.4% on Multi-SWE-Bench</strong>, surpassing industry leaders like Anthropic Claude 3.5 Sonnet and Gemini 1.5 Pro.</li>
+<li><strong>Deep Comprehension:</strong> Advanced code review capabilities, including sophisticated performance optimization and structural analysis.</li>
+</ul>
+
+<p><strong>2. Optimized for “Vibe” AppDev &amp; Native Mobile</strong></p>
+
+<p>We have bridged the gap between aesthetic design and technical implementation.</p>
+
+<ul>
+<li><strong>Web &amp; Scientific Simulation:</strong> Enhanced “web aesthetics” for better UI/UX generation and more realistic scientific scenario simulations.</li>
+<li><strong>Native Mobile Powerhouse:</strong> Addressing a common industry weakness, M2.1 significantly boosts native <strong>Android and iOS</strong> development capabilities.</li>
+<li><em>“Not only vibe webdev, but vibe appdev.”</em></li>
+</ul>
+
+<p><strong>3. Concise, High-Efficiency Responses</strong></p>
+
+<p>Compared to the previous generation, MiniMax-M2.1 provides cleaner outputs and more streamlined <strong>Chain-of-Thought (CoT)</strong> reasoning. This reduction in “verbosity” results in a noticeably faster “feel” and near-instant response times for developer workflows.</p>
+
+<p><strong>4. Advanced Interleaved Thinking &amp; Instruction Following</strong></p>
+
+<p>M2.1 is the first open-source model series to implement <strong>Advanced Interleaved Thinking</strong>, upgrading its systematic problem-solving capacity.</p>
+
+<ul>
+<li><strong>Complex Constraints:</strong> The model doesn’t just focus on code correctness; it excels at integrating “composite instruction constraints” (as seen in <strong>OctoCodingBench</strong>).</li>
+<li><strong>Office Readiness:</strong> These improvements make the model viable for complex administrative and office automation tasks (demonstrated in our <strong>Toolathlon</strong> showcase).</li>
+</ul>
+
+<p><strong>5. Enhanced Scaffolding &amp; Agent Generalization</strong></p>
+
+<p>M2.1 is designed to be the “brain” behind your favorite tools. It shows exceptional performance across various programming agents and IDE extensions, including <strong>Claude Code, Droid (Factory AI), Cline, Kilo Code, and Roo Code.</strong></p>
+
+<ul>
+<li><strong>Context Management:</strong> Seamless support for framework-specific configurations like <code>Skill.md</code>, <code>Claude.md</code>, <code>agent.md</code>, <code>.cursorrules</code>, and Slash Commands.</li>
+</ul>
+
+<p><strong>6. The Most Lightweight SOTA Model (10B Activated)</strong></p>
+
+<p>In just two months, we have achieved a massive leap in utility while maintaining the model’s legendary efficiency.</p>
+
+<ul>
+<li><strong>Efficiency Powerhouse:</strong> With only <strong>10B activated parameters</strong>, M2.1 remains the most cost-effective SOTA-performance model in the open-source community.</li>
+</ul>
+
+<p><strong>7. High-Quality Dialogue &amp; Creative Writing</strong></p>
+
+<p>M2.1 isn’t just a coding specialist—it’s a more capable all-around assistant. Compared to M2, the chat and writing experience has been significantly refined, delivering more nuanced, detailed, and contextually rich answers for non-technical queries.</p>
+
+<h3>Benchmarks</h3>
+
+<p>MiniMax-M2.1 delivers a significant leap over M2 on core software engineering leaderboards[cite: 14]. It shines particularly bright in multilingual scenarios, where it outperforms Claude Sonnet 4.5 and closely approaches Claude Opus 4.5.</p>
+
+<p><strong>Core Software Engineering Benchmarks</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Benchmark</th>
+<th align="left">SWE-bench Verified</th>
+<th align="left">Multi-SWE-bench</th>
+<th align="left">SWE-bench Multilingual</th>
+<th align="left">Terminal-bench 2.0</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>MiniMax-M2.1</strong></td>
+<td align="left"><strong>74.0</strong></td>
+<td align="left"><strong>49.4</strong></td>
+<td align="left"><strong>72.5</strong></td>
+<td align="left"><strong>47.9</strong></td>
+</tr>
+
+<tr>
+<td align="left">MiniMax-M2</td>
+<td align="left">69.4</td>
+<td align="left">36.2</td>
+<td align="left">56.5</td>
+<td align="left">30.0</td>
+</tr>
+
+<tr>
+<td align="left">Kimi K2 Thinking</td>
+<td align="left">71.3</td>
+<td align="left">41.9</td>
+<td align="left">61.1</td>
+<td align="left">35.2</td>
+</tr>
+
+<tr>
+<td align="left">DeepSeek V3.2</td>
+<td align="left">73.1</td>
+<td align="left">37.4</td>
+<td align="left">70.2</td>
+<td align="left">46.4</td>
+</tr>
+
+<tr>
+<td align="left">GLM 4.6</td>
+<td align="left">68.0</td>
+<td align="left">30.0</td>
+<td align="left">53.8</td>
+<td align="left">24.5</td>
+</tr>
+
+<tr>
+<td align="left">Claude Sonnet 4.5</td>
+<td align="left">77.2</td>
+<td align="left">44.3</td>
+<td align="left">68 ± 0.5</td>
+<td align="left">50.0</td>
+</tr>
+
+<tr>
+<td align="left">Claude Opus 4.5</td>
+<td align="left">80.9</td>
+<td align="left">50.0</td>
+<td align="left">77.5 ± 1.5</td>
+<td align="left">57.8</td>
+</tr>
+
+<tr>
+<td align="left">Gemini 3 Pro</td>
+<td align="left">78.0</td>
+<td align="left">38.0</td>
+<td align="left">65.0</td>
+<td align="left">54.2</td>
+</tr>
+
+<tr>
+<td align="left">GPT-5.2 (thinking)</td>
+<td align="left">80.0</td>
+<td align="left">x</td>
+<td align="left">72.0</td>
+<td align="left">54.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Framework Generalization</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Benchmark</th>
+<th align="left">SWE-bench Verified (Claude Code)</th>
+<th align="left">SWE-bench Verified (Droid)</th>
+<th align="left">SWE-bench Verified (mini-swe-agent)</th>
+<th align="left">SWT-bench</th>
+<th align="left">SWE-Perf</th>
+<th align="left">SWE-Review</th>
+<th align="left">OctoCodingbench</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>MiniMax-M2.1</strong></td>
+<td align="left"><strong>74.0</strong></td>
+<td align="left"><strong>71.3</strong></td>
+<td align="left"><strong>67.0</strong></td>
+<td align="left"><strong>69.3</strong></td>
+<td align="left"><strong>3.1</strong></td>
+<td align="left"><strong>8.9</strong></td>
+<td align="left"><strong>26.1</strong></td>
+</tr>
+
+<tr>
+<td align="left">MiniMax-M2</td>
+<td align="left">69.4</td>
+<td align="left">68.1</td>
+<td align="left">61.0</td>
+<td align="left">32.8</td>
+<td align="left">1.4</td>
+<td align="left">3.4</td>
+<td align="left">13.3</td>
+</tr>
+
+<tr>
+<td align="left">Kimi K2 Thinking</td>
+<td align="left">71.3</td>
+<td align="left">64.0</td>
+<td align="left">63.4</td>
+<td align="left">38.2</td>
+<td align="left">1.0</td>
+<td align="left">5.3</td>
+<td align="left">16.8</td>
+</tr>
+
+<tr>
+<td align="left">DeepSeek V3.2</td>
+<td align="left">73.1</td>
+<td align="left">67.0</td>
+<td align="left">60.0</td>
+<td align="left">62.0</td>
+<td align="left">0.9</td>
+<td align="left">6.4</td>
+<td align="left">26.0</td>
+</tr>
+
+<tr>
+<td align="left">GLM 4.6</td>
+<td align="left">68.0</td>
+<td align="left">64.9</td>
+<td align="left">55.4</td>
+<td align="left">45.9</td>
+<td align="left">0.9</td>
+<td align="left">5.6</td>
+<td align="left">19.2</td>
+</tr>
+
+<tr>
+<td align="left">Claude Sonnet 4.5</td>
+<td align="left">77.2</td>
+<td align="left">72.3</td>
+<td align="left">70.6</td>
+<td align="left">69.5</td>
+<td align="left">3.0</td>
+<td align="left">10.5</td>
+<td align="left">22.8</td>
+</tr>
+
+<tr>
+<td align="left">Claude Opus 4.5</td>
+<td align="left">80.9</td>
+<td align="left">75.2</td>
+<td align="left">74.4</td>
+<td align="left">80.2</td>
+<td align="left">4.7</td>
+<td align="left">16.2</td>
+<td align="left">36.2</td>
+</tr>
+
+<tr>
+<td align="left">Gemini 3 Pro</td>
+<td align="left">78.0</td>
+<td align="left">x</td>
+<td align="left">71.8</td>
+<td align="left">79.7</td>
+<td align="left">6.5</td>
+<td align="left">x</td>
+<td align="left">22.9</td>
+</tr>
+
+<tr>
+<td align="left">GPT-5.2 (thinking)</td>
+<td align="left">80.0</td>
+<td align="left">x</td>
+<td align="left">74.2</td>
+<td align="left">80.7</td>
+<td align="left">3.6</td>
+<td align="left">x</td>
+<td align="left">x</td>
+</tr>
+</tbody>
+</table>
+<p><strong>VIBE Benchmark (Visual &amp; Interactive Benchmark for Execution)</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Benchmark</th>
+<th align="left">VIBE (Average)</th>
+<th align="left">VIBE-Web</th>
+<th align="left">VIBE-Simulation</th>
+<th align="left">VIBE-Android</th>
+<th align="left">VIBE-iOS</th>
+<th align="left">VIBE-Backend</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>MiniMax-M2.1</strong></td>
+<td align="left"><strong>88.6</strong></td>
+<td align="left"><strong>91.5</strong></td>
+<td align="left"><strong>87.1</strong></td>
+<td align="left"><strong>89.7</strong></td>
+<td align="left"><strong>88</strong></td>
+<td align="left"><strong>86.7</strong></td>
+</tr>
+
+<tr>
+<td align="left">MiniMax-M2</td>
+<td align="left">67.5</td>
+<td align="left">80.4</td>
+<td align="left">77</td>
+<td align="left">69.2</td>
+<td align="left">39.5</td>
+<td align="left">67.8</td>
+</tr>
+
+<tr>
+<td align="left">GLM 4.6</td>
+<td align="left">72.9</td>
+<td align="left">86.7</td>
+<td align="left">82.4</td>
+<td align="left">58.2</td>
+<td align="left">59.1</td>
+<td align="left">78.3</td>
+</tr>
+
+<tr>
+<td align="left">Claude Sonnet 4.5</td>
+<td align="left">85.2</td>
+<td align="left">87.3</td>
+<td align="left">79.1</td>
+<td align="left">87.5</td>
+<td align="left">81.2</td>
+<td align="left">90.8</td>
+</tr>
+
+<tr>
+<td align="left">Claude Opus 4.5</td>
+<td align="left">90.7</td>
+<td align="left">89.1</td>
+<td align="left">84</td>
+<td align="left">92.2</td>
+<td align="left">90</td>
+<td align="left">98</td>
+</tr>
+
+<tr>
+<td align="left">Gemini 3 Pro</td>
+<td align="left">82.4</td>
+<td align="left">89.5</td>
+<td align="left">89.2</td>
+<td align="left">78.7</td>
+<td align="left">75.8</td>
+<td align="left">78.7</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Long-Horizon Tool Use &amp; Intelligence Metric</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Benchmark</th>
+<th align="left">Toolathlon</th>
+<th align="left">BrowseComp</th>
+<th align="left">BrowseComp (context management)</th>
+<th align="left">AA-Index</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>MiniMax-M2.1</strong></td>
+<td align="left"><strong>43.5</strong></td>
+<td align="left"><strong>47.4</strong></td>
+<td align="left"><strong>62</strong></td>
+<td align="left"><strong>64</strong></td>
+</tr>
+
+<tr>
+<td align="left">MiniMax-M2</td>
+<td align="left">16.7</td>
+<td align="left">44</td>
+<td align="left">56.9</td>
+<td align="left">61</td>
+</tr>
+
+<tr>
+<td align="left">Kimi K2 Thinking</td>
+<td align="left">17.6</td>
+<td align="left">41.5</td>
+<td align="left">60.2</td>
+<td align="left">67</td>
+</tr>
+
+<tr>
+<td align="left">DeepSeek V3.2</td>
+<td align="left">35.2</td>
+<td align="left">51.4</td>
+<td align="left">67.6</td>
+<td align="left">66</td>
+</tr>
+
+<tr>
+<td align="left">GLM 4.6</td>
+<td align="left">18.8</td>
+<td align="left">45.1</td>
+<td align="left">50.2</td>
+<td align="left">56</td>
+</tr>
+
+<tr>
+<td align="left">Claude Sonnet 4.5</td>
+<td align="left">38.9</td>
+<td align="left">19.6</td>
+<td align="left">26.1</td>
+<td align="left">63</td>
+</tr>
+
+<tr>
+<td align="left">Claude Opus 4.5</td>
+<td align="left">43.5</td>
+<td align="left">37</td>
+<td align="left">57.8</td>
+<td align="left">70</td>
+</tr>
+
+<tr>
+<td align="left">Gemini 3 Pro</td>
+<td align="left">36.4</td>
+<td align="left">37.8</td>
+<td align="left">59.2</td>
+<td align="left">73</td>
+</tr>
+
+<tr>
+<td align="left">GPT-5.2 (thinking)</td>
+<td align="left">41.7</td>
+<td align="left">65.8</td>
+<td align="left">70</td>
+<td align="left">73</td>
+</tr>
+</tbody>
+</table>
+
+        
+      
     </div>
   </div>
-</section>
-  </div>
-  
+</div>
 </main>
 
 <footer class="mt-auto">
@@ -225,6 +681,6 @@ console.log(response.message.content)</pre>
   });
 })();
 </script>
-<script src="/assets/app.js"></script>
+<script src="/ollama-search/assets/app.js"></script>
 </body>
 </html>

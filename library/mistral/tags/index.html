@@ -20,16 +20,16 @@
     <meta property="twitter:image:src" content="https://ollama.com/public/og-twitter.png" />
     <meta property="twitter:image:width" content="1200" />
     <meta property="twitter:image:height" content="628" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48x48.png" />
-    <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64x64.png" />
-    <link rel="apple-touch-icon" sizes="180x" href="/assets/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/assets/android-chrome-icon-512x512.png" />
-    <link href="/assets/tailwind.css" rel="stylesheet" />
-    <link href="/assets/prism.css" rel="stylesheet" />
-    <link href="/assets/extras.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ollama-search/assets/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/ollama-search/assets/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/ollama-search/assets/icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/ollama-search/assets/icon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x" href="/ollama-search/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/ollama-search/assets/android-chrome-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/ollama-search/assets/android-chrome-icon-512x512.png" />
+    <link href="/ollama-search/assets/tailwind.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/prism.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/extras.css" rel="stylesheet" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -38,25 +38,25 @@
         "url": "https://ollama.com"
       }
     </script>
-    <script src="/assets/htmx.bundle.js"></script>
+    <script src="/ollama-search/assets/htmx.bundle.js"></script>
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 <header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
   <nav class="flex w-full items-center justify-between px-6 py-[9px]">
-    <a href="/search/" class="z-50">
-      <img src="/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
+    <a href="/ollama-search/search/" class="z-50">
+      <img src="/ollama-search/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
     </a>
     <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
-      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/search/">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/search/">Models</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
     </div>
     <div class="flex-grow justify-center items-center hidden lg:flex">
       <div class="relative w-full xl:max-w-[28rem]">
-        <form action="/search" autocomplete="off" id="nav-search-form">
+        <form action="/ollama-search/search" autocomplete="off" id="nav-search-form">
           <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full">
             <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
-            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/search/?q='+encodeURIComponent(this.value);}" />
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/ollama-search/search/?q='+encodeURIComponent(this.value);}" />
           </div>
         </form>
       </div>
@@ -78,13 +78,13 @@
 </header>
 
 <main class="relative mx-auto flex w-full max-w-[52rem] flex-col px-6 py-10 md:py-24 lg:px-8">
-  <a href="/library/mistral/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to mistral</a>
+  <a href="/ollama-search/library/mistral/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to mistral</a>
   <div class="flex flex-col space-y-3">
     <div class="flex items-center min-w-0">
       <div class="flex items-center min-w-0 space-x-2">
         <div class="flex items-center min-w-0">
           <span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
-            <a x-test-model-name href="/library/mistral" title="mistral" class="underline-offset-[5px] hover:underline">mistral</a>
+            <a x-test-model-name href="/ollama-search/library/mistral" title="mistral" class="underline-offset-[5px] hover:underline">mistral</a>
            </span>
          </div>
        </div>
@@ -100,7 +100,7 @@
           <span class="flex items-center" title="Jul 13, 2025 12:56 AM UTC">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>
             <span class="hidden sm:flex">Updated&nbsp;</span>
-            <span x-test-updated>12 months ago</span>
+            <span x-test-updated>1 year ago</span>
           </span>
         </p>
       </div>
@@ -127,7 +127,7 @@
         <p class="col-span-2 hidden md:block">Input</p>
       </div>
       <div class="group px-4 py-3">
-  <a href="/library/mistral/:latest/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:latest/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -140,15 +140,15 @@
     <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
       <span>
         <span class="font-mono">6577803aa9a0</span> • 4.4GB • 32K context window •
-        <span class="hidden sm:inline">Text input • 12 months ago</span>
+        <span class="hidden sm:inline">Text input • 1 year ago</span>
       </span>
-      <div class="flex sm:hidden">Text input • 12 months ago</div>
+      <div class="flex sm:hidden">Text input • 1 year ago</div>
     </div>
   </a>
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:latest/" class="group-hover:underline">mistral:latest</a>
+        <a href="/ollama-search/library/mistral/:latest/" class="group-hover:underline">mistral:latest</a>
         
         
         <input class="command hidden" value="mistral:latest" />
@@ -161,12 +161,12 @@
       <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text</div>
     </div>
     <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
-      <span class="font-mono text-[11px]">6577803aa9a0</span>&nbsp;·&nbsp;12 months ago
+      <span class="font-mono text-[11px]">6577803aa9a0</span>&nbsp;·&nbsp;1 year ago
     </div>
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:instruct/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:instruct/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -187,7 +187,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:instruct/" class="group-hover:underline">mistral:instruct</a>
+        <a href="/ollama-search/library/mistral/:instruct/" class="group-hover:underline">mistral:instruct</a>
         
         
         <input class="command hidden" value="mistral:instruct" />
@@ -205,7 +205,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:text/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:text/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -226,7 +226,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:text/" class="group-hover:underline">mistral:text</a>
+        <a href="/ollama-search/library/mistral/:text/" class="group-hover:underline">mistral:text</a>
         
         
         <input class="command hidden" value="mistral:text" />
@@ -244,7 +244,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:v0.1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:v0.1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -265,7 +265,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:v0.1/" class="group-hover:underline">mistral:v0.1</a>
+        <a href="/ollama-search/library/mistral/:v0.1/" class="group-hover:underline">mistral:v0.1</a>
         
         
         <input class="command hidden" value="mistral:v0.1" />
@@ -283,7 +283,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:v0.2/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:v0.2/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -304,7 +304,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:v0.2/" class="group-hover:underline">mistral:v0.2</a>
+        <a href="/ollama-search/library/mistral/:v0.2/" class="group-hover:underline">mistral:v0.2</a>
         
         
         <input class="command hidden" value="mistral:v0.2" />
@@ -322,7 +322,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:v0.3/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:v0.3/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -335,15 +335,15 @@
     <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
       <span>
         <span class="font-mono">6577803aa9a0</span> • 4.4GB • 32K context window •
-        <span class="hidden sm:inline">Text input • 12 months ago</span>
+        <span class="hidden sm:inline">Text input • 1 year ago</span>
       </span>
-      <div class="flex sm:hidden">Text input • 12 months ago</div>
+      <div class="flex sm:hidden">Text input • 1 year ago</div>
     </div>
   </a>
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:v0.3/" class="group-hover:underline">mistral:v0.3</a>
+        <a href="/ollama-search/library/mistral/:v0.3/" class="group-hover:underline">mistral:v0.3</a>
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
         
         <input class="command hidden" value="mistral:v0.3" />
@@ -356,12 +356,12 @@
       <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text</div>
     </div>
     <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
-      <span class="font-mono text-[11px]">6577803aa9a0</span>&nbsp;·&nbsp;12 months ago
+      <span class="font-mono text-[11px]">6577803aa9a0</span>&nbsp;·&nbsp;1 year ago
     </div>
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -374,15 +374,15 @@
     <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
       <span>
         <span class="font-mono">6577803aa9a0</span> • 4.4GB • 32K context window •
-        <span class="hidden sm:inline">Text input • 12 months ago</span>
+        <span class="hidden sm:inline">Text input • 1 year ago</span>
       </span>
-      <div class="flex sm:hidden">Text input • 12 months ago</div>
+      <div class="flex sm:hidden">Text input • 1 year ago</div>
     </div>
   </a>
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b/" class="group-hover:underline">mistral:7b</a>
+        <a href="/ollama-search/library/mistral/:7b/" class="group-hover:underline">mistral:7b</a>
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
         
         <input class="command hidden" value="mistral:7b" />
@@ -395,12 +395,12 @@
       <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text</div>
     </div>
     <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
-      <span class="font-mono text-[11px]">6577803aa9a0</span>&nbsp;·&nbsp;12 months ago
+      <span class="font-mono text-[11px]">6577803aa9a0</span>&nbsp;·&nbsp;1 year ago
     </div>
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -413,15 +413,15 @@
     <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
       <span>
         <span class="font-mono">6577803aa9a0</span> • 4.4GB • 32K context window •
-        <span class="hidden sm:inline">Text input • 12 months ago</span>
+        <span class="hidden sm:inline">Text input • 1 year ago</span>
       </span>
-      <div class="flex sm:hidden">Text input • 12 months ago</div>
+      <div class="flex sm:hidden">Text input • 1 year ago</div>
     </div>
   </a>
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct/" class="group-hover:underline">mistral:7b-instruct</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct/" class="group-hover:underline">mistral:7b-instruct</a>
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
         
         <input class="command hidden" value="mistral:7b-instruct" />
@@ -434,12 +434,12 @@
       <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text</div>
     </div>
     <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
-      <span class="font-mono text-[11px]">6577803aa9a0</span>&nbsp;·&nbsp;12 months ago
+      <span class="font-mono text-[11px]">6577803aa9a0</span>&nbsp;·&nbsp;1 year ago
     </div>
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -460,7 +460,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-q2_K/" class="group-hover:underline">mistral:7b-instruct-q2_K</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-q2_K/" class="group-hover:underline">mistral:7b-instruct-q2_K</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-q2_K" />
@@ -478,7 +478,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.2-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -499,7 +499,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.2-q2_K/" class="group-hover:underline">mistral:7b-instruct-v0.2-q2_K</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q2_K/" class="group-hover:underline">mistral:7b-instruct-v0.2-q2_K</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.2-q2_K" />
@@ -517,7 +517,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -538,7 +538,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-q3_K_S/" class="group-hover:underline">mistral:7b-instruct-q3_K_S</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-q3_K_S/" class="group-hover:underline">mistral:7b-instruct-q3_K_S</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-q3_K_S" />
@@ -556,7 +556,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.2-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -577,7 +577,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.2-q3_K_S/" class="group-hover:underline">mistral:7b-instruct-v0.2-q3_K_S</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q3_K_S/" class="group-hover:underline">mistral:7b-instruct-v0.2-q3_K_S</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.2-q3_K_S" />
@@ -595,7 +595,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -616,7 +616,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-q3_K_M/" class="group-hover:underline">mistral:7b-instruct-q3_K_M</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-q3_K_M/" class="group-hover:underline">mistral:7b-instruct-q3_K_M</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-q3_K_M" />
@@ -634,7 +634,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.2-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -655,7 +655,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.2-q3_K_M/" class="group-hover:underline">mistral:7b-instruct-v0.2-q3_K_M</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q3_K_M/" class="group-hover:underline">mistral:7b-instruct-v0.2-q3_K_M</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.2-q3_K_M" />
@@ -673,7 +673,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -694,7 +694,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-q3_K_L/" class="group-hover:underline">mistral:7b-instruct-q3_K_L</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-q3_K_L/" class="group-hover:underline">mistral:7b-instruct-q3_K_L</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-q3_K_L" />
@@ -712,7 +712,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.2-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -733,7 +733,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.2-q3_K_L/" class="group-hover:underline">mistral:7b-instruct-v0.2-q3_K_L</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q3_K_L/" class="group-hover:underline">mistral:7b-instruct-v0.2-q3_K_L</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.2-q3_K_L" />
@@ -751,7 +751,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -772,7 +772,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-q4_0/" class="group-hover:underline">mistral:7b-instruct-q4_0</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-q4_0/" class="group-hover:underline">mistral:7b-instruct-q4_0</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-q4_0" />
@@ -790,7 +790,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.2-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -811,7 +811,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.2-q4_0/" class="group-hover:underline">mistral:7b-instruct-v0.2-q4_0</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q4_0/" class="group-hover:underline">mistral:7b-instruct-v0.2-q4_0</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.2-q4_0" />
@@ -829,7 +829,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -850,7 +850,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-q4_1/" class="group-hover:underline">mistral:7b-instruct-q4_1</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-q4_1/" class="group-hover:underline">mistral:7b-instruct-q4_1</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-q4_1" />
@@ -868,7 +868,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.2-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -889,7 +889,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.2-q4_1/" class="group-hover:underline">mistral:7b-instruct-v0.2-q4_1</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q4_1/" class="group-hover:underline">mistral:7b-instruct-v0.2-q4_1</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.2-q4_1" />
@@ -907,7 +907,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -928,7 +928,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-q4_K_S/" class="group-hover:underline">mistral:7b-instruct-q4_K_S</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-q4_K_S/" class="group-hover:underline">mistral:7b-instruct-q4_K_S</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-q4_K_S" />
@@ -946,7 +946,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.2-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -967,7 +967,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.2-q4_K_S/" class="group-hover:underline">mistral:7b-instruct-v0.2-q4_K_S</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q4_K_S/" class="group-hover:underline">mistral:7b-instruct-v0.2-q4_K_S</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.2-q4_K_S" />
@@ -985,7 +985,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.2-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1006,7 +1006,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.2-q4_K_M/" class="group-hover:underline">mistral:7b-instruct-v0.2-q4_K_M</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q4_K_M/" class="group-hover:underline">mistral:7b-instruct-v0.2-q4_K_M</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.2-q4_K_M" />
@@ -1024,7 +1024,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.2-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1045,7 +1045,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.2-q5_0/" class="group-hover:underline">mistral:7b-instruct-v0.2-q5_0</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q5_0/" class="group-hover:underline">mistral:7b-instruct-v0.2-q5_0</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.2-q5_0" />
@@ -1063,7 +1063,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.2-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1084,7 +1084,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.2-q5_1/" class="group-hover:underline">mistral:7b-instruct-v0.2-q5_1</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q5_1/" class="group-hover:underline">mistral:7b-instruct-v0.2-q5_1</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.2-q5_1" />
@@ -1102,7 +1102,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.2-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1123,7 +1123,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.2-q5_K_S/" class="group-hover:underline">mistral:7b-instruct-v0.2-q5_K_S</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q5_K_S/" class="group-hover:underline">mistral:7b-instruct-v0.2-q5_K_S</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.2-q5_K_S" />
@@ -1141,7 +1141,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.2-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1162,7 +1162,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.2-q5_K_M/" class="group-hover:underline">mistral:7b-instruct-v0.2-q5_K_M</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q5_K_M/" class="group-hover:underline">mistral:7b-instruct-v0.2-q5_K_M</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.2-q5_K_M" />
@@ -1180,7 +1180,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.2-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1201,7 +1201,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.2-q6_K/" class="group-hover:underline">mistral:7b-instruct-v0.2-q6_K</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q6_K/" class="group-hover:underline">mistral:7b-instruct-v0.2-q6_K</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.2-q6_K" />
@@ -1219,7 +1219,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.2-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1240,7 +1240,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.2-q8_0/" class="group-hover:underline">mistral:7b-instruct-v0.2-q8_0</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-q8_0/" class="group-hover:underline">mistral:7b-instruct-v0.2-q8_0</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.2-q8_0" />
@@ -1258,7 +1258,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.2-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1279,7 +1279,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.2-fp16/" class="group-hover:underline">mistral:7b-instruct-v0.2-fp16</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.2-fp16/" class="group-hover:underline">mistral:7b-instruct-v0.2-fp16</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.2-fp16" />
@@ -1297,7 +1297,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.3-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1318,7 +1318,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.3-q2_K/" class="group-hover:underline">mistral:7b-instruct-v0.3-q2_K</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q2_K/" class="group-hover:underline">mistral:7b-instruct-v0.3-q2_K</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.3-q2_K" />
@@ -1336,7 +1336,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.3-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1357,7 +1357,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.3-q3_K_S/" class="group-hover:underline">mistral:7b-instruct-v0.3-q3_K_S</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q3_K_S/" class="group-hover:underline">mistral:7b-instruct-v0.3-q3_K_S</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.3-q3_K_S" />
@@ -1375,7 +1375,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.3-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1396,7 +1396,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.3-q3_K_M/" class="group-hover:underline">mistral:7b-instruct-v0.3-q3_K_M</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q3_K_M/" class="group-hover:underline">mistral:7b-instruct-v0.3-q3_K_M</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.3-q3_K_M" />
@@ -1414,7 +1414,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.3-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1435,7 +1435,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.3-q3_K_L/" class="group-hover:underline">mistral:7b-instruct-v0.3-q3_K_L</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q3_K_L/" class="group-hover:underline">mistral:7b-instruct-v0.3-q3_K_L</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.3-q3_K_L" />
@@ -1453,7 +1453,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.3-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1474,7 +1474,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.3-q4_0/" class="group-hover:underline">mistral:7b-instruct-v0.3-q4_0</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q4_0/" class="group-hover:underline">mistral:7b-instruct-v0.3-q4_0</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.3-q4_0" />
@@ -1492,7 +1492,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.3-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1513,7 +1513,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.3-q4_1/" class="group-hover:underline">mistral:7b-instruct-v0.3-q4_1</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q4_1/" class="group-hover:underline">mistral:7b-instruct-v0.3-q4_1</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.3-q4_1" />
@@ -1531,7 +1531,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.3-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1552,7 +1552,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.3-q4_K_S/" class="group-hover:underline">mistral:7b-instruct-v0.3-q4_K_S</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q4_K_S/" class="group-hover:underline">mistral:7b-instruct-v0.3-q4_K_S</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.3-q4_K_S" />
@@ -1570,7 +1570,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1591,7 +1591,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-q4_K_M/" class="group-hover:underline">mistral:7b-instruct-q4_K_M</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-q4_K_M/" class="group-hover:underline">mistral:7b-instruct-q4_K_M</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-q4_K_M" />
@@ -1609,7 +1609,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.3-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1630,7 +1630,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.3-q4_K_M/" class="group-hover:underline">mistral:7b-instruct-v0.3-q4_K_M</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q4_K_M/" class="group-hover:underline">mistral:7b-instruct-v0.3-q4_K_M</a>
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
         
         <input class="command hidden" value="mistral:7b-instruct-v0.3-q4_K_M" />
@@ -1648,7 +1648,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1669,7 +1669,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-q5_0/" class="group-hover:underline">mistral:7b-instruct-q5_0</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-q5_0/" class="group-hover:underline">mistral:7b-instruct-q5_0</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-q5_0" />
@@ -1687,7 +1687,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.3-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1708,7 +1708,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.3-q5_0/" class="group-hover:underline">mistral:7b-instruct-v0.3-q5_0</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q5_0/" class="group-hover:underline">mistral:7b-instruct-v0.3-q5_0</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.3-q5_0" />
@@ -1726,7 +1726,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1747,7 +1747,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-q5_1/" class="group-hover:underline">mistral:7b-instruct-q5_1</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-q5_1/" class="group-hover:underline">mistral:7b-instruct-q5_1</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-q5_1" />
@@ -1765,7 +1765,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.3-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1786,7 +1786,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.3-q5_1/" class="group-hover:underline">mistral:7b-instruct-v0.3-q5_1</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q5_1/" class="group-hover:underline">mistral:7b-instruct-v0.3-q5_1</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.3-q5_1" />
@@ -1804,7 +1804,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1825,7 +1825,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-q5_K_S/" class="group-hover:underline">mistral:7b-instruct-q5_K_S</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-q5_K_S/" class="group-hover:underline">mistral:7b-instruct-q5_K_S</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-q5_K_S" />
@@ -1843,7 +1843,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.3-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1864,7 +1864,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.3-q5_K_S/" class="group-hover:underline">mistral:7b-instruct-v0.3-q5_K_S</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q5_K_S/" class="group-hover:underline">mistral:7b-instruct-v0.3-q5_K_S</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.3-q5_K_S" />
@@ -1882,7 +1882,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1903,7 +1903,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-q5_K_M/" class="group-hover:underline">mistral:7b-instruct-q5_K_M</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-q5_K_M/" class="group-hover:underline">mistral:7b-instruct-q5_K_M</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-q5_K_M" />
@@ -1921,7 +1921,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.3-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1942,7 +1942,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.3-q5_K_M/" class="group-hover:underline">mistral:7b-instruct-v0.3-q5_K_M</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q5_K_M/" class="group-hover:underline">mistral:7b-instruct-v0.3-q5_K_M</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.3-q5_K_M" />
@@ -1960,7 +1960,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1981,7 +1981,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-q6_K/" class="group-hover:underline">mistral:7b-instruct-q6_K</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-q6_K/" class="group-hover:underline">mistral:7b-instruct-q6_K</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-q6_K" />
@@ -1999,7 +1999,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.3-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2020,7 +2020,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.3-q6_K/" class="group-hover:underline">mistral:7b-instruct-v0.3-q6_K</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q6_K/" class="group-hover:underline">mistral:7b-instruct-v0.3-q6_K</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.3-q6_K" />
@@ -2038,7 +2038,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2059,7 +2059,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-q8_0/" class="group-hover:underline">mistral:7b-instruct-q8_0</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-q8_0/" class="group-hover:underline">mistral:7b-instruct-q8_0</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-q8_0" />
@@ -2077,7 +2077,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.3-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2098,7 +2098,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.3-q8_0/" class="group-hover:underline">mistral:7b-instruct-v0.3-q8_0</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-q8_0/" class="group-hover:underline">mistral:7b-instruct-v0.3-q8_0</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.3-q8_0" />
@@ -2116,7 +2116,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2137,7 +2137,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-fp16/" class="group-hover:underline">mistral:7b-instruct-fp16</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-fp16/" class="group-hover:underline">mistral:7b-instruct-fp16</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-fp16" />
@@ -2155,7 +2155,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-instruct-v0.3-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2176,7 +2176,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-instruct-v0.3-fp16/" class="group-hover:underline">mistral:7b-instruct-v0.3-fp16</a>
+        <a href="/ollama-search/library/mistral/:7b-instruct-v0.3-fp16/" class="group-hover:underline">mistral:7b-instruct-v0.3-fp16</a>
         
         
         <input class="command hidden" value="mistral:7b-instruct-v0.3-fp16" />
@@ -2194,7 +2194,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2215,7 +2215,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text/" class="group-hover:underline">mistral:7b-text</a>
+        <a href="/ollama-search/library/mistral/:7b-text/" class="group-hover:underline">mistral:7b-text</a>
         
         
         <input class="command hidden" value="mistral:7b-text" />
@@ -2233,7 +2233,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2254,7 +2254,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-q2_K/" class="group-hover:underline">mistral:7b-text-q2_K</a>
+        <a href="/ollama-search/library/mistral/:7b-text-q2_K/" class="group-hover:underline">mistral:7b-text-q2_K</a>
         
         
         <input class="command hidden" value="mistral:7b-text-q2_K" />
@@ -2272,7 +2272,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-v0.2-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-v0.2-q2_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2293,7 +2293,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-v0.2-q2_K/" class="group-hover:underline">mistral:7b-text-v0.2-q2_K</a>
+        <a href="/ollama-search/library/mistral/:7b-text-v0.2-q2_K/" class="group-hover:underline">mistral:7b-text-v0.2-q2_K</a>
         
         
         <input class="command hidden" value="mistral:7b-text-v0.2-q2_K" />
@@ -2311,7 +2311,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2332,7 +2332,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-q3_K_S/" class="group-hover:underline">mistral:7b-text-q3_K_S</a>
+        <a href="/ollama-search/library/mistral/:7b-text-q3_K_S/" class="group-hover:underline">mistral:7b-text-q3_K_S</a>
         
         
         <input class="command hidden" value="mistral:7b-text-q3_K_S" />
@@ -2350,7 +2350,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-v0.2-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-v0.2-q3_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2371,7 +2371,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-v0.2-q3_K_S/" class="group-hover:underline">mistral:7b-text-v0.2-q3_K_S</a>
+        <a href="/ollama-search/library/mistral/:7b-text-v0.2-q3_K_S/" class="group-hover:underline">mistral:7b-text-v0.2-q3_K_S</a>
         
         
         <input class="command hidden" value="mistral:7b-text-v0.2-q3_K_S" />
@@ -2389,7 +2389,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2410,7 +2410,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-q3_K_M/" class="group-hover:underline">mistral:7b-text-q3_K_M</a>
+        <a href="/ollama-search/library/mistral/:7b-text-q3_K_M/" class="group-hover:underline">mistral:7b-text-q3_K_M</a>
         
         
         <input class="command hidden" value="mistral:7b-text-q3_K_M" />
@@ -2428,7 +2428,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-v0.2-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-v0.2-q3_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2449,7 +2449,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-v0.2-q3_K_M/" class="group-hover:underline">mistral:7b-text-v0.2-q3_K_M</a>
+        <a href="/ollama-search/library/mistral/:7b-text-v0.2-q3_K_M/" class="group-hover:underline">mistral:7b-text-v0.2-q3_K_M</a>
         
         
         <input class="command hidden" value="mistral:7b-text-v0.2-q3_K_M" />
@@ -2467,7 +2467,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2488,7 +2488,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-q3_K_L/" class="group-hover:underline">mistral:7b-text-q3_K_L</a>
+        <a href="/ollama-search/library/mistral/:7b-text-q3_K_L/" class="group-hover:underline">mistral:7b-text-q3_K_L</a>
         
         
         <input class="command hidden" value="mistral:7b-text-q3_K_L" />
@@ -2506,7 +2506,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-v0.2-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-v0.2-q3_K_L/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2527,7 +2527,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-v0.2-q3_K_L/" class="group-hover:underline">mistral:7b-text-v0.2-q3_K_L</a>
+        <a href="/ollama-search/library/mistral/:7b-text-v0.2-q3_K_L/" class="group-hover:underline">mistral:7b-text-v0.2-q3_K_L</a>
         
         
         <input class="command hidden" value="mistral:7b-text-v0.2-q3_K_L" />
@@ -2545,7 +2545,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2566,7 +2566,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-q4_0/" class="group-hover:underline">mistral:7b-text-q4_0</a>
+        <a href="/ollama-search/library/mistral/:7b-text-q4_0/" class="group-hover:underline">mistral:7b-text-q4_0</a>
         
         
         <input class="command hidden" value="mistral:7b-text-q4_0" />
@@ -2584,7 +2584,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-v0.2-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-v0.2-q4_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2605,7 +2605,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-v0.2-q4_0/" class="group-hover:underline">mistral:7b-text-v0.2-q4_0</a>
+        <a href="/ollama-search/library/mistral/:7b-text-v0.2-q4_0/" class="group-hover:underline">mistral:7b-text-v0.2-q4_0</a>
         
         
         <input class="command hidden" value="mistral:7b-text-v0.2-q4_0" />
@@ -2623,7 +2623,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2644,7 +2644,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-q4_1/" class="group-hover:underline">mistral:7b-text-q4_1</a>
+        <a href="/ollama-search/library/mistral/:7b-text-q4_1/" class="group-hover:underline">mistral:7b-text-q4_1</a>
         
         
         <input class="command hidden" value="mistral:7b-text-q4_1" />
@@ -2662,7 +2662,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-v0.2-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-v0.2-q4_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2683,7 +2683,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-v0.2-q4_1/" class="group-hover:underline">mistral:7b-text-v0.2-q4_1</a>
+        <a href="/ollama-search/library/mistral/:7b-text-v0.2-q4_1/" class="group-hover:underline">mistral:7b-text-v0.2-q4_1</a>
         
         
         <input class="command hidden" value="mistral:7b-text-v0.2-q4_1" />
@@ -2701,7 +2701,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2722,7 +2722,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-q4_K_S/" class="group-hover:underline">mistral:7b-text-q4_K_S</a>
+        <a href="/ollama-search/library/mistral/:7b-text-q4_K_S/" class="group-hover:underline">mistral:7b-text-q4_K_S</a>
         
         
         <input class="command hidden" value="mistral:7b-text-q4_K_S" />
@@ -2740,7 +2740,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-v0.2-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-v0.2-q4_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2761,7 +2761,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-v0.2-q4_K_S/" class="group-hover:underline">mistral:7b-text-v0.2-q4_K_S</a>
+        <a href="/ollama-search/library/mistral/:7b-text-v0.2-q4_K_S/" class="group-hover:underline">mistral:7b-text-v0.2-q4_K_S</a>
         
         
         <input class="command hidden" value="mistral:7b-text-v0.2-q4_K_S" />
@@ -2779,7 +2779,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2800,7 +2800,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-q4_K_M/" class="group-hover:underline">mistral:7b-text-q4_K_M</a>
+        <a href="/ollama-search/library/mistral/:7b-text-q4_K_M/" class="group-hover:underline">mistral:7b-text-q4_K_M</a>
         
         
         <input class="command hidden" value="mistral:7b-text-q4_K_M" />
@@ -2818,7 +2818,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-v0.2-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-v0.2-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2839,7 +2839,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-v0.2-q4_K_M/" class="group-hover:underline">mistral:7b-text-v0.2-q4_K_M</a>
+        <a href="/ollama-search/library/mistral/:7b-text-v0.2-q4_K_M/" class="group-hover:underline">mistral:7b-text-v0.2-q4_K_M</a>
         
         
         <input class="command hidden" value="mistral:7b-text-v0.2-q4_K_M" />
@@ -2857,7 +2857,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2878,7 +2878,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-q5_0/" class="group-hover:underline">mistral:7b-text-q5_0</a>
+        <a href="/ollama-search/library/mistral/:7b-text-q5_0/" class="group-hover:underline">mistral:7b-text-q5_0</a>
         
         
         <input class="command hidden" value="mistral:7b-text-q5_0" />
@@ -2896,7 +2896,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-v0.2-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-v0.2-q5_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2917,7 +2917,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-v0.2-q5_0/" class="group-hover:underline">mistral:7b-text-v0.2-q5_0</a>
+        <a href="/ollama-search/library/mistral/:7b-text-v0.2-q5_0/" class="group-hover:underline">mistral:7b-text-v0.2-q5_0</a>
         
         
         <input class="command hidden" value="mistral:7b-text-v0.2-q5_0" />
@@ -2935,7 +2935,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2956,7 +2956,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-q5_1/" class="group-hover:underline">mistral:7b-text-q5_1</a>
+        <a href="/ollama-search/library/mistral/:7b-text-q5_1/" class="group-hover:underline">mistral:7b-text-q5_1</a>
         
         
         <input class="command hidden" value="mistral:7b-text-q5_1" />
@@ -2974,7 +2974,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-v0.2-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-v0.2-q5_1/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2995,7 +2995,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-v0.2-q5_1/" class="group-hover:underline">mistral:7b-text-v0.2-q5_1</a>
+        <a href="/ollama-search/library/mistral/:7b-text-v0.2-q5_1/" class="group-hover:underline">mistral:7b-text-v0.2-q5_1</a>
         
         
         <input class="command hidden" value="mistral:7b-text-v0.2-q5_1" />
@@ -3013,7 +3013,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3034,7 +3034,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-q5_K_S/" class="group-hover:underline">mistral:7b-text-q5_K_S</a>
+        <a href="/ollama-search/library/mistral/:7b-text-q5_K_S/" class="group-hover:underline">mistral:7b-text-q5_K_S</a>
         
         
         <input class="command hidden" value="mistral:7b-text-q5_K_S" />
@@ -3052,7 +3052,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-v0.2-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-v0.2-q5_K_S/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3073,7 +3073,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-v0.2-q5_K_S/" class="group-hover:underline">mistral:7b-text-v0.2-q5_K_S</a>
+        <a href="/ollama-search/library/mistral/:7b-text-v0.2-q5_K_S/" class="group-hover:underline">mistral:7b-text-v0.2-q5_K_S</a>
         
         
         <input class="command hidden" value="mistral:7b-text-v0.2-q5_K_S" />
@@ -3091,7 +3091,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3112,7 +3112,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-q5_K_M/" class="group-hover:underline">mistral:7b-text-q5_K_M</a>
+        <a href="/ollama-search/library/mistral/:7b-text-q5_K_M/" class="group-hover:underline">mistral:7b-text-q5_K_M</a>
         
         
         <input class="command hidden" value="mistral:7b-text-q5_K_M" />
@@ -3130,7 +3130,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-v0.2-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-v0.2-q5_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3151,7 +3151,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-v0.2-q5_K_M/" class="group-hover:underline">mistral:7b-text-v0.2-q5_K_M</a>
+        <a href="/ollama-search/library/mistral/:7b-text-v0.2-q5_K_M/" class="group-hover:underline">mistral:7b-text-v0.2-q5_K_M</a>
         
         
         <input class="command hidden" value="mistral:7b-text-v0.2-q5_K_M" />
@@ -3169,7 +3169,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3190,7 +3190,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-q6_K/" class="group-hover:underline">mistral:7b-text-q6_K</a>
+        <a href="/ollama-search/library/mistral/:7b-text-q6_K/" class="group-hover:underline">mistral:7b-text-q6_K</a>
         
         
         <input class="command hidden" value="mistral:7b-text-q6_K" />
@@ -3208,7 +3208,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-v0.2-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-v0.2-q6_K/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3229,7 +3229,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-v0.2-q6_K/" class="group-hover:underline">mistral:7b-text-v0.2-q6_K</a>
+        <a href="/ollama-search/library/mistral/:7b-text-v0.2-q6_K/" class="group-hover:underline">mistral:7b-text-v0.2-q6_K</a>
         
         
         <input class="command hidden" value="mistral:7b-text-v0.2-q6_K" />
@@ -3247,7 +3247,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3268,7 +3268,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-q8_0/" class="group-hover:underline">mistral:7b-text-q8_0</a>
+        <a href="/ollama-search/library/mistral/:7b-text-q8_0/" class="group-hover:underline">mistral:7b-text-q8_0</a>
         
         
         <input class="command hidden" value="mistral:7b-text-q8_0" />
@@ -3286,7 +3286,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-v0.2-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-v0.2-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3307,7 +3307,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-v0.2-q8_0/" class="group-hover:underline">mistral:7b-text-v0.2-q8_0</a>
+        <a href="/ollama-search/library/mistral/:7b-text-v0.2-q8_0/" class="group-hover:underline">mistral:7b-text-v0.2-q8_0</a>
         
         
         <input class="command hidden" value="mistral:7b-text-v0.2-q8_0" />
@@ -3325,7 +3325,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3346,7 +3346,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-fp16/" class="group-hover:underline">mistral:7b-text-fp16</a>
+        <a href="/ollama-search/library/mistral/:7b-text-fp16/" class="group-hover:underline">mistral:7b-text-fp16</a>
         
         
         <input class="command hidden" value="mistral:7b-text-fp16" />
@@ -3364,7 +3364,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/mistral/:7b-text-v0.2-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/mistral/:7b-text-v0.2-fp16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3385,7 +3385,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/mistral/:7b-text-v0.2-fp16/" class="group-hover:underline">mistral:7b-text-v0.2-fp16</a>
+        <a href="/ollama-search/library/mistral/:7b-text-v0.2-fp16/" class="group-hover:underline">mistral:7b-text-v0.2-fp16</a>
         
         
         <input class="command hidden" value="mistral:7b-text-v0.2-fp16" />
@@ -3451,6 +3451,6 @@
   });
 })();
 </script>
-<script src="/assets/app.js"></script>
+<script src="/ollama-search/assets/app.js"></script>
 </body>
 </html>

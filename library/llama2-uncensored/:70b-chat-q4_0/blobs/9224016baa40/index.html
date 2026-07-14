@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <title>library/llama2-uncensored:70b-chat-q4_0 - license</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="library/llama2-uncensored:70b-chat-q4_0 blob license"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="library/llama2-uncensored:70b-chat-q4_0 - license" />
+    <meta property="og:description" content="library/llama2-uncensored:70b-chat-q4_0 blob license" />
+    <meta property="og:image" content="https://ollama.com/public/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content="library/llama2-uncensored:70b-chat-q4_0 - license" />
+    <meta property="twitter:description" content="library/llama2-uncensored:70b-chat-q4_0 blob license" />
+    <meta property="twitter:site" content="ollama" />
+    <meta property="twitter:image:src" content="https://ollama.com/public/og-twitter.png" />
+    <meta property="twitter:image:width" content="1200" />
+    <meta property="twitter:image:height" content="628" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ollama-search/assets/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/ollama-search/assets/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/ollama-search/assets/icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/ollama-search/assets/icon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x" href="/ollama-search/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/ollama-search/assets/android-chrome-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/ollama-search/assets/android-chrome-icon-512x512.png" />
+    <link href="/ollama-search/assets/tailwind.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/prism.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/extras.css" rel="stylesheet" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Ollama",
+        "url": "https://ollama.com"
+      }
+    </script>
+    <script src="/ollama-search/assets/htmx.bundle.js"></script>
+</head>
+<body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
+<header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
+  <nav class="flex w-full items-center justify-between px-6 py-[9px]">
+    <a href="/ollama-search/search/" class="z-50">
+      <img src="/ollama-search/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
+    </a>
+    <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/search/">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
+    </div>
+    <div class="flex-grow justify-center items-center hidden lg:flex">
+      <div class="relative w-full xl:max-w-[28rem]">
+        <form action="/ollama-search/search" autocomplete="off" id="nav-search-form">
+          <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full">
+            <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/ollama-search/search/?q='+encodeURIComponent(this.value);}" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="hidden lg:flex xl:flex-1 items-center space-x-2 justify-end ml-6 xl:ml-0">
+      <button id="theme-toggle" class="flex cursor-pointer items-center rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 text-lg px-3 py-1.5 text-black dark:text-neutral-200 whitespace-nowrap" title="Toggle dark mode">
+        <span class="dark:hidden"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></span>
+        <span class="hidden dark:block"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25M18.364 17.614l-1.591-1.591M12 18.75V21M5.636 17.614l1.591-1.591M3 12h2.25M5.636 6.386l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg></span>
+      </button>
+      <a class="flex cursor-pointer items-center rounded-full bg-neutral-800 dark:bg-neutral-100 text-lg px-4 py-1.5 text-white dark:text-neutral-900 hover:bg-black dark:hover:bg-white whitespace-nowrap focus:bg-black dark:focus:bg-white" href="https://ollama.com/download">Download</a>
+    </div>
+    <div class="lg:hidden flex items-center">
+      <button id="theme-toggle-mobile" class="flex items-center rounded-full bg-black/5 dark:bg-white/10 px-3 py-1.5 mr-2 text-black dark:text-neutral-200">
+        <span class="dark:hidden"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></span>
+        <span class="hidden dark:block"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25M18.364 17.614l-1.591-1.591M12 18.75V21M5.636 17.614l1.591-1.591M3 12h2.25M5.636 6.386l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main class="relative mx-auto flex w-full max-w-[52rem] flex-col px-6 py-10 md:py-24 lg:px-8">
+  <a href="/ollama-search/library/llama2-uncensored/:70b-chat-q4_0/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to library/llama2-uncensored:70b-chat-q4_0</a>
+  <div class="flex flex-col space-y-3">
+    <div class="flex items-center min-w-0">
+      <div class="flex items-center min-w-0 space-x-2">
+        <div class="flex items-center min-w-0">
+          <span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
+            <a x-test-model-name href="/ollama-search/library/llama2-uncensored" title="llama2-uncensored" class="underline-offset-[5px] hover:underline">llama2-uncensored</a>:70b-chat-q4_0
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col space-y-2">
+      <div class="flex flex-col space-y-2">
+        <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
+          <span class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
+            <span x-test-pull-count>2.6M</span>
+            <span class="hidden sm:flex">&nbsp;Downloads</span>
+          </span>
+          <span class="flex items-center" title="Oct 29, 2023 2:31 AM UTC">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>
+            <span class="hidden sm:flex">Updated&nbsp;</span>
+            <span x-test-updated>2 years ago</span>
+          </span>
+        </p>
+      </div>
+      <h2 class="break-words text-neutral-800 dark:text-neutral-300">Uncensored Llama 2 model by George Sung and Jarrad Hope.</h2>
+      <div class="flex flex-wrap gap-2">
+        
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">7b</span>
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">70b</span>
+      </div>
+    </div>
+  </div>
+  <div id="file-explorer" class="pt-12 pb-10">
+    <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-200">
+      <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
+        <div class="flex items-center justify-between bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs text-neutral-900 dark:text-neutral-100">
+          <div class="flex items-center">
+            <a href="/ollama-search/library/llama2-uncensored/:70b-chat-q4_0/" class="min-w-0 font-medium text-black dark:text-neutral-100 hover:underline hover:decoration-[.75px] hover:underline-offset-[3px]">
+              <span class="hidden sm:block">llama2-uncensored:70b-chat-q4_0</span>
+              <span class="sm:hidden">...</span>
+            </a>
+            <span class="px-2 font-light text-neutral-300 dark:text-neutral-700">/</span>
+            <div>license</div>
+          </div>
+          <div>9224016baa40 · 7.0kB</div>
+        </div>
+        <div class="text-[13px]">
+          <div class="px-4 py-2 relative overflow-x-scroll font-mono text-sm whitespace-pre-wrap [counter-reset:line] before:absolute before:left-0 before:inline-block before:w-12 before:select-none before:text-right before:text-gray-400 dark:text-neutral-300 [&>div]:pl-14 [&>div]:pr-4 [&>div]:[counter-increment:line] [&>div]:before:absolute [&>div]:before:left-0 [&>div]:before:inline-block [&>div]:before:w-12 [&>div]:before:select-none [&>div]:before:text-right [&>div]:before:text-gray-400 dark:[&>div]:before:text-gray-600 [&>div]:before:content-[counter(line)]"><div>LLAMA 2 COMMUNITY LICENSE AGREEMENT</div><div>Llama 2 Version Release Date: July 18, 2023</div><div></div><div>&quot;Agreement&quot; means the terms and conditions for use, reproduction, distribution and</div><div>modification of the Llama Materials set forth herein.</div><div></div><div>&quot;Documentation&quot; means the specifications, manuals and documentation</div><div>accompanying Llama 2 distributed by Meta at ai.meta.com/resources/models-and-</div><div>libraries/llama-downloads/.</div><div></div><div>&quot;Licensee&quot; or &quot;you&quot; means you, or your employer or any other person or entity (if</div><div>you are entering into this Agreement on such person or entity&#x27;s behalf), of the age</div><div>required under applicable laws, rules or regulations to provide legal consent and that</div><div>has legal authority to bind your employer or such other person or entity if you are</div><div>entering in this Agreement on their behalf.</div><div></div><div>&quot;Llama 2&quot; means the foundational large language models and software and</div><div>algorithms, including machine-learning model code, trained model weights,</div><div>inference-enabling code, training-enabling code, fine-tuning enabling code and other</div><div>elements of the foregoing distributed by Meta at ai.meta.com/resources/models-and-</div><div>libraries/llama-downloads/.</div><div></div><div>&quot;Llama Materials&quot; means, collectively, Meta&#x27;s proprietary Llama 2 and</div><div>Documentation (and any portion thereof) made available under this Agreement.</div><div></div><div>&quot;Meta&quot; or &quot;we&quot; means Meta Platforms Ireland Limited (if you are located in or, if you</div><div>are an entity, your principal place of business is in the EEA or Switzerland) and Meta</div><div>Platforms, Inc. (if you are located outside of the EEA or Switzerland).</div><div></div><div>By clicking &quot;I Accept&quot; below or by using or distributing any portion or element of the</div><div>Llama Materials, you agree to be bound by this Agreement.</div><div></div><div>1. License Rights and Redistribution.</div><div></div><div>a. Grant of Rights. You are granted a non-exclusive, worldwide, non-</div><div>transferable and royalty-free limited license under Meta&#x27;s intellectual property or</div><div>other rights owned by Meta embodied in the Llama Materials to use, reproduce,</div><div>distribute, copy, create derivative works of, and make modifications to the Llama</div><div>Materials.</div><div></div><div>b. Redistribution and Use.</div><div></div><div>i. If you distribute or make the Llama Materials, or any derivative works</div><div>thereof, available to a third party, you shall provide a copy of this Agreement to such</div><div>third party.</div><div>ii.  If you receive Llama Materials, or any derivative works thereof, from</div><div>a Licensee as part of an integrated end user product, then Section 2 of this</div><div>Agreement will not apply to you.</div><div></div><div>iii. You must retain in all copies of the Llama Materials that you</div><div>distribute the following attribution notice within a &quot;Notice&quot; text file distributed as a</div><div>part of such copies: &quot;Llama 2 is licensed under the LLAMA 2 Community License,</div><div>Copyright (c) Meta Platforms, Inc. All Rights Reserved.&quot;</div><div></div><div>iv. Your use of the Llama Materials must comply with applicable laws</div><div>and regulations (including trade compliance laws and regulations) and adhere to the</div><div>Acceptable Use Policy for the Llama Materials (available at</div><div>https://ai.meta.com/llama/use-policy), which is hereby incorporated by reference into</div><div>this Agreement.</div><div></div><div>v. You will not use the Llama Materials or any output or results of the</div><div>Llama Materials to improve any other large language model (excluding Llama 2 or</div><div>derivative works thereof).</div><div></div><div>2. Additional Commercial Terms. If, on the Llama 2 version release date, the</div><div>monthly active users of the products or services made available by or for Licensee,</div><div>or Licensee&#x27;s affiliates, is greater than 700 million monthly active users in the</div><div>preceding calendar month, you must request a license from Meta, which Meta may</div><div>grant to you in its sole discretion, and you are not authorized to exercise any of the</div><div>rights under this Agreement unless or until Meta otherwise expressly grants you</div><div>such rights.</div><div></div><div>3. Disclaimer of Warranty. UNLESS REQUIRED BY APPLICABLE LAW, THE</div><div>LLAMA MATERIALS AND ANY OUTPUT AND RESULTS THEREFROM ARE</div><div>PROVIDED ON AN &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OF ANY KIND,</div><div>EITHER EXPRESS OR IMPLIED, INCLUDING, WITHOUT LIMITATION, ANY</div><div>WARRANTIES OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY, OR</div><div>FITNESS FOR A PARTICULAR PURPOSE. YOU ARE SOLELY RESPONSIBLE</div><div>FOR DETERMINING THE APPROPRIATENESS OF USING OR REDISTRIBUTING</div><div>THE LLAMA MATERIALS AND ASSUME ANY RISKS ASSOCIATED WITH YOUR</div><div>USE OF THE LLAMA MATERIALS AND ANY OUTPUT AND RESULTS.</div><div></div><div>4. Limitation of Liability. IN NO EVENT WILL META OR ITS AFFILIATES BE</div><div>LIABLE UNDER ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, TORT,</div><div>NEGLIGENCE, PRODUCTS LIABILITY, OR OTHERWISE, ARISING OUT OF THIS</div><div>AGREEMENT, FOR ANY LOST PROFITS OR ANY INDIRECT, SPECIAL,</div><div>CONSEQUENTIAL, INCIDENTAL, EXEMPLARY OR PUNITIVE DAMAGES, EVEN</div><div>IF META OR ITS AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF</div><div>ANY OF THE FOREGOING.</div><div></div><div>5. Intellectual Property.</div><div></div><div>a. No trademark licenses are granted under this Agreement, and in</div><div>connection with the Llama Materials, neither Meta nor Licensee may use any name</div><div>or mark owned by or associated with the other or any of its affiliates, except as</div><div>required for reasonable and customary use in describing and redistributing the</div><div>Llama Materials.</div><div></div><div>b. Subject to Meta&#x27;s ownership of Llama Materials and derivatives made by or</div><div>for Meta, with respect to any derivative works and modifications of the Llama</div><div>Materials that are made by you, as between you and Meta, you are and will be the</div><div>owner of such derivative works and modifications.</div><div></div><div>c. If you institute litigation or other proceedings against Meta or any entity</div><div>(including a cross-claim or counterclaim in a lawsuit) alleging that the Llama</div><div>Materials or Llama 2 outputs or results, or any portion of any of the foregoing,</div><div>constitutes infringement of intellectual property or other rights owned or licensable</div><div>by you, then any licenses granted to you under this Agreement shall terminate as of</div><div>the date such litigation or claim is filed or instituted. You will indemnify and hold</div><div>harmless Meta from and against any claim by any third party arising out of or related</div><div>to your use or distribution of the Llama Materials.</div><div></div><div>6. Term and Termination. The term of this Agreement will commence upon your</div><div>acceptance of this Agreement or access to the Llama Materials and will continue in</div><div>full force and effect until terminated in accordance with the terms and conditions</div><div>herein. Meta may terminate this Agreement if you are in breach of any term or</div><div>condition of this Agreement. Upon termination of this Agreement, you shall delete</div><div>and cease use of the Llama Materials. Sections 3, 4 and 7 shall survive the</div><div>termination of this Agreement.</div><div></div><div>7. Governing Law and Jurisdiction. This Agreement will be governed and</div><div>construed under the laws of the State of California without regard to choice of law</div><div>principles, and the UN Convention on Contracts for the International Sale of Goods</div><div>does not apply to this Agreement. The courts of California shall have exclusive</div><div>jurisdiction of any dispute arising out of this Agreement.</div><div></div><div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="mt-auto">
+  <div class="underline-offset-4 hidden md:block">
+    <div class="flex items-center justify-between px-6 py-3.5">
+      <div class="text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="https://ollama.com/maternion" class="hover:underline">Maternion</a></div>
+      <div class="flex space-x-6 text-xs text-neutral-500 dark:text-neutral-400">
+        <a href="https://ollama.com/download" class="hover:underline">Download</a>
+        <a href="https://ollama.com/blog" class="hover:underline">Blog</a>
+        <a href="https://docs.ollama.com" class="hover:underline">Docs</a>
+        <a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a>
+        <a href="https://ollama.com/pricing" class="hover:underline">Pricing</a>
+      </div>
+    </div>
+  </div>
+  <div class="py-4 md:hidden">
+    <ul class="flex flex-col items-center space-y-2 text-xs text-neutral-500 dark:text-neutral-400">
+      <li><a href="https://ollama.com/download" class="hover:underline">Download</a></li>
+      <li><a href="https://ollama.com/blog" class="hover:underline">Blog</a></li>
+      <li><a href="https://docs.ollama.com" class="hover:underline">Docs</a></li>
+      <li><a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a></li>
+      <li><a href="https://ollama.com/pricing" class="hover:underline">Pricing</a></li>
+    </ul>
+    <div class="mt-4 text-center text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="https://ollama.com/maternion" class="hover:underline">Maternion</a></div>
+  </div>
+</footer>
+<script>
+(function() {
+  const stored = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (stored === 'dark' || (!stored && prefersDark)) {
+    document.documentElement.classList.add('dark');
+  }
+  function toggle() {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('theme-toggle')?.addEventListener('click', toggle);
+    document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggle);
+  });
+})();
+</script>
+<script src="/ollama-search/assets/app.js"></script>
+</body>
+</html>

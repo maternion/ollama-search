@@ -20,16 +20,16 @@
     <meta property="twitter:image:src" content="https://ollama.com/public/og-twitter.png" />
     <meta property="twitter:image:width" content="1200" />
     <meta property="twitter:image:height" content="628" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48x48.png" />
-    <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64x64.png" />
-    <link rel="apple-touch-icon" sizes="180x" href="/assets/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/assets/android-chrome-icon-512x512.png" />
-    <link href="/assets/tailwind.css" rel="stylesheet" />
-    <link href="/assets/prism.css" rel="stylesheet" />
-    <link href="/assets/extras.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ollama-search/assets/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/ollama-search/assets/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/ollama-search/assets/icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/ollama-search/assets/icon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x" href="/ollama-search/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/ollama-search/assets/android-chrome-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/ollama-search/assets/android-chrome-icon-512x512.png" />
+    <link href="/ollama-search/assets/tailwind.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/prism.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/extras.css" rel="stylesheet" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -38,25 +38,25 @@
         "url": "https://ollama.com"
       }
     </script>
-    <script src="/assets/htmx.bundle.js"></script>
+    <script src="/ollama-search/assets/htmx.bundle.js"></script>
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 <header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
   <nav class="flex w-full items-center justify-between px-6 py-[9px]">
-    <a href="/search/" class="z-50">
-      <img src="/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
+    <a href="/ollama-search/search/" class="z-50">
+      <img src="/ollama-search/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
     </a>
     <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
-      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/search/">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/search/">Models</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
     </div>
     <div class="flex-grow justify-center items-center hidden lg:flex">
       <div class="relative w-full xl:max-w-[28rem]">
-        <form action="/search" autocomplete="off" id="nav-search-form">
+        <form action="/ollama-search/search" autocomplete="off" id="nav-search-form">
           <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full">
             <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
-            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/search/?q='+encodeURIComponent(this.value);}" />
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/ollama-search/search/?q='+encodeURIComponent(this.value);}" />
           </div>
         </form>
       </div>
@@ -78,13 +78,13 @@
 </header>
 
 <main class="relative mx-auto flex w-full max-w-[52rem] flex-col px-6 py-10 md:py-24 lg:px-8">
-  <a href="/library/olmo-3/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to tags</a>
+  <a href="/ollama-search/library/olmo-3/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to tags</a>
   <div class="flex flex-col space-y-3">
     <div class="flex items-center min-w-0">
       <div class="flex items-center min-w-0 space-x-2">
         <div class="flex items-center min-w-0">
           <span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
-            <a x-test-model-name href="/library/olmo-3" title="olmo-3" class="underline-offset-[5px] hover:underline">olmo-3</a>:7b-instruct-q4_K_M
+            <a x-test-model-name href="/ollama-search/library/olmo-3" title="olmo-3" class="underline-offset-[5px] hover:underline">olmo-3</a>:7b-instruct-q4_K_M
           </span>
         </div>
       </div>
@@ -100,7 +100,7 @@
           <span class="flex items-center" title="Dec 16, 2025 5:55 AM UTC">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>
             <span class="hidden sm:flex">Updated&nbsp;</span>
-            <span x-test-updated>6 months ago</span>
+            <span x-test-updated>7 months ago</span>
           </span>
         </p>
       </div>
@@ -169,19 +169,801 @@ console.log(response.message.content)</pre>
   <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
     <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
       <div class="flex items-center justify-between bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs text-neutral-900 dark:text-neutral-100">
-        <p>Updated 6 months ago</p>
+        <p class="hidden sm:block">Updated 6 months ago</p>
+        <p class="flex items-center sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>6 months ago</p>
         <p>ea72df8c85d7 · 4.5GB ·</p>
       </div>
-      <div class="px-4 py-3 text-[13px] text-neutral-500 dark:text-neutral-400 grid grid-cols-12 gap-2">
-        <p class="col-span-3">Context</p><p class="col-span-9">64K</p>
-        <p class="col-span-3">Input</p><p class="col-span-9">Text</p>
-        <p class="col-span-3">Size / Usage</p><p class="col-span-9">4.5GB</p>
-      </div>
+      <div class="group block grid-cols-12 gap-2 px-4 py-3 sm:grid sm:grid-cols-12"><div class="truncate text-sm font-medium text-neutral-800 dark:text-neutral-200 group-hover:underline sm:col-span-2 sm:col-start-1"><a href="https://ollama.com/library/olmo-3:7b-instruct-q4_K_M/blobs/c50c55bd9d0d" class="group-hover:underline">model</a></div><div class="truncate font-mono text-[13px] text-neutral-400 dark:text-neutral-500 subpixel-antialiased sm:col-span-8 sm:col-start-3"><div class="space-x-2 flex text-sm"><div class="flex sm:space-x-2 items-center"><span class="hidden sm:block">arch</span><span class="text-neutral-400 dark:text-neutral-500 sm:font-semibold sm:text-neutral-800 dark:sm:text-neutral-200 sm:text-xs">olmo3</span></div><div>·</div><div class="flex sm:space-x-2 items-center"><span class="hidden sm:block">parameters</span><span class="text-neutral-400 dark:text-neutral-500 sm:font-semibold sm:text-neutral-800 dark:sm:text-neutral-200 sm:text-xs">7.3B</span></div><div>·</div><div class="flex sm:space-x-2 items-center"><span class="hidden sm:block">quantization</span><span class="text-neutral-400 dark:text-neutral-500 sm:font-semibold sm:text-neutral-800 dark:sm:text-neutral-200 sm:text-xs">Q4_K_M</span></div></div></div><div class="hidden text-right text-xs text-neutral-400 dark:text-neutral-500 sm:col-start-12 sm:block">4.5GB</div></div>
+<div class="group block grid-cols-12 gap-2 px-4 py-3 sm:grid sm:grid-cols-12"><div class="truncate text-sm font-medium text-neutral-800 dark:text-neutral-200 group-hover:underline sm:col-span-2 sm:col-start-1"><a href="https://ollama.com/library/olmo-3:7b-instruct-q4_K_M/blobs/cfc7749b96f6" class="group-hover:underline">license</a></div><div class="truncate font-mono text-[13px] text-neutral-400 dark:text-neutral-500 subpixel-antialiased sm:col-span-8 sm:col-start-3">Apache License
+Version 2.0, January 2004
+http://www.apache.org/licenses/
+TERMS AND CONDITIONS FOR US</div><div class="hidden text-right text-xs text-neutral-400 dark:text-neutral-500 sm:col-start-12 sm:block">11kB</div></div>
+<div class="group block grid-cols-12 gap-2 px-4 py-3 sm:grid sm:grid-cols-12"><div class="truncate text-sm font-medium text-neutral-800 dark:text-neutral-200 group-hover:underline sm:col-span-2 sm:col-start-1"><a href="https://ollama.com/library/olmo-3:7b-instruct-q4_K_M/blobs/ceaa5f78afb8" class="group-hover:underline">params</a></div><div class="truncate font-mono text-[13px] text-neutral-400 dark:text-neutral-500 subpixel-antialiased sm:col-span-8 sm:col-start-3">{
+    &quot;temperature&quot;: 0.6,
+    &quot;top_p&quot;: 0.95
+}</div><div class="hidden text-right text-xs text-neutral-400 dark:text-neutral-500 sm:col-start-12 sm:block">33B</div></div>
     </div>
   </div>
 </section>
   </div>
-  
+  <div class="flex flex-1 flex-col py-8" id="readme">
+  <div class="flex items-center justify-between pb-1">
+    <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Readme</h2>
+  </div>
+  <div>
+    <div id="display" class="prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black dark:prose-headings:text-neutral-200 dark:prose-blockquote:text-neutral-400 dark:prose-code:bg-neutral-800 dark:prose-code:text-neutral-200 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-200 dark:prose-li:text-neutral-200 dark:prose-td:text-neutral-300 dark:prose-th:text-neutral-200 dark:prose-a:text-blue-400 dark:prose-strong:text-neutral-200 dark:marker:prose-ol:text-neutral-400 dark:marker:prose-ul:text-neutral-400 dark:text-neutral-200">
+      
+        
+          <p><img src="https://ollama.com/assets/library/olmo-3/16042246-aec6-47b4-a434-1a185c9d1522" alt="Olmo3.png"/></p>
+
+<p>Olmo 3, a new family of 7B and 32B models in both Instruct and Think variants. It has long chain-of-thought thinking to improve reasoning tasks like math and coding.</p>
+
+<p>Olmo is a series of Open language models designed to enable the science of language models.
+These models are pre-trained on the Dolma 3 dataset and post-trained on the Dolci datasets. Allen AI team is releasing all code, checkpoints, logs, and associated training details.</p>
+
+<h3>Models</h3>
+
+<p><strong>Olmo 3 Instruct 7B</strong></p>
+
+<pre><code>ollama run olmo-3:7b-instruct
+</code></pre>
+
+<p><strong>Olmo 3 Think 7B</strong></p>
+
+<pre><code>ollama run olmo-3:7b-think
+</code></pre>
+
+<p><strong>Olmo 3 Think 32B</strong></p>
+
+<pre><code>ollama run olmo-3:32b-think
+</code></pre>
+
+<h3>Evaluation</h3>
+
+<p><strong>Olmo 3 Instruct 7B</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Benchmark</strong></th>
+<th align="right"><strong>Olmo3 Instruct 7B</strong></th>
+<th align="right"><strong>Qwen 3 8B (no reasoning)</strong></th>
+<th align="right"><strong>Qwen 3 VL 8B Instruct</strong></th>
+<th align="right"><strong>Qwen 2.5 7B</strong></th>
+<th align="left"><strong>Olmo 2 7B Instruct</strong></th>
+<th align="left"><strong>Apertus 8B Instruct</strong></th>
+<th align="left"><strong>Granite 3.3 8B Instruct</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">MATH</td>
+<td align="right">87.3</td>
+<td align="right">82.3</td>
+<td align="right">91.6</td>
+<td align="right">71</td>
+<td align="left">30.1</td>
+<td align="left">21.9</td>
+<td align="left">67.3</td>
+</tr>
+
+<tr>
+<td align="left">AIME 2024</td>
+<td align="right">44.3</td>
+<td align="right">26.2</td>
+<td align="right">55.1</td>
+<td align="right">11.3</td>
+<td align="left">1.3</td>
+<td align="left">0.5</td>
+<td align="left">7.3</td>
+</tr>
+
+<tr>
+<td align="left">AIME 2025</td>
+<td align="right">32.5</td>
+<td align="right">21.7</td>
+<td align="right">43.3</td>
+<td align="right">6.3</td>
+<td align="left">0.4</td>
+<td align="left">0.2</td>
+<td align="left">6.3</td>
+</tr>
+
+<tr>
+<td align="left">OMEGA</td>
+<td align="right">28.9</td>
+<td align="right">20.5</td>
+<td align="right">32.3</td>
+<td align="right">13.7</td>
+<td align="left">5.2</td>
+<td align="left">5.0</td>
+<td align="left">10.7</td>
+</tr>
+
+<tr>
+<td align="left">BigBenchHard</td>
+<td align="right">71.2</td>
+<td align="right">73.7</td>
+<td align="right">85.6</td>
+<td align="right">68.8</td>
+<td align="left">43.8</td>
+<td align="left">42.2</td>
+<td align="left">61.2</td>
+</tr>
+
+<tr>
+<td align="left">ZebraLogic</td>
+<td align="right">32.9</td>
+<td align="right">25.4</td>
+<td align="right">64.3</td>
+<td align="right">10.7</td>
+<td align="left">5.3</td>
+<td align="left">5.3</td>
+<td align="left">17.6</td>
+</tr>
+
+<tr>
+<td align="left">AGI Eval English</td>
+<td align="right">64.4</td>
+<td align="right">76</td>
+<td align="right">84.5</td>
+<td align="right">69.8</td>
+<td align="left">56.1</td>
+<td align="left">50.8</td>
+<td align="left">64.0</td>
+</tr>
+
+<tr>
+<td align="left">HumanEvalPlus</td>
+<td align="right">77.2</td>
+<td align="right">79.8</td>
+<td align="right">82.9</td>
+<td align="right">74.9</td>
+<td align="left">25.8</td>
+<td align="left">34.4</td>
+<td align="left">64.0</td>
+</tr>
+
+<tr>
+<td align="left">MBPP+</td>
+<td align="right">60.2</td>
+<td align="right">64.4</td>
+<td align="right">66.3</td>
+<td align="right">62.6</td>
+<td align="left">40.7</td>
+<td align="left">42.1</td>
+<td align="left">54.0</td>
+</tr>
+
+<tr>
+<td align="left">LiveCodeBench v3</td>
+<td align="right">29.5</td>
+<td align="right">53.2</td>
+<td align="right">55.9</td>
+<td align="right">34.5</td>
+<td align="left">7.2</td>
+<td align="left">7.8</td>
+<td align="left">11.5</td>
+</tr>
+
+<tr>
+<td align="left">IFEval</td>
+<td align="right">85.6</td>
+<td align="right">86.3</td>
+<td align="right">87.8</td>
+<td align="right">73.4</td>
+<td align="left">72.2</td>
+<td align="left">71.4</td>
+<td align="left">77.5</td>
+</tr>
+
+<tr>
+<td align="left">IFBench</td>
+<td align="right">32.3</td>
+<td align="right">29.3</td>
+<td align="right">34</td>
+<td align="right">28.4</td>
+<td align="left">26.7</td>
+<td align="left">22.1</td>
+<td align="left">22.3</td>
+</tr>
+
+<tr>
+<td align="left">MMLU</td>
+<td align="right">69.1</td>
+<td align="right">80.4</td>
+<td align="right">83.6</td>
+<td align="right">77.2</td>
+<td align="left">61.6</td>
+<td align="left">62.7</td>
+<td align="left">63.5</td>
+</tr>
+
+<tr>
+<td align="left">PopQA</td>
+<td align="right">14.1</td>
+<td align="right">20.4</td>
+<td align="right">26.5</td>
+<td align="right">21.5</td>
+<td align="left">25.5</td>
+<td align="left">25.5</td>
+<td align="left">28.9</td>
+</tr>
+
+<tr>
+<td align="left">GPQA</td>
+<td align="right">40.4</td>
+<td align="right">44.6</td>
+<td align="right">51.1</td>
+<td align="right">35.6</td>
+<td align="left">31.3</td>
+<td align="left">28.8</td>
+<td align="left">33.0</td>
+</tr>
+
+<tr>
+<td align="left">AlpacaEval 2 LC</td>
+<td align="right">40.9</td>
+<td align="right">49.8</td>
+<td align="right">73.5</td>
+<td align="right">23</td>
+<td align="left">18.3</td>
+<td align="left">8.1</td>
+<td align="left">28.6</td>
+</tr>
+
+<tr>
+<td align="left">SimpleQA</td>
+<td align="right">79.3</td>
+<td align="right">79</td>
+<td align="right">90.3</td>
+<td align="right">78</td>
+<td align="left">–</td>
+<td align="left">–</td>
+<td align="left">–</td>
+</tr>
+
+<tr>
+<td align="left">LitQA2</td>
+<td align="right">38.2</td>
+<td align="right">39.6</td>
+<td align="right">30.7</td>
+<td align="right">29.8</td>
+<td align="left">–</td>
+<td align="left">–</td>
+<td align="left">–</td>
+</tr>
+
+<tr>
+<td align="left">BFCL</td>
+<td align="right">49.8</td>
+<td align="right">60.2</td>
+<td align="right">66.2</td>
+<td align="right">55.8</td>
+<td align="left">–</td>
+<td align="left">–</td>
+<td align="left">–</td>
+</tr>
+
+<tr>
+<td align="left">Safety</td>
+<td align="right">87.3</td>
+<td align="right">78</td>
+<td align="right">80.2</td>
+<td align="right">73.4</td>
+<td align="left">93.1</td>
+<td align="left">72.2</td>
+<td align="left">73.7</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Olmo 3 Think 7B</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Benchmark</th>
+<th align="left">Olmo 3 Think 7B</th>
+<th align="left">OpenThinker3-7B</th>
+<th align="left">Nemotron-Nano-9B-v2</th>
+<th align="left">DeepSeek-R1-Distill-Qwen-7B</th>
+<th align="left">Qwen 3 8B (reasoning)</th>
+<th align="left">Qwen 3 VL 8B Thinker</th>
+<th align="left">OpenReasoning Nemotron 7B</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">MATH</td>
+<td align="left">95.1</td>
+<td align="left">94.5</td>
+<td align="left">94.4</td>
+<td align="left">87.9</td>
+<td align="left">95.1</td>
+<td align="left">95.2</td>
+<td align="left">94.6</td>
+</tr>
+
+<tr>
+<td align="left">AIME 2024</td>
+<td align="left">71.6</td>
+<td align="left">67.7</td>
+<td align="left">72.1</td>
+<td align="left">54.9</td>
+<td align="left">74.0</td>
+<td align="left">70.9</td>
+<td align="left">77.0</td>
+</tr>
+
+<tr>
+<td align="left">AIME 2025</td>
+<td align="left">64.6</td>
+<td align="left">57.2</td>
+<td align="left">58.9</td>
+<td align="left">40.2</td>
+<td align="left">67.8</td>
+<td align="left">61.5</td>
+<td align="left">73.1</td>
+</tr>
+
+<tr>
+<td align="left">OMEGA</td>
+<td align="left">37.8</td>
+<td align="left">38.4</td>
+<td align="left">42.4</td>
+<td align="left">28.5</td>
+<td align="left">43.4</td>
+<td align="left">38.1</td>
+<td align="left">43.2</td>
+</tr>
+
+<tr>
+<td align="left">BBH</td>
+<td align="left">86.6</td>
+<td align="left">77.1</td>
+<td align="left">86.2</td>
+<td align="left">73.5</td>
+<td align="left">84.4</td>
+<td align="left">86.8</td>
+<td align="left">81.3</td>
+</tr>
+
+<tr>
+<td align="left">ZebraLogic</td>
+<td align="left">66.5</td>
+<td align="left">34.9</td>
+<td align="left">60.8</td>
+<td align="left">26.1</td>
+<td align="left">85.2</td>
+<td align="left">91.2</td>
+<td align="left">22.4</td>
+</tr>
+
+<tr>
+<td align="left">AGI Eval</td>
+<td align="left">81.5</td>
+<td align="left">78.6</td>
+<td align="left">83.1</td>
+<td align="left">69.5</td>
+<td align="left">87.0</td>
+<td align="left">90.1</td>
+<td align="left">81.4</td>
+</tr>
+
+<tr>
+<td align="left">HumanEval+</td>
+<td align="left">89.9</td>
+<td align="left">87.4</td>
+<td align="left">89.7</td>
+<td align="left">83.0</td>
+<td align="left">80.2</td>
+<td align="left">83.7</td>
+<td align="left">89.7</td>
+</tr>
+
+<tr>
+<td align="left">MBPP+</td>
+<td align="left">64.7</td>
+<td align="left">61.4</td>
+<td align="left">66.1</td>
+<td align="left">63.5</td>
+<td align="left">69.1</td>
+<td align="left">63.0</td>
+<td align="left">61.2</td>
+</tr>
+
+<tr>
+<td align="left">LCB v3</td>
+<td align="left">75.2</td>
+<td align="left">68.0</td>
+<td align="left">83.4</td>
+<td align="left">58.8</td>
+<td align="left">86.2</td>
+<td align="left">85.5</td>
+<td align="left">82.3</td>
+</tr>
+
+<tr>
+<td align="left">IFEval</td>
+<td align="left">88.2</td>
+<td align="left">51.7</td>
+<td align="left">86.0</td>
+<td align="left">59.6</td>
+<td align="left">87.4</td>
+<td align="left">85.5</td>
+<td align="left">42.5</td>
+</tr>
+
+<tr>
+<td align="left">IFBench</td>
+<td align="left">41.6</td>
+<td align="left">23.0</td>
+<td align="left">34.6</td>
+<td align="left">16.7</td>
+<td align="left">37.1</td>
+<td align="left">40.4</td>
+<td align="left">23.4</td>
+</tr>
+
+<tr>
+<td align="left">MMLU</td>
+<td align="left">77.8</td>
+<td align="left">77.4</td>
+<td align="left">84.3</td>
+<td align="left">67.9</td>
+<td align="left">85.4</td>
+<td align="left">86.5</td>
+<td align="left">80.7</td>
+</tr>
+
+<tr>
+<td align="left">PopQA</td>
+<td align="left">23.7</td>
+<td align="left">18.0</td>
+<td align="left">17.9</td>
+<td align="left">12.8</td>
+<td align="left">24.3</td>
+<td align="left">29.3</td>
+<td align="left">14.5</td>
+</tr>
+
+<tr>
+<td align="left">GPQA</td>
+<td align="left">46.2</td>
+<td align="left">47.6</td>
+<td align="left">56.2</td>
+<td align="left">54.4</td>
+<td align="left">57.7</td>
+<td align="left">61.5</td>
+<td align="left">56.6</td>
+</tr>
+
+<tr>
+<td align="left">AE 2</td>
+<td align="left">52.1</td>
+<td align="left">24.0</td>
+<td align="left">58.0</td>
+<td align="left">7.7</td>
+<td align="left">60.5</td>
+<td align="left">73.5</td>
+<td align="left">8.6</td>
+</tr>
+
+<tr>
+<td align="left"></td>
+<td align="left">70.7</td>
+<td align="left">31.3</td>
+<td align="left">72.1</td>
+<td align="left">54.0</td>
+<td align="left">68.3</td>
+<td align="left">82.9</td>
+<td align="left">30.3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Olmo 3 Think 32B</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Benchmark</th>
+<th align="left">Olmo 3 Think 32B</th>
+<th align="left">Qwen 3 32B</th>
+<th align="left">Qwen 3 VL 32B Thinking</th>
+<th align="left">Qwen 2.5 32B</th>
+<th align="left">Gemma 3 27B Instruct</th>
+<th align="left">Gemma 2 27B Instruct</th>
+<th align="left">Olmo 2 32B Instruct</th>
+<th align="left">DeepSeek-R1-Distill-Qwen-32B</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>Math</strong></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">MATH</td>
+<td align="left">96.1</td>
+<td align="left">95.4</td>
+<td align="left">96.7</td>
+<td align="left">80.2</td>
+<td align="left">87.4</td>
+<td align="left">51.5</td>
+<td align="left">49.2</td>
+<td align="left">92.6</td>
+</tr>
+
+<tr>
+<td align="left">AIME 2024</td>
+<td align="left">76.8</td>
+<td align="left">80.8</td>
+<td align="left">86.3</td>
+<td align="left">15.7</td>
+<td align="left">28.9</td>
+<td align="left">4.7</td>
+<td align="left">4.6</td>
+<td align="left">70.3</td>
+</tr>
+
+<tr>
+<td align="left">AIME 2025</td>
+<td align="left">72.5</td>
+<td align="left">70.9</td>
+<td align="left">78.8</td>
+<td align="left">13.4</td>
+<td align="left">22.9</td>
+<td align="left">0.9</td>
+<td align="left">0.9</td>
+<td align="left">56.3</td>
+</tr>
+
+<tr>
+<td align="left">OMEGA</td>
+<td align="left">50.8</td>
+<td align="left">47.7</td>
+<td align="left">50.8</td>
+<td align="left">19.2</td>
+<td align="left">24.0</td>
+<td align="left">9.1</td>
+<td align="left">9.8</td>
+<td align="left">38.9</td>
+</tr>
+
+<tr>
+<td align="left"><strong>Reasoning</strong></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">BigBenchHard</td>
+<td align="left">89.8</td>
+<td align="left">90.6</td>
+<td align="left">91.1</td>
+<td align="left">80.9</td>
+<td align="left">82.4</td>
+<td align="left">66.0</td>
+<td align="left">65.6</td>
+<td align="left">89.7</td>
+</tr>
+
+<tr>
+<td align="left">ZebraLogic</td>
+<td align="left">76.0</td>
+<td align="left">88.3</td>
+<td align="left">96.1</td>
+<td align="left">24.1</td>
+<td align="left">24.8</td>
+<td align="left">17.2</td>
+<td align="left">13.3</td>
+<td align="left">69.4</td>
+</tr>
+
+<tr>
+<td align="left">AGI Eval English</td>
+<td align="left">88.2</td>
+<td align="left">90.0</td>
+<td align="left">92.2</td>
+<td align="left">78.9</td>
+<td align="left">76.9</td>
+<td align="left">70.9</td>
+<td align="left">68.4</td>
+<td align="left">88.1</td>
+</tr>
+
+<tr>
+<td align="left"><strong>Coding</strong></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">HumanEvalPlus</td>
+<td align="left">91.4</td>
+<td align="left">91.2</td>
+<td align="left">90.6</td>
+<td align="left">82.6</td>
+<td align="left">79.2</td>
+<td align="left">67.5</td>
+<td align="left">44.4</td>
+<td align="left">92.3</td>
+</tr>
+
+<tr>
+<td align="left">MBPP+</td>
+<td align="left">68.0</td>
+<td align="left">70.6</td>
+<td align="left">66.2</td>
+<td align="left">66.6</td>
+<td align="left">65.7</td>
+<td align="left">61.2</td>
+<td align="left">49.0</td>
+<td align="left">70.1</td>
+</tr>
+
+<tr>
+<td align="left">LiveCodeBench v3</td>
+<td align="left">83.5</td>
+<td align="left">90.2</td>
+<td align="left">84.8</td>
+<td align="left">49.9</td>
+<td align="left">39.0</td>
+<td align="left">28.7</td>
+<td align="left">10.6</td>
+<td align="left">79.5</td>
+</tr>
+
+<tr>
+<td align="left"><strong>IF</strong></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">IFEval</td>
+<td align="left">89.0</td>
+<td align="left">86.5</td>
+<td align="left">85.5</td>
+<td align="left">81.9</td>
+<td align="left">85.4</td>
+<td align="left">62.1</td>
+<td align="left">85.8</td>
+<td align="left">78.7</td>
+</tr>
+
+<tr>
+<td align="left">IFBench</td>
+<td align="left">47.6</td>
+<td align="left">37.3</td>
+<td align="left">55.1</td>
+<td align="left">36.7</td>
+<td align="left">31.3</td>
+<td align="left">27.8</td>
+<td align="left">36.4</td>
+<td align="left">23.8</td>
+</tr>
+
+<tr>
+<td align="left"><strong>Knowledge &amp; QA</strong></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">MMLU</td>
+<td align="left">85.4</td>
+<td align="left">88.8</td>
+<td align="left">90.1</td>
+<td align="left">84.6</td>
+<td align="left">74.6</td>
+<td align="left">76.1</td>
+<td align="left">77.1</td>
+<td align="left">88.0</td>
+</tr>
+
+<tr>
+<td align="left">PopQA</td>
+<td align="left">31.9</td>
+<td align="left">30.7</td>
+<td align="left">32.2</td>
+<td align="left">28.0</td>
+<td align="left">30.2</td>
+<td align="left">30.4</td>
+<td align="left">37.2</td>
+<td align="left">26.7</td>
+</tr>
+
+<tr>
+<td align="left">GPQA</td>
+<td align="left">58.1</td>
+<td align="left">67.3</td>
+<td align="left">67.4</td>
+<td align="left">44.6</td>
+<td align="left">45.0</td>
+<td align="left">39.9</td>
+<td align="left">36.4</td>
+<td align="left">61.8</td>
+</tr>
+
+<tr>
+<td align="left"><strong>Chat</strong></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">AlpacaEval 2 LC</td>
+<td align="left">74.2</td>
+<td align="left">75.6</td>
+<td align="left">80.9</td>
+<td align="left">81.9</td>
+<td align="left">65.5</td>
+<td align="left">39.8</td>
+<td align="left">38.0</td>
+<td align="left">26.2</td>
+</tr>
+
+<tr>
+<td align="left"><strong>Safety</strong></td>
+<td align="left">68.8</td>
+<td align="left">69.0</td>
+<td align="left">82.7</td>
+<td align="left">81.9</td>
+<td align="left">68.6</td>
+<td align="left">74.3</td>
+<td align="left">83.8</td>
+<td align="left">63.6</td>
+</tr>
+</tbody>
+</table>
+
+        
+      
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="mt-auto">
@@ -225,6 +1007,6 @@ console.log(response.message.content)</pre>
   });
 })();
 </script>
-<script src="/assets/app.js"></script>
+<script src="/ollama-search/assets/app.js"></script>
 </body>
 </html>

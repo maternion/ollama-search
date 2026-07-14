@@ -20,16 +20,16 @@
     <meta property="twitter:image:src" content="https://ollama.com/public/og-twitter.png" />
     <meta property="twitter:image:width" content="1200" />
     <meta property="twitter:image:height" content="628" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48x48.png" />
-    <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64x64.png" />
-    <link rel="apple-touch-icon" sizes="180x" href="/assets/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/assets/android-chrome-icon-512x512.png" />
-    <link href="/assets/tailwind.css" rel="stylesheet" />
-    <link href="/assets/prism.css" rel="stylesheet" />
-    <link href="/assets/extras.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ollama-search/assets/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/ollama-search/assets/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/ollama-search/assets/icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/ollama-search/assets/icon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x" href="/ollama-search/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/ollama-search/assets/android-chrome-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/ollama-search/assets/android-chrome-icon-512x512.png" />
+    <link href="/ollama-search/assets/tailwind.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/prism.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/extras.css" rel="stylesheet" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -38,25 +38,25 @@
         "url": "https://ollama.com"
       }
     </script>
-    <script src="/assets/htmx.bundle.js"></script>
+    <script src="/ollama-search/assets/htmx.bundle.js"></script>
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 <header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
   <nav class="flex w-full items-center justify-between px-6 py-[9px]">
-    <a href="/search/" class="z-50">
-      <img src="/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
+    <a href="/ollama-search/search/" class="z-50">
+      <img src="/ollama-search/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
     </a>
     <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
-      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/search/">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/search/">Models</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
     </div>
     <div class="flex-grow justify-center items-center hidden lg:flex">
       <div class="relative w-full xl:max-w-[28rem]">
-        <form action="/search" autocomplete="off" id="nav-search-form">
+        <form action="/ollama-search/search" autocomplete="off" id="nav-search-form">
           <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full">
             <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
-            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/search/?q='+encodeURIComponent(this.value);}" />
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/ollama-search/search/?q='+encodeURIComponent(this.value);}" />
           </div>
         </form>
       </div>
@@ -83,7 +83,7 @@
       <div class="flex items-center min-w-0 space-x-2">
         <div class="flex items-center min-w-0">
           <span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
-            <a x-test-model-name href="/library/functiongemma" title="functiongemma" class="underline-offset-[5px] hover:underline">functiongemma</a>
+            <a x-test-model-name href="/ollama-search/library/functiongemma" title="functiongemma" class="underline-offset-[5px] hover:underline">functiongemma</a>
            </span>
          </div>
        </div>
@@ -93,7 +93,7 @@
          <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
            <span class="flex items-center">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
-             <span x-test-pull-count>171K</span>
+             <span x-test-pull-count>172K</span>
              <span class="hidden sm:flex">&nbsp;Downloads</span>
           </span>
           <span class="flex items-center" title="Dec 18, 2025 7:03 AM UTC">
@@ -165,7 +165,7 @@ console.log(response.message.content)</pre>
     <section class="flex flex-1 flex-col">
   <div class="flex items-center justify-between mb-4">
     <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Models</h2>
-    <a href="/library/functiongemma/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all 4 &#8594;</a>
+    <a href="/ollama-search/library/functiongemma/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all 4 &#8594;</a>
   </div>
   
   <div id="models-table-all" class="fmt-table">
@@ -178,7 +178,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 hidden sm:block">Context</p>
         <p class="col-span-2 hidden sm:block">Input</p>
       </div>
-            <a href="/library/functiongemma/:latest/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+            <a href="/ollama-search/library/functiongemma/:latest/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">functiongemma:latest</p>
           
@@ -188,7 +188,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/functiongemma/:latest/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">functiongemma:latest</a>
+          <a href="/ollama-search/library/functiongemma/:latest/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">functiongemma:latest</a>
           
           
           <input class="command hidden" value="functiongemma:latest" />
@@ -200,7 +200,7 @@ console.log(response.message.content)</pre>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">32K</p>
         <p class="col-span-2 text-neutral-500 dark:text-neutral-400">Text</p>
       </div>
-      <a href="/library/functiongemma/:270m/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
+      <a href="/ollama-search/library/functiongemma/:270m/" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">
         <span class="flex items-center">
           <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">functiongemma:270m</p>
           <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
@@ -210,7 +210,7 @@ console.log(response.message.content)</pre>
       </a>
       <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">
         <span class="col-span-6 flex items-center">
-          <a href="/library/functiongemma/:270m/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">functiongemma:270m</a>
+          <a href="/ollama-search/library/functiongemma/:270m/" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">functiongemma:270m</a>
           <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
           
           <input class="command hidden" value="functiongemma:270m" />
@@ -227,7 +227,261 @@ console.log(response.message.content)</pre>
 </div>
 </section>
   </div>
-  
+  <div class="flex flex-1 flex-col py-8" id="readme">
+  <div class="flex items-center justify-between pb-1">
+    <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Readme</h2>
+  </div>
+  <div>
+    <div id="display" class="prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black dark:prose-headings:text-neutral-200 dark:prose-blockquote:text-neutral-400 dark:prose-code:bg-neutral-800 dark:prose-code:text-neutral-200 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-200 dark:prose-li:text-neutral-200 dark:prose-td:text-neutral-300 dark:prose-th:text-neutral-200 dark:prose-a:text-blue-400 dark:prose-strong:text-neutral-200 dark:marker:prose-ol:text-neutral-400 dark:marker:prose-ul:text-neutral-400 dark:text-neutral-200">
+      
+        
+          <blockquote>
+<p>Requires Ollama v0.13.5 or later</p>
+</blockquote>
+
+<h3>FunctionGemma</h3>
+
+<p>FunctionGemma is a lightweight, open model from Google, built as a foundation for creating your own specialized function calling models. The model is well suited for text-only function calling. The uniquely small size makes it possible to deploy in environments with limited resources such as laptops, desktops or your own cloud infrastructure, democratizing access to state of the art AI models and helping foster innovation for everyone.</p>
+
+<p>FunctionGemma is not intended for use as a direct dialogue model, and is designed to be highly performant after further fine-tuning, as is typical of models this size.</p>
+
+<p>Built on the Gemma 3 270M model and with the same research and technology used to create the Gemini models, FunctionGemma has been trained specifically for function calling. The model has the same architecture as Gemma 3, but uses a different chat format.</p>
+
+<p>Furthermore, akin to the base Gemma 270M, the model has been optimized to be extremely versatile, performant on a variety of hardware in single turn scenarios, but should be finetuned on single turn or multiturn task specific data to achieve best accuracy in specific domains.</p>
+
+<h3>Examples</h3>
+
+<h4>Python</h4>
+
+<p>Run the python example with <code>uv run tool.py</code></p>
+
+<pre><code># /// script
+# requires-python = &#34;&gt;=3.11&#34;
+# dependencies = [
+#     &#34;ollama&#34;,
+#     &#34;rich&#34;,
+# ]
+# ///
+&#34;&#34;&#34;
+Single tool, single turn example.
+Run with: uv run tool.py
+&#34;&#34;&#34;
+
+import json
+
+from rich import print
+
+from ollama import chat
+
+model = &#39;functiongemma&#39;
+
+
+def get_weather(city: str) -&gt; str:
+  &#34;&#34;&#34;
+  Get the current weather for a city.
+
+  Args:
+    city: The name of the city
+
+  Returns:
+    A string describing the weather
+  &#34;&#34;&#34;
+  return json.dumps({&#39;city&#39;: city, &#39;temperature&#39;: 22, &#39;unit&#39;: &#39;celsius&#39;, &#39;condition&#39;: &#39;sunny&#39;})
+
+
+messages = [{&#39;role&#39;: &#39;user&#39;, &#39;content&#39;: &#39;What is the weather in Paris?&#39;}]
+print(&#39;Prompt:&#39;, messages[0][&#39;content&#39;])
+
+response = chat(model, messages=messages, tools=[get_weather])
+
+if response.message.tool_calls:
+  tool = response.message.tool_calls[0]
+  print(f&#39;Calling: {tool.function.name}({tool.function.arguments})&#39;)
+
+  result = get_weather(**tool.function.arguments)
+  print(f&#39;Result: {result}&#39;)
+
+  messages.append(response.message)
+  messages.append({&#39;role&#39;: &#39;tool&#39;, &#39;content&#39;: result})
+
+  final = chat(model, messages=messages)
+  print(&#39;Response:&#39;, final.message.content)
+else:
+  print(&#39;Response:&#39;, response.message.content)
+
+</code></pre>
+
+<h3>TypeScript</h3>
+
+<p>Run the TypeScript example with <code>bun run tool.ts</code> or <code>npx tsx tool.ts</code></p>
+
+<pre><code>/**
+ * Single tool, single turn example.
+ * Run with: bun run tool.ts or npx tsx tool.ts
+ */
+
+const OLLAMA_HOST = process.env.OLLAMA_HOST || &#39;http://localhost:11434&#39;;
+const MODEL = &#39;functiongemma&#39;;
+
+function getWeather(city: string): string {
+  return JSON.stringify({ city, temperature: 22, unit: &#39;celsius&#39;, condition: &#39;sunny&#39; });
+}
+
+const tools = [
+  {
+    type: &#39;function&#39;,
+    function: {
+      name: &#39;get_weather&#39;,
+      description: &#39;Get the current weather for a city.&#39;,
+      parameters: {
+        type: &#39;object&#39;,
+        properties: {
+          city: { type: &#39;string&#39;, description: &#39;The name of the city&#39; },
+        },
+        required: [&#39;city&#39;],
+      },
+    },
+  },
+];
+
+interface Message {
+  role: string;
+  content: string;
+  tool_calls?: { function: { name: string; arguments: Record&lt;string, string&gt; } }[];
+}
+
+interface ChatResponse {
+  message: Message;
+}
+
+async function chat(messages: Message[]): Promise&lt;ChatResponse&gt; {
+  const response = await fetch(`${OLLAMA_HOST}/api/chat`, {
+    method: &#39;POST&#39;,
+    headers: { &#39;Content-Type&#39;: &#39;application/json&#39; },
+    body: JSON.stringify({ model: MODEL, messages, tools, stream: false }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error: ${response.status} ${await response.text()}`);
+  }
+
+  return response.json();
+}
+
+async function main() {
+  const messages: Message[] = [{ role: &#39;user&#39;, content: &#39;What is the weather in Paris?&#39; }];
+  console.log(&#39;Prompt:&#39;, messages[0].content);
+
+  const response = await chat(messages);
+
+  if (response.message.tool_calls?.length) {
+    const tool = response.message.tool_calls[0];
+    console.log(`Calling: ${tool.function.name}(${JSON.stringify(tool.function.arguments)})\n`);
+
+    const result = getWeather(tool.function.arguments.city);
+    console.log(&#39;Function Result:&#39;, result);
+
+    messages.push(response.message);
+    messages.push({ role: &#39;tool&#39;, content: result });
+
+    const final = await chat(messages);
+    console.log(&#39;Response:&#39;, final.message.content);
+  } else {
+    console.log(&#39;Response:&#39;, response.message.content);
+  }
+}
+
+main().catch(console.error);
+</code></pre>
+
+<h3>Benchmark</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Benchmark</strong></th>
+      <th><strong>n-shot</strong></th>
+      <th><strong>Function Gemma 270m</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BFCL Simple</td>
+      <td>0-shot</td>
+      <td>61.6</td>
+    </tr>
+    <tr>
+      <td>BFCL Multiple</td>
+      <td>0-shot</td>
+      <td>63.5</td>
+    </tr>
+    <tr>
+      <td>BFCL Parallel</td>
+      <td>0-shot</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <td>BFCL Parallel Multiple</td>
+      <td>0-shot</td>
+      <td>29.5</td>
+    </tr>
+    <tr>
+      <td>BFCL Live Simple</td>
+      <td>0-shot</td>
+      <td>36.2</td>
+    </tr>
+    <tr>
+      <td>BFCL Live Multiple</td>
+      <td>0-shot</td>
+      <td>25.7</td>
+    </tr>
+    <tr>
+      <td>BFCL Live Parallel</td>
+      <td>0-shot</td>
+      <td>22.9</td>
+    </tr>
+    <tr>
+      <td>BFCL Live Parallel Multiple</td>
+      <td>0-shot</td>
+      <td>20.8</td>
+    </tr>
+    <tr>
+      <td>BFCL Relevance</td>
+      <td>0-shot</td>
+      <td>61.1</td>
+    </tr>
+    <tr>
+      <td>BFCL Irrelevance</td>
+      <td>0-shot</td>
+      <td>73.7</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Training Dataset</h3>
+
+<p>These models were trained on a dataset of text data that includes a wide variety of sources. The model was trained with 6T tokens. The knowledge cutoff date for the training data was August 2024. There are the key components:</p>
+
+<ul>
+<li>Public Tool Definitions - Common APIs found on the web</li>
+<li>Tool Use Interactions - These are a mix of prompts, function calls, function responses, and natural language responses from the model to summarise the function call response, or request clarifications when the prompt is ambiguous or incomplete.</li>
+</ul>
+
+<h3>Data Preprocessing</h3>
+
+<p>Here are the key data cleaning and filtering methods applied to the training data:</p>
+
+<ul>
+<li>CSAM Filtering: Rigorous CSAM (Child Sexual Abuse Material) filtering was applied at multiple stages in the data preparation process to ensure the exclusion of harmful and illegal content.</li>
+<li>Sensitive Data Filtering: As part of making Gemma pre-trained models safe and reliable, automated techniques were used to filter out certain personal information and other sensitive data from training sets.</li>
+<li>Additional methods: Filtering based on content quality and safety in line with Google’s <a href="https://ai.google/static/documents/ai-responsibility-update-published-february-2025.pdf" rel="nofollow">policies</a>.</li>
+</ul>
+
+        
+      
+    </div>
+  </div>
+</div>
 </main>
 
 <footer class="mt-auto">
@@ -271,6 +525,6 @@ console.log(response.message.content)</pre>
   });
 })();
 </script>
-<script src="/assets/app.js"></script>
+<script src="/ollama-search/assets/app.js"></script>
 </body>
 </html>

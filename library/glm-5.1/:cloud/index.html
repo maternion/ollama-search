@@ -20,16 +20,16 @@
     <meta property="twitter:image:src" content="https://ollama.com/public/og-twitter.png" />
     <meta property="twitter:image:width" content="1200" />
     <meta property="twitter:image:height" content="628" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48x48.png" />
-    <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64x64.png" />
-    <link rel="apple-touch-icon" sizes="180x" href="/assets/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/assets/android-chrome-icon-512x512.png" />
-    <link href="/assets/tailwind.css" rel="stylesheet" />
-    <link href="/assets/prism.css" rel="stylesheet" />
-    <link href="/assets/extras.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ollama-search/assets/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/ollama-search/assets/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/ollama-search/assets/icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/ollama-search/assets/icon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x" href="/ollama-search/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/ollama-search/assets/android-chrome-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/ollama-search/assets/android-chrome-icon-512x512.png" />
+    <link href="/ollama-search/assets/tailwind.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/prism.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/extras.css" rel="stylesheet" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -38,25 +38,25 @@
         "url": "https://ollama.com"
       }
     </script>
-    <script src="/assets/htmx.bundle.js"></script>
+    <script src="/ollama-search/assets/htmx.bundle.js"></script>
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 <header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
   <nav class="flex w-full items-center justify-between px-6 py-[9px]">
-    <a href="/search/" class="z-50">
-      <img src="/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
+    <a href="/ollama-search/search/" class="z-50">
+      <img src="/ollama-search/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
     </a>
     <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
-      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/search/">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/search/">Models</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
     </div>
     <div class="flex-grow justify-center items-center hidden lg:flex">
       <div class="relative w-full xl:max-w-[28rem]">
-        <form action="/search" autocomplete="off" id="nav-search-form">
+        <form action="/ollama-search/search" autocomplete="off" id="nav-search-form">
           <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full">
             <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
-            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/search/?q='+encodeURIComponent(this.value);}" />
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/ollama-search/search/?q='+encodeURIComponent(this.value);}" />
           </div>
         </form>
       </div>
@@ -78,13 +78,13 @@
 </header>
 
 <main class="relative mx-auto flex w-full max-w-[52rem] flex-col px-6 py-10 md:py-24 lg:px-8">
-  <a href="/library/glm-5.1/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to tags</a>
+  <a href="/ollama-search/library/glm-5.1/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to tags</a>
   <div class="flex flex-col space-y-3">
     <div class="flex items-center min-w-0">
       <div class="flex items-center min-w-0 space-x-2">
         <div class="flex items-center min-w-0">
           <span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
-            <a x-test-model-name href="/library/glm-5.1" title="glm-5.1" class="underline-offset-[5px] hover:underline">glm-5.1</a>:cloud
+            <a x-test-model-name href="/ollama-search/library/glm-5.1" title="glm-5.1" class="underline-offset-[5px] hover:underline">glm-5.1</a>:cloud
           </span>
         </div>
       </div>
@@ -113,7 +113,31 @@
       </div>
     </div>
   </div>
-  
+  <div x-test-model-metrics class="!mt-8 grid grid-cols-3 overflow-hidden rounded-lg border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+  <div x-test-model-cost x-test-model-metric="usage" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4 border-r">
+    <div class="text-[13px] font-medium text-neutral-500">Usage</div>
+    <div class="mt-3 flex min-w-0 flex-col gap-1">
+      <div x-test-model-cost-value x-test-model-cost-level class="flex h-5 items-center gap-1">
+        <span x-test-model-cost-slot-active class="block h-1.5 w-5 rounded-full bg-neutral-900 dark:bg-neutral-100"></span><span x-test-model-cost-slot-active class="block h-1.5 w-5 rounded-full bg-neutral-900 dark:bg-neutral-100"></span><span x-test-model-cost-slot-active class="block h-1.5 w-5 rounded-full bg-neutral-900 dark:bg-neutral-100"></span><span x-test-model-cost-slot-inactive class="block h-1.5 w-5 rounded-full bg-neutral-200 dark:bg-neutral-700"></span>
+      </div>
+      <span class="min-w-0 break-words text-xs leading-tight text-neutral-700 dark:text-neutral-300 sm:text-[14px] sm:leading-5">high</span>
+    </div>
+  </div>
+  <div x-test-model-metric="context" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4 border-r">
+    <div class="text-[13px] font-medium text-neutral-500">Context</div>
+    <div class="mt-3 flex min-w-0 flex-col gap-1">
+      <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">198K</span>
+      <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm">tokens</span>
+    </div>
+  </div>
+  <div x-test-model-metric="size" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4">
+    <div class="text-[13px] font-medium text-neutral-500">Size</div>
+    <div class="mt-3 flex min-w-0 flex-col gap-1">
+      <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">756B</span>
+      <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm">parameters</span>
+    </div>
+  </div>
+</div>
   <div class="py-8">
     <section data-usage-section class="mb-8">
   <div class="relative rounded-lg border border-neutral-200 dark:border-neutral-800 overflow-hidden bg-white dark:bg-neutral-900">
@@ -165,24 +189,286 @@ console.log(response.message.content)</pre>
   </div>
 </section>
     
-    <section id="file-explorer" class="flex flex-1 flex-col">
-  <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100 mb-4">Details</h2>
-  <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
-    <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
-      <div class="flex items-center justify-between bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs text-neutral-900 dark:text-neutral-100">
-        <p>Updated 3 months ago</p>
-        <p>59472abf9d0a · — ·</p>
-      </div>
-      <div class="px-4 py-3 text-[13px] text-neutral-500 dark:text-neutral-400 grid grid-cols-12 gap-2">
-        <p class="col-span-3">Context</p><p class="col-span-9">198K</p>
-        <p class="col-span-3">Input</p><p class="col-span-9">Text</p>
-        <p class="col-span-3">Size / Usage</p><p class="col-span-9">—</p>
-      </div>
+    
+  </div>
+  <div class="flex flex-1 flex-col py-8" id="readme">
+  <div class="flex items-center justify-between pb-1">
+    <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Readme</h2>
+  </div>
+  <div>
+    <div id="display" class="prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black dark:prose-headings:text-neutral-200 dark:prose-blockquote:text-neutral-400 dark:prose-code:bg-neutral-800 dark:prose-code:text-neutral-200 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-200 dark:prose-li:text-neutral-200 dark:prose-td:text-neutral-300 dark:prose-th:text-neutral-200 dark:prose-a:text-blue-400 dark:prose-strong:text-neutral-200 dark:marker:prose-ol:text-neutral-400 dark:marker:prose-ul:text-neutral-400 dark:text-neutral-200">
+      
+        
+          <p><img src="https://ollama.com/assets/library/glm-4.7-flash/8e1f3c2e-cfb1-4516-a57c-312b7daac14a" width="128"/></p>
+
+<p>GLM-5.1 is Z.AI’s next-generation flagship model for agentic engineering, with significantly stronger coding capabilities than its predecessor. It achieves state-of-the-art performance on SWE-Bench Pro and leads GLM-5 by a wide margin on NL2Repo (repo generation) and Terminal-Bench 2.0 (real-world terminal tasks).</p>
+
+<p><img src="https://ollama.com/assets/library/glm-5.1/d625eb88-2811-4ced-944a-f9af1d273b33" alt="Coding eval"/></p>
+
+<p>But the most meaningful leap goes beyond first-pass performance. Previous models—including GLM-5—tend to exhaust their repertoire early: they apply familiar techniques for quick initial gains, then plateau. Giving them more time doesn’t help.</p>
+
+<p>GLM-5.1, by contrast, is built to stay effective on agentic tasks over much longer horizons. We’ve found that the model handles ambiguous problems with better judgment and stays productive over longer sessions. It breaks complex problems down, runs experiments, reads results, and identifies blockers with real precision. By revisiting its reasoning and revising its strategy through repeated iteration, GLM-5.1 sustains optimization over hundreds of rounds and thousands of tool calls. The longer it runs, the better the result.</p>
+
+<h2>Benchmark</h2>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>GLM-5.1</th>
+<th>GLM-5</th>
+<th>Qwen3.6-Plus</th>
+<th>Minimax M2.7</th>
+<th>DeepSeek-V3.2</th>
+<th>Kimi K2.5</th>
+<th>Claude Opus 4.6</th>
+<th>Gemini 3.1 Pro</th>
+<th>GPT-5.4</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>HLE</td>
+<td>31.0</td>
+<td>30.5</td>
+<td>28.8</td>
+<td>28.0</td>
+<td>25.1</td>
+<td>31.5</td>
+<td>36.7</td>
+<td><strong>45.0</strong></td>
+<td>39.8</td>
+</tr>
+
+<tr>
+<td>HLE (w/ Tools)</td>
+<td>52.3</td>
+<td>50.4</td>
+<td>50.6</td>
+<td>-</td>
+<td>40.8</td>
+<td>51.8</td>
+<td><strong>53.1</strong>*</td>
+<td>51.4*</td>
+<td>52.1*</td>
+</tr>
+
+<tr>
+<td>AIME 2026</td>
+<td>95.3</td>
+<td>95.4</td>
+<td>95.1</td>
+<td>89.8</td>
+<td>95.1</td>
+<td>94.5</td>
+<td>95.6</td>
+<td>98.2</td>
+<td><strong>98.7</strong></td>
+</tr>
+
+<tr>
+<td>HMMT Nov. 2025</td>
+<td>94.0</td>
+<td><strong>96.9</strong></td>
+<td>94.6</td>
+<td>81.0</td>
+<td>90.2</td>
+<td>91.1</td>
+<td>96.3</td>
+<td>94.8</td>
+<td>95.8</td>
+</tr>
+
+<tr>
+<td>HMMT Feb. 2026</td>
+<td>82.6</td>
+<td>82.8</td>
+<td>87.8</td>
+<td>72.7</td>
+<td>79.9</td>
+<td>81.3</td>
+<td>84.3</td>
+<td>87.3</td>
+<td><strong>91.8</strong></td>
+</tr>
+
+<tr>
+<td>IMOAnswerBench</td>
+<td>83.8</td>
+<td>82.5</td>
+<td>83.8</td>
+<td>66.3</td>
+<td>78.3</td>
+<td>81.8</td>
+<td>75.3</td>
+<td>81.0</td>
+<td><strong>91.4</strong></td>
+</tr>
+
+<tr>
+<td>GPQA-Diamond</td>
+<td>86.2</td>
+<td>86.0</td>
+<td>90.4</td>
+<td>87.0</td>
+<td>82.4</td>
+<td>87.6</td>
+<td>91.3</td>
+<td><strong>94.3</strong></td>
+<td>92.0</td>
+</tr>
+
+<tr>
+<td>SWE-Bench Pro</td>
+<td><strong>58.4</strong></td>
+<td>55.1</td>
+<td>56.6</td>
+<td>56.2</td>
+<td>-</td>
+<td>53.8</td>
+<td>57.3</td>
+<td>54.2</td>
+<td>57.7</td>
+</tr>
+
+<tr>
+<td>NL2Repo</td>
+<td>42.7</td>
+<td>35.9</td>
+<td>37.9</td>
+<td>39.8</td>
+<td>-</td>
+<td>32.0</td>
+<td><strong>49.8</strong></td>
+<td>33.4</td>
+<td>41.3</td>
+</tr>
+
+<tr>
+<td>Terminal-Bench 2.0 (Terminus-2)</td>
+<td>63.5</td>
+<td>56.2</td>
+<td>61.6</td>
+<td>-</td>
+<td>39.3</td>
+<td>50.8</td>
+<td>65.4</td>
+<td><strong>68.5</strong></td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Terminal-Bench 2.0 (Best self-reported)</td>
+<td>66.5 (Claude Code)</td>
+<td>56.2 (Claude Code)</td>
+<td>-</td>
+<td>57.0 (Claude Code)</td>
+<td>46.4 (Claude Code)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><strong>75.1</strong> (Codex)</td>
+</tr>
+
+<tr>
+<td>CyberGym</td>
+<td><strong>68.7</strong></td>
+<td>48.3</td>
+<td>-</td>
+<td>-</td>
+<td>17.3</td>
+<td>41.3</td>
+<td>66.6</td>
+<td>-</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>BrowseComp</td>
+<td><strong>68.0</strong></td>
+<td>62.0</td>
+<td>-</td>
+<td>-</td>
+<td>51.4</td>
+<td>60.6</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>BrowseComp (w/ Context Manage)</td>
+<td>79.3</td>
+<td>75.9</td>
+<td>-</td>
+<td>-</td>
+<td>67.6</td>
+<td>74.9</td>
+<td>84.0</td>
+<td><strong>85.9</strong></td>
+<td>82.7</td>
+</tr>
+
+<tr>
+<td>τ³-Bench</td>
+<td>70.6</td>
+<td>69.2</td>
+<td>70.7</td>
+<td>67.6</td>
+<td>69.2</td>
+<td>66.0</td>
+<td>72.4</td>
+<td>67.1</td>
+<td><strong>72.9</strong></td>
+</tr>
+
+<tr>
+<td>MCP-Atlas (Public Set)</td>
+<td>71.8</td>
+<td>69.2</td>
+<td><strong>74.1</strong></td>
+<td>48.8</td>
+<td>62.2</td>
+<td>63.8</td>
+<td>73.8</td>
+<td>69.2</td>
+<td>67.2</td>
+</tr>
+
+<tr>
+<td>Tool-Decathlon</td>
+<td>40.7</td>
+<td>38.0</td>
+<td>39.8</td>
+<td>46.3</td>
+<td>35.2</td>
+<td>27.8</td>
+<td>47.2</td>
+<td>48.8</td>
+<td><strong>54.6</strong></td>
+</tr>
+
+<tr>
+<td>Vending Bench 2</td>
+<td>$5,634.00</td>
+<td>$4,432.12</td>
+<td>$5,114.87</td>
+<td>-</td>
+<td>$1,034.00</td>
+<td>$1,198.46</td>
+<td><strong>$8,017.59</strong></td>
+<td>$911.21</td>
+<td>$6,144.18</td>
+</tr>
+</tbody>
+</table>
+
+        
+      
     </div>
   </div>
-</section>
-  </div>
-  
+</div>
 </main>
 
 <footer class="mt-auto">
@@ -226,6 +512,6 @@ console.log(response.message.content)</pre>
   });
 })();
 </script>
-<script src="/assets/app.js"></script>
+<script src="/ollama-search/assets/app.js"></script>
 </body>
 </html>

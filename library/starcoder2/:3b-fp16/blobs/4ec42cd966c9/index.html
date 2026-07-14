@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <title>library/starcoder2:3b-fp16 - license</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="library/starcoder2:3b-fp16 blob license"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="library/starcoder2:3b-fp16 - license" />
+    <meta property="og:description" content="library/starcoder2:3b-fp16 blob license" />
+    <meta property="og:image" content="https://ollama.com/public/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content="library/starcoder2:3b-fp16 - license" />
+    <meta property="twitter:description" content="library/starcoder2:3b-fp16 blob license" />
+    <meta property="twitter:site" content="ollama" />
+    <meta property="twitter:image:src" content="https://ollama.com/public/og-twitter.png" />
+    <meta property="twitter:image:width" content="1200" />
+    <meta property="twitter:image:height" content="628" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ollama-search/assets/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/ollama-search/assets/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/ollama-search/assets/icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/ollama-search/assets/icon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x" href="/ollama-search/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/ollama-search/assets/android-chrome-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/ollama-search/assets/android-chrome-icon-512x512.png" />
+    <link href="/ollama-search/assets/tailwind.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/prism.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/extras.css" rel="stylesheet" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Ollama",
+        "url": "https://ollama.com"
+      }
+    </script>
+    <script src="/ollama-search/assets/htmx.bundle.js"></script>
+</head>
+<body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
+<header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
+  <nav class="flex w-full items-center justify-between px-6 py-[9px]">
+    <a href="/ollama-search/search/" class="z-50">
+      <img src="/ollama-search/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
+    </a>
+    <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/search/">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
+    </div>
+    <div class="flex-grow justify-center items-center hidden lg:flex">
+      <div class="relative w-full xl:max-w-[28rem]">
+        <form action="/ollama-search/search" autocomplete="off" id="nav-search-form">
+          <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full">
+            <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/ollama-search/search/?q='+encodeURIComponent(this.value);}" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="hidden lg:flex xl:flex-1 items-center space-x-2 justify-end ml-6 xl:ml-0">
+      <button id="theme-toggle" class="flex cursor-pointer items-center rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 text-lg px-3 py-1.5 text-black dark:text-neutral-200 whitespace-nowrap" title="Toggle dark mode">
+        <span class="dark:hidden"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></span>
+        <span class="hidden dark:block"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25M18.364 17.614l-1.591-1.591M12 18.75V21M5.636 17.614l1.591-1.591M3 12h2.25M5.636 6.386l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg></span>
+      </button>
+      <a class="flex cursor-pointer items-center rounded-full bg-neutral-800 dark:bg-neutral-100 text-lg px-4 py-1.5 text-white dark:text-neutral-900 hover:bg-black dark:hover:bg-white whitespace-nowrap focus:bg-black dark:focus:bg-white" href="https://ollama.com/download">Download</a>
+    </div>
+    <div class="lg:hidden flex items-center">
+      <button id="theme-toggle-mobile" class="flex items-center rounded-full bg-black/5 dark:bg-white/10 px-3 py-1.5 mr-2 text-black dark:text-neutral-200">
+        <span class="dark:hidden"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></span>
+        <span class="hidden dark:block"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25M18.364 17.614l-1.591-1.591M12 18.75V21M5.636 17.614l1.591-1.591M3 12h2.25M5.636 6.386l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main class="relative mx-auto flex w-full max-w-[52rem] flex-col px-6 py-10 md:py-24 lg:px-8">
+  <a href="/ollama-search/library/starcoder2/:3b-fp16/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to library/starcoder2:3b-fp16</a>
+  <div class="flex flex-col space-y-3">
+    <div class="flex items-center min-w-0">
+      <div class="flex items-center min-w-0 space-x-2">
+        <div class="flex items-center min-w-0">
+          <span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
+            <a x-test-model-name href="/ollama-search/library/starcoder2" title="starcoder2" class="underline-offset-[5px] hover:underline">starcoder2</a>:3b-fp16
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col space-y-2">
+      <div class="flex flex-col space-y-2">
+        <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
+          <span class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
+            <span x-test-pull-count>2.9M</span>
+            <span class="hidden sm:flex">&nbsp;Downloads</span>
+          </span>
+          <span class="flex items-center" title="Sep 6, 2024 11:42 PM UTC">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>
+            <span class="hidden sm:flex">Updated&nbsp;</span>
+            <span x-test-updated>1 year ago</span>
+          </span>
+        </p>
+      </div>
+      <h2 class="break-words text-neutral-800 dark:text-neutral-300">StarCoder2 is the next generation of transparently trained open code LLMs that comes in three sizes: 3B, 7B and 15B parameters.</h2>
+      <div class="flex flex-wrap gap-2">
+        
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">3b</span>
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">7b</span>
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">15b</span>
+      </div>
+    </div>
+  </div>
+  <div id="file-explorer" class="pt-12 pb-10">
+    <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-200">
+      <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
+        <div class="flex items-center justify-between bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs text-neutral-900 dark:text-neutral-100">
+          <div class="flex items-center">
+            <a href="/ollama-search/library/starcoder2/:3b-fp16/" class="min-w-0 font-medium text-black dark:text-neutral-100 hover:underline hover:decoration-[.75px] hover:underline-offset-[3px]">
+              <span class="hidden sm:block">starcoder2:3b-fp16</span>
+              <span class="sm:hidden">...</span>
+            </a>
+            <span class="px-2 font-light text-neutral-300 dark:text-neutral-700">/</span>
+            <div>license</div>
+          </div>
+          <div>4ec42cd966c9 · 13kB</div>
+        </div>
+        <div class="text-[13px]">
+          <div class="px-4 py-2 relative overflow-x-scroll font-mono text-sm whitespace-pre-wrap [counter-reset:line] before:absolute before:left-0 before:inline-block before:w-12 before:select-none before:text-right before:text-gray-400 dark:text-neutral-300 [&>div]:pl-14 [&>div]:pr-4 [&>div]:[counter-increment:line] [&>div]:before:absolute [&>div]:before:left-0 [&>div]:before:inline-block [&>div]:before:w-12 [&>div]:before:select-none [&>div]:before:text-right [&>div]:before:text-gray-400 dark:[&>div]:before:text-gray-600 [&>div]:before:content-[counter(line)]"><div>BigCode Open RAIL-M v1 License Agreement</div><div></div><div>Section I: Preamble</div><div></div><div>This OpenRAIL-M License Agreement was created under BigCode, an open and collaborative research project aimed at the responsible development and Use of Large Language Models (“LLMs”) for code generation. This license is generally applicable to any machine-learning Model.</div><div></div><div>This License Agreement strives for both the open and responsible Use of the accompanying Model. Openness here is understood as enabling users of the Model on a royalty free basis to Use it, modify it, and even share commercial versions of it. Use restrictions are included to prevent misuse of the Model.</div><div></div><div>This License Agreement governs the Use of the Model and Modifications of the Model. You and Licensor agree as follows:</div><div></div><div>1.Definitions</div><div></div><div>a. “Contribution” means any work of authorship, including the original version of the Model and any Modifications of the Model that is intentionally submitted to Licensor for inclusion in the Model by the copyright owner or by an individual or entity authorized to submit on behalf of the copyright owner. For the purposes of this definition, “submitted” means any form of electronic, verbal, or written communication sent to the Licensor or its representatives, including but not limited to communication on electronic mailing lists, source code control systems, and issue tracking systems that are managed by, or on behalf of, the Licensor for the purpose of discussing and improving the Model, but excluding communication that is conspicuously marked or otherwise designated in writing by the copyright owner as “Not a Contribution.”</div><div></div><div>b. “Contributor” means Licensor and any individual or entity on behalf of whom a Contribution has been received by Licensor and subsequently incorporated within the Model.</div><div></div><div>c. “Data” means a collection of information extracted from the dataset used with the Model, including to train, pretrain, or otherwise evaluate the Model. The Data is not licensed under this License Agreement.</div><div></div><div>d. “Explanatory Documentation” means model cards, data cards, or any other similar documentation or related information dedicated to inform the public about the characteristics of the model. Explanatory documentation is not licensed under this license.</div><div></div><div>e. “Harm” includes but is not limited to physical, mental, psychological, financial and reputational damage, pain, or loss.</div><div></div><div>f. “License Agreement” means this document.</div><div></div><div>g. “Licensor” means the rights owners or entity authorized by the rights owners that are granting the terms and conditions of this License Agreement.</div><div></div><div>h. “Model” means machine-learning based assemblies (including checkpoints), consisting of learnt weights and parameters (including optimizer states), corresponding to a model architecture as embodied in source code. Source code is not licensed under this License Agreement.</div><div></div><div>i. “Modifications of the Model” means all changes to the Model or any other model which is created or initialized by transfer of patterns of the weights, parameters, activations or Output of the Model.</div><div></div><div>j. “Output” means the results of operating the Model.</div><div></div><div>k. “Share” means any transmission, reproduction, publication or other sharing of the Model or Modifications of the Model to a third party, including providing the Model as a hosted service made available by electronic or other remote means, including - but not limited to - API-based or web access.</div><div></div><div>l. “Third Parties” means individuals or legal entities that are not under common control with Licensor or You.</div><div></div><div>m. “Use” includes - but is not limited to - generating any Output, fine tuning, updating, running, training, evaluating and/or reparametrizing the Model.</div><div></div><div>n. “You” (or “Your”) means an individual or Legal Entity exercising permissions granted by this License Agreement and/or making Use of the Model for whichever purpose and in any field of Use.</div><div></div><div>Section II: INTELLECTUAL PROPERTY RIGHTS</div><div></div><div>The Model and Modifications of the Model are subject to additional terms as described in Section III, which shall govern the Use of the Model and Modifications of the Model.</div><div></div><div>Grant of Copyright license. Subject to the terms and conditions of this License Agreement and where and as applicable, each Contributor hereby grants to You a perpetual, worldwide, non-exclusive, no-charge, royalty-free, copyright license to reproduce, prepare, publicly display, publicly perform, sublicense under the terms herein, and distribute the Model and Modifications of the Model.</div><div>Grant of Patent license. Subject to the terms and conditions of this License Agreement and where and as applicable, each Contributor hereby grants to You a perpetual, worldwide, non-exclusive, no-charge, royalty-free patent license to make, have made, Use, offer to sell, sell, import, and otherwise transfer the Model, where such license applies only to those patent claims licensable by such Contributor that are necessarily infringed by their Contribution(s) alone or by combination of their Contribution(s) with the Model to which such Contribution(s) was submitted. If You institute patent litigation against any entity (including a cross-claim or counterclaim in a lawsuit) alleging that the Model or a Contribution incorporated within the Model constitutes direct or contributory patent infringement, then any rights granted to You under this License Agreement for the Model shall terminate as of the date such litigation is filed.</div><div></div><div>Section III: CONDITIONS OF USE</div><div></div><div>4. Use conditions. Compliance with the restrictions in Attachment A is a condition to the grants in this License Agreement. If You Use the Model, You agree not to Use it for the specified restricted uses set forth in Attachment A.</div><div></div><div>5. Sharing of the Model</div><div></div><div>5.1. You may Share the Model or Modifications of the Model under any license of your choice that does not contradict the restrictions in Attachment A of this License Agreement and includes:</div><div></div><div>a. Paragraph 4 and the restrictions in Attachment A of this License Agreement, or,</div><div></div><div>b. Use conditions similar to Paragraph 4 that must accomplish the same purpose as the use conditions in Paragraph 4 and a similar set of restrictions to those in Attachment A that must accomplish the same purpose as the restrictions in Attachment A.</div><div></div><div>5.2. When You Share the Model or Modifications of the Model, You agree to:</div><div></div><div>a. Give any recipients a copy of this License Agreement;</div><div></div><div>b. Retain all Explanatory Documentation; and if sharing Modifications of the Model, add Explanatory Documentation of the same or better quality documenting the changes made to create the Modifications of the Model; and</div><div></div><div>c. Retain all copyright, patent, trademark, and attribution notices.</div><div></div><div>6. The Output You Generate. Licensor claims no rights in the Output. You agree not to contravene any provision as stated in the License Agreement with your Use of the Output.</div><div></div><div>Section IV: OTHER PROVISIONS</div><div></div><div>7. Updates and Runtime Restrictions. Licensor reserves the right to restrict (remotely or otherwise) usage of the Model in violation of this License Agreement.</div><div></div><div>8. Submission of Contributions. Unless You explicitly state otherwise, any Contribution intentionally submitted for inclusion in the Model by You to the Licensor shall be under the terms and conditions of this License, without any additional terms or conditions. Notwithstanding the above, nothing herein shall supersede or modify the terms of any separate license agreement you may have executed with Licensor regarding such Contributions.</div><div></div><div>9. Trademarks and related. Nothing in this License Agreement permits You to make Use of Licensors’ trademarks, trade names, logos or to otherwise suggest endorsement or misrepresent the relationship between the parties; and any rights not expressly granted herein are reserved by the Licensors.</div><div></div><div>10. Disclaimer of Warranty. Unless required by applicable law or agreed to in writing, Licensor provides the Model (and each Contributor provides its Contributions) on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. You are solely responsible for determining the appropriateness of using or sharing the Model and Modifications of the Model, and assume any risks associated with Your exercise of permissions under this License Agreement.</div><div></div><div>11. Limitation of Liability. In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall any Contributor be liable to You for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising as a result of this License Agreement or out of the Use or inability to Use the Model (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, model failure or malfunction, or any and all other commercial damages or losses), even if such Contributor has been advised of the possibility of such damages.</div><div></div><div>12. Accepting Warranty or Additional Liability. While sharing the Model or Modifications of the Model thereof, You may choose to offer and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License Agreement. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.</div><div></div><div>13. This License Agreement is a license of copyright and patent rights and an agreement in contract between You and the Licensor. If any provision of this License Agreement is held to be invalid, illegal or unenforceable, the remaining provisions shall be unaffected thereby and remain valid as if such provision had not been set forth herein.</div><div></div><div>END OF TERMS AND CONDITIONS</div><div></div><div>Attachment A - USE RESTRICTIONS</div><div>You agree not to Use the Model or Modifications of the Model:</div><div></div><div>(a) In any way that violates any applicable national, federal, state, local or international law or regulation;</div><div></div><div>(b) For the purpose of exploiting, Harming or attempting to exploit or harm minors in any way;</div><div></div><div>(c) To generate and/or disseminate malware (including - but not limited to - ransomware) or any other content to be used for the purpose of Harming electronic systems;</div><div></div><div>(d) To generate or disseminate verifiably false information and/or content with the purpose of Harming others;</div><div></div><div>(e) To generate or disseminate personal identifiable information with the purpose of Harming others;</div><div></div><div>(f) To generate or disseminate information (including - but not limited to - images, code, posts, articles), and place the information in any public context (including - but not limited to - bot generating tweets) without expressly and intelligibly disclaiming that the information and/or content is machine generated;</div><div></div><div>(g) To intentionally defame, disparage or otherwise harass others;</div><div></div><div>(h) To impersonate or attempt to impersonate human beings for purposes of deception;</div><div></div><div>(i) For fully automated decision making that adversely impacts an individual’s legal rights or otherwise creates or modifies a binding, enforceable obligation without expressly and intelligibly disclaiming that the creation or modification of the obligation is machine generated;</div><div></div><div>(j) For any Use intended to discriminate against or Harm individuals or groups based on online or offline social behavior or known or predicted personal or personality characteristics;</div><div></div><div>(k) To intentionally exploit any of the vulnerabilities of a specific group of persons based on their age, social, physical or mental characteristics, in order to materially distort the behavior of a person pertaining to that group in a manner that causes or is likely to cause that person or another person physical or psychological harm;</div><div></div><div>(l) For any Use intended to discriminate against individuals or groups based on legally protected characteristics or categories;</div><div></div><div>(m) To provide medical advice or medical results interpretation that is intended to be a substitute for professional medical advice, diagnosis, or treatment;</div><div></div><div>(n) For fully automated decision making in administration of justice, law enforcement, immigration or asylum processes.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="mt-auto">
+  <div class="underline-offset-4 hidden md:block">
+    <div class="flex items-center justify-between px-6 py-3.5">
+      <div class="text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="https://ollama.com/maternion" class="hover:underline">Maternion</a></div>
+      <div class="flex space-x-6 text-xs text-neutral-500 dark:text-neutral-400">
+        <a href="https://ollama.com/download" class="hover:underline">Download</a>
+        <a href="https://ollama.com/blog" class="hover:underline">Blog</a>
+        <a href="https://docs.ollama.com" class="hover:underline">Docs</a>
+        <a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a>
+        <a href="https://ollama.com/pricing" class="hover:underline">Pricing</a>
+      </div>
+    </div>
+  </div>
+  <div class="py-4 md:hidden">
+    <ul class="flex flex-col items-center space-y-2 text-xs text-neutral-500 dark:text-neutral-400">
+      <li><a href="https://ollama.com/download" class="hover:underline">Download</a></li>
+      <li><a href="https://ollama.com/blog" class="hover:underline">Blog</a></li>
+      <li><a href="https://docs.ollama.com" class="hover:underline">Docs</a></li>
+      <li><a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a></li>
+      <li><a href="https://ollama.com/pricing" class="hover:underline">Pricing</a></li>
+    </ul>
+    <div class="mt-4 text-center text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="https://ollama.com/maternion" class="hover:underline">Maternion</a></div>
+  </div>
+</footer>
+<script>
+(function() {
+  const stored = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (stored === 'dark' || (!stored && prefersDark)) {
+    document.documentElement.classList.add('dark');
+  }
+  function toggle() {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('theme-toggle')?.addEventListener('click', toggle);
+    document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggle);
+  });
+})();
+</script>
+<script src="/ollama-search/assets/app.js"></script>
+</body>
+</html>

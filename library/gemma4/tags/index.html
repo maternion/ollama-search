@@ -20,16 +20,16 @@
     <meta property="twitter:image:src" content="https://ollama.com/public/og-twitter.png" />
     <meta property="twitter:image:width" content="1200" />
     <meta property="twitter:image:height" content="628" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48x48.png" />
-    <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64x64.png" />
-    <link rel="apple-touch-icon" sizes="180x" href="/assets/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/assets/android-chrome-icon-512x512.png" />
-    <link href="/assets/tailwind.css" rel="stylesheet" />
-    <link href="/assets/prism.css" rel="stylesheet" />
-    <link href="/assets/extras.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ollama-search/assets/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/ollama-search/assets/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/ollama-search/assets/icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/ollama-search/assets/icon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x" href="/ollama-search/assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/ollama-search/assets/android-chrome-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/ollama-search/assets/android-chrome-icon-512x512.png" />
+    <link href="/ollama-search/assets/tailwind.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/prism.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/extras.css" rel="stylesheet" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -38,25 +38,25 @@
         "url": "https://ollama.com"
       }
     </script>
-    <script src="/assets/htmx.bundle.js"></script>
+    <script src="/ollama-search/assets/htmx.bundle.js"></script>
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 <header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
   <nav class="flex w-full items-center justify-between px-6 py-[9px]">
-    <a href="/search/" class="z-50">
-      <img src="/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
+    <a href="/ollama-search/search/" class="z-50">
+      <img src="/ollama-search/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
     </a>
     <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
-      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/search/">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/search/">Models</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
     </div>
     <div class="flex-grow justify-center items-center hidden lg:flex">
       <div class="relative w-full xl:max-w-[28rem]">
-        <form action="/search" autocomplete="off" id="nav-search-form">
+        <form action="/ollama-search/search" autocomplete="off" id="nav-search-form">
           <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full">
             <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
-            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/search/?q='+encodeURIComponent(this.value);}" />
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();window.location.href='/ollama-search/search/?q='+encodeURIComponent(this.value);}" />
           </div>
         </form>
       </div>
@@ -78,13 +78,13 @@
 </header>
 
 <main class="relative mx-auto flex w-full max-w-[52rem] flex-col px-6 py-10 md:py-24 lg:px-8">
-  <a href="/library/gemma4/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to gemma4</a>
+  <a href="/ollama-search/library/gemma4/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10">&larr; Back to gemma4</a>
   <div class="flex flex-col space-y-3">
     <div class="flex items-center min-w-0">
       <div class="flex items-center min-w-0 space-x-2">
         <div class="flex items-center min-w-0">
           <span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
-            <a x-test-model-name href="/library/gemma4" title="gemma4" class="underline-offset-[5px] hover:underline">gemma4</a>
+            <a x-test-model-name href="/ollama-search/library/gemma4" title="gemma4" class="underline-offset-[5px] hover:underline">gemma4</a>
            </span>
          </div>
        </div>
@@ -94,7 +94,7 @@
          <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
            <span class="flex items-center">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
-             <span x-test-pull-count>17.8M</span>
+             <span x-test-pull-count>17.9M</span>
              <span class="hidden sm:flex">&nbsp;Downloads</span>
           </span>
           <span class="flex items-center" title="Jun 30, 2026 10:16 PM UTC">
@@ -130,11 +130,11 @@
   </div>
   <div class="relative inline-block">
     <input type="radio" name="fmt" value="gguf" id="fmt-gguf" class="peer sr-only fmt-radio" data-fmt="gguf">
-    <label for="fmt-gguf" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-300 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">GGUF (39)</label>
+    <label for="fmt-gguf" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-300 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">GGUF (29)</label>
   </div>
   <div class="relative inline-block">
     <input type="radio" name="fmt" value="mlx" id="fmt-mlx" class="peer sr-only fmt-radio" data-fmt="mlx">
-    <label for="fmt-mlx" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-300 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">MLX (10)</label>
+    <label for="fmt-mlx" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-300 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">MLX (20)</label>
   </div>
 </div>
     <div id="tags-table-all" class="fmt-table">
@@ -148,7 +148,7 @@
         <p class="col-span-2 hidden md:block">Input</p>
       </div>
       <div class="group px-4 py-3">
-  <a href="/library/gemma4/:latest/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:latest/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -169,7 +169,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:latest/" class="group-hover:underline">gemma4:latest</a>
+        <a href="/ollama-search/library/gemma4/:latest/" class="group-hover:underline">gemma4:latest</a>
         
         
         <input class="command hidden" value="gemma4:latest" />
@@ -187,7 +187,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:cloud/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:cloud/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -199,7 +199,7 @@
     </div>
     <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
       <span>
-        <span class="font-mono">b06ba4be71c0</span> • — • 256K context window •
+        <span class="font-mono">b06ba4be71c0</span> • Medium Usage • 256K context window •
         <span class="hidden sm:inline">Text, Image input • 2 weeks ago</span>
       </span>
       <div class="flex sm:hidden">Text, Image input • 2 weeks ago</div>
@@ -208,7 +208,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:cloud/" class="group-hover:underline">gemma4:cloud</a>
+        <a href="/ollama-search/library/gemma4/:cloud/" class="group-hover:underline">gemma4:cloud</a>
         
         
         <input class="command hidden" value="gemma4:cloud" />
@@ -216,7 +216,7 @@
           <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
         </button>
       </span>
-      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">—</p>
+      <p x-test-model-tag-cost class="col-span-2 flex items-center gap-0.5 text-neutral-500 dark:text-neutral-400 text-[13px]"><span x-test-model-tag-usage-slot-active class="block h-1 w-4 rounded-full bg-neutral-800 dark:bg-neutral-200"></span><span x-test-model-tag-usage-slot-active class="block h-1 w-4 rounded-full bg-neutral-800 dark:bg-neutral-200"></span><span x-test-model-tag-usage-slot-inactive class="block h-1 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700"></span><span x-test-model-tag-usage-slot-inactive class="block h-1 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700"></span></p>
       <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
       <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
     </div>
@@ -226,7 +226,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e2b/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e2b/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -247,7 +247,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e2b/" class="group-hover:underline">gemma4:e2b</a>
+        <a href="/ollama-search/library/gemma4/:e2b/" class="group-hover:underline">gemma4:e2b</a>
         
         
         <input class="command hidden" value="gemma4:e2b" />
@@ -265,7 +265,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e4b/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e4b/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -286,7 +286,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e4b/" class="group-hover:underline">gemma4:e4b</a>
+        <a href="/ollama-search/library/gemma4/:e4b/" class="group-hover:underline">gemma4:e4b</a>
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
         
         <input class="command hidden" value="gemma4:e4b" />
@@ -304,7 +304,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:12b/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:12b/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -325,7 +325,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:12b/" class="group-hover:underline">gemma4:12b</a>
+        <a href="/ollama-search/library/gemma4/:12b/" class="group-hover:underline">gemma4:12b</a>
         
         
         <input class="command hidden" value="gemma4:12b" />
@@ -343,7 +343,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:26b/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:26b/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -364,7 +364,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:26b/" class="group-hover:underline">gemma4:26b</a>
+        <a href="/ollama-search/library/gemma4/:26b/" class="group-hover:underline">gemma4:26b</a>
         
         
         <input class="command hidden" value="gemma4:26b" />
@@ -382,7 +382,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -403,7 +403,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b/" class="group-hover:underline">gemma4:31b</a>
+        <a href="/ollama-search/library/gemma4/:31b/" class="group-hover:underline">gemma4:31b</a>
         
         
         <input class="command hidden" value="gemma4:31b" />
@@ -421,7 +421,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e2b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e2b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -442,7 +442,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e2b-it-qat/" class="group-hover:underline">gemma4:e2b-it-qat</a>
+        <a href="/ollama-search/library/gemma4/:e2b-it-qat/" class="group-hover:underline">gemma4:e2b-it-qat</a>
         
         
         <input class="command hidden" value="gemma4:e2b-it-qat" />
@@ -460,7 +460,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e2b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e2b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -481,7 +481,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e2b-it-q4_K_M/" class="group-hover:underline">gemma4:e2b-it-q4_K_M</a>
+        <a href="/ollama-search/library/gemma4/:e2b-it-q4_K_M/" class="group-hover:underline">gemma4:e2b-it-q4_K_M</a>
         
         
         <input class="command hidden" value="gemma4:e2b-it-q4_K_M" />
@@ -499,7 +499,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e2b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e2b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -520,7 +520,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e2b-it-q8_0/" class="group-hover:underline">gemma4:e2b-it-q8_0</a>
+        <a href="/ollama-search/library/gemma4/:e2b-it-q8_0/" class="group-hover:underline">gemma4:e2b-it-q8_0</a>
         
         
         <input class="command hidden" value="gemma4:e2b-it-q8_0" />
@@ -538,7 +538,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e2b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e2b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -559,7 +559,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e2b-it-bf16/" class="group-hover:underline">gemma4:e2b-it-bf16</a>
+        <a href="/ollama-search/library/gemma4/:e2b-it-bf16/" class="group-hover:underline">gemma4:e2b-it-bf16</a>
         
         
         <input class="command hidden" value="gemma4:e2b-it-bf16" />
@@ -577,7 +577,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e2b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e2b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -598,7 +598,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e2b-mlx/" class="group-hover:underline">gemma4:e2b-mlx</a>
+        <a href="/ollama-search/library/gemma4/:e2b-mlx/" class="group-hover:underline">gemma4:e2b-mlx</a>
         
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:e2b-mlx" />
@@ -616,7 +616,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e2b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e2b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -637,7 +637,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e2b-mlx-bf16/" class="group-hover:underline">gemma4:e2b-mlx-bf16</a>
+        <a href="/ollama-search/library/gemma4/:e2b-mlx-bf16/" class="group-hover:underline">gemma4:e2b-mlx-bf16</a>
         
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:e2b-mlx-bf16" />
@@ -655,13 +655,13 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e2b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e2b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
           <span class="group-hover:underline">gemma4:e2b-mxfp8</span>
           
-          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         </div>
       </div>
     </div>
@@ -676,9 +676,9 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e2b-mxfp8/" class="group-hover:underline">gemma4:e2b-mxfp8</a>
+        <a href="/ollama-search/library/gemma4/:e2b-mxfp8/" class="group-hover:underline">gemma4:e2b-mxfp8</a>
         
-        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:e2b-mxfp8" />
         <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
           <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
@@ -694,13 +694,13 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e2b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e2b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
           <span class="group-hover:underline">gemma4:e2b-nvfp4</span>
           
-          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         </div>
       </div>
     </div>
@@ -715,9 +715,9 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e2b-nvfp4/" class="group-hover:underline">gemma4:e2b-nvfp4</a>
+        <a href="/ollama-search/library/gemma4/:e2b-nvfp4/" class="group-hover:underline">gemma4:e2b-nvfp4</a>
         
-        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:e2b-nvfp4" />
         <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
           <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
@@ -733,7 +733,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e4b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e4b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -754,7 +754,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e4b-it-qat/" class="group-hover:underline">gemma4:e4b-it-qat</a>
+        <a href="/ollama-search/library/gemma4/:e4b-it-qat/" class="group-hover:underline">gemma4:e4b-it-qat</a>
         
         
         <input class="command hidden" value="gemma4:e4b-it-qat" />
@@ -772,7 +772,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e4b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e4b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -793,7 +793,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e4b-it-q4_K_M/" class="group-hover:underline">gemma4:e4b-it-q4_K_M</a>
+        <a href="/ollama-search/library/gemma4/:e4b-it-q4_K_M/" class="group-hover:underline">gemma4:e4b-it-q4_K_M</a>
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
         
         <input class="command hidden" value="gemma4:e4b-it-q4_K_M" />
@@ -811,7 +811,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e4b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e4b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -832,7 +832,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e4b-it-q8_0/" class="group-hover:underline">gemma4:e4b-it-q8_0</a>
+        <a href="/ollama-search/library/gemma4/:e4b-it-q8_0/" class="group-hover:underline">gemma4:e4b-it-q8_0</a>
         
         
         <input class="command hidden" value="gemma4:e4b-it-q8_0" />
@@ -850,7 +850,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e4b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e4b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -871,7 +871,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e4b-it-bf16/" class="group-hover:underline">gemma4:e4b-it-bf16</a>
+        <a href="/ollama-search/library/gemma4/:e4b-it-bf16/" class="group-hover:underline">gemma4:e4b-it-bf16</a>
         
         
         <input class="command hidden" value="gemma4:e4b-it-bf16" />
@@ -889,7 +889,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e4b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e4b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -910,7 +910,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e4b-mlx/" class="group-hover:underline">gemma4:e4b-mlx</a>
+        <a href="/ollama-search/library/gemma4/:e4b-mlx/" class="group-hover:underline">gemma4:e4b-mlx</a>
         
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:e4b-mlx" />
@@ -928,7 +928,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e4b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e4b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -949,7 +949,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e4b-mlx-bf16/" class="group-hover:underline">gemma4:e4b-mlx-bf16</a>
+        <a href="/ollama-search/library/gemma4/:e4b-mlx-bf16/" class="group-hover:underline">gemma4:e4b-mlx-bf16</a>
         
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:e4b-mlx-bf16" />
@@ -967,13 +967,13 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e4b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e4b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
           <span class="group-hover:underline">gemma4:e4b-mxfp8</span>
           
-          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         </div>
       </div>
     </div>
@@ -988,9 +988,9 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e4b-mxfp8/" class="group-hover:underline">gemma4:e4b-mxfp8</a>
+        <a href="/ollama-search/library/gemma4/:e4b-mxfp8/" class="group-hover:underline">gemma4:e4b-mxfp8</a>
         
-        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:e4b-mxfp8" />
         <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
           <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
@@ -1006,13 +1006,13 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e4b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e4b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
           <span class="group-hover:underline">gemma4:e4b-nvfp4</span>
           
-          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         </div>
       </div>
     </div>
@@ -1027,9 +1027,9 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e4b-nvfp4/" class="group-hover:underline">gemma4:e4b-nvfp4</a>
+        <a href="/ollama-search/library/gemma4/:e4b-nvfp4/" class="group-hover:underline">gemma4:e4b-nvfp4</a>
         
-        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:e4b-nvfp4" />
         <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
           <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
@@ -1045,7 +1045,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:12b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:12b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1066,7 +1066,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:12b-it-qat/" class="group-hover:underline">gemma4:12b-it-qat</a>
+        <a href="/ollama-search/library/gemma4/:12b-it-qat/" class="group-hover:underline">gemma4:12b-it-qat</a>
         
         
         <input class="command hidden" value="gemma4:12b-it-qat" />
@@ -1084,7 +1084,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:12b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:12b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1105,7 +1105,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:12b-it-q4_K_M/" class="group-hover:underline">gemma4:12b-it-q4_K_M</a>
+        <a href="/ollama-search/library/gemma4/:12b-it-q4_K_M/" class="group-hover:underline">gemma4:12b-it-q4_K_M</a>
         
         
         <input class="command hidden" value="gemma4:12b-it-q4_K_M" />
@@ -1123,7 +1123,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:12b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:12b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1144,7 +1144,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:12b-it-q8_0/" class="group-hover:underline">gemma4:12b-it-q8_0</a>
+        <a href="/ollama-search/library/gemma4/:12b-it-q8_0/" class="group-hover:underline">gemma4:12b-it-q8_0</a>
         
         
         <input class="command hidden" value="gemma4:12b-it-q8_0" />
@@ -1162,7 +1162,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:12b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:12b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1183,7 +1183,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:12b-it-bf16/" class="group-hover:underline">gemma4:12b-it-bf16</a>
+        <a href="/ollama-search/library/gemma4/:12b-it-bf16/" class="group-hover:underline">gemma4:12b-it-bf16</a>
         
         
         <input class="command hidden" value="gemma4:12b-it-bf16" />
@@ -1201,7 +1201,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:12b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:12b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1222,7 +1222,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:12b-mlx/" class="group-hover:underline">gemma4:12b-mlx</a>
+        <a href="/ollama-search/library/gemma4/:12b-mlx/" class="group-hover:underline">gemma4:12b-mlx</a>
         
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:12b-mlx" />
@@ -1240,7 +1240,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:12b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:12b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1261,7 +1261,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:12b-mlx-bf16/" class="group-hover:underline">gemma4:12b-mlx-bf16</a>
+        <a href="/ollama-search/library/gemma4/:12b-mlx-bf16/" class="group-hover:underline">gemma4:12b-mlx-bf16</a>
         
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:12b-mlx-bf16" />
@@ -1279,13 +1279,13 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:12b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:12b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
           <span class="group-hover:underline">gemma4:12b-mxfp8</span>
           
-          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         </div>
       </div>
     </div>
@@ -1300,9 +1300,9 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:12b-mxfp8/" class="group-hover:underline">gemma4:12b-mxfp8</a>
+        <a href="/ollama-search/library/gemma4/:12b-mxfp8/" class="group-hover:underline">gemma4:12b-mxfp8</a>
         
-        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:12b-mxfp8" />
         <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
           <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
@@ -1318,13 +1318,13 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:12b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:12b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
           <span class="group-hover:underline">gemma4:12b-nvfp4</span>
           
-          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         </div>
       </div>
     </div>
@@ -1339,9 +1339,9 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:12b-nvfp4/" class="group-hover:underline">gemma4:12b-nvfp4</a>
+        <a href="/ollama-search/library/gemma4/:12b-nvfp4/" class="group-hover:underline">gemma4:12b-nvfp4</a>
         
-        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:12b-nvfp4" />
         <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
           <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
@@ -1357,7 +1357,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:26b-a4b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:26b-a4b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1378,7 +1378,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:26b-a4b-it-qat/" class="group-hover:underline">gemma4:26b-a4b-it-qat</a>
+        <a href="/ollama-search/library/gemma4/:26b-a4b-it-qat/" class="group-hover:underline">gemma4:26b-a4b-it-qat</a>
         
         
         <input class="command hidden" value="gemma4:26b-a4b-it-qat" />
@@ -1396,7 +1396,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:26b-a4b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:26b-a4b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1417,7 +1417,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:26b-a4b-it-q4_K_M/" class="group-hover:underline">gemma4:26b-a4b-it-q4_K_M</a>
+        <a href="/ollama-search/library/gemma4/:26b-a4b-it-q4_K_M/" class="group-hover:underline">gemma4:26b-a4b-it-q4_K_M</a>
         
         
         <input class="command hidden" value="gemma4:26b-a4b-it-q4_K_M" />
@@ -1435,7 +1435,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:26b-a4b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:26b-a4b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1456,7 +1456,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:26b-a4b-it-q8_0/" class="group-hover:underline">gemma4:26b-a4b-it-q8_0</a>
+        <a href="/ollama-search/library/gemma4/:26b-a4b-it-q8_0/" class="group-hover:underline">gemma4:26b-a4b-it-q8_0</a>
         
         
         <input class="command hidden" value="gemma4:26b-a4b-it-q8_0" />
@@ -1474,7 +1474,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:26b-a4b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:26b-a4b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1495,7 +1495,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:26b-a4b-it-bf16/" class="group-hover:underline">gemma4:26b-a4b-it-bf16</a>
+        <a href="/ollama-search/library/gemma4/:26b-a4b-it-bf16/" class="group-hover:underline">gemma4:26b-a4b-it-bf16</a>
         
         
         <input class="command hidden" value="gemma4:26b-a4b-it-bf16" />
@@ -1513,7 +1513,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:26b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:26b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1534,7 +1534,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:26b-mlx/" class="group-hover:underline">gemma4:26b-mlx</a>
+        <a href="/ollama-search/library/gemma4/:26b-mlx/" class="group-hover:underline">gemma4:26b-mlx</a>
         
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:26b-mlx" />
@@ -1552,7 +1552,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:26b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:26b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1573,7 +1573,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:26b-mlx-bf16/" class="group-hover:underline">gemma4:26b-mlx-bf16</a>
+        <a href="/ollama-search/library/gemma4/:26b-mlx-bf16/" class="group-hover:underline">gemma4:26b-mlx-bf16</a>
         
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:26b-mlx-bf16" />
@@ -1591,13 +1591,13 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:26b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:26b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
           <span class="group-hover:underline">gemma4:26b-mxfp8</span>
           
-          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         </div>
       </div>
     </div>
@@ -1612,9 +1612,9 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:26b-mxfp8/" class="group-hover:underline">gemma4:26b-mxfp8</a>
+        <a href="/ollama-search/library/gemma4/:26b-mxfp8/" class="group-hover:underline">gemma4:26b-mxfp8</a>
         
-        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:26b-mxfp8" />
         <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
           <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
@@ -1630,13 +1630,13 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:26b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:26b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
           <span class="group-hover:underline">gemma4:26b-nvfp4</span>
           
-          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         </div>
       </div>
     </div>
@@ -1651,9 +1651,9 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:26b-nvfp4/" class="group-hover:underline">gemma4:26b-nvfp4</a>
+        <a href="/ollama-search/library/gemma4/:26b-nvfp4/" class="group-hover:underline">gemma4:26b-nvfp4</a>
         
-        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:26b-nvfp4" />
         <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
           <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
@@ -1669,7 +1669,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-cloud/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b-cloud/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1681,7 +1681,7 @@
     </div>
     <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
       <span>
-        <span class="font-mono">c382fbfbc73b</span> • 31b • 256K context window •
+        <span class="font-mono">c382fbfbc73b</span> • Medium Usage • 256K context window •
         <span class="hidden sm:inline">Text, Image input • 3 months ago</span>
       </span>
       <div class="flex sm:hidden">Text, Image input • 3 months ago</div>
@@ -1690,7 +1690,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-cloud/" class="group-hover:underline">gemma4:31b-cloud</a>
+        <a href="/ollama-search/library/gemma4/:31b-cloud/" class="group-hover:underline">gemma4:31b-cloud</a>
         
         
         <input class="command hidden" value="gemma4:31b-cloud" />
@@ -1698,7 +1698,7 @@
           <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
         </button>
       </span>
-      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">31b</p>
+      <p x-test-model-tag-cost class="col-span-2 flex items-center gap-0.5 text-neutral-500 dark:text-neutral-400 text-[13px]"><span x-test-model-tag-usage-slot-active class="block h-1 w-4 rounded-full bg-neutral-800 dark:bg-neutral-200"></span><span x-test-model-tag-usage-slot-active class="block h-1 w-4 rounded-full bg-neutral-800 dark:bg-neutral-200"></span><span x-test-model-tag-usage-slot-inactive class="block h-1 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700"></span><span x-test-model-tag-usage-slot-inactive class="block h-1 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700"></span></p>
       <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
       <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
     </div>
@@ -1708,7 +1708,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-coding-mtp-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b-coding-mtp-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1729,7 +1729,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-coding-mtp-bf16/" class="group-hover:underline">gemma4:31b-coding-mtp-bf16</a>
+        <a href="/ollama-search/library/gemma4/:31b-coding-mtp-bf16/" class="group-hover:underline">gemma4:31b-coding-mtp-bf16</a>
         
         
         <input class="command hidden" value="gemma4:31b-coding-mtp-bf16" />
@@ -1747,7 +1747,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1768,7 +1768,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-it-qat/" class="group-hover:underline">gemma4:31b-it-qat</a>
+        <a href="/ollama-search/library/gemma4/:31b-it-qat/" class="group-hover:underline">gemma4:31b-it-qat</a>
         
         
         <input class="command hidden" value="gemma4:31b-it-qat" />
@@ -1786,7 +1786,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1807,7 +1807,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-it-q4_K_M/" class="group-hover:underline">gemma4:31b-it-q4_K_M</a>
+        <a href="/ollama-search/library/gemma4/:31b-it-q4_K_M/" class="group-hover:underline">gemma4:31b-it-q4_K_M</a>
         
         
         <input class="command hidden" value="gemma4:31b-it-q4_K_M" />
@@ -1825,7 +1825,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1846,7 +1846,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-it-q8_0/" class="group-hover:underline">gemma4:31b-it-q8_0</a>
+        <a href="/ollama-search/library/gemma4/:31b-it-q8_0/" class="group-hover:underline">gemma4:31b-it-q8_0</a>
         
         
         <input class="command hidden" value="gemma4:31b-it-q8_0" />
@@ -1864,7 +1864,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1885,7 +1885,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-it-bf16/" class="group-hover:underline">gemma4:31b-it-bf16</a>
+        <a href="/ollama-search/library/gemma4/:31b-it-bf16/" class="group-hover:underline">gemma4:31b-it-bf16</a>
         
         
         <input class="command hidden" value="gemma4:31b-it-bf16" />
@@ -1903,7 +1903,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1924,7 +1924,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-mlx/" class="group-hover:underline">gemma4:31b-mlx</a>
+        <a href="/ollama-search/library/gemma4/:31b-mlx/" class="group-hover:underline">gemma4:31b-mlx</a>
         
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:31b-mlx" />
@@ -1942,7 +1942,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -1963,7 +1963,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-mlx-bf16/" class="group-hover:underline">gemma4:31b-mlx-bf16</a>
+        <a href="/ollama-search/library/gemma4/:31b-mlx-bf16/" class="group-hover:underline">gemma4:31b-mlx-bf16</a>
         
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:31b-mlx-bf16" />
@@ -1981,13 +1981,13 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
           <span class="group-hover:underline">gemma4:31b-mxfp8</span>
           
-          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         </div>
       </div>
     </div>
@@ -2002,9 +2002,9 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-mxfp8/" class="group-hover:underline">gemma4:31b-mxfp8</a>
+        <a href="/ollama-search/library/gemma4/:31b-mxfp8/" class="group-hover:underline">gemma4:31b-mxfp8</a>
         
-        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:31b-mxfp8" />
         <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
           <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
@@ -2020,13 +2020,13 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
           <span class="group-hover:underline">gemma4:31b-nvfp4</span>
           
-          
+          <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         </div>
       </div>
     </div>
@@ -2041,9 +2041,9 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-nvfp4/" class="group-hover:underline">gemma4:31b-nvfp4</a>
+        <a href="/ollama-search/library/gemma4/:31b-nvfp4/" class="group-hover:underline">gemma4:31b-nvfp4</a>
         
-        
+        <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-neutral-600 text-neutral-600 dark:border-neutral-400 dark:text-neutral-400">MLX</span>
         <input class="command hidden" value="gemma4:31b-nvfp4" />
         <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
           <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
@@ -2072,7 +2072,7 @@
         <p class="col-span-2 hidden md:block">Input</p>
       </div>
       <div class="group px-4 py-3">
-  <a href="/library/gemma4/:latest/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:latest/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2093,7 +2093,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:latest/" class="group-hover:underline">gemma4:latest</a>
+        <a href="/ollama-search/library/gemma4/:latest/" class="group-hover:underline">gemma4:latest</a>
         
         
         <input class="command hidden" value="gemma4:latest" />
@@ -2111,7 +2111,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:cloud/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:cloud/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2123,7 +2123,7 @@
     </div>
     <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
       <span>
-        <span class="font-mono">b06ba4be71c0</span> • — • 256K context window •
+        <span class="font-mono">b06ba4be71c0</span> • Medium Usage • 256K context window •
         <span class="hidden sm:inline">Text, Image input • 2 weeks ago</span>
       </span>
       <div class="flex sm:hidden">Text, Image input • 2 weeks ago</div>
@@ -2132,7 +2132,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:cloud/" class="group-hover:underline">gemma4:cloud</a>
+        <a href="/ollama-search/library/gemma4/:cloud/" class="group-hover:underline">gemma4:cloud</a>
         
         
         <input class="command hidden" value="gemma4:cloud" />
@@ -2140,7 +2140,7 @@
           <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
         </button>
       </span>
-      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">—</p>
+      <p x-test-model-tag-cost class="col-span-2 flex items-center gap-0.5 text-neutral-500 dark:text-neutral-400 text-[13px]"><span x-test-model-tag-usage-slot-active class="block h-1 w-4 rounded-full bg-neutral-800 dark:bg-neutral-200"></span><span x-test-model-tag-usage-slot-active class="block h-1 w-4 rounded-full bg-neutral-800 dark:bg-neutral-200"></span><span x-test-model-tag-usage-slot-inactive class="block h-1 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700"></span><span x-test-model-tag-usage-slot-inactive class="block h-1 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700"></span></p>
       <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
       <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
     </div>
@@ -2150,7 +2150,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e2b/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e2b/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2171,7 +2171,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e2b/" class="group-hover:underline">gemma4:e2b</a>
+        <a href="/ollama-search/library/gemma4/:e2b/" class="group-hover:underline">gemma4:e2b</a>
         
         
         <input class="command hidden" value="gemma4:e2b" />
@@ -2189,7 +2189,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e4b/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e4b/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2210,7 +2210,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e4b/" class="group-hover:underline">gemma4:e4b</a>
+        <a href="/ollama-search/library/gemma4/:e4b/" class="group-hover:underline">gemma4:e4b</a>
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
         
         <input class="command hidden" value="gemma4:e4b" />
@@ -2228,7 +2228,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:12b/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:12b/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2249,7 +2249,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:12b/" class="group-hover:underline">gemma4:12b</a>
+        <a href="/ollama-search/library/gemma4/:12b/" class="group-hover:underline">gemma4:12b</a>
         
         
         <input class="command hidden" value="gemma4:12b" />
@@ -2267,7 +2267,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:26b/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:26b/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2288,7 +2288,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:26b/" class="group-hover:underline">gemma4:26b</a>
+        <a href="/ollama-search/library/gemma4/:26b/" class="group-hover:underline">gemma4:26b</a>
         
         
         <input class="command hidden" value="gemma4:26b" />
@@ -2306,7 +2306,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2327,7 +2327,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b/" class="group-hover:underline">gemma4:31b</a>
+        <a href="/ollama-search/library/gemma4/:31b/" class="group-hover:underline">gemma4:31b</a>
         
         
         <input class="command hidden" value="gemma4:31b" />
@@ -2345,7 +2345,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e2b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e2b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2366,7 +2366,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e2b-it-qat/" class="group-hover:underline">gemma4:e2b-it-qat</a>
+        <a href="/ollama-search/library/gemma4/:e2b-it-qat/" class="group-hover:underline">gemma4:e2b-it-qat</a>
         
         
         <input class="command hidden" value="gemma4:e2b-it-qat" />
@@ -2384,7 +2384,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e2b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e2b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2405,7 +2405,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e2b-it-q4_K_M/" class="group-hover:underline">gemma4:e2b-it-q4_K_M</a>
+        <a href="/ollama-search/library/gemma4/:e2b-it-q4_K_M/" class="group-hover:underline">gemma4:e2b-it-q4_K_M</a>
         
         
         <input class="command hidden" value="gemma4:e2b-it-q4_K_M" />
@@ -2423,7 +2423,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e2b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e2b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2444,7 +2444,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e2b-it-q8_0/" class="group-hover:underline">gemma4:e2b-it-q8_0</a>
+        <a href="/ollama-search/library/gemma4/:e2b-it-q8_0/" class="group-hover:underline">gemma4:e2b-it-q8_0</a>
         
         
         <input class="command hidden" value="gemma4:e2b-it-q8_0" />
@@ -2462,7 +2462,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e2b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e2b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2483,7 +2483,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e2b-it-bf16/" class="group-hover:underline">gemma4:e2b-it-bf16</a>
+        <a href="/ollama-search/library/gemma4/:e2b-it-bf16/" class="group-hover:underline">gemma4:e2b-it-bf16</a>
         
         
         <input class="command hidden" value="gemma4:e2b-it-bf16" />
@@ -2501,85 +2501,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e2b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
-    <div class="flex items-center font-medium">
-      <div class="flex items-center justify-between w-full">
-        <div>
-          <span class="group-hover:underline">gemma4:e2b-mxfp8</span>
-          
-          
-        </div>
-      </div>
-    </div>
-    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
-      <span>
-        <span class="font-mono">c423521436c1</span> • 8.1GB • 128K context window •
-        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
-      </span>
-      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
-    </div>
-  </a>
-  <div class="hidden md:flex flex-col space-y-[6px]">
-    <div class="grid grid-cols-12 items-center">
-      <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e2b-mxfp8/" class="group-hover:underline">gemma4:e2b-mxfp8</a>
-        
-        
-        <input class="command hidden" value="gemma4:e2b-mxfp8" />
-        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
-          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-        </button>
-      </span>
-      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">8.1GB</p>
-      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">128K</p>
-      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
-    </div>
-    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
-      <span class="font-mono text-[11px]">c423521436c1</span>&nbsp;·&nbsp;1 week ago
-    </div>
-  </div>
-</div>
-<div class="group px-4 py-3">
-  <a href="/library/gemma4/:e2b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
-    <div class="flex items-center font-medium">
-      <div class="flex items-center justify-between w-full">
-        <div>
-          <span class="group-hover:underline">gemma4:e2b-nvfp4</span>
-          
-          
-        </div>
-      </div>
-    </div>
-    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
-      <span>
-        <span class="font-mono">e98b54fe1913</span> • 6.5GB • 128K context window •
-        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
-      </span>
-      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
-    </div>
-  </a>
-  <div class="hidden md:flex flex-col space-y-[6px]">
-    <div class="grid grid-cols-12 items-center">
-      <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e2b-nvfp4/" class="group-hover:underline">gemma4:e2b-nvfp4</a>
-        
-        
-        <input class="command hidden" value="gemma4:e2b-nvfp4" />
-        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
-          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-        </button>
-      </span>
-      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">6.5GB</p>
-      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">128K</p>
-      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
-    </div>
-    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
-      <span class="font-mono text-[11px]">e98b54fe1913</span>&nbsp;·&nbsp;1 week ago
-    </div>
-  </div>
-</div>
-<div class="group px-4 py-3">
-  <a href="/library/gemma4/:e4b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e4b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2600,7 +2522,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e4b-it-qat/" class="group-hover:underline">gemma4:e4b-it-qat</a>
+        <a href="/ollama-search/library/gemma4/:e4b-it-qat/" class="group-hover:underline">gemma4:e4b-it-qat</a>
         
         
         <input class="command hidden" value="gemma4:e4b-it-qat" />
@@ -2618,7 +2540,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e4b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e4b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2639,7 +2561,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e4b-it-q4_K_M/" class="group-hover:underline">gemma4:e4b-it-q4_K_M</a>
+        <a href="/ollama-search/library/gemma4/:e4b-it-q4_K_M/" class="group-hover:underline">gemma4:e4b-it-q4_K_M</a>
         <span class="ml-2 inline-flex items-center rounded-full px-2 py-px text-xs font-medium border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-500">latest</span>
         
         <input class="command hidden" value="gemma4:e4b-it-q4_K_M" />
@@ -2657,7 +2579,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e4b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e4b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2678,7 +2600,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e4b-it-q8_0/" class="group-hover:underline">gemma4:e4b-it-q8_0</a>
+        <a href="/ollama-search/library/gemma4/:e4b-it-q8_0/" class="group-hover:underline">gemma4:e4b-it-q8_0</a>
         
         
         <input class="command hidden" value="gemma4:e4b-it-q8_0" />
@@ -2696,7 +2618,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e4b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e4b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2717,7 +2639,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e4b-it-bf16/" class="group-hover:underline">gemma4:e4b-it-bf16</a>
+        <a href="/ollama-search/library/gemma4/:e4b-it-bf16/" class="group-hover:underline">gemma4:e4b-it-bf16</a>
         
         
         <input class="command hidden" value="gemma4:e4b-it-bf16" />
@@ -2735,85 +2657,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e4b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
-    <div class="flex items-center font-medium">
-      <div class="flex items-center justify-between w-full">
-        <div>
-          <span class="group-hover:underline">gemma4:e4b-mxfp8</span>
-          
-          
-        </div>
-      </div>
-    </div>
-    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
-      <span>
-        <span class="font-mono">2ac3229467f4</span> • 12GB • 128K context window •
-        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
-      </span>
-      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
-    </div>
-  </a>
-  <div class="hidden md:flex flex-col space-y-[6px]">
-    <div class="grid grid-cols-12 items-center">
-      <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e4b-mxfp8/" class="group-hover:underline">gemma4:e4b-mxfp8</a>
-        
-        
-        <input class="command hidden" value="gemma4:e4b-mxfp8" />
-        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
-          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-        </button>
-      </span>
-      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">12GB</p>
-      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">128K</p>
-      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
-    </div>
-    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
-      <span class="font-mono text-[11px]">2ac3229467f4</span>&nbsp;·&nbsp;1 week ago
-    </div>
-  </div>
-</div>
-<div class="group px-4 py-3">
-  <a href="/library/gemma4/:e4b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
-    <div class="flex items-center font-medium">
-      <div class="flex items-center justify-between w-full">
-        <div>
-          <span class="group-hover:underline">gemma4:e4b-nvfp4</span>
-          
-          
-        </div>
-      </div>
-    </div>
-    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
-      <span>
-        <span class="font-mono">aa6f2058d5dc</span> • 8.8GB • 128K context window •
-        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
-      </span>
-      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
-    </div>
-  </a>
-  <div class="hidden md:flex flex-col space-y-[6px]">
-    <div class="grid grid-cols-12 items-center">
-      <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e4b-nvfp4/" class="group-hover:underline">gemma4:e4b-nvfp4</a>
-        
-        
-        <input class="command hidden" value="gemma4:e4b-nvfp4" />
-        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
-          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-        </button>
-      </span>
-      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">8.8GB</p>
-      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">128K</p>
-      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
-    </div>
-    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
-      <span class="font-mono text-[11px]">aa6f2058d5dc</span>&nbsp;·&nbsp;1 week ago
-    </div>
-  </div>
-</div>
-<div class="group px-4 py-3">
-  <a href="/library/gemma4/:12b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:12b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2834,7 +2678,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:12b-it-qat/" class="group-hover:underline">gemma4:12b-it-qat</a>
+        <a href="/ollama-search/library/gemma4/:12b-it-qat/" class="group-hover:underline">gemma4:12b-it-qat</a>
         
         
         <input class="command hidden" value="gemma4:12b-it-qat" />
@@ -2852,7 +2696,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:12b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:12b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2873,7 +2717,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:12b-it-q4_K_M/" class="group-hover:underline">gemma4:12b-it-q4_K_M</a>
+        <a href="/ollama-search/library/gemma4/:12b-it-q4_K_M/" class="group-hover:underline">gemma4:12b-it-q4_K_M</a>
         
         
         <input class="command hidden" value="gemma4:12b-it-q4_K_M" />
@@ -2891,7 +2735,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:12b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:12b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2912,7 +2756,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:12b-it-q8_0/" class="group-hover:underline">gemma4:12b-it-q8_0</a>
+        <a href="/ollama-search/library/gemma4/:12b-it-q8_0/" class="group-hover:underline">gemma4:12b-it-q8_0</a>
         
         
         <input class="command hidden" value="gemma4:12b-it-q8_0" />
@@ -2930,7 +2774,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:12b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:12b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -2951,7 +2795,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:12b-it-bf16/" class="group-hover:underline">gemma4:12b-it-bf16</a>
+        <a href="/ollama-search/library/gemma4/:12b-it-bf16/" class="group-hover:underline">gemma4:12b-it-bf16</a>
         
         
         <input class="command hidden" value="gemma4:12b-it-bf16" />
@@ -2969,85 +2813,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:12b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
-    <div class="flex items-center font-medium">
-      <div class="flex items-center justify-between w-full">
-        <div>
-          <span class="group-hover:underline">gemma4:12b-mxfp8</span>
-          
-          
-        </div>
-      </div>
-    </div>
-    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
-      <span>
-        <span class="font-mono">d537f35829da</span> • 13GB • 256K context window •
-        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
-      </span>
-      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
-    </div>
-  </a>
-  <div class="hidden md:flex flex-col space-y-[6px]">
-    <div class="grid grid-cols-12 items-center">
-      <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:12b-mxfp8/" class="group-hover:underline">gemma4:12b-mxfp8</a>
-        
-        
-        <input class="command hidden" value="gemma4:12b-mxfp8" />
-        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
-          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-        </button>
-      </span>
-      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">13GB</p>
-      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
-      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
-    </div>
-    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
-      <span class="font-mono text-[11px]">d537f35829da</span>&nbsp;·&nbsp;1 week ago
-    </div>
-  </div>
-</div>
-<div class="group px-4 py-3">
-  <a href="/library/gemma4/:12b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
-    <div class="flex items-center font-medium">
-      <div class="flex items-center justify-between w-full">
-        <div>
-          <span class="group-hover:underline">gemma4:12b-nvfp4</span>
-          
-          
-        </div>
-      </div>
-    </div>
-    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
-      <span>
-        <span class="font-mono">117d0d84cf2a</span> • 7.7GB • 256K context window •
-        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
-      </span>
-      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
-    </div>
-  </a>
-  <div class="hidden md:flex flex-col space-y-[6px]">
-    <div class="grid grid-cols-12 items-center">
-      <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:12b-nvfp4/" class="group-hover:underline">gemma4:12b-nvfp4</a>
-        
-        
-        <input class="command hidden" value="gemma4:12b-nvfp4" />
-        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
-          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-        </button>
-      </span>
-      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">7.7GB</p>
-      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
-      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
-    </div>
-    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
-      <span class="font-mono text-[11px]">117d0d84cf2a</span>&nbsp;·&nbsp;1 week ago
-    </div>
-  </div>
-</div>
-<div class="group px-4 py-3">
-  <a href="/library/gemma4/:26b-a4b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:26b-a4b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3068,7 +2834,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:26b-a4b-it-qat/" class="group-hover:underline">gemma4:26b-a4b-it-qat</a>
+        <a href="/ollama-search/library/gemma4/:26b-a4b-it-qat/" class="group-hover:underline">gemma4:26b-a4b-it-qat</a>
         
         
         <input class="command hidden" value="gemma4:26b-a4b-it-qat" />
@@ -3086,7 +2852,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:26b-a4b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:26b-a4b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3107,7 +2873,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:26b-a4b-it-q4_K_M/" class="group-hover:underline">gemma4:26b-a4b-it-q4_K_M</a>
+        <a href="/ollama-search/library/gemma4/:26b-a4b-it-q4_K_M/" class="group-hover:underline">gemma4:26b-a4b-it-q4_K_M</a>
         
         
         <input class="command hidden" value="gemma4:26b-a4b-it-q4_K_M" />
@@ -3125,7 +2891,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:26b-a4b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:26b-a4b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3146,7 +2912,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:26b-a4b-it-q8_0/" class="group-hover:underline">gemma4:26b-a4b-it-q8_0</a>
+        <a href="/ollama-search/library/gemma4/:26b-a4b-it-q8_0/" class="group-hover:underline">gemma4:26b-a4b-it-q8_0</a>
         
         
         <input class="command hidden" value="gemma4:26b-a4b-it-q8_0" />
@@ -3164,7 +2930,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:26b-a4b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:26b-a4b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3185,7 +2951,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:26b-a4b-it-bf16/" class="group-hover:underline">gemma4:26b-a4b-it-bf16</a>
+        <a href="/ollama-search/library/gemma4/:26b-a4b-it-bf16/" class="group-hover:underline">gemma4:26b-a4b-it-bf16</a>
         
         
         <input class="command hidden" value="gemma4:26b-a4b-it-bf16" />
@@ -3203,85 +2969,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:26b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
-    <div class="flex items-center font-medium">
-      <div class="flex items-center justify-between w-full">
-        <div>
-          <span class="group-hover:underline">gemma4:26b-mxfp8</span>
-          
-          
-        </div>
-      </div>
-    </div>
-    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
-      <span>
-        <span class="font-mono">91109d36dc02</span> • 28GB • 256K context window •
-        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
-      </span>
-      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
-    </div>
-  </a>
-  <div class="hidden md:flex flex-col space-y-[6px]">
-    <div class="grid grid-cols-12 items-center">
-      <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:26b-mxfp8/" class="group-hover:underline">gemma4:26b-mxfp8</a>
-        
-        
-        <input class="command hidden" value="gemma4:26b-mxfp8" />
-        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
-          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-        </button>
-      </span>
-      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">28GB</p>
-      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
-      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
-    </div>
-    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
-      <span class="font-mono text-[11px]">91109d36dc02</span>&nbsp;·&nbsp;1 week ago
-    </div>
-  </div>
-</div>
-<div class="group px-4 py-3">
-  <a href="/library/gemma4/:26b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
-    <div class="flex items-center font-medium">
-      <div class="flex items-center justify-between w-full">
-        <div>
-          <span class="group-hover:underline">gemma4:26b-nvfp4</span>
-          
-          
-        </div>
-      </div>
-    </div>
-    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
-      <span>
-        <span class="font-mono">c8656f50f0a6</span> • 18GB • 256K context window •
-        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
-      </span>
-      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
-    </div>
-  </a>
-  <div class="hidden md:flex flex-col space-y-[6px]">
-    <div class="grid grid-cols-12 items-center">
-      <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:26b-nvfp4/" class="group-hover:underline">gemma4:26b-nvfp4</a>
-        
-        
-        <input class="command hidden" value="gemma4:26b-nvfp4" />
-        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
-          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-        </button>
-      </span>
-      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">18GB</p>
-      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
-      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
-    </div>
-    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
-      <span class="font-mono text-[11px]">c8656f50f0a6</span>&nbsp;·&nbsp;1 week ago
-    </div>
-  </div>
-</div>
-<div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-cloud/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b-cloud/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3293,7 +2981,7 @@
     </div>
     <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
       <span>
-        <span class="font-mono">c382fbfbc73b</span> • 31b • 256K context window •
+        <span class="font-mono">c382fbfbc73b</span> • Medium Usage • 256K context window •
         <span class="hidden sm:inline">Text, Image input • 3 months ago</span>
       </span>
       <div class="flex sm:hidden">Text, Image input • 3 months ago</div>
@@ -3302,7 +2990,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-cloud/" class="group-hover:underline">gemma4:31b-cloud</a>
+        <a href="/ollama-search/library/gemma4/:31b-cloud/" class="group-hover:underline">gemma4:31b-cloud</a>
         
         
         <input class="command hidden" value="gemma4:31b-cloud" />
@@ -3310,7 +2998,7 @@
           <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
         </button>
       </span>
-      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">31b</p>
+      <p x-test-model-tag-cost class="col-span-2 flex items-center gap-0.5 text-neutral-500 dark:text-neutral-400 text-[13px]"><span x-test-model-tag-usage-slot-active class="block h-1 w-4 rounded-full bg-neutral-800 dark:bg-neutral-200"></span><span x-test-model-tag-usage-slot-active class="block h-1 w-4 rounded-full bg-neutral-800 dark:bg-neutral-200"></span><span x-test-model-tag-usage-slot-inactive class="block h-1 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700"></span><span x-test-model-tag-usage-slot-inactive class="block h-1 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700"></span></p>
       <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
       <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
     </div>
@@ -3320,7 +3008,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-coding-mtp-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b-coding-mtp-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3341,7 +3029,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-coding-mtp-bf16/" class="group-hover:underline">gemma4:31b-coding-mtp-bf16</a>
+        <a href="/ollama-search/library/gemma4/:31b-coding-mtp-bf16/" class="group-hover:underline">gemma4:31b-coding-mtp-bf16</a>
         
         
         <input class="command hidden" value="gemma4:31b-coding-mtp-bf16" />
@@ -3359,7 +3047,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b-it-qat/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3380,7 +3068,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-it-qat/" class="group-hover:underline">gemma4:31b-it-qat</a>
+        <a href="/ollama-search/library/gemma4/:31b-it-qat/" class="group-hover:underline">gemma4:31b-it-qat</a>
         
         
         <input class="command hidden" value="gemma4:31b-it-qat" />
@@ -3398,7 +3086,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b-it-q4_K_M/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3419,7 +3107,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-it-q4_K_M/" class="group-hover:underline">gemma4:31b-it-q4_K_M</a>
+        <a href="/ollama-search/library/gemma4/:31b-it-q4_K_M/" class="group-hover:underline">gemma4:31b-it-q4_K_M</a>
         
         
         <input class="command hidden" value="gemma4:31b-it-q4_K_M" />
@@ -3437,7 +3125,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b-it-q8_0/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3458,7 +3146,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-it-q8_0/" class="group-hover:underline">gemma4:31b-it-q8_0</a>
+        <a href="/ollama-search/library/gemma4/:31b-it-q8_0/" class="group-hover:underline">gemma4:31b-it-q8_0</a>
         
         
         <input class="command hidden" value="gemma4:31b-it-q8_0" />
@@ -3476,7 +3164,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b-it-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3497,7 +3185,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-it-bf16/" class="group-hover:underline">gemma4:31b-it-bf16</a>
+        <a href="/ollama-search/library/gemma4/:31b-it-bf16/" class="group-hover:underline">gemma4:31b-it-bf16</a>
         
         
         <input class="command hidden" value="gemma4:31b-it-bf16" />
@@ -3511,84 +3199,6 @@
     </div>
     <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
       <span class="font-mono text-[11px]">236d76ae0874</span>&nbsp;·&nbsp;3 months ago
-    </div>
-  </div>
-</div>
-<div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
-    <div class="flex items-center font-medium">
-      <div class="flex items-center justify-between w-full">
-        <div>
-          <span class="group-hover:underline">gemma4:31b-mxfp8</span>
-          
-          
-        </div>
-      </div>
-    </div>
-    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
-      <span>
-        <span class="font-mono">1434769c1561</span> • 33GB • 256K context window •
-        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
-      </span>
-      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
-    </div>
-  </a>
-  <div class="hidden md:flex flex-col space-y-[6px]">
-    <div class="grid grid-cols-12 items-center">
-      <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-mxfp8/" class="group-hover:underline">gemma4:31b-mxfp8</a>
-        
-        
-        <input class="command hidden" value="gemma4:31b-mxfp8" />
-        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
-          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-        </button>
-      </span>
-      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">33GB</p>
-      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
-      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
-    </div>
-    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
-      <span class="font-mono text-[11px]">1434769c1561</span>&nbsp;·&nbsp;1 week ago
-    </div>
-  </div>
-</div>
-<div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
-    <div class="flex items-center font-medium">
-      <div class="flex items-center justify-between w-full">
-        <div>
-          <span class="group-hover:underline">gemma4:31b-nvfp4</span>
-          
-          
-        </div>
-      </div>
-    </div>
-    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
-      <span>
-        <span class="font-mono">637cc0ff1570</span> • 19GB • 256K context window •
-        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
-      </span>
-      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
-    </div>
-  </a>
-  <div class="hidden md:flex flex-col space-y-[6px]">
-    <div class="grid grid-cols-12 items-center">
-      <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-nvfp4/" class="group-hover:underline">gemma4:31b-nvfp4</a>
-        
-        
-        <input class="command hidden" value="gemma4:31b-nvfp4" />
-        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
-          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-        </button>
-      </span>
-      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">19GB</p>
-      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
-      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
-    </div>
-    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
-      <span class="font-mono text-[11px]">637cc0ff1570</span>&nbsp;·&nbsp;1 week ago
     </div>
   </div>
 </div>
@@ -3606,7 +3216,7 @@
         <p class="col-span-2 hidden md:block">Input</p>
       </div>
       <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e2b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e2b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3627,7 +3237,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e2b-mlx/" class="group-hover:underline">gemma4:e2b-mlx</a>
+        <a href="/ollama-search/library/gemma4/:e2b-mlx/" class="group-hover:underline">gemma4:e2b-mlx</a>
         
         
         <input class="command hidden" value="gemma4:e2b-mlx" />
@@ -3645,7 +3255,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e2b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e2b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3666,7 +3276,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e2b-mlx-bf16/" class="group-hover:underline">gemma4:e2b-mlx-bf16</a>
+        <a href="/ollama-search/library/gemma4/:e2b-mlx-bf16/" class="group-hover:underline">gemma4:e2b-mlx-bf16</a>
         
         
         <input class="command hidden" value="gemma4:e2b-mlx-bf16" />
@@ -3684,7 +3294,85 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e4b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e2b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">gemma4:e2b-mxfp8</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">c423521436c1</span> • 8.1GB • 128K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/gemma4/:e2b-mxfp8/" class="group-hover:underline">gemma4:e2b-mxfp8</a>
+        
+        
+        <input class="command hidden" value="gemma4:e2b-mxfp8" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">8.1GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">128K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">c423521436c1</span>&nbsp;·&nbsp;1 week ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/gemma4/:e2b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">gemma4:e2b-nvfp4</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">e98b54fe1913</span> • 6.5GB • 128K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/gemma4/:e2b-nvfp4/" class="group-hover:underline">gemma4:e2b-nvfp4</a>
+        
+        
+        <input class="command hidden" value="gemma4:e2b-nvfp4" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">6.5GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">128K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">e98b54fe1913</span>&nbsp;·&nbsp;1 week ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/gemma4/:e4b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3705,7 +3393,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e4b-mlx/" class="group-hover:underline">gemma4:e4b-mlx</a>
+        <a href="/ollama-search/library/gemma4/:e4b-mlx/" class="group-hover:underline">gemma4:e4b-mlx</a>
         
         
         <input class="command hidden" value="gemma4:e4b-mlx" />
@@ -3723,7 +3411,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:e4b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e4b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3744,7 +3432,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:e4b-mlx-bf16/" class="group-hover:underline">gemma4:e4b-mlx-bf16</a>
+        <a href="/ollama-search/library/gemma4/:e4b-mlx-bf16/" class="group-hover:underline">gemma4:e4b-mlx-bf16</a>
         
         
         <input class="command hidden" value="gemma4:e4b-mlx-bf16" />
@@ -3762,7 +3450,85 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:12b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:e4b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">gemma4:e4b-mxfp8</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">2ac3229467f4</span> • 12GB • 128K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/gemma4/:e4b-mxfp8/" class="group-hover:underline">gemma4:e4b-mxfp8</a>
+        
+        
+        <input class="command hidden" value="gemma4:e4b-mxfp8" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">12GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">128K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">2ac3229467f4</span>&nbsp;·&nbsp;1 week ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/gemma4/:e4b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">gemma4:e4b-nvfp4</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">aa6f2058d5dc</span> • 8.8GB • 128K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/gemma4/:e4b-nvfp4/" class="group-hover:underline">gemma4:e4b-nvfp4</a>
+        
+        
+        <input class="command hidden" value="gemma4:e4b-nvfp4" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">8.8GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">128K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">aa6f2058d5dc</span>&nbsp;·&nbsp;1 week ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/gemma4/:12b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3783,7 +3549,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:12b-mlx/" class="group-hover:underline">gemma4:12b-mlx</a>
+        <a href="/ollama-search/library/gemma4/:12b-mlx/" class="group-hover:underline">gemma4:12b-mlx</a>
         
         
         <input class="command hidden" value="gemma4:12b-mlx" />
@@ -3801,7 +3567,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:12b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:12b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3822,7 +3588,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:12b-mlx-bf16/" class="group-hover:underline">gemma4:12b-mlx-bf16</a>
+        <a href="/ollama-search/library/gemma4/:12b-mlx-bf16/" class="group-hover:underline">gemma4:12b-mlx-bf16</a>
         
         
         <input class="command hidden" value="gemma4:12b-mlx-bf16" />
@@ -3840,7 +3606,85 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:26b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:12b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">gemma4:12b-mxfp8</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">d537f35829da</span> • 13GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/gemma4/:12b-mxfp8/" class="group-hover:underline">gemma4:12b-mxfp8</a>
+        
+        
+        <input class="command hidden" value="gemma4:12b-mxfp8" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">13GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">d537f35829da</span>&nbsp;·&nbsp;1 week ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/gemma4/:12b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">gemma4:12b-nvfp4</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">117d0d84cf2a</span> • 7.7GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/gemma4/:12b-nvfp4/" class="group-hover:underline">gemma4:12b-nvfp4</a>
+        
+        
+        <input class="command hidden" value="gemma4:12b-nvfp4" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">7.7GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">117d0d84cf2a</span>&nbsp;·&nbsp;1 week ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/gemma4/:26b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3861,7 +3705,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:26b-mlx/" class="group-hover:underline">gemma4:26b-mlx</a>
+        <a href="/ollama-search/library/gemma4/:26b-mlx/" class="group-hover:underline">gemma4:26b-mlx</a>
         
         
         <input class="command hidden" value="gemma4:26b-mlx" />
@@ -3879,7 +3723,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:26b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:26b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3900,7 +3744,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:26b-mlx-bf16/" class="group-hover:underline">gemma4:26b-mlx-bf16</a>
+        <a href="/ollama-search/library/gemma4/:26b-mlx-bf16/" class="group-hover:underline">gemma4:26b-mlx-bf16</a>
         
         
         <input class="command hidden" value="gemma4:26b-mlx-bf16" />
@@ -3918,7 +3762,85 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:26b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">gemma4:26b-mxfp8</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">91109d36dc02</span> • 28GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/gemma4/:26b-mxfp8/" class="group-hover:underline">gemma4:26b-mxfp8</a>
+        
+        
+        <input class="command hidden" value="gemma4:26b-mxfp8" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">28GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">91109d36dc02</span>&nbsp;·&nbsp;1 week ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/gemma4/:26b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">gemma4:26b-nvfp4</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">c8656f50f0a6</span> • 18GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/gemma4/:26b-nvfp4/" class="group-hover:underline">gemma4:26b-nvfp4</a>
+        
+        
+        <input class="command hidden" value="gemma4:26b-nvfp4" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">18GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">c8656f50f0a6</span>&nbsp;·&nbsp;1 week ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/gemma4/:31b-mlx/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3939,7 +3861,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-mlx/" class="group-hover:underline">gemma4:31b-mlx</a>
+        <a href="/ollama-search/library/gemma4/:31b-mlx/" class="group-hover:underline">gemma4:31b-mlx</a>
         
         
         <input class="command hidden" value="gemma4:31b-mlx" />
@@ -3957,7 +3879,7 @@
   </div>
 </div>
 <div class="group px-4 py-3">
-  <a href="/library/gemma4/:31b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
+  <a href="/ollama-search/library/gemma4/:31b-mlx-bf16/" class="md:hidden flex flex-col space-y-[6px] group">
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
@@ -3978,7 +3900,7 @@
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="/library/gemma4/:31b-mlx-bf16/" class="group-hover:underline">gemma4:31b-mlx-bf16</a>
+        <a href="/ollama-search/library/gemma4/:31b-mlx-bf16/" class="group-hover:underline">gemma4:31b-mlx-bf16</a>
         
         
         <input class="command hidden" value="gemma4:31b-mlx-bf16" />
@@ -3992,6 +3914,84 @@
     </div>
     <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
       <span class="font-mono text-[11px]">fb3f25b3bc8d</span>&nbsp;·&nbsp;1 week ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/gemma4/:31b-mxfp8/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">gemma4:31b-mxfp8</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">1434769c1561</span> • 33GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/gemma4/:31b-mxfp8/" class="group-hover:underline">gemma4:31b-mxfp8</a>
+        
+        
+        <input class="command hidden" value="gemma4:31b-mxfp8" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">33GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">1434769c1561</span>&nbsp;·&nbsp;1 week ago
+    </div>
+  </div>
+</div>
+<div class="group px-4 py-3">
+  <a href="/ollama-search/library/gemma4/:31b-nvfp4/" class="md:hidden flex flex-col space-y-[6px] group">
+    <div class="flex items-center font-medium">
+      <div class="flex items-center justify-between w-full">
+        <div>
+          <span class="group-hover:underline">gemma4:31b-nvfp4</span>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col text-neutral-500 dark:text-neutral-400 text-[13px]">
+      <span>
+        <span class="font-mono">637cc0ff1570</span> • 19GB • 256K context window •
+        <span class="hidden sm:inline">Text, Image input • 1 week ago</span>
+      </span>
+      <div class="flex sm:hidden">Text, Image input • 1 week ago</div>
+    </div>
+  </a>
+  <div class="hidden md:flex flex-col space-y-[6px]">
+    <div class="grid grid-cols-12 items-center">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
+        <a href="/ollama-search/library/gemma4/:31b-nvfp4/" class="group-hover:underline">gemma4:31b-nvfp4</a>
+        
+        
+        <input class="command hidden" value="gemma4:31b-nvfp4" />
+        <button class="hidden group-hover:inline-flex ml-1.5 text-neutral-500 hover:text-black dark:hover:text-white items-center" onclick="copyToClipboard(this)">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </span>
+      <p x-test-model-tag-size class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">19GB</p>
+      <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">256K</p>
+      <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">Text, Image</div>
+    </div>
+    <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
+      <span class="font-mono text-[11px]">637cc0ff1570</span>&nbsp;·&nbsp;1 week ago
     </div>
   </div>
 </div>
@@ -4042,6 +4042,6 @@
   });
 })();
 </script>
-<script src="/assets/app.js"></script>
+<script src="/ollama-search/assets/app.js"></script>
 </body>
 </html>
