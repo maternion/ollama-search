@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/internlm2:1m/blobs/3e9c19662c62",
+  "content": "{{- range .Messages }}<|im_start|>{{ .Role }}\n{{ .Content }}<|im_end|>\n{{ end }}<|im_start|>assistant",
+  "digest": "3e9c19662c62",
+  "metadata": [],
+  "size": "101B",
+  "tensor_groups": [],
+  "tensors": []
+}
