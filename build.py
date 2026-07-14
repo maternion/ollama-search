@@ -479,7 +479,9 @@ def build_index(models: list[dict], ranks: dict) -> None:
         models,
         key=lambda m: ranks.get(m["name"], {}).get("popular_rank", 9999),
     )
-    cards = "\n".join(render_card(m, load_tags(m["path"]), ranks) for m in sorted_models)
+    cards = "\n".join(
+        render_card(m, load_tags(m["path"]), ranks) for m in sorted_models
+    )
 
     # Capability filter chips (Embedding/Vision/Tools/Thinking — no Cloud, it's a dropdown)
     chip_labels = ["Embedding", "Vision", "Tools", "Thinking"]
@@ -596,7 +598,10 @@ def _fmt_pills(prefix: str, all_count: int, gguf_count: int, mlx_count: int) -> 
 
 
 def _detail_tag_rows(
-    tags_subset: list[dict], model_path: str, latest_digest: str = "", show_mlx_badge: bool = False
+    tags_subset: list[dict],
+    model_path: str,
+    latest_digest: str = "",
+    show_mlx_badge: bool = False,
 ) -> str:
     """Render tag rows (mobile + desktop) for the detail page Models table."""
     rows = []
@@ -748,8 +753,12 @@ def _detail_models_section(m: dict, tags: list[dict]) -> str:
     main_gguf = [t for t in main if t["format"] == "gguf"]
     main_mlx = [t for t in main if t["format"] == "mlx"]
     rows_all = _detail_tag_rows(main, m["path"], latest_digest, show_mlx_badge=True)
-    rows_gguf = _detail_tag_rows(main_gguf, m["path"], latest_digest, show_mlx_badge=False)
-    rows_mlx = _detail_tag_rows(main_mlx, m["path"], latest_digest, show_mlx_badge=False)
+    rows_gguf = _detail_tag_rows(
+        main_gguf, m["path"], latest_digest, show_mlx_badge=False
+    )
+    rows_mlx = _detail_tag_rows(
+        main_mlx, m["path"], latest_digest, show_mlx_badge=False
+    )
 
     view_all = f'<a href="{url(esc(m["path"]) + "/tags/")}" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all {len(tags)} &#8594;</a>'
 
@@ -1142,7 +1151,9 @@ def build_detail(m: dict, tags: list[dict]) -> None:
 # --------------------------------------------------------------------------- #
 
 
-def _tags_tag_row(t: dict, model_path: str, latest_digest: str = "", show_mlx_badge: bool = False) -> str:
+def _tags_tag_row(
+    t: dict, model_path: str, latest_digest: str = "", show_mlx_badge: bool = False
+) -> str:
     model_name = model_path.strip("/").split("/")[-1]
     full_tag_name = f"{model_name}:{t['name']}"
     full_tag_esc = esc(full_tag_name)
@@ -1273,9 +1284,15 @@ def build_tags_page(m: dict, tags: list[dict]) -> None:
             latest_digest = t.get("digest") or ""
             break
 
-    rows_all = "\n".join(_tags_tag_row(t, path, latest_digest, show_mlx_badge=True) for t in tags)
-    rows_gguf = "\n".join(_tags_tag_row(t, path, latest_digest, show_mlx_badge=False) for t in gguf_tags)
-    rows_mlx = "\n".join(_tags_tag_row(t, path, latest_digest, show_mlx_badge=False) for t in mlx_tags)
+    rows_all = "\n".join(
+        _tags_tag_row(t, path, latest_digest, show_mlx_badge=True) for t in tags
+    )
+    rows_gguf = "\n".join(
+        _tags_tag_row(t, path, latest_digest, show_mlx_badge=False) for t in gguf_tags
+    )
+    rows_mlx = "\n".join(
+        _tags_tag_row(t, path, latest_digest, show_mlx_badge=False) for t in mlx_tags
+    )
 
     table_all = _tags_table_block(rows_all, len(tags), "all", True)
     table_gguf = (
@@ -1597,7 +1614,7 @@ def build_blob_page(blob: dict) -> None:
     page = f"""<!DOCTYPE html>
 <html lang="en" class="">
 <head>
-{head_html(f"{tag_full} - {blob_type}", f"{tag_full} blob {blob_type}")}
+{head_html(f"{model_name}:{tag_name} — {blob_type}", f"{model_name}:{tag_name} blob {blob_type}")}
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 {nav_html()}
@@ -2073,10 +2090,14 @@ def main() -> int:
     print("building root redirect ...")
     search_url = url("/search/")
     (PUBLIC / "index.html").write_text(
-        "<!DOCTYPE html>\n<html><head>"
-        f'<meta http-equiv="refresh" content="0; url={search_url}">'
-        '<meta name="robots" content="noindex"></head>'
-        f'<body><a href="{search_url}">Redirect to search</a></body></html>\n'
+        "<!DOCTYPE html>\n"
+        "<html>\n"
+        "<head>\n"
+        f'<meta http-equiv="refresh" content="0; url={search_url}">\n'
+        "<title>Ollama Search</title>\n"
+        "</head>\n"
+        f'<body>Redirecting to <a href="{search_url}">search</a>...</body>\n'
+        "</html>\n"
     )
 
     # model detail + tags + per-tag pages
