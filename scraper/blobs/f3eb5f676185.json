@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/nexusraven:13b-q2_K/blobs/f3eb5f676185",
+  "content": "<human>:\n{{ .System }}\n\nUser Query: Question: {{ .Prompt }}\n\nPlease pick a function from the above options that best answers the user query and fill in the appropriate arguments.<human_end>\n\nInitial Answer:",
+  "digest": "f3eb5f676185",
+  "metadata": [],
+  "size": "207B",
+  "tensor_groups": [],
+  "tensors": []
+}
