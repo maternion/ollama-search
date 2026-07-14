@@ -76,6 +76,7 @@ jobs:
         run: |
           # Push checkpoint to scraped-data
           if [ -d /tmp/scraped-data ]; then
+            rm -rf /tmp/scraped-data/scraper
             mkdir -p /tmp/scraped-data/scraper
             cp -r scraper/* /tmp/scraped-data/scraper/
             cd /tmp/scraped-data
@@ -142,6 +143,7 @@ jobs:
         run: |
           # Push checkpoint to scraped-data
           if [ -d /tmp/scraped-data ]; then
+            rm -rf /tmp/scraped-data/scraper
             mkdir -p /tmp/scraped-data/scraper
             cp -r scraper/* /tmp/scraped-data/scraper/
             cd /tmp/scraped-data

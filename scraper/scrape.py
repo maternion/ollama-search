@@ -209,14 +209,6 @@ def strip_tags(s: str) -> str:
     return s.strip()
 
 
-def first_attr_value(html_fragment: str, attr: str) -> str | None:
-    """First value of `attr` in the fragment (handles ' and " delimiters)."""
-    m = re.search(attr + r'\s*=\s*"([^"]*)"', html_fragment)
-    if not m:
-        m = re.search(attr + r"\s*=\s*'([^']*)'", html_fragment)
-    return m.group(1) if m else None
-
-
 # --------------------------------------------------------------------------- #
 # Data classes
 # --------------------------------------------------------------------------- #
@@ -1758,10 +1750,6 @@ def check_only() -> int:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Scrape ollama.com model catalog.")
     ap.add_argument(
-        "--refresh-model",
-        help="re-scrape tags for a single model path (e.g. /library/gemma4)",
-    )
-    ap.add_argument(
         "--skip-tags",
         action="store_true",
         help="only scrape the catalog, not per-model tags",
@@ -1831,152 +1819,6 @@ def main(argv: list[str] | None = None) -> int:
 
     client = Client()
     try:
-        if args.refresh_model:
-            path = args.refresh_model
-            if not path.startswith("/"):
-                path = "/" + path
-            m = Model(
-                name=path.rsplit("/", 1)[-1],
-                path=path,
-                description="",
-                capabilities=[],
-                cloud=False,
-                sizes=[],
-                pulls=0,
-                tag_count=0,
-                updated="",
-                updated_title="",
-                official=path.startswith("/library/"),
-                owner=(
-                    None
-                    if path.startswith("/library/")
-                    else path.strip("/").split("/")[0]
-                ),
-                source_url=BASE + path,
-            )
-            log.info("refreshing tags for %s", path)
-            m.tags = fetch_tags(client, m)
-            save_tags(m, m.tags)
-            log.info("  %d tags", len(m.tags))
-            if m.official:
-                page_slug = slugify(m.path)
-                page_file = PAGES_DIR / f"{page_slug}.json"
-                if page_file.exists():
-                    log.info("  page: cached")
-                else:
-                    page = fetch_model_page(client, m)
-                    if page:
-                        save_model_page(m, page)
-                        log.info(
-                            "  page: %d files, readme %d chars",
-                            len(page.files),
-                            len(page.readme_html),
-                        )
-                    else:
-                        log.warning("  page: fetch failed")
-                # Fetch tag pages for ALL tags (skip cached)
-                tags_to_fetch = list(m.tags)
-                cached_tp = 0
-                fetched_tp = 0
-                for t in tags_to_fetch:
-                    if client.bail_out:
-                        break
-                    slug = slugify(m.path)
-                    tp_file = TAG_PAGES_DIR / f"{slug}__{t.name}.json"
-                    if tp_file.exists():
-                        try:
-                            existing = json.loads(tp_file.read_text())
-                            cached_digest = existing.get("manifest_digest", "")
-                            if cached_digest == t.digest:
-                                cached_tp += 1
-                                continue
-                            else:
-                                log.info(
-                                    "  tag page digest changed: %s:%s (%s -> %s)",
-                                    m.path,
-                                    t.name,
-                                    cached_digest,
-                                    t.digest,
-                                )
-                        except Exception:
-                            pass
-                    log.info("  tag page: %s:%s", m.path, t.name)
-                    tp = fetch_tag_page(client, m, t.name)
-                    if tp:
-                        save_tag_page(m, t.name, tp)
-                        fetched_tp += 1
-                        log.info(
-                            "    %d files, readme %d chars",
-                            len(tp.files),
-                            len(tp.readme_html),
-                        )
-                    time.sleep(DELAY)
-                log.info("  tag pages: %d cached, %d fetched", cached_tp, fetched_tp)
-                # Fetch blob pages for every file in every tag page
-                if not args.skip_blobs:
-                    log.info("  fetching blob pages for %s", m.path)
-                    BLOBS_DIR.mkdir(parents=True, exist_ok=True)
-                    blob_count = 0
-                    for t in m.tags:
-                        if client.bail_out or _time_up():
-                            break
-                        slug = slugify(m.path)
-                        tp_file = TAG_PAGES_DIR / f"{slug}__{t.name}.json"
-                        if not tp_file.exists():
-                            continue
-                        try:
-                            tp_data = json.loads(tp_file.read_text())
-                        except Exception:
-                            continue
-                        for f in tp_data.get("files", []):
-                            burl = f.get("blob_url", "")
-                            if not burl:
-                                continue
-                            # Blobs are stored once per digest.
-                            bdigest = (
-                                burl.rstrip("/")
-                                .rsplit("/blobs/", 1)[-1]
-                                .split("?", 1)[0]
-                            )
-                            bf = BLOBS_DIR / f"{bdigest}.json"
-                            if bf.exists():
-                                continue
-                            bp = fetch_blob_page(client, burl)
-                            if bp:
-                                save_blob_page(burl, bp)
-                                blob_count += 1
-                            time.sleep(DELAY)
-                    log.info("  fetched %d blob pages", blob_count)
-            # Update the model in models.json with fresh data
-            if (DATA / "models.json").exists():
-                try:
-                    models_data = json.loads((DATA / "models.json").read_text())
-                    for i, mm in enumerate(models_data.get("models", [])):
-                        if mm["path"] == m.path:
-                            mm["tag_count"] = len(m.tags)
-                            mm["tags"] = [asdict(t) for t in m.tags]
-                            if m.cloud and m.tags:
-                                local_tags = [
-                                    t
-                                    for t in m.tags
-                                    if t.name != "cloud"
-                                    and not t.name.endswith("-cloud")
-                                    and t.size_bytes
-                                ]
-                                mm["cloud_only"] = len(local_tags) == 0
-                            break
-                    json.dump(
-                        models_data,
-                        open(DATA / "models.json", "w"),
-                        indent=2,
-                        sort_keys=True,
-                        ensure_ascii=False,
-                    )
-                    log.info("  updated models.json for %s", m.path)
-                except Exception as e:
-                    log.warning("  failed to update models.json: %s", e)
-            return 0
-
         # ---- full crawl ----
         # Remove any stale completion marker from a prior run so cycle 2
         # gating in CI reflects THIS run, not a previous one.

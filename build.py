@@ -143,11 +143,6 @@ def slugify(path: str) -> str:
     return path.strip("/").replace("/", "__")
 
 
-def slug_url(path: str) -> str:
-    """Convert /library/foo to /library/foo (already a clean URL)."""
-    return path
-
-
 def format_count(n: int) -> str:
     """Format a pull count the way ollama.com does.
 
@@ -196,10 +191,6 @@ def load_tags(model_path: str) -> list[dict]:
 
 def has_mlx(tags: list[dict]) -> bool:
     return any(t["format"] == "mlx" for t in tags)
-
-
-def has_cloud_tag(tags: list[dict]) -> bool:
-    return any(t["name"] == "cloud" for t in tags)
 
 
 def load_model_page(model_path: str) -> dict | None:
@@ -2013,11 +2004,6 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 .dark .dark\:border-blue-600 { border-color: #2563eb; }
 /* Focus state */
 .dark .dark\:focus\:border-blue-600:focus { border-color: #2563eb; }
-/* Emerald (reserved for future use) */
-.dark .dark\:bg-emerald-950\/50 { background-color: rgba(2, 44, 34, 0.5); }
-.dark .dark\:bg-emerald-950 { background-color: #022c22; }
-.dark .dark\:text-emerald-400 { color: #34d399; }
-
 /* --- Usage section dark mode --- */
 .dark section[data-usage-section] .border-neutral-200 { border-color: #262626 !important; }
 .dark .use-tab.text-neutral-900 { color: #fafafa; }
@@ -2039,7 +2025,7 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
    The vendored tailwind.css includes the `.prose` base styles and most
    `prose-*` variant utilities, but is missing a handful used by ollama.com's
    `<div id="display">` (the bracket/precise-value heading margins, the
-   `prose-code:py-1` and `prose-code:text-[85%]` utilities, and the
+   `prose-code:text-[85%]` utility, and the
    `prose-td code:*` descendant compound variants). It also contains NO
    `dark:` variants at all, so every dark:prose-* utility on the readme
    container is implemented here. */
@@ -2058,7 +2044,6 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 .prose-headings\:mt-\[1\.25em\] :is(:where(h5):not(:where([class~=not-prose],[class~=not-prose] *))),
 .prose-headings\:mt-\[1\.25em\] :is(:where(h6):not(:where([class~=not-prose],[class~=not-prose] *))) { margin-top: 1.25em; }
 .prose-code\:text-\[85\%\] :is(:where(code):not(:where([class~=not-prose],[class~=not-prose] *))) { font-size: 85%; }
-.prose-code\:py-1 :is(:where(code):not(:where([class~=not-prose],[class~=not-prose] *))) { padding-top: 0.25rem; padding-bottom: 0.25rem; }
 /* `prose-td code:*` — code elements inside td cells within .prose tables */
 .prose-td code\:display-inline-block :is(:where(td code):not(:where([class~=not-prose],[class~=not-prose] *))) { display: inline-block; }
 .prose-td code\:bg-gray-200 :is(:where(td code):not(:where([class~=not-prose],[class~=not-prose] *))) { background-color: #e5e7eb; }

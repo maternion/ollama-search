@@ -2,7 +2,7 @@
 
 A static-site mirror of [ollama.com/search](https://ollama.com/search) with dark mode, better sorting, and MLX/GGUF separation.
 
-**Live site**: deployed to GitHub Pages, auto-refreshes every 6 hours when ollama.com adds or updates models.
+**Live site**: deployed to GitHub Pages, auto-refreshes every 2 hours when ollama.com adds or updates models.
 
 ## Structure
 
@@ -10,7 +10,7 @@ A static-site mirror of [ollama.com/search](https://ollama.com/search) with dark
 scraper/scrape.py     Scrape ollama.com → models.json + tags/*.json
 build.py              Build static site from scraped data → public/
 serve.py              Dev server (redirects / → /search/)
-.github/workflows/    CI: scrape → diff → build → deploy every 6h
+.github/workflows/    CI: scrape → diff → build → deploy every 2h
 ```
 
 ## Usage
@@ -46,7 +46,7 @@ python3 build.py --base /ollama-search
 - Cloud filter dropdown: All / Cloud only / Local only
 - MLX/GGUF/All tabs on model detail and tags pages
 - Copy-to-clipboard for pull commands
-- Auto-refreshes every 6 hours via GitHub Actions (only deploys on change)
+- Auto-refreshes every 2 hours via GitHub Actions (only deploys on change)
 
 ## CI workflow
 
