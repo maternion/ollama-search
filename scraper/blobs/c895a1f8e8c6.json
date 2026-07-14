@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/phi4-mini-reasoning:latest/blobs/c895a1f8e8c6",
+  "content": "{{- if .System }}<|system|>{{ .System }}\n{{- end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n{{- if ne .Role \"system\" }}<|{{ .Role }}|>{{ .Content }}\n{{- if not $last }}<|end|>\n{{- end }}\n{{- if and (ne .Role \"assistant\") $last }}<|end|><|assistant|>{{ end }}\n{{- end }}\n{{- end }}",
+  "digest": "c895a1f8e8c6",
+  "metadata": [],
+  "size": "323B",
+  "tensor_groups": [],
+  "tensors": []
+}
