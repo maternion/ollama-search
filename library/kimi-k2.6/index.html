@@ -102,7 +102,7 @@
          <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
            <span class="flex items-center">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
-             <span x-test-pull-count>374K</span>
+             <span x-test-pull-count>375K</span>
              <span class="hidden sm:flex">&nbsp;Downloads</span>
           </span>
           <span class="flex items-center" title="Apr 20, 2026 8:09 PM UTC">
@@ -167,12 +167,12 @@
         </button>
       </div>
       <div class="use-panel p-4 font-mono text-[13px] text-neutral-700 dark:text-neutral-300" data-panel="cli">
-        <pre class="m-0 whitespace-pre-wrap">ollama run kimi-k2.6</pre>
+        <pre class="m-0 whitespace-pre-wrap">ollama run kimi-k2.6:cloud</pre>
       </div>
       <div class="use-panel hidden p-4 font-mono text-[13px] text-neutral-700 dark:text-neutral-300" data-panel="api">
         <pre class="m-0 whitespace-pre-wrap">curl http://localhost:11434/api/chat \
   -d '{
-    "model": "kimi-k2.6",
+    "model": "kimi-k2.6:cloud",
     "messages": [{"role": "user", "content": "Hello!"}]
   }'</pre>
       </div>
@@ -180,7 +180,7 @@
         <pre class="m-0 whitespace-pre-wrap"><span class="text-neutral-500">from</span> ollama <span class="text-neutral-500">import</span> chat
 
 response = chat(
-    model=<span class="text-green-700">'kimi-k2.6'</span>,
+    model=<span class="text-green-700">'kimi-k2.6:cloud'</span>,
     messages=[{<span class="text-green-700">'role'</span>: <span class="text-green-700">'user'</span>, <span class="text-green-700">'content'</span>: <span class="text-green-700">'Hello!'</span>}],
 )
 <span class="text-neutral-500">print</span>(response.message.content)</pre>
@@ -189,7 +189,7 @@ response = chat(
         <pre class="m-0 whitespace-pre-wrap"><span class="text-neutral-500">import</span> ollama <span class="text-neutral-500">from</span> <span class="text-green-700">'ollama'</span>
 
 <span class="text-neutral-500">const</span> response = <span class="text-neutral-500">await</span> ollama.chat({
-  model: <span class="text-green-700">'kimi-k2.6'</span>,
+  model: <span class="text-green-700">'kimi-k2.6:cloud'</span>,
   messages: [{role: <span class="text-green-700">'user'</span>, content: <span class="text-green-700">'Hello!'</span>}],
 })
 console.log(response.message.content)</pre>

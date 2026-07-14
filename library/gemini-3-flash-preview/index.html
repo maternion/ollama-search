@@ -167,12 +167,12 @@
         </button>
       </div>
       <div class="use-panel p-4 font-mono text-[13px] text-neutral-700 dark:text-neutral-300" data-panel="cli">
-        <pre class="m-0 whitespace-pre-wrap">ollama run gemini-3-flash-preview</pre>
+        <pre class="m-0 whitespace-pre-wrap">ollama run gemini-3-flash-preview:cloud</pre>
       </div>
       <div class="use-panel hidden p-4 font-mono text-[13px] text-neutral-700 dark:text-neutral-300" data-panel="api">
         <pre class="m-0 whitespace-pre-wrap">curl http://localhost:11434/api/chat \
   -d '{
-    "model": "gemini-3-flash-preview",
+    "model": "gemini-3-flash-preview:cloud",
     "messages": [{"role": "user", "content": "Hello!"}]
   }'</pre>
       </div>
@@ -180,7 +180,7 @@
         <pre class="m-0 whitespace-pre-wrap"><span class="text-neutral-500">from</span> ollama <span class="text-neutral-500">import</span> chat
 
 response = chat(
-    model=<span class="text-green-700">'gemini-3-flash-preview'</span>,
+    model=<span class="text-green-700">'gemini-3-flash-preview:cloud'</span>,
     messages=[{<span class="text-green-700">'role'</span>: <span class="text-green-700">'user'</span>, <span class="text-green-700">'content'</span>: <span class="text-green-700">'Hello!'</span>}],
 )
 <span class="text-neutral-500">print</span>(response.message.content)</pre>
@@ -189,7 +189,7 @@ response = chat(
         <pre class="m-0 whitespace-pre-wrap"><span class="text-neutral-500">import</span> ollama <span class="text-neutral-500">from</span> <span class="text-green-700">'ollama'</span>
 
 <span class="text-neutral-500">const</span> response = <span class="text-neutral-500">await</span> ollama.chat({
-  model: <span class="text-green-700">'gemini-3-flash-preview'</span>,
+  model: <span class="text-green-700">'gemini-3-flash-preview:cloud'</span>,
   messages: [{role: <span class="text-green-700">'user'</span>, content: <span class="text-green-700">'Hello!'</span>}],
 })
 console.log(response.message.content)</pre>
