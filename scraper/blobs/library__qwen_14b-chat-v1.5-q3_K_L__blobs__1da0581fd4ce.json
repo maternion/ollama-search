@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/qwen:14b-chat-v1.5-q3_K_L/blobs/1da0581fd4ce",
+  "tag_full": "qwen:14b-chat-v1.5-q3_K_L",
+  "blob_type": "template",
+  "digest": "1da0581fd4ce",
+  "size": "130B",
+  "metadata": [],
+  "content": "{{ if .System }}<|im_start|>system\n{{ .System }}<|im_end|>{{ end }}<|im_start|>user\n{{ .Prompt }}<|im_end|>\n<|im_start|>assistant",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T23:20:40.588067+00:00"
+}

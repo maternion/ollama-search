@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/aya:8b-23-q3_K_L/blobs/42499e38acdf",
+  "tag_full": "aya:8b-23-q3_K_L",
+  "blob_type": "template",
+  "digest": "42499e38acdf",
+  "size": "270B",
+  "metadata": [],
+  "content": "{{ if .System }}<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|>{{ .System }}<|END_OF_TURN_TOKEN|>{{ end }}{{ if .Prompt }}<|START_OF_TURN_TOKEN|><|USER_TOKEN|>{{ .Prompt }}<|END_OF_TURN_TOKEN|>{{ end }}<|START_OF_TURN_TOKEN|><|CHATBOT_TOKEN|>{{ .Response }}<|END_OF_TURN_TOKEN|>",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T05:43:56.830185+00:00"
+}

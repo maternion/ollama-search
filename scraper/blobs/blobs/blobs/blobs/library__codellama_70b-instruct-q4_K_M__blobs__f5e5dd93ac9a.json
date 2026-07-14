@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/codellama:70b-instruct-q4_K_M/blobs/f5e5dd93ac9a",
+  "tag_full": "codellama:70b-instruct-q4_K_M",
+  "blob_type": "template",
+  "digest": "f5e5dd93ac9a",
+  "size": "138B",
+  "metadata": [],
+  "content": "{{ if .System }} Source: system\n\n{{ .System }} <step>{{ end }} Source: user\n\n{{ .Prompt }} <step> Source: assistant\nDestination: user\n\n",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T00:12:11.055804+00:00"
+}

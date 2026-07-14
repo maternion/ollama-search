@@ -1,0 +1,55 @@
+{
+  "path": "/library/granite-code",
+  "tag_name": "8b-instruct-q4_K_S",
+  "full_path": "/library/granite-code:8b-instruct-q4_K_S",
+  "scraped_at": "2026-07-13T20:26:29.672171+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/granite-code/e28e37cc-af1b-47d7-bd85-6154b0cf26be\" alt=\"image.png\"/></p>\n\n<p>Granite Code is a family of decoder-only code model designed for code generative tasks (e.g. code generation, code explanation, code fixing, etc.).</p>\n\n<h2>Parameter Sizes</h2>\n\n<ul>\n<li>34B Parameters <code>ollama run granite-code:34b</code></li>\n<li>20B Parameters <code>ollama run granite-code:20b</code></li>\n<li>8B Parameters (with 128K context window) <code>ollama run granite-code:8b</code></li>\n<li>3B Parameters (with 128K context window) <code>ollama run granite-code:3b</code></li>\n</ul>\n\n<h2>Resources</h2>\n\n<ul>\n<li><a href=\"https://huggingface.co/collections/ibm-granite/granite-code-models-6624c5cec322e4c148c8b330\" rel=\"nofollow\">Hugging Face</a></li>\n<li><a href=\"https://arxiv.org/abs/2405.04324\" rel=\"nofollow\">Paper</a></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "fd077fe10167",
+  "manifest_size": "4.6GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/granite-code:8b-instruct-q4_K_S/blobs/8ff46a9e1ea0",
+      "content_preview": "arch  llama",
+      "size": "4.6GB",
+      "arch": "llama",
+      "parameters": "8.05B",
+      "quantization": "Q4_K_S"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/granite-code:8b-instruct-q4_K_S/blobs/58d1e17ffe51",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/granite-code:8b-instruct-q4_K_S/blobs/9893bb2c2917",
+      "content_preview": "{\n    \"stop\": [\n        \"<fim_prefix>\",\n        \"<fim_middle>\",\n        \"<fim_suffix>\",\n        \"<fi",
+      "size": "108B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/granite-code:8b-instruct-q4_K_S/blobs/e50df8490144",
+      "content_preview": "{{ if .System }}\nSystem:\n{{ .System }}\n{{ end }}{{ if .Prompt }}Question:\n{{ .Prompt }}\n{{ end }}Ans",
+      "size": "123B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

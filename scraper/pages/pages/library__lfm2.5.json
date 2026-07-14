@@ -1,0 +1,48 @@
+{
+  "path": "/library/lfm2.5",
+  "name": "lfm2.5",
+  "scraped_at": "2026-07-13T19:30:48.373170+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/lfm2.5-thinking/0f3b101a-f2ef-4a5c-a0bb-a8edecac35e3\" alt=\"image.png\"/></p>\n\n<p>LFM2.5 is a new family of hybrid models designed for on-device deployment. It builds on the LFM2 architecture with extended pre-training and reinforcement learning.</p>\n\n<ul>\n<li><strong>On-device personal assistant</strong>: Designed to power real-life applications, chaining tool calls, and following complex instructions on all devices.</li>\n<li><strong>Compressed performance</strong>: Competitive with much larger dense and MoE models on instruction following and agentic tasks.</li>\n<li><strong>Unmatched throughput</strong>: Fastest in its size class on both CPU and GPU inference</li>\n</ul>\n\n<p><img src=\"/assets/library/lfm2.5/2eecda91-5cc6-4212-9382-25e05b6e68ad\" alt=\"benchmark\"/></p>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model lfm2.5"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model lfm2.5"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model lfm2.5"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model lfm2.5"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model lfm2.5"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model lfm2.5"
+    }
+  ]
+}

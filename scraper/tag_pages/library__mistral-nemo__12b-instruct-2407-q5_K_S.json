@@ -1,0 +1,55 @@
+{
+  "path": "/library/mistral-nemo",
+  "tag_name": "12b-instruct-2407-q5_K_S",
+  "full_path": "/library/mistral-nemo:12b-instruct-2407-q5_K_S",
+  "scraped_at": "2026-07-13T20:03:06.421007+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/mistral-nemo/72045292-694a-4867-88c8-8635c9d97030\" width=\"280\"/></p>\n\n<p>Mistral NeMo is a 12B model built in collaboration with NVIDIA. Mistral NeMo offers a large context window of up to 128k tokens. Its reasoning, world knowledge, and coding accuracy are state-of-the-art in its size category. As it relies on standard architecture, Mistral NeMo is easy to use and a drop-in replacement in any system using Mistral 7B.</p>\n\n<p><img src=\"https://ollama.com/assets/library/mistral-nemo/1adf7b56-30e3-49a0-8a52-bb74c19d8a78\" alt=\"nemo-base-performance.png\"/></p>\n\n<h2>Reference</h2>\n\n<p><a href=\"https://mistral.ai/news/mistral-nemo/\" rel=\"nofollow\">Blog</a></p>\n\n<p><a href=\"https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "11 months ago",
+  "manifest_digest": "40374746451f",
+  "manifest_size": "8.5GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/mistral-nemo:12b-instruct-2407-q5_K_S/blobs/2d2a6cf5553a",
+      "content_preview": "arch  llama",
+      "size": "8.5GB",
+      "arch": "llama",
+      "parameters": "12.2B",
+      "quantization": "Q5_K_S"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/mistral-nemo:12b-instruct-2407-q5_K_S/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/mistral-nemo:12b-instruct-2407-q5_K_S/blobs/ed11eda7790d",
+      "content_preview": "{\n    \"stop\": [\n        \"[INST]\",\n        \"[/INST]\"\n    ]\n}",
+      "size": "30B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/mistral-nemo:12b-instruct-2407-q5_K_S/blobs/438402ddac75",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- if eq .Role \"user\" }}\n{{- if and $.Tools (le (len (slice $.Mess",
+      "size": "683B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

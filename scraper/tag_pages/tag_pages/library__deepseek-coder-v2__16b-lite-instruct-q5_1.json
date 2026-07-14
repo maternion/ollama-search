@@ -1,0 +1,64 @@
+{
+  "path": "/library/deepseek-coder-v2",
+  "tag_name": "16b-lite-instruct-q5_1",
+  "full_path": "/library/deepseek-coder-v2:16b-lite-instruct-q5_1",
+  "scraped_at": "2026-07-13T20:14:03.089674+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/deepseek-coder-v2/cce4988a-b798-4c63-82ab-14c5c09462fe\" width=\"280\"/></p>\n\n<p>DeepSeek-Coder-V2 is an open-source Mixture-of-Experts (MoE) code language model that achieves performance comparable to GPT4-Turbo in code-specific tasks. DeepSeek-Coder-V2 is further pre-trained from DeepSeek-Coder-V2-Base with 6 trillion tokens sourced from a high-quality and multi-source corpus.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "840b2157e9f0",
+  "manifest_size": "12GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/deepseek-coder-v2:16b-lite-instruct-q5_1/blobs/7d9a74180170",
+      "content_preview": "arch  deepseek2",
+      "size": "12GB",
+      "arch": "deepseek2",
+      "parameters": "15.7B",
+      "quantization": "Q5_1"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/deepseek-coder-v2:16b-lite-instruct-q5_1/blobs/4bb71764481f",
+      "content_preview": "DEEPSEEK LICENSE AGREEMENT\nVersion 1.0, 23 October 2023\nCopyright (c) 2023 DeepSeek\nSection I: PREAM",
+      "size": "14kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/deepseek-coder-v2:16b-lite-instruct-q5_1/blobs/1c8f573e830c",
+      "content_preview": "MIT License\nCopyright (c) 2023 DeepSeek\nPermission is hereby granted, free of charge, to any person",
+      "size": "1.1kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/deepseek-coder-v2:16b-lite-instruct-q5_1/blobs/19f2fb9e8bc6",
+      "content_preview": "{\n    \"stop\": [\n        \"User:\",\n        \"Assistant:\"\n    ]\n}",
+      "size": "32B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/deepseek-coder-v2:16b-lite-instruct-q5_1/blobs/22091531faf0",
+      "content_preview": "{{- if .Suffix }}<\uff5cfim\u2581begin\uff5c>{{ .Prompt }}<\uff5cfim\u2581hole\uff5c>{{ .Suffix }}<\uff5cfim\u2581end\uff5c>\n{{",
+      "size": "705B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

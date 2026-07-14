@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/deepseek-v2:236b-chat-q5_0/blobs/b321cd7de6c7",
+  "tag_full": "deepseek-v2:236b-chat-q5_0",
+  "blob_type": "template",
+  "digest": "b321cd7de6c7",
+  "size": "111B",
+  "metadata": [],
+  "content": "{{ if .System }}{{ .System }}\n\n{{ end }}{{ if .Prompt }}User: {{ .Prompt }}\n\n{{ end }}Assistant:{{ .Response }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T04:45:48.732342+00:00"
+}

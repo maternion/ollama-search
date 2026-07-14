@@ -1,0 +1,55 @@
+{
+  "path": "/library/stablelm2",
+  "tag_name": "1.6b-zephyr-q4_1",
+  "full_path": "/library/stablelm2:1.6b-zephyr-q4_1",
+  "scraped_at": "2026-07-13T20:50:48.678424+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/ollama/ollama/assets/251292/62507173-9423-4496-87ea-7d48be78979c\" width=\"480\"/></p>\n\n<p>Stable LM 2 1.6B is a state-of-the-art 1.6 and 12B billion parameter small language model trained on multilingual data in English, Spanish, German, Italian, French, Portuguese, and Dutch.</p>\n\n<p>The model is trained on a mix of publicly available datasets and synthetic datasets, utilizing Direct Preference Optimization (DPO).</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://stability.ai/news/introducing-stable-lm-2\" rel=\"nofollow\">Announcement</a></p>\n\n<p><a href=\"https://huggingface.co/stabilityai\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "32c909836b8a",
+  "manifest_size": "1.1GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/stablelm2:1.6b-zephyr-q4_1/blobs/7a1073c18e6c",
+      "content_preview": "arch  stablelm",
+      "size": "1.1GB",
+      "arch": "stablelm",
+      "parameters": "1.64B",
+      "quantization": "Q4_1"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/stablelm2:1.6b-zephyr-q4_1/blobs/9509b94e411e",
+      "content_preview": "STABILITY AI NON-COMMERCIAL RESEARCH COMMUNITY LICENSE AGREEMENT\nDated: December 06, 2023\nBy using o",
+      "size": "7.5kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/stablelm2:1.6b-zephyr-q4_1/blobs/8c205fccfc04",
+      "content_preview": "{\n    \"stop\": [\n        \"<|endoftext|>\"\n    ]\n}",
+      "size": "37B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/stablelm2:1.6b-zephyr-q4_1/blobs/07b75c465eaf",
+      "content_preview": "<|system|>\n{{ .System }}<|endoftext|>\n<|user|>\n{{ .Prompt }}<|endoftext|>\n<|assistant|>",
+      "size": "88B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

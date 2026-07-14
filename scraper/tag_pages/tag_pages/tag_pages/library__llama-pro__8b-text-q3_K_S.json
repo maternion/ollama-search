@@ -1,0 +1,28 @@
+{
+  "path": "/library/llama-pro",
+  "tag_name": "8b-text-q3_K_S",
+  "full_path": "/library/llama-pro:8b-text-q3_K_S",
+  "scraped_at": "2026-07-13T21:07:52.899738+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/jmorganca/ollama/assets/251292/b6250249-0d8b-40ec-ba67-cce03d517dbb\" width=\"320\"/></p>\n\n<p>LLaMa-Pro is a version of the original LLaMa model enhanced by the addition of transformer blocks by Tencent Applied Research Center (ARC). This model specializes in integrating both general language understanding and domain-specific knowledge, particularly in programming and mathematics.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://github.com/TencentARC/LLaMA-Pro\" rel=\"nofollow\">GitHub</a></p>\n\n<p><a href=\"https://huggingface.co/TencentARC/LLaMA-Pro-8B-Instruct\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "ebda8f31804a",
+  "manifest_size": "3.6GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/llama-pro:8b-text-q3_K_S/blobs/8cba537dfceb",
+      "content_preview": "arch  llama",
+      "size": "3.6GB",
+      "arch": "llama",
+      "parameters": "8.36B",
+      "quantization": "Q3_K_S"
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

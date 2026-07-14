@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/qwen2.5-coder:3b-base-q5_1/blobs/96f5a2272876",
+  "tag_full": "qwen2.5-coder:3b-base-q5_1",
+  "blob_type": "template",
+  "digest": "96f5a2272876",
+  "size": "117B",
+  "metadata": [],
+  "content": "{{- if .Suffix }}<|fim_prefix|>{{ .Prompt }}<|fim_suffix|>{{ .Suffix }}<|fim_middle|>{{ else }}{{ .Prompt }}{{ end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T22:44:02.334314+00:00"
+}

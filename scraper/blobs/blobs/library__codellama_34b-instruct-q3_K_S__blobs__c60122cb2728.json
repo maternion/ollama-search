@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/codellama:34b-instruct-q3_K_S/blobs/c60122cb2728",
+  "tag_full": "codellama:34b-instruct-q3_K_S",
+  "blob_type": "params",
+  "digest": "c60122cb2728",
+  "size": "132B",
+  "metadata": [],
+  "content": "{\n\"num_gqa\": 8,\n\"rope_frequency_base\": 1000000,\n\"stop\": [\n\"[INST]\",\n\"[/INST]\",\n\"<<SYS>>\",\n\"<</SYS>>\"\n]\n}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T00:09:20.524483+00:00"
+}

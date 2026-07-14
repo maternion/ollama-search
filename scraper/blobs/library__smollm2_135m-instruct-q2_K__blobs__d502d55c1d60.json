@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/smollm2:135m-instruct-q2_K/blobs/d502d55c1d60",
+  "tag_full": "smollm2:135m-instruct-q2_K",
+  "blob_type": "template",
+  "digest": "d502d55c1d60",
+  "size": "675B",
+  "metadata": [],
+  "content": "{{- if .Messages }}\n{{- if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n{{- if eq .Role \"user\" }}<|im_start|>user\n{{ .Content }}<|im_end|>\n{{ else if eq .Role \"assistant\" }}<|im_start|>assistant\n{{ .Content }}{{ if not $last }}<|im_end|>\n{{ end }}\n{{- end }}\n{{- if and (ne .Role \"assistant\") $last }}<|im_start|>assistant\n{{ end }}\n{{- end }}\n{{- else }}\n{{- if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}{{ if .Prompt }}<|im_start|>user\n{{ .Prompt }}<|im_end|>\n{{ end }}<|im_start|>assistant\n{{ end }}{{ .Response }}{{ if .Response }}<|im_end|>{{ end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T00:34:43.944997+00:00"
+}

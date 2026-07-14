@@ -1,0 +1,55 @@
+{
+  "path": "/library/codegemma",
+  "tag_name": "2b-code-v1.1-q5_K_S",
+  "full_path": "/library/codegemma:2b-code-v1.1-q5_K_S",
+  "scraped_at": "2026-07-13T20:09:18.050409+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/ollama/ollama/assets/251292/56ffc5fc-0c30-4ab5-a0e3-65fc66de17bc\" width=\"320\"/></p>\n\n<p>CodeGemma is a collection of powerful, lightweight models that can perform a variety of coding tasks like fill-in-the-middle code completion, code generation, natural language understanding, mathematical reasoning, and instruction following.</p>\n\n<h3>Variants:</h3>\n\n<ul>\n<li><code>instruct</code> a 7b instruction-tuned variant for natural language-to-code chat and instruction following</li>\n<li><code>code</code> a 7b pretrained variant that specializes in code completion and generation from code prefixes and/or suffixes</li>\n<li><code>2b</code> a state of the art 2B pretrained variant that provides up to 2x faster code completion</li>\n</ul>\n\n<h3>Advantages:</h3>\n\n<ul>\n<li><p><strong>Intelligent code completion and generation</strong>: Complete lines, functions, and even generate entire blocks of code, whether you\u2019re working locally or using Google Cloud resources.</p></li>\n\n<li><p><strong>Enhanced accuracy</strong>: Trained on 500 billion tokens of primarily English language data from web documents, mathematics, and code, CodeGemma models generate code that\u2019s not only more syntactically correct but also semantically meaningful, reducing errors and debugging time.</p></li>\n\n<li><p><strong>Multi-language proficiency</strong>: Supports Python, JavaScript, Java, Kotlin, C++, C#, Rust, Go, and other languages.</p></li>\n\n<li><p><strong>Streamlined workflows</strong>: Integrate a CodeGemma model into your development environment to write less boilerplate and focus on interesting and differentiated code that matters, faster.</p></li>\n</ul>\n\n<p><img src=\"https://github.com/ollama/ollama/assets/251292/0d8473cb-bcee-4bd0-9214-c527ce367d88\" alt=\"benchmarks\"/></p>\n\n<h3>Fill-in-the-middle</h3>\n\n<p>CodeGemma models support fill-in-the-middle (FIM), for use in autocomplete or coding assistant tooling. Below is an example using the Ollama <a href=\"https://github.com/ollama/ollama-python\" rel=\"nofollow\">Python</a> library:</p>\n\n<pre><code>response = generate(\n  model=&#39;codegemma:2b-code&#39;,\n  prompt=f&#39;&lt;|fim_prefix|&gt;{prefix}&lt;|fim_suffix|&gt;{suffix}&lt;|fim_middle|&gt;&#39;,\n  options={\n    &#39;num_predict&#39;: 128,\n    &#39;temperature&#39;: 0,\n    &#39;top_p&#39;: 0.9,\n    &#39;stop&#39;: [&#39;&lt;|file_separator|&gt;&#39;],\n  },\n)\n</code></pre>\n\n<h3>References</h3>\n\n<p><a href=\"https://huggingface.co/collections/google/codegemma-release-66152ac7b683e2667abdee11\" rel=\"nofollow\">Hugging Face</a></p>\n\n<p><a href=\"https://storage.googleapis.com/deepmind-media/gemma/codegemma_report.pdf\" rel=\"nofollow\">Report</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "ba1202a14d4e",
+  "manifest_size": "1.8GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/codegemma:2b-code-v1.1-q5_K_S/blobs/d5c28480995f",
+      "content_preview": "arch  gemma",
+      "size": "1.8GB",
+      "arch": "gemma",
+      "parameters": "2.51B",
+      "quantization": "Q5_K_S"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/codegemma:2b-code-v1.1-q5_K_S/blobs/097a36493f71",
+      "content_preview": "Gemma Terms of Use\nLast modified: February 21, 2024\nBy using, reproducing, modifying, distributing,",
+      "size": "8.4kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/codegemma:2b-code-v1.1-q5_K_S/blobs/9be8862a3637",
+      "content_preview": "{\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"<|fim_prefix|>\",\n        \"<|fim_suffix|>\",",
+      "size": "142B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/codegemma:2b-code-v1.1-q5_K_S/blobs/48d9a8140749",
+      "content_preview": "{{- if .Suffix }}<|fim_prefix|>{{ .Prompt }}<|fim_suffix|>{{ .Suffix }}<|fim_middle|>\n{{- else }}{{",
+      "size": "121B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

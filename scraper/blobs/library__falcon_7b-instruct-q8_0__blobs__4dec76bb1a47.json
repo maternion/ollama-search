@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/falcon:7b-instruct-q8_0/blobs/4dec76bb1a47",
+  "tag_full": "falcon:7b-instruct-q8_0",
+  "blob_type": "template",
+  "digest": "4dec76bb1a47",
+  "size": "45B",
+  "metadata": [],
+  "content": "{{ .System }}\nUser: {{ .Prompt }}\nAssistant:",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T05:22:54.092457+00:00"
+}

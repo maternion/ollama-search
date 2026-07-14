@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/orca-mini:7b-q3_K_S/blobs/dd90d0f2b7ee",
+  "tag_full": "orca-mini:7b-q3_K_S",
+  "blob_type": "template",
+  "digest": "dd90d0f2b7ee",
+  "size": "95B",
+  "metadata": [],
+  "content": "{{- if .System }}\n### System:\n{{ .System }}\n{{- end }}\n\n### User:\n{{ .Prompt }}\n\n### Response:",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T00:59:04.329756+00:00"
+}

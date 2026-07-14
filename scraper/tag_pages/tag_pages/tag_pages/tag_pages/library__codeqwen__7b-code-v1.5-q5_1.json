@@ -1,0 +1,37 @@
+{
+  "path": "/library/codeqwen",
+  "tag_name": "7b-code-v1.5-q5_1",
+  "full_path": "/library/codeqwen:7b-code-v1.5-q5_1",
+  "scraped_at": "2026-07-13T20:43:40.107974+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/ollama/ollama/assets/251292/c17cc1ce-9eb9-4658-8b02-b2f15bbaf1c1\" width=\"360\"/></p>\n\n<p>CodeQwen1.5 is based on Qwen1.5. It is trained on 3 trillion tokens of code data. Its major features include:</p>\n\n<ul>\n<li>Strong code generation capabilities and competitive performance across a series of benchmarks</li>\n<li>Support for long context understanding and generation with a maximum context length of 64K tokens</li>\n<li>Support for 92 coding languages</li>\n<li>Excellent performance in Text-to-SQL, fixing bugs and other coding use cases.</li>\n</ul>\n\n<h2>References</h2>\n\n<p><a href=\"https://qwenlm.github.io/blog/codeqwen1.5/\" rel=\"nofollow\">Blog Post</a></p>\n\n<p><a href=\"https://github.com/QwenLM/Qwen\" rel=\"nofollow\">GitHub</a></p>\n\n<p><a href=\"https://huggingface.co/Qwen\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "f9f1cdb01bda",
+  "manifest_size": "5.5GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/codeqwen:7b-code-v1.5-q5_1/blobs/09948307c872",
+      "content_preview": "arch  qwen2",
+      "size": "5.5GB",
+      "arch": "qwen2",
+      "parameters": "7.25B",
+      "quantization": "Q5_1"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/codeqwen:7b-code-v1.5-q5_1/blobs/6b53223f338a",
+      "content_preview": "Tongyi Qianwen LICENSE AGREEMENT\nTongyi Qianwen Release Date: August 3, 2023\nBy clicking to agree or",
+      "size": "6.9kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

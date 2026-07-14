@@ -1,0 +1,55 @@
+{
+  "path": "/library/qwen3-next",
+  "tag_name": "80b",
+  "full_path": "/library/qwen3-next:80b",
+  "scraped_at": "2026-07-13T21:14:54.059539+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/qwen3-next/5e94256e-8c4a-42bb-a335-34b61221360e\" alt=\"image.png\"/></p>\n\n<p>Qwen3-Next-80B-A3B is the first installment in the Qwen3-Next series and features the following key enhancements:</p>\n\n<ul>\n<li><strong>Hybrid Attention</strong>: Replaces standard attention with the combination of Gated DeltaNet and Gated Attention, enabling efficient context modeling for ultra-long context length.</li>\n<li><strong>High-Sparsity Mixture-of-Experts (MoE)</strong>: Achieves an extreme low activation ratio in MoE layers, drastically reducing FLOPs per token while preserving model capacity.</li>\n<li><strong>Stability Optimizations</strong>: Includes techniques such as zero-centered and weight-decayed layernorm, and other stabilizing enhancements for robust pre-training and post-training.</li>\n<li><strong>Multi-Token Prediction (MTP)</strong>: Boosts pretraining model performance and accelerates inference.</li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "7 months ago",
+  "manifest_digest": "b2ebb986e4e9",
+  "manifest_size": "50GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/qwen3-next:80b/blobs/8476acca2ca7",
+      "content_preview": "arch  qwen3next",
+      "size": "50GB",
+      "arch": "qwen3next",
+      "parameters": "79.7B",
+      "quantization": "Q4_K_M"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/qwen3-next:80b/blobs/b87250e4478f",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/qwen3-next:80b/blobs/cff3f395ef37",
+      "content_preview": "{\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ],\n    \"te",
+      "size": "120B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/qwen3-next:80b/blobs/2d54db2b9bb2",
+      "content_preview": "{{- $lastUserIdx := -1 -}}\n{{- range $idx, $msg := .Messages -}}\n{{- if eq $msg.Role \"user\" }}{{ $la",
+      "size": "1.5kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

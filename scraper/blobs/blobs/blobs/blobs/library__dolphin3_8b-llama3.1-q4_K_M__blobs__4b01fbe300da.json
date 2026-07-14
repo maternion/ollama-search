@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/dolphin3:8b-llama3.1-q4_K_M/blobs/4b01fbe300da",
+  "tag_full": "dolphin3:8b-llama3.1-q4_K_M",
+  "blob_type": "template",
+  "digest": "4b01fbe300da",
+  "size": "255B",
+  "metadata": [],
+  "content": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|im_start|>{{ .Role }}\n{{ .Content }}{{ if not $last }}<|im_end|>\n{{ end }}\n{{- if and (ne .Role \"assistant\") $last }}<|im_end|>\n<|im_start|>assistant\n{{ end }}\n{{- end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T00:32:47.086957+00:00"
+}

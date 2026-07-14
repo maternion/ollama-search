@@ -1,0 +1,64 @@
+{
+  "path": "/library/command-r-plus",
+  "tag_name": "104b-08-2024-q4_K_M",
+  "full_path": "/library/command-r-plus:104b-08-2024-q4_K_M",
+  "scraped_at": "2026-07-13T21:10:54.182918+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/ollama/ollama/assets/251292/566287ce-99c9-40c1-81d4-3dd354447fd7\"/></p>\n\n<p>Command R+ is Cohere\u2019s most powerful, scalable large language model (LLM) purpose-built to excel at real-world enterprise use cases. Command R+ balances high efficiency with strong accuracy, enabling businesses to move beyond proof-of-concept, and into production with AI:</p>\n\n<ul>\n<li>A 128k-token context window</li>\n<li>Advanced Retrieval Augmented Generation (RAG) with citation to reduce hallucinations</li>\n<li>Multilingual coverage in 10 key languages to support global business operations</li>\n<li>Tool Use to automate sophisticated business processes</li>\n</ul>\n\n<h2>References</h2>\n\n<p><a href=\"https://txt.cohere.com/command-r-plus-microsoft-azure/\" rel=\"nofollow\">Blog Post</a></p>\n\n<p><a href=\"https://huggingface.co/CohereForAI/c4ai-command-r-plus\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "59dddc7baffa",
+  "manifest_size": "63GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/command-r-plus:104b-08-2024-q4_K_M/blobs/bd2e2219a5a9",
+      "content_preview": "arch  command-r",
+      "size": "63GB",
+      "arch": "command-r",
+      "parameters": "104B",
+      "quantization": "Q4_K_M"
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/command-r-plus:104b-08-2024-q4_K_M/blobs/b3741b7b9ce5",
+      "content_preview": "You are a knowledgable assistant. You can answer questions and perform tasks.",
+      "size": "77B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/command-r-plus:104b-08-2024-q4_K_M/blobs/945eaa8b1428",
+      "content_preview": "Creative Commons Attribution-NonCommercial 4.0 International Public\nLicense with Acceptable Use Adde",
+      "size": "14kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/command-r-plus:104b-08-2024-q4_K_M/blobs/922095537bc1",
+      "content_preview": "{{- if or .Tools .System }}<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|>\n{{- if .Tools }}# Safety Preamble",
+      "size": "2.9kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/command-r-plus:104b-08-2024-q4_K_M/blobs/36b9655abe6a",
+      "content_preview": "{\n    \"stop\": [\n        \"<|START_OF_TURN_TOKEN|>\",\n        \"<|END_OF_TURN_TOKEN|>\"\n    ]\n}",
+      "size": "81B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

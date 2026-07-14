@@ -1,0 +1,64 @@
+{
+  "path": "/library/phind-codellama",
+  "tag_name": "34b-v2-q3_K_S",
+  "full_path": "/library/phind-codellama:34b-v2-q3_K_S",
+  "scraped_at": "2026-07-13T21:01:47.933885+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://user-images.githubusercontent.com/633681/264120182-4a05afc9-0003-410e-8ac5-a7745dedaba8.png\"/></p>\n\n<p>Phind CodeLlama is a code generation model based on CodeLlama 34B fine-tuned for instruct use cases. There are two versions of the model: <code>v1</code> and <code>v2</code>. <code>v1</code> is based on CodeLlama 34B and CodeLlama-Python 34B. <code>v2</code> is an iteration on <code>v1</code>, trained on an additional 1.5B tokens of high-quality programming-related data.</p>\n\n<h2>Usage</h2>\n\n<h3>CLI</h3>\n\n<p>Open the terminal and run <code>ollama run phind-codellama</code></p>\n\n<h3>API</h3>\n\n<p>Example</p>\n\n<pre><code>curl -X POST http://localhost:11434/api/generate -d &#39;{\n  &#34;model&#34;: &#34;phind-codellama&#34;,\n  &#34;prompt&#34;:&#34;Implement a linked list in C++&#34;\n }&#39;\n</code></pre>\n\n<h2>Memory requirements</h2>\n\n<ul>\n<li>34b models generally require at least 32GB of RAM</li>\n</ul>\n\n<h2>References</h2>\n\n<p><a href=\"https://www.phind.com/blog/code-llama-beats-gpt4\" rel=\"nofollow\">Beating GPT-4 on HumanEval with a Fine-Tuned CodeLlama-34B</a></p>\n\n<p><a href=\"https://huggingface.co/Phind\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "a199982685d4",
+  "manifest_size": "15GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/phind-codellama:34b-v2-q3_K_S/blobs/8af7e6dba3e1",
+      "content_preview": "arch  llama",
+      "size": "15GB",
+      "arch": "llama",
+      "parameters": "33.7B",
+      "quantization": "Q3_K_S"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/phind-codellama:34b-v2-q3_K_S/blobs/41774062cd34",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "size": "7.0kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/phind-codellama:34b-v2-q3_K_S/blobs/c26c7db9206c",
+      "content_preview": "You are an intelligent programming assistant.",
+      "size": "46B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/phind-codellama:34b-v2-q3_K_S/blobs/62ab78abadd6",
+      "content_preview": "{\n    \"stop\": [\n        \"### System Prompt:\",\n        \"### User Message:\",\n        \"### Assistant:\"",
+      "size": "69B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/phind-codellama:34b-v2-q3_K_S/blobs/fb9390528638",
+      "content_preview": "{{- if .System }}\n### System Prompt\n{{ .System }}\n{{- end }}\n### User Message\n{{ .Prompt }}\n### Assi",
+      "size": "108B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

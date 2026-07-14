@@ -1,0 +1,64 @@
+{
+  "path": "/library/command-r",
+  "tag_name": "35b-08-2024-q4_0",
+  "full_path": "/library/command-r:35b-08-2024-q4_0",
+  "scraped_at": "2026-07-13T20:24:45.219406+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/ollama/ollama/assets/251292/0f8ef1fc-f0ba-4e69-b171-36c387aa5349\" width=\"480\"/></p>\n\n<p>Command R is a generative model optimized for long context tasks such as retrieval-augmented generation (RAG) and using external APIs and tools. As a model built for companies to implement at scale, Command R boasts:</p>\n\n<ul>\n<li>Strong accuracy on RAG and Tool Use</li>\n<li>Low latency, and high throughput</li>\n<li>Longer 128k context</li>\n<li>Strong capabilities across 10 key languages</li>\n</ul>\n\n<p>There are currently two versions of Command R:</p>\n\n<ul>\n<li>Original release tagged <strong>v0.1</strong></li>\n<li>August 2024 update tagged <strong>08-2024</strong></li>\n</ul>\n\n<h2>References</h2>\n\n<ul>\n<li><a href=\"https://txt.cohere.com/command-r/\" rel=\"nofollow\">Blog Post</a></li>\n<li><a href=\"https://huggingface.co/CohereForAI/c4ai-command-r-v01\" rel=\"nofollow\">Hugging Face</a></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "7d96360d357f",
+  "manifest_size": "19GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/command-r:35b-08-2024-q4_0/blobs/8e0609b8f0fe",
+      "content_preview": "arch  command-r",
+      "size": "19GB",
+      "arch": "command-r",
+      "parameters": "32.3B",
+      "quantization": "Q4_0"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/command-r:35b-08-2024-q4_0/blobs/945eaa8b1428",
+      "content_preview": "Creative Commons Attribution-NonCommercial 4.0 International Public\nLicense with Acceptable Use Adde",
+      "size": "14kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/command-r:35b-08-2024-q4_0/blobs/b3741b7b9ce5",
+      "content_preview": "You are a knowledgable assistant. You can answer questions and perform tasks.",
+      "size": "77B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/command-r:35b-08-2024-q4_0/blobs/36b9655abe6a",
+      "content_preview": "{\n    \"stop\": [\n        \"<|START_OF_TURN_TOKEN|>\",\n        \"<|END_OF_TURN_TOKEN|>\"\n    ]\n}",
+      "size": "81B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/command-r:35b-08-2024-q4_0/blobs/922095537bc1",
+      "content_preview": "{{- if or .Tools .System }}<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|>\n{{- if .Tools }}# Safety Preamble",
+      "size": "2.9kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

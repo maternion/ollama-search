@@ -1,0 +1,55 @@
+{
+  "path": "/library/wizardcoder",
+  "tag_name": "13b-python-q4_1",
+  "full_path": "/library/wizardcoder:13b-python-q4_1",
+  "scraped_at": "2026-07-13T20:48:34.165198+00:00",
+  "readme_html": "\n        \n          <p>Wizard Coder is a code generation model based on <a href=\"https://ollama.ai/library/codellama\" rel=\"nofollow\">Code Llama</a>.</p>\n\n<h2>Versions</h2>\n\n<table>\n<thead>\n<tr>\n<th>Tag</th>\n<th>Date</th>\n<th>Notes</th>\n</tr>\n</thead>\n\n<tbody>\n<tr>\n<td><code>33b</code></td>\n<td>01/042024</td>\n<td>A new 33B model trained from <a href=\"https://ollama.ai/library/deepseek-coder/\" rel=\"nofollow\">Deepseek Coder</a></td>\n</tr>\n\n<tr>\n<td><code>python</code></td>\n<td>09/7/2023</td>\n<td>Initial release in 7B, 13B and 34B sizes based on <a href=\"https://ollama.ai/library/codellama/\" rel=\"nofollow\">Code Llama</a></td>\n</tr>\n</tbody>\n</table>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/WizardLM/WizardCoder-33B-V1.1\" rel=\"nofollow\">Hugging Face</a></p>\n\n<p><a href=\"https://arxiv.org/abs/2306.08568\" rel=\"nofollow\">WizardCoder: Empowering Code Large Language Models with Evol-Instruct</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "b28d73532f80",
+  "manifest_size": "8.2GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/wizardcoder:13b-python-q4_1/blobs/36bbab4759c4",
+      "content_preview": "arch  llama",
+      "size": "8.2GB",
+      "arch": "llama",
+      "parameters": "13B",
+      "quantization": "Q4_1"
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/wizardcoder:13b-python-q4_1/blobs/8fadb9ad1206",
+      "content_preview": "Below is an instruction that describes a task. Write a response that appropriately completes the req",
+      "size": "106B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/wizardcoder:13b-python-q4_1/blobs/58e1b82a691f",
+      "content_preview": "{\n    \"num_ctx\": 16384\n}",
+      "size": "18B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/wizardcoder:13b-python-q4_1/blobs/2d836d77287d",
+      "content_preview": "{{ .System }}\n### Instruction:\n{{ .Prompt }}\n### Response:",
+      "size": "61B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

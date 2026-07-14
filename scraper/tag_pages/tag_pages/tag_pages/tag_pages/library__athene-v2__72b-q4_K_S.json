@@ -1,0 +1,55 @@
+{
+  "path": "/library/athene-v2",
+  "tag_name": "72b-q4_K_S",
+  "full_path": "/library/athene-v2:72b-q4_K_S",
+  "scraped_at": "2026-07-13T21:15:29.042344+00:00",
+  "readme_html": "\n        \n          <h1>Athene-V2</h1>\n\n<p>Nexusflow\u2019s Athene-V2 chat model, built on Qwen 2.5\u2019s 72B foundation, achieves GPT-4o-level performance across key benchmarks while demonstrating how targeted optimization can enhance specific capabilities beyond traditional scaling approaches.</p>\n\n<h2>Model Features</h2>\n\n<ul>\n<li><strong>72B parameters</strong> fine-tuned from Qwen 2.5</li>\n<li><strong>State-of-the-art chat performance</strong> matching or exceeding GPT-4o</li>\n<li><strong>Superior code completion</strong> (ranking #2 on bigcode-bench-hard)</li>\n<li><strong>Enhanced mathematics capabilities</strong> (MATH benchmark)</li>\n<li><strong>Precise long-form log extraction</strong></li>\n<li><strong>Advanced post-training pipeline</strong> pushing the Pareto frontier</li>\n</ul>\n\n<p><img src=\"https://ollama.com/assets/library/athene-v2/99424f56-1e23-4f31-8dfa-4fc46eb6305f\" width=\"460\"/></p>\n\n<h2>References</h2>\n\n<p><a href=\"https://nexusflow.ai/blogs/athene-v2\" rel=\"nofollow\">Blog post</a></p>\n\n<p><a href=\"https://huggingface.co/Nexusflow/Athene-V2-Chat\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "1bb9b315e5a1",
+  "manifest_size": "44GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/athene-v2:72b-q4_K_S/blobs/292f94075348",
+      "content_preview": "arch  qwen2",
+      "size": "44GB",
+      "arch": "qwen2",
+      "parameters": "72.7B",
+      "quantization": "Q4_K_S"
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/athene-v2:72b-q4_K_S/blobs/66b9ea09bd5b",
+      "content_preview": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+      "size": "68B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/athene-v2:72b-q4_K_S/blobs/212eb82a7c73",
+      "content_preview": "Nexusflow.ai License Terms for Personal Use\nRelease Date: 08/19/2024\n\"Agreement\" means these terms a",
+      "size": "6.8kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/athene-v2:72b-q4_K_S/blobs/eb4402837c78",
+      "content_preview": "{{- if .Messages }}\n{{- if or .System .Tools }}<|im_start|>system\n{{- if .System }}\n{{ .System }}\n{{",
+      "size": "1.5kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

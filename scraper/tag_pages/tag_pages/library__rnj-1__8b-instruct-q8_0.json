@@ -1,0 +1,55 @@
+{
+  "path": "/library/rnj-1",
+  "tag_name": "8b-instruct-q8_0",
+  "full_path": "/library/rnj-1:8b-instruct-q8_0",
+  "scraped_at": "2026-07-13T21:20:42.061329+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/rnj-1/39181423-7841-47ee-bfe6-7b12966b45d1\" width=\"320\"/></p>\n\n<blockquote>\n<p>This model requires <a href=\"https://github.com/ollama/ollama/releases/tag/v0.13.3-rc0\" rel=\"nofollow\">Ollama 0.13.3</a> or later.</p>\n</blockquote>\n\n<p>Rnj-1 is a family of 8B parameter open-weight, dense models trained from scratch by Essential AI, optimized for code and STEM with capabilities on par with SOTA open-weight models. These models perform well across a range of programming languages and boast strong agentic capabilities (e.g., inside agentic frameworks like mini-SWE-agent), while also excelling at tool-calling. They additionally exhibit strong capabilities in math and science. Herein, rnj-1 refers to the base model, while rnj-1-instruct refers to the post-trained instruction tuned model.</p>\n\n<p><img src=\"/assets/library/rnj-1/d40fd93f-fe0c-4c6b-ac44-06b6c9b8ae8e\" alt=\"image.png\"/></p>\n\n<h3>Highlights of abilities</h3>\n\n<ul>\n<li><strong>Code generation:</strong> Both <code>rnj-1-instruct</code> and <code>rnj-1</code> demonstrate strong code generation abilities as measured on tasks like HumanEval+, MBPP+, BigCodeBench, and LiveCodeBench v6. Both models compete with the strongest open weight models, sometimes outperforming even larger models such as GPT OSS 20B. We measured code comprehension abilities using the task of predicting inputs given outputs and vice-versa, Crux-IO. We find our models outperform comparable baselines. For multi-lingual code generation capabilities across programming languages we measure MultiPL-E on 6 languages (C++, TypeScript, Java, JavaScript, Shell, PHP) and we find performance close to the strongest model.</li>\n<li><strong>Agentic and Tool Use:</strong> <code>rnj-1-instruct</code> dominates the pack on agentic coding, one of our target abilities. SWE-bench performance is indicative of the model\u2019s ability to tackle everyday software engineering tasks. The model is an order of magnitude stronger than comparably sized models on SWE-bench and approaches the capabilities available in much larger models. It scores <code>20.8%</code> on SWE-bench Verified in bash-only mode, which is higher than Gemini 2.0 flash and Qwen2.5-Coder 32B Instruct under the same agentic framework (<a href=\"https://www.swebench.com/bash-only.html\" rel=\"nofollow\">leaderboard</a>).<br><br>\nThere is a surge of interest in developing models\u2019 abilities to write performant code. <code>rnj-1-instruct</code> is able to use a profiler to iteratively improve the performance of the code it writes. For instance, on <a href=\"https://github.com/q-rz/enamel/tree/main\" rel=\"nofollow\">Enamel</a>, which measures abilities to write efficient solutions to algorithmic problems, the model outperforms all other models under the same setting.<br><br>\nFurthermore, <code>rnj-1-instruct</code> surpasses comparable models in tool use performance as measured by the Berkeley Functional Calling Leaderboard (BFCL).</li>\n<li><strong>Code Infilling</strong> : Having specifically been trained on FIM-ed pre-training data, <code>rnj-1</code> exhibits strong infilling abilities, which have been further enhanced during post-training. The base model <code>rnj-1</code> scores highly on HE-FIM-Python (avg) at 82.49% and <code>rnj-1-instruct</code> achieves 86.21%.</li>\n<li><strong>Mathematical Problem Solving:</strong> <code>rnj-1-instruct</code> shows strong mathematical abilities across several levels of difficulty from elementary math (GSM8k), high school and undergraduate math (Minerva-MATH), and competition math (AIME \u201824 and \u201825). On harder subjects, it outcompetes or is on par with the strongest model in the pack.</li>\n<li><strong>Scientific Reasoning:</strong> <code>rnj-1-instruct</code> exhibits long-context reasoning abilities that are needed to solve hard science and technical questions in GPQA-Diamond and SuperGPQA.</li>\n</ul>\n\n<h3>Reference</h3>\n\n<p><a href=\"https://www.essential.ai/research/rnj-1\" rel=\"nofollow\">rnj-1 blog post</a></p>\n\n        \n      ",
+  "manifest_updated": "7 months ago",
+  "manifest_digest": "57eea2304a52",
+  "manifest_size": "8.8GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/rnj-1:8b-instruct-q8_0/blobs/48ddf52ae4c3",
+      "content_preview": "arch  gemma3",
+      "size": "8.8GB",
+      "arch": "gemma3",
+      "parameters": "8.31B",
+      "quantization": "Q8_0"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/rnj-1:8b-instruct-q8_0/blobs/e559197fae99",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/rnj-1:8b-instruct-q8_0/blobs/3685c9d39c8b",
+      "content_preview": "{\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",\n        \"<|eot_id|>\"",
+      "size": "114B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/rnj-1:8b-instruct-q8_0/blobs/d588893e14d0",
+      "content_preview": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\nYou are rnj-1, a foundation model traine",
+      "size": "1.4kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

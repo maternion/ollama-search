@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/falcon:7b/blobs/4dec76bb1a47",
+  "tag_full": "falcon:7b",
+  "blob_type": "template",
+  "digest": "4dec76bb1a47",
+  "size": "45B",
+  "metadata": [],
+  "content": "{{ .System }}\nUser: {{ .Prompt }}\nAssistant:",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T05:21:55.989746+00:00"
+}

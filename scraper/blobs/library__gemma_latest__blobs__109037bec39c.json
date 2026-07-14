@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/gemma:latest/blobs/109037bec39c",
+  "tag_full": "gemma:latest",
+  "blob_type": "template",
+  "digest": "109037bec39c",
+  "size": "136B",
+  "metadata": [],
+  "content": "<start_of_turn>user\n{{ if .System }}{{ .System }} {{ end }}{{ .Prompt }}<end_of_turn>\n<start_of_turn>model\n{{ .Response }}<end_of_turn>",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T23:30:48.182695+00:00"
+}

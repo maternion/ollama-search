@@ -1,0 +1,46 @@
+{
+  "path": "/library/nemotron-mini",
+  "tag_name": "4b-instruct-q4_1",
+  "full_path": "/library/nemotron-mini:4b-instruct-q4_1",
+  "scraped_at": "2026-07-13T21:12:20.090802+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/nemotron-mini/4e0ea563-a507-45e7-ad0b-b083918ec11b\" width=\"320\"/></p>\n\n<p>Nemotron-Mini-4B-Instruct is a model for generating responses for roleplaying, retrieval augmented generation, and function calling. It is a small language model (SLM) optimized through distillation, pruning and quantization for speed and on-device deployment.</p>\n\n<p>This instruct model is optimized for roleplay, RAG QA, and function calling in English. It supports a context length of 4,096 tokens. This model is ready for commercial use.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://blogs.nvidia.com/blog/digital-human-technology-mecha-break/\" rel=\"nofollow\">Blog</a></p>\n\n<p><a href=\"https://huggingface.co/nvidia/Nemotron-Mini-4B-Instruct\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "715f0114b145",
+  "manifest_size": "2.8GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/nemotron-mini:4b-instruct-q4_1/blobs/00e060e49f73",
+      "content_preview": "arch  nemotron",
+      "size": "2.8GB",
+      "arch": "nemotron",
+      "parameters": "4.19B",
+      "quantization": "Q4_1"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/nemotron-mini:4b-instruct-q4_1/blobs/3436c20529fb",
+      "content_preview": "NVIDIA AI Foundation Models Community License Agreement\nIMPORTANT NOTICE \u2013 PLEASE READ AND AGREE B",
+      "size": "15kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/nemotron-mini:4b-instruct-q4_1/blobs/fd80a52b9db8",
+      "content_preview": "{{- if (or .Tools .System) }}<extra_id_0>System\n{{ if .System }}{{ .System }}\n{{ end }}\n{{- if .Tool",
+      "size": "773B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

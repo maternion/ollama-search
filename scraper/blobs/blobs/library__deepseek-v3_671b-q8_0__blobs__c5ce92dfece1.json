@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/deepseek-v3:671b-q8_0/blobs/c5ce92dfece1",
+  "tag_full": "deepseek-v3:671b-q8_0",
+  "blob_type": "template",
+  "digest": "c5ce92dfece1",
+  "size": "359B",
+  "metadata": [],
+  "content": "{{- range $i, $_ := .Messages }}\n{{- if eq .Role \"user\" }}<\uff5cUser\uff5c>\n{{- else if eq .Role \"assistant\" }}<\uff5cAssistant\uff5c>\n{{- end }}{{ .Content }}\n{{- if eq (len (slice $.Messages $i)) 1 }}\n{{- if eq .Role \"user\" }}<\uff5cAssistant\uff5c>\n{{- end }}\n{{- else if eq .Role \"assistant\" }}<\uff5cend\u2581of\u2581sentence\uff5c><\uff5cbegin\u2581of\u2581sentence\uff5c>\n{{- end }}\n{{- end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T00:33:20.128643+00:00"
+}

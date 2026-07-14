@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/llama3:8b-instruct-q4_0/blobs/8ab4849b038c",
+  "tag_full": "llama3:8b-instruct-q4_0",
+  "blob_type": "template",
+  "digest": "8ab4849b038c",
+  "size": "254B",
+  "metadata": [],
+  "content": "{{ if .System }}<|start_header_id|>system<|end_header_id|>\n\n{{ .System }}<|eot_id|>{{ end }}{{ if .Prompt }}<|start_header_id|>user<|end_header_id|>\n\n{{ .Prompt }}<|eot_id|>{{ end }}<|start_header_id|>assistant<|end_header_id|>\n\n{{ .Response }}<|eot_id|>",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T22:35:19.069540+00:00"
+}

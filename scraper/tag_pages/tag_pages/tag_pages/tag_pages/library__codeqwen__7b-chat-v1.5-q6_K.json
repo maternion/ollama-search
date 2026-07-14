@@ -1,0 +1,64 @@
+{
+  "path": "/library/codeqwen",
+  "tag_name": "7b-chat-v1.5-q6_K",
+  "full_path": "/library/codeqwen:7b-chat-v1.5-q6_K",
+  "scraped_at": "2026-07-13T20:43:31.935739+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/ollama/ollama/assets/251292/c17cc1ce-9eb9-4658-8b02-b2f15bbaf1c1\" width=\"360\"/></p>\n\n<p>CodeQwen1.5 is based on Qwen1.5. It is trained on 3 trillion tokens of code data. Its major features include:</p>\n\n<ul>\n<li>Strong code generation capabilities and competitive performance across a series of benchmarks</li>\n<li>Support for long context understanding and generation with a maximum context length of 64K tokens</li>\n<li>Support for 92 coding languages</li>\n<li>Excellent performance in Text-to-SQL, fixing bugs and other coding use cases.</li>\n</ul>\n\n<h2>References</h2>\n\n<p><a href=\"https://qwenlm.github.io/blog/codeqwen1.5/\" rel=\"nofollow\">Blog Post</a></p>\n\n<p><a href=\"https://github.com/QwenLM/Qwen\" rel=\"nofollow\">GitHub</a></p>\n\n<p><a href=\"https://huggingface.co/Qwen\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "1140b50f25a0",
+  "manifest_size": "6.4GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/codeqwen:7b-chat-v1.5-q6_K/blobs/f7f3f398f863",
+      "content_preview": "arch  qwen2",
+      "size": "6.4GB",
+      "arch": "qwen2",
+      "parameters": "7.25B",
+      "quantization": "Q6_K"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/codeqwen:7b-chat-v1.5-q6_K/blobs/9cdf4ff2dc84",
+      "content_preview": "../../../Qwen/CodeQwen1.5-7B-Chat/LICENSE",
+      "size": "41B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/codeqwen:7b-chat-v1.5-q6_K/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "size": "59B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/codeqwen:7b-chat-v1.5-q6_K/blobs/75357d685f23",
+      "content_preview": "You are a helpful assistant.",
+      "size": "28B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/codeqwen:7b-chat-v1.5-q6_K/blobs/62fbfd9ed093",
+      "content_preview": "{{ if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}{{ if .Prompt }}<|im_start|>user",
+      "size": "182B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

@@ -1,0 +1,55 @@
+{
+  "path": "/library/granite3-dense",
+  "tag_name": "2b-instruct-q4_0",
+  "full_path": "/library/granite3-dense:2b-instruct-q4_0",
+  "scraped_at": "2026-07-13T20:51:51.814413+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/granite3-dense/e2955da9-fee8-45d1-81ed-fe313f4e83eb\" alt=\"An illustration of Ollama holding a beautiful flower with the IBM Rebus logo of the Eye, Bee and M, made by Paul Rand.\"/></p>\n\n<h3>Granite dense models</h3>\n\n<p>The IBM Granite <strong>2B</strong> and <strong>8B</strong> models are text-only dense LLMs trained on over 12 trillion tokens of data, demonstrated significant improvements over their predecessors in performance and speed in IBM\u2019s initial testing. Granite-8B-Instruct now rivals Llama 3.1 8B-Instruct across both OpenLLM Leaderboard v1 and OpenLLM Leaderboard v2 benchmarks.</p>\n\n<p><strong>They are designed to support tool-based use cases</strong> and for retrieval augmented generation (RAG), streamlining code generation, translation and bug fixing.</p>\n\n<h2>Parameter Sizes</h2>\n\n<p><strong>2B:</strong></p>\n\n<p><code>ollama run granite3-dense:2b</code></p>\n\n<p><strong>8B:</strong></p>\n\n<p><code>ollama run granite3-dense:8b</code></p>\n\n<h2>Supported Languages</h2>\n\n<p>English, German, Spanish, French, Japanese, Portuguese, Arabic, Czech, Italian, Korean, Dutch, Chinese (Simplified)</p>\n\n<h3>Capabilities</h3>\n\n<ul>\n<li>Summarization</li>\n<li>Text classification</li>\n<li>Text extraction</li>\n<li>Question-answering</li>\n<li>Retrieval Augmented Generation (RAG)</li>\n<li>Code related</li>\n<li>Function-calling</li>\n<li>Multilingual dialog use cases</li>\n</ul>\n\n<h3>Granite mixture of experts models</h3>\n\n<p>The Granite mixture of experts models are available in <strong>1B and 3B</strong> parameter sizes designed for <strong>low latency usage</strong>.</p>\n\n<p><a href=\"https://ollama.com/library/granite3-moe\" rel=\"nofollow\">See model page</a></p>\n\n<h3>Learn more</h3>\n\n<ul>\n<li><strong>Developers:</strong> IBM Research</li>\n<li><strong>GitHub Repository:</strong> <a href=\"https://github.com/ibm-granite/granite-3.0-language-models\" rel=\"nofollow\">ibm-granite/granite-3.0-language-models</a></li>\n<li><strong>Website</strong>: <a href=\"https://www.ibm.com/granite/docs/\" rel=\"nofollow\">Granite Docs</a></li>\n<li><strong>Release Date</strong>: October 21st, 2024</li>\n<li><strong>License:</strong> <a href=\"https://www.apache.org/licenses/LICENSE-2.0\" rel=\"nofollow\">Apache 2.0</a>.</li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "dd4a07b9e1b7",
+  "manifest_size": "1.5GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/granite3-dense:2b-instruct-q4_0/blobs/361d1750f75f",
+      "content_preview": "arch  granite",
+      "size": "1.5GB",
+      "arch": "granite",
+      "parameters": "2.63B",
+      "quantization": "Q4_0"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/granite3-dense:2b-instruct-q4_0/blobs/492069a62c25",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/granite3-dense:2b-instruct-q4_0/blobs/31ad3abb7dce",
+      "content_preview": "You are Granite, an AI language model developed by IBM in 2024.",
+      "size": "63B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/granite3-dense:2b-instruct-q4_0/blobs/604785e698e9",
+      "content_preview": "{{- if .Tools }}<|start_of_role|>available_tools<|end_of_role|>\n{{- range .Tools }}\n{{ . }}\n{{ end }",
+      "size": "664B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

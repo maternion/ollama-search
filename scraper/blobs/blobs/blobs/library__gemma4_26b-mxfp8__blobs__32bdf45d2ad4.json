@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/gemma4:26b-mxfp8/blobs/32bdf45d2ad4",
+  "tag_full": "gemma4:26b-mxfp8",
+  "blob_type": "json",
+  "digest": "32bdf45d2ad4",
+  "size": "1.7kB",
+  "metadata": [],
+  "content": "{\n\"audio_ms_per_token\": 40,\n\"audio_seq_length\": 750,\n\"feature_extractor\": {\n\"dither\": 0.0,\n\"feature_extractor_type\": \"Gemma4AudioFeatureExtractor\",\n\"feature_size\": 128,\n\"fft_length\": 512,\n\"fft_overdrive\": false,\n\"frame_length\": 320,\n\"hop_length\": 160,\n\"input_scale_factor\": 1.0,\n\"max_frequency\": 8000.0,\n\"mel_floor\": 0.001,\n\"min_frequency\": 0.0,\n\"padding_side\": \"right\",\n\"padding_value\": 0.0,\n\"per_bin_mean\": null,\n\"per_bin_stddev\": null,\n\"preemphasis\": 0.0,\n\"preemphasis_htk_flavor\": true,\n\"return_attention_mask\": true,\n\"sampling_rate\": 16000\n},\n\"image_processor\": {\n\"do_convert_rgb\": true,\n\"do_normalize\": false,\n\"do_rescale\": true,\n\"do_resize\": true,\n\"image_mean\": [\n0.0,\n0.0,\n0.0\n],\n\"image_processor_type\": \"Gemma4ImageProcessor\",\n\"image_seq_length\": 280,\n\"image_std\": [\n1.0,\n1.0,\n1.0\n],\n\"max_soft_tokens\": 280,\n\"patch_size\": 16,\n\"pooling_kernel_size\": 3,\n\"resample\": 3,\n\"rescale_factor\": 0.00392156862745098\n},\n\"image_seq_length\": 280,\n\"processor_class\": \"Gemma4Processor\",\n\"video_processor\": {\n\"do_convert_rgb\": true,\n\"do_normalize\": true,\n\"do_rescale\": true,\n\"do_resize\": true,\n\"do_sample_frames\": true,\n\"image_mean\": [\n0.0,\n0.0,\n0.0\n],\n\"image_std\": [\n1.0,\n1.0,\n1.0\n],\n\"max_soft_tokens\": 70,\n\"num_frames\": 32,\n\"patch_size\": 16,\n\"pooling_kernel_size\": 3,\n\"resample\": 3,\n\"rescale_factor\": 0.00392156862745098,\n\"return_metadata\": false,\n\"video_processor_type\": \"Gemma4VideoProcessor\"\n}\n}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T21:31:36.136776+00:00"
+}

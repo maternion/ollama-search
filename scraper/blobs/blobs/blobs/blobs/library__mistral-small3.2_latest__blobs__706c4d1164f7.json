@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/mistral-small3.2:latest/blobs/706c4d1164f7",
+  "tag_full": "mistral-small3.2:latest",
+  "blob_type": "template",
+  "digest": "706c4d1164f7",
+  "size": "699B",
+  "metadata": [],
+  "content": "{{- range $index, $_ := .Messages }}\n{{- if eq .Role \"system\" }}[SYSTEM_PROMPT]{{ .Content }}[/SYSTEM_PROMPT]\n{{- else if eq .Role \"user\" }}\n{{- if and (le (len (slice $.Messages $index)) 2) $.Tools }}[AVAILABLE_TOOLS]{{ $.Tools }}[/AVAILABLE_TOOLS]\n{{- end }}[INST]{{ .Content }}[/INST]\n{{- else if eq .Role \"assistant\" }}\n{{- if .Content }}{{ .Content }}\n{{- if not (eq (len (slice $.Messages $index)) 1) }}</s>\n{{- end }}\n{{- else if .ToolCalls }}\n{{- range $i, $_ := .ToolCalls }}[TOOL_CALLS]{{ .Function.Name }}[CALL_ID]{{ $i }}[ARGS]{{ .Function.Arguments }}\n{{- end }}</s>\n{{- end }}\n{{- else if eq .Role \"tool\" }}[TOOL_RESULTS]{\"content\": {{ .Content }}}[/TOOL_RESULTS]\n{{- end }}\n{{- end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T01:30:13.174308+00:00"
+}

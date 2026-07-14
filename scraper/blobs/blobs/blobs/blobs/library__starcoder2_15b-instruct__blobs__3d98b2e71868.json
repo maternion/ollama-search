@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/starcoder2:15b-instruct/blobs/3d98b2e71868",
+  "tag_full": "starcoder2:15b-instruct",
+  "blob_type": "template",
+  "digest": "3d98b2e71868",
+  "size": "141B",
+  "metadata": [],
+  "content": "{{ if .System }}{{ .System }}\n\n{{ end }}{{ if .Prompt }}### Instruction\n{{ .Prompt }}\n\n\n{{ end }}### Response\n{{ .Response }}<|endoftext|>\n\n",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T01:09:19.579481+00:00"
+}

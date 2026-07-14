@@ -1,0 +1,55 @@
+{
+  "path": "/library/deepseek-coder",
+  "tag_name": "33b-instruct-q8_0",
+  "full_path": "/library/deepseek-coder:33b-instruct-q8_0",
+  "scraped_at": "2026-07-13T20:06:33.290002+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/jmorganca/ollama/assets/251292/0e18bfb4-2964-41e4-b01c-043670228690\" width=\"460\"></p>\n\n<p>DeepSeek Coder is trained from scratch on both 87% code and 13% natural language in English and Chinese. Each of the models are pre-trained on 2 trillion tokens.</p>\n\n<h3>Models available</h3>\n\n<p>1.3 billion parameter model</p>\n\n<pre><code>ollama run deepseek-coder\n</code></pre>\n\n<p>6.7 billion parameter model</p>\n\n<pre><code>ollama run deepseek-coder:6.7b\n</code></pre>\n\n<p>33 billion parameter model</p>\n\n<pre><code>ollama run deepseek-coder:33b\n</code></pre>\n\n<h3>CLI</h3>\n\n<p>Open the terminal and run <code>ollama run deepseek-coder</code></p>\n\n<h3>API</h3>\n\n<p>Example using curl:</p>\n\n<pre><code>curl -X POST http://localhost:11434/api/generate -d &#39;{\n  &#34;model&#34;: &#34;deepseek-coder&#34;,\n  &#34;prompt&#34;:&#34;Why is the sky blue?&#34;\n }&#39;\n</code></pre>\n\n<p><a href=\"https://github.com/jmorganca/ollama/blob/main/docs/api.md\" rel=\"nofollow\">API documentation</a></p>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/deepseek-ai\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "1b30ba8b1b95",
+  "manifest_size": "35GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/deepseek-coder:33b-instruct-q8_0/blobs/d9726a3c89a4",
+      "content_preview": "arch  llama",
+      "size": "35GB",
+      "arch": "llama",
+      "parameters": "33.3B",
+      "quantization": "Q8_0"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/deepseek-coder:33b-instruct-q8_0/blobs/a3a0e9449cb6",
+      "content_preview": "DEEPSEEK LICENSE AGREEMENT\nVersion 1.0, 23 October 2023\nCopyright (c) 2023 DeepSeek\nSection I: PREAM",
+      "size": "14kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/deepseek-coder:33b-instruct-q8_0/blobs/8972a96b8ff1",
+      "content_preview": "You are an AI programming assistant, utilizing the Deepseek Coder model, developed by Deepseek Compa",
+      "size": "297B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/deepseek-coder:33b-instruct-q8_0/blobs/8893e08fa9f9",
+      "content_preview": "{{ .System }}\n### Instruction:\n{{ .Prompt }}\n### Response:",
+      "size": "59B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

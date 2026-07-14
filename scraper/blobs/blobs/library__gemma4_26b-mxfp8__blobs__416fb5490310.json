@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/gemma4:26b-mxfp8/blobs/416fb5490310",
+  "tag_full": "gemma4:26b-mxfp8",
+  "blob_type": "json",
+  "digest": "416fb5490310",
+  "size": "2.3kB",
+  "metadata": [],
+  "content": "{\n\"architectures\": [\n\"Gemma4AssistantForCausalLM\"\n],\n\"audio_token_id\": 258881,\n\"backbone_hidden_size\": 2816,\n\"boa_token_id\": 256000,\n\"boi_token_id\": 255999,\n\"centroid_intermediate_top_k\": 32,\n\"dtype\": \"bfloat16\",\n\"eoa_token_id\": 258883,\n\"eoi_token_id\": 258882,\n\"image_token_id\": 258880,\n\"model_type\": \"gemma4_assistant\",\n\"num_centroids\": 2048,\n\"text_config\": {\n\"_name_or_path\": \"\",\n\"architectures\": null,\n\"attention_bias\": false,\n\"attention_dropout\": 0.0,\n\"attention_k_eq_v\": true,\n\"bos_token_id\": 2,\n\"chunk_size_feed_forward\": 0,\n\"dtype\": \"bfloat16\",\n\"enable_moe_block\": false,\n\"eos_token_id\": 1,\n\"final_logit_softcapping\": null,\n\"global_head_dim\": 512,\n\"head_dim\": 256,\n\"hidden_activation\": \"gelu_pytorch_tanh\",\n\"hidden_size\": 1024,\n\"hidden_size_per_layer_input\": 0,\n\"id2label\": {\n\"0\": \"LABEL_0\",\n\"1\": \"LABEL_1\"\n},\n\"initializer_range\": 0.02,\n\"intermediate_size\": 8192,\n\"is_encoder_decoder\": false,\n\"label2id\": {\n\"LABEL_0\": 0,\n\"LABEL_1\": 1\n},\n\"layer_types\": [\n\"sliding_attention\",\n\"sliding_attention\",\n\"sliding_attention\",\n\"full_attention\"\n],\n\"max_position_embeddings\": 131072,\n\"model_type\": \"gemma4_text\",\n\"moe_intermediate_size\": null,\n\"num_attention_heads\": 16,\n\"num_experts\": null,\n\"num_global_key_value_heads\": 2,\n\"num_hidden_layers\": 4,\n\"num_key_value_heads\": 8,\n\"num_kv_shared_layers\": 4,\n\"output_attentions\": false,\n\"output_hidden_states\": false,\n\"pad_token_id\": 0,\n\"problem_type\": null,\n\"return_dict\": true,\n\"rms_norm_eps\": 1e-06,\n\"rope_parameters\": {\n\"full_attention\": {\n\"partial_rotary_factor\": 0.25,\n\"rope_theta\": 1000000.0,\n\"rope_type\": \"proportional\"\n},\n\"sliding_attention\": {\n\"rope_theta\": 10000.0,\n\"rope_type\": \"default\"\n}\n},\n\"sliding_window\": 1024,\n\"tie_word_embeddings\": true,\n\"top_k_experts\": null,\n\"use_bidirectional_attention\": null,\n\"use_cache\": true,\n\"use_double_wide_mlp\": false,\n\"vocab_size\": 262144,\n\"vocab_size_per_layer_input\": 0\n},\n\"tie_word_embeddings\": true,\n\"transformers_version\": \"5.7.0.dev0\",\n\"use_ordered_embeddings\": false\n}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T21:31:39.841180+00:00"
+}

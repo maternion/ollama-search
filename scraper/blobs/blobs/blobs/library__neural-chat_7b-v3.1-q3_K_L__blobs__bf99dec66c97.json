@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/neural-chat:7b-v3.1-q3_K_L/blobs/bf99dec66c97",
+  "tag_full": "neural-chat:7b-v3.1-q3_K_L",
+  "blob_type": "template",
+  "digest": "bf99dec66c97",
+  "size": "67B",
+  "metadata": [],
+  "content": "### System:\n{{ .System }}\n\n### User:\n{{ .Prompt }}\n\n### Assistant:",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T05:48:50.912606+00:00"
+}

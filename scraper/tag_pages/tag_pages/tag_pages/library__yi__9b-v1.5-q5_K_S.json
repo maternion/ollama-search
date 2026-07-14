@@ -1,0 +1,37 @@
+{
+  "path": "/library/yi",
+  "tag_name": "9b-v1.5-q5_K_S",
+  "full_path": "/library/yi:9b-v1.5-q5_K_S",
+  "scraped_at": "2026-07-13T20:30:33.225510+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/jmorganca/ollama/assets/251292/ac83ff77-b8aa-4dae-a619-d9603ef2edaa\" alt=\"yi\" width=\"200\"/></p>\n\n<p>Yi is a series of large language models trained on a high-quality corpus of 3 trillion tokens that support both the English and Chinese languages.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/01-ai/Yi-34B\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "609bb962e089",
+  "manifest_size": "6.1GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/yi:9b-v1.5-q5_K_S/blobs/8a4abcebd34a",
+      "content_preview": "arch  llama",
+      "size": "6.1GB",
+      "arch": "llama",
+      "parameters": "8.83B",
+      "quantization": "Q5_K_S"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/yi:9b-v1.5-q5_K_S/blobs/c71d239df917",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/qwen2-math:1.5b-instruct-fp16/blobs/029b87c88d24",
+  "tag_full": "qwen2-math:1.5b-instruct-fp16",
+  "blob_type": "template",
+  "digest": "029b87c88d24",
+  "size": "102B",
+  "metadata": [],
+  "content": "{{- range .Messages }}<|im_start|>{{ .Role }}\n{{ .Content }}<|im_end|>\n{{- end }}<|im_start|>assistant",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T05:37:04.362927+00:00"
+}

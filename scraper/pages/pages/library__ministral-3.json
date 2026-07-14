@@ -1,0 +1,48 @@
+{
+  "path": "/library/ministral-3",
+  "name": "ministral-3",
+  "scraped_at": "2026-07-13T19:28:52.011508+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/ministral-3/83fa3859-d87f-492c-bd81-596cfbceeccb\" width=\"120\"/></p>\n\n<blockquote>\n<p>This model requires <a href=\"https://github.com/ollama/ollama/releases/tag/v0.13.1-rc1\" rel=\"nofollow\">Ollama 0.13.1</a>, which is currently in pre-release.</p>\n</blockquote>\n\n<p>The Ministral 3 family is designed for edge deployment, capable of running on a wide range of hardware.</p>\n\n<p>The Ministral 3 models offer the following capabilities:</p>\n\n<ul>\n<li>Vision: Enables the model to analyze images and provide insights based on visual content, in addition to text.</li>\n<li>Multilingual: Supports dozens of languages, including English, French, Spanish, German, Italian, Portuguese, Dutch, Chinese, Japanese, Korean, Arabic.</li>\n<li>System Prompt: Maintains strong adherence and support for system prompts.</li>\n<li>Agentic: Offers best-in-class agentic capabilities with native function calling and JSON outputting.</li>\n<li>Edge-Optimized: Delivers best-in-class performance at a small scale, deployable anywhere.</li>\n<li>Apache 2.0 License: Open-source license allowing usage and modification for both commercial and non-commercial purposes.</li>\n<li>Large Context Window: Supports a 256k context window.</li>\n</ul>\n\n<p><img src=\"/assets/library/ministral-3/e7c21288-12be-484a-9860-348900545e0b\" alt=\"gpqa\"/></p>\n\n<p><strong>Ministral 14B</strong>\n<img src=\"/assets/library/ministral-3/ea92b94b-5804-48c1-b9d0-78b54aba1ed4\" alt=\"Ministral 14B\"/></p>\n\n<p><strong>Ministral 8B</strong>\n<img src=\"/assets/library/ministral-3/6329dd14-6ef4-4791-870e-cc1dd3fb1b71\" alt=\"Ministral 8B\"/></p>\n\n<p><strong>Ministral 3B</strong>\n<img src=\"/assets/library/ministral-3/dac29f36-ba47-42b3-af92-550faeb97556\" alt=\"Ministral 3B\"/></p>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model ministral-3"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model ministral-3"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model ministral-3"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model ministral-3"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model ministral-3"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model ministral-3"
+    }
+  ]
+}

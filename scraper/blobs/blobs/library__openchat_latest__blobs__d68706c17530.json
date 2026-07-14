@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/openchat:latest/blobs/d68706c17530",
+  "tag_full": "openchat:latest",
+  "blob_type": "template",
+  "digest": "d68706c17530",
+  "size": "98B",
+  "metadata": [],
+  "content": "{{ .System }}<|end_of_turn|>GPT4 Correct User: {{ .Prompt }}<|end_of_turn|>GPT4 Correct Assistant:",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T04:14:40.147348+00:00"
+}

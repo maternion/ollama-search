@@ -1,0 +1,37 @@
+{
+  "path": "/library/starcoder",
+  "tag_name": "1b-base-q5_K_M",
+  "full_path": "/library/starcoder:1b-base-q5_K_M",
+  "scraped_at": "2026-07-13T20:36:19.056920+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/jmorganca/ollama/assets/251292/1bf014aa-cde3-4f9d-88df-81773106b1dd\" width=\"400\"/></p>\n\n<p>StarCoder models are trained on GitHub code with over 80+ programming languages.</p>\n\n<h2>Example prompt</h2>\n\n<pre><code>def print_hello_world():\n</code></pre>\n\n<h2>Example response</h2>\n\n<pre><code>    print(&#34;Hello world&#34;)\n</code></pre>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "7daf9520221a",
+  "manifest_size": "910MB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/starcoder:1b-base-q5_K_M/blobs/8c2139007a13",
+      "content_preview": "arch  starcoder",
+      "size": "910MB",
+      "arch": "starcoder",
+      "parameters": "1.24B",
+      "quantization": "Q5_K_M"
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/starcoder:1b-base-q5_K_M/blobs/1576480a555b",
+      "content_preview": "{\n    \"stop\": [\n        \"<|endoftext|>\"\n    ]\n}",
+      "size": "36B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

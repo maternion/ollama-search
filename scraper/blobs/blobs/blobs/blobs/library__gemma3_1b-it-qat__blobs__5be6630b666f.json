@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/gemma3:1b-it-qat/blobs/5be6630b666f",
+  "tag_full": "gemma3:1b-it-qat",
+  "blob_type": "template",
+  "digest": "5be6630b666f",
+  "size": "359B",
+  "metadata": [],
+  "content": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if or (eq .Role \"user\") (eq .Role \"system\") }}<start_of_turn>user\n{{ .Content }}<end_of_turn>\n{{ if $last }}<start_of_turn>model\n{{ end }}\n{{- else if eq .Role \"assistant\" }}<start_of_turn>model\n{{ .Content }}{{ if not $last }}<end_of_turn>\n{{ end }}\n{{- end }}\n{{- end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T22:09:26.581504+00:00"
+}

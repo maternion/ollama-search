@@ -1,0 +1,82 @@
+{
+  "path": "/library/north-mini-code-1.0",
+  "tag_name": "mlx-mxfp8",
+  "full_path": "/library/north-mini-code-1.0:mlx-mxfp8",
+  "scraped_at": "2026-07-13T19:31:07.774857+00:00",
+  "readme_html": "\n        \n          <p><strong>North Mini Code</strong> is the first model in <a href=\"https://cohere.com/\" rel=\"nofollow\">Cohere\u2019s</a> new family of models, and is specifically designed and trained for agentic software engineering tasks.</p>\n\n<p><img src=\"/assets/library/north-mini-code-1.0/b51208ed-06d8-4c7b-8a35-666333532051\" alt=\"Benchmark\"/></p>\n\n<ul>\n<li>Agentic coding focus, post-trained with two-stage supervised fine-tuning followed by reinforcement learning with verifiable rewards (RLVR) on real-world software engineering and terminal tasks.</li>\n<li>256K context length with up to 64K output tokens, optimized for repository-scale understanding and long-horizon agent trajectories.</li>\n<li>Trained across multiple agent harnesses (SWE-Agent, mini-SWE-agent, OpenCode, Terminus 2) for robustness in real-world tooling environments rather than a single scaffold.</li>\n<li>Native tool-use and interleaved thinking support, designed to plug into coding agents like OpenCode.</li>\n</ul>\n\n<p>On Artificial Analysis\u2019 Coding Index, North Mini Code scores 33.4, outperforming similarly sized open models like Qwen3.5 (35B-A3B), Gemma 4 (26B-A4B), and Devstral Small 2 (24B), as well as substantially larger models including Nemotron 3 Super (120B-A12B), Mistral Small 4 (119B-A6B), and Devstral 2 (123B).</p>\n\n<h3>Architecture</h3>\n\n<p>North Mini Code is a decoder-only Transformer-based sparse Mixture-of-Experts model. It interleaves sliding-window attention (with RoPE) and global attention (with no positional embeddings) in a 3:1 ratio. The feed-forward block is an MoE block with 128 experts, 8 of which are activated per token, each using SwiGLU activation. The router applies a sigmoid activation before top-k selection, and a single dense layer precedes the sparse layers.</p>\n\n<h3>Tool use</h3>\n\n<p>North Mini Code is trained for tool use and agentic coding, and supports interleaved thinking \u2014 it works best with thinking enabled. For best performance, pass model-generated thinking content forward to subsequent agentic steps and chat turns. Tool descriptions are best provided as JSON schema.</p>\n\n<h3>License</h3>\n\n<p>North Mini Code is released under the <a href=\"https://www.apache.org/licenses/LICENSE-2.0.txt\" rel=\"nofollow\">Apache 2.0</a> license, and also requires adhering to <a href=\"https://docs.cohere.com/docs/c4ai-acceptable-use-policy\" rel=\"nofollow\">Cohere Lab\u2019s Acceptable Use Policy</a>.</p>\n\n<h3>Reference</h3>\n\n<ul>\n<li><a href=\"https://huggingface.co/blog/CohereLabs/introducing-north-mini-code\" rel=\"nofollow\">Blog post</a></li>\n<li><a href=\"https://huggingface.co/CohereLabs/North-Mini-Code-1.0\" rel=\"nofollow\">Hugging Face</a></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "3 weeks ago",
+  "manifest_digest": "82b3f0ab2d1c",
+  "manifest_size": "31GB",
+  "files": [
+    {
+      "type": "json",
+      "blob_url": "/library/north-mini-code-1.0:mlx-mxfp8/blobs/1bbfc76080a7",
+      "content_preview": "{\n\"_from_model_config\": true,\n\"bos_token_id\": 2,\n\"eos_token_id\": 255001,\n\"pad_token_id\": 0,\n\"transfo",
+      "size": "136B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "json",
+      "blob_url": "/library/north-mini-code-1.0:mlx-mxfp8/blobs/82b62b61b9cc",
+      "content_preview": "{\n\"bos_token\": {\n\"content\": \"<BOS_TOKEN>\",\n\"lstrip\": false,\n\"normalized\": false,\n\"rstrip\": false,\n\"s",
+      "size": "672B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "json",
+      "blob_url": "/library/north-mini-code-1.0:mlx-mxfp8/blobs/14bd1c49d7d1",
+      "content_preview": "{\n\"version\": \"1.0\",\n\"truncation\": null,\n\"padding\": null,\n\"added_tokens\": [\n{\n\"id\": 0,\n\"content\": \"<P",
+      "size": "28MB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "json",
+      "blob_url": "/library/north-mini-code-1.0:mlx-mxfp8/blobs/0c987a88193e",
+      "content_preview": "{\n\"architectures\": [\n\"Cohere2MoeForCausalLM\"\n],\n\"attention_bias\": false,\n\"attention_dropout\": 0.0,\n\"",
+      "size": "2.3kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "json",
+      "blob_url": "/library/north-mini-code-1.0:mlx-mxfp8/blobs/1f45bd13ca86",
+      "content_preview": "{\n\"add_bos_token\": true,\n\"add_eos_token\": false,\n\"add_prefix_space\": false,\n\"clean_up_tokenization_s",
+      "size": "9.0kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/north-mini-code-1.0:mlx-mxfp8/blobs/cfc7749b96f6",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/north-mini-code-1.0:mlx-mxfp8/blobs/02897ca0d6a3",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_p\": 0.95\n}",
+      "size": "31B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

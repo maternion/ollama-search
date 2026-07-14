@@ -1,0 +1,55 @@
+{
+  "path": "/library/qwen3",
+  "tag_name": "30b-a3b-thinking-2507-fp16",
+  "full_path": "/library/qwen3:30b-a3b-thinking-2507-fp16",
+  "scraped_at": "2026-07-13T19:39:43.453199+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/qwen3/a5541098-87ba-4184-a5af-2b63312c2522\" alt=\"Qwen 3 logo\"/></p>\n\n<p><strong>Qwen 3</strong> is the latest generation of large language models in Qwen series, with newly updated versions of the 30B and 235B models:</p>\n\n<h3>New 30B model</h3>\n\n<pre><code>ollama run qwen3:30b\n</code></pre>\n\n<p><img src=\"/assets/library/qwen3/bc0ddfea-95b5-49fc-a36e-c817f98a5de0\" alt=\"Qwen3-30B-A3B-Instruct-2507.jpg\"/></p>\n\n<h3>New 235B model</h3>\n\n<pre><code>ollama run qwen3:235b\n</code></pre>\n\n<p><img src=\"/assets/library/qwen3/8426a459-dd88-49cd-ae89-ece442e58ec5\" alt=\"0d7zztq4GB7G2ZYowO-dQ.jpg\"/></p>\n\n<h3>Overview</h3>\n\n<p>The Qwen 3 family is a comprehensive suite of dense and mixture-of-experts (MoE) models. The flagship model, <strong>Qwen3-235B-A22B</strong>, achieves competitive results in benchmark evaluations of coding, math, general capabilities, etc., when compared to other top-tier models such as DeepSeek-R1, o1, o3-mini, Grok-3, and Gemini-2.5-Pro. Additionally, the small MoE model, <strong>Qwen3-30B-A3B</strong>, outcompetes QwQ-32B with 10 times of activated parameters, and even a tiny model like Qwen3-4B can rival the performance of Qwen2.5-72B-Instruct.</p>\n\n<ul>\n<li><p><strong>Significantly enhancement in its reasoning capabilities</strong>, surpassing previous QwQ (in thinking mode) and Qwen2.5 instruct models (in non-thinking mode) on mathematics, code generation, and commonsense logical reasoning.</p></li>\n\n<li><p><strong>Superior human preference alignment</strong>, excelling in creative writing, role-playing, multi-turn dialogues, and instruction following, to deliver a more natural, engaging, and immersive conversational experience.</p></li>\n\n<li><p><strong>Expertise in agent capabilities</strong>, enabling precise integration with external tools in both thinking and unthinking modes and achieving leading performance among open-source models in complex agent-based tasks.</p></li>\n\n<li><p><strong>Support of 100+ languages and dialects</strong> with strong capabilities for <strong>multilingual instruction following and translation</strong>.</p></li>\n</ul>\n\n<h3>Reference</h3>\n\n<ul>\n<li><a href=\"https://qwenlm.github.io/blog/qwen3/\" rel=\"nofollow\">Blog</a></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "9 months ago",
+  "manifest_digest": "063924ed7f52",
+  "manifest_size": "61GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/qwen3:30b-a3b-thinking-2507-fp16/blobs/6c370d78fc31",
+      "content_preview": "arch  qwen3moe",
+      "size": "61GB",
+      "arch": "qwen3moe",
+      "parameters": "30.5B",
+      "quantization": "F16"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/qwen3:30b-a3b-thinking-2507-fp16/blobs/d18a5cc71b84",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/qwen3:30b-a3b-thinking-2507-fp16/blobs/cff3f395ef37",
+      "content_preview": "{\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ],\n    \"te",
+      "size": "120B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/qwen3:30b-a3b-thinking-2507-fp16/blobs/2d54db2b9bb2",
+      "content_preview": "{{- $lastUserIdx := -1 -}}\n{{- range $idx, $msg := .Messages -}}\n{{- if eq $msg.Role \"user\" }}{{ $la",
+      "size": "1.5kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

@@ -1,0 +1,17 @@
+{
+  "path": "/library/ornith",
+  "name": "ornith",
+  "scraped_at": "2026-07-13T19:27:34.966560+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/ornith/fd32d921-16eb-4fc1-a71b-65124dd4abb7\" alt=\"image.png\"/></p>\n\n<p>Highlights:</p>\n\n<ul>\n<li><strong>State-of-the-Art Coding Agents</strong>: Achieving state-of-the-art performance among open-source models of comparable size on coding benchmarks such as Terminal-Bench 2.1, SWE-Bench, NL2Repo and OpenClaw.</li>\n<li><strong>Self-Improving Training Framework</strong>: Ornith-1.0 employs RL to learn to generate not only solution rollouts, but also the scallfold that drive those rollouts. By jointly optimizing the scaffold and the resulting solution, the model discovers better search trajectories and generates higher-quality solutions.</li>\n<li><strong>Licence</strong>: MIT licensed, globally accessible, and free from regional limitations.</li>\n</ul>\n\n<h3>9B</h3>\n\n<pre><code>ollama run ornith:9b\n</code></pre>\n\n<p><img src=\"/assets/library/ornith/afc40753-0b00-4683-87b4-2c4a12f74acc\" alt=\"ornith 9b benchmarks\"/></p>\n\n<h3>35B</h3>\n\n<pre><code>ollama run ornith:35b\n</code></pre>\n\n<p><img src=\"/assets/library/ornith/b194b793-a9b5-4609-8625-6fabea9a1d19\" alt=\"ornith 35b benchmarks\"/></p>\n\n<h2>References</h2>\n\n<ul>\n<li><a href=\"https://deep-reinforce.com/ornith_1_0.html\" rel=\"nofollow\">Blog</a></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

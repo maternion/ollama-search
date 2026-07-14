@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/dolphin-mistral:v2.2/blobs/a47b02e00552",
+  "tag_full": "dolphin-mistral:v2.2",
+  "blob_type": "template",
+  "digest": "a47b02e00552",
+  "size": "106B",
+  "metadata": [],
+  "content": "<|im_start|>system\n{{ .System }}<|im_end|>\n<|im_start|>user\n{{ .Prompt }}<|im_end|>\n<|im_start|>assistant",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T02:07:31.996810+00:00"
+}

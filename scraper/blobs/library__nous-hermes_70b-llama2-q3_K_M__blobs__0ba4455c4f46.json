@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/nous-hermes:70b-llama2-q3_K_M/blobs/0ba4455c4f46",
+  "tag_full": "nous-hermes:70b-llama2-q3_K_M",
+  "blob_type": "template",
+  "digest": "0ba4455c4f46",
+  "size": "101B",
+  "metadata": [],
+  "content": "### Instruction:\n{{ .Prompt }}\n\n{{- if .System }}\n### Input:\n{{ .System }}\n{{- end }}\n\n### Response:",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T04:55:05.339240+00:00"
+}

@@ -1,0 +1,55 @@
+{
+  "path": "/library/deepseek-v3.1",
+  "tag_name": "671b-terminus-fp16",
+  "full_path": "/library/deepseek-v3.1:671b-terminus-fp16",
+  "scraped_at": "2026-07-13T21:11:51.759006+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/deepseek-v3.1/c3f72402-1dce-4c07-a2a1-eebabd4f4b4b\" alt=\"logo.svg\"/></p>\n\n<p>DeepSeek-V3.1-Terminus update builds on V3.1\u2019s strengths while addressing key user feedback:</p>\n\n<ul>\n<li>\ud83c\udf10 Language consistency: fewer CN/EN mix-ups &amp; no more random chars.</li>\n<li>\ud83e\udd16 Agent upgrades: stronger Code Agent &amp; Search Agent performance.</li>\n</ul>\n\n<p><strong>Hybrid thinking mode</strong>: One model supports both thinking mode and non-thinking mode by changing the chat template.</p>\n\n<p><strong>Smarter tool calling</strong>: Through post-training optimization, the model\u2019s performance in tool usage and agent tasks has significantly improved.</p>\n\n<p><strong>Higher thinking efficiency</strong>: DeepSeek-V3.1-Think achieves comparable answer quality to DeepSeek-R1-0528, while responding more quickly.</p>\n\n        \n      ",
+  "manifest_updated": "9 months ago",
+  "manifest_digest": "2d1f08a7c07d",
+  "manifest_size": "1.3TB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/deepseek-v3.1:671b-terminus-fp16/blobs/dcea177bfba6",
+      "content_preview": "arch  deepseek2",
+      "size": "1.3TB",
+      "arch": "deepseek2",
+      "parameters": "671B",
+      "quantization": "F16"
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/deepseek-v3.1:671b-terminus-fp16/blobs/c82f46373555",
+      "content_preview": "{{ .System }}\n{{- if .Tools }}{{ if .System }}\n{{ end }}## Tools\nYou have access to the following to",
+      "size": "1.6kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/deepseek-v3.1:671b-terminus-fp16/blobs/a406579cd136",
+      "content_preview": "MIT License\nCopyright (c) [year] [fullname]\nPermission is hereby granted, free of charge, to any per",
+      "size": "1.1kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/deepseek-v3.1:671b-terminus-fp16/blobs/ceaa5f78afb8",
+      "content_preview": "{\n    \"temperature\": 0.6,\n    \"top_p\": 0.95\n}",
+      "size": "33B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

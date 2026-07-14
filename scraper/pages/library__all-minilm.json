@@ -1,0 +1,17 @@
+{
+  "path": "/library/all-minilm",
+  "name": "all-minilm",
+  "scraped_at": "2026-07-13T19:28:19.423291+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/ollama/ollama/assets/251292/4a6d8231-b7b5-411b-80b9-db37e5323cf9\" width=\"320\"/></p>\n\n<blockquote>\n<p>Note: this model requires Ollama 0.1.26 or later. <a href=\"https://ollama.com/download\" rel=\"nofollow\">Download it here</a>. It can only be used to generate embeddings.</p>\n</blockquote>\n\n<p>The project aims to train sentence embedding models on very large sentence level datasets using a self-supervised contrastive learning objective.</p>\n\n<h2>Usage</h2>\n\n<h3>REST API</h3>\n\n<pre><code>curl http://localhost:11434/api/embeddings -d &#39;{\n  &#34;model&#34;: &#34;all-minilm&#34;,\n  &#34;prompt&#34;: &#34;The sky is blue because of Rayleigh scattering&#34;\n}&#39;\n</code></pre>\n\n<h3>Python library</h3>\n\n<pre><code>ollama.embeddings(model=&#39;all-minilm&#39;, prompt=&#39;The sky is blue because of Rayleigh scattering&#39;)\n</code></pre>\n\n<h3>Javascript library</h3>\n\n<pre><code>ollama.embeddings({ model: &#39;all-minilm&#39;, prompt: &#39;The sky is blue because of Rayleigh scattering&#39; })\n</code></pre>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/sentence-transformers\" rel=\"nofollow\">HuggingFace</a></p>\n\n<p><a href=\"https://www.sbert.net/\" rel=\"nofollow\">Website</a></p>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

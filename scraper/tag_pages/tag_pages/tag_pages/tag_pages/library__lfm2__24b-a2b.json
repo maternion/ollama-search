@@ -1,0 +1,46 @@
+{
+  "path": "/library/lfm2",
+  "tag_name": "24b-a2b",
+  "full_path": "/library/lfm2:24b-a2b",
+  "scraped_at": "2026-07-13T19:33:46.032089+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/lfm2/ddca3f1a-b232-44eb-ba95-236f15edd6a6\" alt=\"image.png\"/></p>\n\n<p>LFM2 is a family of hybrid models designed for on-device deployment. LFM2-24B-A2B is the largest model in the family, scaling the architecture to 24 billion parameters while keeping inference efficient.</p>\n\n<ul>\n<li><strong>Best-in-class efficiency</strong>: A 24B MoE model with only 2B active parameters per token, fitting in 32 GB of RAM for deployment on consumer laptops and desktops.</li>\n<li><strong>Fast edge inference</strong>: 112 tok/s decode on AMD CPU, 293 tok/s on H100. Fits in 32B GB of RAM.</li>\n<li><strong>Predictable scaling</strong>: Quality improves log-linearly from 350M to 24B total parameters, confirming the LFM2 hybrid architecture scales reliably across nearly two orders of magnitude.</li>\n</ul>\n\n<p><img src=\"/assets/library/lfm2/276ea517-7960-43b4-bc4d-d0d2dcbaf97b\" alt=\"image.png\"/></p>\n\n        \n      ",
+  "manifest_updated": "4 months ago",
+  "manifest_digest": "d6c816d74887",
+  "manifest_size": "14GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/lfm2:24b-a2b/blobs/d55ab0bfb1b8",
+      "content_preview": "arch  lfm2moe",
+      "size": "14GB",
+      "arch": "lfm2moe",
+      "parameters": "23.8B",
+      "quantization": "Q4_K_M"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/lfm2:24b-a2b/blobs/2453818a9efb",
+      "content_preview": "LFM Open License v1.0\nTERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n1. Definitions.\n\"",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/lfm2:24b-a2b/blobs/2dd8b8f832ae",
+      "content_preview": "{\n    \"temperature\": 0.3\n}",
+      "size": "20B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

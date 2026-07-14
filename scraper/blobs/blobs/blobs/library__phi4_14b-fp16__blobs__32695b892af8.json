@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/phi4:14b-fp16/blobs/32695b892af8",
+  "tag_full": "phi4:14b-fp16",
+  "blob_type": "template",
+  "digest": "32695b892af8",
+  "size": "275B",
+  "metadata": [],
+  "content": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|im_start|>{{ .Role }}<|im_sep|>\n{{ .Content }}{{ if not $last }}<|im_end|>\n{{ end }}\n{{- if and (ne .Role \"assistant\") $last }}<|im_end|>\n<|im_start|>assistant<|im_sep|>\n{{ end }}\n{{- end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T23:08:01.000368+00:00"
+}

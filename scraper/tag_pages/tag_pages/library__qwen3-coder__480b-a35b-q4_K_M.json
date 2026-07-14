@@ -1,0 +1,46 @@
+{
+  "path": "/library/qwen3-coder",
+  "tag_name": "480b-a35b-q4_K_M",
+  "full_path": "/library/qwen3-coder:480b-a35b-q4_K_M",
+  "scraped_at": "2026-07-13T19:49:21.680224+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/qwen3/a5541098-87ba-4184-a5af-2b63312c2522\" alt=\"Qwen 3 logo\"/>\n<strong>Qwen3-Coder</strong> is the most agentic code model to date in the Qwen series.</p>\n\n<h3>Get started</h3>\n\n<p><strong>480B</strong></p>\n\n<p>Cloud</p>\n\n<pre><code>ollama run qwen3-coder:480b-cloud\n</code></pre>\n\n<p>Local</p>\n\n<pre><code>ollama run qwen3-coder:480b\n</code></pre>\n\n<p>Running locally requires a minimum of 250GB of memory or unified memory.</p>\n\n<p><strong>30B</strong></p>\n\n<pre><code>ollama run qwen3-coder:30b\n</code></pre>\n\n<h3>Overview</h3>\n\n<p><code>qwen3-coder:30b</code> offers 30B total parameters with only 3.3B activated, delivering strong performance while maintaining efficiency.</p>\n\n<ul>\n<li>Exceptional agentic capabilities for real-world software engineering tasks through advanced long-horizon reinforcement learning on SWE-Bench and similar benchmarks.</li>\n<li>Long context support with 256K tokens natively and up to 1M tokens using extrapolation methods, optimized for repository-scale understanding.</li>\n<li>Scaled pretraining on 7.5T tokens (70% code ratio) while preserving strong general and mathematical abilities.</li>\n<li>Execution-driven reinforcement learning that significantly boosts code execution success rates across diverse real-world coding tasks.</li>\n</ul>\n\n<p><img src=\"/assets/library/qwen3-coder/52070971-5a66-4947-90a0-5e983a5809e7\" alt=\"image.png\"/></p>\n\n<h3>Reference</h3>\n\n<ul>\n<li><a href=\"https://qwenlm.github.io/blog/qwen3-coder/\" rel=\"nofollow\">Blog</a></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "9 months ago",
+  "manifest_digest": "72b144baf727",
+  "manifest_size": "290GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/qwen3-coder:480b-a35b-q4_K_M/blobs/7724360538aa",
+      "content_preview": "arch  qwen3moe",
+      "size": "290GB",
+      "arch": "qwen3moe",
+      "parameters": "480B",
+      "quantization": "Q4_K_M"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/qwen3-coder:480b-a35b-q4_K_M/blobs/d18a5cc71b84",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/qwen3-coder:480b-a35b-q4_K_M/blobs/69aa441ea44f",
+      "content_preview": "{\n    \"repeat_penalty\": 1.05,\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\",\n        \"<",
+      "size": "148B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

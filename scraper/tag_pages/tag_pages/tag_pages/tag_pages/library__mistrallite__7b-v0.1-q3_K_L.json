@@ -1,0 +1,46 @@
+{
+  "path": "/library/mistrallite",
+  "tag_name": "7b-v0.1-q3_K_L",
+  "full_path": "/library/mistrallite:7b-v0.1-q3_K_L",
+  "scraped_at": "2026-07-13T21:19:30.168344+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg\" width=\"180\"/></p>\n\n<p>Mistrallite is a fine-tuned model based on <a href=\"https://ollama.ai/library/mistral\" rel=\"nofollow\">Mistral</a>, with enhanced capabilities of processing long context (up to 32K tokens). This model is able to perform significantly better on several long context retrieve and answering tasks.</p>\n\n<h2>Reference</h2>\n\n<p><a href=\"https://huggingface.co/amazon/MistralLite\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "bb7562f0532f",
+  "manifest_size": "3.8GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/mistrallite:7b-v0.1-q3_K_L/blobs/e6f4889a6161",
+      "content_preview": "arch  llama",
+      "size": "3.8GB",
+      "arch": "llama",
+      "parameters": "7.24B",
+      "quantization": "Q3_K_L"
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/mistrallite:7b-v0.1-q3_K_L/blobs/437fd6dee5dd",
+      "content_preview": "{\n    \"num_ctx\": 32768,\n    \"stop\": [\n        \"<|prompter|>\",\n        \"<|assistant|>\",\n        \"</s>",
+      "size": "94B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/mistrallite:7b-v0.1-q3_K_L/blobs/2511cfa9ebda",
+      "content_preview": "<|prompter|>{{ .System }} {{ .Prompt }}</s><|assistant|>",
+      "size": "57B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

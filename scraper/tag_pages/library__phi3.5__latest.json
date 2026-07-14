@@ -1,0 +1,55 @@
+{
+  "path": "/library/phi3.5",
+  "tag_name": "latest",
+  "full_path": "/library/phi3.5:latest",
+  "scraped_at": "2026-07-13T20:53:59.512654+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/phi3.5/dbf19a17-e3fd-46b6-a059-e6b4f1fae59f\" width=\"320\"/></p>\n\n<p>Phi-3.5-mini is a lightweight, state-of-the-art open model built upon datasets used for Phi-3 - synthetic data and filtered publicly available websites with a focus on very high-quality, reasoning dense data.</p>\n\n<p>The model belongs to the Phi-3 model family and supports 128K token context length. The model underwent a rigorous enhancement process, incorporating both supervised fine-tuning, proximal policy optimization, and direct preference optimization to ensure precise instruction adherence and robust safety measures.</p>\n\n<h3>Long Context</h3>\n\n<p>Phi-3.5-mini supports 128K context length, therefore the model is capable of several long context tasks including long document/meeting summarization, long document QA, long document information retrieval.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/microsoft/Phi-3.5-mini-instruct\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "61819fb370a3",
+  "manifest_size": "2.2GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/phi3.5:latest/blobs/b5374915da53",
+      "content_preview": "arch  phi3",
+      "size": "2.2GB",
+      "arch": "phi3",
+      "parameters": "3.82B",
+      "quantization": "Q4_0"
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/phi3.5:latest/blobs/c608dc615584",
+      "content_preview": "{{ if .System }}<|system|>\n{{ .System }}<|end|>\n{{ end }}{{ if .Prompt }}<|user|>\n{{ .Prompt }}<|end",
+      "size": "149B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/phi3.5:latest/blobs/c5f9f560a704",
+      "content_preview": "MIT License\nCopyright (c) Microsoft Corporation.\nPermission is hereby granted, free of charge, to an",
+      "size": "1.1kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/phi3.5:latest/blobs/45ac4c662a77",
+      "content_preview": "{\n    \"stop\": [\n        \"<|system|>\",\n        \"<|user|>\",\n        \"<|end|>\",\n        \"<|assistant|>\"",
+      "size": "60B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

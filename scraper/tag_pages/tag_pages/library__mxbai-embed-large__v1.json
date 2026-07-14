@@ -1,0 +1,46 @@
+{
+  "path": "/library/mxbai-embed-large",
+  "tag_name": "v1",
+  "full_path": "/library/mxbai-embed-large:v1",
+  "scraped_at": "2026-07-13T19:49:04.866862+00:00",
+  "readme_html": "\n        \n          <h2>mxbai-embed-large</h2>\n\n<p><img src=\"https://github.com/ollama/ollama/assets/251292/215cfb6a-8efa-4e9b-824d-e5f466b58c49\"></p>\n\n<p>As of March 2024, this model archives SOTA performance for Bert-large sized models on the MTEB. It outperforms commercial models like OpenAIs <code>text-embedding-3-large</code> model and matches the performance of model 20x its size.</p>\n\n<p><code>mxbai-embed-large</code> was trained with no overlap of the MTEB data, which indicates that the model generalizes well across several domains, tasks and text length.</p>\n\n<h2>Usage</h2>\n\n<h3>REST API</h3>\n\n<pre><code>curl http://localhost:11434/api/embeddings -d &#39;{\n  &#34;model&#34;: &#34;mxbai-embed-large&#34;,\n  &#34;prompt&#34;: &#34;Represent this sentence for searching relevant passages: The sky is blue because of Rayleigh scattering&#34;\n}&#39;\n</code></pre>\n\n<h3>Python library</h3>\n\n<pre><code>ollama.embeddings(model=&#39;mxbai-embed-large&#39;, prompt=&#39;Represent this sentence for searching relevant passages: The sky is blue because of Rayleigh scattering&#39;)\n</code></pre>\n\n<h3>Javascript library</h3>\n\n<pre><code>ollama.embeddings({ model: &#39;mxbai-embed-large&#39;, prompt: &#39;Represent this sentence for searching relevant passages:  The sky is blue because of Rayleigh scattering&#39; })\n</code></pre>\n\n<h2>References</h2>\n\n<p><a href=\"https://www.mixedbread.ai/blog/mxbai-embed-large-v1\" rel=\"nofollow\">Blog post</a></p>\n\n<p><a href=\"https://huggingface.co/mixedbread-ai/mxbai-embed-large-v1\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "468836162de7",
+  "manifest_size": "670MB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/mxbai-embed-large:v1/blobs/819c2adf5ce6",
+      "content_preview": "arch  bert",
+      "size": "670MB",
+      "arch": "bert",
+      "parameters": "334M",
+      "quantization": "F16"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/mxbai-embed-large:v1/blobs/c71d239df917",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/mxbai-embed-large:v1/blobs/b837481ff855",
+      "content_preview": "{\n    \"num_ctx\": 512\n}",
+      "size": "16B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

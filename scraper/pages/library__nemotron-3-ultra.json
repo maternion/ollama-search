@@ -1,0 +1,48 @@
+{
+  "path": "/library/nemotron-3-ultra",
+  "name": "nemotron-3-ultra",
+  "scraped_at": "2026-07-13T19:30:48.964330+00:00",
+  "readme_html": "\n        \n          <p>NVIDIA Nemotron 3 Ultra is a 550 billion parameter (55B active) open model from NVIDIA built for long-running, agentic workflows with fast and affordable performance across hundreds of tool calls.</p>\n\n<h3>Model highlights</h3>\n\n<ul>\n<li><strong>Built for long-running agents:</strong> Tuned for agent orchestration, coding agents, deep research, and complex enterprise workflows that run across hundreds of steps.</li>\n<li><strong>1M token context:</strong> Keep entire codebases, long tool histories, and research trails in context without losing the thread.</li>\n<li><strong>Frontier reasoning, high efficiency:</strong> 550B total parameters with only 55B active per token, and optimized for NVFP4, NVIDIA\u2019s 4-bit floating point format that packs the model into less memory and runs faster.</li>\n</ul>\n\n<h3>Benchmarks</h3>\n\n<p>Nemotron 3 Ultra leads on accuracy across agent productivity, instruction following, and long-context tasks, while delivering leading throughput\u2014saving up to 30% on costs compared to other leading open models.</p>\n\n<p><img src=\"https://files.ollama.com/nemotron-3-ultra-agentic-benchmarks.png\" alt=\"Table showing Nemotron 3 Ultra leading among open models on agentic benchmarks for agent productivity, coding, and instruction following.\"/>\n<em>Figure 1: Nemotron 3 Ultra leads among open models on agentic benchmarks for agent productivity, coding, and instruction following.</em></p>\n\n<h3>Reference</h3>\n\n<ul>\n<li><a href=\"https://developer.nvidia.com/blog/nvidia-nemotron-3-ultra-powers-faster-more-efficient-reasoning-for-long-running-agents/\" rel=\"nofollow\">NVIDIA Nemotron 3 Ultra blog</a></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "high",
+  "cloud_usage_active_slots": 3,
+  "cloud_context": "256K",
+  "cloud_context_unit": "tokens",
+  "cloud_size": "550B",
+  "cloud_size_unit": "parameters",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model nemotron-3-ultra:cloud"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model nemotron-3-ultra:cloud"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model nemotron-3-ultra:cloud"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model nemotron-3-ultra:cloud"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model nemotron-3-ultra:cloud"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model nemotron-3-ultra:cloud"
+    }
+  ]
+}

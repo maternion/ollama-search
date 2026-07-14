@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/tinyllama:1.1b-chat-v0.6-q5_0/blobs/af0ddbdaaa26",
+  "tag_full": "tinyllama:1.1b-chat-v0.6-q5_0",
+  "blob_type": "template",
+  "digest": "af0ddbdaaa26",
+  "size": "70B",
+  "metadata": [],
+  "content": "<|system|>\n{{ .System }}</s>\n<|user|>\n{{ .Prompt }}</s>\n<|assistant|>",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T00:17:32.775591+00:00"
+}

@@ -1,0 +1,100 @@
+{
+  "path": "/library/qwen3.5",
+  "tag_name": "27b-nvfp4",
+  "full_path": "/library/qwen3.5:27b-nvfp4",
+  "scraped_at": "2026-07-13T19:32:32.561554+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/qwen3.5/b6074711-2930-4f09-93b7-4f65ae7a3576\" width=\"360\"/></p>\n\n<p>Over recent months, we have intensified our focus on developing foundation models that deliver exceptional utility and performance. Qwen3.5 represents a significant leap forward, integrating breakthroughs in multimodal learning, architectural efficiency, reinforcement learning scale, and global accessibility to empower developers and enterprises with unprecedented capability and efficiency.</p>\n\n<h2>Highlights</h2>\n\n<p>Qwen3.5 features the following enhancement:</p>\n\n<ul>\n<li><p><strong>Unified Vision-Language Foundation</strong>: Early fusion training on multimodal tokens achieves cross-generational parity with Qwen3 and outperforms Qwen3-VL models across reasoning, coding, agents, and visual understanding benchmarks.</p></li>\n\n<li><p><strong>Efficient Hybrid Architecture</strong>: Gated Delta Networks combined with sparse Mixture-of-Experts deliver high-throughput inference with minimal latency and cost overhead.</p></li>\n\n<li><p><strong>Scalable RL Generalization</strong>: Reinforcement learning scaled across million-agent environments with progressively complex task distributions for robust real-world adaptability.</p></li>\n\n<li><p><strong>Global Linguistic Coverage</strong>: Expanded support to 201 languages and dialects, enabling inclusive, worldwide deployment with nuanced cultural and regional understanding.</p></li>\n\n<li><p><strong>Next-Generation Training Infrastructure</strong>: Near-100% multimodal training efficiency compared to text-only training and asynchronous RL frameworks supporting massive-scale agent scaffolds and environment orchestration.</p></li>\n</ul>\n\n<h2>Benchmarks</h2>\n\n<p><img src=\"/assets/library/qwen3.5/1c5d9a27-97b2-4d6d-a1b1-d326259acae5\" alt=\"benchmark\"/></p>\n\n<h3>Language</h3>\n\n<div>\n<table>\n<thead><tr>\n<th></th>\n<th>GPT5.2</th>\n<th>Claude 4.5 Opus</th>\n<th>Gemini-3 Pro</th>\n<th>Qwen3-Max-Thinking</th>\n<th>K2.5-1T-A32B</th>\n<th>Qwen3.5-397B-A17B</th>\n</tr></thead>\n<tbody>\n<tr><td colspan=\"7\">Knowledge</td></tr>\n<tr>\n<td>MMLU-Pro</td>\n<td>87.4</td>\n<td>89.5</td>\n<td>89.8</td>\n<td>85.7</td>\n<td>87.1</td>\n<td>87.8</td>\n</tr>\n<tr>\n<td>MMLU-Redux</td>\n<td>95.0</td>\n<td>95.6</td>\n<td>95.9</td>\n<td>92.8</td>\n<td>94.5</td>\n<td>94.9</td>\n</tr>\n<tr>\n<td>SuperGPQA</td>\n<td>67.9</td>\n<td>70.6</td>\n<td>74.0</td>\n<td>67.3</td>\n<td>69.2</td>\n<td>70.4</td>\n</tr>\n<tr>\n<td>C-Eval</td>\n<td>90.5</td>\n<td>92.2</td>\n<td>93.4</td>\n<td>93.7</td>\n<td>94.0</td>\n<td>93.0</td>\n</tr>\n<tr><td colspan=\"7\">Instruction Following</td></tr>\n<tr>\n<td>IFEval</td>\n<td>94.8</td>\n<td>90.9</td>\n<td>93.5</td>\n<td>93.4</td>\n<td>93.9</td>\n<td>92.6</td>\n</tr>\n<tr>\n<td>IFBench</td>\n<td>75.4</td>\n<td>58.0</td>\n<td>70.4</td>\n<td>70.9</td>\n<td>70.2</td>\n<td>76.5</td>\n</tr>\n<tr>\n<td>MultiChallenge</td>\n<td>57.9</td>\n<td>54.2</td>\n<td>64.2</td>\n<td>63.3</td>\n<td>62.7</td>\n<td>67.6</td>\n</tr>\n<tr><td colspan=\"7\">Long Context</td></tr>\n<tr>\n<td>AA-LCR</td>\n<td>72.7</td>\n<td>74.0</td>\n<td>70.7</td>\n<td>68.7</td>\n<td>70.0</td>\n<td>68.7</td>\n</tr>\n<tr>\n<td>LongBench v2</td>\n<td>54.5</td>\n<td>64.4</td>\n<td>68.2</td>\n<td>60.6</td>\n<td>61.0</td>\n<td>63.2</td>\n</tr>\n<tr><td colspan=\"7\">STEM</td></tr>\n<tr>\n<td>GPQA</td>\n<td>92.4</td>\n<td>87.0</td>\n<td>91.9</td>\n<td>87.4</td>\n<td>87.6</td>\n<td>88.4</td>\n</tr>\n<tr>\n<td>HLE</td>\n<td>35.5</td>\n<td>30.8</td>\n<td>37.5</td>\n<td>30.2</td>\n<td>30.1</td>\n<td>28.7</td>\n</tr>\n<tr>\n<td>HLE-Verified\u00b9</td>\n<td>43.3</td>\n<td>38.8</td>\n<td>48</td>\n<td>37.6</td>\n<td>--</td>\n<td>37.6</td>\n</tr>\n<tr><td colspan=\"7\">Reasoning</td></tr>\n<tr>\n<td>LiveCodeBench v6</td>\n<td>87.7</td>\n<td>84.8</td>\n<td>90.7</td>\n<td>85.9</td>\n<td>85.0</td>\n<td>83.6</td>\n</tr>\n<tr>\n<td>HMMT Feb 25</td>\n<td>99.4</td>\n<td>92.9</td>\n<td>97.3</td>\n<td>98.0</td>\n<td>95.4</td>\n<td>94.8</td>\n</tr>\n<tr>\n<td>HMMT Nov 25</td>\n<td>100</td>\n<td>93.3</td>\n<td>93.3</td>\n<td>94.7</td>\n<td>91.1</td>\n<td>92.7</td>\n</tr>\n<tr>\n<td>IMOAnswerBench</td>\n<td>86.3</td>\n<td>84.0</td>\n<td>83.3</td>\n<td>83.9</td>\n<td>81.8</td>\n<td>80.9</td>\n</tr>\n<tr>\n<td>AIME26</td>\n<td>96.7</td>\n<td>93.3</td>\n<td>90.6</td>\n<td>93.3</td>\n<td>93.3</td>\n<td>91.3</td>\n</tr>\n<tr><td colspan=\"7\">General Agent</td></tr>\n<tr>\n<td>BFCL-V4</td>\n<td>63.1</td>\n<td>77.5</td>\n<td>72.5</td>\n<td>67.7</td>\n<td>68.3</td>\n<td>72.9</td>\n</tr>\n<tr>\n<td>TAU2-Bench</td>\n<td>87.1</td>\n<td>91.6</td>\n<td>85.4</td>\n<td>84.6</td>\n<td>77.0</td>\n<td>86.7</td>\n</tr>\n<tr>\n<td>VITA-Bench</td>\n<td>38.2</td>\n<td>56.3</td>\n<td>51.6</td>\n<td>40.9</td>\n<td>41.9</td>\n<td>49.7</td>\n</tr>\n<tr>\n<td>DeepPlanning</td>\n<td>44.6</td>\n<td>33.9</td>\n<td>23.3</td>\n<td>28.7</td>\n<td>14.5</td>\n<td>34.3</td>\n</tr>\n<tr>\n<td>Tool Decathlon</td>\n<td>43.8</td>\n<td>43.5</td>\n<td>36.4</td>\n<td>18.8</td>\n<td>27.8</td>\n<td>38.3</td>\n</tr>\n<tr>\n<td>MCP-Mark</td>\n<td>57.5</td>\n<td>42.3</td>\n<td>53.9</td>\n<td>33.5</td>\n<td>29.5</td>\n<td>46.1</td>\n</tr>\n<tr><td colspan=\"7\">Search Agent\u00b3</td></tr>\n<tr>\n<td>HLE w/ tool</td>\n<td>45.5</td>\n<td>43.4</td>\n<td>45.8</td>\n<td>49.8</td>\n<td>50.2</td>\n<td>48.3</td>\n</tr>\n<tr>\n<td>BrowseComp</td>\n<td>65.8</td>\n<td>67.8</td>\n<td>59.2</td>\n<td>53.9</td>\n<td>--/74.9</td>\n<td>69.0/78.6</td>\n</tr>\n<tr>\n<td>BrowseComp-zh</td>\n<td>76.1</td>\n<td>62.4</td>\n<td>66.8</td>\n<td>60.9</td>\n<td>--</td>\n<td>70.3</td>\n</tr>\n<tr>\n<td>WideSearch</td>\n<td>76.8</td>\n<td>76.4</td>\n<td>68.0</td>\n<td>57.9</td>\n<td>72.7</td>\n<td>74.0</td>\n</tr>\n<tr>\n<td>Seal-0</td>\n<td>45.0</td>\n<td>47.7</td>\n<td>45.5</td>\n<td>46.9</td>\n<td>57.4</td>\n<td>46.9</td>\n</tr>\n<tr><td colspan=\"7\">Multilingualism</td></tr>\n<tr>\n<td>MMMLU</td>\n<td>89.5</td>\n<td>90.1</td>\n<td>90.6</td>\n<td>84.4</td>\n<td>86.0</td>\n<td>88.5</td>\n</tr>\n<tr>\n<td>MMLU-ProX</td>\n<td>83.7</td>\n<td>85.7</td>\n<td>87.7</td>\n<td>78.5</td>\n<td>82.3</td>\n<td>84.7</td>\n</tr>\n<tr>\n<td>NOVA-63</td>\n<td>54.6</td>\n<td>56.7</td>\n<td>56.7</td>\n<td>54.2</td>\n<td>56.0</td>\n<td>59.1</td>\n</tr>\n<tr>\n<td>INCLUDE</td>\n<td>87.5</td>\n<td>86.2</td>\n<td>90.5</td>\n<td>82.3</td>\n<td>83.3</td>\n<td>85.6</td>\n</tr>\n<tr>\n<td>Global PIQA</td>\n<td>90.9</td>\n<td>91.6</td>\n<td>93.2</td>\n<td>86.0</td>\n<td>89.3</td>\n<td>89.8</td>\n</tr>\n<tr>\n<td>PolyMATH</td>\n<td>62.5</td>\n<td>79.0</td>\n<td>81.6</td>\n<td>64.7</td>\n<td>43.1</td>\n<td>73.3</td>\n</tr>\n<tr>\n<td>WMT24++</td>\n<td>78.8</td>\n<td>79.7</td>\n<td>80.7</td>\n<td>77.6</td>\n<td>77.6</td>\n<td>78.9</td>\n</tr>\n<tr>\n<td>MAXIFE</td>\n<td>88.4</td>\n<td>79.2</td>\n<td>87.5</td>\n<td>84.0</td>\n<td>72.8</td>\n<td>88.2</td>\n</tr>\n<tr><td colspan=\"7\">Coding Agent</td></tr>\n<tr>\n<td>SWE-bench Verified</td>\n<td>80.0</td>\n<td>80.9</td>\n<td>76.2</td>\n<td>75.3</td>\n<td>76.8</td>\n<td>76.2</td>\n</tr>\n<tr>\n<td>SWE-bench Multilingual</td>\n<td>72.0</td>\n<td>77.5</td>\n<td>65.0</td>\n<td>66.7</td>\n<td>73.0</td>\n<td>69.3</td>\n</tr>\n<tr>\n<td>SecCodeBench</td>\n<td>68.7</td>\n<td>68.6</td>\n<td>62.4</td>\n<td>57.5</td>\n<td>61.3</td>\n<td>68.3</td>\n</tr>\n<tr>\n<td>Terminal Bench 2</td>\n<td>54.0</td>\n<td>59.3</td>\n<td>54.2</td>\n<td>22.5</td>\n<td>50.8</td>\n<td>52.5</td>\n</tr>\n</tbody>\n</table>\n\n<p>\n* HLE-Verified: a verified and revised version of Humanity\u2019s Last Exam (HLE), accompanied by a transparent, component-wise verification protocol and a fine-grained error taxonomy. We open-source the dataset at https://huggingface.co/datasets/skylenage/HLE-Verified.<br>\n* TAU2-Bench: we follow the official setup except for the airline domain, where all models are evaluated by applying the fixes proposed in the Claude Opus 4.5 system card.<br>\n* MCPMark: GitHub MCP server uses v0.30.3 from api.githubcopilot.com; Playwright tool responses are truncated at 32k tokens.<br>\n* Search Agent: most search agents built on our model adopt a simple context-folding strategy(256k): once the cumulative Tool Response length reaches a preset threshold, earlier Tool Responses are pruned from the history to keep the context within limits.<br>\n* BrowseComp: we tested two strategies, simple context-folding achieved a score of 69.0, while using the same discard-all strategy as DeepSeek-V3.2 and Kimi K2.5 achieved 78.6.<br>\n* WideSearch: we use a 256k context window without any context management.<br>\n* MMLU-ProX: we report the averaged accuracy on 29 languages.<br>\n* WMT24++: a harder subset of WMT24 after difficulty labeling and rebalancing; we report the averaged scores on 55 languages using XCOMET-XXL.<br>\n* MAXIFE: we report the accuracy on English + multilingual original prompts (totally 23 settings).<br>\n* Empty cells (--) indicate scores not yet available or not applicable.<br>\n</p>\n\n</div>\n\n<h3>Vision Language</h3>\n\n<p><div>\n<table>\n<thead><tr>\n<th></th>\n<th>GPT5.2</th>\n<th>Claude 4.5 Opus</th>\n<th>Gemini-3 Pro</th>\n<th>Qwen3-VL-235B-A22B</th>\n<th>K2.5-1T-A32B</th>\n<th>Qwen3.5-397B-A17B</th>\n</tr></thead>\n<tbody>\n<tr><td colspan=\"7\">STEM and Puzzle</td></tr>\n<tr>\n<td>MMMU</td>\n<td>86.7</td>\n<td>80.7</td>\n<td>87.2</td>\n<td>80.6</td>\n<td>84.3</td>\n<td>85.0</td>\n</tr>\n<tr>\n<td>MMMU-Pro</td>\n<td>79.5</td>\n<td>70.6</td>\n<td>81.0</td>\n<td>69.3</td>\n<td>78.5</td>\n<td>79.0</td>\n</tr>\n<tr>\n<td>MathVision</td>\n<td>83.0</td>\n<td>74.3</td>\n<td>86.6</td>\n<td>74.6</td>\n<td>84.2</td>\n<td>88.6</td>\n</tr>\n<tr>\n<td>Mathvista(mini)</td>\n<td>83.1</td>\n<td>80.0</td>\n<td>87.9</td>\n<td>85.8</td>\n<td>90.1</td>\n<td>90.3</td>\n</tr>\n<tr>\n<td>We-Math</td>\n<td>79.0</td>\n<td>70.0</td>\n<td>86.9</td>\n<td>74.8</td>\n<td>84.7</td>\n<td>87.9</td>\n</tr>\n<tr>\n<td>DynaMath</td>\n<td>86.8</td>\n<td>79.7</td>\n<td>85.1</td>\n<td>82.8</td>\n<td>84.4</td>\n<td>86.3</td>\n</tr>\n<tr>\n<td>ZEROBench</td>\n<td>9</td>\n<td>3</td>\n<td>10</td>\n<td>4</td>\n<td>9</td>\n<td>12</td>\n</tr>\n<tr>\n<td>ZEROBench_sub</td>\n<td>33.2</td>\n<td>28.4</td>\n<td>39.0</td>\n<td>28.4</td>\n<td>33.5</td>\n<td>41.0</td>\n</tr>\n<tr>\n<td>BabyVision</td>\n<td>34.4</td>\n<td>14.2</td>\n<td>49.7</td>\n<td>22.2</td>\n<td>36.5</td>\n<td>52.<sup>3</sup>\u2044<sub>43</sub>.3</td>\n</tr>\n<tr><td colspan=\"7\">General VQA</td></tr>\n<tr>\n<td>RealWorldQA</td>\n<td>83.3</td>\n<td>77.0</td>\n<td>83.3</td>\n<td>81.3</td>\n<td>81.0</td>\n<td>83.9</td>\n</tr>\n<tr>\n<td>MMStar</td>\n<td>77.1</td>\n<td>73.2</td>\n<td>83.1</td>\n<td>78.7</td>\n<td>80.5</td>\n<td>83.8</td>\n</tr>\n<tr>\n<td>HallusionBench</td>\n<td>65.2</td>\n<td>64.1</td>\n<td>68.6</td>\n<td>66.7</td>\n<td>69.8</td>\n<td>71.4</td>\n</tr>\n<tr>\n<td>MMBench<sub><small>EN-DEV-v1.1</small></sub></td>\n<td>88.2</td>\n<td>89.2</td>\n<td>93.7</td>\n<td>89.7</td>\n<td>94.2</td>\n<td>93.7</td>\n</tr>\n<tr>\n<td>SimpleVQA</td>\n<td>55.8</td>\n<td>65.7</td>\n<td>73.2</td>\n<td>61.3</td>\n<td>71.2</td>\n<td>67.1</td>\n</tr>\n<tr><td colspan=\"7\">Text Recognition and Document Understanding</td></tr>\n<tr>\n<td>OmniDocBench1.5</td>\n<td>85.7</td>\n<td>87.7</td>\n<td>88.5</td>\n<td>84.5</td>\n<td>88.8</td>\n<td>90.8</td>\n</tr>\n<tr>\n<td>CharXiv(RQ)</td>\n<td>82.1</td>\n<td>68.5</td>\n<td>81.4</td>\n<td>66.1</td>\n<td>77.5</td>\n<td>80.8</td>\n</tr>\n<tr>\n<td>MMLongBench-Doc</td>\n<td>\u2013</td>\n<td>61.9</td>\n<td>60.5</td>\n<td>56.2</td>\n<td>58.5</td>\n<td>61.5</td>\n</tr>\n<tr>\n<td>CC-OCR</td>\n<td>70.3</td>\n<td>76.9</td>\n<td>79.0</td>\n<td>81.5</td>\n<td>79.7</td>\n<td>82.0</td>\n</tr>\n<tr>\n<td>AI2D_TEST</td>\n<td>92.2</td>\n<td>87.7</td>\n<td>94.1</td>\n<td>89.2</td>\n<td>90.8</td>\n<td>93.9</td>\n</tr>\n<tr>\n<td>OCRBench</td>\n<td>80.7</td>\n<td>85.8</td>\n<td>90.4</td>\n<td>87.5</td>\n<td>92.3</td>\n<td>93.1</td>\n</tr>\n<tr><td colspan=\"7\">Spatial Intelligence</td></tr>\n<tr>\n<td>ERQA</td>\n<td>59.8</td>\n<td>46.8</td>\n<td>70.5</td>\n<td>52.5</td>\n<td>\u2013</td>\n<td>67.5</td>\n</tr>\n<tr>\n<td>CountBench</td>\n<td>91.9</td>\n<td>90.6</td>\n<td>97.3</td>\n<td>93.7</td>\n<td>94.1</td>\n<td>97.2</td>\n</tr>\n<tr>\n<td>RefCOCO(avg)</td>\n<td>\u2013</td>\n<td>\u2013</td>\n<td>84.1</td>\n<td>91.1</td>\n<td>87.8</td>\n<td>92.3</td>\n</tr>\n<tr>\n<td>ODInW13</td>\n<td>\u2013</td>\n<td>\u2013</td>\n<td>46.3</td>\n<td>43.2</td>\n<td>\u2013</td>\n<td>47.0</td>\n</tr>\n<tr>\n<td>EmbSpatialBench</td>\n<td>81.3</td>\n<td>75.7</td>\n<td>61.2</td>\n<td>84.3</td>\n<td>77.4</td>\n<td>84.5</td>\n</tr>\n<tr>\n<td>RefSpatialBench</td>\n<td>\u2013</td>\n<td>\u2013</td>\n<td>65.5</td>\n<td>69.9</td>\n<td>\u2013</td>\n<td>73.6</td>\n</tr>\n<tr>\n<td>LingoQA</td>\n<td>68.8</td>\n<td>78.8</td>\n<td>72.8</td>\n<td>66.8</td>\n<td>68.2</td>\n<td>81.6</td>\n</tr>\n<tr>\n<td>V*</td>\n<td>75.9</td>\n<td>67.0</td>\n<td>88.0</td>\n<td>85.9</td>\n<td>77.0</td>\n<td>95.<sup>8</sup>\u2044<sub>91</sub>.1</td>\n</tr>\n<tr>\n<td>Hypersim</td>\n<td>\u2013</td>\n<td>\u2013</td>\n<td>\u2013</td>\n<td>11.0</td>\n<td>\u2013</td>\n<td>12.5</td>\n</tr>\n<tr>\n<td>SUNRGBD</td>\n<td>\u2013</td>\n<td>\u2013</td>\n<td>\u2013</td>\n<td>34.9</td>\n<td>\u2013</td>\n<td>38.3</td>\n</tr>\n<tr>\n<td>Nuscene</td>\n<td>\u2013</td>\n<td>\u2013</td>\n<td>\u2013</td>\n<td>13.9</td>\n<td>\u2013</td>\n<td>16.0</td>\n</tr>\n<tr><td colspan=\"7\">Video Understanding</td></tr>\n<tr>\n<td>VideoMME<sub><small>(w sub.)</sub></small></td>\n<td>86</td>\n<td>77.6</td>\n<td>88.4</td>\n<td>83.8</td>\n<td>87.4</td>\n<td>87.5</td>\n</tr>\n<tr>\n<td>VideoMME<sub><small>(w/o sub.)</sub></small></td>\n<td>85.8</td>\n<td>81.4</td>\n<td>87.7</td>\n<td>79.0</td>\n<td>83.2</td>\n<td>83.7</td>\n</tr>\n<tr>\n<td>VideoMMMU</td>\n<td>85.9</td>\n<td>84.4</td>\n<td>87.6</td>\n<td>80.0</td>\n<td>86.6</td>\n<td>84.7</td>\n</tr>\n<tr>\n<td>MLVU (M-Avg)</td>\n<td>85.6</td>\n<td>81.7</td>\n<td>83.0</td>\n<td>83.8</td>\n<td>85.0</td>\n<td>86.7</td>\n</tr>\n<tr>\n<td>MVBench</td>\n<td>78.1</td>\n<td>67.2</td>\n<td>74.1</td>\n<td>75.2</td>\n<td>73.5</td>\n<td>77.6</td>\n</tr>\n<tr>\n<td>LVBench</td>\n<td>73.7</td>\n<td>57.3</td>\n<td>76.2</td>\n<td>63.6</td>\n<td>75.9</td>\n<td>75.5</td>\n</tr>\n<tr>\n<td>MMVU</td>\n<td>80.8</td>\n<td>77.3</td>\n<td>77.5</td>\n<td>71.1</td>\n<td>80.4</td>\n<td>75.4</td>\n</tr>\n<tr><td colspan=\"7\">Visual Agent</td></tr>\n<tr>\n<td>ScreenSpot Pro</td>\n<td>\u2013</td>\n<td>45.7</td>\n<td>72.7</td>\n<td>62.0</td>\n<td>\u2013</td>\n<td>65.6</td>\n</tr>\n<tr>\n<td>OSWorld-Verified</td>\n<td>38.2</td>\n<td>66.3</td>\n<td>\u2013</td>\n<td>38.1</td>\n<td>63.3</td>\n<td>62.2</td>\n</tr>\n<tr>\n<td>AndroidWorld</td>\n<td>\u2013</td>\n<td>\u2013</td>\n<td>\u2013</td>\n<td>63.7</td>\n<td>\u2013</td>\n<td>66.8</td>\n</tr>\n<tr><td colspan=\"7\">Medical VQA</td></tr>\n<tr>\n<td>SLAKE</td>\n<td>76.9</td>\n<td>76.4</td>\n<td>81.3</td>\n<td>54.7</td>\n<td>81.6</td>\n<td>79.9</td>\n</tr>\n<tr>\n<td>PMC-VQA</td>\n<td>58.9</td>\n<td>59.9</td>\n<td>62.3</td>\n<td>41.2</td>\n<td>63.3</td>\n<td>64.2</td>\n</tr>\n<tr>\n<td>MedXpertQA-MM</td>\n<td>73.3</td>\n<td>63.6</td>\n<td>76.0</td>\n<td>47.6</td>\n<td>65.3</td>\n<td>70.0</td>\n</tr>\n</tbody>\n</table></p>\n\n<p>\n* MathVision\uff1aour model\u2019s score is evaluated using a fixed prompt, e.g., \u201cPlease reason step by step, and put your final answer within \\boxed{}.\u201d For other models, we report the higher score between runs with and without the \\boxed{} formatting.<br>\n* BabyVision: our model\u2019s score is reported with CI (Code Interpreter) enabled; without CI, the result is 43.3.<br>\n* V*: our model\u2019s score is reported with CI (Code Interpreter) enabled; without CI, the result is 91.1.<br>\n* Empty cells (--) indicate scores not yet available or not applicable.<br>\n</p>\n\n<p></div></p>\n\n        \n      ",
+  "manifest_updated": "3 months ago",
+  "manifest_digest": "41eb9db48b39",
+  "manifest_size": "20GB",
+  "files": [
+    {
+      "type": "json",
+      "blob_url": "/library/qwen3.5:27b-nvfp4/blobs/303aba891d66",
+      "content_preview": "{\n\"bos_token_id\": 248044,\n\"do_sample\": true,\n\"eos_token_id\": [\n248046,\n248044\n],\n\"pad_token_id\": 248",
+      "size": "244B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "json",
+      "blob_url": "/library/qwen3.5:27b-nvfp4/blobs/27225450ac9c",
+      "content_preview": "{\n\"size\": {\n\"longest_edge\": 16777216,\n\"shortest_edge\": 65536\n},\n\"patch_size\": 16,\n\"temporal_patch_si",
+      "size": "390B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "json",
+      "blob_url": "/library/qwen3.5:27b-nvfp4/blobs/5f9e4d4901a9",
+      "content_preview": "{\n\"version\": \"1.0\",\n\"truncation\": null,\n\"padding\": null,\n\"added_tokens\": [\n{\n\"id\": 248044,\n\"content\"",
+      "size": "13MB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "json",
+      "blob_url": "/library/qwen3.5:27b-nvfp4/blobs/316230d6a809",
+      "content_preview": "{\n\"add_prefix_space\": false,\n\"added_tokens_decoder\": {\n\"248044\": {\n\"content\": \"<|endoftext|>\",\n\"lstr",
+      "size": "17kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "json",
+      "blob_url": "/library/qwen3.5:27b-nvfp4/blobs/7768af27c1fa",
+      "content_preview": "{\n\"size\": {\n\"longest_edge\": 25165824,\n\"shortest_edge\": 4096\n},\n\"patch_size\": 16,\n\"temporal_patch_siz",
+      "size": "385B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "json",
+      "blob_url": "/library/qwen3.5:27b-nvfp4/blobs/ce99b4cb2983",
+      "content_preview": "{\n\"!\": 0,\n\"\\\"\": 1,\n\"#\": 2,\n\"$\": 3,\n\"%\": 4,\n\"&\": 5,\n\"'\": 6,\n\"(\": 7,\n\")\": 8,\n\"*\": 9,\n\"+\": 10,\n\",\": 11,",
+      "size": "6.7MB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/qwen3.5:27b-nvfp4/blobs/5f3a3c817e78",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/qwen3.5:27b-nvfp4/blobs/86eff881e8d2",
+      "content_preview": "{\n    \"min_p\": 0,\n    \"presence_penalty\": 1.5,\n    \"repeat_penalty\": 1,\n    \"temperature\": 1,\n    \"t",
+      "size": "94B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "json",
+      "blob_url": "/library/qwen3.5:27b-nvfp4/blobs/f8d190c5b89c",
+      "content_preview": "{\n\"architectures\": [\n\"Qwen3_5ForConditionalGeneration\"\n],\n\"image_token_id\": 248056,\n\"model_type\": \"q",
+      "size": "4.1kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

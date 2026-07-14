@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/qwen3.5:27b-mlx/blobs/303aba891d66",
+  "tag_full": "qwen3.5:27b-mlx",
+  "blob_type": "json",
+  "digest": "303aba891d66",
+  "size": "244B",
+  "metadata": [],
+  "content": "{\n\"bos_token_id\": 248044,\n\"do_sample\": true,\n\"eos_token_id\": [\n248046,\n248044\n],\n\"pad_token_id\": 248044,\n\"temperature\": 0.6,\n\"top_k\": 20,\n\"top_p\": 0.95,\n\"transformers_version\": \"4.57.0.dev0\"\n}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T21:37:03.283168+00:00"
+}

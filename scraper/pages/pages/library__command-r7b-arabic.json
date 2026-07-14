@@ -1,0 +1,48 @@
+{
+  "path": "/library/command-r7b-arabic",
+  "name": "command-r7b-arabic",
+  "scraped_at": "2026-07-13T19:30:41.402401+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/command-r7b-arabic/e96310ca-5a9a-4e86-8eda-5a0a68513fc6\"/></p>\n\n<p>Command R7B Arabic is a fast and highly efficient model that can be served on low-end GPUs, a MacBook, or even CPUs. Similar to other models in the R series, it offers a context length of 128k and industry-leading performance in its class across capabilities that matter most to businesses like regional language understanding and strong accuracy with citations using retrieval-augmented generation (RAG). Its compact size enables businesses to more easily scale Arabic language AI applications to production.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://cohere.com/blog/command-r7b-arabic\" rel=\"nofollow\">Blog Post</a></p>\n\n<p><a href=\"https://huggingface.co/CohereForAI/c4ai-command-r7b-arabic-02-2025\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model command-r7b-arabic"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model command-r7b-arabic"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model command-r7b-arabic"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model command-r7b-arabic"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model command-r7b-arabic"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model command-r7b-arabic"
+    }
+  ]
+}

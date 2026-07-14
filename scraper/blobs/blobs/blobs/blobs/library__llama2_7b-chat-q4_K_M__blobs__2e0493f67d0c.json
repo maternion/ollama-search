@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/llama2:7b-chat-q4_K_M/blobs/2e0493f67d0c",
+  "tag_full": "llama2:7b-chat-q4_K_M",
+  "blob_type": "template",
+  "digest": "2e0493f67d0c",
+  "size": "59B",
+  "metadata": [],
+  "content": "[INST] <<SYS>>{{ .System }}<</SYS>>\n\n{{ .Prompt }} [/INST]",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T23:39:41.999586+00:00"
+}

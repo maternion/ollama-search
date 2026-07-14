@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/phi3:14b-medium-4k-instruct-q3_K_M/blobs/542b217f179c",
+  "tag_full": "phi3:14b-medium-4k-instruct-q3_K_M",
+  "blob_type": "template",
+  "digest": "542b217f179c",
+  "size": "148B",
+  "metadata": [],
+  "content": "{{ if .System }}<|system|>\n{{ .System }}<|end|>\n{{ end }}{{ if .Prompt }}<|user|>\n{{ .Prompt }}<|end|>\n{{ end }}<|assistant|>\n{{ .Response }}<|end|>",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T22:56:33.586653+00:00"
+}

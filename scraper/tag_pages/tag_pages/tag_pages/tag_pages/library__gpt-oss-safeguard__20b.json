@@ -1,0 +1,55 @@
+{
+  "path": "/library/gpt-oss-safeguard",
+  "tag_name": "20b",
+  "full_path": "/library/gpt-oss-safeguard:20b",
+  "scraped_at": "2026-07-13T21:25:10.488974+00:00",
+  "readme_html": "\n        \n          <h3>Get started</h3>\n\n<p><strong>20B:</strong></p>\n\n<pre><code>ollama run gpt-oss-safeguard:20b\n</code></pre>\n\n<p>This model is designed to fit into GPUs with 16GB of VRAM. (21B parameters with 3.6B active parameters).</p>\n\n<p><strong>120B:</strong></p>\n\n<pre><code>ollama run gpt-oss-safeguard:120b\n</code></pre>\n\n<p>This model is designed to fit into a single NVIDIA H100 GPU (117B parameters with 5.1B active parameters).</p>\n\n<h3>Highlights</h3>\n\n<ul>\n<li><strong>Trained to reason about safety</strong> : Trained and tuned for safety reasoning to accommodate use cases like LLM input-output filtering, online content labeling and offline labeling for Trust and Safety use cases.<br>\n</li>\n<li><strong>Bring your own policy:</strong> Interprets your written policy, so it generalizes across products and use cases with minimal engineering.<br>\n</li>\n<li><strong>Reasoned decisions, not just scores:</strong> Gain complete access to the model\u2019s reasoning process, facilitating easier debugging and increased trust in policy decisions. Keep in mind Raw CoT is meant for developers and safety practitioners. It\u2019s not intended for exposure to general users or use cases outside of safety contexts.<br>\n</li>\n<li><strong>Configurable reasoning effort:</strong> Easily adjust the reasoning effort (low, medium, high) based on your specific use case and latency needs.<br>\n</li>\n<li><strong>Permissive Apache 2.0 license:</strong> Build freely without copyleft restrictions or patent risk\u2014ideal for experimentation, customization, and commercial deployment.</li>\n</ul>\n\n<h3>Join the ROOST Model Community</h3>\n\n<p>gpt-oss-safeguard is a model partner of the <a href=\"http://roost.tools/\" rel=\"nofollow\">Robust Open Online Safety Tools (ROOST)</a> Model Community. The ROOST Model Community (RMC) is a group of safety practitioners exploring open source AI models to protect online spaces. As an RMC model partner, OpenAI is committed to incorporating user feedback and jointly iterating on future releases in pursuit of open safety. Visit the <a href=\"https://github.com/roostorg/open-models\" rel=\"nofollow\">RMC GitHub repo</a> to learn more about this partnership and how to get involved.</p>\n\n<h3>References</h3>\n\n<ul>\n<li><a href=\"https://openai.com/index/introducing-gpt-oss-safeguard/\" rel=\"nofollow\">OpenAI blog</a></li>\n<li>OpenAI <a href=\"https://cookbook.openai.com/articles/gpt-oss-safeguard-guide\" rel=\"nofollow\">gpt-oss-safeguard developer cookbook</a></li>\n<li>ROOST\u2019s <a href=\"https://github.com/roostorg/open-models\" rel=\"nofollow\">model community repository</a> on GitHub</li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "8 months ago",
+  "manifest_digest": "f2e795d0099c",
+  "manifest_size": "14GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/gpt-oss-safeguard:20b/blobs/c4016c9e54d0",
+      "content_preview": "arch  gptoss",
+      "size": "14GB",
+      "arch": "gptoss",
+      "parameters": "20.9B",
+      "quantization": "MXFP4"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/gpt-oss-safeguard:20b/blobs/f60356777647",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/gpt-oss-safeguard:20b/blobs/12e88b2a8727",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_p\": 1\n}",
+      "size": "28B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/gpt-oss-safeguard:20b/blobs/fa6710a93d78",
+      "content_preview": "<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.\nKnowledge cutof",
+      "size": "7.2kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

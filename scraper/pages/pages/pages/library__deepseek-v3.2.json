@@ -1,0 +1,48 @@
+{
+  "path": "/library/deepseek-v3.2",
+  "name": "deepseek-v3.2",
+  "scraped_at": "2026-07-13T19:28:35.395723+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/deepseek-v3/069ccc94-63b0-41e6-b2b3-e8e56068ab1a\" width=\"320\"/></p>\n\n<p><img src=\"/assets/library/deepseek-v3.2/1fd79185-cd9a-47e2-b416-c3467c6edcc9\" alt=\"DeepSeek v3.2\"/></p>\n\n<p>DeepSeek-V3.2 is a model that harmonizes high computational efficiency with superior reasoning and agent performance. Our approach is built upon three key technical breakthroughs:</p>\n\n<ol>\n<li><p><strong>DeepSeek Sparse Attention (DSA)</strong>: an efficient attention mechanism that substantially reduces computational complexity while preserving model performance, specifically optimized for long-context scenarios.</p></li>\n\n<li><p><strong>Scalable Reinforcement Learning Framework</strong>: By implementing a robust RL protocol and scaling post-training compute, DeepSeek-V3.2 performs comparably to GPT-5.</p></li>\n\n<li><p><strong>Large-Scale Agentic Task Synthesis Pipeline</strong>: To integrate reasoning into tool-use scenarios, [DeepSeek team] developed a novel synthesis pipeline that systematically generates training data at scale. This facilitates scalable agentic post-training, improving compliance and generalization in complex interactive environments.</p></li>\n</ol>\n\n<h3>Reference</h3>\n\n<p><a href=\"https://arxiv.org/abs/2512.02556\" rel=\"nofollow\">DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models</a></p>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "high",
+  "cloud_usage_active_slots": 3,
+  "cloud_context": "160K",
+  "cloud_context_unit": "tokens",
+  "cloud_size": "671B",
+  "cloud_size_unit": "parameters",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model deepseek-v3.2:cloud"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model deepseek-v3.2:cloud"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model deepseek-v3.2:cloud"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model deepseek-v3.2:cloud"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model deepseek-v3.2:cloud"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model deepseek-v3.2:cloud"
+    }
+  ]
+}

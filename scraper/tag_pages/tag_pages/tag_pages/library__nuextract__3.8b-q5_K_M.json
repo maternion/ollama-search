@@ -1,0 +1,55 @@
+{
+  "path": "/library/nuextract",
+  "tag_name": "3.8b-q5_K_M",
+  "full_path": "/library/nuextract:3.8b-q5_K_M",
+  "scraped_at": "2026-07-13T21:18:46.032129+00:00",
+  "readme_html": "\n        \n          <h3>Structure Extraction Model by NuMind \ud83d\udd25</h3>\n\n<p>NuExtract is a version of phi-3-mini, fine-tuned on a private high-quality synthetic dataset for information extraction. To use the model, provide an input text (less than 2000 tokens) and a JSON template describing the information you need to extract.</p>\n\n<p>Note: This model is purely extractive, so all text output by the model is present as is in the original text. You can also provide an example of output formatting to help the model understand your task more precisely.</p>\n\n<h2>Usage</h2>\n\n<h3>Prompt Format</h3>\n\n<p>This model works best when using a specific prompt format to extract text:</p>\n\n<pre><code>### Template:\n{\n    &#34;Model&#34;: {\n        &#34;Name&#34;: &#34;&#34;,\n        &#34;Number of parameters&#34;: &#34;&#34;,\n    },\n    &#34;Usage&#34;: {\n        &#34;Use case&#34;: [],\n        &#34;Licence&#34;: &#34;&#34;\n    }\n}\n### Example:\n{\n    &#34;Model&#34;: {\n        &#34;Name&#34;: &#34;Llama3&#34;,\n        &#34;Number of parameters&#34;: &#34;8 billion&#34;,\n    },\n    &#34;Usage&#34;: {\n        &#34;Use case&#34;:[\n\t\t\t&#34;chat&#34;,\n\t\t\t&#34;code completion&#34;\n\t\t],\n        &#34;Licence&#34;: &#34;Meta Llama3&#34;\n    }\n}\n### Text:\nWe introduce Mistral 7B, a 7\u2013billion-parameter language model engineered for superior performance and efficiency. Mistral 7B outperforms the best open 13B model (Llama 2) across all evaluated benchmarks, and the best released 34B model (Llama 1) in reasoning, mathematics, and code generation. Our model leverages grouped-query attention (GQA) for faster inference, coupled with sliding window attention (SWA) to effectively handle sequences of arbitrary length with a reduced inference cost. We also provide a model fine-tuned to follow instructions, Mistral 7B \u2013 Instruct, that surpasses Llama 2 13B \u2013 chat model both on human and automated benchmarks. Our models are released under the Apache 2.0 license. \n\nCode: https://github.com/mistralai/mistral-src \nWebpage: https://mistral.ai/news/announcing-mistral-7b/\n</code></pre>\n\n<h3>References</h3>\n\n<p><a href=\"https://huggingface.co/numind/NuExtract\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "e45f9e901474",
+  "manifest_size": "2.8GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/nuextract:3.8b-q5_K_M/blobs/aafdc0faf175",
+      "content_preview": "arch  phi3",
+      "size": "2.8GB",
+      "arch": "phi3",
+      "parameters": "3.82B",
+      "quantization": "Q5_K_M"
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/nuextract:3.8b-q5_K_M/blobs/8dde1baf1db0",
+      "content_preview": "{\n    \"stop\": [\n        \"<|end|>\",\n        \"<|user|>\",\n        \"<|assistant|>\"\n    ]\n}",
+      "size": "78B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/nuextract:3.8b-q5_K_M/blobs/e3e379c2858c",
+      "content_preview": "{{- range .Messages }}\n{{- if eq .Role \"user\" }}<|user|>\n{{ .Content }}<|end|>\n<|assistant|>\n{{- els",
+      "size": "172B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/nuextract:3.8b-q5_K_M/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

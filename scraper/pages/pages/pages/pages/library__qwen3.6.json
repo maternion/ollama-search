@@ -1,0 +1,48 @@
+{
+  "path": "/library/qwen3.6",
+  "name": "qwen3.6",
+  "scraped_at": "2026-07-13T19:27:39.933524+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/qwen3.6/a4dafb1d-29c1-46bc-81ca-a8a6db6b55b3\" width=\"360\"/></p>\n\n<p>Following the February release of the Qwen3.5 series, we\u2019re pleased to share the first open-weight variant of Qwen3.6. Built on direct feedback from the community, Qwen3.6 prioritizes stability and real-world utility, offering developers a more intuitive, responsive, and genuinely productive coding experience.</p>\n\n<h3>Qwen3.6 Highlights</h3>\n\n<p>This release delivers substantial upgrades, particularly in</p>\n\n<ul>\n<li><p>Agentic Coding: the model now handles frontend workflows and repository-level reasoning with greater fluency and precision.</p></li>\n\n<li><p>Thinking Preservation: we\u2019ve introduced a new option to retain reasoning context from historical messages, streamlining iterative development and reducing overhead.</p></li>\n</ul>\n\n<p><img src=\"/assets/library/qwen3.6/4d333c77-e6ad-4047-8724-f38c68cc5b28\" alt=\"qwen3.6_35b_a3b_score.png\"/></p>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model qwen3.6"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model qwen3.6"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model qwen3.6"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model qwen3.6"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model qwen3.6"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model qwen3.6"
+    }
+  ]
+}

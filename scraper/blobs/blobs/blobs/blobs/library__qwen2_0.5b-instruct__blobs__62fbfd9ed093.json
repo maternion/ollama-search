@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/qwen2:0.5b-instruct/blobs/62fbfd9ed093",
+  "tag_full": "qwen2:0.5b-instruct",
+  "blob_type": "template",
+  "digest": "62fbfd9ed093",
+  "size": "182B",
+  "metadata": [],
+  "content": "{{ if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}{{ if .Prompt }}<|im_start|>user\n{{ .Prompt }}<|im_end|>\n{{ end }}<|im_start|>assistant\n{{ .Response }}<|im_end|>",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T23:47:08.778775+00:00"
+}

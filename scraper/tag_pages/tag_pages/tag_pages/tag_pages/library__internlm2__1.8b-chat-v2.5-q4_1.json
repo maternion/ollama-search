@@ -1,0 +1,64 @@
+{
+  "path": "/library/internlm2",
+  "tag_name": "1.8b-chat-v2.5-q4_1",
+  "full_path": "/library/internlm2:1.8b-chat-v2.5-q4_1",
+  "scraped_at": "2026-07-13T20:58:00.494870+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/internlm2/646a4835-4904-4433-93ab-5eec0964fa12\" alt=\"internLM logo\" width=\"360\"/></p>\n\n<p>InternLM2.5 has open-sourced a 7 billion parameter base model and a chat model tailored for practical scenarios. The model has the following characteristics:</p>\n\n<ul>\n<li><p><strong>Outstanding reasoning capability</strong>: State-of-the-art performance on Math reasoning, surpassing models like Llama3 and Gemma2-9B.</p></li>\n\n<li><p><strong>Stronger tool use</strong>: InternLM2.5 supports gathering information from more than 100 web pages, corresponding implementation will be released in Lagent soon. InternLM2.5 has better tool utilization-related capabilities in instruction following, tool selection and reflection.</p></li>\n</ul>\n\n<h2>Reference</h2>\n\n<p><a href=\"https://github.com/InternLM/InternLM\" rel=\"nofollow\">GitHub</a></p>\n\n<p><a href=\"https://huggingface.co/internlm/internlm2_5-7b-chat\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "de0f6524a4bd",
+  "manifest_size": "1.2GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/internlm2:1.8b-chat-v2.5-q4_1/blobs/fe1dfa4ea730",
+      "content_preview": "arch  internlm2",
+      "size": "1.2GB",
+      "arch": "internlm2",
+      "parameters": "1.89B",
+      "quantization": "Q4_1"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/internlm2:1.8b-chat-v2.5-q4_1/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/internlm2:1.8b-chat-v2.5-q4_1/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "size": "59B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/internlm2:1.8b-chat-v2.5-q4_1/blobs/75357d685f23",
+      "content_preview": "You are a helpful assistant.",
+      "size": "28B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/internlm2:1.8b-chat-v2.5-q4_1/blobs/3e9c19662c62",
+      "content_preview": "{{- range .Messages }}<|im_start|>{{ .Role }}\n{{ .Content }}<|im_end|>\n{{ end }}<|im_start|>assistan",
+      "size": "101B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

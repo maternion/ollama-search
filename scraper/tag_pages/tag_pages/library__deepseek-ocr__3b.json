@@ -1,0 +1,46 @@
+{
+  "path": "/library/deepseek-ocr",
+  "tag_name": "3b",
+  "full_path": "/library/deepseek-ocr:3b",
+  "scraped_at": "2026-07-13T21:20:36.913250+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/deepseek-v3/069ccc94-63b0-41e6-b2b3-e8e56068ab1a\" width=\"320\"/></p>\n\n<blockquote>\n<p>DeepSeek-OCR requires <a href=\"https://github.com/ollama/ollama/releases\" rel=\"nofollow\">Ollama v0.13.0</a> or later.</p>\n</blockquote>\n\n<p>DeepSeek-OCR is a vision-language model that can perform token-efficient optical character recognition (OCR).</p>\n\n<p><img src=\"/assets/library/deepseek-ocr/e93c9353-3836-4680-a7f1-148ad3e47eff\" alt=\"fig1.png\"/></p>\n\n<h3>Example inputs</h3>\n\n<p>Please note, the model is sensitive to its input. For example, a missing punctuation or new line may cause an improper output.</p>\n\n<pre><code>ollama run deepseek-ocr &#34;/path/to/image\\n&lt;|grounding|&gt;Given the layout of the image.&#34;\n</code></pre>\n\n<pre><code>ollama run deepseek-ocr &#34;/path/to/image\\nFree OCR.&#34;\n</code></pre>\n\n<pre><code>ollama run deepseek-ocr &#34;/path/to/image\\nParse the figure.&#34;\n</code></pre>\n\n<pre><code>ollama run deepseek-ocr &#34;/path/to/image\\nExtract the text in the image.&#34;\n</code></pre>\n\n<pre><code>ollama run deepseek-ocr &#34;/path/to/image\\n&lt;|grounding|&gt;Convert the document to markdown.&#34;\n</code></pre>\n\n<h3>Examples</h3>\n\n<p><img src=\"/assets/library/deepseek-ocr/445a87aa-b34e-4a85-8aba-921dd54cfd86\" alt=\"show1.jpg\"/></p>\n\n<p><img src=\"/assets/library/deepseek-ocr/78c11fd6-d1be-4983-a08a-5188c65fcd1f\" alt=\"show2.jpg\"/></p>\n\n<p><img src=\"/assets/library/deepseek-ocr/44b2ac4a-d52e-4f77-843d-3c828e7ecaf0\" alt=\"show3.jpg\"/></p>\n\n<p><img src=\"/assets/library/deepseek-ocr/39e4d41b-634e-407a-a26e-7880c0a2b137\" alt=\"show4.jpg\"/></p>\n\n<h3>References</h3>\n\n<ul>\n<li><a href=\"https://arxiv.org/abs/2510.18234\" rel=\"nofollow\">Arxiv paper</a></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "7 months ago",
+  "manifest_digest": "0e7b018b8a22",
+  "manifest_size": "6.7GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/deepseek-ocr:3b/blobs/3a18673ff291",
+      "content_preview": "arch  deepseekocr",
+      "size": "6.7GB",
+      "arch": "deepseekocr",
+      "parameters": "3.34B",
+      "quantization": "F16"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/deepseek-ocr:3b/blobs/a406579cd136",
+      "content_preview": "MIT License\nCopyright (c) [year] [fullname]\nPermission is hereby granted, free of charge, to any per",
+      "size": "1.1kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/deepseek-ocr:3b/blobs/ae40a217c1c4",
+      "content_preview": "{\n    \"temperature\": 0\n}",
+      "size": "18B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

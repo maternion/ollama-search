@@ -1,0 +1,37 @@
+{
+  "path": "/library/duckdb-nsql",
+  "tag_name": "7b-q5_K_S",
+  "full_path": "/library/duckdb-nsql:7b-q5_K_S",
+  "scraped_at": "2026-07-13T21:19:20.199945+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/ollama/ollama/assets/3325447/b9217c78-0803-45fe-90cf-00bd76705a37\" alt=\"duckdb-nsql model\"/></p>\n\n<p>DuckDB-NSQL is a 7 billion parameter text-to-SQL model designed specifically for SQL generation tasks.</p>\n\n<p>This model is based on Meta\u2019s original Llama-2 7B model and further pre-trained on a dataset of general SQL queries and then fine-tuned on a dataset composed of DuckDB text-to-SQL pairs.</p>\n\n<h2>Usage</h2>\n\n<h3>Example Prompt</h3>\n\n<pre><code>Provided this schema:\n\nCREATE TABLE taxi (\n    VendorID bigint,\n    tpep_pickup_datetime timestamp,\n    tpep_dropoff_datetime timestamp,\n    passenger_count double,\n    trip_distance double,\n    fare_amount double,\n    extra double,\n    tip_amount double,\n    tolls_amount double,\n    improvement_surcharge double,\n    total_amount double,\n);\n\nGive me taxis with more than 2 passengers\n</code></pre>\n\n<h3>Example output</h3>\n\n<pre><code>SELECT * FROM taxi WHERE passenger_count &gt; 2\n</code></pre>\n\n<h2>Setting the system prompt</h2>\n\n<p>This model expects the schema in the system prompt as input:</p>\n\n<pre><code>/set system &#34;&#34;&#34;Here is the database schema that the SQL query will run on:\nCREATE TABLE taxi (\n    VendorID bigint,\n    tpep_pickup_datetime timestamp,\n    tpep_dropoff_datetime timestamp,\n    passenger_count double,\n    trip_distance double,\n    fare_amount double,\n    extra double,\n    tip_amount double,\n    tolls_amount double,\n    improvement_surcharge double,\n    total_amount double,\n);&#34;&#34;&#34;\n\n</code></pre>\n\n<p>Once the schema is provided in the system prompt, the model will use it in subsequent responses.</p>\n\n<p>For the following prompt:</p>\n\n<pre><code>get all columns ending with _amount from taxi table\n</code></pre>\n\n<p>The model will output something like this:</p>\n\n<pre><code>SELECT COLUMNS(&#39;.*_amount&#39;) FROM taxi;\n</code></pre>\n\n<h2>API example</h2>\n\n<pre><code>$ curl http://localhost:11434/api/generate -d &#39;{\n    &#34;model&#34;: &#34;duckdb-nsql:7b-q4_0&#34;,\n    &#34;system&#34;: &#34;Here is the database schema that the SQL query will run on: CREATE TABLE taxi (VendorID bigint, tpep_pickup_datetime timestamp, tpep_dropoff_datetime timestamp, passenger_count double, trip_distance double, fare_amount double, extra double, tip_amount double, tolls_amount double, improvement_surcharge double, total_amount double,);&#34;,\n    &#34;prompt&#34;: &#34;get all columns ending with _amount from taxi table&#34;\n}&#39;\n</code></pre>\n\n<h2>Python library example</h2>\n\n<pre><code>pip install ollama\n</code></pre>\n\n<pre><code>import ollama\n\nr = ollama.generate(\n    model=&#39;duckdb-nsql:7b-q4_0&#39;,\n    system=&#39;&#39;&#39;Here is the database schema that the SQL query will run on:\nCREATE TABLE taxi (\n    VendorID bigint,\n    tpep_pickup_datetime timestamp,\n    tpep_dropoff_datetime timestamp,\n    passenger_count double,\n    trip_distance double,\n    fare_amount double,\n    extra double,\n    tip_amount double,\n    tolls_amount double,\n    improvement_surcharge double,\n    total_amount double,\n);&#39;&#39;&#39;,\n    prompt=&#39;get all columns ending with _amount from taxi table&#39;,\n)\n\nprint(r[&#39;response&#39;])\n</code></pre>\n\n<h2>Training Data</h2>\n\n<p>200k DuckDB text-to-SQL pairs, synthetically generated using Mixtral-8x7B-Instruct-v0.1, guided by the DuckDB v0.9.2 documentation. And text-to-SQL pairs from NSText2SQL that were transpiled to DuckDB SQL using sqlglot.</p>\n\n<h2>Training Procedure</h2>\n\n<p>DuckDB-NSQL was trained using cross-entropy loss to maximize the likelihood of sequential inputs. For finetuning on text-to-SQL pairs, we only compute the loss over the SQL portion of the pair. The model is trained using 80GB A100s, leveraging data and model parallelism. We fine-tuned for 10 epochs.</p>\n\n<h2>Intended Use and Limitations</h2>\n\n<p>The model was designed for text-to-SQL generation tasks from given table schema and natural language prompts. The model works best with the prompt format defined below and outputs. In contrast to existing text-to-SQL models, the SQL generation is not contrained to SELECT statements, but can generate any valid DuckDB SQL statement, including statements for official DuckDB extensions.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/motherduckdb/DuckDB-NSQL-7B-v0.1\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "49c1d3c130d2",
+  "manifest_size": "4.7GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/duckdb-nsql:7b-q5_K_S/blobs/1797694c6007",
+      "content_preview": "arch  llama",
+      "size": "4.7GB",
+      "arch": "llama",
+      "parameters": "6.74B",
+      "quantization": "Q5_K_S"
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/duckdb-nsql:7b-q5_K_S/blobs/cc23c3fcb197",
+      "content_preview": "### Instruction:\nYour task is to generate valid duckdb SQL to answer the following question, given a",
+      "size": "230B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/hermes3:70b-llama3.1-q3_K_M/blobs/ec20917d63ea",
+  "tag_full": "hermes3:70b-llama3.1-q3_K_M",
+  "blob_type": "template",
+  "digest": "ec20917d63ea",
+  "size": "1.3kB",
+  "metadata": [],
+  "content": "{{- if .Tools }}<|im_start|>system\nYou are a function calling AI model. You are provided with function signatures within <tools></tools> XML tags. You may call one or more functions to assist with the user query. Don't make assumptions about what values to plug into functions. Here are the available tools: <tools>\n{{- range .Tools }}\n{{- . }}\n{{- end }}</tools> Use the following pydantic model json schema for each tool call you will make: {\"properties\": {\"arguments\": {\"title\": \"Arguments\", \"type\": \"object\"}, \"name\": {\"title\": \"Name\", \"type\": \"string\"}}, \"required\": [\"arguments\", \"name\"], \"title\": \"FunctionCall\", \"type\": \"object\"} For each function call return a json object with function name and arguments within <tool_call></tool_call> XML tags as follows:\n<tool_call>\n{\"arguments\": <args-dict>, \"name\": <function-name>}\n</tool_call><|im_end|>\n{{ end }}\n{{- range .Messages }}<|im_start|>{{ .Role }}\n{{- if and (eq .Role \"tool\") .Content }}\n<tool_response>\n{\"content\": {{ .Content }}}\n</tool_response>\n{{- else if .Content }}\n{{ .Content }}\n{{- else if .ToolCalls }}\n<tool_call>\n{{- range .ToolCalls }}\n{\"name\": \"{{ .Function.Name }}\", \"arguments\": {{ .Function.Arguments }}}\n{{- end }}\n</tool_call>\n{{- end }}<|im_end|>\n{{ end }}<|im_start|>assistant",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T02:41:23.265593+00:00"
+}

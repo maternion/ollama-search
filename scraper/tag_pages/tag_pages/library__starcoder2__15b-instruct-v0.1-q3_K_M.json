@@ -1,0 +1,64 @@
+{
+  "path": "/library/starcoder2",
+  "tag_name": "15b-instruct-v0.1-q3_K_M",
+  "full_path": "/library/starcoder2:15b-instruct-v0.1-q3_K_M",
+  "scraped_at": "2026-07-13T20:13:06.205083+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/ollama/ollama/assets/251292/5456bb29-de2a-4463-930c-3aaad585f430\" alt=\"StarCode 2\"/></p>\n\n<p>Supporting a context window of up to 16,384 tokens, StarCoder2 is the next generation of transparently trained open code LLMs.</p>\n\n<ul>\n<li><code>starcoder2:instruct</code>: a 15B model that follows natural and human-written instructions</li>\n<li><code>starcoder2:15b</code> was trained on 600+ programming languages and 4+ trillion tokens.</li>\n<li><code>starcoder2:7b</code> was trained on 17 programming languages and 3.5+ trillion tokens.</li>\n<li><code>starcoder2:3b</code> was trained on 17 programming languages and 3+ trillion tokens.</li>\n</ul>\n\n<p>StarCoder2-15B is the best in its size class and matches 33B+ models on many evaluations. StarCoder2-3B matches the performance of StarCoder1-15B.</p>\n\n<h2>References</h2>\n\n<ul>\n<li><a href=\"https://github.com/bigcode-project/starcoder2\" rel=\"nofollow\">GitHub</a></li>\n<li><a href=\"https://huggingface.co/bigcode\" rel=\"nofollow\">HuggingFace</a></li>\n<li><a href=\"https://arxiv.org/abs/2402.19173\" rel=\"nofollow\">Paper</a></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "7be2b1ded63d",
+  "manifest_size": "8.0GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/starcoder2:15b-instruct-v0.1-q3_K_M/blobs/9bda0a29ca35",
+      "content_preview": "arch  starcoder2",
+      "size": "8.0GB",
+      "arch": "starcoder2",
+      "parameters": "16B",
+      "quantization": "Q3_K_M"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/starcoder2:15b-instruct-v0.1-q3_K_M/blobs/4ec42cd966c9",
+      "content_preview": "BigCode Open RAIL-M v1 License Agreement\nSection I: Preamble\nThis OpenRAIL-M License Agreement was c",
+      "size": "13kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/starcoder2:15b-instruct-v0.1-q3_K_M/blobs/0aeac66f19bf",
+      "content_preview": "{\n    \"stop\": [\n        \"###\",\n        \"<|endoftext|>\",\n        \"<file_sep>\"\n    ]\n}",
+      "size": "66B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/starcoder2:15b-instruct-v0.1-q3_K_M/blobs/708c319c4125",
+      "content_preview": "You are an exceptionally intelligent coding assistant that consistently delivers accurate and reliab",
+      "size": "136B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/starcoder2:15b-instruct-v0.1-q3_K_M/blobs/3d98b2e71868",
+      "content_preview": "{{ if .System }}{{ .System }}\n{{ end }}{{ if .Prompt }}### Instruction\n{{ .Prompt }}\n{{ end }}### Re",
+      "size": "141B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

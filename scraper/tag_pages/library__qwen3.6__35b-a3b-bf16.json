@@ -1,0 +1,46 @@
+{
+  "path": "/library/qwen3.6",
+  "tag_name": "35b-a3b-bf16",
+  "full_path": "/library/qwen3.6:35b-a3b-bf16",
+  "scraped_at": "2026-07-13T19:33:14.151143+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/qwen3.6/a4dafb1d-29c1-46bc-81ca-a8a6db6b55b3\" width=\"360\"/></p>\n\n<p>Following the February release of the Qwen3.5 series, we\u2019re pleased to share the first open-weight variant of Qwen3.6. Built on direct feedback from the community, Qwen3.6 prioritizes stability and real-world utility, offering developers a more intuitive, responsive, and genuinely productive coding experience.</p>\n\n<h3>Qwen3.6 Highlights</h3>\n\n<p>This release delivers substantial upgrades, particularly in</p>\n\n<ul>\n<li><p>Agentic Coding: the model now handles frontend workflows and repository-level reasoning with greater fluency and precision.</p></li>\n\n<li><p>Thinking Preservation: we\u2019ve introduced a new option to retain reasoning context from historical messages, streamlining iterative development and reducing overhead.</p></li>\n</ul>\n\n<p><img src=\"/assets/library/qwen3.6/4d333c77-e6ad-4047-8724-f38c68cc5b28\" alt=\"qwen3.6_35b_a3b_score.png\"/></p>\n\n        \n      ",
+  "manifest_updated": "2 months ago",
+  "manifest_digest": "94061ddd23a7",
+  "manifest_size": "71GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/qwen3.6:35b-a3b-bf16/blobs/b2e1285b022c",
+      "content_preview": "arch  qwen35moe",
+      "size": "71GB",
+      "arch": "qwen35moe",
+      "parameters": "36B",
+      "quantization": "BF16"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/qwen3.6:35b-a3b-bf16/blobs/5f3a3c817e78",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/qwen3.6:35b-a3b-bf16/blobs/86eff881e8d2",
+      "content_preview": "{\n    \"min_p\": 0,\n    \"presence_penalty\": 1.5,\n    \"repeat_penalty\": 1,\n    \"temperature\": 1,\n    \"t",
+      "size": "94B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

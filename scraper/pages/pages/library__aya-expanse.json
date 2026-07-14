@@ -1,0 +1,48 @@
+{
+  "path": "/library/aya-expanse",
+  "name": "aya-expanse",
+  "scraped_at": "2026-07-13T19:29:25.611325+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/aya-expanse/fba5fdd1-f5f3-43d2-a2e1-04c9e37d37be\" width=\"460\"/></p>\n\n<p>Aya Expanse represents a significant advancement in multilingual AI capabilities. Combining Cohere\u2019s Command model family with a year of focused research in multilingual optimization has produced versatile 8B and 32B parameter models that can understand and generate text across 23 languages while maintaining high performance across all of them.</p>\n\n<h2>Key Features</h2>\n\n<ul>\n<li>8-billion and 32-billion parameter multilingual language models developed by Cohere For AI</li>\n<li>Supports Arabic, Chinese (simplified &amp; traditional), Czech, Dutch, English, French, German, Greek, Hebrew, Hebrew, Hindi, Indonesian, Italian, Japanese, Korean, Persian, Polish, Portuguese, Romanian, Russian, Spanish, Turkish, Ukrainian, and Vietnamese</li>\n<li>Built on the Command family of models with extensive research in data arbitrage, multilingual preference training, and safety tuning</li>\n<li>128K context length</li>\n<li>Released under CC-BY-NC license with additional usage policies</li>\n</ul>\n\n<h2>References</h2>\n\n<p><a href=\"https://cohere.com/blog/aya-expanse-connecting-our-world\" rel=\"nofollow\">Blog post</a></p>\n\n<p><a href=\"https://huggingface.co/CohereForAI/aya-expanse-8b\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model aya-expanse"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model aya-expanse"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model aya-expanse"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model aya-expanse"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model aya-expanse"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model aya-expanse"
+    }
+  ]
+}

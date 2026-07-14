@@ -1,0 +1,48 @@
+{
+  "path": "/library/mistral-small3.2",
+  "name": "mistral-small3.2",
+  "scraped_at": "2026-07-13T19:28:30.887234+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/mistral-small3.2/cec4138e-e20c-4d5b-910f-56f8647dbda1\" width=\"140\"/></p>\n\n<p>Mistral-Small-3.2-24B-Instruct-2506 is a minor update of Mistral-Small-3.1-24B-Instruct-2503.</p>\n\n<p>Small-3.2 improves in the following categories:</p>\n\n<ul>\n<li><strong>Instruction following</strong>: Small-3.2 is better at following precise instructions</li>\n<li><strong>Repetition errors</strong>: Small-3.2 produces less infinite generations or repetitive answers</li>\n<li><strong>Function calling</strong>: Small-3.2\u2019s function calling template is more robust (see here and examples)</li>\n</ul>\n\n<p>In all other categories Small-3.2 should match or slightly improve compared to Mistral-Small-3.1-24B-Instruct-2503.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model mistral-small3.2"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model mistral-small3.2"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model mistral-small3.2"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model mistral-small3.2"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model mistral-small3.2"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model mistral-small3.2"
+    }
+  ]
+}

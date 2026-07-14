@@ -1,0 +1,48 @@
+{
+  "path": "/library/glm-ocr",
+  "name": "glm-ocr",
+  "scraped_at": "2026-07-13T19:27:40.514862+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/glm-ocr/c08dfddc-0734-4983-a450-3466d01594ee\" alt=\"logo.svg\"/></p>\n\n<p>GLM-OCR is a multimodal OCR model for complex document understanding, built on the GLM-V encoder\u2013decoder architecture. The model integrates the CogViT visual encoder pre-trained on large-scale image\u2013text data, a lightweight cross-modal connector with efficient token downsampling, and a GLM-0.5B language decoder.</p>\n\n<p><img src=\"/assets/library/glm-ocr/7b4bd5ed-e6bc-4f36-889d-a02fa36e88ae\" alt=\"image.png\"/></p>\n\n<h3>Usage</h3>\n\n<h4>Text recognition</h4>\n\n<pre><code>ollama run glm-ocr Text Recognition: ./image.png\n</code></pre>\n\n<h4>Table recognition</h4>\n\n<pre><code>ollama run glm-ocr Table Recognition: ./image.png\n</code></pre>\n\n<h4>Figure recognition</h4>\n\n<pre><code>ollama run glm-ocr Figure Recognition: ./image.png\n</code></pre>\n\n<h3>Key features</h3>\n\n<ul>\n<li><p><strong>State-of-the-Art Performance</strong>: Achieves a score of 94.62 on OmniDocBench V1.5, ranking #1 overall, and delivers state-of-the-art results across major document understanding benchmarks,\nincluding formula recognition, table recognition, and information extraction.</p></li>\n\n<li><p><strong>Optimized for Real-World Scenarios</strong>: Designed and optimized for practical business use cases, maintaining robust performance on complex tables, code-heavy documents, seals, and other challenging real-world layouts.</p></li>\n\n<li><p><strong>Efficient Inference</strong>: With only 0.9B parameters, GLM-OCR supports deployment via vLLM, SGLang, and Ollama, significantly reducing inference latency and compute cost, making it ideal for high-concurrency services and edge deployments.</p></li>\n\n<li><p><strong>Easy to Use</strong>: Fully open-sourced and equipped with a comprehensive <a href=\"https://github.com/zai-org/GLM-OCR\" rel=\"nofollow\">SDK</a> and inference toolchain, offering simple installation, one-line invocation, and smooth integration into existing production pipelines.</p></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model glm-ocr"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model glm-ocr"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model glm-ocr"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model glm-ocr"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model glm-ocr"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model glm-ocr"
+    }
+  ]
+}

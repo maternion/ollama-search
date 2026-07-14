@@ -1,0 +1,46 @@
+{
+  "path": "/library/mistral-medium-3.5",
+  "tag_name": "latest",
+  "full_path": "/library/mistral-medium-3.5:latest",
+  "scraped_at": "2026-07-13T21:24:55.452934+00:00",
+  "readme_html": "\n        \n          <h1>Mistral Medium 3.5</h1>\n\n<p>Mistral Medium 3.5 is Mistral\u2019s first flagship merged model. It is a dense 128B model with a 256k context window, handling instruction-following, reasoning,\nand coding in a single set of weights. Mistral Medium 3.5 replaces its predecessor Mistral Medium 3.1 and Magistral in Le Chat. It also replaces Devstral 2 in our\ncoding agent Vibe. Concretely, expect better performance for instruct, reasoning and coding tasks in a new unified model in comparison with Mistral\u2019s previous released models.</p>\n\n<p>Reasoning effort is configurable per request, so the same model can answer a quick chat reply or work through a complex agentic run. We trained the vision encoder from\nscratch to handle variable image sizes and aspect ratios.</p>\n\n<p>Find more information on <a href=\"https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5\" rel=\"nofollow\">Mistral\u2019s blog</a>.</p>\n\n<h2>Key Features</h2>\n\n<p>Mistral Medium 3.5 includes the following architectural choices:</p>\n\n<ul>\n<li><strong>Dense 128B parameters</strong>.</li>\n<li><strong>256k context length</strong>.</li>\n<li><strong>Multimodal input</strong>: Accepts both text and image input, with text output.</li>\n<li><strong>Instruct and Reasoning functionalities</strong> with function calls (reasoning effort configurable per request).</li>\n</ul>\n\n<p>Mistral Medium 3.5 offers the following capabilities:</p>\n\n<ul>\n<li><strong>Reasoning Mode</strong>: Toggle between fast instant reply mode and reasoning mode, boosting performance with test-time compute when requested.</li>\n<li><strong>Vision</strong>: Analyzes images and provides insights based on visual content, in addition to text.</li>\n<li><strong>Multilingual</strong>: Supports dozens of languages, including English, French, Spanish, German, Italian, Portuguese, Dutch, Chinese, Japanese, Korean, and Arabic.</li>\n<li><strong>System Prompt</strong>: Strong adherence and support for system prompts.</li>\n<li><strong>Agentic</strong>: Best-in-class agentic capabilities with native function calling and JSON output.</li>\n<li><strong>Large Context Window</strong>: Supports a 256k context window.</li>\n</ul>\n\n<p>It is released under a <strong>Modified MIT License</strong>: Open-source license for both commercial and non-commercial use with exceptions for companies with large revenue.</p>\n\n<h2>Recommended Settings</h2>\n\n<ul>\n<li><strong>Reasoning Effort</strong>:\n\n<ul>\n<li><code>&#39;none&#39;</code> \u2192 Do not use reasoning</li>\n<li><code>&#39;high&#39;</code> \u2192 Use reasoning (recommended for complex prompts and agentic usage)\nUse <code>reasoning_effort=&#34;high&#34;</code> for complex tasks and agentic coding.</li>\n</ul></li>\n<li><strong>Temperature</strong>: 0.7 for <code>reasoning_effort=&#34;high&#34;</code>. Temp between 0.0 and 0.7 for <code>reasoning_effort=&#34;none&#34;</code> depending on the task.\nGenerally, lower means answer that are more to the point and higher allows the model to be more creative. It is a good practice to try different values in order to improve the model performance to meet your demands.</li>\n<li><strong>Top p</strong>: 0.95 for <code>reasoning_effort=&#34;high&#34;</code>. You can try different values but staying close should achieve best performance. Leave it to <code>None</code> (or <code>1.0</code>) for <code>reasoning_effort=&#34;none&#34;</code>.</li>\n</ul>\n\n<h2>Benchmarks</h2>\n\n<h3>Agentic Benchmarks</h3>\n\n<p>Mistral Medium 3.5 supersedes all Mistral\u2019s previous coding models, namely Devstral, across all benchmarks. It scores <strong>91.4%</strong> on \u03c4\u00b3-Telecom and <strong>77.6%</strong> on SWE-Bench Verified. Due to its stronger agentic capabilities, Mistral Medium 3.5 replaces Devstral 2 in the coding agent, Vibe CLI.</p>\n\n<p><img src=\"https://huggingface.co/mistralai/Mistral-Medium-3.5-128B/resolve/main/images/image2.png\" alt=\"Mistral agentic benchmark\"/>\n<img src=\"https://huggingface.co/mistralai/Mistral-Medium-3.5-128B/resolve/main/images/image3.png\" alt=\"Mistral agentic benchmark SWE-bench\"/>\n<img src=\"https://huggingface.co/mistralai/Mistral-Medium-3.5-128B/resolve/main/images/image4.png\" alt=\"Mistral agentic vs competiting models benchmark\"/></p>\n\n<h3>Instruction Following, Reasoning, and Coding Benchmarks</h3>\n\n<p>Mistral Medium 3.5 was also compared with competing models on instruction following, reasoning (math), and coding benchmarks. Thanks to its unified capabilities, it achieves strong results across all these tasks and Mistral Medium 3.5 is now powering Le Chat.</p>\n\n<p><img src=\"https://huggingface.co/mistralai/Mistral-Medium-3.5-128B/resolve/main/images/image1.png\" alt=\"instruct reasoning and agentic benchmark\"/></p>\n\n        \n      ",
+  "manifest_updated": "2 months ago",
+  "manifest_digest": "0341632adb05",
+  "manifest_size": "80GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/mistral-medium-3.5:latest/blobs/a46088eccd0d",
+      "content_preview": "arch  mistral3",
+      "size": "80GB",
+      "arch": "mistral3",
+      "parameters": "128B",
+      "quantization": "Q4_K_M"
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/mistral-medium-3.5:latest/blobs/a11f7cb278dd",
+      "content_preview": "You are Mistral-Small-4-119B-2603, a Large Language Model (LLM) created by Mistral AI, a French star",
+      "size": "2.4kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/mistral-medium-3.5:latest/blobs/20c887c0de3e",
+      "content_preview": "{{- define \"jsonValue\" -}}\n{{- if eq (printf \"%T\" .) \"template.templateArgs\" -}}{{ template \"jsonMap",
+      "size": "4.0kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/gemma4:31b-coding-mtp-bf16/blobs/97af7f9a43d9",
+  "tag_full": "gemma4:31b-coding-mtp-bf16",
+  "blob_type": "json",
+  "digest": "97af7f9a43d9",
+  "size": "2.1kB",
+  "metadata": [],
+  "content": "{\n\"audio_token\": \"<|audio|>\",\n\"backend\": \"tokenizers\",\n\"boa_token\": \"<|audio>\",\n\"boi_token\": \"<|image>\",\n\"bos_token\": \"<bos>\",\n\"eoa_token\": \"<audio|>\",\n\"eoc_token\": \"<channel|>\",\n\"eoi_token\": \"<image|>\",\n\"eos_token\": \"<eos>\",\n\"eot_token\": \"<turn|>\",\n\"escape_token\": \"<|\\\"|>\",\n\"etc_token\": \"<tool_call|>\",\n\"etd_token\": \"<tool|>\",\n\"etr_token\": \"<tool_response|>\",\n\"extra_special_tokens\": [\n\"<|video|>\"\n],\n\"image_token\": \"<|image|>\",\n\"mask_token\": \"<mask>\",\n\"model_max_length\": 1000000000000000019884624838656,\n\"pad_token\": \"<pad>\",\n\"padding_side\": \"left\",\n\"processor_class\": \"Gemma4Processor\",\n\"response_schema\": {\n\"type\": \"object\",\n\"properties\": {\n\"role\": {\n\"const\": \"assistant\"\n},\n\"thinking\": {\n\"type\": \"string\"\n},\n\"content\": {\n\"type\": \"string\"\n},\n\"tool_calls\": {\n\"x-regex-iterator\": \"<\\\\|tool_call>(.*?)<tool_call\\\\|>\",\n\"type\": \"array\",\n\"items\": {\n\"type\": \"object\",\n\"properties\": {\n\"type\": {\n\"const\": \"function\"\n},\n\"function\": {\n\"type\": \"object\",\n\"x-regex\": \"call\\\\:(?P<name>\\\\w+)(?P<arguments>\\\\{.*\\\\})\",\n\"properties\": {\n\"name\": {\n\"type\": \"string\"\n},\n\"arguments\": {\n\"type\": \"object\",\n\"x-parser\": \"gemma4-tool-call\",\n\"additionalProperties\": {}\n}\n}\n}\n}\n}\n}\n},\n\"x-regex\": \"(\\\\<\\\\|channel\\\\>thought\\\\n(?P<thinking>.*?)\\\\<channel\\\\|\\\\>)?(?P<content>(?:(?!\\\\<\\\\|tool_call\\\\>)(?!\\\\<turn\\\\|\\\\>).)+)?(?P<tool_calls>\\\\<\\\\|tool_call\\\\>.*\\\\<tool_call\\\\|\\\\>)?(?:\\\\<turn\\\\|\\\\>)?\"\n},\n\"soc_token\": \"<|channel>\",\n\"sot_token\": \"<|turn>\",\n\"stc_token\": \"<|tool_call>\",\n\"std_token\": \"<|tool>\",\n\"str_token\": \"<|tool_response>\",\n\"think_token\": \"<|think|>\",\n\"tokenizer_class\": \"GemmaTokenizer\",\n\"unk_token\": \"<unk>\"\n}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T21:31:59.938414+00:00"
+}

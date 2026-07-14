@@ -1,0 +1,17 @@
+{
+  "path": "/library/phi4",
+  "name": "phi4",
+  "scraped_at": "2026-07-13T19:28:04.547544+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/phi3.5/dbf19a17-e3fd-46b6-a059-e6b4f1fae59f\" width=\"320\"/></p>\n\n<p><strong>Phi-4</strong> is a 14B parameter, state-of-the-art open model built upon a blend of synthetic datasets, data from filtered public domain websites, and acquired academic books and Q&amp;A datasets.</p>\n\n<p><img src=\"/assets/library/phi4/67391ae2-e565-4173-ac3c-5e49bc977ac4\" alt=\"Phi-4 benchmark\"/></p>\n\n<p>The model underwent a rigorous enhancement and alignment process, incorporating both supervised fine-tuning and direct preference optimization to ensure precise instruction adherence and robust safety measures.</p>\n\n<p><strong>Context length:</strong> 16k tokens</p>\n\n<p><img src=\"/assets/library/phi4/5da7d0b6-53df-42f9-9c1b-651bfc380cdd\" alt=\"Phi-4 performance eval by Microsoft\"/></p>\n\n<h3>Primary use cases</h3>\n\n<p>The model is designed to accelerate research on language models, for use as a building block for generative AI powered features. It provides uses for general purpose AI systems and applications (primarily in English) which require:</p>\n\n<ol>\n<li>Memory/compute constrained environments.</li>\n<li>Latency bound scenarios.</li>\n<li>Reasoning and logic.</li>\n</ol>\n\n<h3>Out-of-scope use cases</h3>\n\n<p>The models are not specifically designed or evaluated for all downstream purposes, thus:</p>\n\n<ol>\n<li>Developers should consider common limitations of language models as they select use cases, and evaluate and mitigate for accuracy, safety, and fairness before using within a specific downstream use case, particularly for high-risk scenarios.</li>\n<li>Developers should be aware of and adhere to applicable laws or regulations (including privacy, trade compliance laws, etc.) that are relevant to their use case, including the model\u2019s focus on English.</li>\n<li>Nothing contained in this readme should be interpreted as or deemed a restriction or modification to the license the model is released under.</li>\n</ol>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

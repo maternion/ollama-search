@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/codestral:22b-v0.1-q8_0/blobs/51707752a87c",
+  "tag_full": "codestral:22b-v0.1-q8_0",
+  "blob_type": "template",
+  "digest": "51707752a87c",
+  "size": "480B",
+  "metadata": [],
+  "content": "{{- if .Suffix }}[SUFFIX]{{ .Suffix }}[PREFIX] {{ .Prompt }}\n{{- else if .Messages }}\n{{- range $index, $_ := .Messages }}\n{{- if eq .Role \"user\" }}[INST] {{ if and $.System (eq (len (slice $.Messages $index)) 1) }}{{ $.System }}\n\n{{ end }}{{ .Content }}[/INST]\n{{- else if eq .Role \"assistant\" }} {{ .Content }}</s>\n{{- end }}\n{{- end }}\n{{- else }}[INST] {{ if .System }}{{ .System }}\n\n{{ end }}{{ .Prompt }} [/INST]\n{{- end }} {{ .Response }}\n{{- if .Response }}</s>\n{{- end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T03:46:11.745381+00:00"
+}

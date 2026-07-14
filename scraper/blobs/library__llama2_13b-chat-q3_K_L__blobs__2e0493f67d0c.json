@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/llama2:13b-chat-q3_K_L/blobs/2e0493f67d0c",
+  "tag_full": "llama2:13b-chat-q3_K_L",
+  "blob_type": "template",
+  "digest": "2e0493f67d0c",
+  "size": "59B",
+  "metadata": [],
+  "content": "[INST] <<SYS>>{{ .System }}<</SYS>>\n\n{{ .Prompt }} [/INST]",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T23:41:55.356471+00:00"
+}

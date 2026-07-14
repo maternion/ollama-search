@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/deepseek-llm:7b-chat-fp16/blobs/d1c131da816c",
+  "tag_full": "deepseek-llm:7b-chat-fp16",
+  "blob_type": "template",
+  "digest": "d1c131da816c",
+  "size": "45B",
+  "metadata": [],
+  "content": "{{ .System }}\nUser: {{ .Prompt }}\n\nAssistant:",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T05:00:16.546021+00:00"
+}

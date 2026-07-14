@@ -1,0 +1,55 @@
+{
+  "path": "/library/llama3-gradient",
+  "tag_name": "70b-instruct-1048k-q6_K",
+  "full_path": "/library/llama3-gradient:70b-instruct-1048k-q6_K",
+  "scraped_at": "2026-07-13T20:56:28.104769+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/llama3-gradient/11962db3-2750-4346-b89c-b9b5612cc76a\" width=\"360\"/></p>\n\n<p>This model extends LLama-3 8B\u2019s context length from 8k to &gt; 1040K, developed by Gradient, sponsored by compute from Crusoe Energy. It demonstrates that SOTA LLMs can learn to operate on long context with minimal training by appropriately adjusting RoPE theta. We trained on 830M tokens for this stage, and 1.4B tokens total for all stages, which is &lt; 0.01% of Llama-3\u2019s original pre-training data.</p>\n\n<h2>Large Context Window</h2>\n\n<blockquote>\n<p>Note: using a 256k context window requires at least 64GB of memory. Using a 1M+ context window requires significantly more (100GB+).</p>\n</blockquote>\n\n<p>To extend the context window (to 256k for example) use:</p>\n\n<p><sub>API</sub></p>\n\n<pre><code>curl http://localhost:11434/api/generate -d &#39;{\n  &#34;model&#34;: &#34;llama3-gradient&#34;,\n  &#34;prompt&#34;: &#34;Why is the sky blue?&#34;,\n  &#34;options&#34;: {\n    &#34;num_ctx&#34;: 256000\n  }\n}&#39;\n</code></pre>\n\n<p><sub>CLI</sub></p>\n\n<pre><code>ollama run llama3-gradient\n&gt;&gt;&gt; /set parameter num_ctx 256000\n</code></pre>\n\n<h2>References</h2>\n\n<p><a href=\"https://gradient.ai/\" rel=\"nofollow\">Website</a></p>\n\n<p><a href=\"https://huggingface.co/gradientai/Llama-3-8B-Instruct-Gradient-1048k\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "d224f1d529ea",
+  "manifest_size": "58GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/llama3-gradient:70b-instruct-1048k-q6_K/blobs/db9a80e50f65",
+      "content_preview": "arch  llama",
+      "size": "58GB",
+      "arch": "llama",
+      "parameters": "70.6B",
+      "quantization": "Q6_K"
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/llama3-gradient:70b-instruct-1048k-q6_K/blobs/577073ffcc6c",
+      "content_preview": "{\n    \"num_keep\": 24,\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",",
+      "size": "110B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/llama3-gradient:70b-instruct-1048k-q6_K/blobs/4fa551d4f938",
+      "content_preview": "META LLAMA 3 COMMUNITY LICENSE AGREEMENT\nMeta Llama 3 Version Release Date: April 18, 2024\n\u201cAgreem",
+      "size": "12kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/llama3-gradient:70b-instruct-1048k-q6_K/blobs/8ab4849b038c",
+      "content_preview": "{{ if .System }}<|start_header_id|>system<|end_header_id|>\n{{ .System }}<|eot_id|>{{ end }}{{ if .Pr",
+      "size": "254B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

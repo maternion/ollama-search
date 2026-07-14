@@ -1,0 +1,55 @@
+{
+  "path": "/library/command-r7b-arabic",
+  "tag_name": "7b",
+  "full_path": "/library/command-r7b-arabic:7b",
+  "scraped_at": "2026-07-13T21:24:48.140455+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/command-r7b-arabic/e96310ca-5a9a-4e86-8eda-5a0a68513fc6\"/></p>\n\n<p>Command R7B Arabic is a fast and highly efficient model that can be served on low-end GPUs, a MacBook, or even CPUs. Similar to other models in the R series, it offers a context length of 128k and industry-leading performance in its class across capabilities that matter most to businesses like regional language understanding and strong accuracy with citations using retrieval-augmented generation (RAG). Its compact size enables businesses to more easily scale Arabic language AI applications to production.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://cohere.com/blog/command-r7b-arabic\" rel=\"nofollow\">Blog Post</a></p>\n\n<p><a href=\"https://huggingface.co/CohereForAI/c4ai-command-r7b-arabic-02-2025\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "4bbe3353e56a",
+  "manifest_size": "5.1GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/command-r7b-arabic:7b/blobs/8640927b1bd5",
+      "content_preview": "arch  cohere2",
+      "size": "5.1GB",
+      "arch": "cohere2",
+      "parameters": "8.03B",
+      "quantization": "Q4_K_M"
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/command-r7b-arabic:7b/blobs/0d8282caa612",
+      "content_preview": "{{- if or .Tools .System }}<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|>\n{{- if .Tools }}# System Preamble",
+      "size": "7.2kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/command-r7b-arabic:7b/blobs/945eaa8b1428",
+      "content_preview": "Creative Commons Attribution-NonCommercial 4.0 International Public\nLicense with Acceptable Use Adde",
+      "size": "14kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/command-r7b-arabic:7b/blobs/d8455b5dce0b",
+      "content_preview": "{\n    \"stop\": [\n        \"<|START_OF_TURN_TOKEN|>\",\n        \"<|END_OF_TURN_TOKEN|>\",\n        \"<|END_R",
+      "size": "110B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

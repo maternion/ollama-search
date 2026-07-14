@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/falcon3:1b-instruct-q4_K_M/blobs/803b5adc3448",
+  "tag_full": "falcon3:1b-instruct-q4_K_M",
+  "blob_type": "template",
+  "digest": "803b5adc3448",
+  "size": "218B",
+  "metadata": [],
+  "content": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|{{ .Role }}|>\n{{ .Content }}{{ if not $last }}\n{{ end }}\n{{- if and (ne .Role \"assistant\") $last }}<|assistant|>\n{{ end }}\n{{- end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T01:28:45.657587+00:00"
+}

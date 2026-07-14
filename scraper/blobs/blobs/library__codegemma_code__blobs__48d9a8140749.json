@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/codegemma:code/blobs/48d9a8140749",
+  "tag_full": "codegemma:code",
+  "blob_type": "template",
+  "digest": "48d9a8140749",
+  "size": "121B",
+  "metadata": [],
+  "content": "{{- if .Suffix }}<|fim_prefix|>{{ .Prompt }}<|fim_suffix|>{{ .Suffix }}<|fim_middle|>\n{{- else }}{{ .Prompt }}\n{{- end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T00:44:49.151817+00:00"
+}

@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/deepseek-coder-v2:236b-base-q8_0/blobs/fedbed0ae5d1",
+  "tag_full": "deepseek-coder-v2:236b-base-q8_0",
+  "blob_type": "template",
+  "digest": "fedbed0ae5d1",
+  "size": "115B",
+  "metadata": [],
+  "content": "{{- if .Suffix }}<|fim_begin|>{{ .Prompt }}<|fim_hole|>{{ .Suffix }}<|fim_end|>\n{{- else }}{{ .Prompt }}\n{{- end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T01:17:34.778601+00:00"
+}

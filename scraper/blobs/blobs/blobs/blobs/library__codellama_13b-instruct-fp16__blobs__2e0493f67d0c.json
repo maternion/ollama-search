@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/codellama:13b-instruct-fp16/blobs/2e0493f67d0c",
+  "tag_full": "codellama:13b-instruct-fp16",
+  "blob_type": "template",
+  "digest": "2e0493f67d0c",
+  "size": "59B",
+  "metadata": [],
+  "content": "[INST] <<SYS>>{{ .System }}<</SYS>>\n\n{{ .Prompt }} [/INST]",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T00:06:28.044199+00:00"
+}

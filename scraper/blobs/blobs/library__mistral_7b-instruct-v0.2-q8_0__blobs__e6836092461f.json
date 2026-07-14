@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/mistral:7b-instruct-v0.2-q8_0/blobs/e6836092461f",
+  "tag_full": "mistral:7b-instruct-v0.2-q8_0",
+  "blob_type": "template",
+  "digest": "e6836092461f",
+  "size": "42B",
+  "metadata": [],
+  "content": "[INST] {{ .System }} {{ .Prompt }} [/INST]",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T22:26:15.987634+00:00"
+}

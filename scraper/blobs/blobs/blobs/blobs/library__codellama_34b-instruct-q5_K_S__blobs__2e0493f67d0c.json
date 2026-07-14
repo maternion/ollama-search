@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/codellama:34b-instruct-q5_K_S/blobs/2e0493f67d0c",
+  "tag_full": "codellama:34b-instruct-q5_K_S",
+  "blob_type": "template",
+  "digest": "2e0493f67d0c",
+  "size": "59B",
+  "metadata": [],
+  "content": "[INST] <<SYS>>{{ .System }}<</SYS>>\n\n{{ .Prompt }} [/INST]",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T00:09:55.039354+00:00"
+}

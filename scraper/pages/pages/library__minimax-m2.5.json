@@ -1,0 +1,48 @@
+{
+  "path": "/library/minimax-m2.5",
+  "name": "minimax-m2.5",
+  "scraped_at": "2026-07-13T19:27:44.878710+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/minimax-m2.5/7bf8b4e2-abdc-4f35-af56-ac075749d26c\" alt=\"logo\"/></p>\n\n<p>MiniMax M2.5 is the fastest-improving model series for coding and agentic workflows, trained with large-scale reinforcement learning across hundreds of thousands of real-world environments.</p>\n\n<h3>Highlights</h3>\n\n<ul>\n<li><p><strong>Coding</strong>. Trained on large-scale RL across 10+ languages (Python, Go, C, C++, TypeScript, Rust, Kotlin, Java, JavaScript, PHP, Lua, Dart, Ruby) and hundreds of thousands of real environments, M2.5 develops native \u201cspec behavior\u201d\u2014planning architecture, structure, and design before writing code. It handles the full development lifecycle: system design from zero, environment setup, feature iteration, code review, and testing across Web, Android, iOS, Windows, and Mac.</p></li>\n\n<li><p><strong>Leading agent performance</strong>. M2.5 achieves 80.2% on SWE-Bench Verified, 51.3% on Multi-SWE-Bench, and 76.3% on BrowseComp\u2014reaching a level comparable to the Claude Opus series on coding tasks. In search and tool-use tasks, the model demonstrates higher decision maturity\u2014solving problems in fewer rounds with better token efficiency, saving roughly 20% in tool-call rounds compared to M2.1.</p></li>\n\n<li><p><strong>37% faster task completion</strong>. Through improved task decomposition and more efficient chain-of-thought reasoning, M2.5 completes complex agentic tasks significantly faster. On SWE-Bench Verified, end-to-end runtime dropped from 31.3 minutes (M2.1) to 22.8 minutes\u2014on par with Claude Opus 4.6\u2019s 22.9 minutes\u2014while also consuming fewer tokens per task (3.52M vs 3.72M).</p></li>\n</ul>\n\n<p><img src=\"/assets/library/minimax-m2.5/d0fc55de-dbe8-4a30-8bb7-545cd0d9da04\" alt=\"m2.5 benchmark\"/></p>\n\n<h3>Benchmarks</h3>\n\n<p><strong>Coding</strong></p>\n\n<p>M2.5 represents a significant step up from M2.1, reaching performance comparable to the Claude Opus series on core software engineering tasks.</p>\n\n<p><img src=\"/assets/library/minimax-m2.5/65275c3b-5ed8-4d1f-940a-407b65bbdd78\" alt=\"image.png\"/></p>\n\n<p>MiniMax tested performance on the SWE-Bench Verified evaluation set using different coding agent harnesses.</p>\n\n<p>On Droid: 79.7(M2.5) &gt; 78.9(Opus 4.6)</p>\n\n<p>On OpenCode: 76.1(M2.5) &gt; 75.9(Opus 4.6)</p>\n\n<p><strong>Search and tool calling</strong></p>\n\n<p><img src=\"/assets/library/minimax-m2.5/38ae04b3-e0c8-4643-9c16-7b1d9d30b03c\" alt=\"image.png\"/></p>\n\n<h3>Office &amp; Productivity</h3>\n\n<p>M2.5 was trained in collaboration with domain experts in finance, law, and social sciences to produce genuinely deliverable outputs. In evaluations on advanced office tasks\u2014including Word documents, PowerPoint presentations, and Excel financial modeling\u2014M2.5 achieved a 59.0% average win rate against mainstream models using pairwise comparison (GDPval-MM framework).</p>\n\n<p>Additional internal benchmarks include MEWC (based on Microsoft Excel World Championship problems, 2021\u20132026) and Finance Modeling (expert-constructed financial modeling tasks scored via rubrics). Detailed scores for these benchmarks are available as charts in the <a href=\"https://www.minimax.io/news/minimax-m25\" rel=\"nofollow\">original blog post</a>.</p>\n\n<h3>Reference</h3>\n\n<ul>\n<li><a href=\"https://www.minimax.io/news/minimax-m25\" rel=\"nofollow\">MiniMax M2.5 announcement</a></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "medium",
+  "cloud_usage_active_slots": 2,
+  "cloud_context": "198K",
+  "cloud_context_unit": "tokens",
+  "cloud_size": "230B",
+  "cloud_size_unit": "parameters",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model minimax-m2.5:cloud"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model minimax-m2.5:cloud"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model minimax-m2.5:cloud"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model minimax-m2.5:cloud"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model minimax-m2.5:cloud"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model minimax-m2.5:cloud"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "path": "/library/granite-code",
+  "tag_name": "8b-base-q2_K",
+  "full_path": "/library/granite-code:8b-base-q2_K",
+  "scraped_at": "2026-07-13T20:26:06.172014+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/granite-code/e28e37cc-af1b-47d7-bd85-6154b0cf26be\" alt=\"image.png\"/></p>\n\n<p>Granite Code is a family of decoder-only code model designed for code generative tasks (e.g. code generation, code explanation, code fixing, etc.).</p>\n\n<h2>Parameter Sizes</h2>\n\n<ul>\n<li>34B Parameters <code>ollama run granite-code:34b</code></li>\n<li>20B Parameters <code>ollama run granite-code:20b</code></li>\n<li>8B Parameters (with 128K context window) <code>ollama run granite-code:8b</code></li>\n<li>3B Parameters (with 128K context window) <code>ollama run granite-code:3b</code></li>\n</ul>\n\n<h2>Resources</h2>\n\n<ul>\n<li><a href=\"https://huggingface.co/collections/ibm-granite/granite-code-models-6624c5cec322e4c148c8b330\" rel=\"nofollow\">Hugging Face</a></li>\n<li><a href=\"https://arxiv.org/abs/2405.04324\" rel=\"nofollow\">Paper</a></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "e63080a27380",
+  "manifest_size": "3.1GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/granite-code:8b-base-q2_K/blobs/aecaf0a60138",
+      "content_preview": "arch  llama",
+      "size": "3.1GB",
+      "arch": "llama",
+      "parameters": "8.05B",
+      "quantization": "Q2_K"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/granite-code:8b-base-q2_K/blobs/58d1e17ffe51",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

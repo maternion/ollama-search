@@ -1579,11 +1579,11 @@ def git_checkpoint(label: str = "") -> None:
     try:
         # Copy scraper data to the worktree
         os.makedirs(f"{worktree}/scraper", exist_ok=True)
-        for item in os.listdir("scraper"):
-            src = f"scraper/{item}"
+        for item in os.listdir(HERE):
+            src = str(HERE / item)
             dst = f"{worktree}/scraper/{item}"
             if os.path.isdir(src):
-                subprocess.run(["cp", "-r", src, dst], check=True, cwd=HERE.parent)
+                subprocess.run(["cp", "-rT", src, dst], check=True, cwd=HERE.parent)
             else:
                 subprocess.run(["cp", src, dst], check=True, cwd=HERE.parent)
         subprocess.run(["git", "add", "-A", "scraper/"], check=True, cwd=worktree)
@@ -1596,7 +1596,7 @@ def git_checkpoint(label: str = "") -> None:
         if r.returncode != 0:
             return  # nothing to commit
         subprocess.run(
-            ["git", "push", "origin", "scraped-data"],
+            ["git", "push", "origin", "HEAD:scraped-data"],
             check=True,
             capture_output=True,
             text=True,
@@ -1944,6 +1944,9 @@ def main(argv: list[str] | None = None) -> int:
                 )
                 total = len(to_fetch)
                 for i, m in enumerate(to_fetch, 1):
+                    if client.bail_out or _time_up():
+                        log.warning("STOPPING at smart tag %d/%d", i, total)
+                        break
                     slug = slugify(m.path)
                     log.info("  [%d/%d] %s", i, total, m.path)
                     m.tags = fetch_tags(client, m)
@@ -2049,9 +2052,9 @@ def main(argv: list[str] | None = None) -> int:
             total_tag_pages = 0
             tag_pages_done = 0
             for i, m in enumerate(official_models, 1):
-                if client.bail_out:
+                if client.bail_out or _time_up():
                     log.warning(
-                        "BAILING OUT at tag pages %d/%d", i, len(official_models)
+                        "STOPPING at tag pages %d/%d", i, len(official_models)
                     )
                     break
                 if not m.tags:

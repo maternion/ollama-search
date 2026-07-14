@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/stablelm2:1.6b-zephyr-q4_K_S/blobs/07b75c465eaf",
+  "tag_full": "stablelm2:1.6b-zephyr-q4_K_S",
+  "blob_type": "template",
+  "digest": "07b75c465eaf",
+  "size": "88B",
+  "metadata": [],
+  "content": "<|system|>\n{{ .System }}<|endoftext|>\n<|user|>\n{{ .Prompt }}<|endoftext|>\n<|assistant|>",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T07:58:00.702016+00:00"
+}

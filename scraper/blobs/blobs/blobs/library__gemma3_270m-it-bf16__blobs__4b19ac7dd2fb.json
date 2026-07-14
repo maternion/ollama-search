@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/gemma3:270m-it-bf16/blobs/4b19ac7dd2fb",
+  "tag_full": "gemma3:270m-it-bf16",
+  "blob_type": "template",
+  "digest": "4b19ac7dd2fb",
+  "size": "476B",
+  "metadata": [],
+  "content": "{{- $systemPromptAdded := false }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if eq .Role \"user\" }}<start_of_turn>user\n{{- if (and (not $systemPromptAdded) $.System) }}\n{{- $systemPromptAdded = true }}\n{{ $.System }}\n{{ end }}\n{{ .Content }}<end_of_turn>\n{{ if $last }}<start_of_turn>model\n{{ end }}\n{{- else if eq .Role \"assistant\" }}<start_of_turn>model\n{{ .Content }}{{ if not $last }}<end_of_turn>\n{{ end }}\n{{- end }}\n{{- end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T22:09:25.371657+00:00"
+}

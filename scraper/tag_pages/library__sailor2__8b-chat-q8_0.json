@@ -1,0 +1,55 @@
+{
+  "path": "/library/sailor2",
+  "tag_name": "8b-chat-q8_0",
+  "full_path": "/library/sailor2:8b-chat-q8_0",
+  "scraped_at": "2026-07-13T21:21:58.601740+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/mchiang0610/sailor2/a76a9182-cc11-47e1-bb50-478ad4ccb157\" alt=\"logo\"/></p>\n\n<p>Sailor2 is a community-driven initiative that brings cutting-edge multilingual language models to South-East Asia (SEA). Our research highlights a strong demand for models in the <strong>8B and 20B</strong> parameter range for production use, alongside <strong>1B models</strong> for specialized applications, such as speculative decoding and research purposes. These models, released under the <strong>Apache 2.0 license</strong>, provide enhanced accessibility to advanced language technologies across the region.</p>\n\n<p>Sailor2 builds upon the foundation of the awesome multilingual model Qwen 2.5 and is continuously pre-trained on 500B tokens to support 15 languages better with a unified model. These languages include English, Chinese, Burmese, Cebuano, Ilocano, Indonesian, Javanese, Khmer, Lao, Malay, Sundanese, Tagalog, Thai, Vietnamese, and Waray. By addressing the growing demand for diverse, robust, and accessible language models, Sailor2 seeks to serve the underserved in SEA areas with open, inclusive, and accessible multilingual LLMs. The Sailor2 model comes in three sizes, 1B, 8B, and 20B, which are expanded from the Qwen2.5 base models of 0.5B, 7B, and 14B, respectively.</p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "ba25188c847d",
+  "manifest_size": "9.1GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/sailor2:8b-chat-q8_0/blobs/9bac8e944095",
+      "content_preview": "arch  qwen2",
+      "size": "9.1GB",
+      "arch": "qwen2",
+      "parameters": "8.55B",
+      "quantization": "Q8_0"
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/sailor2:8b-chat-q8_0/blobs/25e2f9395041",
+      "content_preview": "You are an AI assistant named Sailor2, created by Sea AI Lab. As an AI assistant, you can answer que",
+      "size": "364B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/sailor2:8b-chat-q8_0/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "size": "59B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/sailor2:8b-chat-q8_0/blobs/4b01fbe300da",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|im_start|>{{ .R",
+      "size": "255B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

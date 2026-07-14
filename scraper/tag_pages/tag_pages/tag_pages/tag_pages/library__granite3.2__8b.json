@@ -1,0 +1,46 @@
+{
+  "path": "/library/granite3.2",
+  "tag_name": "8b",
+  "full_path": "/library/granite3.2:8b",
+  "scraped_at": "2026-07-13T21:21:17.465133+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/granite3.2/90c5e567-0004-425c-a17a-1b846c2b5d3d\" width=\"600\"/></p>\n\n<p>Granite-3.2 is a family of long-context AI models fine-tuned for thinking capabilities. Built on top of Granite-3.1, it has been trained using a mix of permissively licensed open-source datasets and internally generated synthetic data designed for reasoning tasks. The models allow controllability of its thinking capability, ensuring it is applied only when required.</p>\n\n<ul>\n<li><strong>Developers:</strong> Granite Team, IBM</li>\n<li><strong>Website</strong>: <a href=\"https://www.ibm.com/granite/docs/\" rel=\"nofollow\">Granite Docs</a></li>\n<li><strong>Release Date</strong>: February 26th, 2025</li>\n<li><strong>License:</strong> <a href=\"https://www.apache.org/licenses/LICENSE-2.0\" rel=\"nofollow\">Apache 2.0</a></li>\n</ul>\n\n<p><strong>Sizes</strong></p>\n\n<p>The models are available in two parameter sizes, 2B and 8B:</p>\n\n<pre><code>ollama run granite3.2:2b\n</code></pre>\n\n<pre><code>ollama run granite3.2:8b\n</code></pre>\n\n<p><strong>Supported Languages:</strong>\nEnglish, German, Spanish, French, Japanese, Portuguese, Arabic, Czech, Italian, Korean, Dutch, and Chinese. However, users may finetune this Granite model for languages beyond these 12 languages.</p>\n\n<p><strong>Intended Use:</strong>\nThese models are designed to handle general instruction-following tasks and can be integrated into AI assistants across various domains, including business applications.</p>\n\n<p><strong>Capabilities</strong></p>\n\n<ul>\n<li><strong>Thinking</strong></li>\n<li>Summarization</li>\n<li>Text classification</li>\n<li>Text extraction</li>\n<li>Question-answering</li>\n<li>Retrieval Augmented Generation (RAG)</li>\n<li>Code related tasks</li>\n<li>Function-calling tasks</li>\n<li>Multilingual dialog use cases</li>\n<li>Long-context tasks including long document/meeting summarization, long document QA, etc.</li>\n</ul>\n\n<p><strong>Thinking</strong></p>\n\n<p>To enable thinking, add a message with <code>&#34;role&#34;: &#34;control&#34;</code> and set <code>&#34;content&#34;</code> to <code>&#34;thinking&#34;</code>. For example:</p>\n\n<pre><code>{\n    &#34;messages&#34;: [\n        {&#34;role&#34;: &#34;control&#34;, &#34;content&#34;: &#34;thinking&#34;},\n        {&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: &#34;How do I get to the airport if my car won&#39;t start?&#34;}\n    ]\n}\n</code></pre>\n\n<h2>References</h2>\n\n<p><a href=\"https://www.ibm.com/granite\" rel=\"nofollow\">Website</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "9bcb3335083f",
+  "manifest_size": "4.9GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/granite3.2:8b/blobs/59c55d0e7b6a",
+      "content_preview": "arch  granite",
+      "size": "4.9GB",
+      "arch": "granite",
+      "parameters": "8.17B",
+      "quantization": "Q4_K_M"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/granite3.2:8b/blobs/2e68075caee4",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/granite3.2:8b/blobs/3e7ca51acd6e",
+      "content_preview": "{{- /*\n------ MESSAGE PARSING ------\n*/}}\n{{- /*\nDeclare the prompt structure variables to be filled",
+      "size": "6.0kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

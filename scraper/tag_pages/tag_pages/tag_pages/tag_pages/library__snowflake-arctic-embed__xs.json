@@ -1,0 +1,37 @@
+{
+  "path": "/library/snowflake-arctic-embed",
+  "tag_name": "xs",
+  "full_path": "/library/snowflake-arctic-embed:xs",
+  "scraped_at": "2026-07-13T20:08:20.001203+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/ollama/ollama/assets/251292/115f484a-1911-46e9-902f-65a70f84e1d0\" width=\"320\"/></p>\n\n<p><code>snowflake-arctic-embed</code> is a suite of text embedding models that focuses on creating high-quality retrieval models optimized for performance.</p>\n\n<p>The models are trained by leveraging existing open-source text representation models, such as bert-base-uncased, and are trained in a multi-stage pipeline to optimize their retrieval performance.</p>\n\n<p>This model is available in 5 parameter sizes:</p>\n\n<ul>\n<li><code>snowflake-arctic-embed:335m</code> (default)</li>\n<li><code>snowflake-arctic-embed:137m</code></li>\n<li><code>snowflake-arctic-embed:110m</code></li>\n<li><code>snowflake-arctic-embed:33m</code></li>\n<li><code>snowflake-arctic-embed:22m</code></li>\n</ul>\n\n<h2>Reference</h2>\n\n<p><a href=\"https://www.snowflake.com/blog/introducing-snowflake-arctic-embed-snowflakes-state-of-the-art-text-embedding-family-of-models/\" rel=\"nofollow\">Blog Post</a></p>\n\n<p><a href=\"https://huggingface.co/Snowflake\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "bf75350e1752",
+  "manifest_size": "46MB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/snowflake-arctic-embed:xs/blobs/a83b0493f894",
+      "content_preview": "arch  bert",
+      "size": "46MB",
+      "arch": "bert",
+      "parameters": "22.6M",
+      "quantization": "F16"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/snowflake-arctic-embed:xs/blobs/c71d239df917",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

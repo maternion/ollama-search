@@ -1,0 +1,55 @@
+{
+  "path": "/library/glm4",
+  "tag_name": "9b-chat-q5_K_S",
+  "full_path": "/library/glm4:9b-chat-q5_K_S",
+  "scraped_at": "2026-07-13T20:35:43.142139+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/glm4/7646ce96-fbec-4694-a3f5-39f9e61f19a6\" width=\"320\"/></p>\n\n<blockquote>\n<p>Note: this model requires <a href=\"https://github.com/ollama/ollama/releases/tag/v0.2.0\" rel=\"nofollow\">Ollama 0.2</a> or later.</p>\n</blockquote>\n\n<p>In the evaluation of data sets in semantics, mathematics, reasoning, code, and knowledge, this model has shown superior performance beyond even Llama 3 8B.</p>\n\n<p>This generation of models includes multi-language support, supporting 26 languages including Japanese, Korean, and German.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://github.com/THUDM/GLM\" rel=\"nofollow\">GitHub</a></p>\n\n<p><a href=\"https://huggingface.co/collections/THUDM/glm-4-665fcf188c414b03c2f7e3b7\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "aabc884c70dc",
+  "manifest_size": "6.7GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/glm4:9b-chat-q5_K_S/blobs/99cd19da6ed9",
+      "content_preview": "arch  chatglm",
+      "size": "6.7GB",
+      "arch": "chatglm",
+      "parameters": "9.4B",
+      "quantization": "Q5_K_S"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/glm4:9b-chat-q5_K_S/blobs/e4f0dc83900a",
+      "content_preview": "The glm-4-9b License\n1. \u5b9a\u4e49\n\u201c\u8bb8\u53ef\u65b9\u201d\u662f\u6307\u5206\u53d1\u5176\u8f6f\u4ef6\u7684 glm-4-9b \u6a21\u578b\u56e2\u961f\u3002\n\u201c\ufffd",
+      "size": "6.5kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/glm4:9b-chat-q5_K_S/blobs/4134f3eb0516",
+      "content_preview": "{\n    \"stop\": [\n        \"<|system|>\",\n        \"<|user|>\",\n        \"<|assistant|>\"\n    ]\n}",
+      "size": "81B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/glm4:9b-chat-q5_K_S/blobs/e7e7aebd710c",
+      "content_preview": "[gMASK]<sop>{{ if .System }}<|system|>\n{{ .System }}{{ end }}{{ if .Prompt }}<|user|>\n{{ .Prompt }}{",
+      "size": "137B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

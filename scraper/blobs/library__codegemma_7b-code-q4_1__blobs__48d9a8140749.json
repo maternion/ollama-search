@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/codegemma:7b-code-q4_1/blobs/48d9a8140749",
+  "tag_full": "codegemma:7b-code-q4_1",
+  "blob_type": "template",
+  "digest": "48d9a8140749",
+  "size": "121B",
+  "metadata": [],
+  "content": "{{- if .Suffix }}<|fim_prefix|>{{ .Prompt }}<|fim_suffix|>{{ .Suffix }}<|fim_middle|>\n{{- else }}{{ .Prompt }}\n{{- end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T00:48:32.080488+00:00"
+}

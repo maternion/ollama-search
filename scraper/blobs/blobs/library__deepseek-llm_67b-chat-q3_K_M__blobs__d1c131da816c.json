@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/deepseek-llm:67b-chat-q3_K_M/blobs/d1c131da816c",
+  "tag_full": "deepseek-llm:67b-chat-q3_K_M",
+  "blob_type": "template",
+  "digest": "d1c131da816c",
+  "size": "45B",
+  "metadata": [],
+  "content": "{{ .System }}\nUser: {{ .Prompt }}\n\nAssistant:",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T05:02:10.527380+00:00"
+}

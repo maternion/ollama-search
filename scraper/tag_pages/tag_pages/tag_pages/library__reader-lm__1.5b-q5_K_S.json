@@ -1,0 +1,55 @@
+{
+  "path": "/library/reader-lm",
+  "tag_name": "1.5b-q5_K_S",
+  "full_path": "/library/reader-lm:1.5b-q5_K_S",
+  "scraped_at": "2026-07-13T21:06:32.770266+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/reader-lm/1a8f6262-c6af-4f5f-b7e9-2eeb162fa8d2\" width=\"240\"/></p>\n\n<p>Jina Reader-LM is a series of models that convert HTML content to Markdown content, which is useful for content conversion tasks. The model is trained on a curated collection of HTML content and its corresponding Markdown content.</p>\n\n<h2>Example</h2>\n\n<p><sub>Prompt</sub></p>\n\n<pre><code>&lt;html&gt;\n  &lt;body&gt;\n    &lt;h3&gt;Why is the sky blue?&lt;/h3&gt;\n    &lt;p&gt;The sky appears blue because of the way light from the sun is reflected by the atmosphere. The atmosphere is made up of gases, including nitrogen and oxygen, which scatter light in all directions. This scattering causes the sunlight to appear as a rainbow of colors, with red light scattered more than other colors.\n    &lt;/p&gt;\n  &lt;/body&gt;\n&lt;/html&gt;\n</code></pre>\n\n<p><sub>Response</sub></p>\n\n<pre><code>### Why is the sky blue?\n\nThe sky appears blue because of the way light from the sun is reflected by the atmosphere. The atmosphere is made up of gases, including nitrogen and oxygen, which scatter light in all directions. This scattering causes the sunlight to appear as a rainbow of colors, with red light scattered more than other colors.\n</code></pre>\n\n<h2>Reference</h2>\n\n<p><a href=\"https://huggingface.co/jinaai/reader-lm-1.5b\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "ca910efc76a3",
+  "manifest_size": "1.1GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/reader-lm:1.5b-q5_K_S/blobs/764333a87c09",
+      "content_preview": "arch  qwen2",
+      "size": "1.1GB",
+      "arch": "qwen2",
+      "parameters": "1.54B",
+      "quantization": "Q5_K_S"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/reader-lm:1.5b-q5_K_S/blobs/94baea11f788",
+      "content_preview": "Creative Commons Attribution-NonCommercial 4.0 International\nBy exercising the Licensed Rights (defi",
+      "size": "13kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/reader-lm:1.5b-q5_K_S/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "size": "59B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/reader-lm:1.5b-q5_K_S/blobs/60ed67c565f8",
+      "content_preview": "{{- if .Messages }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -",
+      "size": "506B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

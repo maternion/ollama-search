@@ -1,0 +1,55 @@
+{
+  "path": "/library/deepseek-v2.5",
+  "tag_name": "236b-q5_0",
+  "full_path": "/library/deepseek-v2.5:236b-q5_0",
+  "scraped_at": "2026-07-13T21:23:01.861998+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/deepseek-v2.5/4d4970a3-b9bd-430c-9ee8-d01acef3da1b\" width=\"320\"/></p>\n\n<p>DeepSeek-V2.5 is an upgraded version that combines DeepSeek-V2-Chat and DeepSeek-Coder-V2-Instruct. The new model integrates the general and coding abilities of the two previous versions.</p>\n\n<p>DeepSeek-V2.5 better aligns with human preferences and has been optimized in various aspects, including writing and instruction following:</p>\n\n<table>\n<thead>\n<tr>\n<th align=\"left\">Metric</th>\n<th align=\"left\">DeepSeek-V2-0628</th>\n<th align=\"left\">DeepSeek-Coder-V2-0724</th>\n<th align=\"left\">DeepSeek-V2.5</th>\n</tr>\n</thead>\n\n<tbody>\n<tr>\n<td align=\"left\">AlpacaEval 2.0</td>\n<td align=\"left\">46.6</td>\n<td align=\"left\">44.5</td>\n<td align=\"left\">50.5</td>\n</tr>\n\n<tr>\n<td align=\"left\">ArenaHard</td>\n<td align=\"left\">68.3</td>\n<td align=\"left\">66.3</td>\n<td align=\"left\">76.2</td>\n</tr>\n\n<tr>\n<td align=\"left\">AlignBench</td>\n<td align=\"left\">7.88</td>\n<td align=\"left\">7.91</td>\n<td align=\"left\">8.04</td>\n</tr>\n\n<tr>\n<td align=\"left\">MT-Bench</td>\n<td align=\"left\">8.85</td>\n<td align=\"left\">8.91</td>\n<td align=\"left\">9.02</td>\n</tr>\n\n<tr>\n<td align=\"left\">HumanEval python</td>\n<td align=\"left\">84.5</td>\n<td align=\"left\">87.2</td>\n<td align=\"left\">89</td>\n</tr>\n\n<tr>\n<td align=\"left\">HumanEval Multi</td>\n<td align=\"left\">73.8</td>\n<td align=\"left\">74.8</td>\n<td align=\"left\">73.8</td>\n</tr>\n\n<tr>\n<td align=\"left\">LiveCodeBench(01-09)</td>\n<td align=\"left\">36.6</td>\n<td align=\"left\">39.7</td>\n<td align=\"left\">41.8</td>\n</tr>\n\n<tr>\n<td align=\"left\">Aider</td>\n<td align=\"left\">69.9</td>\n<td align=\"left\">72.9</td>\n<td align=\"left\">72.2</td>\n</tr>\n\n<tr>\n<td align=\"left\">SWE-verified</td>\n<td align=\"left\">N/A</td>\n<td align=\"left\">19</td>\n<td align=\"left\">16.8</td>\n</tr>\n\n<tr>\n<td align=\"left\">DS-FIM-Eval</td>\n<td align=\"left\">N/A</td>\n<td align=\"left\">73.2</td>\n<td align=\"left\">78.3</td>\n</tr>\n\n<tr>\n<td align=\"left\">DS-Arena-Code</td>\n<td align=\"left\">N/A</td>\n<td align=\"left\">49.5</td>\n<td align=\"left\">63.1</td>\n</tr>\n</tbody>\n</table>\n\n<h2>Reference</h2>\n\n<p><a href=\"https://huggingface.co/deepseek-ai/DeepSeek-V2.5\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "9de079142600",
+  "manifest_size": "162GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/deepseek-v2.5:236b-q5_0/blobs/dcc7d6566ccc",
+      "content_preview": "arch  deepseek2",
+      "size": "162GB",
+      "arch": "deepseek2",
+      "parameters": "236B",
+      "quantization": "Q5_0"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/deepseek-v2.5:236b-q5_0/blobs/ccfee4895df0",
+      "content_preview": "DEEPSEEK LICENSE AGREEMENT\nVersion 1.0, 23 October 2023\nCopyright (c) 2023 DeepSeek\nSection I: PREAM",
+      "size": "14kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/deepseek-v2.5:236b-q5_0/blobs/059ecca256c0",
+      "content_preview": "{\n    \"stop\": [\n        \"<\uff5cbegin\u2581of\u2581sentence\uff5c>\",\n        \"<\uff5cend\u2581of\u2581sentence\uff5c>\",",
+      "size": "241B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/deepseek-v2.5:236b-q5_0/blobs/8aa4c0321ccd",
+      "content_preview": "{{- if .Suffix }}<\uff5cfim\u2581begin\uff5c>{{ .Prompt }}<\uff5cfim\u2581hole\uff5c>{{ .Suffix }}<\uff5cfim\u2581end\uff5c>\n{{",
+      "size": "493B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

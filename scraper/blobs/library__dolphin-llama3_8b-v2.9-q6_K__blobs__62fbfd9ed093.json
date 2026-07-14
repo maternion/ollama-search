@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/dolphin-llama3:8b-v2.9-q6_K/blobs/62fbfd9ed093",
+  "tag_full": "dolphin-llama3:8b-v2.9-q6_K",
+  "blob_type": "template",
+  "digest": "62fbfd9ed093",
+  "size": "182B",
+  "metadata": [],
+  "content": "{{ if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}{{ if .Prompt }}<|im_start|>user\n{{ .Prompt }}<|im_end|>\n{{ end }}<|im_start|>assistant\n{{ .Response }}<|im_end|>",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T01:37:23.894141+00:00"
+}

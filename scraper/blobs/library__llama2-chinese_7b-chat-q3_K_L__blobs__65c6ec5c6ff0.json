@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/llama2-chinese:7b-chat-q3_K_L/blobs/65c6ec5c6ff0",
+  "tag_full": "llama2-chinese:7b-chat-q3_K_L",
+  "blob_type": "template",
+  "digest": "65c6ec5c6ff0",
+  "size": "45B",
+  "metadata": [],
+  "content": "{{ .System }}\nName: {{ .Prompt }}\nAssistant:",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T06:01:24.962970+00:00"
+}

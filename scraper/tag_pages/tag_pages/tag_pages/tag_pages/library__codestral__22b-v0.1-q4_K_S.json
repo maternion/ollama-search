@@ -1,0 +1,55 @@
+{
+  "path": "/library/codestral",
+  "tag_name": "22b-v0.1-q4_K_S",
+  "full_path": "/library/codestral:22b-v0.1-q4_K_S",
+  "scraped_at": "2026-07-13T20:31:43.885267+00:00",
+  "readme_html": "\n        \n          <h1>Codestral</h1>\n\n<p><img src=\"https://ollama.com/assets/mchiang0610/test1/76bfd7f0-fccd-431b-95fe-dddf5a422dcf\" alt=\"Codestral Hello World\"/></p>\n\n<p>Codestral is Mistral AI\u2019s first-ever code model designed for code generation tasks. It is a 22B model.</p>\n\n<h3>Fluent in 80+ programming languages</h3>\n\n<p>Codestral is trained on a dataset of over 80 programming languages, including Python, Java, C, C++, JavaScript, Swift, Fortran and Bash.</p>\n\n<p>The model can complete coding functions, write tests, and complete any partial code using a fill-in-the-middle mechanism.</p>\n\n<h3>Benchmarks</h3>\n\n<p><img src=\"https://ollama.com/assets/mchiang0610/test1/f5ea9604-669b-4de0-957d-41245e33636c\" alt=\"With its larger context window of 32k (compared to 4k, 8k or 16k for competitors), Codestral outperforms all other models in RepoBench, a long-range eval for code generation\"/></p>\n\n<p><img src=\"https://ollama.com/assets/mchiang0610/test1/e42a01d3-4f36-4d60-a0c8-74ad10159cdd\" alt=\"Benchmarks\"/></p>\n\n<p><img src=\"https://ollama.com/assets/mchiang0610/test1/8ca203e2-7bfd-4081-98c8-1ecc3cc46ef8\" alt=\"FIM benchmarks\"/></p>\n\n<h3>Reference</h3>\n\n<p><a href=\"https://mistral.ai/news/codestral/\" rel=\"nofollow\">Mistral AI - Codestral: Hello, World</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "98d819ea95ec",
+  "manifest_size": "13GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/codestral:22b-v0.1-q4_K_S/blobs/73d8b6a3770e",
+      "content_preview": "arch  llama",
+      "size": "13GB",
+      "arch": "llama",
+      "parameters": "22.2B",
+      "quantization": "Q4_K_S"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/codestral:22b-v0.1-q4_K_S/blobs/5b68668f65de",
+      "content_preview": "# Mistral AI Non-Production License\n## 1. Scope and acceptance\n**1.1. Scope of the Agreement.**\nThis",
+      "size": "12kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/codestral:22b-v0.1-q4_K_S/blobs/5dea4f4d0fff",
+      "content_preview": "{\n    \"stop\": [\n        \"[INST]\",\n        \"[/INST]\",\n        \"[PREFIX]\",\n        \"[MIDDLE]\",",
+      "size": "63B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/codestral:22b-v0.1-q4_K_S/blobs/51707752a87c",
+      "content_preview": "{{- if .Suffix }}[SUFFIX]{{ .Suffix }}[PREFIX] {{ .Prompt }}\n{{- else if .Messages }}\n{{- range $ind",
+      "size": "480B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

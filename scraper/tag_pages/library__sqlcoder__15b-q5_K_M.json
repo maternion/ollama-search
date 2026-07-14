@@ -1,0 +1,46 @@
+{
+  "path": "/library/sqlcoder",
+  "tag_name": "15b-q5_K_M",
+  "full_path": "/library/sqlcoder:15b-q5_K_M",
+  "scraped_at": "2026-07-13T20:32:27.166241+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://docs.defog.ai/img/logo.svg\"/></p>\n\n<p>SQLCoder is a 15B parameter model that is fine-tuned on a base StarCoder model. It slightly outperforms gpt-3.5-turbo for natural language to SQL generation tasks on the sql-eval framework, and outperforms popular open-source models. It also significantly outperforms text-davinci-003, a model that\u2019s more than 10 times its size.</p>\n\n<p>This 15B completion model generally requires at least 16GB of RAM.</p>\n\n<h2>Usage</h2>\n\n<h3>CLI</h3>\n\n<pre><code>ollama run sqlcoder \n</code></pre>\n\n<p>Try the following prompt using triple quotes for multi-line input:</p>\n\n<p>Note: change the {question} to a SQL question you want to answer. Ex.) \u2018which products generate the most sales.`</p>\n\n<pre><code>&#34;&#34;&#34; \n### Instructions:\nYour task is to convert a question into a SQL query, given a Postgres database schema.\nAdhere to these rules:\n- **Deliberately go through the question and database schema word by word** to appropriately answer the question\n- **Use Table Aliases** to prevent ambiguity. For example, `SELECT table1.col1, table2.col1 FROM table1 JOIN table2 ON table1.id = table2.id`.\n- When creating a ratio, always cast the numerator as float\n\n### Input:\nGenerate a SQL query that answers the question `{question}`.\nThis query will run on a database whose schema is represented in this string:\nCREATE TABLE products (\n  product_id INTEGER PRIMARY KEY, -- Unique ID for each product\n  name VARCHAR(50), -- Name of the product\n  price DECIMAL(10,2), -- Price of each unit of the product\n  quantity INTEGER  -- Current quantity in stock\n);\n\nCREATE TABLE customers (\n   customer_id INTEGER PRIMARY KEY, -- Unique ID for each customer\n   name VARCHAR(50), -- Name of the customer\n   address VARCHAR(100) -- Mailing address of the customer\n);\n\nCREATE TABLE salespeople (\n  salesperson_id INTEGER PRIMARY KEY, -- Unique ID for each salesperson\n  name VARCHAR(50), -- Name of the salesperson\n  region VARCHAR(50) -- Geographic sales region\n);\n\nCREATE TABLE sales (\n  sale_id INTEGER PRIMARY KEY, -- Unique ID for each sale\n  product_id INTEGER, -- ID of product sold\n  customer_id INTEGER,  -- ID of customer who made purchase\n  salesperson_id INTEGER, -- ID of salesperson who made the sale\n  sale_date DATE, -- Date the sale occurred\n  quantity INTEGER -- Quantity of product sold\n);\n\nCREATE TABLE product_suppliers (\n  supplier_id INTEGER PRIMARY KEY, -- Unique ID for each supplier\n  product_id INTEGER, -- Product ID supplied\n  supply_price DECIMAL(10,2) -- Unit price charged by supplier\n);\n\n-- sales.product_id can be joined with products.product_id\n-- sales.customer_id can be joined with customers.customer_id\n-- sales.salesperson_id can be joined with salespeople.salesperson_id\n-- product_suppliers.product_id can be joined with products.product_id\n\n### Response:\nBased on your instructions, here is the SQL query I have generated to answer the question `{question}`:\n```sql\n&#34;&#34;&#34;\n</code></pre>\n\n<p><strong>Example output:</strong></p>\n\n<pre><code>SELECT customers.customer_id,\n       products.product_id,\n       (SUM(sales.quantity * product_suppliers.supply_price)) / (SELECT \nSUM(quantity)\n                                                                FROM sales\n                                                                WHERE \nsales.salesperson_id = &#39;{chosen_salesperson}&#39;) as profit\nFROM   sales\n  INNER JOIN customers on sales.customer_id = customers.customer_id\n  INNER JOIN products on sales.product_id = products.product_id\n  INNER JOIN product_suppliers on products.product_id = \nproduct_suppliers.product_id\nWHERE  sales.salesperson_id = &#39;{chosen_salesperson}&#39;\nGROUP BY customers.customer_id, products.product_id\nHAVING COUNT(DISTINCT sales.sale_date) &gt;= {min_days}\n  AND (SELECT SUM(quantity * product_suppliers.supply_price)\n     FROM   sales\n     WHERE  sales.salesperson_id = &#39;{chosen_salesperson}&#39;\n        and sales.customer_id = customers.customer_id\n        and sales.product_id = products.product_id) &gt;= {min_total}\nORDER BY profit DESC;\n```\n\n\n### Reasoning\n\nThe query is broken down into two parts: the first one fetches information\nabout each sale made by a specific salesman (`{chosen_salesperson}`), and \ngroups it by customer ID, product ID, and calculates how much money was \nearned from each sale. The second part then filters out these results that\noccurred after a certain number of days (determined by the variable \n`min_days`) and had an amount of money equal to or more than a certain \nvalue (determined by the variable `min_total`). Finally, the query orders \nthe results in descending order based on the ratio between earned money \nand total money.\n\nThe first part relies on several tables from the database: salespeople, \nproducts, customers, sales, and product_suppliers. The salespeople table \ncontains information about each salesperson&#39;s ID; the products table \ncontains information about each product&#39;s name and price; the customers \ntable contains information about each customer&#39;s address; the sales table \ncontains information about each sale, including the quantity sold, the ID \nof the product sold, and the ID of the customer who made the purchase; and\nthe product_suppliers table contains information about the unit price \ncharged by each supplier.\n\nThe variables in the query can be interpreted as follows:\n\n- `{chosen_salesperson}` is a placeholder for the name of the salesman \nwhose performance is being evaluated. This value should be replaced with \nan actual salesman&#39;s name or ID number.\n- `min_days` is the minimum number of days that must have passed since the\nsale in order to qualify for inclusion in the calculation. For example, if\nthis variable were set to 30, then only sales made 30 days after the start\ndate would be included in the calculation. This value should also be \nreplaced with an integer representing the minimum number of days.\n- `min_total` is a threshold amount that must have been earned by the \nsalesman for the sale to qualify for inclusion in the calculation. For \nexample, if this variable were set to 1000, then only sales worth at least\n$1000 would be included in the calculation. This value should also be \nreplaced with an integer representing the minimum amount of money that \nmust have been earned.\n\nThe output is a table containing three columns: customer ID, product ID, \nand profit per unit price (calculated as the total money earned divided by\nthe quantity sold). The rows in this table are sorted in descending order \nbased on the ratio between earned money and total money. Rows that don&#39;t \nmeet both of these conditions will be dropped from the output.\n\n## Example\n\n```\nInput:\nmin_days = 30\nmin_total = 1000\nchosen_salesperson = &#39;&lt;NAME&gt;&#39;\n\nOutput:\n  customer_id | product_id |         profit\n-------------+----------------------------+-----------------\n  987         |     456    | 2.1             \n  1029        |    1357    | 1.91            \n  89          |    1234    | 0.59            \n```\n\n## License\n\nThe database is released under the [Open Database \nLicense](https://opendatacommons.org/licenses/odbl/1-0/).\n</code></pre>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/defog/sqlcoder\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "fbbab943ddb2",
+  "manifest_size": "12GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/sqlcoder:15b-q5_K_M/blobs/deb622d6a7e2",
+      "content_preview": "arch  starcoder",
+      "size": "12GB",
+      "arch": "starcoder",
+      "parameters": "15.8B",
+      "quantization": "Q5_K_M"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/sqlcoder:15b-q5_K_M/blobs/a67353d85e36",
+      "content_preview": "# Creative Commons Attribution-ShareAlike 4.0 International\nCreative Commons Corporation (\u201cCreativ",
+      "size": "21kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/sqlcoder:15b-q5_K_M/blobs/1576480a555b",
+      "content_preview": "{\n    \"stop\": [\n        \"<|endoftext|>\"\n    ]\n}",
+      "size": "36B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

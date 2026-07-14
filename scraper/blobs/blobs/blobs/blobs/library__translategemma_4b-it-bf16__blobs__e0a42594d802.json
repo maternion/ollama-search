@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/translategemma:4b-it-bf16/blobs/e0a42594d802",
+  "tag_full": "translategemma:4b-it-bf16",
+  "blob_type": "template",
+  "digest": "e0a42594d802",
+  "size": "358B",
+  "metadata": [],
+  "content": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if or (eq .Role \"user\") (eq .Role \"system\") }}<start_of_turn>user\n{{ .Content }}<end_of_turn>\n{{ if $last }}<start_of_turn>model\n{{ end }}\n{{- else if eq .Role \"assistant\" }}<start_of_turn>model\n{{ .Content }}{{ if not $last }}<end_of_turn>\n{{ end }}\n{{- end }}\n{{- end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T21:55:32.391396+00:00"
+}

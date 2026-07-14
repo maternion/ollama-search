@@ -1,0 +1,55 @@
+{
+  "path": "/library/qwen2.5",
+  "tag_name": "3b-instruct-q5_K_S",
+  "full_path": "/library/qwen2.5:3b-instruct-q5_K_S",
+  "scraped_at": "2026-07-13T19:38:06.569673+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/qwen2.5/4b4f719f-c327-489e-8dc1-89a455c21e89\" width=\"320\"/></p>\n\n<p>Qwen2.5 is the latest series of Qwen large language models. For Qwen2.5, a range of base language models and instruction-tuned models are released, with sizes ranging from 0.5 to 72 billion parameters. Qwen2.5 introduces the following improvements over Qwen2:</p>\n\n<ul>\n<li>It possesses <strong>significantly more knowledge</strong> and has greatly enhanced capabilities in <strong>coding</strong> and <strong>mathematics</strong>, due to specialized expert models in these domains.</li>\n<li>It demonstrates significant advancements in <strong>instruction following</strong>, <strong>long-text generation</strong> (over 8K tokens), <strong>understanding structured data</strong> (e.g., tables), and <strong>generating structured outputs</strong>, especially in JSON format. It is also <strong>more resilient to diverse system prompts</strong>, improving role-play and condition-setting for chatbots.</li>\n<li>It supports <strong>long contexts</strong> of up to 128K tokens and can generate up to 8K tokens.</li>\n<li>It offers <strong>multilingual support</strong> for over 29 languages, including Chinese, English, French, Spanish, Portuguese, German, Italian, Russian, Japanese, Korean, Vietnamese, Thai, Arabic, and more.</li>\n</ul>\n\n<p>Please note: all models except the 3B and 72B are released under the Apache 2.0 license, while the 3B and 72B models are under the Qwen license.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://github.com/QwenLM/Qwen2.5\" rel=\"nofollow\">GitHub</a></p>\n\n<p><a href=\"https://qwenlm.github.io/blog/qwen2.5/\" rel=\"nofollow\">Blog post</a></p>\n\n<p><a href=\"https://huggingface.co/collections/Qwen/qwen25-66e81a666513e518adb90d9e\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "8ce4b148557a",
+  "manifest_size": "2.2GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/qwen2.5:3b-instruct-q5_K_S/blobs/09c300723209",
+      "content_preview": "arch  qwen2",
+      "size": "2.2GB",
+      "arch": "qwen2",
+      "parameters": "3.09B",
+      "quantization": "Q5_K_S"
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/qwen2.5:3b-instruct-q5_K_S/blobs/66b9ea09bd5b",
+      "content_preview": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+      "size": "68B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/qwen2.5:3b-instruct-q5_K_S/blobs/b5c0e5cf74cf",
+      "content_preview": "Qwen RESEARCH LICENSE AGREEMENT\nQwen RESEARCH LICENSE AGREEMENT Release Date: September 19, 2024\nBy",
+      "size": "7.4kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/qwen2.5:3b-instruct-q5_K_S/blobs/eb4402837c78",
+      "content_preview": "{{- if .Messages }}\n{{- if or .System .Tools }}<|im_start|>system\n{{- if .System }}\n{{ .System }}\n{{",
+      "size": "1.5kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

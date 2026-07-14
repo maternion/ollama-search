@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/deepseek-coder-v2:16b-lite-base-q8_0/blobs/6187ffbfaf05",
+  "tag_full": "deepseek-coder-v2:16b-lite-base-q8_0",
+  "blob_type": "template",
+  "digest": "6187ffbfaf05",
+  "size": "133B",
+  "metadata": [],
+  "content": "{{- if .Suffix }}<\uff5cfim\u2581begin\uff5c>{{ .Prompt }}<\uff5cfim\u2581hole\uff5c>{{ .Suffix }}<\uff5cfim\u2581end\uff5c>\n{{- else }}{{ .Prompt }}\n{{- end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T01:14:12.187856+00:00"
+}

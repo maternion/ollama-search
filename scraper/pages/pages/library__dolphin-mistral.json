@@ -1,0 +1,17 @@
+{
+  "path": "/library/dolphin-mistral",
+  "name": "dolphin-mistral",
+  "scraped_at": "2026-07-13T19:28:44.231358+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/jmorganca/ollama/assets/251292/c65aad4e-7a58-4645-97f2-5e8ca158275f\" width=\"280\"/></p>\n\n<p>The Dolphin model by Eric Hartford, based on <a href=\"https://ollama.ai/library/mistral\" rel=\"nofollow\">Mistral</a> version 0.2 released in March 2024. This model is uncensored, available for both commercial and non-commercial use, and excels at coding.</p>\n\n<h2>Versions</h2>\n\n<table>\n<thead>\n<tr>\n<th>Tag</th>\n<th>Date</th>\n<th>Notes</th>\n</tr>\n</thead>\n\n<tbody>\n<tr>\n<td><code>v2.8</code> <code>latest</code></td>\n<td>03/31/2024</td>\n<td>Based on Mistral 0.2 with support for a context window of 32K tokens.</td>\n</tr>\n\n<tr>\n<td><code>v2.6</code></td>\n<td>12/27/2023</td>\n<td>Fixed a training configuration issue that improved quality, and improvements to the training dataset for empathy.</td>\n</tr>\n\n<tr>\n<td><code>v2.2.1</code></td>\n<td>10/30/2023</td>\n<td>This is a checkpoint release, to fix overfit training</td>\n</tr>\n\n<tr>\n<td><code>v2.2</code></td>\n<td>10/29/2023</td>\n<td>Added conversation and empathy data.</td>\n</tr>\n\n<tr>\n<td><code>v2.1</code></td>\n<td>10/11/2023</td>\n<td>Enhanced with the airoboros dataset.</td>\n</tr>\n\n<tr>\n<td><code>v2.0</code></td>\n<td>10/2/2023</td>\n<td>Initial release of the model.</td>\n</tr>\n</tbody>\n</table>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/cognitivecomputations\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

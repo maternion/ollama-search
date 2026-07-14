@@ -1,0 +1,37 @@
+{
+  "path": "/library/smollm",
+  "tag_name": "360m-base-v0.2-q6_K",
+  "full_path": "/library/smollm:360m-base-v0.2-q6_K",
+  "scraped_at": "2026-07-13T20:18:49.999303+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/smollm/50a4746f-b96d-4948-aa52-7ff06524f485\" width=\"512\"/></p>\n\n<p>SmolLM is a series of small language models available in three sizes: 135M, 360M, and 1.7B parameters.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/blog/smollm\" rel=\"nofollow\">Blog post</a></p>\n\n<p><a href=\"https://huggingface.co/collections/HuggingFaceTB/smollm-6695016cad7167254ce15966\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "6006320b3839",
+  "manifest_size": "367MB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/smollm:360m-base-v0.2-q6_K/blobs/3a9cf97b419f",
+      "content_preview": "arch  llama",
+      "size": "367MB",
+      "arch": "llama",
+      "parameters": "362M",
+      "quantization": "Q6_K"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/smollm:360m-base-v0.2-q6_K/blobs/cfc7749b96f6",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

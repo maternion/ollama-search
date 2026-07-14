@@ -1,0 +1,46 @@
+{
+  "path": "/library/mistral-openorca",
+  "tag_name": "7b-q4_K_M",
+  "full_path": "/library/mistral-openorca:7b-q4_K_M",
+  "scraped_at": "2026-07-13T21:12:55.738574+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/jmorganca/ollama/assets/3325447/e2ab7f70-f708-4b59-83af-6cf48f7115b5\" width=\"360\"/></p>\n\n<p>Mistral OpenOrca is a 7 billion parameter model, fine-tuned on top of the Mistral 7B model using the OpenOrca dataset.</p>\n\n<p>HuggingFace Leaderboard evals place this model as leader for all models smaller than 30B at the release time, outperforming all other 7B and 13B models.</p>\n\n<h2>Usage</h2>\n\n<h3>CLI</h3>\n\n<pre><code>ollama run mistral-openorca &#34;Why is the sky blue?&#34;\n</code></pre>\n\n<h3>API</h3>\n\n<pre><code>curl -X POST http://localhost:11434/api/generate -d &#39;{\n  &#34;model&#34;: &#34;mistral-openorca&#34;,\n  &#34;prompt&#34;: &#34;Why is the sky blue?&#34;\n}&#39;\n</code></pre>\n\n<h2>More information</h2>\n\n<ul>\n<li><a href=\"https://huggingface.co/Open-Orca/Mistral-7B-OpenOrca\" rel=\"nofollow\">HuggingFace repo</a></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "d4fd6870e8eb",
+  "manifest_size": "4.4GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/mistral-openorca:7b-q4_K_M/blobs/327e8cae42d3",
+      "content_preview": "arch  llama",
+      "size": "4.4GB",
+      "arch": "llama",
+      "parameters": "7.24B",
+      "quantization": "Q4_K_M"
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/mistral-openorca:7b-q4_K_M/blobs/de6bcd73f9b4",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "size": "58B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/mistral-openorca:7b-q4_K_M/blobs/ecf1d3ca1fb5",
+      "content_preview": "{{- if .System }}\n<|im_start|>system {{ .System }}<|im_end|>\n{{- end }}\n<|im_start|>user\n{{ .Prompt",
+      "size": "135B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

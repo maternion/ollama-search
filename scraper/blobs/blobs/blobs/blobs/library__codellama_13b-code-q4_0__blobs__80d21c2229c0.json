@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/codellama:13b-code-q4_0/blobs/80d21c2229c0",
+  "tag_full": "codellama:13b-code-q4_0",
+  "blob_type": "template",
+  "digest": "80d21c2229c0",
+  "size": "97B",
+  "metadata": [],
+  "content": "{{- if .Suffix }}<PRE> {{ .Prompt }} <SUF>{{ .Suffix }} <MID>\n{{- else }}{{ .Prompt }}\n{{- end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T00:03:39.267528+00:00"
+}

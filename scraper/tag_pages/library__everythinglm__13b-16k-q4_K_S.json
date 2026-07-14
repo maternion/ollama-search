@@ -1,0 +1,64 @@
+{
+  "path": "/library/everythinglm",
+  "tag_name": "13b-16k-q4_K_S",
+  "full_path": "/library/everythinglm:13b-16k-q4_K_S",
+  "scraped_at": "2026-07-13T21:16:05.270881+00:00",
+  "readme_html": "\n        \n          <p>The Everything Language Model is a Llama 2-based model with a 16k context released by Totally Not An LLM (Kai Howard). It was trained with the <a href=\"https://huggingface.co/datasets/totally-not-an-llm/EverythingLM-data-V2\" rel=\"nofollow\">EverythingLM Dataset</a> and is uncensored.</p>\n\n<h3>CLI</h3>\n\n<p><code>ollama run everythinglm</code></p>\n\n<p>Once loaded, change the context size to <code>16K</code></p>\n\n<pre><code>/set parameter num_ctx 16384\n</code></pre>\n\n<h3>API</h3>\n\n<p>Example:</p>\n\n<pre><code>curl -X POST http://localhost:11434/api/generate -d &#39;{\n  &#34;model&#34;: &#34;everythinglm&#34;,\n  &#34;prompt&#34;: &#34;Why is the sky blue?&#34;\n  &#34;options&#34;: {\n    &#34;num_ctx&#34;: 16384\n  }\n }&#39;\n</code></pre>\n\n<h2>Reference</h2>\n\n<p>13b parameters original source:\n <a href=\"https://huggingface.co/totally-not-an-llm/EverythingLM-13b-16k\" rel=\"nofollow\">Totally Not An LLM</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "f43bc8c856a8",
+  "manifest_size": "7.4GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/everythinglm:13b-16k-q4_K_S/blobs/503fa4e0fbb9",
+      "content_preview": "arch  llama",
+      "size": "7.4GB",
+      "arch": "llama",
+      "parameters": "13B",
+      "quantization": "Q4_K_S"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/everythinglm:13b-16k-q4_K_S/blobs/41774062cd34",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "size": "7.0kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/everythinglm:13b-16k-q4_K_S/blobs/4dec76bb1a47",
+      "content_preview": "{{ .System }}\nUser: {{ .Prompt }}\nAssistant:",
+      "size": "45B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/everythinglm:13b-16k-q4_K_S/blobs/c8472cd9daed",
+      "content_preview": "You are a helpful AI assistant.",
+      "size": "31B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/everythinglm:13b-16k-q4_K_S/blobs/19f2fb9e8bc6",
+      "content_preview": "{\n    \"stop\": [\n        \"User:\",\n        \"Assistant:\"\n    ]\n}",
+      "size": "32B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

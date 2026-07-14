@@ -1,0 +1,48 @@
+{
+  "path": "/library/qwen3-next",
+  "name": "qwen3-next",
+  "scraped_at": "2026-07-13T19:29:58.847196+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/qwen3-next/5e94256e-8c4a-42bb-a335-34b61221360e\" alt=\"image.png\"/></p>\n\n<p>Qwen3-Next-80B-A3B is the first installment in the Qwen3-Next series and features the following key enhancements:</p>\n\n<ul>\n<li><strong>Hybrid Attention</strong>: Replaces standard attention with the combination of Gated DeltaNet and Gated Attention, enabling efficient context modeling for ultra-long context length.</li>\n<li><strong>High-Sparsity Mixture-of-Experts (MoE)</strong>: Achieves an extreme low activation ratio in MoE layers, drastically reducing FLOPs per token while preserving model capacity.</li>\n<li><strong>Stability Optimizations</strong>: Includes techniques such as zero-centered and weight-decayed layernorm, and other stabilizing enhancements for robust pre-training and post-training.</li>\n<li><strong>Multi-Token Prediction (MTP)</strong>: Boosts pretraining model performance and accelerates inference.</li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model qwen3-next"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model qwen3-next"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model qwen3-next"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model qwen3-next"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model qwen3-next"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model qwen3-next"
+    }
+  ]
+}

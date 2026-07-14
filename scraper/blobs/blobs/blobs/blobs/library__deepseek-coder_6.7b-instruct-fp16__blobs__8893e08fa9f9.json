@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/deepseek-coder:6.7b-instruct-fp16/blobs/8893e08fa9f9",
+  "tag_full": "deepseek-coder:6.7b-instruct-fp16",
+  "blob_type": "template",
+  "digest": "8893e08fa9f9",
+  "size": "59B",
+  "metadata": [],
+  "content": "{{ .System }}\n### Instruction:\n{{ .Prompt }}\n### Response:",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T00:28:51.510054+00:00"
+}

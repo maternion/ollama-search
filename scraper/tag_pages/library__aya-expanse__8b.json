@@ -1,0 +1,64 @@
+{
+  "path": "/library/aya-expanse",
+  "tag_name": "8b",
+  "full_path": "/library/aya-expanse:8b",
+  "scraped_at": "2026-07-13T20:56:32.126155+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/aya-expanse/fba5fdd1-f5f3-43d2-a2e1-04c9e37d37be\" width=\"460\"/></p>\n\n<p>Aya Expanse represents a significant advancement in multilingual AI capabilities. Combining Cohere\u2019s Command model family with a year of focused research in multilingual optimization has produced versatile 8B and 32B parameter models that can understand and generate text across 23 languages while maintaining high performance across all of them.</p>\n\n<h2>Key Features</h2>\n\n<ul>\n<li>8-billion and 32-billion parameter multilingual language models developed by Cohere For AI</li>\n<li>Supports Arabic, Chinese (simplified &amp; traditional), Czech, Dutch, English, French, German, Greek, Hebrew, Hebrew, Hindi, Indonesian, Italian, Japanese, Korean, Persian, Polish, Portuguese, Romanian, Russian, Spanish, Turkish, Ukrainian, and Vietnamese</li>\n<li>Built on the Command family of models with extensive research in data arbitrage, multilingual preference training, and safety tuning</li>\n<li>128K context length</li>\n<li>Released under CC-BY-NC license with additional usage policies</li>\n</ul>\n\n<h2>References</h2>\n\n<p><a href=\"https://cohere.com/blog/aya-expanse-connecting-our-world\" rel=\"nofollow\">Blog post</a></p>\n\n<p><a href=\"https://huggingface.co/CohereForAI/aya-expanse-8b\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "65f986688a01",
+  "manifest_size": "5.1GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/aya-expanse:8b/blobs/d1ee5fdcfdb2",
+      "content_preview": "arch  command-r",
+      "size": "5.1GB",
+      "arch": "command-r",
+      "parameters": "8.03B",
+      "quantization": "Q4_K_M"
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/aya-expanse:8b/blobs/1389d9c2c1f4",
+      "content_preview": "You are Aya, a brilliant, sophisticated, multilingual AI-assistant trained to assist human users by",
+      "size": "263B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/aya-expanse:8b/blobs/945eaa8b1428",
+      "content_preview": "Creative Commons Attribution-NonCommercial 4.0 International Public\nLicense with Acceptable Use Adde",
+      "size": "14kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/aya-expanse:8b/blobs/36b9655abe6a",
+      "content_preview": "{\n    \"stop\": [\n        \"<|START_OF_TURN_TOKEN|>\",\n        \"<|END_OF_TURN_TOKEN|>\"\n    ]\n}",
+      "size": "81B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/aya-expanse:8b/blobs/922095537bc1",
+      "content_preview": "{{- if or .Tools .System }}<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|>\n{{- if .Tools }}# Safety Preamble",
+      "size": "2.9kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

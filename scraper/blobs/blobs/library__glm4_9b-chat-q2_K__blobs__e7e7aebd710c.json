@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/glm4:9b-chat-q2_K/blobs/e7e7aebd710c",
+  "tag_full": "glm4:9b-chat-q2_K",
+  "blob_type": "template",
+  "digest": "e7e7aebd710c",
+  "size": "137B",
+  "metadata": [],
+  "content": "[gMASK]<sop>{{ if .System }}<|system|>\n{{ .System }}{{ end }}{{ if .Prompt }}<|user|>\n{{ .Prompt }}{{ end }}<|assistant|>\n{{ .Response }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T04:22:38.275293+00:00"
+}

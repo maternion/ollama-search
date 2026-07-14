@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/yi-coder:9b-chat/blobs/afc128547699",
+  "tag_full": "yi-coder:9b-chat",
+  "blob_type": "template",
+  "digest": "afc128547699",
+  "size": "527B",
+  "metadata": [],
+  "content": "{{- if .Messages }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|im_start|>{{ .Role }}\n{{ .Content }}{{ if (or (ne .Role \"assistant\") (not $last)) }}<|im_end|>\n{{ end }}\n{{- if (and $last (ne .Role \"assistant\")) }}<|im_start|>assistant\n{{ end }}\n{{- end }}\n{{- else }}\n{{- if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}{{ if .Prompt }}<|im_start|>user\n{{ .Prompt }}<|im_end|>\n{{ end }}<|im_start|>assistant\n{{ end }}{{ .Response }}{{ if .Response }}<|im_end|>{{ end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T07:48:36.877588+00:00"
+}

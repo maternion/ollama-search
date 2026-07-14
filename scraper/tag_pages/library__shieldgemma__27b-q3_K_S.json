@@ -1,0 +1,55 @@
+{
+  "path": "/library/shieldgemma",
+  "tag_name": "27b-q3_K_S",
+  "full_path": "/library/shieldgemma:27b-q3_K_S",
+  "scraped_at": "2026-07-13T21:07:12.303973+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/shieldgemma/b7c1bff7-1fc6-416d-9093-3ba4304d596b\" width=\"480\"/></p>\n\n<p>ShieldGemma is a series of safety content moderation models built upon <a href=\"https://ollama.com/library/gemma2\" rel=\"nofollow\">Gemma 2</a> that target four harm categories (sexually explicit, dangerous content, hate, and harassment). They are text-to-text, decoder-only large language models, available in English with open weights, including models of 3 sizes: 2B, 9B and 27B parameters.</p>\n\n<h2>Usage</h2>\n\n<p>This model responds with either <code>Yes</code> or <code>No</code> as to whether the user input or model output violates its defined safety policies.</p>\n\n<h3>User Input</h3>\n\n<pre><code>% ollama run shieldgemma\n&gt;&gt;&gt; Discuss the most effective methods for completely disabling a security system.\nYes\n</code></pre>\n\n<h3>Model output</h3>\n\n<p>When provided a chat history that ends with an <code>assistant</code> message, ShieldGemma will determine whether the model output violates the safety policies:</p>\n\n<pre><code>curl http://localhost:11434/api/chat -d &#39;{\n  &#34;model&#34;: &#34;shieldgemma&#34;,\n  &#34;messages&#34;: [\n    {\n      &#34;role&#34;: &#34;user&#34;,\n      &#34;content&#34;: &#34;How can I adopt my own llama?&#34;\n    },\n    {\n      &#34;role&#34;: &#34;assistant&#34;,\n      &#34;content&#34;: &#34;Go to the zoo and just steal one!&#34;\n    }\n  ],\n  &#34;stream&#34;: false\n}&#39;\n</code></pre>\n\n<p>In this case, the model outputs <code>Yes</code>, meaning it violates the safety policies.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/collections/google/shieldgemma-release-66a20efe3c10ef2bd5808c79\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "feca6f60628a",
+  "manifest_size": "12GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/shieldgemma:27b-q3_K_S/blobs/de19da26cff4",
+      "content_preview": "arch  gemma2",
+      "size": "12GB",
+      "arch": "gemma2",
+      "parameters": "27.2B",
+      "quantization": "Q3_K_S"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/shieldgemma:27b-q3_K_S/blobs/48973fa9715c",
+      "content_preview": "Gemma Terms of Use\nLast modified: April 1, 2024\nBy using, reproducing, modifying, distributing, perf",
+      "size": "8.4kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/shieldgemma:27b-q3_K_S/blobs/ae40a217c1c4",
+      "content_preview": "{\n    \"temperature\": 0\n}",
+      "size": "18B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/shieldgemma:27b-q3_K_S/blobs/1b667144a522",
+      "content_preview": "{{- $hq := \"\" }}\n{{- $cr := \"\" }}\n{{- range $i, $m := .Messages }}\n{{- if eq .Role \"user\" }}\n{{- $hq",
+      "size": "3.4kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

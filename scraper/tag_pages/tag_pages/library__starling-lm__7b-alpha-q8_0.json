@@ -1,0 +1,46 @@
+{
+  "path": "/library/starling-lm",
+  "tag_name": "7b-alpha-q8_0",
+  "full_path": "/library/starling-lm:7b-alpha-q8_0",
+  "scraped_at": "2026-07-13T20:59:50.019556+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/jmorganca/ollama/assets/251292/ffc27067-27cc-425c-a910-a5a6f1fa2dc1\" width=\"240\"></p>\n\n<p>Starling-7B is an open (non-commercial) large language model (LLM) trained by reinforcement learning from AI feedback. (RLAIF)</p>\n\n<p>The model harnesses the power of our new GPT-4 labeled ranking dataset, Nectar, and our new reward training and policy tuning pipeline. Starling-7B-alpha scores 8.09 in MT Bench with GPT-4 as a judge, outperforming every model to date on MT-Bench except for OpenAI\u2019s GPT-4 and GPT-4 Turbo.</p>\n\n<p><img src=\"https://github.com/jmorganca/ollama/assets/3325447/a7d89b3b-b803-4c98-bb4f-ef03f6d76064\"></p>\n\n<p>*Based on MT Bench evaluations, using GPT-4 scoring. Further human evaluation is needed.</p>\n\n<p>Authors: Banghua Zhu, Evan Frick, Tianhao Wu, Hanlin Zhu and Jiantao Jiao.</p>\n\n<p>For correspondence, please contact Banghua Zhu (banghua@berkeley.edu).</p>\n\n<h2>Reference</h2>\n\n<p><a href=\"https://starling.cs.berkeley.edu/\" rel=\"nofollow\">Starling-7B: Increasing LLM Helpfulness &amp; Harmlessness with RLAIF</a></p>\n\n<p><a href=\"https://huggingface.co/berkeley-nest/Starling-LM-7B-alpha\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "8e54dc97552a",
+  "manifest_size": "7.7GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/starling-lm:7b-alpha-q8_0/blobs/30594646e441",
+      "content_preview": "arch  llama",
+      "size": "7.7GB",
+      "arch": "llama",
+      "parameters": "7.24B",
+      "quantization": "Q8_0"
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/starling-lm:7b-alpha-q8_0/blobs/f507449d49be",
+      "content_preview": "{\n    \"stop\": [\n        \"<|endoftext|>\",\n        \"<|end_of_turn|>\",\n        \"Human:\",\n        \"Assis",
+      "size": "87B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/starling-lm:7b-alpha-q8_0/blobs/bd8cd7c70595",
+      "content_preview": "{{ .System }}<|end_of_turn|>GPT4 Correct User: {{ .Prompt}}<|end_of_turn|>GPT4 Correct Assistant:",
+      "size": "97B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

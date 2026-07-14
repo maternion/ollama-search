@@ -1,0 +1,48 @@
+{
+  "path": "/library/command-r",
+  "name": "command-r",
+  "scraped_at": "2026-07-13T19:28:47.194679+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/ollama/ollama/assets/251292/0f8ef1fc-f0ba-4e69-b171-36c387aa5349\" width=\"480\"/></p>\n\n<p>Command R is a generative model optimized for long context tasks such as retrieval-augmented generation (RAG) and using external APIs and tools. As a model built for companies to implement at scale, Command R boasts:</p>\n\n<ul>\n<li>Strong accuracy on RAG and Tool Use</li>\n<li>Low latency, and high throughput</li>\n<li>Longer 128k context</li>\n<li>Strong capabilities across 10 key languages</li>\n</ul>\n\n<p>There are currently two versions of Command R:</p>\n\n<ul>\n<li>Original release tagged <strong>v0.1</strong></li>\n<li>August 2024 update tagged <strong>08-2024</strong></li>\n</ul>\n\n<h2>References</h2>\n\n<ul>\n<li><a href=\"https://txt.cohere.com/command-r/\" rel=\"nofollow\">Blog Post</a></li>\n<li><a href=\"https://huggingface.co/CohereForAI/c4ai-command-r-v01\" rel=\"nofollow\">Hugging Face</a></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model command-r"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model command-r"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model command-r"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model command-r"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model command-r"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model command-r"
+    }
+  ]
+}

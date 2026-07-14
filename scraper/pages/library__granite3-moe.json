@@ -1,0 +1,48 @@
+{
+  "path": "/library/granite3-moe",
+  "name": "granite3-moe",
+  "scraped_at": "2026-07-13T19:29:34.544773+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/granite3-moe/6ea49528-3ff2-4fcc-98b2-01f6104254d2\" alt=\"An illustration of Ollama holding a beautiful flower with the IBM Rebus logo of the Eye, Bee and M, made by Paul Rand.\"/></p>\n\n<h3>Granite mixture of experts models</h3>\n\n<p>The IBM Granite <strong>1B and 3B models</strong> are the first mixture of experts (MoE) Granite models from IBM designed for low latency usage.</p>\n\n<p>The models are trained on over 10 trillion tokens of data, the Granite MoE models are ideal for deployment in on-device applications or situations requiring instantaneous inference.</p>\n\n<h2>Parameter Sizes</h2>\n\n<p><strong>1B:</strong></p>\n\n<p><code>ollama run granite3-moe:1b</code></p>\n\n<p><strong>3B:</strong></p>\n\n<p><code>ollama run granite3-moe:3b</code></p>\n\n<h2>Supported Languages</h2>\n\n<p>English, German, Spanish, French, Japanese, Portuguese, Arabic, Czech, Italian, Korean, Dutch, Chinese (Simplified)</p>\n\n<h3>Capabilities</h3>\n\n<ul>\n<li>Summarization</li>\n<li>Text classification</li>\n<li>Text extraction</li>\n<li>Question-answering</li>\n<li>Retrieval Augmented Generation (RAG)</li>\n<li>Code related</li>\n<li>Function-calling</li>\n<li>Multilingual dialog use cases</li>\n</ul>\n\n<h3>Granite dense models</h3>\n\n<p>The Granite dense models are available in <strong>2B and 8B</strong> parameter sizes designed to support tool-based use cases and for retrieval augmented generation (RAG), streamlining code generation, translation and bug fixing.</p>\n\n<p><a href=\"https://ollama.com/library/granite3-dense\" rel=\"nofollow\">See model page</a></p>\n\n<h3>Learn more</h3>\n\n<ul>\n<li><strong>Developers:</strong> IBM Research</li>\n<li><strong>GitHub Repository:</strong> <a href=\"https://github.com/ibm-granite/granite-3.0-language-models\" rel=\"nofollow\">ibm-granite/granite-3.0-language-models</a></li>\n<li><strong>Website</strong>: <a href=\"https://www.ibm.com/granite/docs/\" rel=\"nofollow\">Granite Docs</a></li>\n<li><strong>Release Date</strong>: October 21st, 2024</li>\n<li><strong>License:</strong> <a href=\"https://www.apache.org/licenses/LICENSE-2.0\" rel=\"nofollow\">Apache 2.0</a>.</li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model granite3-moe"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model granite3-moe"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model granite3-moe"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model granite3-moe"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model granite3-moe"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model granite3-moe"
+    }
+  ]
+}

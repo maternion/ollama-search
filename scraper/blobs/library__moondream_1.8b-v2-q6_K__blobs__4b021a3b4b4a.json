@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/moondream:1.8b-v2-q6_K/blobs/4b021a3b4b4a",
+  "tag_full": "moondream:1.8b-v2-q6_K",
+  "blob_type": "template",
+  "digest": "4b021a3b4b4a",
+  "size": "77B",
+  "metadata": [],
+  "content": "{{ if .Prompt }} Question: {{ .Prompt }}\n\n{{ end }} Answer: {{ .Response }}\n",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T03:16:00.943631+00:00"
+}

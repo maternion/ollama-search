@@ -31,6 +31,7 @@ jobs:
           git fetch origin scraped-data 2>/dev/null || true
           if git rev-parse --verify origin/scraped-data >/dev/null 2>&1; then
             git checkout origin/scraped-data -- scraper/ 2>/dev/null || true
+            git reset HEAD scraper/ 2>/dev/null || true
             echo "Restored scraped data from scraped-data branch"
           else
             echo "No scraped-data branch found, cannot deploy"
@@ -41,6 +42,7 @@ jobs:
           git worktree add /tmp/gh-pages gh-pages 2>/dev/null || git worktree add --orphan -b gh-pages /tmp/gh-pages 2>/dev/null || true
           cd /tmp/gh-pages
           git rm -rf . 2>/dev/null || true
+          git clean -fdx 2>/dev/null || true
           cp -r "$GITHUB_WORKSPACE/public/"* .
           git add -A
           git commit -m "deploy only $(date -u '+%Y-%m-%d %H:%M:%S UTC') [skip ci]" || true

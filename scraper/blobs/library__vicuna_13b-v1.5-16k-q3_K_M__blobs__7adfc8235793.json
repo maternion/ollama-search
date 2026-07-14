@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/vicuna:13b-v1.5-16k-q3_K_M/blobs/7adfc8235793",
+  "tag_full": "vicuna:13b-v1.5-16k-q3_K_M",
+  "blob_type": "params",
+  "digest": "7adfc8235793",
+  "size": "76B",
+  "metadata": [],
+  "content": "{\n\"num_ctx\": 16384,\n\"rope_frequency_scale\": 0.125,\n\"stop\": [\n\"USER:\",\n\"ASSISTANT:\"\n]\n}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T05:12:47.284725+00:00"
+}

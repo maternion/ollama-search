@@ -1,0 +1,37 @@
+{
+  "path": "/library/llama3.1",
+  "tag_name": "8b-text-q3_K_S",
+  "full_path": "/library/llama3.1:8b-text-q3_K_S",
+  "scraped_at": "2026-07-13T19:34:16.196461+00:00",
+  "readme_html": "\n        \n          <h3>Meta Llama 3.1</h3>\n\n<p><img src=\"https://ollama.com/assets/mchiang0610/mikey3.1/4d0cab8e-952b-4c75-b110-1514d8db8fae\" alt=\"image.png\"/></p>\n\n<p><strong>Llama 3.1</strong> family of models available:</p>\n\n<ul>\n<li><strong>8B</strong></li>\n<li><strong>70B</strong></li>\n<li><strong>405B</strong></li>\n</ul>\n\n<p>Llama 3.1 405B is the first openly available model that rivals the top AI models when it comes to state-of-the-art capabilities in general knowledge, steerability, math, tool use, and multilingual translation.</p>\n\n<p>The upgraded versions of the 8B and 70B models are multilingual and have a significantly longer context length of 128K, state-of-the-art tool use, and overall stronger reasoning capabilities. This enables Meta\u2019s latest models to support advanced use cases, such as long-form text summarization, multilingual conversational agents, and coding assistants.</p>\n\n<p>Meta also has made changes to their license, allowing developers to use the outputs from Llama models, including the 405B model, to improve other models.</p>\n\n<h3>Model evaluations</h3>\n\n<p>For this release, Meta has evaluation the performance on over 150 benchmark datasets that span a wide range of languages. In addition, Meta performed extensive human evaluations that compare Llama 3.1 with competing models in real-world scenarios. Meta\u2019s experimental evaluation suggests that our flagship model is competitive with leading foundation models across a range of tasks, including GPT-4, GPT-4o, and Claude 3.5 Sonnet. Additionally, Meta\u2019s smaller models are competitive with closed and open models that have a similar number of parameters.</p>\n\n<p><img src=\"https://ollama.com/assets/mchiang0610/mikey3.1/73b11a5e-84e9-4397-9d47-f0299a6294b3\" alt=\"image.png\"/></p>\n\n<p><img src=\"https://ollama.com/assets/mchiang0610/mikey3.1/ad042a1c-bbc7-47de-bbbf-78a3cfc13485\" alt=\"image.png\"/></p>\n\n<p><img src=\"https://ollama.com/assets/mchiang0610/mikey3.1/2d582df5-ce45-4326-85c5-254c917554b2\" alt=\"image.png\"/></p>\n\n<h3>References</h3>\n\n<ul>\n<li><a href=\"https://ai.meta.com/blog/meta-llama-3-1/\" rel=\"nofollow\">Meta AI Llama 3.1 launch blog post</a></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "92c2cffe1a17",
+  "manifest_size": "3.7GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/llama3.1:8b-text-q3_K_S/blobs/9fb5d0047927",
+      "content_preview": "arch  llama",
+      "size": "3.7GB",
+      "arch": "llama",
+      "parameters": "8.03B",
+      "quantization": "Q3_K_S"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/llama3.1:8b-text-q3_K_S/blobs/0ba8f0e314b4",
+      "content_preview": "LLAMA 3.1 COMMUNITY LICENSE AGREEMENT\nLlama 3.1 Version Release Date: July 23, 2024\n\u201cAgreement\u201d",
+      "size": "12kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

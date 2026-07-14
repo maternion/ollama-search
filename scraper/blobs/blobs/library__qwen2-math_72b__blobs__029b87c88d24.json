@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/qwen2-math:72b/blobs/029b87c88d24",
+  "tag_full": "qwen2-math:72b",
+  "blob_type": "template",
+  "digest": "029b87c88d24",
+  "size": "102B",
+  "metadata": [],
+  "content": "{{- range .Messages }}<|im_start|>{{ .Role }}\n{{ .Content }}<|im_end|>\n{{- end }}<|im_start|>assistant",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T05:34:08.534733+00:00"
+}

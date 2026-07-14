@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/openchat:7b-v3.5-0106-q5_K_M/blobs/d68706c17530",
+  "tag_full": "openchat:7b-v3.5-0106-q5_K_M",
+  "blob_type": "template",
+  "digest": "d68706c17530",
+  "size": "98B",
+  "metadata": [],
+  "content": "{{ .System }}<|end_of_turn|>GPT4 Correct User: {{ .Prompt }}<|end_of_turn|>GPT4 Correct Assistant:",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T04:18:24.920175+00:00"
+}

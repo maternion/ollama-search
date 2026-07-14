@@ -1,0 +1,64 @@
+{
+  "path": "/library/smollm2",
+  "tag_name": "135m-instruct-q3_K_L",
+  "full_path": "/library/smollm2:135m-instruct-q3_K_L",
+  "scraped_at": "2026-07-13T20:07:13.414747+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/smollm2/2616a6ce-5645-48c3-bd5d-9a00f1dd0c9e\" alt=\"y45hIMNREW7w_XpHYB_0q.png\"/></p>\n\n<p>SmolLM2 is a family of compact language models available in three size: 135M, 360M, and 1.7B parameters. They are capable of solving a wide range of tasks while being lightweight enough to run on-device.</p>\n\n<p><img src=\"/assets/library/smollm2/1a637eca-6f07-4572-8e01-011339c072d8\" alt=\"benchmark\"/></p>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/collections/HuggingFaceTB/smollm2-6723884218bcda64b34d7db9\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "c72ffea38f60",
+  "manifest_size": "98MB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/smollm2:135m-instruct-q3_K_L/blobs/d8a6a5c16bda",
+      "content_preview": "arch  llama",
+      "size": "98MB",
+      "arch": "llama",
+      "parameters": "135M",
+      "quantization": "Q3_K_L"
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/smollm2:135m-instruct-q3_K_L/blobs/fbacade46b4d",
+      "content_preview": "You are a helpful AI assistant named SmolLM, trained by Hugging Face",
+      "size": "68B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/smollm2:135m-instruct-q3_K_L/blobs/58d1e17ffe51",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/smollm2:135m-instruct-q3_K_L/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "size": "59B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/smollm2:135m-instruct-q3_K_L/blobs/d502d55c1d60",
+      "content_preview": "{{- if .Messages }}\n{{- if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}\n{{- range",
+      "size": "675B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

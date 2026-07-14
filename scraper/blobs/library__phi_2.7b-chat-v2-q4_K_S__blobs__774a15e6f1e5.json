@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/phi:2.7b-chat-v2-q4_K_S/blobs/774a15e6f1e5",
+  "tag_full": "phi:2.7b-chat-v2-q4_K_S",
+  "blob_type": "template",
+  "digest": "774a15e6f1e5",
+  "size": "77B",
+  "metadata": [],
+  "content": "{{ if .System }}System: {{ .System }}{{ end }}\nUser: {{ .Prompt }}\nAssistant:",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T02:33:00.553185+00:00"
+}

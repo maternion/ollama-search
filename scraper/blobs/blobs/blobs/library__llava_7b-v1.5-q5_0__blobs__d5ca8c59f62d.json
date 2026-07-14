@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/llava:7b-v1.5-q5_0/blobs/d5ca8c59f62d",
+  "tag_full": "llava:7b-v1.5-q5_0",
+  "blob_type": "template",
+  "digest": "d5ca8c59f62d",
+  "size": "46B",
+  "metadata": [],
+  "content": "{{ .System }}\nUSER: {{ .Prompt }}\nASSSISTANT:",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T22:59:07.862836+00:00"
+}

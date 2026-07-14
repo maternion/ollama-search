@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/wizard-vicuna-uncensored:30b-q3_K_L/blobs/b1571c5cbd28",
+  "tag_full": "wizard-vicuna-uncensored:30b-q3_K_L",
+  "blob_type": "template",
+  "digest": "b1571c5cbd28",
+  "size": "45B",
+  "metadata": [],
+  "content": "{{ .System }}\nUSER: {{ .Prompt }}\nASSISTANT:",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T03:57:14.863986+00:00"
+}

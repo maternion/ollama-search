@@ -1,0 +1,67 @@
+{
+  "path": "/library/mistral-small3.2",
+  "name": "mistral-small3.2",
+  "scraped_at": "2026-07-13T19:25:00.823936+00:00",
+  "tags": [
+    {
+      "name": "latest",
+      "size_bytes": 15000000000,
+      "size_text": "15GB",
+      "context": "128K",
+      "input_type": "Text, Image",
+      "digest": "5a408ab55df5",
+      "updated": "1 year ago",
+      "format": "gguf",
+      "usage_level": "",
+      "usage_active_slots": 0
+    },
+    {
+      "name": "24b",
+      "size_bytes": 15000000000,
+      "size_text": "15GB",
+      "context": "128K",
+      "input_type": "Text, Image",
+      "digest": "5a408ab55df5",
+      "updated": "1 year ago",
+      "format": "gguf",
+      "usage_level": "",
+      "usage_active_slots": 0
+    },
+    {
+      "name": "24b-instruct-2506-q4_K_M",
+      "size_bytes": 15000000000,
+      "size_text": "15GB",
+      "context": "128K",
+      "input_type": "Text, Image",
+      "digest": "5a408ab55df5",
+      "updated": "1 year ago",
+      "format": "gguf",
+      "usage_level": "",
+      "usage_active_slots": 0
+    },
+    {
+      "name": "24b-instruct-2506-q8_0",
+      "size_bytes": 26000000000,
+      "size_text": "26GB",
+      "context": "128K",
+      "input_type": "Text, Image",
+      "digest": "9b58e7bb625c",
+      "updated": "1 year ago",
+      "format": "gguf",
+      "usage_level": "",
+      "usage_active_slots": 0
+    },
+    {
+      "name": "24b-instruct-2506-fp16",
+      "size_bytes": 48000000000,
+      "size_text": "48GB",
+      "context": "128K",
+      "input_type": "Text, Image",
+      "digest": "f904f36f6f02",
+      "updated": "1 year ago",
+      "format": "gguf",
+      "usage_level": "",
+      "usage_active_slots": 0
+    }
+  ]
+}

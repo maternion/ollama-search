@@ -1,0 +1,64 @@
+{
+  "path": "/library/dolphin-phi",
+  "tag_name": "2.7b-v2.6-q5_K_S",
+  "full_path": "/library/dolphin-phi:2.7b-v2.6-q5_K_S",
+  "scraped_at": "2026-07-13T20:21:22.800844+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/jmorganca/ollama/assets/251292/c65aad4e-7a58-4645-97f2-5e8ca158275f\" width=\"280\"/></p>\n\n<p>Dolphin Phi 2.6 is an uncensored model based on the 2.7B <a href=\"https://ollama.ai/library/phi\" rel=\"nofollow\">Phi</a> model by Microsoft Research, using similar datasets as other versions of this model such as <a href=\"https://ollama.ai/library/dolphin-mixtral\" rel=\"nofollow\">Dolphin Mixtral</a>.</p>\n\n<p>It was created by <a href=\"https://erichartford.com/\" rel=\"nofollow\">Eric Hartford</a> and Cognitive Computations.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/cognitivecomputations/dolphin-2_6-phi-2\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "3284ea06df25",
+  "manifest_size": "1.9GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/dolphin-phi:2.7b-v2.6-q5_K_S/blobs/625e35820253",
+      "content_preview": "arch  phi2",
+      "size": "1.9GB",
+      "arch": "phi2",
+      "parameters": "2.78B",
+      "quantization": "Q5_K_S"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/dolphin-phi:2.7b-v2.6-q5_K_S/blobs/876a8d805b60",
+      "content_preview": "MICROSOFT RESEARCH LICENSE TERMS\nIF YOU LIVE IN THE UNITED STATES, PLEASE READ THE \u201cBINDING ARBITR",
+      "size": "10kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/dolphin-phi:2.7b-v2.6-q5_K_S/blobs/8b586b146d99",
+      "content_preview": "You are Dolphin, a helpful AI assistant.",
+      "size": "40B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/dolphin-phi:2.7b-v2.6-q5_K_S/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "size": "59B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/dolphin-phi:2.7b-v2.6-q5_K_S/blobs/a47b02e00552",
+      "content_preview": "<|im_start|>system\n{{ .System }}<|im_end|>\n<|im_start|>user\n{{ .Prompt }}<|im_end|>\n<|im_start|>assi",
+      "size": "106B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

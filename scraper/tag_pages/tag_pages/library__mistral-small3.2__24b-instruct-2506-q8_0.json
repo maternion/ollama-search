@@ -1,0 +1,64 @@
+{
+  "path": "/library/mistral-small3.2",
+  "tag_name": "24b-instruct-2506-q8_0",
+  "full_path": "/library/mistral-small3.2:24b-instruct-2506-q8_0",
+  "scraped_at": "2026-07-13T20:16:43.567874+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/mistral-small3.2/cec4138e-e20c-4d5b-910f-56f8647dbda1\" width=\"140\"/></p>\n\n<p>Mistral-Small-3.2-24B-Instruct-2506 is a minor update of Mistral-Small-3.1-24B-Instruct-2503.</p>\n\n<p>Small-3.2 improves in the following categories:</p>\n\n<ul>\n<li><strong>Instruction following</strong>: Small-3.2 is better at following precise instructions</li>\n<li><strong>Repetition errors</strong>: Small-3.2 produces less infinite generations or repetitive answers</li>\n<li><strong>Function calling</strong>: Small-3.2\u2019s function calling template is more robust (see here and examples)</li>\n</ul>\n\n<p>In all other categories Small-3.2 should match or slightly improve compared to Mistral-Small-3.1-24B-Instruct-2503.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "9b58e7bb625c",
+  "manifest_size": "26GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/mistral-small3.2:24b-instruct-2506-q8_0/blobs/38a2989af9b8",
+      "content_preview": "arch  mistral3",
+      "size": "26GB",
+      "arch": "mistral3",
+      "parameters": "24B",
+      "quantization": "Q8_0"
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/mistral-small3.2:24b-instruct-2506-q8_0/blobs/9c810f69c610",
+      "content_preview": "You are Mistral Small 3.2, a Large Language Model (LLM) created by Mistral AI, a French startup head",
+      "size": "2.3kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/mistral-small3.2:24b-instruct-2506-q8_0/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/mistral-small3.2:24b-instruct-2506-q8_0/blobs/e0daf17ff83e",
+      "content_preview": "{\n    \"temperature\": 0.15\n}",
+      "size": "21B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/mistral-small3.2:24b-instruct-2506-q8_0/blobs/706c4d1164f7",
+      "content_preview": "{{- range $index, $_ := .Messages }}\n{{- if eq .Role \"system\" }}[SYSTEM_PROMPT]{{ .Content }}[/SYSTE",
+      "size": "699B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

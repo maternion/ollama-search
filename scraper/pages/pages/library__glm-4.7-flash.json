@@ -1,0 +1,48 @@
+{
+  "path": "/library/glm-4.7-flash",
+  "name": "glm-4.7-flash",
+  "scraped_at": "2026-07-13T19:27:49.034855+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/glm-4.7-flash/8e1f3c2e-cfb1-4516-a57c-312b7daac14a\" width=\"128\"/></p>\n\n<blockquote>\n<p>Note: this model requires <a href=\"https://github.com/ollama/ollama/releases\" rel=\"nofollow\">Ollama 0.14.3</a> which is currently in pre-release.</p>\n</blockquote>\n\n<h2>Introduction</h2>\n\n<p>GLM-4.7-Flash is a 30B-A3B MoE model. As the strongest model in the 30B class, GLM-4.7-Flash offers a new option for lightweight deployment that balances performance and efficiency.</p>\n\n<h3>Performances on Benchmarks</h3>\n\n<table>\n<thead>\n<tr>\n<th>Benchmark</th>\n<th>GLM-4.7-Flash</th>\n<th>Qwen3-30B-A3B-Thinking-2507</th>\n<th>GPT-OSS-20B</th>\n</tr>\n</thead>\n\n<tbody>\n<tr>\n<td>AIME 25</td>\n<td>91.6</td>\n<td>85.0</td>\n<td>91.7</td>\n</tr>\n\n<tr>\n<td>GPQA</td>\n<td>75.2</td>\n<td>73.4</td>\n<td>71.5</td>\n</tr>\n\n<tr>\n<td>LCB v6</td>\n<td>64.0</td>\n<td>66.0</td>\n<td>61.0</td>\n</tr>\n\n<tr>\n<td>HLE</td>\n<td>14.4</td>\n<td>9.8</td>\n<td>10.9</td>\n</tr>\n\n<tr>\n<td>SWE-bench Verified</td>\n<td>59.2</td>\n<td>22.0</td>\n<td>34.0</td>\n</tr>\n\n<tr>\n<td>\u03c4\u00b2-Bench</td>\n<td>79.5</td>\n<td>49.0</td>\n<td>47.7</td>\n</tr>\n\n<tr>\n<td>BrowseComp</td>\n<td>42.8</td>\n<td>2.29</td>\n<td>28.3</td>\n</tr>\n</tbody>\n</table>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model glm-4.7-flash"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model glm-4.7-flash"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model glm-4.7-flash"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model glm-4.7-flash"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model glm-4.7-flash"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model glm-4.7-flash"
+    }
+  ]
+}

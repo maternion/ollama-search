@@ -1,0 +1,17 @@
+{
+  "path": "/library/dolphin-mixtral",
+  "name": "dolphin-mixtral",
+  "scraped_at": "2026-07-13T19:28:40.089237+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/jmorganca/ollama/assets/251292/c65aad4e-7a58-4645-97f2-5e8ca158275f\" width=\"280\"/></p>\n\n<p>The Dolphin model by Eric Hartford based on <a href=\"https://ollama.ai/library/mixtral\" rel=\"nofollow\">Mixtral</a> that is trained with additional datasets:</p>\n\n<ul>\n<li>Synthia, OpenHermes and PureDove</li>\n<li>New Dolphin-Coder</li>\n<li>MagiCoder</li>\n</ul>\n\n<h3>Sizes</h3>\n\n<ul>\n<li><code>dolphin-mixtral:8x22b</code></li>\n<li><code>dolphin-mixtral:8x7b</code></li>\n</ul>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/ehartford/dolphin-2.5-mixtral-8x7b\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

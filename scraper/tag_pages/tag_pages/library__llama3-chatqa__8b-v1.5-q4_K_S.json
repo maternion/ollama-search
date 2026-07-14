@@ -1,0 +1,55 @@
+{
+  "path": "/library/llama3-chatqa",
+  "tag_name": "8b-v1.5-q4_K_S",
+  "full_path": "/library/llama3-chatqa:8b-v1.5-q4_K_S",
+  "scraped_at": "2026-07-13T20:52:26.077871+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/llama3-chatqa/835859df-86ec-4859-aab8-c5d6b7195b7c\" width=\"320\"/></p>\n\n<p>ChatQA-1.5 is built on top of the Llama-3 base model, and incorporates conversational QA data to enhance its tabular and arithmetic calculation capability.</p>\n\n<p>ChatQA-1.5 has two variants:</p>\n\n<ul>\n<li>Llama3-ChatQA-1.5-8B <code>llama3-chatqa:8b</code></li>\n<li>Llama3-ChatQA-1.5-70B <code>llama3-chatqa:70b</code></li>\n</ul>\n\n<h2>References</h2>\n\n<p><a href=\"https://chatqa-project.github.io/\" rel=\"nofollow\">Website</a></p>\n\n<p><a href=\"https://huggingface.co/nvidia/Llama3-ChatQA-1.5-70B\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "c4c5c98e11c6",
+  "manifest_size": "4.7GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/llama3-chatqa:8b-v1.5-q4_K_S/blobs/b90bf377347c",
+      "content_preview": "arch  llama",
+      "size": "4.7GB",
+      "arch": "llama",
+      "parameters": "8.03B",
+      "quantization": "Q4_K_S"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/llama3-chatqa:8b-v1.5-q4_K_S/blobs/4fa551d4f938",
+      "content_preview": "META LLAMA 3 COMMUNITY LICENSE AGREEMENT\nMeta Llama 3 Version Release Date: April 18, 2024\n\u201cAgreem",
+      "size": "12kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/llama3-chatqa:8b-v1.5-q4_K_S/blobs/9f8fe93c9748",
+      "content_preview": "This is a chat between a user and an artificial intelligence assistant. The assistant gives helpful,",
+      "size": "260B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/llama3-chatqa:8b-v1.5-q4_K_S/blobs/79500bc18291",
+      "content_preview": "{{ if .System }}System: {{ .System }}\n{{ end }}{{ if .Prompt }}User: {{ .Prompt }}\n{{ end }}Assistan",
+      "size": "139B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

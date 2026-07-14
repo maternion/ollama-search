@@ -1,0 +1,55 @@
+{
+  "path": "/library/mathstral",
+  "tag_name": "7b-v0.1-fp16",
+  "full_path": "/library/mathstral:7b-v0.1-fp16",
+  "scraped_at": "2026-07-13T21:17:07.484488+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/mathstral/d21307b1-fe6d-4ca6-ab07-f2482a75cdca\" width=\"280\"/></p>\n\n<p>Mistral AI is contributing Mathstral to the science community to bolster efforts in advanced mathematical problems requiring complex, multi-step logical reasoning. The Mathstral release is part of their broader effort to support academic projects\u2014it was produced in the context of Mistral AI\u2019s collaboration with Project Numina.</p>\n\n<p>Akin to Isaac Newton in his time, Mathstral stands on the shoulders of Mistral 7B and specializes in STEM subjects. It achieves state-of-the-art reasoning capacities in its size category across various industry-standard benchmarks.</p>\n\n<p><img src=\"https://ollama.com/assets/library/mathstral/abb61f9b-f433-4044-8a79-7c5797620d51\" alt=\"mathstral-breakdown.png\"/></p>\n\n<h2>Benchmarks</h2>\n\n<p>Mathstral can achieve significantly better results with more inference-time computation: Mathstral 7B scores 68.37% on MATH with majority voting and 74.59% with a strong reward model among 64 candidates.</p>\n\n<p><img src=\"https://ollama.com/assets/library/mathstral/fd36ff7d-52a3-45eb-845b-ff7e094e83cc\" alt=\"mathstral-benchmarks.png\"/></p>\n\n<h2>References</h2>\n\n<p><a href=\"https://mistral.ai/news/mathstral/\" rel=\"nofollow\">Blog Post</a></p>\n\n<p><a href=\"https://huggingface.co/mistralai/mathstral-7B-v0.1\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "ce1616d5e8c6",
+  "manifest_size": "14GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/mathstral:7b-v0.1-fp16/blobs/e2e16396dfbb",
+      "content_preview": "arch  llama",
+      "size": "14GB",
+      "arch": "llama",
+      "parameters": "7.25B",
+      "quantization": "F16"
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/mathstral:7b-v0.1-fp16/blobs/36ee4ce5634b",
+      "content_preview": "[INST] {{ if .System }}{{ .System }} {{ end }}{{ .Prompt }} [/INST] {{ .Response }}",
+      "size": "83B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/mathstral:7b-v0.1-fp16/blobs/c71d239df917",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/mathstral:7b-v0.1-fp16/blobs/ed11eda7790d",
+      "content_preview": "{\n    \"stop\": [\n        \"[INST]\",\n        \"[/INST]\"\n    ]\n}",
+      "size": "30B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

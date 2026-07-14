@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/gemma4:12b-nvfp4/blobs/02b56bd11e1c",
+  "tag_full": "gemma4:12b-nvfp4",
+  "blob_type": "json",
+  "digest": "02b56bd11e1c",
+  "size": "233B",
+  "metadata": [],
+  "content": "{\n\"bos_token_id\": 2,\n\"do_sample\": true,\n\"eos_token_id\": 1,\n\"pad_token_id\": 0,\n\"suppress_tokens\": [\n258883,\n258882\n],\n\"temperature\": 1.0,\n\"top_k\": 64,\n\"top_p\": 0.95,\n\"transformers_version\": \"5.10.0.dev0\"\n}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T21:30:55.007889+00:00"
+}

@@ -1,0 +1,55 @@
+{
+  "path": "/library/llama3-groq-tool-use",
+  "tag_name": "70b-q3_K_M",
+  "full_path": "/library/llama3-groq-tool-use:70b-q3_K_M",
+  "scraped_at": "2026-07-13T20:59:14.469568+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/llama3-groq-tool-use/ebf53e82-1faf-4bac-84b0-47b8f5d9d8d1\" width=\"240\"/></p>\n\n<p>These models, developed in collaboration with <a href=\"https://glaive.ai/\" rel=\"nofollow\">Glaive</a>, represent a significant advancement in open-source AI capabilities for tool use/function calling.</p>\n\n<h2>Benchmark Results</h2>\n\n<p>These models have achieved remarkable results, setting new benchmarks for Large Language Models with tool use capabilities:</p>\n\n<ul>\n<li>Llama-3-Groq-70B-Tool-Use: 90.76% overall accuracy (#1 on BFCL at the time of publishing - July 2024)</li>\n<li>Llama-3-Groq-8B-Tool-Use: 89.06% overall accuracy (#3 on BFCL at the time of publishing - July 2024)</li>\n</ul>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/Groq\" rel=\"nofollow\">Hugging Face</a></p>\n\n<p><a href=\"https://wow.groq.com/introducing-llama-3-groq-tool-use-models/\" rel=\"nofollow\">Blog</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "5e0c9286cabe",
+  "manifest_size": "34GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/llama3-groq-tool-use:70b-q3_K_M/blobs/a5a0486cf5be",
+      "content_preview": "arch  llama",
+      "size": "34GB",
+      "arch": "llama",
+      "parameters": "70.6B",
+      "quantization": "Q3_K_M"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/llama3-groq-tool-use:70b-q3_K_M/blobs/d5f55f09bfc5",
+      "content_preview": "META LLAMA 3 COMMUNITY LICENSE AGREEMENT \u2013 Adapted For Groq 8B/70B Tool Use\nMeta Llama 3 Version R",
+      "size": "9.8kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/llama3-groq-tool-use:70b-q3_K_M/blobs/56bb8bd477a5",
+      "content_preview": "{\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",\n        \"<|eot_id|>\"",
+      "size": "96B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/llama3-groq-tool-use:70b-q3_K_M/blobs/4d1abb94190b",
+      "content_preview": "{{- if .Messages }}\n{{- if or .System .Tools }}<|start_header_id|>system<|end_header_id|>\n{{ .System",
+      "size": "1.7kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

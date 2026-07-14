@@ -1,0 +1,64 @@
+{
+  "path": "/library/reflection",
+  "tag_name": "70b-q5_K_M",
+  "full_path": "/library/reflection:70b-q5_K_M",
+  "scraped_at": "2026-07-13T21:14:04.401101+00:00",
+  "readme_html": "\n        \n          <p>During sampling, the model will start by outputting reasoning inside <code>&lt;thinking&gt;</code> and <code>&lt;/thinking&gt;</code> tags, and then once it is satisfied with its reasoning, it will output the final answer inside <code>&lt;output&gt;</code> and <code>&lt;/output&gt;</code> tags. Each of these tags are special tokens, trained into the model.</p>\n\n<p>This enables the model to separate its internal thoughts and reasoning from its final answer, improving the experience for the user.</p>\n\n<p>Inside the <code>&lt;thinking&gt;</code> section, the model may output one or more <code>&lt;reflection&gt;</code> tags, which signals the model has caught an error in its reasoning and will attempt to correct it before providing a final answer.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/mattshumer/ref_70_e3\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "f537d644476a",
+  "manifest_size": "50GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/reflection:70b-q5_K_M/blobs/a9b7fd78512d",
+      "content_preview": "arch  llama",
+      "size": "50GB",
+      "arch": "llama",
+      "parameters": "70.6B",
+      "quantization": "Q5_K_M"
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/reflection:70b-q5_K_M/blobs/6a340fffade7",
+      "content_preview": "{{- range $i, $_ := .Messages }}<|start_header_id|>{{ .Role }}<|end_header_id|>\n{{ .Content }}\n{{- i",
+      "size": "297B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/reflection:70b-q5_K_M/blobs/c782799f4377",
+      "content_preview": "You are a world-class AI system, capable of complex reasoning and reflection. Reason through the que",
+      "size": "298B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/reflection:70b-q5_K_M/blobs/0ba8f0e314b4",
+      "content_preview": "LLAMA 3.1 COMMUNITY LICENSE AGREEMENT\nLlama 3.1 Version Release Date: July 23, 2024\n\u201cAgreement\u201d",
+      "size": "12kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/reflection:70b-q5_K_M/blobs/290615e13f21",
+      "content_preview": "{\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",\n        \"<|eot_id|>\"",
+      "size": "127B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

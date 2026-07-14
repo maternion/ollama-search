@@ -1,0 +1,48 @@
+{
+  "path": "/library/kimi-k2.7-code",
+  "name": "kimi-k2.7-code",
+  "scraped_at": "2026-07-13T19:27:50.214977+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/kimi-k2.5/3e4026fd-dc73-4a59-9322-7f015a92925e\" width=\"180\"/></p>\n\n<p>Kimi K2.7 Code is a coding-focused agentic model built upon Kimi K2.6. With substantial improvements on real-world long-horizon coding tasks, it strengthens end-to-end task completion across complex software engineering workflows while improving token efficiency, reducing thinking-token usage by approximately 30% compared with Kimi K2.6.</p>\n\n<h3>Key Features</h3>\n\n<ul>\n<li><strong>Long-horizon coding</strong>: Substantial gains on realistic, end-to-end software engineering tasks across 10+ programming languages and a full production tech stack, spanning backend services, infrastructure, performance engineering, systems programming, security, frontend, and ML/data engineering.</li>\n<li><strong>Improved token efficiency</strong>: Reduces thinking-token usage by approximately 30% compared with Kimi K2.6, while improving task completion on complex workflows.</li>\n<li><strong>Stronger agentic tool use</strong>: Improved performance on multi-step tool calling and MCP-based environments, with interleaved thinking preserved across turns (<code>preserve_thinking</code>) for coherent multi-step coding sessions.</li>\n<li><strong>Native multimodal</strong>: Supports image and video input via the MoonViT vision encoder, with a 256K token context window.</li>\n</ul>\n\n<h3>Benchmarks</h3>\n\n<table>\n<thead>\n<tr>\n<th>Benchmark</th>\n<th>Kimi K2.6</th>\n<th>Kimi K2.7 Code</th>\n<th>GPT-5.5</th>\n<th>Claude Opus 4.8</th>\n</tr>\n</thead>\n\n<tbody>\n<tr>\n<td><strong>Coding</strong></td>\n<td></td>\n<td></td>\n<td></td>\n<td></td>\n</tr>\n\n<tr>\n<td>Kimi Code Bench v2</td>\n<td>50.9</td>\n<td>62.0</td>\n<td>69.0</td>\n<td>67.4</td>\n</tr>\n\n<tr>\n<td>Program Bench</td>\n<td>48.3</td>\n<td>53.6</td>\n<td>69.1</td>\n<td>63.8</td>\n</tr>\n\n<tr>\n<td>MLS Bench Lite</td>\n<td>26.7</td>\n<td>35.1</td>\n<td>35.5</td>\n<td>42.8</td>\n</tr>\n\n<tr>\n<td><strong>Agentic</strong></td>\n<td></td>\n<td></td>\n<td></td>\n<td></td>\n</tr>\n\n<tr>\n<td>Kimi Claw <sup>24</sup>\u2044<sub>7</sub> Bench</td>\n<td>42.9</td>\n<td>46.9</td>\n<td>52.8</td>\n<td>50.4</td>\n</tr>\n\n<tr>\n<td>MCP Atlas</td>\n<td>69.4</td>\n<td>76.0</td>\n<td>79.4</td>\n<td>81.3</td>\n</tr>\n\n<tr>\n<td>MCP Mark Verified</td>\n<td>72.8</td>\n<td>81.1</td>\n<td>92.9</td>\n<td>76.4</td>\n</tr>\n</tbody>\n</table>\n\n<h3>Reference</h3>\n\n<ul>\n<li><a href=\"https://huggingface.co/moonshotai/Kimi-K2.7-Code\" rel=\"nofollow\">Hugging Face</a></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "high",
+  "cloud_usage_active_slots": 3,
+  "cloud_context": "256K",
+  "cloud_context_unit": "tokens",
+  "cloud_size": "1.04T",
+  "cloud_size_unit": "parameters",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model kimi-k2.7-code:cloud"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model kimi-k2.7-code:cloud"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model kimi-k2.7-code:cloud"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model kimi-k2.7-code:cloud"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model kimi-k2.7-code:cloud"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model kimi-k2.7-code:cloud"
+    }
+  ]
+}

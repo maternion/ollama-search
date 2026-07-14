@@ -1,0 +1,37 @@
+{
+  "path": "/library/minicpm-v4.6",
+  "tag_name": "q5_1",
+  "full_path": "/library/minicpm-v4.6:q5_1",
+  "scraped_at": "2026-07-13T21:25:41.728482+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/openbmb/minicpm-v2.6/452bfaf1-53f4-4485-8a92-e4a1a05abf38\" alt=\"MiniCPM-V.png\" width=\"50%\"></p>\n\n<h2>MiniCPM-V 4.6</h2>\n\n<p><strong>MiniCPM-V 4.6</strong> is our most edge-deployment-friendly model to date. The model is built based on SigLIP2-400M and the Qwen3.5-0.8B LLM. It inherents the strong single-image, multi-image, and video understanding capabilities of MiniCPM-V family, while significantly improving computation efficiency. It also introduces mixed 4x/16x visual token compression. Notable features of MiniCPM-V 4.6 include:</p>\n\n<ul>\n<li><p>\ud83d\udd25 <strong>Leading Foundation Capability.</strong>\nMiniCPM-V 4.6 scores 13 on the Artificial Analysis Intelligence Index benchmark, outperforming Qwen3.5-0.8B\u2019s score of 10 with 19x fewer token cost, and Qwen3.5-0.8B-Thinking\u2019s score of 11 with 43x fewer token cost. It also surpasses the larger Ministral 3 3B (score of 11).</p></li>\n\n<li><p>\ud83d\udcaa <strong>Strong Multimodal Capability.</strong>\nMiniCPM-V 4.6 outperforms Qwen3.5-0.8B on most vision-language understanding tasks, and reaches Qwen3.5 2B-level capability on many benchmarks including OpenCompass, RefCOCO, HallusionBench, MUIRBench, and OCRBench.</p></li>\n\n<li><p>\ud83d\ude80 <strong>Ultra-Efficient Architecture.</strong>\nBased on the latest technique in <a href=\"https://github.com/THUMAI-Lab/LLaVA-UHD-v4\" rel=\"nofollow\">LLaVA-UHD v4</a>, MiniCPM-V 4.6 reduces the visual encoding computation FLOPs by more than 50%. It enables MiniCPM-V 4.6 to achieve better efficiency to even smaller models, achieving x2.4 token throughput compared to Qwen3.5-0.8B.\nIt also supports mixed 4x/16x visual token compression rate, allowing flexible switching between accuracy and speed.</p></li>\n\n<li><p>\ud83d\udcf1 <strong>Broad Mobile Platform Coverage.</strong>\nMiniCPM-V 4.6 can be deployed across all three mainstream mobile platforms \u2014 iOS, Android, and HarmonyOS. With every edge adaptation code open-sourced, developers can reproduce the on-device experience in <a href=\"#deploy-minicpm-v-46-on-ios-android-and-harmonyos-platforms-\" rel=\"nofollow\">just a few steps</a>.</p></li>\n\n<li><p>\ud83d\udee0\ufe0f <strong>Developer Friendly.</strong>\nMiniCPM-V 4.6 is adapted to <a href=\"#supported-inference-and-training-frameworks\" rel=\"nofollow\">inference frameworks</a> such as vLLM, SGLang, llama.cpp, Ollama, and supports <a href=\"#supported-inference-and-training-frameworks\" rel=\"nofollow\">fine-tuning ecosystems</a> such as SWIFT and LLaMA-Factory. Developers can quickly customize models for new domains and tasks on consumer-grade GPUs. We provide multiple quantized variants across GGUF, BNB, AWQ, and GPTQ formats.</p></li>\n</ul>\n\n<blockquote>\n<p>[!NOTE]\nIf you have any questions, please feel free to submit an issue here:\n<a href=\"https://github.com/OpenBMB/MiniCPM-V/issues\" rel=\"nofollow\">MiniCPM-V Issues</a>. We will actively\nrespond to all questions from the community.</p>\n</blockquote>\n\n        \n      ",
+  "manifest_updated": "1 month ago",
+  "manifest_digest": "0132eed3d9ef",
+  "manifest_size": "1.7GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/minicpm-v4.6:q5_1/blobs/d1a61bd4d97f",
+      "content_preview": "arch  qwen35",
+      "size": "595MB",
+      "arch": "qwen35",
+      "parameters": "752M",
+      "quantization": "Q5_1"
+    },
+    {
+      "type": "projector",
+      "blob_url": "/library/minicpm-v4.6:q5_1/blobs/ca931d861d08",
+      "content_preview": "arch  clip",
+      "size": "1.1GB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

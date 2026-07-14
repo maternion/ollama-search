@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/deepseek-r1:latest/blobs/c5ad996bda6e",
+  "tag_full": "deepseek-r1:latest",
+  "blob_type": "template",
+  "digest": "c5ad996bda6e",
+  "size": "556B",
+  "metadata": [],
+  "content": "{{- if .System }}{{ .System }}{{ end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1}}\n{{- if eq .Role \"user\" }}<\uff5cUser\uff5c>{{ .Content }}\n{{- else if eq .Role \"assistant\" }}<\uff5cAssistant\uff5c>\n{{- if and $.IsThinkSet (and $last .Thinking) -}}\n<think>\n{{ .Thinking }}\n</think>\n{{- end }}{{ .Content }}{{- if not $last }}<\uff5cend\u2581of\u2581sentence\uff5c>{{- end }}\n{{- end }}\n{{- if and $last (ne .Role \"assistant\") }}<\uff5cAssistant\uff5c>\n{{- if and $.IsThinkSet (not $.Think) -}}\n<think>\n\n</think>\n\n{{ end }}\n{{- end -}}\n{{- end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T22:01:51.516150+00:00"
+}

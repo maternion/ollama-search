@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/dolphin-mixtral:8x7b-v2.6-q5_K_M/blobs/62fbfd9ed093",
+  "tag_full": "dolphin-mixtral:8x7b-v2.6-q5_K_M",
+  "blob_type": "template",
+  "digest": "62fbfd9ed093",
+  "size": "182B",
+  "metadata": [],
+  "content": "{{ if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}{{ if .Prompt }}<|im_start|>user\n{{ .Prompt }}<|im_end|>\n{{ end }}<|im_start|>assistant\n{{ .Response }}<|im_end|>",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T01:50:52.781904+00:00"
+}

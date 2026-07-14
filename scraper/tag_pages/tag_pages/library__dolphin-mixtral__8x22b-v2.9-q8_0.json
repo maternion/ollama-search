@@ -1,0 +1,64 @@
+{
+  "path": "/library/dolphin-mixtral",
+  "tag_name": "8x22b-v2.9-q8_0",
+  "full_path": "/library/dolphin-mixtral:8x22b-v2.9-q8_0",
+  "scraped_at": "2026-07-13T20:20:46.696564+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/jmorganca/ollama/assets/251292/c65aad4e-7a58-4645-97f2-5e8ca158275f\" width=\"280\"/></p>\n\n<p>The Dolphin model by Eric Hartford based on <a href=\"https://ollama.ai/library/mixtral\" rel=\"nofollow\">Mixtral</a> that is trained with additional datasets:</p>\n\n<ul>\n<li>Synthia, OpenHermes and PureDove</li>\n<li>New Dolphin-Coder</li>\n<li>MagiCoder</li>\n</ul>\n\n<h3>Sizes</h3>\n\n<ul>\n<li><code>dolphin-mixtral:8x22b</code></li>\n<li><code>dolphin-mixtral:8x7b</code></li>\n</ul>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/ehartford/dolphin-2.5-mixtral-8x7b\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "b82986a3ed4f",
+  "manifest_size": "149GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/dolphin-mixtral:8x22b-v2.9-q8_0/blobs/fc19050e2a3f",
+      "content_preview": "arch  llama",
+      "size": "149GB",
+      "arch": "llama",
+      "parameters": "141B",
+      "quantization": "Q8_0"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/dolphin-mixtral:8x22b-v2.9-q8_0/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/dolphin-mixtral:8x22b-v2.9-q8_0/blobs/9640c2212a51",
+      "content_preview": "You are Dolphin, a helpful AI assistant.",
+      "size": "41B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/dolphin-mixtral:8x22b-v2.9-q8_0/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "size": "59B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/dolphin-mixtral:8x22b-v2.9-q8_0/blobs/62fbfd9ed093",
+      "content_preview": "{{ if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}{{ if .Prompt }}<|im_start|>user",
+      "size": "182B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

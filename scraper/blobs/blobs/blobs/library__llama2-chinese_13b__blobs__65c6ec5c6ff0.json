@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/llama2-chinese:13b/blobs/65c6ec5c6ff0",
+  "tag_full": "llama2-chinese:13b",
+  "blob_type": "template",
+  "digest": "65c6ec5c6ff0",
+  "size": "45B",
+  "metadata": [],
+  "content": "{{ .System }}\nName: {{ .Prompt }}\nAssistant:",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T06:00:52.951253+00:00"
+}

@@ -1,0 +1,55 @@
+{
+  "path": "/library/medgemma1.5",
+  "tag_name": "4b-it-bf16",
+  "full_path": "/library/medgemma1.5:4b-it-bf16",
+  "scraped_at": "2026-07-13T21:25:19.952385+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/medgemma/26dc19d7-11f9-420e-904e-d12ccc9c7ea6\" alt=\"MedGemma\"/></p>\n\n<p>MedGemma 1.5 4B is an updated version of the MedGemma 1 4B model.</p>\n\n<p>MedGemma 1.5 4B expands support for several new medical imaging and data processing applications, including:</p>\n\n<ul>\n<li><strong>High-dimensional medical imaging:</strong> Interpretation of three-dimensional volume representations of Computed Tomography (CT) and Magnetic Resonance Imaging (MRI).</li>\n<li><strong>Whole-slide histopathology imaging (WSI):</strong> Simultaneous interpretation of multiple patches from a whole slide histopathology image as input.</li>\n<li><strong>Longitudinal medical imaging:</strong> Interpretation of chest X-rays in the context of prior images (e.g., comparing current versus historical scans).</li>\n<li><strong>Anatomical localization:</strong> Bounding box\u2013based localization of anatomical features and findings in chest X-rays.</li>\n<li><strong>Medical document understanding:</strong> Extraction of structured data, such as values and units, from unstructured medical lab reports.</li>\n<li><strong>Electronic Health Record (EHR) understanding:</strong> Interpretation of text-based EHR data.</li>\n</ul>\n\n<p>In addition to these new features, MedGemma 1.5 4B delivers improved accuracy on medical text reasoning and modest improvement on standard 2D image interpretation compared to MedGemma 1 4B.</p>\n\n<h3>Reference</h3>\n\n<p><a href=\"https://developers.google.com/health-ai-developer-foundations/medgemma/model-card\" rel=\"nofollow\">Model card</a></p>\n\n        \n      ",
+  "manifest_updated": "2 months ago",
+  "manifest_digest": "32f17fbd85fe",
+  "manifest_size": "8.6GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/medgemma1.5:4b-it-bf16/blobs/ac113265abc5",
+      "content_preview": "arch  gemma3",
+      "size": "8.6GB",
+      "arch": "gemma3",
+      "parameters": "4.3B",
+      "quantization": "F16"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/medgemma1.5:4b-it-bf16/blobs/12cef37dd827",
+      "content_preview": "# Health AI Developer Foundations Terms of Use\nLast modified: November 15, 2024\nBy using, reproducin",
+      "size": "12kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/medgemma1.5:4b-it-bf16/blobs/d3a76cb8c4a0",
+      "content_preview": "{\n    \"stop\": [\n        \"<end_of_turn>\"\n    ]\n}",
+      "size": "37B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/medgemma1.5:4b-it-bf16/blobs/f79eab3dd094",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if eq .Role \"u",
+      "size": "394B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

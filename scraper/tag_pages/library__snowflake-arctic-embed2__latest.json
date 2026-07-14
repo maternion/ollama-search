@@ -1,0 +1,37 @@
+{
+  "path": "/library/snowflake-arctic-embed2",
+  "tag_name": "latest",
+  "full_path": "/library/snowflake-arctic-embed2:latest",
+  "scraped_at": "2026-07-13T21:21:38.712642+00:00",
+  "readme_html": "\n        \n          <p>Snowflake is excited to announce the release of Arctic Embed 2.0, the next iteration of our frontier embedding models, which now empower multilingual search. While our previous releases have been well received by our customers, partners and the open source community, leading to millions of downloads, we have consistently received one request: Can you make this model multilingual? Arctic Embed 2.0 builds on the robust foundation of our previous releases, adding multilingual support without sacrificing English performance or scalability, to address the needs of an even broader user base that spans a wide range of languages and applications.</p>\n\n<p><img src=\"/assets/library/snowflake-arctic-embed2/0546501b-9897-4145-af38-1b352fafb89c\" alt=\"Snowflake data\"/>\nFigure 1. Single-vector dense retrieval performance of open source multilingual embedding models with fewer than 1B parameters. Scores are average nDCG@10 on MTEB Retrieval and the subset of CLEF (ELRA, 2006) covering English, French, Spanish, Italian and German.</p>\n\n<h3>The diverse and powerful feature set of Arctic Embed 2.0</h3>\n\n<ol>\n<li><strong>Enterprise-ready throughput and efficiency:</strong> The Arctic Embed 2.0 models are built for large-scale enterprise demands. Even our \u201clarge\u201d model weighs in well under 1B parameters and delivers fast, high-throughput embedding capabilities. Based on internal testing, it easily handles more than 100 documents per second (on average) on NVIDIA A10 GPUs and achieves sub-10ms query embedding latency, enabling practical deployment on budget-friendly hardware.</li>\n<li><strong>Uncompromising quality for English and non-English retrieval:</strong> Despite their compact sizes, both Arctic Embed 2.0 models achieve impressive NDCG@10 scores across a variety of English and non-English benchmark data sets, demonstrating a capability to generalize well even to languages not included in the training recipe. These impressive benchmark scores position Arctic Embed 2.0 as a leader among frontier retrieval models.</li>\n<li><strong>Enabling scalable retrieval through Matryoshka Representation Learning (MRL):</strong> The Arctic Embed 2.0 release includes the same quantization-friendly MRL functionality introduced in Arctic Embed 1.5, allowing users to reduce cost and optimize scale when performing searches over large data sets. With both model sizes, users can achieve high-quality retrieval with as few as 128 bytes per vector (96x smaller than uncompressed embeddings from OpenAI\u2019s popular text-embedding-3-large model1). Just like Arctic Embed 1.5, the Arctic Embed 2.0 models also outshine several MRL-supporting peers with substantially lower quality degradation and higher benchmark scores in the compressed regime.</li>\n<li><strong>Truly open source:</strong> The Arctic Embed 2.0 models are released under the permissive Apache 2.0 license.</li>\n</ol>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "5de93a84837d",
+  "manifest_size": "1.2GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/snowflake-arctic-embed2:latest/blobs/8c625c9569c3",
+      "content_preview": "arch  bert",
+      "size": "1.2GB",
+      "arch": "bert",
+      "parameters": "567M",
+      "quantization": "F16"
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/snowflake-arctic-embed2:latest/blobs/58d1e17ffe51",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

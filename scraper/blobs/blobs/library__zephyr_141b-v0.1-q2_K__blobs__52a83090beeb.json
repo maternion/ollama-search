@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/zephyr:141b-v0.1-q2_K/blobs/52a83090beeb",
+  "tag_full": "zephyr:141b-v0.1-q2_K",
+  "blob_type": "template",
+  "digest": "52a83090beeb",
+  "size": "139B",
+  "metadata": [],
+  "content": "{{ if .System }}<|system|>\n{{ .System }}</s>\n{{ end }}{{ if .Prompt }}<|user|>\n{{ .Prompt }}</s>\n{{ end }}<|assistant|>\n{{ .Response }}</s>",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T04:04:24.141215+00:00"
+}

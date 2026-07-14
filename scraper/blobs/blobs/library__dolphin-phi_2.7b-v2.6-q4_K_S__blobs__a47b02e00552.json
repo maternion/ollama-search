@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/dolphin-phi:2.7b-v2.6-q4_K_S/blobs/a47b02e00552",
+  "tag_full": "dolphin-phi:2.7b-v2.6-q4_K_S",
+  "blob_type": "template",
+  "digest": "a47b02e00552",
+  "size": "106B",
+  "metadata": [],
+  "content": "<|im_start|>system\n{{ .System }}<|im_end|>\n<|im_start|>user\n{{ .Prompt }}<|im_end|>\n<|im_start|>assistant",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T02:05:36.664465+00:00"
+}

@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/llama2-uncensored:7b-chat-q5_K_M/blobs/28577ba2177f",
+  "tag_full": "llama2-uncensored:7b-chat-q5_K_M",
+  "blob_type": "template",
+  "digest": "28577ba2177f",
+  "size": "55B",
+  "metadata": [],
+  "content": "{{ .System }}\n\n### HUMAN:\n{{ .Prompt }}\n\n### RESPONSE:",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T01:26:08.657585+00:00"
+}

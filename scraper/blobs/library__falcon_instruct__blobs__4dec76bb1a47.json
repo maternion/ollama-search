@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/falcon:instruct/blobs/4dec76bb1a47",
+  "tag_full": "falcon:instruct",
+  "blob_type": "template",
+  "digest": "4dec76bb1a47",
+  "size": "45B",
+  "metadata": [],
+  "content": "{{ .System }}\nUser: {{ .Prompt }}\nAssistant:",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T05:21:45.259731+00:00"
+}

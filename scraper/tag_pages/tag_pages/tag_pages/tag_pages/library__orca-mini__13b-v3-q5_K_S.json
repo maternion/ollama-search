@@ -1,0 +1,55 @@
+{
+  "path": "/library/orca-mini",
+  "tag_name": "13b-v3-q5_K_S",
+  "full_path": "/library/orca-mini:13b-v3-q5_K_S",
+  "scraped_at": "2026-07-13T20:11:58.540838+00:00",
+  "readme_html": "\n        \n          <p>Orca Mini is a Llama and Llama 2 model trained on Orca Style datasets created using the approaches defined in the paper, Orca: Progressive Learning from Complex Explanation Traces of GPT-4. There are two variations available. The original Orca Mini based on Llama in 3, 7, and 13 billion parameter sizes, and v3 based on Llama 2 in 7, 13, and 70 billion parameter sizes.</p>\n\n<h2>Usage</h2>\n\n<h3>CLI</h3>\n\n<p>Open the terminal and run <code>ollama run orca-mini</code></p>\n\n<h3>API</h3>\n\n<p>Example:</p>\n\n<pre><code>  curl -X POST http://localhost:11434/api/generate -d &#39;{\n    &#34;model&#34;: &#34;orca-mini&#34;,\n    &#34;prompt&#34;:&#34;Why is the sky blue?&#34;\n   }&#39;\n</code></pre>\n\n<h2>Memory requirements</h2>\n\n<ul>\n<li>7b models generally require at least 8GB of RAM</li>\n<li>13b models generally require at least 16GB of RAM</li>\n<li>70b models generally require at least 64GB of RAM</li>\n</ul>\n\n<h2>Reference</h2>\n\n<p>3b parameters original source:\n <a href=\"https://huggingface.co/psmathur/orca_mini_3b\" rel=\"nofollow\">Pankaj Mathur</a></p>\n\n<p>7b parameters original source:\n <a href=\"https://huggingface.co/psmathur/orca_mini_7b\" rel=\"nofollow\">Pankaj Mathur</a></p>\n\n<p>13b parameters original source:\n <a href=\"https://huggingface.co/psmathur/orca_mini_13b\" rel=\"nofollow\">Pankaj Mathur</a></p>\n\n<p><strong>Orca Mini v3 source on Ollama</strong></p>\n\n<p>13b parameters original source:\n <a href=\"https://huggingface.co/psmathur/orca_mini_v3_13b\" rel=\"nofollow\">Pankaj Mathur</a></p>\n\n<p>70b parameters source:\n <a href=\"https://huggingface.co/psmathur/orca_mini_v3_70b\" rel=\"nofollow\">Pankaj Mathur</a></p>\n\n<p><a href=\"https://arxiv.org/abs/2306.02707\" rel=\"nofollow\">Orca: Progressive Learning from Complex Explanation Traces of GPT-4</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "25597b7203a0",
+  "manifest_size": "9.0GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/orca-mini:13b-v3-q5_K_S/blobs/14e289d5e73b",
+      "content_preview": "arch  llama",
+      "size": "9.0GB",
+      "arch": "llama",
+      "parameters": "13B",
+      "quantization": "Q5_K_S"
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/orca-mini:13b-v3-q5_K_S/blobs/93ca9b3d83dc",
+      "content_preview": "You are an AI assistant that follows instruction extremely well. Help as much as you can.",
+      "size": "89B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/orca-mini:13b-v3-q5_K_S/blobs/354152d2dd7a",
+      "content_preview": "{{- if .System }}\n### System:\n{{ .System }}\n{{- end }}\n### User:\n{{ .Prompt }}\n### Assistant:",
+      "size": "96B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/orca-mini:13b-v3-q5_K_S/blobs/29f7936d3d8c",
+      "content_preview": "{\n    \"stop\": [\n        \"### System:\",\n        \"### User:\",\n        \"### Assistant:\"\n    ]\n}",
+      "size": "53B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

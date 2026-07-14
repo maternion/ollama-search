@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/vicuna:13b-q4_1/blobs/b1571c5cbd28",
+  "tag_full": "vicuna:13b-q4_1",
+  "blob_type": "template",
+  "digest": "b1571c5cbd28",
+  "size": "45B",
+  "metadata": [],
+  "content": "{{ .System }}\nUSER: {{ .Prompt }}\nASSISTANT:",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T05:17:54.431024+00:00"
+}

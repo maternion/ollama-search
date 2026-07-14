@@ -1,0 +1,55 @@
+{
+  "path": "/library/solar-pro",
+  "tag_name": "22b-preview-instruct-q5_K_M",
+  "full_path": "/library/solar-pro:22b-preview-instruct-q5_K_M",
+  "scraped_at": "2026-07-13T21:16:28.885023+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/solar-pro/f0a588ec-6fbd-4012-8d15-8e8b0420dd85\"/></p>\n\n<p>Solar Pro Preview is an advanced large language model (LLM) featuring 22 billion parameters, optimized to operate on a single GPU. It demonstrates superior performance compared to LLMs with fewer than 30 billion parameters and delivers results comparable to much larger models, such as Llama 3.1 with 70 billion parameters.</p>\n\n<p>Developed using an enhanced version of the depth up-scaling method, Solar Pro Preview scales a Phi-3-medium model with 14 billion parameters to 22 billion, designed to run on a GPU with 80GB of VRAM. The training strategy and dataset have been meticulously curated, leading to significant performance improvements over Phi-3-medium, especially on benchmarks like MMLU-Pro and IFEval, which assess a model\u2019s knowledge and instruction-following capabilities.</p>\n\n<p>As a pre-release version of the official Solar Pro, Solar Pro Preview comes with limitations on language coverage and a maximum context length of 4K. Despite these restrictions, the model stands out for its efficiency and capability, with potential for future extensions to support more languages and functionalities.</p>\n\n<p>The official version of Solar Pro, scheduled for release in November 2024, will include expanded language support and longer context windows.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://www.upstage.ai/products/solar-pro-preview\" rel=\"nofollow\">Blog post</a></p>\n\n<p><a href=\"https://huggingface.co/upstage/solar-pro-preview-instruct\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "020a0e79be2e",
+  "manifest_size": "16GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/solar-pro:22b-preview-instruct-q5_K_M/blobs/c27bf21fff18",
+      "content_preview": "arch  solar",
+      "size": "16GB",
+      "arch": "solar",
+      "parameters": "22.1B",
+      "quantization": "Q5_K_M"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/solar-pro:22b-preview-instruct-q5_K_M/blobs/066b2e5383b4",
+      "content_preview": "MIT License\nCopyright (c) Upstage Corporation.\nPermission is hereby granted, free of charge, to any",
+      "size": "1.1kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/solar-pro:22b-preview-instruct-q5_K_M/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "size": "59B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/solar-pro:22b-preview-instruct-q5_K_M/blobs/b997696d9c92",
+      "content_preview": "{{- range $index, $_ := .Messages }}<|im_start|>{{ .Role }}\n{{ .Content }}\n{{- if eq (len (slice $.M",
+      "size": "232B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

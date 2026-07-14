@@ -1,0 +1,55 @@
+{
+  "path": "/library/openchat",
+  "tag_name": "7b-v3.5-0106-q4_K_S",
+  "full_path": "/library/openchat:7b-v3.5-0106-q4_K_S",
+  "scraped_at": "2026-07-13T20:35:00.054509+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/jmorganca/ollama/assets/251292/b39cea20-f0e9-4f63-a5b1-fa0c2368c286\" width=\"260\"/></p>\n\n<p>OpenChat is set of open-source language models, fine-tuned with C-RLFT: a strategy inspired by offline reinforcement learning.</p>\n\n<p>Updated to OpenChat-3.5-1210, this new version of the model model excels at coding tasks and scores very high on many open-source LLM benchmarks.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://github.com/imoneoi/openchat\" rel=\"nofollow\">GitHub</a></p>\n\n<p><a href=\"https://huggingface.co/openchat/openchat_3.5\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "fe011350d88f",
+  "manifest_size": "4.1GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/openchat:7b-v3.5-0106-q4_K_S/blobs/e902aeac7129",
+      "content_preview": "arch  llama",
+      "size": "4.1GB",
+      "arch": "llama",
+      "parameters": "7.24B",
+      "quantization": "Q4_K_S"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/openchat:7b-v3.5-0106-q4_K_S/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/openchat:7b-v3.5-0106-q4_K_S/blobs/415f0f6b43dd",
+      "content_preview": "{\n    \"stop\": [\n        \"<|endoftext|>\",\n        \"<|end_of_turn|>\"\n    ]\n}",
+      "size": "65B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/openchat:7b-v3.5-0106-q4_K_S/blobs/d68706c17530",
+      "content_preview": "{{ .System }}<|end_of_turn|>GPT4 Correct User: {{ .Prompt }}<|end_of_turn|>GPT4 Correct Assistant:",
+      "size": "98B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

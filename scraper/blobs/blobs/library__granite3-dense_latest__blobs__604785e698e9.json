@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/granite3-dense:latest/blobs/604785e698e9",
+  "tag_full": "granite3-dense:latest",
+  "blob_type": "template",
+  "digest": "604785e698e9",
+  "size": "664B",
+  "metadata": [],
+  "content": "{{- if .Tools }}<|start_of_role|>available_tools<|end_of_role|>\n{{- range .Tools }}\n{{ . }}\n{{ end }}<|end_of_text|>\n{{ end }}\n{{- range $index, $_ := .Messages }}<|start_of_role|>\n{{- if eq .Role \"tool\" }}tool_response\n{{- else }}{{ .Role }}\n{{- end }}<|end_of_role|>\n{{- if .Content }}{{ .Content }}\n{{- else if .ToolCalls }}<|tool_call|>\n{{- range .ToolCalls }}{\"name\": \"{{ .Function.Name }}\", \"arguments\": {{ .Function.Arguments }}}\n{{- end }}\n{{- end }}\n{{- if eq (len (slice $.Messages $index)) 1 }}\n{{- if eq .Role \"assistant\" }}\n{{- else }}<|end_of_text|>\n<|start_of_role|>assistant<|end_of_role|>\n{{- end }}\n{{- else }}<|end_of_text|>\n{{ end }}\n{{- end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T08:06:51.478772+00:00"
+}

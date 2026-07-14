@@ -1,0 +1,172 @@
+{
+  "blob_url": "/library/gemma4:12b-it-qat/blobs/e70b0e5cd803",
+  "tag_full": "gemma4:12b-it-qat",
+  "blob_type": "projector",
+  "digest": "e70b0e5cd803",
+  "size": "175MB",
+  "metadata": [
+    {
+      "key": "general.architecture",
+      "value": "clip"
+    },
+    {
+      "key": "general.file_type",
+      "value": "BF16"
+    },
+    {
+      "key": "clip.audio.attention.head_count",
+      "value": "0"
+    },
+    {
+      "key": "clip.audio.attention.layer_norm_epsilon",
+      "value": "1e-06"
+    },
+    {
+      "key": "clip.audio.block_count",
+      "value": "0"
+    },
+    {
+      "key": "clip.audio.embedding_length",
+      "value": "640"
+    },
+    {
+      "key": "clip.audio.feed_forward_length",
+      "value": "0"
+    },
+    {
+      "key": "clip.audio.num_mel_bins",
+      "value": "128"
+    },
+    {
+      "key": "clip.audio.projection_dim",
+      "value": "3840"
+    },
+    {
+      "key": "clip.audio.projector_type",
+      "value": "gemma4ua"
+    },
+    {
+      "key": "clip.has_audio_encoder",
+      "value": "true"
+    },
+    {
+      "key": "clip.has_vision_encoder",
+      "value": "true"
+    },
+    {
+      "key": "clip.vision.attention.head_count",
+      "value": "0"
+    },
+    {
+      "key": "clip.vision.attention.layer_norm_epsilon",
+      "value": "1e-06"
+    },
+    {
+      "key": "clip.vision.block_count",
+      "value": "0"
+    },
+    {
+      "key": "clip.vision.embedding_length",
+      "value": "3840"
+    },
+    {
+      "key": "clip.vision.feed_forward_length",
+      "value": "0"
+    },
+    {
+      "key": "clip.vision.image_mean",
+      "value": "[0, 0, 0]"
+    },
+    {
+      "key": "clip.vision.image_size",
+      "value": "224"
+    },
+    {
+      "key": "clip.vision.image_std",
+      "value": "[1, 1, 1]"
+    },
+    {
+      "key": "clip.vision.patch_size",
+      "value": "16"
+    },
+    {
+      "key": "clip.vision.projection_dim",
+      "value": "3840"
+    },
+    {
+      "key": "clip.vision.projector_type",
+      "value": "gemma4uv"
+    }
+  ],
+  "content": "",
+  "tensors": [
+    {
+      "name": "mm.a.input_projection.weight",
+      "dtype": "BF16",
+      "shape": "[640, 3840]",
+      "group": ""
+    },
+    {
+      "name": "mm.input_projection.weight",
+      "dtype": "BF16",
+      "shape": "[3840, 3840]",
+      "group": ""
+    },
+    {
+      "name": "v.patch_embd.bias",
+      "dtype": "F32",
+      "shape": "[3840]",
+      "group": ""
+    },
+    {
+      "name": "v.patch_embd.weight",
+      "dtype": "F32",
+      "shape": "[6912, 3840]",
+      "group": ""
+    },
+    {
+      "name": "v.patch_norm.1.bias",
+      "dtype": "F32",
+      "shape": "[6912]",
+      "group": ""
+    },
+    {
+      "name": "v.patch_norm.1.weight",
+      "dtype": "F32",
+      "shape": "[6912]",
+      "group": ""
+    },
+    {
+      "name": "v.patch_norm.2.bias",
+      "dtype": "F32",
+      "shape": "[3840]",
+      "group": ""
+    },
+    {
+      "name": "v.patch_norm.2.weight",
+      "dtype": "F32",
+      "shape": "[3840]",
+      "group": ""
+    },
+    {
+      "name": "v.patch_norm.3.bias",
+      "dtype": "F32",
+      "shape": "[3840]",
+      "group": ""
+    },
+    {
+      "name": "v.patch_norm.3.weight",
+      "dtype": "F32",
+      "shape": "[3840]",
+      "group": ""
+    },
+    {
+      "name": "v.position_embd.weight",
+      "dtype": "F32",
+      "shape": "[3840, 1120, 2]",
+      "group": ""
+    }
+  ],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T21:30:00.190381+00:00"
+}

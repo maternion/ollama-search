@@ -1,0 +1,64 @@
+{
+  "path": "/library/nemotron",
+  "tag_name": "latest",
+  "full_path": "/library/nemotron:latest",
+  "scraped_at": "2026-07-13T21:14:08.755138+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/nemotron-mini/4e0ea563-a507-45e7-ad0b-b083918ec11b\" width=\"320\"/></p>\n\n<p>Llama-3.1-Nemotron-70B-Instruct is a large language model customized by NVIDIA to improve the helpfulness of LLM generated responses to user queries.</p>\n\n<p>This model was trained using RLHF (specifically, REINFORCE), <a href=\"https://huggingface.co/nvidia/Llama-3.1-Nemotron-70B-Reward\" rel=\"nofollow\">Llama-3.1-Nemotron-70B-Reward</a> and <a href=\"https://huggingface.co/datasets/nvidia/HelpSteer2\" rel=\"nofollow\">HelpSteer2-Preference prompts</a> on a <a href=\"https://ai.meta.com/blog/meta-llama-3-1/\" rel=\"nofollow\">Llama-3.1-70B-Instruct</a> model as the initial policy.</p>\n\n<pre><code>$ ollama run nemotron\n&gt;&gt;&gt; How many r in strawberry?\nA sweet question!\n\nLet&#39;s count the &#34;R&#34;s in &#34;strawberry&#34;:\n\n1. S\n2. T\n3. R\n4. A\n5. W\n6. B\n7. E\n8. R\n9. R\n10. Y\n\nThere are **3** &#34;R&#34;s in the word &#34;strawberry&#34;.\n</code></pre>\n\n<h2>Reference</h2>\n\n<p><a href=\"https://huggingface.co/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "2262f047a28a",
+  "manifest_size": "43GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/nemotron:latest/blobs/c147388e9931",
+      "content_preview": "arch  llama",
+      "size": "43GB",
+      "arch": "llama",
+      "parameters": "70.6B",
+      "quantization": "Q4_K_M"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/nemotron:latest/blobs/a568f2ebc73c",
+      "content_preview": "# Llama 3.1 Acceptable Use Policy\nMeta is committed to promoting safe and fair use of its tools and",
+      "size": "4.7kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/nemotron:latest/blobs/56bb8bd477a5",
+      "content_preview": "{\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",\n        \"<|eot_id|>\"",
+      "size": "96B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/nemotron:latest/blobs/4863fe3335f3",
+      "content_preview": "<|start_header_id|>system<|end_header_id|>\n{{ if .Tools }}You have access to the following functions",
+      "size": "1.2kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/nemotron:latest/blobs/64e1b2889b78",
+      "content_preview": "LLAMA 3.1 COMMUNITY LICENSE AGREEMENT\nLlama 3.1 Version Release Date: July 23, 2024\n\u201cAgreement\u201d",
+      "size": "7.6kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

@@ -1,0 +1,55 @@
+{
+  "path": "/library/codebooga",
+  "tag_name": "34b-v0.1-q5_0",
+  "full_path": "/library/codebooga:34b-v0.1-q5_0",
+  "scraped_at": "2026-07-13T21:20:52.479915+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/jmorganca/ollama/assets/251292/700d0dcf-3bc0-406f-b289-e48965e8f602\" width=\"280\"/></p>\n\n<p>Codebooga was created by merging two existing models:</p>\n\n<ol>\n<li><a href=\"https://ollama.ai/library/phind-codellama\" rel=\"nofollow\">Phind-CodeLlama-34B-v2</a></li>\n<li><a href=\"https://ollama.ai/library/wizardcoder\" rel=\"nofollow\">WizardCoder-Python-34B-V1.0</a></li>\n</ol>\n\n<p>It was created by using the <a href=\"https://github.com/Gryphe/BlockMerge_Gradient\" rel=\"nofollow\">BlockMerge Gradient</a> script.</p>\n\n<h3>Example prompts</h3>\n\n<pre><code>Write the javascript react code to render a sign up form\n</code></pre>\n\n<pre><code>Where is the bug in this code?\n\ndef fib(n):\n    if n &lt;= 0:\n        return n\n    else:\n        return fib(n-1) + fib(n-2)\n</code></pre>\n\n<h3>Recommended parameters</h3>\n\n<pre><code>temperature: 1.31\ntop_p: 0.14\nrepeat_penalty: 1.17\ntop_k: 49\n</code></pre>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/oobabooga/CodeBooga-34B-v0.1\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "6d9156fb2f46",
+  "manifest_size": "23GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/codebooga:34b-v0.1-q5_0/blobs/be89e185977d",
+      "content_preview": "arch  llama",
+      "size": "23GB",
+      "arch": "llama",
+      "parameters": "33.7B",
+      "quantization": "Q5_0"
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/codebooga:34b-v0.1-q5_0/blobs/1678ff0c9fe5",
+      "content_preview": "Below is an instruction that describes a task. Write a response that appropriately completes the req",
+      "size": "105B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/codebooga:34b-v0.1-q5_0/blobs/2d836d77287d",
+      "content_preview": "{{ .System }}\n### Instruction:\n{{ .Prompt }}\n### Response:",
+      "size": "61B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/codebooga:34b-v0.1-q5_0/blobs/ff29d10ee099",
+      "content_preview": "{\n    \"num_gqa\": 8,\n    \"rope_frequency_base\": 1000000\n}",
+      "size": "43B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

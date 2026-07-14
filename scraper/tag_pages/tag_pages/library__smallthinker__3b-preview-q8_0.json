@@ -1,0 +1,55 @@
+{
+  "path": "/library/smallthinker",
+  "tag_name": "3b-preview-q8_0",
+  "full_path": "/library/smallthinker:3b-preview-q8_0",
+  "scraped_at": "2026-07-13T21:23:22.710730+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/smallthinker/1d25cb29-e27d-492c-be53-ce79b20def5b\" alt=\"image.png\"/></p>\n\n<p>A new model fine-tuned from the Qwen2.5-3b-Instruct model.</p>\n\n<p>SmallThinker is designed for the following use cases:</p>\n\n<ul>\n<li>Edge Deployment: Its small size makes it ideal for deployment on resource-constrained devices.</li>\n<li>Draft Model for QwQ-32B-Preview: SmallThinker can serve as a fast and efficient draft model for the larger QwQ-32B-Preview model, yielding a 70% speedup.</li>\n</ul>\n\n<p>For achieving reasoning capabilities, it\u2019s crucial to generate long chains of COT reasoning. Therefore, based on QWQ-32B-Preview, the authors used various synthetic techniques(such as personahub) to create the QWQ-LONGCOT-500K dataset. Compared to other similar datasets, over 75% of the author\u2019s samples have output tokens exceeding 8K. To encourage research in the open-source community, the dataset was also made publicly available.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/PowerInfer/SmallThinker-3B-Preview\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "945eb1864589",
+  "manifest_size": "3.6GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/smallthinker:3b-preview-q8_0/blobs/ad361f123f77",
+      "content_preview": "arch  qwen2",
+      "size": "3.6GB",
+      "arch": "qwen2",
+      "parameters": "3.4B",
+      "quantization": "Q8_0"
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/smallthinker:3b-preview-q8_0/blobs/75357d685f23",
+      "content_preview": "You are a helpful assistant.",
+      "size": "28B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/smallthinker:3b-preview-q8_0/blobs/cf0bf78141c7",
+      "content_preview": "Qwen RESEARCH LICENSE AGREEMENT\nQwen RESEARCH LICENSE AGREEMENT Release Date: September 19, 2024\nBy",
+      "size": "7.4kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/smallthinker:3b-preview-q8_0/blobs/4b01fbe300da",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|im_start|>{{ .R",
+      "size": "255B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

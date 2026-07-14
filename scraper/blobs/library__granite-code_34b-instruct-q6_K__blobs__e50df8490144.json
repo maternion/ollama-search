@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/granite-code:34b-instruct-q6_K/blobs/e50df8490144",
+  "tag_full": "granite-code:34b-instruct-q6_K",
+  "blob_type": "template",
+  "digest": "e50df8490144",
+  "size": "123B",
+  "metadata": [],
+  "content": "{{ if .System }}\nSystem:\n{{ .System }}\n\n{{ end }}{{ if .Prompt }}Question:\n{{ .Prompt }}\n\n{{ end }}Answer:\n{{ .Response }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T03:12:45.576815+00:00"
+}

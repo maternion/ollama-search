@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/phi3:14b-medium-128k-instruct-q5_0/blobs/542b217f179c",
+  "tag_full": "phi3:14b-medium-128k-instruct-q5_0",
+  "blob_type": "template",
+  "digest": "542b217f179c",
+  "size": "148B",
+  "metadata": [],
+  "content": "{{ if .System }}<|system|>\n{{ .System }}<|end|>\n{{ end }}{{ if .Prompt }}<|user|>\n{{ .Prompt }}<|end|>\n{{ end }}<|assistant|>\n{{ .Response }}<|end|>",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T22:55:49.053922+00:00"
+}

@@ -1,0 +1,17 @@
+{
+  "path": "/library/medgemma1.5",
+  "name": "medgemma1.5",
+  "scraped_at": "2026-07-13T19:30:46.042853+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/medgemma/26dc19d7-11f9-420e-904e-d12ccc9c7ea6\" alt=\"MedGemma\"/></p>\n\n<p>MedGemma 1.5 4B is an updated version of the MedGemma 1 4B model.</p>\n\n<p>MedGemma 1.5 4B expands support for several new medical imaging and data processing applications, including:</p>\n\n<ul>\n<li><strong>High-dimensional medical imaging:</strong> Interpretation of three-dimensional volume representations of Computed Tomography (CT) and Magnetic Resonance Imaging (MRI).</li>\n<li><strong>Whole-slide histopathology imaging (WSI):</strong> Simultaneous interpretation of multiple patches from a whole slide histopathology image as input.</li>\n<li><strong>Longitudinal medical imaging:</strong> Interpretation of chest X-rays in the context of prior images (e.g., comparing current versus historical scans).</li>\n<li><strong>Anatomical localization:</strong> Bounding box\u2013based localization of anatomical features and findings in chest X-rays.</li>\n<li><strong>Medical document understanding:</strong> Extraction of structured data, such as values and units, from unstructured medical lab reports.</li>\n<li><strong>Electronic Health Record (EHR) understanding:</strong> Interpretation of text-based EHR data.</li>\n</ul>\n\n<p>In addition to these new features, MedGemma 1.5 4B delivers improved accuracy on medical text reasoning and modest improvement on standard 2D image interpretation compared to MedGemma 1 4B.</p>\n\n<h3>Reference</h3>\n\n<p><a href=\"https://developers.google.com/health-ai-developer-foundations/medgemma/model-card\" rel=\"nofollow\">Model card</a></p>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

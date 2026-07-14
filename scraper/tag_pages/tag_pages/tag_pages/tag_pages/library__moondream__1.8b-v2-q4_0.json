@@ -1,0 +1,64 @@
+{
+  "path": "/library/moondream",
+  "tag_name": "1.8b-v2-q4_0",
+  "full_path": "/library/moondream:1.8b-v2-q4_0",
+  "scraped_at": "2026-07-13T20:27:56.864524+00:00",
+  "readme_html": "\n        \n          <h1>\ud83c\udf14 moondream 2</h1>\n\n<blockquote>\n<p>Moondream 2 requires Ollama 0.1.33 or later</p>\n</blockquote>\n\n<p><em>\u201ca tiny vision language model that kicks ass and runs anywhere\u201d</em></p>\n\n<h3>Limitations</h3>\n\n<ul>\n<li><p>The model may generate inaccurate statements, and struggle to understand intricate or nuanced instructions.</p></li>\n\n<li><p>The model may not be free from societal biases. Users should be aware of this and exercise caution and critical thinking when using the model.</p></li>\n\n<li><p>The model may generate offensive, inappropriate, or hurtful content if it is prompted to do so.</p></li>\n</ul>\n\n<h2>References</h2>\n\n<p><a href=\"https://github.com/vikhyat/moondream\" rel=\"nofollow\">GitHub</a></p>\n\n<p><a href=\"https://huggingface.co/vikhyatk/moondream2\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "2 years ago",
+  "manifest_digest": "55fc3abd3867",
+  "manifest_size": "1.7GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/moondream:1.8b-v2-q4_0/blobs/e554c6b9de01",
+      "content_preview": "arch  phi2",
+      "size": "829MB",
+      "arch": "phi2",
+      "parameters": "1.42B",
+      "quantization": "Q4_0"
+    },
+    {
+      "type": "projector",
+      "blob_url": "/library/moondream:1.8b-v2-q4_0/blobs/4cc1cb3660d8",
+      "content_preview": "arch  clip",
+      "size": "910MB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/moondream:1.8b-v2-q4_0/blobs/c71d239df917",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/moondream:1.8b-v2-q4_0/blobs/9468773bdc1f",
+      "content_preview": "{\n    \"stop\": [\n        \"<|endoftext|>\",\n        \"Question:\"\n    ],\n    \"temperature\": 0\n}",
+      "size": "65B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/moondream:1.8b-v2-q4_0/blobs/4b021a3b4b4a",
+      "content_preview": "{{ if .Prompt }} Question: {{ .Prompt }}\n{{ end }} Answer: {{ .Response }}",
+      "size": "77B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

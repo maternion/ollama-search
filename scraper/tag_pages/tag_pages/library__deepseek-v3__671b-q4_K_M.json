@@ -1,0 +1,55 @@
+{
+  "path": "/library/deepseek-v3",
+  "tag_name": "671b-q4_K_M",
+  "full_path": "/library/deepseek-v3:671b-q4_K_M",
+  "scraped_at": "2026-07-13T20:06:54.721857+00:00",
+  "readme_html": "\n        \n          <blockquote>\n<p>Note: this model requires <a href=\"https://github.com/ollama/ollama/releases/tag/v0.5.5\" rel=\"nofollow\">Ollama 0.5.5</a> or later.</p>\n</blockquote>\n\n<p><img src=\"/assets/library/deepseek-v3/069ccc94-63b0-41e6-b2b3-e8e56068ab1a\" width=\"320\"/></p>\n\n<p>DeepSeek-V3 achieves a significant breakthrough in inference speed over previous models. It tops the leaderboard among open-source models and rivals the most advanced closed-source models globally.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://github.com/deepseek-ai/DeepSeek-V3\" rel=\"nofollow\">GitHub</a></p>\n\n<p><a href=\"https://github.com/deepseek-ai/DeepSeek-V3/blob/main/DeepSeek_V3.pdf\" rel=\"nofollow\">Paper</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "5da0e2d4a9e0",
+  "manifest_size": "404GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/deepseek-v3:671b-q4_K_M/blobs/d83c18fb2a2c",
+      "content_preview": "arch  deepseek2",
+      "size": "404GB",
+      "arch": "deepseek2",
+      "parameters": "671B",
+      "quantization": "Q4_K_M"
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/deepseek-v3:671b-q4_K_M/blobs/c5ce92dfece1",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- if eq .Role \"user\" }}<\uff5cUser\uff5c>\n{{- else if eq .Role \"assista",
+      "size": "359B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/deepseek-v3:671b-q4_K_M/blobs/3a7c2cf04638",
+      "content_preview": "DEEPSEEK LICENSE AGREEMENT\nVersion 1.0, 23 October 2023\nCopyright (c) 2023 DeepSeek\nSection I: PREAM",
+      "size": "14kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/deepseek-v3:671b-q4_K_M/blobs/f4d24e9138dd",
+      "content_preview": "{\n    \"stop\": [\n        \"<\uff5cbegin\u2581of\u2581sentence\uff5c>\",\n        \"<\uff5cend\u2581of\u2581sentence\uff5c>\",",
+      "size": "148B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

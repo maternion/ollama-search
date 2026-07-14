@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/minicpm-v:8b/blobs/60ed67c565f8",
+  "tag_full": "minicpm-v:8b",
+  "blob_type": "template",
+  "digest": "60ed67c565f8",
+  "size": "506B",
+  "metadata": [],
+  "content": "{{- if .Messages }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|im_start|>{{ .Role }}\n{{ .Content }}\n{{- if $last }}\n{{- if (ne .Role \"assistant\") }}<|im_end|>\n<|im_start|>assistant\n{{ end }}\n{{- else }}<|im_end|>\n{{ end }}\n{{- end }}\n{{- else }}\n{{- if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}{{ if .Prompt }}<|im_start|>user\n{{ .Prompt }}<|im_end|>\n{{ end }}<|im_start|>assistant\n{{ end }}{{ .Response }}{{ if .Response }}<|im_end|>{{ end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T00:14:35.670539+00:00"
+}

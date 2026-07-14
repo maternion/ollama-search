@@ -1,0 +1,46 @@
+{
+  "path": "/library/granite4.1",
+  "tag_name": "30b-q4_1",
+  "full_path": "/library/granite4.1:30b-q4_1",
+  "scraped_at": "2026-07-13T21:24:10.659155+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/granite3.2/90c5e567-0004-425c-a17a-1b846c2b5d3d\" width=\"200\"/></p>\n\n<h3>Granite 4 models</h3>\n\n<p>Granite 4.1 language models are a family of state-of-the-art open foundation models featuring dense decoder-only architectures in three sizes \u2014 3B, 8B, and 30B. They natively support multilingual capabilities, a wide range of coding tasks, retrieval-augmented generation (RAG), tool usage, and structured JSON output.</p>\n\n<p>Our models are trained from scratch on approximately 15 trillion tokens through a five-phase strategy designed to progressively refine data quality and model capabilities. The first two phases cover pre-training proper, before transitioning into mid-training in Phases 3 and 4 with high-quality data annealing. The fifth and final phase performs long-context extension, scaling the context window up to 512K tokens through a staged process.</p>\n\n<p>All models are publicly released under the Apache 2.0 license, allowing free use for both research and commercial purposes. The data curation and training processes were specifically designed for enterprise scenarios and customization, incorporating governance, risk, and compliance (GRC) evaluations alongside IBM\u2019s standard data clearance and document quality review procedures.</p>\n\n<p>We provide both base models (checkpoints after pre-training) and instruct models (checkpoints fine-tuned for dialogue, instruction following, helpfulness, and safety).</p>\n\n<ul>\n<li><em>Please note that <code>instruct</code> models do not have the <code>base</code> qualifier in their name (e.g., <code>ibm-granite/granite4.1:8b</code> vs. <code>ibm-granite/granite4.1:8b-base</code>).</em></li>\n</ul>\n\n<h4>Running</h4>\n\n<p>Example of running the default model (i.e., typically, this is the <code>Q4_K_M</code> quantization):</p>\n\n<pre><code>ollama run ibm/granite4.1:8b\n</code></pre>\n\n<p>To run other quantizations (e.g., <code>Q8_0</code>):</p>\n\n<pre><code>ollama run ibm/granite4.1:8b-q8_0\n</code></pre>\n\n<h4>Supported Languages</h4>\n\n<p>Supported Languages: English, German, Spanish, French, Japanese, Portuguese, Arabic, Czech, Italian, Korean, Dutch, and Chinese. Users may finetune Granite 4.1 models for languages beyond these languages.</p>\n\n<h4>Intended Use</h4>\n\n<p>This model is designed to handle general instruction-following tasks and can be integrated into AI assistants across various domains, including business applications.</p>\n\n<p>The model is designed to respond to general instructions and can be used to build AI assistants for multiple domains, including business applications.</p>\n\n<h4>Capabilities</h4>\n\n<ul>\n<li>Summarization</li>\n<li>Text classification</li>\n<li>Text extraction</li>\n<li>Question-answering</li>\n<li>Retrieval Augmented Generation (RAG)</li>\n<li>Code related tasks</li>\n<li>Function-calling tasks</li>\n<li>Multilingual dialog use cases</li>\n<li>Fill-In-the-Middle (FIM) code completions</li>\n</ul>\n\n<hr>\n\n<h4>Learn more</h4>\n\n<ul>\n<li>Developers: Granite Team, IBM</li>\n<li>Website: <a href=\"https://www.ibm.com/granite/docs\" rel=\"nofollow\">Granite Docs</a></li>\n<li>GitHub Repository: <a href=\"https://github.com/ibm-granite/granite-4.1-language-models\" rel=\"nofollow\">ibm-granite/granite-4.1-language-models</a></li>\n<li>Release Date: April 28th, 2026</li>\n<li>License: <a href=\"https://www.apache.org/licenses/LICENSE-2.0\" rel=\"nofollow\">Apache 2.0</a></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "2 months ago",
+  "manifest_digest": "8f3b74ec031d",
+  "manifest_size": "18GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/granite4.1:30b-q4_1/blobs/c354f0c53be9",
+      "content_preview": "arch  granite",
+      "size": "18GB",
+      "arch": "granite",
+      "parameters": "28.9B",
+      "quantization": "Q4_1"
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/granite4.1:30b-q4_1/blobs/89a0ab46e638",
+      "content_preview": "{{- /*\n------ MESSAGE PARSING ------\n*/}}\n{{- /*\nDeclare the system prompt chunks used for different",
+      "size": "6.8kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/granite4.1:30b-q4_1/blobs/58d1e17ffe51",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

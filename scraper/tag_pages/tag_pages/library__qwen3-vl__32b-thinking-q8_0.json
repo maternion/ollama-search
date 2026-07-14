@@ -1,0 +1,46 @@
+{
+  "path": "/library/qwen3-vl",
+  "tag_name": "32b-thinking-q8_0",
+  "full_path": "/library/qwen3-vl:32b-thinking-q8_0",
+  "scraped_at": "2026-07-13T20:04:52.317230+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/qwen3-vl/d784b840-5f70-4a60-86bc-f10ad6c0627f\" alt=\"Qwen 3 banner\"/></p>\n\n<blockquote>\n<p>Qwen3-VL models require <a href=\"https://github.com/ollama/ollama/releases\" rel=\"nofollow\">Ollama 0.12.7</a></p>\n</blockquote>\n\n<p>Qwen3-VL is the most powerful vision-language model in the Qwen family to date.</p>\n\n<p>In this generation, there are improvements to the model in many areas: its understanding and generating text, perceiving and reasoning about visual content, supporting longer context lengths, understanding spatial relationships and dynamic videos, or interacting with AI agents \u2014 Qwen3-VL shows clear and significant progress in every area.</p>\n\n<h3>Models</h3>\n\n<p><strong>2B</strong></p>\n\n<pre><code>ollama run qwen3-vl:2b\n</code></pre>\n\n<p><strong>4B</strong></p>\n\n<pre><code>ollama run qwen3-vl:4b\n</code></pre>\n\n<p><strong>8B</strong></p>\n\n<pre><code>ollama run qwen3-vl:8b\n</code></pre>\n\n<p><strong>30B</strong></p>\n\n<pre><code>ollama run qwen3-vl:30b\n</code></pre>\n\n<p><strong>32B</strong></p>\n\n<pre><code>ollama run qwen3-vl:32b\n</code></pre>\n\n<p><strong>235B</strong></p>\n\n<pre><code>ollama run qwen3-vl:235b\n</code></pre>\n\n<pre><code>ollama run qwen3-vl:235b-cloud\n</code></pre>\n\n<h3>Key features</h3>\n\n<p><strong>Visual Agent Capabilities</strong>: Qwen3-VL can operate computer and mobile interfaces \u2014 recognize GUI elements, understand button functions, call tools, and complete tasks. It achieves top global performance on benchmarks like OS World, and using tools significantly improves its performance on fine-grained perception tasks.</p>\n\n<p><strong>Superior Text-Centric Performance</strong>: Qwen3-VL employs early-stage joint pretraining of text and visual modalities, continuously strengthening its language capabilities. Its performance on text-based tasks matches that of Qwen3-235B-A22B-2507 \u2014 the flagship language model \u2014 making it a truly \u201ctext-grounded, multimodal powerhouse\u201d for the next generation of vision-language models.</p>\n\n<p><strong>Greatly Improved Visual Coding</strong>: It can now generate code from images or videos \u2014 for example, turning a design mockup into Draw.io, HTML, CSS, or JavaScript code \u2014 making \u201cwhat you see is what you get\u201d visual programming a reality.</p>\n\n<p><strong>Much Better Spatial Understanding</strong>: 2D grounding from absolute coordinates to relative coordinates. It can judge object positions, viewpoint changes, and occlusion relationships. It supports 3D grounding, laying the foundation for complex spatial reasoning and embodied AI applications.</p>\n\n<p><strong>Long Context &amp; Long Video Understanding</strong>: All models natively support 256K tokens of context, expandable up to 1 million tokens. This means you can input hundreds of pages of technical documents, entire textbooks, or even two-hour videos \u2014 and the model will remember everything and retrieve details accurately, down to the exact second in videos.</p>\n\n<p><strong>Stronger Multimodal Reasoning (Thinking Version)</strong>: The Thinking model is specially optimized for STEM and math reasoning. When facing complex subject questions, it can notice fine details, break down problems step by step, analyze cause and effect, and give logical, evidence-based answers. It achieves strong performance on reasoning benchmarks like MathVision, MMMU, and MathVista.</p>\n\n<p><strong>Upgraded Visual Perception &amp; Recognition</strong>: By improving the quality and diversity of pre-training data, the model can now recognize a much wider range of objects \u2014 from celebrities, anime characters, products, and landmarks, to animals and plants \u2014 covering both everyday life and professional \u201crecognize anything\u201d needs.</p>\n\n<p><strong>Better OCR Across More Languages &amp; Complex Scenes</strong>: OCR now supports 32 languages (up from 10), covering more countries and regions. It performs more reliably under challenging real-world conditions like poor lighting, blur, or tilted text. Recognition accuracy for rare characters, ancient scripts, and technical terms has also improved significantly. Its ability to understand long documents and reconstruct fine structures is further enhanced.</p>\n\n        \n      ",
+  "manifest_updated": "8 months ago",
+  "manifest_digest": "76a7fcb8a3c0",
+  "manifest_size": "36GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/qwen3-vl:32b-thinking-q8_0/blobs/02461dec5242",
+      "content_preview": "arch  qwen3vl",
+      "size": "36GB",
+      "arch": "qwen3vl",
+      "parameters": "33.4B",
+      "quantization": "Q8_0"
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/qwen3-vl:32b-thinking-q8_0/blobs/7339fa418c9a",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/qwen3-vl:32b-thinking-q8_0/blobs/f6417cb1e269",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_k\": 20,\n    \"top_p\": 0.95\n}",
+      "size": "42B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

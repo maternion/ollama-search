@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/wizardlm2:8x22b-q2_K/blobs/245f91e42bbb",
+  "tag_full": "wizardlm2:8x22b-q2_K",
+  "blob_type": "template",
+  "digest": "245f91e42bbb",
+  "size": "110B",
+  "metadata": [],
+  "content": "{{ if .System }}{{ .System }} {{ end }}{{ if .Prompt }}USER: {{ .Prompt }} {{ end }}ASSISTANT: {{ .Response }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-14T04:38:09.890363+00:00"
+}

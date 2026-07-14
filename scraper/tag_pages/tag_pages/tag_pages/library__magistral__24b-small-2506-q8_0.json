@@ -1,0 +1,64 @@
+{
+  "path": "/library/magistral",
+  "tag_name": "24b-small-2506-q8_0",
+  "full_path": "/library/magistral:24b-small-2506-q8_0",
+  "scraped_at": "2026-07-13T20:25:12.345001+00:00",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/mistral-small3.1/88f81c26-7028-4f08-b906-92b873d5536e\" width=\"120\"/></p>\n\n<p>Magistral is the first reasoning model by Mistral AI, excelling in domain-specific, transparent, and multilingual reasoning.</p>\n\n<p><img src=\"/assets/library/magistral/c57cd779-0588-4d74-9f48-89ba50f7a565\" alt=\"magistral small comparison to medium\"/></p>\n\n<p><img src=\"/assets/library/magistral/fe972176-2881-42bc-bbd8-90a079188aa9\" alt=\"magistral small\"/></p>\n\n<h3>Key features</h3>\n\n<ul>\n<li><strong>Reasoning:</strong>\u00a0Capable of long chains of reasoning traces before providing an answer.</li>\n<li><strong>Multilingual:</strong>\u00a0Supports dozens of languages, including English, French, German, Greek, Hindi, Indonesian, Italian, Japanese, Korean, Malay, Nepali, Polish, Portuguese, Romanian, Russian, Serbian, Spanish, Swedish, Turkish, Ukrainian, Vietnamese, Arabic, Bengali, Chinese, and Farsi.</li>\n<li><strong>Apache 2.0 License:</strong>\u00a0Open license allowing usage and modification for both commercial and non-commercial purposes.</li>\n<li><strong>Context Window:</strong>\u00a0A 128k context window,\u00a0<strong>but</strong>\u00a0performance might degrade past\u00a0<strong>40k</strong>. Hence we recommend setting the maximum model length to 40k.</li>\n</ul>\n\n<p>Magistral is ideal for general purpose use requiring longer thought processing and better accuracy than with non-reasoning LLMs. From legal research and financial forecasting to software development and creative storytelling \u2014 this model solves multi-step challenges where transparency and precision are critical.</p>\n\n<h4>Business strategy and operations.</h4>\n\n<p>Building on our flagship\u00a0<a href=\"https://mistral.ai/models\" rel=\"nofollow\">models</a>, Magistral is designed for research, strategic planning, operational optimization, and data-driven decision making \u2014 whether executing risk assessment and modelling with multiple factors, or calculating optimal delivery windows under constraints.</p>\n\n<h4>Regulated industries and sectors.</h4>\n\n<p>Legal, finance, healthcare, and government professionals get traceable reasoning that meets compliance requirements. Every conclusion can be traced back through its logical steps, providing auditability for high-stakes environments with domain-specialized AI.</p>\n\n<h4>Systems, software, and data engineering.</h4>\n\n<p>Magistral enhances coding and development use cases: compared to non-reasoning models, it significantly improves project planning, backend architecture, frontend design, and data engineering through sequenced, multi-step actions involving external tools or API.</p>\n\n<h4>Content and communication.</h4>\n\n<p>Our early tests indicated that Magistral is an excellent creative companion. We highly recommend it for creative writing and storytelling, with the model capable of producing coherent or \u2014 if needed \u2014 delightfully eccentric copy.</p>\n\n<h3>Reference</h3>\n\n<ul>\n<li><a href=\"https://mistral.ai/static/research/magistral.pdf\" rel=\"nofollow\">Magistral paper</a></li>\n<li><a href=\"https://mistral.ai/news/magistral\" rel=\"nofollow\">Blog post</a></li>\n</ul>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "02423f83f1a1",
+  "manifest_size": "25GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/magistral:24b-small-2506-q8_0/blobs/a95c7057be72",
+      "content_preview": "arch  llama",
+      "size": "25GB",
+      "arch": "llama",
+      "parameters": "23.6B",
+      "quantization": "Q8_0"
+    },
+    {
+      "type": "system",
+      "blob_url": "/library/magistral:24b-small-2506-q8_0/blobs/43c1db03bf38",
+      "content_preview": "A user will ask you to solve a task. You should first draft your thinking process (inner monologue)",
+      "size": "819B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/magistral:24b-small-2506-q8_0/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "size": "11kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/magistral:24b-small-2506-q8_0/blobs/ba3ab63d3582",
+      "content_preview": "{\n    \"temperature\": 0.7,\n    \"top_p\": 0.95\n}",
+      "size": "33B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/magistral:24b-small-2506-q8_0/blobs/35f7a1efc383",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1}}\n{{- if eq .Role \"sy",
+      "size": "948B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

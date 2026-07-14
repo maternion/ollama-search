@@ -1,0 +1,55 @@
+{
+  "path": "/library/firefunction-v2",
+  "tag_name": "70b-q2_K",
+  "full_path": "/library/firefunction-v2:70b-q2_K",
+  "scraped_at": "2026-07-13T21:19:42.863488+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/firefunction-v2/a2b66a3e-ff43-4eae-b95c-d71b669384a5\" width=\"280\"/></p>\n\n<p>Firefunction-v2 is competitive with GPT-4o function calling capabilities, scoring 0.81 on a medley public benchmarks vs 0.80 for GPT-4o.</p>\n\n<p>Firefunction-v2 is optimized for real world scenarios including multi-turn conversation, instruction following and parallel function calling. It retains Llama 3\u2019s multi-turn instruction capability (0.84 vs 0.89 on MT bench) while consistently outscoring Llama 3 on function calling tasks (0.51 vs 0.30 on Nexus parallel multi function eval)</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://fireworks.ai/blog/firefunction-v2-launch-post\" rel=\"nofollow\">Blog Post</a></p>\n\n<p><a href=\"https://huggingface.co/fireworks-ai/llama-3-firefunction-v2\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      ",
+  "manifest_updated": "1 year ago",
+  "manifest_digest": "3f7fd585d60c",
+  "manifest_size": "26GB",
+  "files": [
+    {
+      "type": "model",
+      "blob_url": "/library/firefunction-v2:70b-q2_K/blobs/6c5a48e077d2",
+      "content_preview": "arch  llama",
+      "size": "26GB",
+      "arch": "llama",
+      "parameters": "70.6B",
+      "quantization": "Q2_K"
+    },
+    {
+      "type": "template",
+      "blob_url": "/library/firefunction-v2:70b-q2_K/blobs/d0d33e34ecdb",
+      "content_preview": "{{- if .Messages }}\n{{- if or .System .Tools }}<|start_header_id|>system<|end_header_id|>\n{{ if .Sys",
+      "size": "2.0kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "license",
+      "blob_url": "/library/firefunction-v2:70b-q2_K/blobs/475211637354",
+      "content_preview": "META LLAMA 3 COMMUNITY LICENSE AGREEMENT\nMeta Llama 3 Version Release Date: April 18, 2024\n\u201cAgreem",
+      "size": "7.8kB",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    },
+    {
+      "type": "params",
+      "blob_url": "/library/firefunction-v2:70b-q2_K/blobs/56bb8bd477a5",
+      "content_preview": "{\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",\n        \"<|eot_id|>\"",
+      "size": "96B",
+      "arch": "",
+      "parameters": "",
+      "quantization": ""
+    }
+  ],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": []
+}

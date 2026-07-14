@@ -1,0 +1,12 @@
+{
+  "blob_url": "/library/qwen2.5-coder:0.5b-base-q4_K_S/blobs/96f5a2272876",
+  "tag_full": "qwen2.5-coder:0.5b-base-q4_K_S",
+  "blob_type": "template",
+  "digest": "96f5a2272876",
+  "size": "117B",
+  "metadata": [],
+  "content": "{{- if .Suffix }}<|fim_prefix|>{{ .Prompt }}<|fim_suffix|>{{ .Suffix }}<|fim_middle|>{{ else }}{{ .Prompt }}{{ end }}",
+  "tensors": [],
+  "tensor_groups": [],
+  "scraped_at": "2026-07-13T22:39:30.074665+00:00"
+}

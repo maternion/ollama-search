@@ -1,0 +1,48 @@
+{
+  "path": "/library/llama3-groq-tool-use",
+  "name": "llama3-groq-tool-use",
+  "scraped_at": "2026-07-13T19:29:28.575862+00:00",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/llama3-groq-tool-use/ebf53e82-1faf-4bac-84b0-47b8f5d9d8d1\" width=\"240\"/></p>\n\n<p>These models, developed in collaboration with <a href=\"https://glaive.ai/\" rel=\"nofollow\">Glaive</a>, represent a significant advancement in open-source AI capabilities for tool use/function calling.</p>\n\n<h2>Benchmark Results</h2>\n\n<p>These models have achieved remarkable results, setting new benchmarks for Large Language Models with tool use capabilities:</p>\n\n<ul>\n<li>Llama-3-Groq-70B-Tool-Use: 90.76% overall accuracy (#1 on BFCL at the time of publishing - July 2024)</li>\n<li>Llama-3-Groq-8B-Tool-Use: 89.06% overall accuracy (#3 on BFCL at the time of publishing - July 2024)</li>\n</ul>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/Groq\" rel=\"nofollow\">Hugging Face</a></p>\n\n<p><a href=\"https://wow.groq.com/introducing-llama-3-groq-tool-use-models/\" rel=\"nofollow\">Blog</a></p>\n\n        \n      ",
+  "manifest_updated": "",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "files": [],
+  "cloud_usage_level": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "applications": [
+    {
+      "name": "Claude Code",
+      "icon_url": "/public/claude.png",
+      "command": "ollama launch claude --model llama3-groq-tool-use"
+    },
+    {
+      "name": "Codex App",
+      "icon_url": "/public/codex-app.png",
+      "command": "ollama launch codex-app --model llama3-groq-tool-use"
+    },
+    {
+      "name": "OpenClaw",
+      "icon_url": "/public/openclaw.png",
+      "command": "ollama launch openclaw --model llama3-groq-tool-use"
+    },
+    {
+      "name": "Hermes Agent",
+      "icon_url": "/public/hermes.png",
+      "command": "ollama launch hermes --model llama3-groq-tool-use"
+    },
+    {
+      "name": "Codex",
+      "icon_url": "/public/openai.png",
+      "command": "ollama launch codex --model llama3-groq-tool-use"
+    },
+    {
+      "name": "OpenCode",
+      "icon_url": "/public/opencode.png",
+      "command": "ollama launch opencode --model llama3-groq-tool-use"
+    }
+  ]
+}
