@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/granite3.2-vision:latest/blobs/579046ba1157",
+  "content": "\n{{- /* Tools */ -}}\n{{- if .Tools -}}\n<|start_of_role|>available_tools<|end_of_role|>\n{{- range $index, $_ := .Tools }}\n{{- $last := eq (len (slice $.Tools $index)) 1 }}\n{{ . }}\n{{- if not $last }}\n{{ end}}\n{{- end -}}\n<|end_of_text|>\n{{ end }}\n\n{{- /* System Prompt */ -}}\n{{- if and (gt (len .Messages) 0) (eq (index .Messages 0).Role \"system\") -}}\n<|system|>\n{{(index .Messages 0).Content}}\n{{- else -}}\n<|system|>\nA chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions.\n{{- end }}\n\n{{- /*Main message loop*/ -}}\n{{- range $index, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $index)) 1 }}\n{{- if eq .Role \"system\" }}\n\n{{- else if eq .Role \"user\" }}\n<|user|>\n{{.Content}}\n\n{{- else if eq .Role \"assistant\" }}\n<|assistant|>\n{{- if .Content }}\n{{.Content}}\n<|end_of_text|>\n{{ end }}\n\n{{- else if eq .Role \"assistant_tool_call\" }}\n<|start_of_role|>assistant<|end_of_role|><|tool_call|>{{.Content}}<|end_of_text|>\n\n{{- else if eq .Role \"tool_response\" }}\n<|start_of_role|>tool_response<|end_of_role|>{{.Content}}<|end_of_text|>\n{{- end }}\n\n{{- /* Add generation prompt */ -}}\n{{ if $last }}\n{{- if eq .Role \"assistant\" }}\n{{- else }}\n<|assistant|>\n{{- end }}\n{{- end }}\n{{- end }}",
+  "digest": "579046ba1157",
+  "metadata": [],
+  "size": "1.3kB",
+  "tensor_groups": [],
+  "tensors": []
+}
