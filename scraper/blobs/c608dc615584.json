@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/phi3.5:latest/blobs/c608dc615584",
+  "content": "{{ if .System }}<|system|>\n{{ .System }}<|end|>\n{{ end }}{{ if .Prompt }}<|user|>\n{{ .Prompt }}<|end|>\n{{ end }}<|assistant|>\n{{ .Response }}<|end|>",
+  "digest": "c608dc615584",
+  "metadata": [],
+  "size": "149B",
+  "tensor_groups": [],
+  "tensors": []
+}
