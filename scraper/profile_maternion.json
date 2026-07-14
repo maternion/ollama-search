@@ -1,303 +1,302 @@
 {
-  "username": "maternion",
   "bio": "Trying to help at https://discord.gg/ollama",
   "links": [
     {
-      "url": "youtube.com/@maternion",
-      "label": "@maternion"
+      "label": "@maternion",
+      "url": "youtube.com/@maternion"
     },
     {
-      "url": "github.com/maternion",
-      "label": "maternion"
+      "label": "maternion",
+      "url": "github.com/maternion"
     },
     {
-      "url": "huggingface.co/Maternion",
-      "label": "Maternion"
+      "label": "Maternion",
+      "url": "huggingface.co/Maternion"
     }
   ],
   "models": [
     {
-      "name": "LightOnOCR-2",
-      "path": "/maternion/LightOnOCR-2",
-      "description": "Best OCR model. LightOnOCR-2-1B is our flagship OCR model, refined with RLVR training for maximum accuracy. We recommend this variant for most OCR tasks.",
       "capabilities": [
         "vision",
         "tools"
       ],
       "cloud": false,
+      "cloud_only": false,
+      "description": "Best OCR model. LightOnOCR-2-1B is our flagship OCR model, refined with RLVR training for maximum accuracy. We recommend this variant for most OCR tasks.",
+      "name": "LightOnOCR-2",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/LightOnOCR-2",
+      "pulls": 11500,
       "sizes": [
         "1b"
       ],
-      "pulls": 11500,
-      "tag_count": 2,
-      "updated": "5 months ago",
-      "updated_title": "Jan 26, 2026 9:57 AM UTC",
-      "official": false,
-      "owner": "maternion",
       "source_url": "https://ollama.com/maternion/LightOnOCR-2",
-      "cloud_only": false,
-      "tags": []
+      "tag_count": 2,
+      "tags": [],
+      "updated": "5 months ago",
+      "updated_title": "Jan 26, 2026 9:57 AM UTC"
     },
     {
-      "name": "fara",
-      "path": "/maternion/fara",
-      "description": "Fara-7B is Microsoft's first agentic small language model (SLM) designed specifically for computer use. (Template supports tools)",
       "capabilities": [
         "vision",
         "tools"
       ],
       "cloud": false,
+      "cloud_only": false,
+      "description": "Fara-7B is Microsoft's first agentic small language model (SLM) designed specifically for computer use. (Template supports tools)",
+      "name": "fara",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/fara",
+      "pulls": 5403,
       "sizes": [
         "7b"
       ],
-      "pulls": 5402,
-      "tag_count": 4,
-      "updated": "7 months ago",
-      "updated_title": "Dec 3, 2025 10:08 AM UTC",
-      "official": false,
-      "owner": "maternion",
       "source_url": "https://ollama.com/maternion/fara",
-      "cloud_only": false,
-      "tags": []
+      "tag_count": 4,
+      "tags": [],
+      "updated": "7 months ago",
+      "updated_title": "Dec 3, 2025 10:08 AM UTC"
     },
     {
-      "name": "Qianfan-OCR",
-      "path": "/maternion/Qianfan-OCR",
-      "description": "Qianfan-OCR is a 4B VL model that replaces multi-step OCR pipelines with a single system, enabling direct image-to-Markdown conversion and advanced document understanding.",
       "capabilities": [
         "vision",
         "tools",
         "thinking"
       ],
       "cloud": false,
+      "cloud_only": false,
+      "description": "Qianfan-OCR is a 4B VL model that replaces multi-step OCR pipelines with a single system, enabling direct image-to-Markdown conversion and advanced document understanding.",
+      "name": "Qianfan-OCR",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/Qianfan-OCR",
+      "pulls": 1910,
       "sizes": [
         "4b"
       ],
-      "pulls": 1910,
-      "tag_count": 3,
-      "updated": "3 months ago",
-      "updated_title": "Mar 22, 2026 7:44 AM UTC",
-      "official": false,
-      "owner": "maternion",
       "source_url": "https://ollama.com/maternion/Qianfan-OCR",
-      "cloud_only": false,
-      "tags": []
+      "tag_count": 3,
+      "tags": [],
+      "updated": "3 months ago",
+      "updated_title": "Mar 22, 2026 7:44 AM UTC"
     },
     {
-      "name": "lfm2",
-      "path": "/maternion/lfm2",
-      "description": "LFM2-8B-A1B is the best on-device MoE in terms of both quality (comparable to 3-4B dense models) and speed (faster than Qwen3-1.7B). Updated LFM2.5-8B-A1B is now available!",
       "capabilities": [
         "tools"
       ],
       "cloud": false,
+      "cloud_only": false,
+      "description": "LFM2-8B-A1B is the best on-device MoE in terms of both quality (comparable to 3-4B dense models) and speed (faster than Qwen3-1.7B). Updated LFM2.5-8B-A1B is now available!",
+      "name": "lfm2",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/lfm2",
+      "pulls": 1864,
       "sizes": [
         "8b"
       ],
-      "pulls": 1864,
-      "tag_count": 4,
-      "updated": "4 months ago",
-      "updated_title": "Mar 12, 2026 4:09 PM UTC",
-      "official": false,
-      "owner": "maternion",
       "source_url": "https://ollama.com/maternion/lfm2",
-      "cloud_only": false,
-      "tags": []
+      "tag_count": 4,
+      "tags": [],
+      "updated": "4 months ago",
+      "updated_title": "Mar 12, 2026 4:09 PM UTC"
     },
     {
-      "name": "hy-mt2",
-      "path": "/maternion/hy-mt2",
-      "description": "HY-MT2 1.8B, 7B, and 30B-A3B (MoE) multilingual translation models designed for complex real-world scenarios, it supports translation among 33 languages and effectively follows translation instructions.",
       "capabilities": [],
       "cloud": false,
+      "cloud_only": false,
+      "description": "HY-MT2 1.8B, 7B, and 30B-A3B (MoE) multilingual translation models designed for complex real-world scenarios, it supports translation among 33 languages and effectively follows translation instructions.",
+      "name": "hy-mt2",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/hy-mt2",
+      "pulls": 1494,
       "sizes": [
         "1.8b",
         "7b",
         "30b"
       ],
-      "pulls": 1489,
-      "tag_count": 7,
-      "updated": "1 month ago",
-      "updated_title": "May 28, 2026 7:30 PM UTC",
-      "official": false,
-      "owner": "maternion",
       "source_url": "https://ollama.com/maternion/hy-mt2",
-      "cloud_only": false,
-      "tags": []
+      "tag_count": 7,
+      "tags": [],
+      "updated": "1 month ago",
+      "updated_title": "May 28, 2026 7:30 PM UTC"
     },
     {
-      "name": "lfm2.5",
-      "path": "/maternion/lfm2.5",
-      "description": "LFM2.5-350M & LFM2.5-8B-A1B is a fast, memory-efficient hybrid MoE language model. Unsloth Dynamic (UD) quants available.",
       "capabilities": [
         "tools",
         "thinking"
       ],
       "cloud": false,
+      "cloud_only": false,
+      "description": "LFM2.5-350M & LFM2.5-8B-A1B is a fast, memory-efficient hybrid MoE language model. Unsloth Dynamic (UD) quants available.",
+      "name": "lfm2.5",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/lfm2.5",
+      "pulls": 1438,
       "sizes": [
         "350m",
         "8b"
       ],
-      "pulls": 1437,
-      "tag_count": 15,
-      "updated": "2 weeks ago",
-      "updated_title": "Jun 29, 2026 7:12 PM UTC",
-      "official": false,
-      "owner": "maternion",
       "source_url": "https://ollama.com/maternion/lfm2.5",
-      "cloud_only": false,
-      "tags": []
+      "tag_count": 15,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Jun 29, 2026 7:12 PM UTC"
     },
     {
-      "name": "strand-rust-coder",
-      "path": "/maternion/strand-rust-coder",
-      "description": "The model fine-tunes Qwen2.5-Coder-14B for Rust-specific programming tasks using a 191K-example synthetic dataset built via multi-model generation and peer-reviewed validation.",
       "capabilities": [
         "tools"
       ],
       "cloud": false,
+      "cloud_only": false,
+      "description": "The model fine-tunes Qwen2.5-Coder-14B for Rust-specific programming tasks using a 191K-example synthetic dataset built via multi-model generation and peer-reviewed validation.",
+      "name": "strand-rust-coder",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/strand-rust-coder",
+      "pulls": 1012,
       "sizes": [
         "14b"
       ],
-      "pulls": 1008,
-      "tag_count": 3,
-      "updated": "4 months ago",
-      "updated_title": "Feb 22, 2026 6:27 PM UTC",
-      "official": false,
-      "owner": "maternion",
       "source_url": "https://ollama.com/maternion/strand-rust-coder",
-      "cloud_only": false,
-      "tags": []
+      "tag_count": 3,
+      "tags": [],
+      "updated": "4 months ago",
+      "updated_title": "Feb 22, 2026 6:27 PM UTC"
     },
     {
-      "name": "mai-ui",
-      "path": "/maternion/mai-ui",
-      "description": "MAI-UI is a family of large-scale GUI foundation agents (2B,8B) built for real-world, interactive human-computer control across desktop and mobile Uls. (Template supports tools)",
       "capabilities": [
         "vision",
         "tools"
       ],
       "cloud": false,
+      "cloud_only": false,
+      "description": "MAI-UI is a family of large-scale GUI foundation agents (2B,8B) built for real-world, interactive human-computer control across desktop and mobile Uls. (Template supports tools)",
+      "name": "mai-ui",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/mai-ui",
+      "pulls": 954,
       "sizes": [
         "2b",
         "8b"
       ],
-      "pulls": 951,
-      "tag_count": 8,
-      "updated": "5 months ago",
-      "updated_title": "Jan 19, 2026 5:13 AM UTC",
-      "official": false,
-      "owner": "maternion",
       "source_url": "https://ollama.com/maternion/mai-ui",
-      "cloud_only": false,
-      "tags": []
+      "tag_count": 8,
+      "tags": [],
+      "updated": "5 months ago",
+      "updated_title": "Jan 19, 2026 5:13 AM UTC"
     },
     {
-      "name": "AgentCPM-Explore",
-      "path": "/maternion/AgentCPM-Explore",
-      "description": "AgentCPM-Explore is a small, open\u2011source deep research model designed for long\u2011horizon, complex reasoning tasks on devices. (Template supports tools)",
       "capabilities": [
         "tools",
         "thinking"
       ],
       "cloud": false,
+      "cloud_only": false,
+      "description": "AgentCPM-Explore is a small, open‑source deep research model designed for long‑horizon, complex reasoning tasks on devices. (Template supports tools)",
+      "name": "AgentCPM-Explore",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/AgentCPM-Explore",
+      "pulls": 827,
       "sizes": [
         "4b"
       ],
-      "pulls": 827,
-      "tag_count": 1,
-      "updated": "5 months ago",
-      "updated_title": "Jan 16, 2026 7:04 PM UTC",
-      "official": false,
-      "owner": "maternion",
       "source_url": "https://ollama.com/maternion/AgentCPM-Explore",
-      "cloud_only": false,
-      "tags": []
+      "tag_count": 1,
+      "tags": [],
+      "updated": "5 months ago",
+      "updated_title": "Jan 16, 2026 7:04 PM UTC"
     },
     {
-      "name": "NuMarkdown-Thinking",
-      "path": "/maternion/NuMarkdown-Thinking",
-      "description": "It is the first reasoning OCR VLM. It is specifically trained to convert documents into clean Markdown files, well suited for RAG applications.",
       "capabilities": [
         "vision",
         "thinking"
       ],
       "cloud": false,
+      "cloud_only": false,
+      "description": "It is the first reasoning OCR VLM. It is specifically trained to convert documents into clean Markdown files, well suited for RAG applications.",
+      "name": "NuMarkdown-Thinking",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/NuMarkdown-Thinking",
+      "pulls": 678,
       "sizes": [
         "8b"
       ],
-      "pulls": 677,
-      "tag_count": 2,
-      "updated": "5 months ago",
-      "updated_title": "Feb 1, 2026 12:55 PM UTC",
-      "official": false,
-      "owner": "maternion",
       "source_url": "https://ollama.com/maternion/NuMarkdown-Thinking",
-      "cloud_only": false,
-      "tags": []
+      "tag_count": 2,
+      "tags": [],
+      "updated": "5 months ago",
+      "updated_title": "Feb 1, 2026 12:55 PM UTC"
     },
     {
-      "name": "manim-coder",
-      "path": "/maternion/manim-coder",
-      "description": "Fine-tuned manim model using Qwen2.5-Coder-14B-Instruct trained on 3blue1brown-manim dataset with 2,407 examples.",
       "capabilities": [
         "tools"
       ],
       "cloud": false,
+      "cloud_only": false,
+      "description": "Fine-tuned manim model using Qwen2.5-Coder-14B-Instruct trained on 3blue1brown-manim dataset with 2,407 examples.",
+      "name": "manim-coder",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/manim-coder",
+      "pulls": 458,
       "sizes": [
         "14b"
       ],
-      "pulls": 458,
-      "tag_count": 3,
-      "updated": "4 months ago",
-      "updated_title": "Feb 16, 2026 3:13 PM UTC",
-      "official": false,
-      "owner": "maternion",
       "source_url": "https://ollama.com/maternion/manim-coder",
-      "cloud_only": false,
-      "tags": []
+      "tag_count": 3,
+      "tags": [],
+      "updated": "4 months ago",
+      "updated_title": "Feb 16, 2026 3:13 PM UTC"
     },
     {
-      "name": "sweep-next-edit-1.5B",
-      "path": "/maternion/sweep-next-edit-1.5B",
-      "description": "Sweep Next-Edit a 1.5B parameter model for next-edit autocomplete, quantized to Q8_0 GGUF format. (Template supports tools)",
       "capabilities": [
         "tools"
       ],
       "cloud": false,
-      "sizes": [],
-      "pulls": 362,
-      "tag_count": 1,
-      "updated": "5 months ago",
-      "updated_title": "Jan 24, 2026 10:15 AM UTC",
+      "cloud_only": false,
+      "description": "Sweep Next-Edit a 1.5B parameter model for next-edit autocomplete, quantized to Q8_0 GGUF format. (Template supports tools)",
+      "name": "sweep-next-edit-1.5B",
       "official": false,
       "owner": "maternion",
+      "path": "/maternion/sweep-next-edit-1.5B",
+      "pulls": 362,
+      "sizes": [],
       "source_url": "https://ollama.com/maternion/sweep-next-edit-1.5B",
-      "cloud_only": false,
-      "tags": []
+      "tag_count": 1,
+      "tags": [],
+      "updated": "5 months ago",
+      "updated_title": "Jan 24, 2026 10:15 AM UTC"
     },
     {
-      "name": "context-1",
-      "path": "/maternion/context-1",
-      "description": "Context-1 is a 20B agentic search model that breaks complex queries into steps, retrieves relevant info iteratively, and manages its context to support multi-hop reasoning alongside a larger model.",
       "capabilities": [
         "tools",
         "thinking"
       ],
       "cloud": false,
+      "cloud_only": false,
+      "description": "Context-1 is a 20B agentic search model that breaks complex queries into steps, retrieves relevant info iteratively, and manages its context to support multi-hop reasoning alongside a larger model.",
+      "name": "context-1",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/context-1",
+      "pulls": 111,
       "sizes": [
         "20b"
       ],
-      "pulls": 111,
-      "tag_count": 3,
-      "updated": "3 months ago",
-      "updated_title": "Mar 30, 2026 1:59 PM UTC",
-      "official": false,
-      "owner": "maternion",
       "source_url": "https://ollama.com/maternion/context-1",
-      "cloud_only": false,
-      "tags": []
+      "tag_count": 3,
+      "tags": [],
+      "updated": "3 months ago",
+      "updated_title": "Mar 30, 2026 1:59 PM UTC"
     }
   ],
-  "scraped_at": "2026-07-14T15:28:05.548932+00:00"
+  "username": "maternion"
 }
