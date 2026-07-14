@@ -28,6 +28,7 @@ import html as html_mod
 import json
 import logging
 import os
+import random
 import re
 import signal
 import subprocess
@@ -120,8 +121,8 @@ class Client:
                 if r.status_code in (404, 410):
                     self.consecutive_failures += 1
                     return None
-                if r.status_code in (429, 502, 503, 504):
-                    time.sleep(5 * (attempt + 1))
+                if r.status_code in (429, 500, 502, 503, 504):
+                    time.sleep(5 * (2**attempt) + random.uniform(0, 1))
                     continue
                 self.consecutive_failures += 1
                 return None
@@ -132,7 +133,7 @@ class Client:
             except requests.RequestException as e:
                 log.warning("error %s: %s", url, e)
                 self.consecutive_failures += 1
-                time.sleep(2 * (attempt + 1))
+                time.sleep(2 * (2**attempt) + random.uniform(0, 1))
         if self.consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
             log.error(
                 "ABORTING: %d consecutive failures — site appears blocked/down",
@@ -1150,7 +1151,6 @@ def save_model_page(model: Model, page: ModelPage) -> None:
     out = {
         "path": model.path,
         "name": model.name,
-        "scraped_at": datetime.now(timezone.utc).isoformat(),
         "readme_html": page.readme_html,
         "manifest_updated": page.manifest_updated,
         "manifest_digest": page.manifest_digest,
@@ -1165,7 +1165,7 @@ def save_model_page(model: Model, page: ModelPage) -> None:
         "applications": [asdict(a) for a in page.applications],
     }
     fp = PAGES_DIR / f"{slug}.json"
-    _atomic_write(fp, json.dumps(out, indent=2))
+    _atomic_write(fp, json.dumps(out, indent=2, sort_keys=True, ensure_ascii=False))
     log.debug("saved %s", fp)
 
 
@@ -1186,8 +1186,6 @@ def save_tag_page(model: Model, tag_name: str, page: TagPage) -> None:
         "path": model.path,
         "tag_name": tag_name,
         "full_path": page.full_path,
-        "scraped_at": datetime.now(timezone.utc).isoformat(),
-        "readme_html": page.readme_html,
         "manifest_updated": page.manifest_updated,
         "manifest_digest": page.manifest_digest,
         "manifest_size": page.manifest_size,
@@ -1201,7 +1199,7 @@ def save_tag_page(model: Model, tag_name: str, page: TagPage) -> None:
         "applications": [asdict(a) for a in page.applications],
     }
     fp = TAG_PAGES_DIR / f"{slug}__{tag_name}.json"
-    _atomic_write(fp, json.dumps(out, indent=2))
+    _atomic_write(fp, json.dumps(out, indent=2, sort_keys=True, ensure_ascii=False))
     log.debug("saved %s", fp)
 
 
@@ -1478,10 +1476,19 @@ def fetch_blob_page(client: Client, blob_url: str) -> BlobPage | None:
 
 def save_blob_page(blob_url: str, page: BlobPage) -> None:
     BLOBS_DIR.mkdir(parents=True, exist_ok=True)
-    safe = blob_url.strip("/").replace("/", "__").replace(":", "_")
+    # Extract the digest from the blob URL (the last path segment before any
+    # query string): /library/model:tag/blobs/<digest> -> <digest>.
+    digest = page.digest
+    if not digest:
+        digest = blob_url.rstrip("/").rsplit("/blobs/", 1)[-1].split("?", 1)[0]
+    fp = BLOBS_DIR / f"{digest}.json"
+    # Store blobs once per digest. If the file already exists the content is
+    # identical, so skip the write (never overwrite).
+    if fp.exists():
+        log.debug("blob exists, skipping %s", fp)
+        return
     out = {
         "blob_url": page.blob_url,
-        "tag_full": page.tag_full,
         "blob_type": page.blob_type,
         "digest": page.digest,
         "size": page.size,
@@ -1489,10 +1496,8 @@ def save_blob_page(blob_url: str, page: BlobPage) -> None:
         "content": page.content,
         "tensors": [asdict(t) for t in page.tensors],
         "tensor_groups": page.tensor_groups,
-        "scraped_at": datetime.now(timezone.utc).isoformat(),
     }
-    fp = BLOBS_DIR / f"{safe}.json"
-    _atomic_write(fp, json.dumps(out, indent=2))
+    _atomic_write(fp, json.dumps(out, indent=2, sort_keys=True, ensure_ascii=False))
     log.debug("saved %s", fp)
 
 
@@ -1514,7 +1519,6 @@ def fetch_profile_page(client: Client, username: str) -> dict | None:
         "bio": "",
         "links": [],
         "models": [],
-        "scraped_at": datetime.now(timezone.utc).isoformat(),
     }
 
     # Bio
@@ -1551,7 +1555,7 @@ def fetch_profile_page(client: Client, username: str) -> dict | None:
 
 def save_profile_page(username: str, data: dict) -> None:
     fp = DATA / f"profile_{username}.json"
-    _atomic_write(fp, json.dumps(data, indent=2))
+    _atomic_write(fp, json.dumps(data, indent=2, sort_keys=True, ensure_ascii=False))
     log.info("saved %s", fp)
 
 
@@ -1567,9 +1571,23 @@ def _atomic_write(filepath: Path, content: str) -> None:
     os.replace(tmp, filepath)
 
 
+def save_scrape_manifest(models_count: int) -> None:
+    """Write a single run-level manifest with the scrape timestamp + model count.
+
+    Replaces the per-record `scraped_at` field so unchanged records produce
+    byte-identical output across runs.
+    """
+    out = {
+        "scraped_at": datetime.now(timezone.utc).isoformat(),
+        "models_count": models_count,
+    }
+    fp = HERE / ".scrape-manifest.json"
+    _atomic_write(fp, json.dumps(out, indent=2, sort_keys=True, ensure_ascii=False))
+    log.info("wrote %s (%d models)", fp.name, models_count)
+
+
 def save_models(models: Iterable[Model]) -> None:
     data: dict = {
-        "scraped_at": datetime.now(timezone.utc).isoformat(),
         "count": 0,
         "models": [],
     }
@@ -1577,14 +1595,17 @@ def save_models(models: Iterable[Model]) -> None:
     data["models"] = [asdict(m) for m in ms]
     data["count"] = len(data["models"])
     fp = DATA / "models.json"
-    _atomic_write(fp, json.dumps(data, indent=2))
+    _atomic_write(fp, json.dumps(data, indent=2, sort_keys=True, ensure_ascii=False))
     log.info("wrote models.json (%d models)", data["count"])
     log.debug("saved %s", fp)
 
 
 def save_sort_data(sort_orders: dict, models: dict) -> None:
     """Save sort_orders.json and sort_ranks.json for build.py."""
-    _atomic_write(DATA / "sort_orders.json", json.dumps(sort_orders, indent=2))
+    _atomic_write(
+        DATA / "sort_orders.json",
+        json.dumps(sort_orders, indent=2, sort_keys=True, ensure_ascii=False),
+    )
     ranks: dict[str, dict] = {}
     all_names = {m.name for m in models.values()}
     for sort_name, paths in sort_orders.items():
@@ -1601,7 +1622,10 @@ def save_sort_data(sort_orders: dict, models: dict) -> None:
         for sort_name in sort_orders:
             key = f"{sort_name}_rank"
             ranks[name].setdefault(key, 9999)
-    _atomic_write(DATA / "sort_ranks.json", json.dumps(ranks, indent=2))
+    _atomic_write(
+        DATA / "sort_ranks.json",
+        json.dumps(ranks, indent=2, sort_keys=True, ensure_ascii=False),
+    )
     log.info("wrote sort_orders.json + sort_ranks.json")
 
 
@@ -1611,11 +1635,10 @@ def save_tags(model: Model, tags: list[Tag]) -> None:
     out = {
         "path": model.path,
         "name": model.name,
-        "scraped_at": datetime.now(timezone.utc).isoformat(),
         "tags": [asdict(t) for t in tags],
     }
     fp = TAGS_DIR / f"{slug}.json"
-    _atomic_write(fp, json.dumps(out, indent=2))
+    _atomic_write(fp, json.dumps(out, indent=2, sort_keys=True, ensure_ascii=False))
     log.debug("saved %s", fp)
 
 
@@ -1642,15 +1665,14 @@ def git_checkpoint(label: str = "") -> None:
     tag = f"[{_GIT_CHECKPOINT_COUNT}] " if label else ""
     msg = f"checkpoint {tag}{label}".strip()
     try:
-        # Copy scraper data to the worktree
-        os.makedirs(f"{worktree}/scraper", exist_ok=True)
-        for item in os.listdir(HERE):
-            src = str(HERE / item)
-            dst = f"{worktree}/scraper/{item}"
-            if os.path.isdir(src):
-                subprocess.run(["cp", "-rT", src, dst], check=True, cwd=HERE.parent)
-            else:
-                subprocess.run(["cp", src, dst], check=True, cwd=HERE.parent)
+        # Copy scraper data to the worktree (clean destination first to
+        # prevent nested-duplicate directories like scraper/blobs/blobs/...).
+        subprocess.run(["rm", "-rf", f"{worktree}/scraper/"], check=True)
+        subprocess.run(["mkdir", "-p", f"{worktree}/scraper/"], check=True)
+        subprocess.run(
+            ["rsync", "-a", "--delete", f"{HERE}/", f"{worktree}/scraper/"],
+            check=True,
+        )
         subprocess.run(["git", "add", "-A", "scraper/"], check=True, cwd=worktree)
         r = subprocess.run(
             ["git", "commit", "-m", f"{msg} [skip ci]"],
@@ -1712,10 +1734,8 @@ def check_only() -> int:
     finally:
         client.close()
 
-    # Hash: name + pulls + tag_count + updated + path
-    sig = "|".join(
-        f"{m.name}:{m.pulls}:{m.tag_count}:{m.updated}:{m.path}" for m in cards
-    )
+    # Hash: name + tag_count + updated_title + path
+    sig = "|".join(f"{m.name}:{m.tag_count}:{m.updated_title}:{m.path}" for m in cards)
     current = hashlib.sha256(sig.encode()).hexdigest()[:16]
 
     cache_file = DATA / ".catalog-hash"
@@ -1912,8 +1932,13 @@ def main(argv: list[str] | None = None) -> int:
                             burl = f.get("blob_url", "")
                             if not burl:
                                 continue
-                            safe = burl.strip("/").replace("/", "__").replace(":", "_")
-                            bf = BLOBS_DIR / f"{safe}.json"
+                            # Blobs are stored once per digest.
+                            bdigest = (
+                                burl.rstrip("/")
+                                .rsplit("/blobs/", 1)[-1]
+                                .split("?", 1)[0]
+                            )
+                            bf = BLOBS_DIR / f"{bdigest}.json"
                             if bf.exists():
                                 continue
                             bp = fetch_blob_page(client, burl)
@@ -1940,13 +1965,24 @@ def main(argv: list[str] | None = None) -> int:
                                 ]
                                 mm["cloud_only"] = len(local_tags) == 0
                             break
-                    json.dump(models_data, open(DATA / "models.json", "w"), indent=2)
+                    json.dump(
+                        models_data,
+                        open(DATA / "models.json", "w"),
+                        indent=2,
+                        sort_keys=True,
+                        ensure_ascii=False,
+                    )
                     log.info("  updated models.json for %s", m.path)
                 except Exception as e:
                     log.warning("  failed to update models.json: %s", e)
             return 0
 
         # ---- full crawl ----
+        # Remove any stale completion marker from a prior run so cycle 2
+        # gating in CI reflects THIS run, not a previous one.
+        marker = HERE / ".scrape-complete"
+        if marker.exists():
+            marker.unlink()
         log.info("=== crawling official catalog ===")
         models, sort_orders = crawl_official(client)
         log.info("official models: %d", len(models))
@@ -2081,7 +2117,6 @@ def main(argv: list[str] | None = None) -> int:
                     if (
                         pm
                         and tf.exists()
-                        and pm.get("pulls") == m.pulls
                         and pm.get("tag_count") == m.tag_count
                         and pm.get("updated_title") == m.updated_title
                     ):
@@ -2229,7 +2264,7 @@ def main(argv: list[str] | None = None) -> int:
                 for t in tags_to_fetch:
                     slug = slugify(m.path)
                     tf = TAG_PAGES_DIR / f"{slug}__{t.name}.json"
-                    # Smart mode: skip if model unchanged and file exists
+                    # Smart mode: tier 1 — skip if whole model unchanged
                     if args.smart and prev_models:
                         pm = prev_models.get(m.path)
                         if (
@@ -2238,6 +2273,15 @@ def main(argv: list[str] | None = None) -> int:
                             and pm.get("updated_title") == m.updated_title
                         ):
                             continue
+                    # Smart mode: tier 2 — skip if this tag's digest unchanged
+                    if args.smart and tf.exists():
+                        try:
+                            existing_tp = json.loads(tf.read_text())
+                            cached_digest = existing_tp.get("manifest_digest", "")
+                            if cached_digest and cached_digest == t.digest:
+                                continue
+                        except Exception:
+                            pass
                     if tf.exists() and not args.smart:
                         continue  # already cached
                     log.info("  [%d/%d] %s:%s", i, len(fetch_models_tp), m.path, t.name)
@@ -2282,10 +2326,14 @@ def main(argv: list[str] | None = None) -> int:
                         blob_url = f.get("blob_url", "")
                         if not blob_url:
                             continue
-                        # Sanitize blob_url for filename
-                        safe = blob_url.strip("/").replace("/", "__").replace(":", "_")
-                        bf = BLOBS_DIR / f"{safe}.json"
-                        # Smart mode: skip if model unchanged and blob file exists
+                        # Blobs are stored once per digest.
+                        bdigest = (
+                            blob_url.rstrip("/")
+                            .rsplit("/blobs/", 1)[-1]
+                            .split("?", 1)[0]
+                        )
+                        bf = BLOBS_DIR / f"{bdigest}.json"
+                        # Smart mode: tier 1 — skip if whole model unchanged
                         if args.smart and prev_models:
                             pm = prev_models.get(m.path)
                             if (
@@ -2293,6 +2341,11 @@ def main(argv: list[str] | None = None) -> int:
                                 and bf.exists()
                                 and pm.get("updated_title") == m.updated_title
                             ):
+                                continue
+                        # Smart mode: tier 2 — skip if tag digest unchanged
+                        if args.smart and bf.exists():
+                            cached_digest = tp_data.get("manifest_digest", "")
+                            if cached_digest and cached_digest == t.digest:
                                 continue
                         if bf.exists() and not args.smart:
                             continue  # already cached
@@ -2350,11 +2403,18 @@ def main(argv: list[str] | None = None) -> int:
             save_sort_data(sort_orders, models)
 
         git_checkpoint("final")
+        # Write a single run-level manifest (replaces per-record scraped_at).
+        save_scrape_manifest(len(models))
         if client.bail_out:
             log.warning("DONE (bailed out, %d HTTP requests)", client.requests)
         elif _time_up():
             log.warning("DONE (time limit reached, %d HTTP requests)", client.requests)
         else:
+            # Completed fully (not time-limited, not bailed out). Write a
+            # marker file so CI can skip the redundant second cycle.
+            (HERE / ".scrape-complete").write_text(
+                datetime.now(timezone.utc).isoformat()
+            )
             log.info("done (%d HTTP requests)", client.requests)
         return 0
     finally:

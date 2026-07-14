@@ -2,7 +2,7 @@ name: Scrape and Deploy
 
 on:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "0 */2 * * *"
   push:
     branches: [main]
   workflow_dispatch:
@@ -72,6 +72,7 @@ jobs:
 
       - name: Checkpoint + build + deploy cycle 1
         if: always()
+        id: build1
         run: |
           # Push checkpoint to scraped-data
           if [ -d /tmp/scraped-data ]; then
@@ -85,8 +86,15 @@ jobs:
           fi
           # Build site
           python3 build.py --base "/${{ github.event.repository.name }}"
-          # Deploy to gh-pages branch
+          # Tag current gh-pages HEAD for rollback before overwriting it.
           git fetch origin gh-pages 2>/dev/null || true
+          if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
+            git tag "deploy-pre-$(date -u '+%Y%m%d-%H%M%S')" origin/gh-pages
+            # Keep only the 10 most recent deploy-pre-* tags locally + remotely.
+            git tag -l "deploy-pre-*" --sort=-creatordate | tail -n +11 | xargs -r git tag -d
+            git push origin --tags --force
+          fi
+          # Deploy to gh-pages branch
           git worktree add /tmp/gh-pages gh-pages 2>/dev/null || git worktree add --orphan -b gh-pages /tmp/gh-pages 2>/dev/null || true
           cd /tmp/gh-pages
           git rm -rf . 2>/dev/null || true
@@ -96,10 +104,32 @@ jobs:
           git commit -m "deploy cycle 1 $(date -u '+%Y-%m-%d %H:%M:%S UTC') [skip ci]" || true
           git push origin gh-pages || true
           cd "$GITHUB_WORKSPACE"
+          # Cycle 2 only runs if cycle 1 did NOT complete fully. The scraper
+          # writes scraper/.scrape-complete only when it finished without
+          # hitting the time limit or bailing out.
+          if [ -f scraper/.scrape-complete ]; then
+            echo "cycle1_complete=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Cycle 1 completed fully — skipping cycle 2"
+          else
+            echo "cycle1_complete=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Cycle 1 was interrupted (timeout/bail) — running cycle 2"
+          fi
+
+      # ── Self-check: validate data integrity (soft, non-blocking) ──
+      - name: Self-check (data integrity)
+        if: always()
+        continue-on-error: true
+        run: |
+          echo "::notice::Running self-check..."
+          if python3 scraper/scrape.py --self-check; then
+            echo "::notice::Self-check passed"
+          else
+            echo "::warning::Self-check FAILED — scrape may be partial. Continuing deploy anyway."
+          fi
 
       # ── Cycle 2: scrape 2h → build → deploy to gh-pages ──
       - name: Scrape cycle 2 (2h max)
-        if: steps.check.outputs.changed == 'true' || github.event_name != 'schedule'
+        if: steps.check.outputs.changed == 'true' || github.event_name != 'schedule' || steps.build1.outputs.cycle1_complete == 'false'
         id: scrape2
         continue-on-error: true
         env:
@@ -122,6 +152,13 @@ jobs:
           fi
           # Build site
           python3 build.py --base "/${{ github.event.repository.name }}"
+          # Tag current gh-pages HEAD for rollback before overwriting it.
+          git fetch origin gh-pages 2>/dev/null || true
+          if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
+            git tag "deploy-pre-$(date -u '+%Y%m%d-%H%M%S')" origin/gh-pages
+            git tag -l "deploy-pre-*" --sort=-creatordate | tail -n +11 | xargs -r git tag -d
+            git push origin --tags --force
+          fi
           # Deploy to gh-pages branch (reuse worktree from cycle 1)
           cd /tmp/gh-pages
           git rm -rf . 2>/dev/null || true

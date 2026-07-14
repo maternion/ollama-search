@@ -221,8 +221,15 @@ BLOBS_DIR = SCRAPER / "blobs"
 
 
 def load_blob_page(blob_url: str) -> dict | None:
-    safe = blob_url.strip("/").replace("/", "__").replace(":", "_")
-    bf = BLOBS_DIR / f"{safe}.json"
+    # Blobs are stored once per digest at BLOBS_DIR/<digest>.json. Extract the
+    # digest from the blob URL (last path segment before any query string):
+    # /library/model:tag/blobs/<digest> -> <digest>.
+    digest = blob_url.rstrip("/").rsplit("/blobs/", 1)[-1].split("?", 1)[0]
+    if not digest or "/" in digest:
+        # Not a blob URL shape; fall back to the legacy derived filename.
+        safe = blob_url.strip("/").replace("/", "__").replace(":", "_")
+        digest = safe
+    bf = BLOBS_DIR / f"{digest}.json"
     if not bf.exists():
         return None
     return json.loads(bf.read_text())
@@ -298,11 +305,12 @@ def nav_html(active: str = "") -> str:
     <div class="flex-grow justify-center items-center hidden lg:flex">
       <div class="relative w-full xl:max-w-[28rem]">
         <form action="{url("")}" autocomplete="off" id="nav-search-form">
-          <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full">
+          <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full" hx-on:focusout="var rt=event.relatedTarget;if(rt&&(this.contains(rt)||document.getElementById('searchpreview').contains(rt)))return;var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');">
             <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400">{SVG_SEARCH}</span>
-            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){{event.preventDefault();window.location.href='{url("/?q=")}'+encodeURIComponent(this.value);}}" />
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){{event.preventDefault();var v=this.value.trim();window.location.href=v?'{url("/?q=")}'+encodeURIComponent(v):'{url("/")}';return;}}if(event.key==='Escape'){{event.preventDefault();this.value='';this.blur();var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');return;}}if(event.key==='Tab'){{var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');return;}}if(event.key==='ArrowDown'){{var first=document.querySelector('#search-preview-list a:first-of-type');if(first)first.focus();event.preventDefault();}}if(event.key==='ArrowUp'){{var last=document.getElementById('view-all-link');if(last)last.focus();event.preventDefault();}}var sp=document.getElementById('searchpreview');if(sp)sp.classList.remove('hidden');" hx-on:focus="var sp=document.getElementById('searchpreview');if(sp&&this.value.trim())sp.classList.remove('hidden');" />
           </div>
         </form>
+        <div id="searchpreview" class="hidden absolute left-0 right-0 top-12 z-50" style="width: calc(100% + 2px); margin-left: -1px;"></div>
       </div>
     </div>
     <div class="hidden lg:flex xl:flex-1 items-center space-x-2 justify-end ml-6 xl:ml-0">
@@ -370,7 +378,118 @@ def theme_script() -> str:
     var isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }
-  document.addEventListener('DOMContentLoaded', function() {
+var NAV_MODELS = null;
+var NAV_BASE = (function() {
+  var s = document.querySelector('script[src*="assets/app.js"]');
+  if (s) {
+    var src = s.getAttribute('src');
+    var idx = src.indexOf('assets/app.js');
+    if (idx > 0) return src.substring(0, idx);
+  }
+  return '/';
+})();
+
+function loadNavModels(cb) {
+  if (NAV_MODELS) { cb(NAV_MODELS); return; }
+  var cached = null;
+  try { cached = sessionStorage.getItem('nav-models'); } catch (e) {}
+  if (cached) {
+    try { NAV_MODELS = JSON.parse(cached); cb(NAV_MODELS); return; } catch (e) {}
+  }
+  fetch(NAV_BASE + 'assets/models.json').then(function(r) { return r.json(); }).then(function(data) {
+    NAV_MODELS = data;
+    try { sessionStorage.setItem('nav-models', JSON.stringify(data)); } catch (e) {}
+    cb(NAV_MODELS);
+  }).catch(function() { cb([]); });
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function renderNavSuggest(query) {
+  var sp = document.getElementById('searchpreview');
+  if (!sp) return;
+  var q = query.toLowerCase().trim();
+  if (!q) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
+
+  var html = '<div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl w-full shadow-2xl shadow-black/5 overflow-hidden" id="search-preview-container" tabindex="0">';
+  html += '<div role="list" id="search-preview-list" class="group">';
+
+  var results = [];
+  for (var i = 0; i < NAV_MODELS.length; i++) {
+    var m = NAV_MODELS[i];
+    var name = m.name || '';
+    var desc = m.description || '';
+    if (name.toLowerCase().indexOf(q) !== -1 || desc.toLowerCase().indexOf(q) !== -1) {
+      results.push(m);
+    }
+  }
+  results.sort(function(a, b) { return (b.pulls || 0) - (a.pulls || 0); });
+  var top = results.slice(0, 5);
+
+  if (top.length === 0) {
+    html += '<div class="px-6 py-4 text-neutral-800 dark:text-neutral-300 text-sm">No models found.</div>';
+  } else {
+    for (var i = 0; i < top.length; i++) {
+      var m = top[i];
+      var path = m.path || ('/library/' + m.name);
+      html += '<div result>';
+      html += '<a tabindex="0" href="' + NAV_BASE + path.replace(/^\//, '') + '" class="flex items-center h-16 px-6 py-4 hover:bg-neutral-50 dark:hover:bg-white/5 focus:ring-0 focus:outline-none focus:bg-neutral-50 dark:focus:bg-white/5">';
+      html += '<div class="min-w-0 flex-1">';
+      html += '<h2 class="text-sm font-medium truncate dark:text-neutral-100">' + escHtml(m.name) + '</h2>';
+      html += '<p class="text-xs text-gray-600 dark:text-gray-600 truncate">' + escHtml(m.description) + '</p>';
+      html += '</div></a></div>';
+    }
+  }
+
+  html += '</div>';
+  html += '<a tabindex="0" id="view-all-link" href="' + NAV_BASE + '?q=' + encodeURIComponent(query) + '" class="' + (top.length === 0 ? 'hidden' : '') + ' block px-6 py-3 border-t border-neutral-200 dark:border-neutral-800 text-center text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-white/5 focus:bg-neutral-50 dark:focus:bg-white/5 focus:outline-none focus:ring-0 dark:text-neutral-200">View all &#8594;</a>';
+  html += '</div>';
+
+  sp.innerHTML = html;
+  sp.classList.remove('hidden');
+}
+
+var navSuggestTimer = null;
+function initNavSuggest() {
+  var input = document.getElementById('navbar-input');
+  var sp = document.getElementById('searchpreview');
+  if (!input || !sp) return;
+
+  input.addEventListener('input', function() {
+    if (navSuggestTimer) clearTimeout(navSuggestTimer);
+    navSuggestTimer = setTimeout(function() {
+      var v = input.value;
+      if (!v.trim()) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
+      loadNavModels(function() { renderNavSuggest(v); });
+    }, 100);
+  });
+
+  sp.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      sp.classList.add('hidden');
+      input.focus();
+      e.preventDefault();
+      return;
+    }
+    if (e.key === 'Enter') {
+      var el = document.activeElement;
+      if (el && el.tagName === 'A') { el.click(); e.preventDefault(); return; }
+    }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      var items = Array.from(sp.querySelectorAll('#search-preview-list a, #view-all-link'));
+      var ci = items.indexOf(document.activeElement);
+      var ni = e.key === 'ArrowDown' ? ci + 1 : ci - 1;
+      if (ni >= items.length) ni = 0;
+      if (ni < 0) ni = items.length - 1;
+      if (items[ni]) items[ni].focus();
+      e.preventDefault();
+    }
+  });
+}
+
+function initSearch() {
     document.getElementById('theme-toggle')?.addEventListener('click', toggle);
     document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggle);
   });
@@ -538,6 +657,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
 <html lang="en" class="">
 <head>
 {head_html("Ollama", "Search for models on Ollama.")}
+    <script>var q = new URLSearchParams(window.location.search).get('q'); if (q) {{ document.title = q + ' \u00b7 Ollama'; }}</script>
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 {nav_html("models")}
@@ -1453,13 +1573,17 @@ def build_tag_page(m: dict, tag: dict, tp: dict | None) -> None:
     cloud_metrics = _cloud_metrics_section(tp) if tp else ""
     apps_section = _applications_section(tp) if tp else ""
 
+    # The readme is stored once per model (in the model page JSON), not per
+    # tag. Load it from the model page so tag pages share the single source.
+    model_page = load_model_page(path)
+
     if tp and (tp.get("files") or tp.get("manifest_digest")):
         details_section = _details_section(tp)
-        readme_section = _readme_section(tp)
+        readme_section = _readme_section(model_page)
     elif tp:
         # Has tag page data but no files (cloud tag) — skip Details, show readme only
         details_section = ""
-        readme_section = _readme_section(tp)
+        readme_section = _readme_section(model_page)
     else:
         # Fallback minimal details box from tag list data
         digest = esc(tag.get("digest") or "") or "—"
@@ -1608,6 +1732,23 @@ def _blob_content_html(blob: dict) -> str:
     )
 
 
+_MODELS_BY_PATH = None
+
+
+def _get_models_by_path():
+    global _MODELS_BY_PATH
+    if _MODELS_BY_PATH is None:
+        data = json.loads((SCRAPER / "models.json").read_text())
+        _MODELS_BY_PATH = {m["path"]: m for m in data.get("models", [])}
+    return _MODELS_BY_PATH
+
+
+# Digest -> rendered blob body HTML (the metadata/tensors/content block). The
+# body is invariant for a given digest; only the back-link/tag header wrapper
+# varies per (model, tag), so it is rendered once per digest and reused.
+_BLOB_BODY_CACHE: dict[str, str] = {}
+
+
 def build_blob_page(blob: dict) -> None:
     tag_full = blob.get("tag_full") or ""
     blob_url = blob.get("blob_url") or ""
@@ -1644,11 +1785,7 @@ def build_blob_page(blob: dict) -> None:
     # Find the model in models.json
     m = None
     try:
-        models_data = json.loads((SCRAPER / "models.json").read_text())
-        for model in models_data.get("models", []):
-            if model["path"] == model_path_full:
-                m = model
-                break
+        m = _get_models_by_path().get(model_path_full)
     except Exception:
         pass
 
@@ -1661,7 +1798,14 @@ def build_blob_page(blob: dict) -> None:
     blob_type_esc = esc(blob_type)
     digest_esc = esc(digest_part or digest)
     size_esc = esc(size)
-    content_html = _blob_content_html(blob)
+
+    # The body (metadata/tensors/content) is digest-invariant — render once per
+    # digest and cache it. Only the tag-specific wrapper is rendered fresh.
+    cache_key = digest or digest_part
+    content_html = _BLOB_BODY_CACHE.get(cache_key)
+    if content_html is None:
+        content_html = _blob_content_html(blob)
+        _BLOB_BODY_CACHE[cache_key] = content_html
 
     page = f"""<!DOCTYPE html>
 <html lang="en" class="">
@@ -1966,6 +2110,13 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 
 /* --- fmt pill radio dark mode --- */
 .dark .peer:checked ~ label { background-color: #1e1b4b; border-color: #6366f1; }
+
+/* --- search preview dropdown --- */
+#searchpreview { max-height: 24rem; overflow-y: auto; }
+.dark select option { background-color: #0a0a0a; color: #e5e5e5; }
+.dark .dark\:text-gray-600 { color: #a3a3a3; }
+.dark .dark\:hover\:bg-white\/5:hover { background-color: rgba(255,255,255,0.05); }
+.dark .dark\:focus\:bg-white\/5:focus { background-color: rgba(255,255,255,0.05); }
 """
 
 APP_JS = r"""// ollama-search frontend logic.
@@ -2003,7 +2154,10 @@ function getSort() {
 }
 
 function getQuery() {
-  var input = document.getElementById('form-input') || document.getElementById('navbar-input');
+  var a = document.activeElement;
+  var input = (a && (a.id === 'form-input' || a.id === 'navbar-input'))
+    ? a
+    : (document.getElementById('form-input') || document.getElementById('navbar-input'));
   return input ? input.value.toLowerCase().trim() : '';
 }
 
@@ -2139,8 +2293,14 @@ document.addEventListener('DOMContentLoaded', function() {
   if (document.getElementById('card-list')) {
     var formInput = document.getElementById('form-input');
     var navInput = document.getElementById('navbar-input');
-    if (formInput) formInput.addEventListener('input', applyFilters);
-    if (navInput) navInput.addEventListener('input', applyFilters);
+    if (formInput) formInput.addEventListener('input', function() {
+      if (navInput) navInput.value = formInput.value;
+      applyFilters();
+    });
+    if (navInput) navInput.addEventListener('input', function() {
+      if (formInput) formInput.value = navInput.value;
+      applyFilters();
+    });
     document.querySelectorAll('.cap-filter').forEach(function(cb) { cb.addEventListener('change', applyFilters); });
     var cloudFilter = document.getElementById('cloud-filter');
     if (cloudFilter) cloudFilter.addEventListener('change', applyFilters);
@@ -2155,8 +2315,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     applyFilters();
   }
+
+  // --- Navbar search preview dropdown (non-search pages only) ---
+  if (!document.getElementById('card-list')) {
+    initNavSuggest();
+  }
   initFmtFilters();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSearch);
+} else {
+  initSearch();
+}
 """
 
 
@@ -2426,8 +2597,19 @@ def main() -> int:
         f"built {len(_all_models)} model pages + tags pages + {tag_pages_built} tag pages + {blob_pages_built} blob pages"
     )
 
-    # write the catalog JSON for client-side use
-    (PUBLIC / "assets" / "models.json").write_text(json.dumps(models, indent=2))
+    # write the catalog JSON for client-side use (minimal slice for nav dropdown)
+    nav_models = [
+        {
+            "name": m["name"],
+            "description": m.get("description", ""),
+            "path": m.get("path", f"/library/{m['name']}"),
+            "pulls": m.get("pulls", 0),
+        }
+        for m in models
+    ]
+    (PUBLIC / "assets" / "models.json").write_text(
+        json.dumps(nav_models, ensure_ascii=False, separators=(",", ":"))
+    )
     print("done.")
     return 0
 
