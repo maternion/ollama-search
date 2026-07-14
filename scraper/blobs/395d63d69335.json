@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/marco-o1:latest/blobs/395d63d69335",
+  "content": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|im_start|>{{ .Role }}\n{{ .Content }}\n{{- if not $last }}<|im_end|>\n{{ else if ne .Role \"assistant\" }}<|im_end|>\n<|im_start|>assistant\n{{ end }}\n{{- end }}",
+  "digest": "395d63d69335",
+  "metadata": [],
+  "size": "239B",
+  "tensor_groups": [],
+  "tensors": []
+}
