@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/solar-pro:latest/blobs/b997696d9c92",
+  "content": "{{- range $index, $_ := .Messages }}<|im_start|>{{ .Role }}\n{{ .Content }}\n{{- if eq (len (slice $.Messages $index)) 1 }}\n{{- if eq .Role \"user\" }}<|im_end|>\n<|im_start|>assistant\n{{ end }}\n{{- else }}<|im_end|>\n{{ end }}\n{{- end }}",
+  "digest": "b997696d9c92",
+  "metadata": [],
+  "size": "232B",
+  "tensor_groups": [],
+  "tensors": []
+}
