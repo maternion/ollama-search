@@ -1489,6 +1489,64 @@ def save_blob_page(blob_url: str, page: BlobPage) -> None:
     _atomic_write(fp, json.dumps(out, indent=2))
     log.debug("saved %s", fp)
 
+# --------------------------------------------------------------------------- #
+# Profile page scraping (e.g. /maternion)
+# --------------------------------------------------------------------------- #
+
+
+def fetch_profile_page(client: Client, username: str) -> dict | None:
+    """Fetch a user profile page (e.g. /maternion) and parse it."""
+    profile_url = f"{BASE}/{username}"
+    html = client.get(profile_url)
+    if html is None:
+        log.warning("profile fetch failed: %s", profile_url)
+        return None
+
+    profile: dict = {
+        "username": username,
+        "bio": "",
+        "links": [],
+        "models": [],
+        "scraped_at": datetime.now(timezone.utc).isoformat(),
+    }
+
+    # Bio
+    bio_m = re.search(r'<span x-test-bio>(.*?)</span>', html, re.DOTALL)
+    if bio_m:
+        profile["bio"] = strip_tags(bio_m.group(1)).strip()
+
+    # Links
+    for lm in re.finditer(
+        r'<a href="//([^"]+)" target="_blank" class="hover:underline" data-url="([^"]+)">\s*(.*?)\s*</a>',
+        html,
+        re.DOTALL,
+    ):
+        href = lm.group(1)
+        label = strip_tags(lm.group(3)).strip()
+        if href and label:
+            profile["links"].append({"url": href, "label": label})
+
+    # Models on the profile page — save full card data
+    cards = parse_cards(html, profile_url)
+    for c in cards:
+        if c.path.startswith(f"/{username}/"):
+            profile["models"].append(asdict(c))
+
+    log.info(
+        "profile %s: bio=%r, %d links, %d models",
+        username,
+        profile["bio"][:50],
+        len(profile["links"]),
+        len(profile["models"]),
+    )
+    return profile
+
+
+def save_profile_page(username: str, data: dict) -> None:
+    fp = DATA / f"profile_{username}.json"
+    _atomic_write(fp, json.dumps(data, indent=2))
+    log.info("saved %s", fp)
+
 
 # --------------------------------------------------------------------------- #
 # Persistence
@@ -1906,6 +1964,77 @@ def main(argv: list[str] | None = None) -> int:
                 len(models),
             )
 
+        # Scrape profile pages (e.g. /maternion)
+        PROFILES = ["maternion"]
+        for username in PROFILES:
+            if client.bail_out or _time_up():
+                break
+            log.info("=== scraping profile: %s ===", username)
+            pdata = fetch_profile_page(client, username)
+            if pdata:
+                save_profile_page(username, pdata)
+                # Add profile models to the models dict if not already there
+                for mpath in pdata.get("models", []):
+                    if mpath not in models:
+                        m = Model(
+                            name=mpath.rsplit("/", 1)[-1],
+                            path=mpath,
+                            description="",
+                            capabilities=[],
+                            cloud=False,
+                            sizes=[],
+                            pulls=0,
+                            tag_count=0,
+                            updated="",
+                            updated_title="",
+                            official=False,
+                            owner=username,
+                            source_url=BASE + mpath,
+                        )
+                        models[mpath] = m
+                git_checkpoint(f"profile {username}")
+            time.sleep(DELAY)
+
+        # Collect profile models for tags/pages/blobs fetching
+        profile_model_paths = set()
+        for username in PROFILES:
+            pf = DATA / f"profile_{username}.json"
+            if pf.exists():
+                try:
+                    pdata = json.loads(pf.read_text())
+                    for m in pdata.get("models", []):
+                        if isinstance(m, dict):
+                            profile_model_paths.add(m["path"])
+                        elif isinstance(m, str):
+                            profile_model_paths.add(m)
+                except Exception:
+                    pass
+        log.info("profile models to fetch: %d", len(profile_model_paths))
+
+        # Fetch tags for profile models (they were added to models dict above)
+        if profile_model_paths and not args.skip_tags:
+            log.info("=== fetching tags for profile models ===")
+            for mpath in sorted(profile_model_paths):
+                if mpath not in models:
+                    continue
+                m = models[mpath]
+                if client.bail_out or _time_up():
+                    break
+                slug = slugify(mpath)
+                tf = TAGS_DIR / f"{slug}.json"
+                if not tf.exists():
+                    log.info("  %s", mpath)
+                    m.tags = fetch_tags(client, m)
+                    save_tags(m, m.tags)
+                    save_models(models.values())
+                    time.sleep(DELAY)
+                else:
+                    try:
+                        existing = json.loads(tf.read_text())
+                        m.tags = [Tag(**t) for t in existing.get("tags", [])]
+                    except Exception:
+                        pass
+
         # Save sort orderings + derived rank data EARLY so they're available
         # even if the run is cancelled before reaching the end.
         if sort_orders:
@@ -2009,12 +2138,12 @@ def main(argv: list[str] | None = None) -> int:
                     time.sleep(DELAY)
 
         if not args.skip_pages:
-            log.info("=== fetching model pages (official only) ===")
+            log.info("=== fetching model pages ===")
             PAGES_DIR.mkdir(parents=True, exist_ok=True)
-            official_models = [m for m in models.values() if m.official]
-            total = len(official_models)
+            fetch_models = [m for m in models.values() if m.official or m.path in profile_model_paths]
+            total = len(fetch_models)
             pages_done = 0
-            for i, m in enumerate(official_models, 1):
+            for i, m in enumerate(fetch_models, 1):
                 if client.bail_out or _time_up():
                     log.warning("STOPPING at page %d/%d", i, total)
                     break
@@ -2046,15 +2175,15 @@ def main(argv: list[str] | None = None) -> int:
                 time.sleep(DELAY)
 
         if not args.skip_tag_pages:
-            log.info("=== fetching tag pages (official only: all tags) ===")
+            log.info("=== fetching tag pages ===")
             TAG_PAGES_DIR.mkdir(parents=True, exist_ok=True)
-            official_models = [m for m in models.values() if m.official]
+            fetch_models_tp = [m for m in models.values() if m.official or m.path in profile_model_paths]
             total_tag_pages = 0
             tag_pages_done = 0
-            for i, m in enumerate(official_models, 1):
+            for i, m in enumerate(fetch_models_tp, 1):
                 if client.bail_out or _time_up():
                     log.warning(
-                        "STOPPING at tag pages %d/%d", i, len(official_models)
+                        "STOPPING at tag pages %d/%d", i, len(fetch_models_tp)
                     )
                     break
                 if not m.tags:
@@ -2077,28 +2206,28 @@ def main(argv: list[str] | None = None) -> int:
                             continue
                     if tf.exists() and not args.smart:
                         continue  # already cached
-                    log.info("  [%d/%d] %s:%s", i, len(official_models), m.path, t.name)
+                    log.info("  [%d/%d] %s:%s", i, len(fetch_models_tp), m.path, t.name)
                     tp = fetch_tag_page(client, m, t.name)
                     if tp:
                         save_tag_page(m, t.name, tp)
                         total_tag_pages += 1
                         tag_pages_done += 1
                         if tag_pages_done % CHECKPOINT_EVERY == 0:
-                            git_checkpoint(f"tag pages {i}/{len(official_models)}")
+                            git_checkpoint(f"tag pages {i}/{len(fetch_models_tp)}")
                     time.sleep(DELAY)
             log.info("fetched %d tag pages", total_tag_pages)
             save_models(models.values())
             git_checkpoint("tag pages done")
 
         if not args.skip_blobs:
-            log.info("=== fetching blob pages (official only) ===")
+            log.info("=== fetching blob pages ===")
             BLOBS_DIR.mkdir(parents=True, exist_ok=True)
-            official_models = [m for m in models.values() if m.official]
+            fetch_models_blobs = [m for m in models.values() if m.official or m.path in profile_model_paths]
             total_blobs = 0
             blobs_done = 0
-            for i, m in enumerate(official_models, 1):
+            for i, m in enumerate(fetch_models_blobs, 1):
                 if client.bail_out or _time_up():
-                    log.warning("STOPPING at blobs %d/%d", i, len(official_models))
+                    log.warning("STOPPING at blobs %d/%d", i, len(fetch_models_blobs))
                     break
                 if not m.tags:
                     continue
@@ -2132,7 +2261,7 @@ def main(argv: list[str] | None = None) -> int:
                         log.info(
                             "  [%d/%d] blob: %s:%s",
                             i,
-                            len(official_models),
+                            len(fetch_models_blobs),
                             m.path,
                             t.name,
                         )
@@ -2148,14 +2277,14 @@ def main(argv: list[str] | None = None) -> int:
                             )
                             if blobs_done % CHECKPOINT_EVERY == 0:
                                 git_checkpoint(
-                                    f"blobs {i}/{len(official_models)} ({total_blobs} total)"
+                                    f"blobs {i}/{len(fetch_models_blobs)} ({total_blobs} total)"
                                 )
                         time.sleep(DELAY)
                 if i % 10 == 0:
                     log.info(
                         "  processed %d/%d models (%d blobs)",
                         i,
-                        len(official_models),
+                        len(fetch_models_blobs),
                         total_blobs,
                     )
                     save_models(models.values())

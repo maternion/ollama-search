@@ -306,10 +306,10 @@ def nav_html(active: str = "") -> str:
 
 
 def footer_html() -> str:
-    return """<footer class="mt-auto">
+    return f"""<footer class="mt-auto">
   <div class="underline-offset-4 hidden md:block">
     <div class="flex items-center justify-between px-6 py-3.5">
-      <div class="text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="https://ollama.com/maternion" class="hover:underline">Maternion</a></div>
+      <div class="text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="{url("/maternion/")}" class="hover:underline">Maternion</a></div>
       <div class="flex space-x-6 text-xs text-neutral-500 dark:text-neutral-400">
         <a href="https://ollama.com/download" class="hover:underline">Download</a>
         <a href="https://ollama.com/blog" class="hover:underline">Blog</a>
@@ -327,7 +327,7 @@ def footer_html() -> str:
       <li><a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a></li>
       <li><a href="https://ollama.com/pricing" class="hover:underline">Pricing</a></li>
     </ul>
-    <div class="mt-4 text-center text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="https://ollama.com/maternion" class="hover:underline">Maternion</a></div>
+    <div class="mt-4 text-center text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="{url("/maternion/")}" class="hover:underline">Maternion</a></div>
   </div>
 </footer>"""
 
@@ -1694,6 +1694,34 @@ def copy_assets() -> None:
             print(f"  downloaded {icon}")
         except Exception as e:
             print(f"  WARN: could not download {icon}: {e}", file=sys.stderr)
+    # Social icons for profile pages
+    social_dir = assets / "social"
+    social_dir.mkdir(parents=True, exist_ok=True)
+    for icon in ["default", "github", "youtube", "hugging-face", "x", "linkedin"]:
+        dst = social_dir / f"{icon}.svg"
+        if dst.exists():
+            continue
+        try:
+            import urllib.request
+            urllib.request.urlretrieve(f"https://ollama.com/public/social/{icon}.svg", dst)
+            print(f"  downloaded social/{icon}.svg")
+        except Exception as e:
+            print(f"  WARN: could not download social/{icon}.svg: {e}", file=sys.stderr)
+
+    # Profile images (download if missing)
+    for name, url in [
+        ("maternion-profile.png", "https://ollama.com/public/assets/63fc5cbb-8a8d-4a1a-a991-1ae0c4ed6e99/27b965ab-5457-4bcf-974d-4c3074bf536b.png"),
+    ]:
+        dst = assets / name
+        if dst.exists():
+            continue
+        try:
+            import urllib.request
+            urllib.request.urlretrieve(url, dst)
+            print(f"  downloaded {name}")
+        except Exception as e:
+            print(f"  WARN: could not download {name}: {e}", file=sys.stderr)
+
     # extras.css
     (assets / "extras.css").write_text(EXTRAS_CSS)
     # app.js
@@ -2070,6 +2098,126 @@ document.addEventListener('DOMContentLoaded', function() {
 # --------------------------------------------------------------------------- #
 
 
+def build_profile_page(username: str) -> None:
+    """Build a user profile page (e.g. /maternion) mirroring ollama.com layout."""
+    profile_path = HERE / "scraper" / f"profile_{username}.json"
+    if not profile_path.exists():
+        print(f"  profile {username}: no data, skipping")
+        return
+
+    profile = json.loads(profile_path.read_text())
+    bio = esc(profile.get("bio", ""))
+    links = profile.get("links", [])
+    model_paths = profile.get("models", [])
+
+    # Model data: use profile's embedded card data, fall back to models.json
+    all_models = load_models()
+    models_by_path = {m["path"]: m for m in all_models}
+    profile_models = []
+    for m in model_paths:
+        if isinstance(m, dict):
+            profile_models.append(m)
+        elif isinstance(m, str) and m in models_by_path:
+            profile_models.append(models_by_path[m])
+
+    # Build model cards (reuse render_card)
+    ranks = load_ranks()
+    cards_html = ""
+    for m in profile_models:
+        tags = load_tags(m["path"])
+        cards_html += render_card(m, tags, ranks)
+
+    if not cards_html:
+        cards_html = '<p class="text-neutral-500 dark:text-neutral-400 py-8">No models found.</p>'
+
+    # Links HTML
+    links_html = ""
+    for link in links:
+        link_url = esc(link["url"])
+        label = esc(link["label"])
+        links_html += f"""              <span class="inline-flex gap-x-2 items-center">
+                <div class="inline-flex items-center space-x-1">
+                  <div class="inline-flex items-center space-x-1">
+                    <img src="{url("/assets/social/default.svg")}" class="w-4 h-4" alt="default icon" onload="setDisplayIcon(this, '{link_url}'); this.onload=null" />
+                    <a href="//{link_url}" target="_blank" class="hover:underline text-sm text-neutral-700 dark:text-neutral-300">
+                      {label}
+                    </a>
+                  </div>
+                </div>
+              </span>
+"""
+
+    page = f"""<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+{head_html(username, bio)}
+    <script>
+      function getIcon(url) {{
+        url = url.toLowerCase();
+        if (url.includes('x.com') || url.includes('twitter.com')) return 'x';
+        if (url.includes('github.com')) return 'github';
+        if (url.includes('linkedin.com')) return 'linkedin';
+        if (url.includes('youtube.com')) return 'youtube';
+        if (url.includes('hf.co') || url.includes('huggingface.co') || url.includes('huggingface.com')) return 'hugging-face';
+        return 'default';
+      }}
+      function setDisplayIcon(imgElement, url) {{
+        var icon = getIcon(url);
+        imgElement.src = '{url("/assets/social/")}' + icon + '.svg';
+        imgElement.alt = icon + ' icon';
+      }}
+    </script>
+</head>
+<body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
+{theme_script_head()}
+{nav_html("")}
+
+<main class="mx-auto flex w-full max-w-2xl flex-col px-6 py-5 md:py-12 lg:px-8">
+  <div class="grid grid-cols-4 gap-4 md:gap-0">
+    <div class="col-span-1">
+      <div class="flex w-20 flex-col items-center md:w-28">
+        <div class="group relative h-20 w-20 overflow-hidden rounded-full md:h-28 md:w-28">
+          <img src="{url("/assets/maternion-profile.png")}" alt="profile" class="absolute inset-0 h-full w-full border border-neutral-300 object-cover rounded-full" />
+        </div>
+      </div>
+    </div>
+    <div class="col-span-3">
+      <div class="flex flex-grow flex-col">
+        <div class="flex flex-row items-center justify-between">
+          <span class="text-[28px] font-medium tracking-tight">{esc(username)}</span>
+        </div>
+        <div class="space-y-1">
+          <div class="my-2">
+            <h2 class="break-words sm:max-w-lg">
+              <span>{bio}</span>
+            </h2>
+          </div>
+          <div class="flex flex-col space-y-0.5 w-fit">
+{links_html}          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <ul role="list" class="grid grid-cols-1 gap-y-3">
+{cards_html}
+    </ul>
+  </div>
+</main>
+
+{footer_html()}
+{theme_script()}
+<script src="{url("/assets/app.js")}"></script>
+</body>
+</html>"""
+
+    out_dir = PUBLIC / username
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / "index.html").write_text(page)
+    print(f"  profile {username}: {len(profile_models)} models")
+
+
 def main() -> int:
     global BASE
     if "--base" in sys.argv:
@@ -2100,6 +2248,10 @@ def main() -> int:
         f'<body>Redirecting to <a href="{root_url}">search</a>...</body>\n'
         "</html>\n"
     )
+
+    # profile pages (e.g. /maternion)
+    print("building profile pages ...")
+    build_profile_page("maternion")
 
     # model detail + tags + per-tag pages
     print("building model detail + tags + tag pages ...")
