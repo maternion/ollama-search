@@ -1,48 +1,47 @@
 {
-  "path": "/maternion/AgentCPM-Explore",
-  "name": "AgentCPM-Explore",
-  "scraped_at": "2026-07-14T15:18:20.112709+00:00",
-  "readme_html": "\n        \n          <p><a href=\"https://huggingface.co/openbmb/AgentCPM-Explore\" rel=\"nofollow\">https://huggingface.co/openbmb/AgentCPM-Explore</a></p>\n\n<h2>Latest News</h2>\n\n<ul>\n<li>[2026-01-12]\ud83d\ude80\ud83d\ude80\ud83d\ude80 We have open-sourced <strong>AgentCPM-Explore</strong>, an agent foundation model with only <strong>4B parameters</strong>, together with its <strong>entire training and inference infrastructure</strong>. AgentCPM-Explore has successfully entered <strong>8 classic long-horizon agent benchmarks</strong>, including <strong>GAIA,HLE, and BrowserComp</strong>. AgentCPM-Explore achieves <strong>SOTA performance at the same parameter scale</strong> and demonstrates its <strong>accurate deep research capabilities</strong>, effectively breaking the performance bottleneck for <strong>on-device agents</strong>.</li>\n</ul>\n\n<h2>Overview</h2>\n\n<p>Key highlights of AgentCPM-Explore include:</p>\n\n<ul>\n<li><p>The <strong>first full-parameter 4B agent model</strong> to rank on <strong>8 long-horizon and complex agent benchmarks</strong>, including <strong>GAIA, HLE, and BrowserComp</strong>, in the on-device setting.</p></li>\n\n<li><p>Capable of <strong>over 100 rounds of continuous environment interaction</strong>, supporting <strong>multi-source information cross-validation</strong>, <strong>dynamic search strategy adjustment</strong>, and <strong>real-time verification of up-to-date information</strong>, enabling sustained deep exploration until task completion.</p></li>\n\n<li><p><strong>Fully open-sourced end-to-end</strong>, including (1) <strong>AgentRL</strong>, a fully asynchronous reinforcement learning framework for agent training, (2) <strong>AgentDock</strong>, a unified management and scheduling platform for tool sandboxes, (3) <strong>AgentToLeaP</strong>, a one-click evaluation platform for agent tool-learning capabilities. These components collectively support <strong>community collaboration and custom extensibility</strong>.</p></li>\n</ul>\n\n<p>We elaborate on the entire construction pipeline of AgentCPM-Explore on <a href=\"https://github.com/OpenBMB/AgentCPM\" rel=\"nofollow\">GitHub</a>.</p>\n\n<h2>Experimental Results</h2>\n\n<p><table>\n  <thead>\n    <tr>\n      <th>Model</th>\n      <th>GAIA (text-only)</th>\n      <th>BrowseComp</th>\n      <th>BrowseComp (ZH)</th>\n      <th>HLE</th>\n      <th>Frames</th>\n      <th>WebWalker</th>\n      <th>Seal-0</th>\n      <th>Xbench-DeepSearch</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td colspan=\"9\"><strong>Closed-Source Models</strong></td>\n    </tr>\n    <tr>\n      <td>Claude-4.5-sonnet</td>\n      <td>71.2%</td>\n      <td>19.6%</td>\n      <td>40.8%</td>\n      <td>24.5%</td>\n      <td>85.0%</td>\n      <td>/</td>\n      <td>53.4%</td>\n      <td>66.0%</td>\n    </tr>\n    <tr>\n      <td>Gemini Deep Research</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>26.9%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n    </tr>\n    <tr>\n      <td>DeepSeek-V3.2</td>\n      <td>63.5%</td>\n      <td>67.6%</td>\n      <td>65.0%</td>\n      <td>40.8%</td>\n      <td>80.2%</td>\n      <td>/</td>\n      <td>38.5%</td>\n      <td>71.0%</td>\n    </tr>\n    <tr>\n      <td>MiniMax-M2</td>\n      <td>75.7%</td>\n      <td>44.0%</td>\n      <td>48.5%</td>\n      <td>31.8%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>72.0%</td>\n    </tr>\n    <tr>\n      <td>OpenAI-GPT-5-high</td>\n      <td>76.4%</td>\n      <td>54.9%</td>\n      <td>65.0%</td>\n      <td>35.2%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>51.4%</td>\n      <td>77.8%</td>\n    </tr>\n    <tr>\n      <td>GLM-4.6</td>\n      <td>71.9%</td>\n      <td>45.1%</td>\n      <td>49.5%</td>\n      <td>30.4%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>70.0%</td>\n    </tr>\n    <tr>\n      <td>Kimi-Researcher</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>26.9%</td>\n      <td>78.8%</td>\n      <td>/</td>\n      <td>36.0%</td>\n      <td>69.0%</td>\n    </tr>\n    <tr>\n      <td>Seed-1.8</td>\n      <td>87.4%</td>\n      <td>67.6%</td>\n      <td>81.3%</td>\n      <td>40.9%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n    </tr>\n    <tr>\n      <td colspan=\"9\"><strong>Open-Source Models</strong></td>\n    </tr>\n    <tr>\n      <td>MiroThinker 8B</td>\n      <td>66.4%</td>\n      <td>31.1%</td>\n      <td>40.2%</td>\n      <td>21.5%</td>\n      <td>80.6%</td>\n      <td>60.6%</td>\n      <td>40.4%</td>\n      <td>60.6%</td>\n    </tr>\n    <tr>\n      <td>Tongyi DeepResearch 30B</td>\n      <td>70.9%</td>\n      <td>43.4%</td>\n      <td>46.7%</td>\n      <td>32.9%</td>\n      <td>90.6%</td>\n      <td>72.2%</td>\n      <td>/</td>\n      <td>75.0%</td>\n    </tr>\n    <tr>\n      <td>ASearcher QWQ 32B v2</td>\n      <td>58.7%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>74.5%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>51.1%</td>\n    </tr>\n    <tr>\n      <td>iterresearch-30B-A3B</td>\n      <td>72.8%</td>\n      <td>37.3%</td>\n      <td>45.2%</td>\n      <td>28.8%</td>\n      <td>71.0%</td>\n      <td>/</td>\n      <td>39.6%</td>\n      <td>/</td>\n    </tr>\n    <tr>\n      <td>WebSailor-V2-30B-A3B (RL)</td>\n      <td>74.1%</td>\n      <td>35.3%</td>\n      <td>44.1%</td>\n      <td>30.6%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>73.7%</td>\n    </tr>\n    <tr>\n      <td>WebLeaper-30B-A3B-RUC</td>\n      <td>73.2%</td>\n      <td>38.8%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>48.6%</td>\n      <td>72.0%</td>\n    </tr>\n    <tr>\n      <td>WebDancer (QWQ-32B)</td>\n      <td>51.5%</td>\n      <td>3.8%</td>\n      <td>18.0%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>47.9%</td>\n      <td>/</td>\n      <td>38.3%</td>\n    </tr>\n    <tr>\n      <td> <strong>AgentCPM-Explore 4B</strong></td>\n      <td>63.9%</td>\n      <td>25.0%</td>\n      <td>29.0%</td>\n      <td>19.1%</td>\n      <td>82.7%</td>\n      <td>68.1%</td>\n      <td>40.0%</td>\n      <td>70.0%</td>\n    </tr>\n  </tbody>\n</table></p>\n\n        \n      ",
-  "manifest_updated": "",
-  "manifest_digest": "",
-  "manifest_size": "",
-  "files": [],
-  "cloud_usage_level": "",
-  "cloud_usage_active_slots": 0,
+  "applications": [
+    {
+      "command": "ollama launch claude --model maternion/AgentCPM-Explore:4b",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model maternion/AgentCPM-Explore:4b",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model maternion/AgentCPM-Explore:4b",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model maternion/AgentCPM-Explore:4b",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model maternion/AgentCPM-Explore:4b",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model maternion/AgentCPM-Explore:4b",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
   "cloud_context": "",
   "cloud_context_unit": "",
   "cloud_size": "",
   "cloud_size_unit": "",
-  "applications": [
-    {
-      "name": "Claude Code",
-      "icon_url": "/public/claude.png",
-      "command": "ollama launch claude --model maternion/AgentCPM-Explore:4b"
-    },
-    {
-      "name": "Codex App",
-      "icon_url": "/public/codex-app.png",
-      "command": "ollama launch codex-app --model maternion/AgentCPM-Explore:4b"
-    },
-    {
-      "name": "OpenClaw",
-      "icon_url": "/public/openclaw.png",
-      "command": "ollama launch openclaw --model maternion/AgentCPM-Explore:4b"
-    },
-    {
-      "name": "Hermes Agent",
-      "icon_url": "/public/hermes.png",
-      "command": "ollama launch hermes --model maternion/AgentCPM-Explore:4b"
-    },
-    {
-      "name": "Codex",
-      "icon_url": "/public/openai.png",
-      "command": "ollama launch codex --model maternion/AgentCPM-Explore:4b"
-    },
-    {
-      "name": "OpenCode",
-      "icon_url": "/public/opencode.png",
-      "command": "ollama launch opencode --model maternion/AgentCPM-Explore:4b"
-    }
-  ]
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "AgentCPM-Explore",
+  "path": "/maternion/AgentCPM-Explore",
+  "readme_html": "\n        \n          <p><a href=\"https://huggingface.co/openbmb/AgentCPM-Explore\" rel=\"nofollow\">https://huggingface.co/openbmb/AgentCPM-Explore</a></p>\n\n<h2>Latest News</h2>\n\n<ul>\n<li>[2026-01-12]🚀🚀🚀 We have open-sourced <strong>AgentCPM-Explore</strong>, an agent foundation model with only <strong>4B parameters</strong>, together with its <strong>entire training and inference infrastructure</strong>. AgentCPM-Explore has successfully entered <strong>8 classic long-horizon agent benchmarks</strong>, including <strong>GAIA,HLE, and BrowserComp</strong>. AgentCPM-Explore achieves <strong>SOTA performance at the same parameter scale</strong> and demonstrates its <strong>accurate deep research capabilities</strong>, effectively breaking the performance bottleneck for <strong>on-device agents</strong>.</li>\n</ul>\n\n<h2>Overview</h2>\n\n<p>Key highlights of AgentCPM-Explore include:</p>\n\n<ul>\n<li><p>The <strong>first full-parameter 4B agent model</strong> to rank on <strong>8 long-horizon and complex agent benchmarks</strong>, including <strong>GAIA, HLE, and BrowserComp</strong>, in the on-device setting.</p></li>\n\n<li><p>Capable of <strong>over 100 rounds of continuous environment interaction</strong>, supporting <strong>multi-source information cross-validation</strong>, <strong>dynamic search strategy adjustment</strong>, and <strong>real-time verification of up-to-date information</strong>, enabling sustained deep exploration until task completion.</p></li>\n\n<li><p><strong>Fully open-sourced end-to-end</strong>, including (1) <strong>AgentRL</strong>, a fully asynchronous reinforcement learning framework for agent training, (2) <strong>AgentDock</strong>, a unified management and scheduling platform for tool sandboxes, (3) <strong>AgentToLeaP</strong>, a one-click evaluation platform for agent tool-learning capabilities. These components collectively support <strong>community collaboration and custom extensibility</strong>.</p></li>\n</ul>\n\n<p>We elaborate on the entire construction pipeline of AgentCPM-Explore on <a href=\"https://github.com/OpenBMB/AgentCPM\" rel=\"nofollow\">GitHub</a>.</p>\n\n<h2>Experimental Results</h2>\n\n<p><table>\n  <thead>\n    <tr>\n      <th>Model</th>\n      <th>GAIA (text-only)</th>\n      <th>BrowseComp</th>\n      <th>BrowseComp (ZH)</th>\n      <th>HLE</th>\n      <th>Frames</th>\n      <th>WebWalker</th>\n      <th>Seal-0</th>\n      <th>Xbench-DeepSearch</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td colspan=\"9\"><strong>Closed-Source Models</strong></td>\n    </tr>\n    <tr>\n      <td>Claude-4.5-sonnet</td>\n      <td>71.2%</td>\n      <td>19.6%</td>\n      <td>40.8%</td>\n      <td>24.5%</td>\n      <td>85.0%</td>\n      <td>/</td>\n      <td>53.4%</td>\n      <td>66.0%</td>\n    </tr>\n    <tr>\n      <td>Gemini Deep Research</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>26.9%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n    </tr>\n    <tr>\n      <td>DeepSeek-V3.2</td>\n      <td>63.5%</td>\n      <td>67.6%</td>\n      <td>65.0%</td>\n      <td>40.8%</td>\n      <td>80.2%</td>\n      <td>/</td>\n      <td>38.5%</td>\n      <td>71.0%</td>\n    </tr>\n    <tr>\n      <td>MiniMax-M2</td>\n      <td>75.7%</td>\n      <td>44.0%</td>\n      <td>48.5%</td>\n      <td>31.8%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>72.0%</td>\n    </tr>\n    <tr>\n      <td>OpenAI-GPT-5-high</td>\n      <td>76.4%</td>\n      <td>54.9%</td>\n      <td>65.0%</td>\n      <td>35.2%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>51.4%</td>\n      <td>77.8%</td>\n    </tr>\n    <tr>\n      <td>GLM-4.6</td>\n      <td>71.9%</td>\n      <td>45.1%</td>\n      <td>49.5%</td>\n      <td>30.4%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>70.0%</td>\n    </tr>\n    <tr>\n      <td>Kimi-Researcher</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>26.9%</td>\n      <td>78.8%</td>\n      <td>/</td>\n      <td>36.0%</td>\n      <td>69.0%</td>\n    </tr>\n    <tr>\n      <td>Seed-1.8</td>\n      <td>87.4%</td>\n      <td>67.6%</td>\n      <td>81.3%</td>\n      <td>40.9%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n    </tr>\n    <tr>\n      <td colspan=\"9\"><strong>Open-Source Models</strong></td>\n    </tr>\n    <tr>\n      <td>MiroThinker 8B</td>\n      <td>66.4%</td>\n      <td>31.1%</td>\n      <td>40.2%</td>\n      <td>21.5%</td>\n      <td>80.6%</td>\n      <td>60.6%</td>\n      <td>40.4%</td>\n      <td>60.6%</td>\n    </tr>\n    <tr>\n      <td>Tongyi DeepResearch 30B</td>\n      <td>70.9%</td>\n      <td>43.4%</td>\n      <td>46.7%</td>\n      <td>32.9%</td>\n      <td>90.6%</td>\n      <td>72.2%</td>\n      <td>/</td>\n      <td>75.0%</td>\n    </tr>\n    <tr>\n      <td>ASearcher QWQ 32B v2</td>\n      <td>58.7%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>74.5%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>51.1%</td>\n    </tr>\n    <tr>\n      <td>iterresearch-30B-A3B</td>\n      <td>72.8%</td>\n      <td>37.3%</td>\n      <td>45.2%</td>\n      <td>28.8%</td>\n      <td>71.0%</td>\n      <td>/</td>\n      <td>39.6%</td>\n      <td>/</td>\n    </tr>\n    <tr>\n      <td>WebSailor-V2-30B-A3B (RL)</td>\n      <td>74.1%</td>\n      <td>35.3%</td>\n      <td>44.1%</td>\n      <td>30.6%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>73.7%</td>\n    </tr>\n    <tr>\n      <td>WebLeaper-30B-A3B-RUC</td>\n      <td>73.2%</td>\n      <td>38.8%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>/</td>\n      <td>48.6%</td>\n      <td>72.0%</td>\n    </tr>\n    <tr>\n      <td>WebDancer (QWQ-32B)</td>\n      <td>51.5%</td>\n      <td>3.8%</td>\n      <td>18.0%</td>\n      <td>/</td>\n      <td>/</td>\n      <td>47.9%</td>\n      <td>/</td>\n      <td>38.3%</td>\n    </tr>\n    <tr>\n      <td> <strong>AgentCPM-Explore 4B</strong></td>\n      <td>63.9%</td>\n      <td>25.0%</td>\n      <td>29.0%</td>\n      <td>19.1%</td>\n      <td>82.7%</td>\n      <td>68.1%</td>\n      <td>40.0%</td>\n      <td>70.0%</td>\n    </tr>\n  </tbody>\n</table></p>\n\n        \n      "
 }
