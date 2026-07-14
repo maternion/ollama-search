@@ -251,6 +251,7 @@ def head_html(title: str, description: str, extra_css: bool = False) -> str:
     <link rel="apple-touch-icon" sizes="180x" href="{url("/assets/apple-touch-icon.png")}" />
     <link rel="icon" type="image/png" sizes="192x192" href="{url("/assets/android-chrome-icon-192x192.png")}" />
     <link rel="icon" type="image/png" sizes="512x512" href="{url("/assets/android-chrome-icon-512x512.png")}" />
+    {theme_script_head()}
     <link href="{url("/assets/tailwind.css")}" rel="stylesheet" />
     <link href="{url("/assets/prism.css")}" rel="stylesheet" />
     <link href="{url("/assets/extras.css")}" rel="stylesheet" />
@@ -262,7 +263,7 @@ def head_html(title: str, description: str, extra_css: bool = False) -> str:
         "url": "https://ollama.com"
       }}
     </script>
-    <script src="{url("/assets/htmx.bundle.js")}"></script>"""
+    <script defer src="{url("/assets/htmx.bundle.js")}"></script>"""
 
 
 def nav_html(active: str = "") -> str:
@@ -331,16 +332,25 @@ def footer_html() -> str:
 </footer>"""
 
 
-def theme_script() -> str:
+def theme_script_head() -> str:
+    """Inline script for <head> — sets dark class BEFORE CSS loads to prevent FOUC."""
     return """<script>
 (function() {
-  const stored = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var stored = localStorage.getItem('theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   if (stored === 'dark' || (!stored && prefersDark)) {
     document.documentElement.classList.add('dark');
   }
+})();
+</script>"""
+
+
+def theme_script() -> str:
+    """Toggle handler — placed at end of body (only needs DOMContentLoaded)."""
+    return """<script>
+(function() {
   function toggle() {
-    const isDark = document.documentElement.classList.toggle('dark');
+    var isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }
   document.addEventListener('DOMContentLoaded', function() {
@@ -465,7 +475,11 @@ def render_card(
 
 
 def build_index(models: list[dict], ranks: dict) -> None:
-    cards = "\n".join(render_card(m, load_tags(m["path"]), ranks) for m in models)
+    sorted_models = sorted(
+        models,
+        key=lambda m: ranks.get(m["name"], {}).get("popular_rank", 9999),
+    )
+    cards = "\n".join(render_card(m, load_tags(m["path"]), ranks) for m in sorted_models)
 
     # Capability filter chips (Embedding/Vision/Tools/Thinking — no Cloud, it's a dropdown)
     chip_labels = ["Embedding", "Vision", "Tools", "Thinking"]
