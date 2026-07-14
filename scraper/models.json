@@ -12270,7 +12270,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "DeepSeek-V3.2, a model that harmonizes high computational efficiency with superior reasoning and agent performance.",
       "name": "deepseek-v3.2",
       "official": true,
@@ -12303,7 +12303,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "DeepSeek-V4-Flash is a preview of the DeepSeek-V4 series, a Mixture-of-Experts model with 284B total parameters and 13B activated, built for efficient reasoning across a 1M-token context window.",
       "name": "deepseek-v4-flash",
       "official": true,
@@ -12336,7 +12336,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "DeepSeek-V4-Pro is a frontier Mixture-of-Experts model with a large context window and three reasoning modes.",
       "name": "deepseek-v4-pro",
       "official": true,
@@ -18463,7 +18463,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "Gemini 3 Flash offers frontier intelligence built for speed at a fraction of the cost.",
       "name": "gemini-3-flash-preview",
       "official": true,
@@ -22023,7 +22023,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "Advancing the Coding Capability",
       "name": "glm-4.7",
       "official": true,
@@ -22125,7 +22125,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "A strong reasoning and agentic model from Z.ai with 744B total parameters (40B active), built for complex systems engineering and long-horizon tasks.",
       "name": "glm-5",
       "official": true,
@@ -22158,7 +22158,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "GLM-5.1 is our next-generation flagship model for agentic engineering, with significantly stronger coding capabilities than its predecessor. It achieves state-of-the-art performance on SWE-Bench Pro and leads GLM-5 by a wide margin.",
       "name": "glm-5.1",
       "official": true,
@@ -22191,7 +22191,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "GLM-5.2 is Z.ai’s flagship model for the era of long-horizon tasks.",
       "name": "glm-5.2",
       "official": true,
@@ -29843,7 +29843,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "Kimi K2.5 is an open-source, native multimodal agentic model that seamlessly integrates vision and language understanding with advanced agentic capabilities, instant and thinking modes, as well as conversational and agentic paradigms.",
       "name": "kimi-k2.5",
       "official": true,
@@ -29877,7 +29877,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "Kimi K2.6 is an open-source, native multimodal agentic model that advances practical capabilities in long-horizon coding, coding-driven design, proactive autonomous execution, and swarm-based task orchestration.",
       "name": "kimi-k2.6",
       "official": true,
@@ -29911,7 +29911,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "Kimi K2.7 Code is Moonshot AI's coding-focused agentic model built upon Kimi K2.6, with substantial improvements on real-world long-horizon coding tasks and roughly 30% lower thinking-token usage.",
       "name": "kimi-k2.7-code",
       "official": true,
@@ -41372,7 +41372,7 @@
         "tools"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "Exceptional multilingual capabilities to elevate code engineering",
       "name": "minimax-m2.1",
       "official": true,
@@ -41405,7 +41405,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "MiniMax-M2.5 is a state-of-the-art large language model designed for real-world productivity and coding tasks.",
       "name": "minimax-m2.5",
       "official": true,
@@ -41438,7 +41438,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "MiniMax's M2-series model for coding, agentic workflows, and professional productivity.",
       "name": "minimax-m2.7",
       "official": true,
@@ -41472,7 +41472,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "MiniMax M3: Coding & Agentic Frontier. 1M context window. Native Multimodality.",
       "name": "minimax-m3",
       "official": true,
@@ -43158,7 +43158,7 @@
         "tools"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "A general-purpose multimodal mixture-of-experts model for production-grade tasks and enterprise workloads.",
       "name": "mistral-large-3",
       "official": true,
@@ -46026,7 +46026,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "NVIDIA Nemotron 3 Ultra is built for high-throughput reasoning and long-running agent workflows.",
       "name": "nemotron-3-ultra",
       "official": true,
