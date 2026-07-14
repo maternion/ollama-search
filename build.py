@@ -2249,15 +2249,27 @@ def main() -> int:
         "</html>\n"
     )
 
-    # profile pages (e.g. /maternion)
+    # profile pages (e.g. /maternion) + profile model detail pages
     print("building profile pages ...")
     build_profile_page("maternion")
 
+    # Load profile models and add them to the build list
+    import json as _json
+    _all_models = list(models)
+    for _username in ["maternion"]:
+        _pf = HERE / "scraper" / f"profile_{_username}.json"
+        if _pf.exists():
+            _pdata = _json.loads(_pf.read_text())
+            _existing_paths = {m["path"] for m in _all_models}
+            for _m in _pdata.get("models", []):
+                if isinstance(_m, dict) and _m["path"] not in _existing_paths:
+                    _all_models.append(_m)
+
     # model detail + tags + per-tag pages
-    print("building model detail + tags + tag pages ...")
+    print(f"building model detail + tags + tag pages ({len(_all_models)} models) ...")
     tag_pages_built = 0
     blob_pages_built = 0
-    for i, m in enumerate(models, 1):
+    for i, m in enumerate(_all_models, 1):
         tags = load_tags(m["path"])
         build_detail(m, tags)
         build_tags_page(m, tags)
@@ -2274,9 +2286,9 @@ def main() -> int:
                             build_blob_page(bp)
                             blob_pages_built += 1
         if i % 50 == 0:
-            print(f"  {i}/{len(models)}")
+            print(f"  {i}/{len(_all_models)}")
     print(
-        f"built {len(models)} model pages + tags pages + {tag_pages_built} tag pages + {blob_pages_built} blob pages"
+        f"built {len(_all_models)} model pages + tags pages + {tag_pages_built} tag pages + {blob_pages_built} blob pages"
     )
 
     # write the catalog JSON for client-side use
