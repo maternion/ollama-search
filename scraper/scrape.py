@@ -2793,17 +2793,36 @@ def main(argv: list[str] | None = None) -> int:
                 tags_to_fetch = list(m.tags)
                 if not tags_to_fetch:
                     continue
-                # Smart mode: if the tag sweep reported a fingerprint change for
-                # this model, prune any cached tag-page files whose tag is no
-                # longer present (retired/removed tags). Without this, retired
-                # tags would leave stale tag-page JSON that no longer matches
-                # any real tag on ollama.com.
+                # Smart mode: if the tag sweep reported a fingerprint change
+                # for this model, prune any cached tag-page files whose tag
+                # is no longer present (retired/removed tags). Without this,
+                # retired tags would leave stale tag-page JSON that no longer
+                # matches any real tag on ollama.com.
+                #
+                # IMPORTANT: only RETIRED tags may be pruned. A fingerprint
+                # change is often just a usage_level bump on one cloud tag
+                # (medium -> low); the other tags' weights are untouched, so
+                # their cached tag pages must be preserved for the tier-2
+                # manifest-digest check below. Deleting them here would force
+                # a full re-scrape of every tag for the model.
+                #
+                # The on-disk tag_page filenames are the record of what we had
+                # cached last run (the per-model tags/<slug>.json has already
+                # been overwritten with the fresh tags at this point, so it
+                # cannot tell us what was retired). We delete a page only when
+                # its tag name is absent from the fresh tag set.
                 if args.smart and m.path in tags_changed:
                     current_names = {t.name for t in tags_to_fetch}
                     slug = slugify(m.path)
                     for stale in TAG_PAGES_DIR.glob(f"{slug}__*.json"):
                         # filename pattern: <slug>__<tagname>.json
-                        stale_tag = stale.stem.split("__", 1)[-1]
+                        # Use rsplit: the slug itself contains "__" (it is
+                        # built from the model path by replacing "/" with
+                        # "__"), so a left split would keep the path fragment
+                        # glued to the tag name (e.g. "llama3.1__latest"),
+                        # which never matches current_names and would delete
+                        # EVERY tag page for the model.
+                        stale_tag = stale.stem.rsplit("__", 1)[-1]
                         if stale_tag not in current_names:
                             try:
                                 stale.unlink()
@@ -2832,7 +2851,14 @@ def main(argv: list[str] | None = None) -> int:
                             and m.path not in tags_changed
                         ):
                             continue
-                    # Smart mode: tier 2 — skip if this tag's digest unchanged.
+                    # Smart mode: tier 2 — skip if this tag's manifest digest
+                    # is unchanged. This is the per-tag gate that applies to
+                    # ALL models, including those in `tags_changed`. A
+                    # fingerprint change often only bumps one cloud tag's
+                    # usage_level (medium -> low); the manifest digest of that
+                    # tag (and every other tag) is unaffected, so we must NOT
+                    # re-scrape them. Only re-scrape when the tag is new (no
+                    # cached page) or its digest actually differs.
                     if args.smart and tf.exists():
                         try:
                             existing_tp = json.loads(tf.read_text())
