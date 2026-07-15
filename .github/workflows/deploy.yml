@@ -106,13 +106,15 @@ jobs:
           git worktree prune 2>/dev/null || true
           rm -rf /tmp/gh-pages
           git worktree add --orphan -b gh-pages-deploy /tmp/gh-pages 2>/dev/null || true
+          rsync -a --delete "$GITHUB_WORKSPACE/public/" /tmp/gh-pages/
           cd /tmp/gh-pages
-          rsync -a --delete "$GITHUB_WORKSPACE/public/" .
           git add -A
           echo "Files staged: $(git status --porcelain | wc -l)"
           git commit -m "deploy cycle 1 $(date -u '+%Y-%m-%d %H:%M:%S UTC') [skip ci]" || true
           git push origin gh-pages-deploy:gh-pages --force || true
           cd "$GITHUB_WORKSPACE"
+          git worktree remove /tmp/gh-pages 2>/dev/null || true
+          git branch -D gh-pages-deploy 2>/dev/null || true
 
       # ── Self-check: validate data integrity (soft, non-blocking) ──
       - name: Self-check (data integrity)
