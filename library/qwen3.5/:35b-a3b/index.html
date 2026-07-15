@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <title>qwen3.5:35b-a3b</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="qwen3.5:35b-a3b — Qwen 3.5 is a family of open-source multimodal models that delivers exceptional utility and performance."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="qwen3.5:35b-a3b" />
+    <meta property="og:description" content="qwen3.5:35b-a3b — Qwen 3.5 is a family of open-source multimodal models that delivers exceptional utility and performance." />
+    <meta property="og:image" content="https://ollama.com/public/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content="qwen3.5:35b-a3b" />
+    <meta property="twitter:description" content="qwen3.5:35b-a3b — Qwen 3.5 is a family of open-source multimodal models that delivers exceptional utility and performance." />
+    <meta property="twitter:site" content="ollama" />
+    <meta property="twitter:image:src" content="https://ollama.com/public/og-twitter.png" />
+    <meta property="twitter:image:width" content="1200" />
+    <meta property="twitter:image:height" content="628" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ollama-search/assets/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/ollama-search/assets/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/ollama-search/assets/icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/ollama-search/assets/icon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x" href="/ollama-search/assets/apple-touch-icon.png" />
+
+    <script>
+(function() {
+  var stored = localStorage.getItem('theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (stored === 'dark' || (!stored && prefersDark)) {
+    document.documentElement.classList.add('dark');
+  }
+})();
+</script>
+    <link href="/ollama-search/assets/tailwind.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/prism.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/extras.css" rel="stylesheet" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Ollama",
+        "url": "https://ollama.com"
+      }
+    </script>
+    <script defer src="/ollama-search/assets/htmx.bundle.js"></script>
+</head>
+<body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
+<header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
+  <nav class="flex w-full items-center justify-between px-6 py-[9px]">
+    <a href="/ollama-search/" class="z-50">
+      <img src="/ollama-search/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
+    </a>
+    <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/pricing">Pricing</a>
+    </div>
+    <div class="flex-grow justify-center items-center hidden lg:flex">
+      <div class="relative w-full xl:max-w-[28rem]">
+        <form action="/ollama-search/" autocomplete="off" id="nav-search-form">
+          <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full" hx-on:focusout="var rt=event.relatedTarget;if(rt&&(this.contains(rt)||document.getElementById('searchpreview').contains(rt)))return;var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');">
+            <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();var v=this.value.trim();window.location.href=v?'/ollama-search/?q='+encodeURIComponent(v):'/ollama-search/';return;}if(event.key==='Escape'){event.preventDefault();this.value='';this.blur();var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');return;}if(event.key==='Tab'){var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');return;}if(event.key==='ArrowDown'){var first=document.querySelector('#search-preview-list a:first-of-type');if(first)first.focus();event.preventDefault();}if(event.key==='ArrowUp'){var last=document.getElementById('view-all-link');if(last)last.focus();event.preventDefault();}var sp=document.getElementById('searchpreview');if(sp)sp.classList.remove('hidden');" hx-on:focus="var sp=document.getElementById('searchpreview');if(sp&&this.value.trim())sp.classList.remove('hidden');" />
+          </div>
+        </form>
+        <div id="searchpreview" class="hidden absolute left-0 right-0 top-12 z-50" style="width: calc(100% + 2px); margin-left: -1px;"></div>
+      </div>
+    </div>
+    <div class="hidden lg:flex xl:flex-1 items-center space-x-2 justify-end ml-6 xl:ml-0">
+      <button id="theme-toggle" class="flex cursor-pointer items-center rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 text-lg px-3 py-1.5 text-black dark:text-neutral-200 whitespace-nowrap" title="Toggle dark mode">
+        <span class="dark:hidden"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></span>
+        <span class="hidden dark:block"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25M18.364 17.614l-1.591-1.591M12 18.75V21M5.636 17.614l1.591-1.591M3 12h2.25M5.636 6.386l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg></span>
+      </button>
+      <a class="flex cursor-pointer items-center rounded-full bg-neutral-800 dark:bg-neutral-100 text-lg px-4 py-1.5 text-white dark:text-neutral-900 hover:bg-black dark:hover:bg-white whitespace-nowrap focus:bg-black dark:focus:bg-white" href="/ollama-search/download">Download</a>
+    </div>
+    <div class="lg:hidden flex items-center">
+      <button id="theme-toggle-mobile" class="flex items-center rounded-full bg-black/5 dark:bg-white/10 px-3 py-1.5 mr-2 text-black dark:text-neutral-200">
+        <span class="dark:hidden"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></span>
+        <span class="hidden dark:block"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25M18.364 17.614l-1.591-1.591M12 18.75V21M5.636 17.614l1.591-1.591M3 12h2.25M5.636 6.386l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main class="relative mx-auto flex w-full max-w-[52rem] flex-col px-6 py-10 md:py-24 lg:px-8">
+  <a href="/ollama-search/library/qwen3.5/tags/" class="text-sm text-neutral-500 dark:text-neutral-400 hover:underline absolute top-4 left-6 z-10" onclick="if(document.referrer&amp;&amp;document.referrer.includes(location.host)){history.back();return false;}">&larr; Back to tags</a>
+  <div class="flex flex-col space-y-3">
+    <div class="flex items-center min-w-0">
+      <div class="flex items-center min-w-0 space-x-2">
+        <div class="flex items-center min-w-0">
+          <span class="text-xl tracking-tight sm:text-[28px] min-w-0 truncate font-medium leading-normal text-black dark:text-neutral-100 decoration-2">
+            <a x-test-model-name href="/ollama-search/library/qwen3.5" title="qwen3.5" class="underline-offset-[5px] hover:underline">qwen3.5</a>:35b-a3b
+           </span>
+         </div>
+       </div>
+     </div>
+    <div class="flex flex-col space-y-2">
+      <div class="flex flex-col space-y-2">
+        <p class="flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
+          <span class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>
+            <span x-test-pull-count>15.6M</span>
+            <span class="hidden sm:flex">&nbsp;Downloads</span>
+          </span>
+          <span class="flex items-center" title="May 21, 2026 7:08 PM UTC">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>
+            <span class="hidden sm:flex">Updated&nbsp;</span>
+            <span x-test-updated>1 month ago</span>
+          </span>
+        </p>
+      </div>
+      <h2 class="break-words text-neutral-800 dark:text-neutral-300">Qwen 3.5 is a family of open-source multimodal models that delivers exceptional utility and performance.</h2>
+      <div class="flex flex-wrap gap-2">
+        <span x-test-capability class="inline-flex items-center rounded-md bg-indigo-50 dark:bg-indigo-950/50 px-2 py-0.5 text-xs font-medium text-indigo-600 dark:text-indigo-400 sm:text-[13px]">vision</span>
+        <span x-test-capability class="inline-flex items-center rounded-md bg-indigo-50 dark:bg-indigo-950/50 px-2 py-0.5 text-xs font-medium text-indigo-600 dark:text-indigo-400 sm:text-[13px]">tools</span>
+        <span x-test-capability class="inline-flex items-center rounded-md bg-indigo-50 dark:bg-indigo-950/50 px-2 py-0.5 text-xs font-medium text-indigo-600 dark:text-indigo-400 sm:text-[13px]">thinking</span>
+        <span class="inline-flex items-center rounded-md bg-cyan-50 dark:bg-cyan-950/50 px-2 py-0.5 text-xs font-medium text-cyan-500 dark:text-cyan-400 sm:text-[13px]">cloud</span>
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">0.8b</span>
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">2b</span>
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">4b</span>
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">9b</span>
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">27b</span>
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">35b</span>
+        <span x-test-size class="inline-flex items-center rounded-md bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium text-blue-600 dark:text-blue-400 sm:text-[13px]">122b</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="py-8">
+    <section data-usage-section class="mb-8">
+  <div class="relative rounded-lg border border-neutral-200 dark:border-neutral-800 overflow-hidden bg-white dark:bg-neutral-900">
+    <div class="flex items-center justify-between bg-white dark:bg-neutral-900 pt-1 pl-[7px] pr-3">
+      <div class="flex">
+        <button type="button" class="use-tab px-3 py-2 text-xs font-medium text-neutral-900 dark:text-neutral-100 underline decoration-1 underline-offset-[7px]" data-tab="cli" onclick="switchUsageTab(this, 'cli')">CLI</button>
+        <button type="button" class="use-tab px-3 py-2 text-xs text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300" data-tab="api" onclick="switchUsageTab(this, 'api')">cURL</button>
+        <button type="button" class="use-tab px-3 py-2 text-xs text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300" data-tab="python" onclick="switchUsageTab(this, 'python')">Python</button>
+        <button type="button" class="use-tab px-3 py-2 text-xs text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300" data-tab="javascript" onclick="switchUsageTab(this, 'javascript')">JavaScript</button>
+      </div>
+      <a href="https://github.com/ollama/ollama-python" target="_blank" rel="noopener noreferrer" class="use-link hidden py-2 text-xs text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300 inline-flex items-center gap-1" data-link="python"><span class="hidden sm:inline">Documentation</span> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg></a>
+      <a href="https://github.com/ollama/ollama-js" target="_blank" rel="noopener noreferrer" class="use-link hidden py-2 text-xs text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300 inline-flex items-center gap-1" data-link="javascript"><span class="hidden sm:inline">Documentation</span> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg></a>
+    </div>
+    <div class="relative">
+      <div class="absolute bottom-[10.5px] right-[10.5px] flex items-center gap-2 z-10">
+        <button type="button" class="use-copy-btn p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 rounded" onclick="copyUsageCode(this)" title="Copy">
+          <svg class="copy-icon h-[20px] w-[20px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6"></path></svg><svg class="check-icon hidden h-[18px] w-[18px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+        </button>
+      </div>
+      <div class="use-panel p-4 font-mono text-[13px] text-neutral-700 dark:text-neutral-300" data-panel="cli">
+        <pre class="m-0 whitespace-pre-wrap">ollama run qwen3.5:35b-a3b</pre>
+      </div>
+      <div class="use-panel hidden p-4 font-mono text-[13px] text-neutral-700 dark:text-neutral-300" data-panel="api">
+        <pre class="m-0 whitespace-pre-wrap">curl http://localhost:11434/api/chat \
+  -d '{
+    "model": "qwen3.5:35b-a3b",
+    "messages": [{"role": "user", "content": "Hello!"}]
+  }'</pre>
+      </div>
+      <div class="use-panel hidden p-4 font-mono text-[13px] text-neutral-700 dark:text-neutral-300" data-panel="python">
+        <pre class="m-0 whitespace-pre-wrap"><span class="text-neutral-500">from</span> ollama <span class="text-neutral-500">import</span> chat
+
+response = chat(
+    model=<span class="text-green-700">'qwen3.5:35b-a3b'</span>,
+    messages=[{<span class="text-green-700">'role'</span>: <span class="text-green-700">'user'</span>, <span class="text-green-700">'content'</span>: <span class="text-green-700">'Hello!'</span>}],
+)
+<span class="text-neutral-500">print</span>(response.message.content)</pre>
+      </div>
+      <div class="use-panel hidden p-4 font-mono text-[13px] text-neutral-700 dark:text-neutral-300" data-panel="javascript">
+        <pre class="m-0 whitespace-pre-wrap"><span class="text-neutral-500">import</span> ollama <span class="text-neutral-500">from</span> <span class="text-green-700">'ollama'</span>
+
+<span class="text-neutral-500">const</span> response = <span class="text-neutral-500">await</span> ollama.chat({
+  model: <span class="text-green-700">'qwen3.5:35b-a3b'</span>,
+  messages: [{role: <span class="text-green-700">'user'</span>, content: <span class="text-green-700">'Hello!'</span>}],
+})
+console.log(response.message.content)</pre>
+      </div>
+    </div>
+  </div>
+</section>
+    
+    <section id="file-explorer" class="flex flex-1 flex-col">
+  <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100 mb-4">Details</h2>
+  <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
+    <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
+      <div class="flex items-center justify-between bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs text-neutral-900 dark:text-neutral-100">
+        <p class="hidden sm:block">Updated 4 months ago</p>
+        <p class="flex items-center sm:hidden"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>4 months ago</p>
+        <p>3460ffeede54 · 24GB ·</p>
+      </div>
+      <div class="group block grid-cols-12 gap-2 px-4 py-3 sm:grid sm:grid-cols-12"><div class="truncate text-sm font-medium text-neutral-800 dark:text-neutral-200 group-hover:underline sm:col-span-2 sm:col-start-1"><a href="/ollama-search/library/qwen3.5/:35b-a3b/blobs/900dde62fb7e/" class="group-hover:underline">model</a></div><div class="truncate font-mono text-[13px] text-neutral-400 dark:text-neutral-500 subpixel-antialiased sm:col-span-8 sm:col-start-3"><div class="space-x-2 flex text-sm"><div class="flex sm:space-x-2 items-center"><span class="hidden sm:block">arch</span><span class="text-neutral-400 dark:text-neutral-500 sm:font-semibold sm:text-neutral-800 dark:sm:text-neutral-200 sm:text-xs">qwen35moe</span></div><div>·</div><div class="flex sm:space-x-2 items-center"><span class="hidden sm:block">parameters</span><span class="text-neutral-400 dark:text-neutral-500 sm:font-semibold sm:text-neutral-800 dark:sm:text-neutral-200 sm:text-xs">36B</span></div><div>·</div><div class="flex sm:space-x-2 items-center"><span class="hidden sm:block">quantization</span><span class="text-neutral-400 dark:text-neutral-500 sm:font-semibold sm:text-neutral-800 dark:sm:text-neutral-200 sm:text-xs">Q4_K_M</span></div></div></div><div class="hidden text-right text-xs text-neutral-400 dark:text-neutral-500 sm:col-start-12 sm:block">24GB</div></div>
+<div class="group block grid-cols-12 gap-2 px-4 py-3 sm:grid sm:grid-cols-12"><div class="truncate text-sm font-medium text-neutral-800 dark:text-neutral-200 group-hover:underline sm:col-span-2 sm:col-start-1"><a href="/ollama-search/library/qwen3.5/:35b-a3b/blobs/7339fa418c9a/" class="group-hover:underline">license</a></div><div class="truncate font-mono text-[13px] text-neutral-400 dark:text-neutral-500 subpixel-antialiased sm:col-span-8 sm:col-start-3">Apache License
+Version 2.0, January 2004
+http://www.apache.org/licenses/
+TERMS AND CONDITIONS FOR US</div><div class="hidden text-right text-xs text-neutral-400 dark:text-neutral-500 sm:col-start-12 sm:block">11kB</div></div>
+<div class="group block grid-cols-12 gap-2 px-4 py-3 sm:grid sm:grid-cols-12"><div class="truncate text-sm font-medium text-neutral-800 dark:text-neutral-200 group-hover:underline sm:col-span-2 sm:col-start-1"><a href="/ollama-search/library/qwen3.5/:35b-a3b/blobs/9371364b27a5/" class="group-hover:underline">params</a></div><div class="truncate font-mono text-[13px] text-neutral-400 dark:text-neutral-500 subpixel-antialiased sm:col-span-8 sm:col-start-3">{
+    &quot;presence_penalty&quot;: 1.5,
+    &quot;temperature&quot;: 1,
+    &quot;top_k&quot;: 20,
+    &quot;top_p&quot;: 0.95
+}</div><div class="hidden text-right text-xs text-neutral-400 dark:text-neutral-500 sm:col-start-12 sm:block">65B</div></div>
+    </div>
+  </div>
+</section>
+  </div>
+  <div class="flex flex-1 flex-col py-8" id="readme">
+  <div class="flex items-center justify-between pb-1">
+    <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Readme</h2>
+  </div>
+  <div>
+    <div id="display" class="prose-td code:display-inline-block prose-td code:bg-gray-200 prose-td code:px-2 prose-td code:py-1 prose-td code:rounded-md prose prose-headings:mb-[0.7em] prose-headings:mt-[1.25em] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-[32px] prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-p:mb-4 prose-p:mt-0 prose-p:leading-relaxed prose-p:before:hidden prose-p:after:hidden prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-neutral-500 prose-blockquote:before:hidden prose-blockquote:after:hidden prose-code:my-0 prose-code:inline-block prose-code:rounded-md prose-code:bg-neutral-100 prose-code:px-2 prose-code:text-[85%] prose-code:font-normal prose-code:leading-relaxed prose-code:text-black prose-code:before:hidden prose-code:after:hidden prose-pre:mb-4 prose-pre:mt-0 prose-pre:whitespace-pre-wrap prose-pre:rounded-lg prose-pre:bg-neutral-100 prose-pre:px-3 prose-pre:py-3 prose-pre:text-base prose-pre:text-black prose-ol:mb-4 prose-ol:mt-1 prose-ol:pl-8 marker:prose-ol:text-black prose-ul:mb-4 prose-ul:mt-1 prose-ul:pl-8 marker:prose-ul:text-black prose-li:mb-0 prose-li:mt-0.5 prose-li:text-black first:prose-li:mt-0 prose-table:w-full prose-table:table-auto prose-table:border-collapse prose-th:break-words prose-th:text-center prose-th:font-semibold prose-td:break-words prose-td:px-4 prose-td:py-2 prose-td:text-left prose-img:mx-auto prose-img:my-12 prose-video:my-12 max-w-none overflow-auto py-5 text-black dark:prose-headings:text-neutral-200 dark:prose-blockquote:text-neutral-400 dark:prose-code:bg-neutral-800 dark:prose-code:text-neutral-200 dark:prose-pre:bg-neutral-900 dark:prose-pre:text-neutral-200 dark:prose-li:text-neutral-200 dark:prose-td:text-neutral-300 dark:prose-th:text-neutral-200 dark:prose-a:text-blue-400 dark:prose-strong:text-neutral-200 dark:marker:prose-ol:text-neutral-400 dark:marker:prose-ul:text-neutral-400 dark:text-neutral-200">
+      
+        
+          <p><img src="https://ollama.com/assets/library/qwen3.5/b6074711-2930-4f09-93b7-4f65ae7a3576" width="360"/></p>
+
+<p>Over recent months, we have intensified our focus on developing foundation models that deliver exceptional utility and performance. Qwen3.5 represents a significant leap forward, integrating breakthroughs in multimodal learning, architectural efficiency, reinforcement learning scale, and global accessibility to empower developers and enterprises with unprecedented capability and efficiency.</p>
+
+<h2>Highlights</h2>
+
+<p>Qwen3.5 features the following enhancement:</p>
+
+<ul>
+<li><p><strong>Unified Vision-Language Foundation</strong>: Early fusion training on multimodal tokens achieves cross-generational parity with Qwen3 and outperforms Qwen3-VL models across reasoning, coding, agents, and visual understanding benchmarks.</p></li>
+
+<li><p><strong>Efficient Hybrid Architecture</strong>: Gated Delta Networks combined with sparse Mixture-of-Experts deliver high-throughput inference with minimal latency and cost overhead.</p></li>
+
+<li><p><strong>Scalable RL Generalization</strong>: Reinforcement learning scaled across million-agent environments with progressively complex task distributions for robust real-world adaptability.</p></li>
+
+<li><p><strong>Global Linguistic Coverage</strong>: Expanded support to 201 languages and dialects, enabling inclusive, worldwide deployment with nuanced cultural and regional understanding.</p></li>
+
+<li><p><strong>Next-Generation Training Infrastructure</strong>: Near-100% multimodal training efficiency compared to text-only training and asynchronous RL frameworks supporting massive-scale agent scaffolds and environment orchestration.</p></li>
+</ul>
+
+<h2>Benchmarks</h2>
+
+<p><img src="https://ollama.com/assets/library/qwen3.5/1c5d9a27-97b2-4d6d-a1b1-d326259acae5" alt="benchmark"/></p>
+
+<h3>Language</h3>
+
+<div>
+<table>
+<thead><tr>
+<th></th>
+<th>GPT5.2</th>
+<th>Claude 4.5 Opus</th>
+<th>Gemini-3 Pro</th>
+<th>Qwen3-Max-Thinking</th>
+<th>K2.5-1T-A32B</th>
+<th>Qwen3.5-397B-A17B</th>
+</tr></thead>
+<tbody>
+<tr><td colspan="7">Knowledge</td></tr>
+<tr>
+<td>MMLU-Pro</td>
+<td>87.4</td>
+<td>89.5</td>
+<td>89.8</td>
+<td>85.7</td>
+<td>87.1</td>
+<td>87.8</td>
+</tr>
+<tr>
+<td>MMLU-Redux</td>
+<td>95.0</td>
+<td>95.6</td>
+<td>95.9</td>
+<td>92.8</td>
+<td>94.5</td>
+<td>94.9</td>
+</tr>
+<tr>
+<td>SuperGPQA</td>
+<td>67.9</td>
+<td>70.6</td>
+<td>74.0</td>
+<td>67.3</td>
+<td>69.2</td>
+<td>70.4</td>
+</tr>
+<tr>
+<td>C-Eval</td>
+<td>90.5</td>
+<td>92.2</td>
+<td>93.4</td>
+<td>93.7</td>
+<td>94.0</td>
+<td>93.0</td>
+</tr>
+<tr><td colspan="7">Instruction Following</td></tr>
+<tr>
+<td>IFEval</td>
+<td>94.8</td>
+<td>90.9</td>
+<td>93.5</td>
+<td>93.4</td>
+<td>93.9</td>
+<td>92.6</td>
+</tr>
+<tr>
+<td>IFBench</td>
+<td>75.4</td>
+<td>58.0</td>
+<td>70.4</td>
+<td>70.9</td>
+<td>70.2</td>
+<td>76.5</td>
+</tr>
+<tr>
+<td>MultiChallenge</td>
+<td>57.9</td>
+<td>54.2</td>
+<td>64.2</td>
+<td>63.3</td>
+<td>62.7</td>
+<td>67.6</td>
+</tr>
+<tr><td colspan="7">Long Context</td></tr>
+<tr>
+<td>AA-LCR</td>
+<td>72.7</td>
+<td>74.0</td>
+<td>70.7</td>
+<td>68.7</td>
+<td>70.0</td>
+<td>68.7</td>
+</tr>
+<tr>
+<td>LongBench v2</td>
+<td>54.5</td>
+<td>64.4</td>
+<td>68.2</td>
+<td>60.6</td>
+<td>61.0</td>
+<td>63.2</td>
+</tr>
+<tr><td colspan="7">STEM</td></tr>
+<tr>
+<td>GPQA</td>
+<td>92.4</td>
+<td>87.0</td>
+<td>91.9</td>
+<td>87.4</td>
+<td>87.6</td>
+<td>88.4</td>
+</tr>
+<tr>
+<td>HLE</td>
+<td>35.5</td>
+<td>30.8</td>
+<td>37.5</td>
+<td>30.2</td>
+<td>30.1</td>
+<td>28.7</td>
+</tr>
+<tr>
+<td>HLE-Verified¹</td>
+<td>43.3</td>
+<td>38.8</td>
+<td>48</td>
+<td>37.6</td>
+<td>--</td>
+<td>37.6</td>
+</tr>
+<tr><td colspan="7">Reasoning</td></tr>
+<tr>
+<td>LiveCodeBench v6</td>
+<td>87.7</td>
+<td>84.8</td>
+<td>90.7</td>
+<td>85.9</td>
+<td>85.0</td>
+<td>83.6</td>
+</tr>
+<tr>
+<td>HMMT Feb 25</td>
+<td>99.4</td>
+<td>92.9</td>
+<td>97.3</td>
+<td>98.0</td>
+<td>95.4</td>
+<td>94.8</td>
+</tr>
+<tr>
+<td>HMMT Nov 25</td>
+<td>100</td>
+<td>93.3</td>
+<td>93.3</td>
+<td>94.7</td>
+<td>91.1</td>
+<td>92.7</td>
+</tr>
+<tr>
+<td>IMOAnswerBench</td>
+<td>86.3</td>
+<td>84.0</td>
+<td>83.3</td>
+<td>83.9</td>
+<td>81.8</td>
+<td>80.9</td>
+</tr>
+<tr>
+<td>AIME26</td>
+<td>96.7</td>
+<td>93.3</td>
+<td>90.6</td>
+<td>93.3</td>
+<td>93.3</td>
+<td>91.3</td>
+</tr>
+<tr><td colspan="7">General Agent</td></tr>
+<tr>
+<td>BFCL-V4</td>
+<td>63.1</td>
+<td>77.5</td>
+<td>72.5</td>
+<td>67.7</td>
+<td>68.3</td>
+<td>72.9</td>
+</tr>
+<tr>
+<td>TAU2-Bench</td>
+<td>87.1</td>
+<td>91.6</td>
+<td>85.4</td>
+<td>84.6</td>
+<td>77.0</td>
+<td>86.7</td>
+</tr>
+<tr>
+<td>VITA-Bench</td>
+<td>38.2</td>
+<td>56.3</td>
+<td>51.6</td>
+<td>40.9</td>
+<td>41.9</td>
+<td>49.7</td>
+</tr>
+<tr>
+<td>DeepPlanning</td>
+<td>44.6</td>
+<td>33.9</td>
+<td>23.3</td>
+<td>28.7</td>
+<td>14.5</td>
+<td>34.3</td>
+</tr>
+<tr>
+<td>Tool Decathlon</td>
+<td>43.8</td>
+<td>43.5</td>
+<td>36.4</td>
+<td>18.8</td>
+<td>27.8</td>
+<td>38.3</td>
+</tr>
+<tr>
+<td>MCP-Mark</td>
+<td>57.5</td>
+<td>42.3</td>
+<td>53.9</td>
+<td>33.5</td>
+<td>29.5</td>
+<td>46.1</td>
+</tr>
+<tr><td colspan="7">Search Agent³</td></tr>
+<tr>
+<td>HLE w/ tool</td>
+<td>45.5</td>
+<td>43.4</td>
+<td>45.8</td>
+<td>49.8</td>
+<td>50.2</td>
+<td>48.3</td>
+</tr>
+<tr>
+<td>BrowseComp</td>
+<td>65.8</td>
+<td>67.8</td>
+<td>59.2</td>
+<td>53.9</td>
+<td>--/74.9</td>
+<td>69.0/78.6</td>
+</tr>
+<tr>
+<td>BrowseComp-zh</td>
+<td>76.1</td>
+<td>62.4</td>
+<td>66.8</td>
+<td>60.9</td>
+<td>--</td>
+<td>70.3</td>
+</tr>
+<tr>
+<td>WideSearch</td>
+<td>76.8</td>
+<td>76.4</td>
+<td>68.0</td>
+<td>57.9</td>
+<td>72.7</td>
+<td>74.0</td>
+</tr>
+<tr>
+<td>Seal-0</td>
+<td>45.0</td>
+<td>47.7</td>
+<td>45.5</td>
+<td>46.9</td>
+<td>57.4</td>
+<td>46.9</td>
+</tr>
+<tr><td colspan="7">Multilingualism</td></tr>
+<tr>
+<td>MMMLU</td>
+<td>89.5</td>
+<td>90.1</td>
+<td>90.6</td>
+<td>84.4</td>
+<td>86.0</td>
+<td>88.5</td>
+</tr>
+<tr>
+<td>MMLU-ProX</td>
+<td>83.7</td>
+<td>85.7</td>
+<td>87.7</td>
+<td>78.5</td>
+<td>82.3</td>
+<td>84.7</td>
+</tr>
+<tr>
+<td>NOVA-63</td>
+<td>54.6</td>
+<td>56.7</td>
+<td>56.7</td>
+<td>54.2</td>
+<td>56.0</td>
+<td>59.1</td>
+</tr>
+<tr>
+<td>INCLUDE</td>
+<td>87.5</td>
+<td>86.2</td>
+<td>90.5</td>
+<td>82.3</td>
+<td>83.3</td>
+<td>85.6</td>
+</tr>
+<tr>
+<td>Global PIQA</td>
+<td>90.9</td>
+<td>91.6</td>
+<td>93.2</td>
+<td>86.0</td>
+<td>89.3</td>
+<td>89.8</td>
+</tr>
+<tr>
+<td>PolyMATH</td>
+<td>62.5</td>
+<td>79.0</td>
+<td>81.6</td>
+<td>64.7</td>
+<td>43.1</td>
+<td>73.3</td>
+</tr>
+<tr>
+<td>WMT24++</td>
+<td>78.8</td>
+<td>79.7</td>
+<td>80.7</td>
+<td>77.6</td>
+<td>77.6</td>
+<td>78.9</td>
+</tr>
+<tr>
+<td>MAXIFE</td>
+<td>88.4</td>
+<td>79.2</td>
+<td>87.5</td>
+<td>84.0</td>
+<td>72.8</td>
+<td>88.2</td>
+</tr>
+<tr><td colspan="7">Coding Agent</td></tr>
+<tr>
+<td>SWE-bench Verified</td>
+<td>80.0</td>
+<td>80.9</td>
+<td>76.2</td>
+<td>75.3</td>
+<td>76.8</td>
+<td>76.2</td>
+</tr>
+<tr>
+<td>SWE-bench Multilingual</td>
+<td>72.0</td>
+<td>77.5</td>
+<td>65.0</td>
+<td>66.7</td>
+<td>73.0</td>
+<td>69.3</td>
+</tr>
+<tr>
+<td>SecCodeBench</td>
+<td>68.7</td>
+<td>68.6</td>
+<td>62.4</td>
+<td>57.5</td>
+<td>61.3</td>
+<td>68.3</td>
+</tr>
+<tr>
+<td>Terminal Bench 2</td>
+<td>54.0</td>
+<td>59.3</td>
+<td>54.2</td>
+<td>22.5</td>
+<td>50.8</td>
+<td>52.5</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+* HLE-Verified: a verified and revised version of Humanity’s Last Exam (HLE), accompanied by a transparent, component-wise verification protocol and a fine-grained error taxonomy. We open-source the dataset at https://huggingface.co/datasets/skylenage/HLE-Verified.<br>
+* TAU2-Bench: we follow the official setup except for the airline domain, where all models are evaluated by applying the fixes proposed in the Claude Opus 4.5 system card.<br>
+* MCPMark: GitHub MCP server uses v0.30.3 from api.githubcopilot.com; Playwright tool responses are truncated at 32k tokens.<br>
+* Search Agent: most search agents built on our model adopt a simple context-folding strategy(256k): once the cumulative Tool Response length reaches a preset threshold, earlier Tool Responses are pruned from the history to keep the context within limits.<br>
+* BrowseComp: we tested two strategies, simple context-folding achieved a score of 69.0, while using the same discard-all strategy as DeepSeek-V3.2 and Kimi K2.5 achieved 78.6.<br>
+* WideSearch: we use a 256k context window without any context management.<br>
+* MMLU-ProX: we report the averaged accuracy on 29 languages.<br>
+* WMT24++: a harder subset of WMT24 after difficulty labeling and rebalancing; we report the averaged scores on 55 languages using XCOMET-XXL.<br>
+* MAXIFE: we report the accuracy on English + multilingual original prompts (totally 23 settings).<br>
+* Empty cells (--) indicate scores not yet available or not applicable.<br>
+</p>
+
+</div>
+
+<h3>Vision Language</h3>
+
+<p><div>
+<table>
+<thead><tr>
+<th></th>
+<th>GPT5.2</th>
+<th>Claude 4.5 Opus</th>
+<th>Gemini-3 Pro</th>
+<th>Qwen3-VL-235B-A22B</th>
+<th>K2.5-1T-A32B</th>
+<th>Qwen3.5-397B-A17B</th>
+</tr></thead>
+<tbody>
+<tr><td colspan="7">STEM and Puzzle</td></tr>
+<tr>
+<td>MMMU</td>
+<td>86.7</td>
+<td>80.7</td>
+<td>87.2</td>
+<td>80.6</td>
+<td>84.3</td>
+<td>85.0</td>
+</tr>
+<tr>
+<td>MMMU-Pro</td>
+<td>79.5</td>
+<td>70.6</td>
+<td>81.0</td>
+<td>69.3</td>
+<td>78.5</td>
+<td>79.0</td>
+</tr>
+<tr>
+<td>MathVision</td>
+<td>83.0</td>
+<td>74.3</td>
+<td>86.6</td>
+<td>74.6</td>
+<td>84.2</td>
+<td>88.6</td>
+</tr>
+<tr>
+<td>Mathvista(mini)</td>
+<td>83.1</td>
+<td>80.0</td>
+<td>87.9</td>
+<td>85.8</td>
+<td>90.1</td>
+<td>90.3</td>
+</tr>
+<tr>
+<td>We-Math</td>
+<td>79.0</td>
+<td>70.0</td>
+<td>86.9</td>
+<td>74.8</td>
+<td>84.7</td>
+<td>87.9</td>
+</tr>
+<tr>
+<td>DynaMath</td>
+<td>86.8</td>
+<td>79.7</td>
+<td>85.1</td>
+<td>82.8</td>
+<td>84.4</td>
+<td>86.3</td>
+</tr>
+<tr>
+<td>ZEROBench</td>
+<td>9</td>
+<td>3</td>
+<td>10</td>
+<td>4</td>
+<td>9</td>
+<td>12</td>
+</tr>
+<tr>
+<td>ZEROBench_sub</td>
+<td>33.2</td>
+<td>28.4</td>
+<td>39.0</td>
+<td>28.4</td>
+<td>33.5</td>
+<td>41.0</td>
+</tr>
+<tr>
+<td>BabyVision</td>
+<td>34.4</td>
+<td>14.2</td>
+<td>49.7</td>
+<td>22.2</td>
+<td>36.5</td>
+<td>52.<sup>3</sup>⁄<sub>43</sub>.3</td>
+</tr>
+<tr><td colspan="7">General VQA</td></tr>
+<tr>
+<td>RealWorldQA</td>
+<td>83.3</td>
+<td>77.0</td>
+<td>83.3</td>
+<td>81.3</td>
+<td>81.0</td>
+<td>83.9</td>
+</tr>
+<tr>
+<td>MMStar</td>
+<td>77.1</td>
+<td>73.2</td>
+<td>83.1</td>
+<td>78.7</td>
+<td>80.5</td>
+<td>83.8</td>
+</tr>
+<tr>
+<td>HallusionBench</td>
+<td>65.2</td>
+<td>64.1</td>
+<td>68.6</td>
+<td>66.7</td>
+<td>69.8</td>
+<td>71.4</td>
+</tr>
+<tr>
+<td>MMBench<sub><small>EN-DEV-v1.1</small></sub></td>
+<td>88.2</td>
+<td>89.2</td>
+<td>93.7</td>
+<td>89.7</td>
+<td>94.2</td>
+<td>93.7</td>
+</tr>
+<tr>
+<td>SimpleVQA</td>
+<td>55.8</td>
+<td>65.7</td>
+<td>73.2</td>
+<td>61.3</td>
+<td>71.2</td>
+<td>67.1</td>
+</tr>
+<tr><td colspan="7">Text Recognition and Document Understanding</td></tr>
+<tr>
+<td>OmniDocBench1.5</td>
+<td>85.7</td>
+<td>87.7</td>
+<td>88.5</td>
+<td>84.5</td>
+<td>88.8</td>
+<td>90.8</td>
+</tr>
+<tr>
+<td>CharXiv(RQ)</td>
+<td>82.1</td>
+<td>68.5</td>
+<td>81.4</td>
+<td>66.1</td>
+<td>77.5</td>
+<td>80.8</td>
+</tr>
+<tr>
+<td>MMLongBench-Doc</td>
+<td>–</td>
+<td>61.9</td>
+<td>60.5</td>
+<td>56.2</td>
+<td>58.5</td>
+<td>61.5</td>
+</tr>
+<tr>
+<td>CC-OCR</td>
+<td>70.3</td>
+<td>76.9</td>
+<td>79.0</td>
+<td>81.5</td>
+<td>79.7</td>
+<td>82.0</td>
+</tr>
+<tr>
+<td>AI2D_TEST</td>
+<td>92.2</td>
+<td>87.7</td>
+<td>94.1</td>
+<td>89.2</td>
+<td>90.8</td>
+<td>93.9</td>
+</tr>
+<tr>
+<td>OCRBench</td>
+<td>80.7</td>
+<td>85.8</td>
+<td>90.4</td>
+<td>87.5</td>
+<td>92.3</td>
+<td>93.1</td>
+</tr>
+<tr><td colspan="7">Spatial Intelligence</td></tr>
+<tr>
+<td>ERQA</td>
+<td>59.8</td>
+<td>46.8</td>
+<td>70.5</td>
+<td>52.5</td>
+<td>–</td>
+<td>67.5</td>
+</tr>
+<tr>
+<td>CountBench</td>
+<td>91.9</td>
+<td>90.6</td>
+<td>97.3</td>
+<td>93.7</td>
+<td>94.1</td>
+<td>97.2</td>
+</tr>
+<tr>
+<td>RefCOCO(avg)</td>
+<td>–</td>
+<td>–</td>
+<td>84.1</td>
+<td>91.1</td>
+<td>87.8</td>
+<td>92.3</td>
+</tr>
+<tr>
+<td>ODInW13</td>
+<td>–</td>
+<td>–</td>
+<td>46.3</td>
+<td>43.2</td>
+<td>–</td>
+<td>47.0</td>
+</tr>
+<tr>
+<td>EmbSpatialBench</td>
+<td>81.3</td>
+<td>75.7</td>
+<td>61.2</td>
+<td>84.3</td>
+<td>77.4</td>
+<td>84.5</td>
+</tr>
+<tr>
+<td>RefSpatialBench</td>
+<td>–</td>
+<td>–</td>
+<td>65.5</td>
+<td>69.9</td>
+<td>–</td>
+<td>73.6</td>
+</tr>
+<tr>
+<td>LingoQA</td>
+<td>68.8</td>
+<td>78.8</td>
+<td>72.8</td>
+<td>66.8</td>
+<td>68.2</td>
+<td>81.6</td>
+</tr>
+<tr>
+<td>V*</td>
+<td>75.9</td>
+<td>67.0</td>
+<td>88.0</td>
+<td>85.9</td>
+<td>77.0</td>
+<td>95.<sup>8</sup>⁄<sub>91</sub>.1</td>
+</tr>
+<tr>
+<td>Hypersim</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+<td>11.0</td>
+<td>–</td>
+<td>12.5</td>
+</tr>
+<tr>
+<td>SUNRGBD</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+<td>34.9</td>
+<td>–</td>
+<td>38.3</td>
+</tr>
+<tr>
+<td>Nuscene</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+<td>13.9</td>
+<td>–</td>
+<td>16.0</td>
+</tr>
+<tr><td colspan="7">Video Understanding</td></tr>
+<tr>
+<td>VideoMME<sub><small>(w sub.)</sub></small></td>
+<td>86</td>
+<td>77.6</td>
+<td>88.4</td>
+<td>83.8</td>
+<td>87.4</td>
+<td>87.5</td>
+</tr>
+<tr>
+<td>VideoMME<sub><small>(w/o sub.)</sub></small></td>
+<td>85.8</td>
+<td>81.4</td>
+<td>87.7</td>
+<td>79.0</td>
+<td>83.2</td>
+<td>83.7</td>
+</tr>
+<tr>
+<td>VideoMMMU</td>
+<td>85.9</td>
+<td>84.4</td>
+<td>87.6</td>
+<td>80.0</td>
+<td>86.6</td>
+<td>84.7</td>
+</tr>
+<tr>
+<td>MLVU (M-Avg)</td>
+<td>85.6</td>
+<td>81.7</td>
+<td>83.0</td>
+<td>83.8</td>
+<td>85.0</td>
+<td>86.7</td>
+</tr>
+<tr>
+<td>MVBench</td>
+<td>78.1</td>
+<td>67.2</td>
+<td>74.1</td>
+<td>75.2</td>
+<td>73.5</td>
+<td>77.6</td>
+</tr>
+<tr>
+<td>LVBench</td>
+<td>73.7</td>
+<td>57.3</td>
+<td>76.2</td>
+<td>63.6</td>
+<td>75.9</td>
+<td>75.5</td>
+</tr>
+<tr>
+<td>MMVU</td>
+<td>80.8</td>
+<td>77.3</td>
+<td>77.5</td>
+<td>71.1</td>
+<td>80.4</td>
+<td>75.4</td>
+</tr>
+<tr><td colspan="7">Visual Agent</td></tr>
+<tr>
+<td>ScreenSpot Pro</td>
+<td>–</td>
+<td>45.7</td>
+<td>72.7</td>
+<td>62.0</td>
+<td>–</td>
+<td>65.6</td>
+</tr>
+<tr>
+<td>OSWorld-Verified</td>
+<td>38.2</td>
+<td>66.3</td>
+<td>–</td>
+<td>38.1</td>
+<td>63.3</td>
+<td>62.2</td>
+</tr>
+<tr>
+<td>AndroidWorld</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+<td>63.7</td>
+<td>–</td>
+<td>66.8</td>
+</tr>
+<tr><td colspan="7">Medical VQA</td></tr>
+<tr>
+<td>SLAKE</td>
+<td>76.9</td>
+<td>76.4</td>
+<td>81.3</td>
+<td>54.7</td>
+<td>81.6</td>
+<td>79.9</td>
+</tr>
+<tr>
+<td>PMC-VQA</td>
+<td>58.9</td>
+<td>59.9</td>
+<td>62.3</td>
+<td>41.2</td>
+<td>63.3</td>
+<td>64.2</td>
+</tr>
+<tr>
+<td>MedXpertQA-MM</td>
+<td>73.3</td>
+<td>63.6</td>
+<td>76.0</td>
+<td>47.6</td>
+<td>65.3</td>
+<td>70.0</td>
+</tr>
+</tbody>
+</table></p>
+
+<p>
+* MathVision：our model’s score is evaluated using a fixed prompt, e.g., “Please reason step by step, and put your final answer within \boxed{}.” For other models, we report the higher score between runs with and without the \boxed{} formatting.<br>
+* BabyVision: our model’s score is reported with CI (Code Interpreter) enabled; without CI, the result is 43.3.<br>
+* V*: our model’s score is reported with CI (Code Interpreter) enabled; without CI, the result is 91.1.<br>
+* Empty cells (--) indicate scores not yet available or not applicable.<br>
+</p>
+
+<p></div></p>
+
+        
+      
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="mt-auto">
+  <div class="underline-offset-4 hidden md:block">
+    <div class="flex items-center justify-between px-6 py-3.5">
+      <div class="text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="/ollama-search/maternion/" class="hover:underline">Maternion</a></div>
+      <div class="flex space-x-6 text-xs text-neutral-500 dark:text-neutral-400">
+        <a href="/ollama-search/download" class="hover:underline">Download</a>
+        <a href="https://ollama.com/blog" class="hover:underline">Blog</a>
+        <a href="https://docs.ollama.com" class="hover:underline">Docs</a>
+        <a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a>
+        <a href="/ollama-search/pricing" class="hover:underline">Pricing</a>
+      </div>
+    </div>
+  </div>
+  <div class="py-4 md:hidden">
+    <ul class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-neutral-500 dark:text-neutral-400">
+      <li><a href="/ollama-search/download" class="hover:underline">Download</a></li>
+      <li><a href="https://ollama.com/blog" class="hover:underline">Blog</a></li>
+      <li><a href="https://docs.ollama.com" class="hover:underline">Docs</a></li>
+      <li><a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a></li>
+      <li><a href="/ollama-search/pricing" class="hover:underline">Pricing</a></li>
+    </ul>
+    <div class="mt-2 text-center text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="/ollama-search/maternion/" class="hover:underline">Maternion</a></div>
+  </div>
+</footer>
+<script>
+(function() {
+  function toggle() {
+    var isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+  function initSearch() {
+    document.getElementById('theme-toggle')?.addEventListener('click', toggle);
+    document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggle);
+  }
+  window.initSearch = initSearch;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSearch);
+  } else {
+    initSearch();
+  }
+})();
+</script>
+<script src="/ollama-search/assets/app.js"></script>
+</body>
+</html>
