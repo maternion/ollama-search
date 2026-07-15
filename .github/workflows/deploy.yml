@@ -100,14 +100,18 @@ jobs:
             fi
           fi
           # Deploy to gh-pages branch
-          git worktree add /tmp/gh-pages gh-pages 2>/dev/null || git worktree add --orphan -b gh-pages /tmp/gh-pages 2>/dev/null || true
+          # Use a fresh orphan worktree + rsync for reliable full-file copying.
+          # The previous `cp -r` + `git rm -rf .` approach silently dropped
+          # ~20k of 27k blob pages (paths with colons / stale worktree state).
+          git worktree prune 2>/dev/null || true
+          rm -rf /tmp/gh-pages
+          git worktree add --orphan -b gh-pages-deploy /tmp/gh-pages 2>/dev/null || true
           cd /tmp/gh-pages
-          git rm -rf . 2>/dev/null || true
-          git clean -fdx 2>/dev/null || true
-          cp -r "$GITHUB_WORKSPACE/public/"* .
+          rsync -a --delete "$GITHUB_WORKSPACE/public/" .
           git add -A
+          echo "Files staged: $(git status --porcelain | wc -l)"
           git commit -m "deploy cycle 1 $(date -u '+%Y-%m-%d %H:%M:%S UTC') [skip ci]" || true
-          git push origin gh-pages || true
+          git push origin gh-pages-deploy:gh-pages --force || true
           cd "$GITHUB_WORKSPACE"
 
       # ── Self-check: validate data integrity (soft, non-blocking) ──

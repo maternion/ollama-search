@@ -1621,6 +1621,46 @@ def save_sort_data(sort_orders: dict, models: dict) -> None:
     log.info("wrote sort_orders.json + sort_ranks.json")
 
 
+def _load_cached_tag_fingerprint(model: Model) -> dict[str, str]:
+    """Return {tag_name: digest} from the cached per-model tags file.
+
+    Used by --smart mode to detect tag-level changes (added, removed, or
+    re-pushed tags) that the catalog card's tag_count/updated_title do NOT
+    reflect — e.g. ollama.com retiring a tag without bumping the model's
+    "updated" timestamp. Returns {} if no cache exists or it is unreadable.
+    """
+    slug = slugify(model.path)
+    tf = TAGS_DIR / f"{slug}.json"
+    if not tf.exists():
+        return {}
+    try:
+        data = json.loads(tf.read_text())
+    except Exception:
+        return {}
+    return {t.get("name", ""): t.get("digest", "") for t in data.get("tags", [])}
+
+
+def _tags_differ(
+    new_tags: list[Tag], cached: dict[str, str]
+) -> tuple[bool, set[str], set[str]]:
+    """Compare freshly-fetched tags against the cached {name: digest} map.
+
+    Returns (changed, added_or_changed, removed). `changed` is True if any tag
+    name was added, removed, or had its digest change. This catches tag
+    retirements (removed) and re-pushes (digest changed) that the catalog page
+    does not surface.
+    """
+    new_map = {t.name: t.digest for t in new_tags}
+    new_names = set(new_map)
+    cached_names = set(cached)
+    added_or_changed = {
+        n for n in new_names if n not in cached or cached[n] != new_map[n]
+    }
+    removed = cached_names - new_names
+    changed = bool(added_or_changed or removed)
+    return changed, added_or_changed, removed
+
+
 def save_tags(model: Model, tags: list[Tag]) -> None:
     TAGS_DIR.mkdir(parents=True, exist_ok=True)
     slug = slugify(model.path)
@@ -2078,6 +2118,13 @@ def main(argv: list[str] | None = None) -> int:
             except Exception:
                 pass
 
+        # Models whose per-model /tags page differed from the cache during the
+        # smart tag sweep. Populated in the tags section below; consumed by the
+        # tag-pages and blobs sections to force a re-scrape even when the
+        # catalog card's updated_title is unchanged (e.g. tag retirements that
+        # the catalog page does not reflect).
+        tags_changed: set[str] = set()
+
         if not args.skip_search:
             log.info("=== crawling /search for user models ===")
             before = len(models)
@@ -2188,7 +2235,15 @@ def main(argv: list[str] | None = None) -> int:
 
         if not args.skip_tags:
             if args.smart and prev_models:
-                # Determine which models changed
+                # Determine which models changed. The catalog card's
+                # tag_count + updated_title are a fast pre-filter, but they are
+                # NOT sufficient to detect tag retirements: ollama.com often
+                # removes/re-tires tags without updating the model's "updated"
+                # timestamp or the catalog page's tag count. So in --smart mode
+                # we ALWAYS re-fetch the lightweight per-model /tags page (one
+                # HTTP request) and compare the {name: digest} fingerprint
+                # against the cache. Only models whose fingerprint is identical
+                # skip the (expensive) downstream tag-page/blob scrape.
                 to_fetch = []
                 cached = 0
                 for m in models.values():
@@ -2201,14 +2256,42 @@ def main(argv: list[str] | None = None) -> int:
                         and pm.get("tag_count") == m.tag_count
                         and pm.get("updated_title") == m.updated_title
                     ):
-                        # Unchanged — load from cache
-                        try:
-                            existing = json.loads(tf.read_text())
-                            m.tags = [Tag(**t) for t in existing.get("tags", [])]
-                            cached += 1
-                            continue
-                        except Exception:
-                            pass
+                        # Fast path: catalog card unchanged AND we have a
+                        # cached tags file. Still re-fetch the /tags page to
+                        # detect tag retirements the catalog doesn't surface.
+                        cached_fp = _load_cached_tag_fingerprint(m)
+                        if cached_fp:
+                            fresh = fetch_tags(client, m)
+                            time.sleep(DELAY)
+                            if fresh:
+                                changed, _added, _removed = _tags_differ(
+                                    fresh, cached_fp
+                                )
+                                if not changed:
+                                    m.tags = fresh
+                                    # No diff -> keep cache byte-identical; do
+                                    # not rewrite unless content actually
+                                    # changed (avoid spurious git churn).
+                                    if [asdict(t) for t in fresh] != json.loads(
+                                        tf.read_text()
+                                    ).get("tags", []):
+                                        save_tags(m, fresh)
+                                    cached += 1
+                                    continue
+                                # Tags changed (added/removed/re-pushed) ->
+                                # fall through to re-scrape this model fully.
+                                log.info(
+                                    "  %s: tag fingerprint changed (smart), "
+                                    "re-scraping tags",
+                                    m.path,
+                                )
+                                m.tags = fresh
+                                save_tags(m, fresh)
+                                tags_changed.add(m.path)
+                                to_fetch.append(m)
+                                continue
+                        # No cached fingerprint (first run / corrupt cache):
+                        # treat as to-fetch.
                     to_fetch.append(m)
                 log.info(
                     "=== fetching per-model tags (%d cached, %d to fetch) ===",
@@ -2224,6 +2307,7 @@ def main(argv: list[str] | None = None) -> int:
                     log.info("  [%d/%d] %s", i, total, m.path)
                     m.tags = fetch_tags(client, m)
                     save_tags(m, m.tags)
+                    tags_changed.add(m.path)
                     if i % 10 == 0:
                         save_models(models.values())
                         log.info(
@@ -2342,19 +2426,46 @@ def main(argv: list[str] | None = None) -> int:
                 tags_to_fetch = list(m.tags)
                 if not tags_to_fetch:
                     continue
+                # Smart mode: if the tag sweep reported a fingerprint change for
+                # this model, prune any cached tag-page files whose tag is no
+                # longer present (retired/removed tags). Without this, retired
+                # tags would leave stale tag-page JSON that no longer matches
+                # any real tag on ollama.com.
+                if args.smart and m.path in tags_changed:
+                    current_names = {t.name for t in tags_to_fetch}
+                    slug = slugify(m.path)
+                    for stale in TAG_PAGES_DIR.glob(f"{slug}__*.json"):
+                        # filename pattern: <slug>__<tagname>.json
+                        stale_tag = stale.stem.split("__", 1)[-1]
+                        if stale_tag not in current_names:
+                            try:
+                                stale.unlink()
+                                log.info(
+                                    "  pruned retired tag page: %s:%s",
+                                    m.path,
+                                    stale_tag,
+                                )
+                            except Exception:
+                                pass
                 for t in tags_to_fetch:
                     slug = slugify(m.path)
                     tf = TAG_PAGES_DIR / f"{slug}__{t.name}.json"
-                    # Smart mode: tier 1 — skip if whole model unchanged
+                    # Smart mode: tier 1 — skip if whole model unchanged.
+                    # A model is "unchanged" only if its catalog card's
+                    # updated_title matches AND the smart tag sweep did not
+                    # report a tag fingerprint change (added/removed/re-pushed
+                    # tags). The latter catches tag retirements that the
+                    # catalog page does not surface.
                     if args.smart and prev_models:
                         pm = prev_models.get(m.path)
                         if (
                             pm
                             and tf.exists()
                             and pm.get("updated_title") == m.updated_title
+                            and m.path not in tags_changed
                         ):
                             continue
-                    # Smart mode: tier 2 — skip if this tag's digest unchanged
+                    # Smart mode: tier 2 — skip if this tag's digest unchanged.
                     if args.smart and tf.exists():
                         try:
                             existing_tp = json.loads(tf.read_text())
@@ -2414,13 +2525,16 @@ def main(argv: list[str] | None = None) -> int:
                             .split("?", 1)[0]
                         )
                         bf = BLOBS_DIR / f"{bdigest}.json"
-                        # Smart mode: tier 1 — skip if whole model unchanged
+                        # Smart mode: tier 1 — skip if whole model unchanged.
+                        # Also gated by tags_changed so tag retirements (which
+                        # don't bump updated_title) still trigger a re-scrape.
                         if args.smart and prev_models:
                             pm = prev_models.get(m.path)
                             if (
                                 pm
                                 and bf.exists()
                                 and pm.get("updated_title") == m.updated_title
+                                and m.path not in tags_changed
                             ):
                                 continue
                         # Smart mode: tier 2 — skip if tag digest unchanged
