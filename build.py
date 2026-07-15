@@ -449,6 +449,7 @@ def render_card(
         f'data-pulls="{m["pulls"]}" '
         f'data-tag-count="{tag_count}" '
         f'data-sizes-count="{len(m["sizes"])}" '
+        f'data-sizes="{" ".join(m.get("sizes", []))}" '
         f'data-name="{esc(name_raw).lower()}" '
         f'data-cloud="{str(m.get("cloud", False)).lower()}" '
         f'data-cloud-only="{str(m.get("cloud_only", False)).lower()}"'
@@ -526,6 +527,63 @@ def build_index(models: list[dict], ranks: dict) -> None:
         )
     chips_html = "\n".join(chips)
 
+    # Size dropdown: pill-shaped button that opens a dual-handle slider panel
+    # (like HuggingFace's parameter filter). Tick marks: <1B, 6B, 12B, 32B, 128B, >500B
+    size_dropdown = """      <div class="relative inline-block mr-1.5 mb-1.5">
+        <button id="size-filter-btn" type="button" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center select-none hover:bg-neutral-50 dark:hover:bg-neutral-900">
+          Size
+        </button>
+        <div id="size-filter-panel" class="hidden absolute top-full left-0 mt-1 z-50 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-3xl pl-4 pr-3 py-2 shadow-lg" style="min-width: 420px;">
+          <!-- Slider + Reset side by side -->
+          <div class="flex items-end gap-4">
+            <!-- Slider area (flex-1) -->
+            <div class="relative flex-1" id="size-slider-container" style="height: 42px;">
+              <!-- Tick labels (top row) -->
+              <div class="relative" style="height: 20px;">
+                <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 0%; transform: translateX(-25%);" data-tick="0">&lt;1b</button>
+                <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 20%;" data-tick="6">6b</button>
+                <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 40%;" data-tick="12">12b</button>
+                <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 60%;" data-tick="32">32b</button>
+                <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 80%;" data-tick="128">128b</button>
+                <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 100%; transform: translateX(-75%);" data-tick="500">&gt;500b</button>
+              </div>
+              <!-- Track + handles (centered vertically) -->
+              <div class="relative" style="height: 22px;">
+                <!-- Background track -->
+                <div class="absolute left-0 right-0 rounded-full border bg-transparent border-neutral-300 dark:border-neutral-700" id="size-slider-track" style="top: 50%; transform: translateY(-50%); height: 6px;"></div>
+                <!-- Filled portion -->
+                <div id="size-slider-fill" class="absolute rounded-full bg-neutral-800 dark:bg-neutral-300" style="top: 50%; transform: translateY(-50%); height: 6px; left: 0%; width: 100%;"></div>
+                <!-- Tick marks (same height as track) -->
+                <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 10%;"></div>
+                <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 20%;"></div>
+                <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 30%;"></div>
+                <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 40%;"></div>
+                <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 50%;"></div>
+                <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 60%;"></div>
+                <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 70%;"></div>
+                <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 80%;"></div>
+                <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 90%;"></div>
+                <!-- Min handle -->
+                <button type="button" id="size-handle-min" class="absolute z-10 cursor-pointer touch-none" style="top: 50%; left: 0%; transform: translate(-50%, -50%); width: 16px; height: 16px;">
+                  <div class="rounded-full bg-neutral-800 dark:bg-neutral-200 border-2 border-white dark:border-neutral-900 shadow" style="width: 10px; height: 10px; margin: 3px;"></div>
+                  <span id="size-min-tooltip" class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded border px-1 py-0.5 text-xs bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-white dark:border-neutral-700 hidden">&lt; 1b</span>
+                </button>
+                <!-- Max handle -->
+                <button type="button" id="size-handle-max" class="absolute z-10 cursor-pointer touch-none" style="top: 50%; left: 100%; transform: translate(-50%, -50%); width: 16px; height: 16px;">
+                  <div class="rounded-full bg-neutral-800 dark:bg-neutral-200 border-2 border-white dark:border-neutral-900 shadow" style="width: 10px; height: 10px; margin: 3px;"></div>
+                  <span id="size-max-tooltip" class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded border px-1 py-0.5 text-xs bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-white dark:border-neutral-700 hidden">&gt; 500b</span>
+                </button>
+              </div>
+              <!-- Hidden range inputs for value storage -->
+              <input type="range" id="size-min" min="0" max="500" value="0" step="1" class="sr-only">
+              <input type="range" id="size-max" min="0" max="500" value="500" step="1" class="sr-only">
+            </div>
+            <!-- Reset pill to the right of the slider -->
+            <a id="size-filter-reset" class="text-sm text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200 cursor-pointer rounded-full px-3 py-1 bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shrink-0">Reset</a>
+          </div>
+        </div>
+      </div>"""
+
     # Cloud dropdown: All models / Cloud only / Local only
     cloud_dropdown = """      <select id="cloud-filter" class="mr-1.5 mb-1.5 px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 focus:outline-none focus:ring-0 appearance-none">
         <option value="all">All models</option>
@@ -576,16 +634,18 @@ def build_index(models: list[dict], ranks: dict) -> None:
   </div>
 
   <div id="searchresults" class="w-full space-y-2">
-    <div class="flex flex-wrap items-center justify-between gap-2 mt-2">
-      <fieldset class="flex flex-wrap items-center">
+    <div class="flex justify-between items-start gap-2 mt-2">
+      <fieldset class="flex flex-wrap items-center gap-1.5">
 {chips_html}
+{size_dropdown}
 {cloud_dropdown}
       </fieldset>
-      <div class="hidden sm:block">
+      <div class="hidden sm:block shrink-0 mt-1.5">
         <select id="desktop-sort-select" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600 min-w-[120px] text-sm px-3 py-1.5">
 {opt_html}
         </select>
       </div>
+    </div>
     </div>
 
     <ul role="list" id="card-list" class="grid grid-cols-1">
@@ -2179,6 +2239,81 @@ function getCloudFilter() {
   return el ? el.value : 'all';
 }
 
+function getSizeMin() {
+  var el = document.getElementById('size-min');
+  return el ? parseInt(el.value) : 0;
+}
+function getSizeMax() {
+  var el = document.getElementById('size-max');
+  return el ? parseInt(el.value) : 500;
+}
+
+// Piecewise mapping between slider position (0-100%) and size value (0-500 billions)
+// Breakpoints: 0%->0, 20%->6, 40%->12, 60%->32, 80%->128, 100%->500
+var SIZE_BP = [
+  {pct: 0, val: 0},
+  {pct: 20, val: 6},
+  {pct: 40, val: 12},
+  {pct: 60, val: 32},
+  {pct: 80, val: 128},
+  {pct: 100, val: 500}
+];
+function valToPct(v) {
+  v = Math.max(0, Math.min(500, v));
+  for (var i = 0; i < SIZE_BP.length - 1; i++) {
+    var a = SIZE_BP[i], b = SIZE_BP[i + 1];
+    if (v >= a.val && v <= b.val) {
+      return a.pct + (v - a.val) / (b.val - a.val) * (b.pct - a.pct);
+    }
+  }
+  return v <= 0 ? 0 : 100;
+}
+function pctToVal(pct) {
+  pct = Math.max(0, Math.min(100, pct));
+  for (var i = 0; i < SIZE_BP.length - 1; i++) {
+    var a = SIZE_BP[i], b = SIZE_BP[i + 1];
+    if (pct >= a.pct && pct <= b.pct) {
+      return Math.round(a.val + (pct - a.pct) / (b.pct - a.pct) * (b.val - a.val));
+    }
+  }
+  return pct <= 0 ? 0 : 500;
+}
+
+function sizeToBillions(s) {
+  if (!s) return null;
+  s = s.toLowerCase();
+  // MoE: e.g. "8x7b" -> use trailing factor 7b
+  var moeMatch = s.match(/^(\d+(?:\.\d+)?)x(\d+(?:\.\d+)?)([bm])$/);
+  if (moeMatch) {
+    s = moeMatch[2] + moeMatch[3];
+  }
+  // "e2b" -> 2b
+  var eMatch = s.match(/^e(\d+(?:\.\d+)?)([bm])$/);
+  if (eMatch) {
+    s = eMatch[1] + eMatch[2];
+  }
+  var m = s.match(/^(\d+(?:\.\d+)?)([bm])$/);
+  if (!m) return null;
+  var num = parseFloat(m[1]);
+  return m[2] === 'b' ? num : num / 1000;
+}
+
+function matchSizeRange(cardSizesAttr) {
+  var minB = getSizeMin();
+  var maxB = getSizeMax();
+  if (minB === 0 && maxB === 500) return true; // no filter
+  var sizes = (cardSizesAttr || '').split(/\s+/).filter(Boolean);
+  if (sizes.length === 0) return false;
+  var bs = [];
+  for (var i = 0; i < sizes.length; i++) {
+    var b = sizeToBillions(sizes[i]);
+    if (b != null) bs.push(b);
+  }
+  if (bs.length === 0) return false;
+  var largest = Math.max.apply(null, bs);
+  return largest >= minB && largest <= maxB;
+}
+
 function applyFilters() {
   var q = getQuery();
   var caps = getSelectedCaps();
@@ -2196,12 +2331,14 @@ function applyFilters() {
     card.querySelectorAll('[x-test-capability]').forEach(function(el) { cardCaps.push(el.textContent.toLowerCase()); });
     var isCloud = card.getAttribute('data-cloud') === 'true';
     var isCloudOnly = card.getAttribute('data-cloud-only') === 'true';
+    var cardSizes = card.getAttribute('data-sizes') || '';
+    var matchSize = matchSizeRange(cardSizes);
     var matchText = !q || title.indexOf(q) !== -1 || desc.indexOf(q) !== -1;
     var matchCaps = caps.length === 0 || caps.every(function(c) { return cardCaps.indexOf(c) !== -1; });
     var matchCloud = cloudFilter === 'all'
       || (cloudFilter === 'cloud' && isCloud)
       || (cloudFilter === 'local' && !isCloudOnly);
-    var show = matchText && matchCaps && matchCloud;
+    var show = matchText && matchCaps && matchCloud && matchSize;
     card.style.display = show ? '' : 'none';
     if (show) visible++;
   });
@@ -2317,6 +2454,123 @@ function initApp() {
     document.querySelectorAll('.cap-filter').forEach(function(cb) { cb.addEventListener('change', applyFilters); });
     var cloudFilter = document.getElementById('cloud-filter');
     if (cloudFilter) cloudFilter.addEventListener('change', applyFilters);
+
+    var sizeBtn = document.getElementById('size-filter-btn');
+    var sizePanel = document.getElementById('size-filter-panel');
+    if (sizeBtn && sizePanel) {
+      sizeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        sizePanel.classList.toggle('hidden');
+        sizeBtn.classList.toggle('bg-neutral-100', !sizePanel.classList.contains('hidden'));
+        sizeBtn.classList.toggle('dark:bg-neutral-800', !sizePanel.classList.contains('hidden'));
+      });
+      document.addEventListener('click', function(e) {
+        if (!sizePanel.contains(e.target) && e.target !== sizeBtn) {
+          sizePanel.classList.add('hidden');
+          sizeBtn.classList.remove('bg-neutral-100', 'dark:bg-neutral-800');
+        }
+      });
+    }
+
+    // Dual-handle slider (HuggingFace-style)
+    var sizeMin = document.getElementById('size-min');
+    var sizeMax = document.getElementById('size-max');
+    var sizeFill = document.getElementById('size-slider-fill');
+    var sizeHandleMin = document.getElementById('size-handle-min');
+    var sizeHandleMax = document.getElementById('size-handle-max');
+    var sizeMinTip = document.getElementById('size-min-tooltip');
+    var sizeMaxTip = document.getElementById('size-max-tooltip');
+    var sizeBtnLabel = document.getElementById('size-filter-btn');
+
+    function sizeLabel(v) {
+      if (v === 0) return '< 1b';
+      if (v >= 500) return '> 500b';
+      return v + 'b';
+    }
+
+    function updateSizeUI() {
+      var mn = parseInt(sizeMin.value);
+      var mx = parseInt(sizeMax.value);
+      if (mn > mx) { var tmp = mn; mn = mx; mx = tmp; sizeMin.value = mn; sizeMax.value = mx; }
+      var pmin = valToPct(mn);
+      var pmax = valToPct(mx);
+      sizeFill.style.left = pmin + '%';
+      sizeFill.style.width = (pmax - pmin) + '%';
+      sizeHandleMin.style.left = pmin + '%';
+      sizeHandleMax.style.left = pmax + '%';
+      sizeMinTip.textContent = sizeLabel(mn);
+      sizeMaxTip.textContent = sizeLabel(mx);
+      if (mn === 0 && mx === 500) {
+        sizeBtnLabel.textContent = 'Size';
+      } else {
+        sizeBtnLabel.textContent = 'Size: ' + sizeLabel(mn) + '–' + sizeLabel(mx);
+      }
+      applyFilters();
+    }
+
+    // Drag handles
+    var draggingSize = null;
+    function onSizeDrag(e) {
+      if (!draggingSize) return;
+      e.preventDefault();
+      var track = document.getElementById('size-slider-track');
+      if (!track) return;
+      var rect = track.getBoundingClientRect();
+      var x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      var pct = Math.max(0, Math.min(1, x / rect.width)) * 100;
+      var val = pctToVal(pct);
+      if (draggingSize === 'min') {
+        val = Math.min(val, parseInt(sizeMax.value));
+        sizeMin.value = val;
+      } else {
+        val = Math.max(val, parseInt(sizeMin.value));
+        sizeMax.value = val;
+      }
+      updateSizeUI();
+    }
+
+    if (sizeHandleMin) {
+      sizeHandleMin.addEventListener('mousedown', function(e) { draggingSize = 'min'; e.preventDefault(); });
+      sizeHandleMin.addEventListener('touchstart', function(e) { draggingSize = 'min'; e.preventDefault(); });
+    }
+    if (sizeHandleMax) {
+      sizeHandleMax.addEventListener('mousedown', function(e) { draggingSize = 'max'; e.preventDefault(); });
+      sizeHandleMax.addEventListener('touchstart', function(e) { draggingSize = 'max'; e.preventDefault(); });
+    }
+    document.addEventListener('mousemove', onSizeDrag);
+    document.addEventListener('mouseup', function() { draggingSize = null; });
+    document.addEventListener('touchmove', onSizeDrag);
+    document.addEventListener('touchend', function() { draggingSize = null; });
+
+    // Tick buttons jump the min handle
+    document.querySelectorAll('[data-tick]').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var v = parseInt(btn.getAttribute('data-tick'));
+        if (v === 0) { sizeMin.value = 0; }
+        else if (v >= 500) { sizeMax.value = 500; }
+        else { sizeMin.value = v; }
+        updateSizeUI();
+      });
+    });
+
+    // Show tooltips on hover/focus
+    if (sizeHandleMin) {
+      sizeHandleMin.addEventListener('mouseenter', function() { sizeMinTip.classList.remove('hidden'); });
+      sizeHandleMin.addEventListener('mouseleave', function() { sizeMinTip.classList.add('hidden'); });
+    }
+    if (sizeHandleMax) {
+      sizeHandleMax.addEventListener('mouseenter', function() { sizeMaxTip.classList.remove('hidden'); });
+      sizeHandleMax.addEventListener('mouseleave', function() { sizeMaxTip.classList.add('hidden'); });
+    }
+
+    var sizeReset = document.getElementById('size-filter-reset');
+    if (sizeReset) sizeReset.addEventListener('click', function() {
+      sizeMin.value = 0;
+      sizeMax.value = 500;
+      updateSizeUI();
+    });
+
     // read ?q= from URL query string
     var params = new URLSearchParams(location.search);
     var q = params.get('q');
