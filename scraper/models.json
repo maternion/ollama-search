@@ -12258,7 +12258,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "DeepSeek-V4-Flash is a preview of the DeepSeek-V4 series, a Mixture-of-Experts model with 284B total parameters and 13B activated, built for efficient reasoning across a 1M-token context window.",
       "name": "deepseek-v4-flash",
       "official": true,
@@ -12291,7 +12291,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "DeepSeek-V4-Pro is a frontier Mixture-of-Experts model with a large context window and three reasoning modes.",
       "name": "deepseek-v4-pro",
       "official": true,
@@ -15844,7 +15844,7 @@
       "official": true,
       "owner": null,
       "path": "/library/dolphincoder",
-      "pulls": 973000,
+      "pulls": 973100,
       "sizes": [
         "7b",
         "15b"
@@ -18114,7 +18114,7 @@
       "official": true,
       "owner": null,
       "path": "/library/firefunction-v2",
-      "pulls": 505900,
+      "pulls": 506000,
       "sizes": [
         "70b"
       ],
@@ -18340,7 +18340,7 @@
       "official": true,
       "owner": null,
       "path": "/library/functiongemma",
-      "pulls": 172400,
+      "pulls": 172500,
       "sizes": [
         "270m"
       ],
@@ -18406,7 +18406,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "Gemini 3 Flash offers frontier intelligence built for speed at a fraction of the cost.",
       "name": "gemini-3-flash-preview",
       "official": true,
@@ -21925,9 +21925,7 @@
       "owner": null,
       "path": "/library/glm-4.7-flash",
       "pulls": 1300000,
-      "sizes": [
-        "30b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/glm-4.7-flash",
       "tag_count": 4,
       "tags": [
@@ -21989,7 +21987,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "GLM-5.1 is our next-generation flagship model for agentic engineering, with significantly stronger coding capabilities than its predecessor. It achieves state-of-the-art performance on SWE-Bench Pro and leads GLM-5 by a wide margin.",
       "name": "glm-5.1",
       "official": true,
@@ -22022,7 +22020,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "GLM-5.2 is Z.ai’s flagship model for the era of long-horizon tasks.",
       "name": "glm-5.2",
       "official": true,
@@ -22062,9 +22060,7 @@
       "owner": null,
       "path": "/library/glm-ocr",
       "pulls": 6200000,
-      "sizes": [
-        "1b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/glm-ocr",
       "tag_count": 3,
       "tags": [
@@ -22522,9 +22518,7 @@
       "owner": null,
       "path": "/library/goliath",
       "pulls": 464900,
-      "sizes": [
-        "118b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/goliath",
       "tag_count": 16,
       "tags": [
@@ -24941,7 +24935,7 @@
       "official": true,
       "owner": null,
       "path": "/library/granite3-dense",
-      "pulls": 987900,
+      "pulls": 988000,
       "sizes": [
         "2b",
         "8b"
@@ -27860,7 +27854,7 @@
       "official": true,
       "owner": null,
       "path": "/library/granite4.1-guardian",
-      "pulls": 4101,
+      "pulls": 4102,
       "sizes": [
         "8b"
       ],
@@ -28877,7 +28871,7 @@
       "official": true,
       "owner": null,
       "path": "/library/internlm2",
-      "pulls": 962900,
+      "pulls": 963000,
       "sizes": [
         "1m",
         "1.8b",
@@ -29678,13 +29672,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "Kimi K2.5 is an open-source, native multimodal agentic model that seamlessly integrates vision and language understanding with advanced agentic capabilities, instant and thinking modes, as well as conversational and agentic paradigms.",
       "name": "kimi-k2.5",
       "official": true,
       "owner": null,
       "path": "/library/kimi-k2.5",
-      "pulls": 358200,
+      "pulls": 358300,
       "sizes": [],
       "source_url": "https://ollama.com/library/kimi-k2.5",
       "tag_count": 1,
@@ -29712,7 +29706,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "Kimi K2.6 is an open-source, native multimodal agentic model that advances practical capabilities in long-horizon coding, coding-driven design, proactive autonomous execution, and swarm-based task orchestration.",
       "name": "kimi-k2.6",
       "official": true,
@@ -29746,13 +29740,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "Kimi K2.7 Code is Moonshot AI's coding-focused agentic model built upon Kimi K2.6, with substantial improvements on real-world long-horizon coding tasks and roughly 30% lower thinking-token usage.",
       "name": "kimi-k2.7-code",
       "official": true,
       "owner": null,
       "path": "/library/kimi-k2.7-code",
-      "pulls": 128500,
+      "pulls": 128600,
       "sizes": [],
       "source_url": "https://ollama.com/library/kimi-k2.7-code",
       "tag_count": 1,
@@ -29786,9 +29780,7 @@
       "owner": null,
       "path": "/library/laguna-xs-2.1",
       "pulls": 38300,
-      "sizes": [
-        "33b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/laguna-xs-2.1",
       "tag_count": 4,
       "tags": [
@@ -29857,9 +29849,7 @@
       "owner": null,
       "path": "/library/laguna-xs.2",
       "pulls": 21100,
-      "sizes": [
-        "33b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/laguna-xs.2",
       "tag_count": 7,
       "tags": [
@@ -30637,9 +30627,7 @@
       "owner": null,
       "path": "/library/llama-pro",
       "pulls": 878700,
-      "sizes": [
-        "8b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/llama-pro",
       "tag_count": 33,
       "tags": [
@@ -34446,7 +34434,7 @@
       "official": true,
       "owner": null,
       "path": "/library/llama3-gradient",
-      "pulls": 965400,
+      "pulls": 965500,
       "sizes": [
         "8b",
         "70b"
@@ -34889,7 +34877,7 @@
       "official": true,
       "owner": null,
       "path": "/library/llama3-groq-tool-use",
-      "pulls": 958800,
+      "pulls": 958900,
       "sizes": [
         "8b",
         "70b"
@@ -39042,7 +39030,7 @@
       "official": true,
       "owner": null,
       "path": "/library/magicoder",
-      "pulls": 538700,
+      "pulls": 538800,
       "sizes": [
         "7b"
       ],
@@ -41214,7 +41202,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "MiniMax-M2.5 is a state-of-the-art large language model designed for real-world productivity and coding tasks.",
       "name": "minimax-m2.5",
       "official": true,
@@ -41247,7 +41235,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "MiniMax's M2-series model for coding, agentic workflows, and professional productivity.",
       "name": "minimax-m2.7",
       "official": true,
@@ -41281,13 +41269,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "MiniMax M3: Coding & Agentic Frontier. 1M context window. Native Multimodality.",
       "name": "minimax-m3",
       "official": true,
       "owner": null,
       "path": "/library/minimax-m3",
-      "pulls": 247600,
+      "pulls": 247700,
       "sizes": [],
       "source_url": "https://ollama.com/library/minimax-m3",
       "tag_count": 1,
@@ -42931,7 +42919,7 @@
         "tools"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "A general-purpose multimodal mixture-of-experts model for production-grade tasks and enterprise workloads.",
       "name": "mistral-large-3",
       "official": true,
@@ -42971,7 +42959,7 @@
       "official": true,
       "owner": null,
       "path": "/library/mistral-medium-3.5",
-      "pulls": 177200,
+      "pulls": 177300,
       "sizes": [
         "128b"
       ],
@@ -45799,7 +45787,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "NVIDIA Nemotron 3 Ultra is built for high-throughput reasoning and long-running agent workflows.",
       "name": "nemotron-3-ultra",
       "official": true,
@@ -47220,9 +47208,7 @@
       "owner": null,
       "path": "/library/nomic-embed-text",
       "pulls": 78500000,
-      "sizes": [
-        "137m"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/nomic-embed-text",
       "tag_count": 3,
       "tags": [
@@ -47278,9 +47264,7 @@
       "owner": null,
       "path": "/library/nomic-embed-text-v2-moe",
       "pulls": 509200,
-      "sizes": [
-        "475m"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/nomic-embed-text-v2-moe",
       "tag_count": 1,
       "tags": [
@@ -47313,9 +47297,7 @@
       "owner": null,
       "path": "/library/north-mini-code-1.0",
       "pulls": 25200,
-      "sizes": [
-        "30b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/north-mini-code-1.0",
       "tag_count": 7,
       "tags": [
@@ -50014,7 +49996,7 @@
       "official": true,
       "owner": null,
       "path": "/library/open-orca-platypus2",
-      "pulls": 493900,
+      "pulls": 494000,
       "sizes": [
         "13b"
       ],
@@ -50988,9 +50970,7 @@
       "owner": null,
       "path": "/library/openhermes",
       "pulls": 1100000,
-      "sizes": [
-        "7b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/openhermes",
       "tag_count": 35,
       "tags": [
@@ -55398,7 +55378,7 @@
       "official": true,
       "owner": null,
       "path": "/library/phind-codellama",
-      "pulls": 935800,
+      "pulls": 935900,
       "sizes": [
         "34b"
       ],
@@ -67544,9 +67524,7 @@
       "owner": null,
       "path": "/library/qwen3-coder-next",
       "pulls": 1800000,
-      "sizes": [
-        "80b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/qwen3-coder-next",
       "tag_count": 3,
       "tags": [
@@ -70041,7 +70019,7 @@
       "official": true,
       "owner": null,
       "path": "/library/reader-lm",
-      "pulls": 894200,
+      "pulls": 894300,
       "sizes": [
         "0.5b",
         "1.5b"
@@ -70458,7 +70436,7 @@
       "official": true,
       "owner": null,
       "path": "/library/reflection",
-      "pulls": 599200,
+      "pulls": 599300,
       "sizes": [
         "70b"
       ],
@@ -70942,7 +70920,7 @@
       "official": true,
       "owner": null,
       "path": "/library/samantha-mistral",
-      "pulls": 963200,
+      "pulls": 963300,
       "sizes": [
         "7b"
       ],
@@ -75515,7 +75493,7 @@
       "official": true,
       "owner": null,
       "path": "/library/stable-beluga",
-      "pulls": 899100,
+      "pulls": 899200,
       "sizes": [
         "7b",
         "13b",
@@ -79879,7 +79857,7 @@
       "official": true,
       "owner": null,
       "path": "/library/starling-lm",
-      "pulls": 939100,
+      "pulls": 939200,
       "sizes": [
         "7b"
       ],
@@ -85131,9 +85109,7 @@
       "owner": null,
       "path": "/library/wizardlm",
       "pulls": 858200,
-      "sizes": [
-        "7b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/wizardlm",
       "tag_count": 73,
       "tags": [
@@ -86547,7 +86523,7 @@
       "official": true,
       "owner": null,
       "path": "/library/xwinlm",
-      "pulls": 939100,
+      "pulls": 939200,
       "sizes": [
         "7b",
         "13b"
@@ -87528,7 +87504,7 @@
       "official": true,
       "owner": null,
       "path": "/library/yarn-llama2",
-      "pulls": 926200,
+      "pulls": 926300,
       "sizes": [
         "7b",
         "13b"
