@@ -725,6 +725,14 @@ def _main_tags(m: dict, tags: list[dict]) -> list[dict]:
     ordered += [s for s in sizes if s in by_name]
     # MLX counterparts that exist
     ordered += [f"{s}-mlx" for s in sizes if f"{s}-mlx" in by_name]
+    # MLX tags that don't follow the "{size}-mlx" naming (e.g. mlx-mxfp8, mxfp8, mlx-bf16)
+    ordered += [
+        t["name"]
+        for t in tags
+        if t.get("format") == "mlx"
+        and t["name"] not in ordered
+        and t["name"] != "latest"
+    ]
     # Generic cloud tag
     if "cloud" in by_name:
         ordered.append("cloud")
@@ -755,7 +763,7 @@ def _detail_models_section(m: dict, tags: list[dict]) -> str:
 
     def table_block(rows_html: str, n: int, fmt_id: str, visible: bool) -> str:
         hidden = "" if visible else " hidden"
-        mobile_label = n if visible else count
+        mobile_label = n
         count_label = "1 model" if mobile_label == 1 else f"{mobile_label} models"
         return (
             f'<div id="models-table-{fmt_id}" class="fmt-table{hidden}">\n'
