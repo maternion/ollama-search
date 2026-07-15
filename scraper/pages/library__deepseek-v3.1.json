@@ -1,48 +1,47 @@
 {
-  "path": "/library/deepseek-v3.1",
-  "name": "deepseek-v3.1",
-  "scraped_at": "2026-07-13T19:29:47.892798+00:00",
-  "readme_html": "\n        \n          <p><img src=\"/assets/library/deepseek-v3.1/c3f72402-1dce-4c07-a2a1-eebabd4f4b4b\" alt=\"logo.svg\"/></p>\n\n<p>DeepSeek-V3.1-Terminus update builds on V3.1\u2019s strengths while addressing key user feedback:</p>\n\n<ul>\n<li>\ud83c\udf10 Language consistency: fewer CN/EN mix-ups &amp; no more random chars.</li>\n<li>\ud83e\udd16 Agent upgrades: stronger Code Agent &amp; Search Agent performance.</li>\n</ul>\n\n<p><strong>Hybrid thinking mode</strong>: One model supports both thinking mode and non-thinking mode by changing the chat template.</p>\n\n<p><strong>Smarter tool calling</strong>: Through post-training optimization, the model\u2019s performance in tool usage and agent tasks has significantly improved.</p>\n\n<p><strong>Higher thinking efficiency</strong>: DeepSeek-V3.1-Think achieves comparable answer quality to DeepSeek-R1-0528, while responding more quickly.</p>\n\n        \n      ",
-  "manifest_updated": "",
-  "manifest_digest": "",
-  "manifest_size": "",
-  "files": [],
-  "cloud_usage_level": "",
-  "cloud_usage_active_slots": 0,
+  "applications": [
+    {
+      "command": "ollama launch claude --model deepseek-v3.1",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model deepseek-v3.1",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model deepseek-v3.1",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model deepseek-v3.1",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model deepseek-v3.1",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model deepseek-v3.1",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
   "cloud_context": "",
   "cloud_context_unit": "",
   "cloud_size": "",
   "cloud_size_unit": "",
-  "applications": [
-    {
-      "name": "Claude Code",
-      "icon_url": "/public/claude.png",
-      "command": "ollama launch claude --model deepseek-v3.1"
-    },
-    {
-      "name": "Codex App",
-      "icon_url": "/public/codex-app.png",
-      "command": "ollama launch codex-app --model deepseek-v3.1"
-    },
-    {
-      "name": "OpenClaw",
-      "icon_url": "/public/openclaw.png",
-      "command": "ollama launch openclaw --model deepseek-v3.1"
-    },
-    {
-      "name": "Hermes Agent",
-      "icon_url": "/public/hermes.png",
-      "command": "ollama launch hermes --model deepseek-v3.1"
-    },
-    {
-      "name": "Codex",
-      "icon_url": "/public/openai.png",
-      "command": "ollama launch codex --model deepseek-v3.1"
-    },
-    {
-      "name": "OpenCode",
-      "icon_url": "/public/opencode.png",
-      "command": "ollama launch opencode --model deepseek-v3.1"
-    }
-  ]
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "deepseek-v3.1",
+  "path": "/library/deepseek-v3.1",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/deepseek-v3.1/c3f72402-1dce-4c07-a2a1-eebabd4f4b4b\" alt=\"logo.svg\"/></p>\n\n<p>DeepSeek-V3.1-Terminus update builds on V3.1’s strengths while addressing key user feedback:</p>\n\n<ul>\n<li>🌐 Language consistency: fewer CN/EN mix-ups &amp; no more random chars.</li>\n<li>🤖 Agent upgrades: stronger Code Agent &amp; Search Agent performance.</li>\n</ul>\n\n<p><strong>Hybrid thinking mode</strong>: One model supports both thinking mode and non-thinking mode by changing the chat template.</p>\n\n<p><strong>Smarter tool calling</strong>: Through post-training optimization, the model’s performance in tool usage and agent tasks has significantly improved.</p>\n\n<p><strong>Higher thinking efficiency</strong>: DeepSeek-V3.1-Think achieves comparable answer quality to DeepSeek-R1-0528, while responding more quickly.</p>\n\n        \n      "
 }

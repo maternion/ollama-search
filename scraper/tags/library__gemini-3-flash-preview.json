@@ -1,31 +1,18 @@
 {
-  "path": "/library/gemini-3-flash-preview",
   "name": "gemini-3-flash-preview",
-  "scraped_at": "2026-07-13T19:25:03.839423+00:00",
+  "path": "/library/gemini-3-flash-preview",
   "tags": [
     {
+      "context": "1M",
+      "digest": "ebade0d31690",
+      "format": "gguf",
+      "input_type": "Text, Image",
       "name": "latest",
       "size_bytes": null,
       "size_text": "",
-      "context": "1M",
-      "input_type": "Text, Image",
-      "digest": "ebade0d31690",
       "updated": "6 months ago",
-      "format": "gguf",
-      "usage_level": "high",
-      "usage_active_slots": 4
-    },
-    {
-      "name": "cloud",
-      "size_bytes": null,
-      "size_text": "",
-      "context": "1M",
-      "input_type": "Text, Image",
-      "digest": "ebade0d31690",
-      "updated": "6 months ago",
-      "format": "gguf",
-      "usage_level": "high",
-      "usage_active_slots": 4
+      "usage_active_slots": 0,
+      "usage_level": ""
     }
   ]
 }

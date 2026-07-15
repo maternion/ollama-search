@@ -1,48 +1,47 @@
 {
-  "path": "/library/qwen3-coder-next",
-  "name": "qwen3-coder-next",
-  "scraped_at": "2026-07-13T19:28:40.677360+00:00",
-  "readme_html": "\n        \n          <p><img src=\"/assets/library/qwen3-coder-next/dbbd2b20-4b43-4d02-9cfe-e83a63cabae8\" width=\"360\"/></p>\n\n<p>Built on top of Qwen3-Next-80B-A3B-Base, which adopts a novel architecture with hybrid attention and MoE, Qwen3-Coder-Next has been agentically trained at scale on large-scale executable task synthesis, environment interaction, and reinforcement learning, obtaining strong coding and agentic capabilities with significantly lower inference costs.</p>\n\n<p><img src=\"/assets/library/qwen3-coder-next/7d9b5395-c335-48b9-b8c5-7e5090abbb8e\" alt=\"image.png\"/></p>\n\n<h3>Features</h3>\n\n<ul>\n<li><strong>Ultra-efficient inference:</strong> 80B total parameters, 3B active per token. Runs on consumer hardware with quantization.</li>\n<li><strong>256K native context:</strong> Full repository-scale understanding without chunking or retrieval hacks.</li>\n<li><strong>Agentic training:</strong> Trained on 800K executable tasks with environment interaction and reinforcement learning\u2014not just static code-text pairs.</li>\n<li><strong>Tool calling:</strong> Works with coding agents like Claude Code, Qwen Code, Cline, and OpenCode out of the box.</li>\n<li><strong>Non-thinking mode only:</strong> Fast responses without <code>&lt;think&gt;&lt;/think&gt;</code> blocks.</li>\n</ul>\n\n<h3>Benchmarks</h3>\n\n<p><img src=\"/assets/library/qwen3-coder-next/d978a788-2fa4-44ea-832c-20cd82202a6c\" alt=\"\"/></p>\n\n        \n      ",
-  "manifest_updated": "",
-  "manifest_digest": "",
-  "manifest_size": "",
-  "files": [],
-  "cloud_usage_level": "",
-  "cloud_usage_active_slots": 0,
+  "applications": [
+    {
+      "command": "ollama launch claude --model qwen3-coder-next",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model qwen3-coder-next",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model qwen3-coder-next",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model qwen3-coder-next",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model qwen3-coder-next",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model qwen3-coder-next",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
   "cloud_context": "",
   "cloud_context_unit": "",
   "cloud_size": "",
   "cloud_size_unit": "",
-  "applications": [
-    {
-      "name": "Claude Code",
-      "icon_url": "/public/claude.png",
-      "command": "ollama launch claude --model qwen3-coder-next"
-    },
-    {
-      "name": "Codex App",
-      "icon_url": "/public/codex-app.png",
-      "command": "ollama launch codex-app --model qwen3-coder-next"
-    },
-    {
-      "name": "OpenClaw",
-      "icon_url": "/public/openclaw.png",
-      "command": "ollama launch openclaw --model qwen3-coder-next"
-    },
-    {
-      "name": "Hermes Agent",
-      "icon_url": "/public/hermes.png",
-      "command": "ollama launch hermes --model qwen3-coder-next"
-    },
-    {
-      "name": "Codex",
-      "icon_url": "/public/openai.png",
-      "command": "ollama launch codex --model qwen3-coder-next"
-    },
-    {
-      "name": "OpenCode",
-      "icon_url": "/public/opencode.png",
-      "command": "ollama launch opencode --model qwen3-coder-next"
-    }
-  ]
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "qwen3-coder-next",
+  "path": "/library/qwen3-coder-next",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/qwen3-coder-next/dbbd2b20-4b43-4d02-9cfe-e83a63cabae8\" width=\"360\"/></p>\n\n<p>Built on top of Qwen3-Next-80B-A3B-Base, which adopts a novel architecture with hybrid attention and MoE, Qwen3-Coder-Next has been agentically trained at scale on large-scale executable task synthesis, environment interaction, and reinforcement learning, obtaining strong coding and agentic capabilities with significantly lower inference costs.</p>\n\n<p><img src=\"/assets/library/qwen3-coder-next/7d9b5395-c335-48b9-b8c5-7e5090abbb8e\" alt=\"image.png\"/></p>\n\n<h3>Features</h3>\n\n<ul>\n<li><strong>Ultra-efficient inference:</strong> 80B total parameters, 3B active per token. Runs on consumer hardware with quantization.</li>\n<li><strong>256K native context:</strong> Full repository-scale understanding without chunking or retrieval hacks.</li>\n<li><strong>Agentic training:</strong> Trained on 800K executable tasks with environment interaction and reinforcement learning—not just static code-text pairs.</li>\n<li><strong>Tool calling:</strong> Works with coding agents like Claude Code, Qwen Code, Cline, and OpenCode out of the box.</li>\n<li><strong>Non-thinking mode only:</strong> Fast responses without <code>&lt;think&gt;&lt;/think&gt;</code> blocks.</li>\n</ul>\n\n<h3>Benchmarks</h3>\n\n<p><img src=\"/assets/library/qwen3-coder-next/d978a788-2fa4-44ea-832c-20cd82202a6c\" alt=\"\"/></p>\n\n        \n      "
 }
