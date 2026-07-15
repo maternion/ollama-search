@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <title>Pricing</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="Ollama pricing plans — Free, Pro, Max, and Team."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="Pricing" />
+    <meta property="og:description" content="Ollama pricing plans — Free, Pro, Max, and Team." />
+    <meta property="og:image" content="https://ollama.com/public/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content="Pricing" />
+    <meta property="twitter:description" content="Ollama pricing plans — Free, Pro, Max, and Team." />
+    <meta property="twitter:site" content="ollama" />
+    <meta property="twitter:image:src" content="https://ollama.com/public/og-twitter.png" />
+    <meta property="twitter:image:width" content="1200" />
+    <meta property="twitter:image:height" content="628" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ollama-search/assets/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/ollama-search/assets/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/ollama-search/assets/icon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/ollama-search/assets/icon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x" href="/ollama-search/assets/apple-touch-icon.png" />
+
+    <script>
+(function() {
+  var stored = localStorage.getItem('theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (stored === 'dark' || (!stored && prefersDark)) {
+    document.documentElement.classList.add('dark');
+  }
+})();
+</script>
+    <link href="/ollama-search/assets/tailwind.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/prism.css" rel="stylesheet" />
+    <link href="/ollama-search/assets/extras.css" rel="stylesheet" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Ollama",
+        "url": "https://ollama.com"
+      }
+    </script>
+    <script defer src="/ollama-search/assets/htmx.bundle.js"></script>
+</head>
+<body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
+<header class="sticky top-0 z-40 bg-white dark:bg-neutral-950 underline-offset-4 lg:static">
+  <nav class="flex w-full items-center justify-between px-6 py-[9px]">
+    <a href="/ollama-search/" class="z-50">
+      <img src="/ollama-search/assets/ollama.png" class="w-8 dark:invert" alt="Ollama" />
+    </a>
+    <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/">Models</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="/ollama-search/pricing">Pricing</a>
+    </div>
+    <div class="flex-grow justify-center items-center hidden lg:flex">
+      <div class="relative w-full xl:max-w-[28rem]">
+        <form action="/ollama-search/" autocomplete="off" id="nav-search-form">
+          <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full" hx-on:focusout="var rt=event.relatedTarget;if(rt&&(this.contains(rt)||document.getElementById('searchpreview').contains(rt)))return;var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');">
+            <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400"><svg class="mt-0.25 ml-1.5 h-5 w-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="m8.5 3c3.0375661 0 5.5 2.46243388 5.5 5.5 0 1.24832096-.4158777 2.3995085-1.1166416 3.3225711l4.1469717 4.1470988c.2928932.2928932.2928932.767767 0 1.0606602-.2662666.2662665-.6829303.2904726-.9765418.0726181l-.0841184-.0726181-4.1470988-4.1469717c-.9230626.7007639-2.07425014 1.1166416-3.3225711 1.1166416-3.03756612 0-5.5-2.4624339-5.5-5.5 0-3.03756612 2.46243388-5.5 5.5-5.5zm0 1.5c-2.209139 0-4 1.790861-4 4s1.790861 4 4 4 4-1.790861 4-4-1.790861-4-4-4z" /></svg></span>
+            <input id="navbar-input" name="q" type="text" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autocomplete="off" hx-on:keydown="if(event.key==='Enter'){event.preventDefault();var v=this.value.trim();window.location.href=v?'/ollama-search/?q='+encodeURIComponent(v):'/ollama-search/';return;}if(event.key==='Escape'){event.preventDefault();this.value='';this.blur();var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');return;}if(event.key==='Tab'){var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');return;}if(event.key==='ArrowDown'){var first=document.querySelector('#search-preview-list a:first-of-type');if(first)first.focus();event.preventDefault();}if(event.key==='ArrowUp'){var last=document.getElementById('view-all-link');if(last)last.focus();event.preventDefault();}var sp=document.getElementById('searchpreview');if(sp)sp.classList.remove('hidden');" hx-on:focus="var sp=document.getElementById('searchpreview');if(sp&&this.value.trim())sp.classList.remove('hidden');" />
+          </div>
+        </form>
+        <div id="searchpreview" class="hidden absolute left-0 right-0 top-12 z-50" style="width: calc(100% + 2px); margin-left: -1px;"></div>
+      </div>
+    </div>
+    <div class="hidden lg:flex xl:flex-1 items-center space-x-2 justify-end ml-6 xl:ml-0">
+      <button id="theme-toggle" class="flex cursor-pointer items-center rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 text-lg px-3 py-1.5 text-black dark:text-neutral-200 whitespace-nowrap" title="Toggle dark mode">
+        <span class="dark:hidden"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></span>
+        <span class="hidden dark:block"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25M18.364 17.614l-1.591-1.591M12 18.75V21M5.636 17.614l1.591-1.591M3 12h2.25M5.636 6.386l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg></span>
+      </button>
+      <a class="flex cursor-pointer items-center rounded-full bg-neutral-800 dark:bg-neutral-100 text-lg px-4 py-1.5 text-white dark:text-neutral-900 hover:bg-black dark:hover:bg-white whitespace-nowrap focus:bg-black dark:focus:bg-white" href="/ollama-search/download">Download</a>
+    </div>
+    <div class="lg:hidden flex items-center">
+      <button id="theme-toggle-mobile" class="flex items-center rounded-full bg-black/5 dark:bg-white/10 px-3 py-1.5 mr-2 text-black dark:text-neutral-200">
+        <span class="dark:hidden"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg></span>
+        <span class="hidden dark:block"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25M18.364 17.614l-1.591-1.591M12 18.75V21M5.636 17.614l1.591-1.591M3 12h2.25M5.636 6.386l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<main class="mx-auto flex w-full max-w-6xl flex-col px-6 py-12 md:py-20">
+  <section class="text-center mb-12">
+    <h1 class="text-4xl md:text-5xl font-semibold font-rounded tracking-tight mb-4 text-neutral-900 dark:text-neutral-100">Pricing</h1>
+  </section>
+
+  <section class="grid grid-cols-1 md:grid-cols-6 gap-4 mb-12">
+    <div class="md:col-span-2 flex flex-col border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8">
+      <h2 class="text-3xl font-medium mb-2 text-neutral-900 dark:text-neutral-100">Free</h2>
+      <p class="mb-4 text-neutral-700 dark:text-neutral-300">Get started with Ollama</p>
+      <div class="mb-3 min-h-[3rem]">
+        <div class="text-2xl font-semibold font-rounded text-neutral-900 dark:text-neutral-100">$0</div>
+      </div>
+      <a href="/ollama-search/download" class="block w-full text-center border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-900 text-black dark:text-neutral-100 font-medium py-2 px-6 rounded-full mb-6">Download</a>
+      <ul class="flex-1 space-y-3">
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>Automate coding, document analysis, and other tasks with open models</span>
+        </li>
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>Keep your data private</span>
+        </li>
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>Run models on your hardware</span>
+        </li>
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>Access cloud models</span>
+        </li>
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>CLI, API, and desktop apps</span>
+        </li>
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>40,000+ community integrations</span>
+        </li>
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>Unlimited public models</span>
+        </li>
+      </ul>
+    </div>
+    <div class="md:col-span-2 flex flex-col border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8">
+      <h2 class="text-3xl font-medium mb-2 text-neutral-900 dark:text-neutral-100">Pro</h2>
+      <p class="mb-4 text-neutral-700 dark:text-neutral-300">Solve harder tasks, faster</p>
+      <div class="mb-3 min-h-[3rem]">
+        <div class="text-2xl font-semibold font-rounded text-neutral-900 dark:text-neutral-100">$20<span class="text-base font-normal"> / mo</span></div>
+      </div>
+      <a href="https://ollama.com/upgrade?plan=pro" class="block w-full text-center bg-neutral-800 dark:bg-neutral-200 hover:bg-black dark:hover:bg-white text-white dark:text-neutral-900 font-medium py-2 px-6 rounded-full mb-6">Get Pro</a>
+      <ul class="flex-1 space-y-3">
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>Access larger, more powerful cloud models</span>
+        </li>
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>Run 3 cloud models at a time</span>
+        </li>
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>50x more cloud usage than Free</span>
+        </li>
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>Upload and share private models</span>
+        </li>
+      </ul>
+    </div>
+    <div class="md:col-span-2 flex flex-col border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8">
+      <h2 class="text-3xl font-medium mb-2 text-neutral-900 dark:text-neutral-100">Max</h2>
+      <p class="mb-4 text-neutral-700 dark:text-neutral-300">For your most demanding work</p>
+      <div class="mb-3 min-h-[3rem]">
+        <div class="text-2xl font-semibold font-rounded text-neutral-900 dark:text-neutral-100">$100<span class="text-base font-normal"> / mo</span></div>
+      </div>
+      <a href="https://ollama.com/upgrade?plan=max" class="block w-full text-center bg-neutral-800 dark:bg-neutral-200 hover:bg-black dark:hover:bg-white text-white dark:text-neutral-900 font-medium py-2 px-6 rounded-full mb-6">Get Max</a>
+      <ul class="flex-1 space-y-3">
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>Run 10 cloud models at a time</span>
+        </li>
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>5x more usage than Pro</span>
+        </li>
+      </ul>
+    </div>
+    <div class="md:col-span-6 flex flex-col gap-8 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 md:flex-row md:items-start">
+      <div class="flex flex-col md:w-1/3">
+        <div class="flex items-center gap-3 mb-2">
+          <h2 class="text-3xl font-medium text-neutral-900 dark:text-neutral-100">Team</h2>
+          <span class="inline-flex items-center whitespace-nowrap rounded-full border border-neutral-200 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-900 px-2.5 py-1 text-xs font-medium text-neutral-600 dark:text-neutral-400">Coming soon</span>
+        </div>
+        <p class="mb-4 text-neutral-700 dark:text-neutral-300">Power your team&#x27;s work with Ollama</p>
+        <a href="https://ollama.typeform.com/to/FFV2AVPu" class="block w-full text-center bg-neutral-800 dark:bg-neutral-200 hover:bg-black dark:hover:bg-white text-white dark:text-neutral-900 font-medium py-2 px-6 rounded-full mb-6">Contact us</a>
+      </div>
+      <div class="flex-1 border-t border-neutral-200 dark:border-neutral-800 pt-6 md:border-l md:border-t-0 md:pl-8 md:pt-0">
+        <ul class="flex-1 space-y-3">
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>Shared usage across your team</span>
+        </li>
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>Centralized billing and administration</span>
+        </li>
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>Single sign-on (SSO)</span>
+        </li>
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>Model access controls</span>
+        </li>
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>MDM installer for Windows and macOS</span>
+        </li>
+        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
+          <svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <span>Priority support and dedicated Slack channel</span>
+        </li>
+      </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="flex flex-col w-full max-w-xl mx-auto mt-8">
+    <h2 class="text-2xl font-semibold font-rounded mb-6 text-neutral-900 dark:text-neutral-100">Frequently asked questions</h2>
+    <div class="space-y-10">
+    <div>
+      <h3 class="text-xl font-semibold font-rounded mb-4 text-neutral-900 dark:text-neutral-100">Models</h3>
+      <ul class="space-y-5">
+        <li>
+          <h4 class="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">Which models are available?</h4>
+          <div class="text-sm text-neutral-700 dark:text-neutral-300"><p class="text-sm">See the full list of cloud-enabled models <a href="/ollama-search/search?c=cloud" class="underline">here</a>.</p></div>
+        </li>
+        <li>
+          <h4 class="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">Do models support tool calling?</h4>
+          <div class="text-sm text-neutral-700 dark:text-neutral-300"><p class="text-sm">Yes. Cloud models that are trained to support tools are tested for tool calling and with real agent workflows before they go live. If something isn't working, let us know at <a href="mailto:hello@ollama.com" class="underline">hello@ollama.com</a>.</p></div>
+        </li>
+        <li>
+          <h4 class="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">What quantization or data format do cloud models use?</h4>
+          <div class="text-sm text-neutral-700 dark:text-neutral-300"><p class="text-sm">Native weights, as released by the model provider. On modern NVIDIA hardware, models may use accelerated data formats supported by Blackwell and Vera Rubin architectures (e.g. NVFP4).</p></div>
+        </li>
+        <li>
+          <h4 class="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">How fast is Ollama?</h4>
+          <div class="text-sm text-neutral-700 dark:text-neutral-300"><p class="text-sm">Speed depends on model size, architecture, and hardware optimization. We target and monitor for low time-to-first-token and high throughput across all cloud models. Priority tiers with faster performance may be available in the future.</p></div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-xl font-semibold font-rounded mb-4 text-neutral-900 dark:text-neutral-100">Usage</h3>
+      <ul class="space-y-5">
+        <li>
+          <h4 class="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">What are the usage limits for each plan?</h4>
+          <div class="text-sm text-neutral-700 dark:text-neutral-300"><p class="text-sm">Running models on your own hardware is always unlimited. Cloud usage varies by plan:</p>
+            <div class="mt-6 overflow-x-auto rounded-lg overflow-hidden max-w-lg">
+              <table class="w-full text-sm border-separate border-spacing-0">
+                <thead>
+                  <tr>
+                    <th class="border-t border-l border-r border-b border-neutral-200 px-3 py-2 text-left font-semibold rounded-tl-lg">Plan</th>
+                    <th class="border-t border-r border-b border-neutral-200 px-3 py-2 text-left font-semibold">Usage</th>
+                    <th class="border-t border-r border-b border-neutral-200 px-3 py-2 text-left font-semibold rounded-tr-lg">Example use cases</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="border-l border-r border-b border-neutral-200 px-3 py-2">Free</td>
+                    <td class="border-r border-b border-neutral-200 px-3 py-2">Light usage</td>
+                    <td class="border-r border-b border-neutral-200 px-3 py-2">Chatting with models, evaluating larger models, coding and AI assistants with smaller models</td>
+                  </tr>
+                  <tr>
+                    <td class="border-l border-r border-b border-neutral-200 px-3 py-2">Pro</td>
+                    <td class="border-r border-b border-neutral-200 px-3 py-2">Day-to-day work</td>
+                    <td class="border-r border-b border-neutral-200 px-3 py-2">Larger models, coding automation, deep research</td>
+                  </tr>
+                  <tr>
+                    <td class="border-l border-r border-b border-neutral-200 px-3 py-2 rounded-bl-lg">Max</td>
+                    <td class="border-r border-b border-neutral-200 px-3 py-2">Heavy, sustained usage</td>
+                    <td class="border-r border-b border-neutral-200 px-3 py-2 rounded-br-lg">Continuous agent tasks, multiple concurrent agents, large models over extended sessions</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-sm mt-6">Each plan has session limits that reset every 5 hours and weekly limits that reset every 7 days.</p></div>
+        </li>
+        <li>
+          <h4 class="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">How is usage measured?</h4>
+          <div class="text-sm text-neutral-700 dark:text-neutral-300"><p class="text-sm">Usage reflects actual utilization of Ollama's cloud infrastructure - primarily GPU time, which depends on model size and request duration. Shorter requests and prompts that share cached context use less.</p>
+            <p class="text-sm mt-2">This is different from fixed token or request-based plans. Ollama doesn't cap you at a set number of tokens. As hardware and model architectures get more efficient, you'll get more out of your plan over time.</p></div>
+        </li>
+        <li>
+          <h4 class="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">How much usage does each model use?</h4>
+          <div class="text-sm text-neutral-700 dark:text-neutral-300"><p class="text-sm">Models consume a different amount of usage based on how difficult they are to run. To view a model's usage level, visit the model's page, where its usage level is displayed from small, light models (level 1), like gpt-oss:20b, to extra heavy models (level 4), like deepseek-v4-pro.</p></div>
+        </li>
+        <li>
+          <h4 class="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">How does extra usage work?</h4>
+          <div class="text-sm text-neutral-700 dark:text-neutral-300"><p class="text-sm">Pro and Max users can add extra usage balance. Ollama uses your included plan limits first, then draws from your extra usage balance when you go over those limits.</p></div>
+        </li>
+        <li>
+          <h4 class="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">How much more usage does Pro include?</h4>
+          <div class="text-sm text-neutral-700 dark:text-neutral-300"><p class="text-sm">50x more than Free.</p></div>
+        </li>
+        <li>
+          <h4 class="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">How much more usage does Max include?</h4>
+          <div class="text-sm text-neutral-700 dark:text-neutral-300"><p class="text-sm">5x more than Pro.</p></div>
+        </li>
+        <li>
+          <h4 class="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">How do I know when I&#x27;ve hit my limit?</h4>
+          <div class="text-sm text-neutral-700 dark:text-neutral-300"><p class="text-sm">Check your usage <a href="https://ollama.com/settings" class="underline">here</a> anytime. At 90% of your plan's limit, Ollama sends an email reminder. You can turn this off in settings.</p></div>
+        </li>
+        <li>
+          <h4 class="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">How many cloud models can I run at once?</h4>
+          <div class="text-sm text-neutral-700 dark:text-neutral-300"><p class="text-sm">Concurrency limits ensure dedicated capacity for workflows that need multiple models running simultaneously:</p>
+            <div class="mt-6 overflow-x-auto rounded-lg overflow-hidden max-w-xs">
+              <table class="w-full text-sm border-separate border-spacing-0">
+                <thead>
+                  <tr>
+                    <th class="border-t border-l border-r border-b border-neutral-200 px-3 py-2 text-left font-semibold rounded-tl-lg">Plan</th>
+                    <th class="border-t border-r border-b border-neutral-200 px-3 py-2 text-left font-semibold rounded-tr-lg">Concurrent models</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="border-l border-r border-b border-neutral-200 px-3 py-2">Free</td>
+                    <td class="border-r border-b border-neutral-200 px-3 py-2">1</td>
+                  </tr>
+                  <tr>
+                    <td class="border-l border-r border-b border-neutral-200 px-3 py-2">Pro</td>
+                    <td class="border-r border-b border-neutral-200 px-3 py-2">3</td>
+                  </tr>
+                  <tr>
+                    <td class="border-l border-r border-b border-neutral-200 px-3 py-2 rounded-bl-lg">Max</td>
+                    <td class="border-r border-b border-neutral-200 px-3 py-2 rounded-br-lg">10</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-sm mt-6">Requests beyond your plan's concurrency limit are queued and processed as soon as a slot is available. Queued requests are held up to a fixed limit - if the queue is full, the request will be rejected until one of your concurrency slots opens.</p></div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-xl font-semibold font-rounded mb-4 text-neutral-900 dark:text-neutral-100">Privacy</h3>
+      <ul class="space-y-5">
+        <li>
+          <h4 class="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">Where are models hosted?</h4>
+          <div class="text-sm text-neutral-700 dark:text-neutral-300"><p class="text-sm">Ollama hosts models and compute resources primarily in the United States. To serve global demand, we may route to Europe and Singapore for additional capacity.</p></div>
+        </li>
+        <li>
+          <h4 class="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">Is my prompt or response data trained on?</h4>
+          <div class="text-sm text-neutral-700 dark:text-neutral-300"><p class="text-sm">Prompt or response data is never logged or trained on.</p></div>
+        </li>
+        <li>
+          <h4 class="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">Who does Ollama partner with to host models?</h4>
+          <div class="text-sm text-neutral-700 dark:text-neutral-300"><p class="text-sm">Ollama collaborates with NVIDIA Cloud Providers (NCPs) to host open models.</p>
+            <p class="text-sm mt-2">When Ollama partners with providers, we require no logging, no training, and zero data retention policies in place.</p></div>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </section>
+</main>
+<footer class="mt-auto">
+  <div class="underline-offset-4 hidden md:block">
+    <div class="flex items-center justify-between px-6 py-3.5">
+      <div class="text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="/ollama-search/maternion/" class="hover:underline">Maternion</a></div>
+      <div class="flex space-x-6 text-xs text-neutral-500 dark:text-neutral-400">
+        <a href="/ollama-search/download" class="hover:underline">Download</a>
+        <a href="https://ollama.com/blog" class="hover:underline">Blog</a>
+        <a href="https://docs.ollama.com" class="hover:underline">Docs</a>
+        <a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a>
+        <a href="/ollama-search/pricing" class="hover:underline">Pricing</a>
+      </div>
+    </div>
+  </div>
+  <div class="py-4 md:hidden">
+    <ul class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-neutral-500 dark:text-neutral-400">
+      <li><a href="/ollama-search/download" class="hover:underline">Download</a></li>
+      <li><a href="https://ollama.com/blog" class="hover:underline">Blog</a></li>
+      <li><a href="https://docs.ollama.com" class="hover:underline">Docs</a></li>
+      <li><a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a></li>
+      <li><a href="/ollama-search/pricing" class="hover:underline">Pricing</a></li>
+    </ul>
+    <div class="mt-2 text-center text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="/ollama-search/maternion/" class="hover:underline">Maternion</a></div>
+  </div>
+</footer>
+<script>
+(function() {
+  function toggle() {
+    var isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+  function initSearch() {
+    document.getElementById('theme-toggle')?.addEventListener('click', toggle);
+    document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggle);
+  }
+  window.initSearch = initSearch;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSearch);
+  } else {
+    initSearch();
+  }
+})();
+</script>
+<script src="/ollama-search/assets/app.js"></script>
+</body>
+</html>
