@@ -334,21 +334,22 @@ class BlobPage:
 # Card parsing (two markup variants: /library and /search)
 # --------------------------------------------------------------------------- #
 
-# A card <li x-test-model ...> ... </li>. We split on the opening tag of each
-# card; the card ends at the next "<li x-test-model" or at a known footer.
-_CARD_OPEN_RE = re.compile(r"<li\s+x-test-model[^>]*>", re.IGNORECASE)
+# A card is a <li class="flex items-baseline border-b ..."> element.
+# ollama.com removed x-test-* attributes; we now match by the li class.
+_CARD_OPEN_RE = re.compile(
+    r'<li\s+class="flex items-baseline border-b[^"]*">\s*'
+    r'<a\s+href="(/library/[^"]+)"',
+    re.IGNORECASE,
+)
 
 
 def _extract_cards(html: str) -> list[str]:
-    """Return the inner HTML of every <li x-test-model> card."""
+    """Return the inner HTML of every model card <li>."""
     starts = [m.start() for m in _CARD_OPEN_RE.finditer(html)]
     cards: list[str] = []
     for i, s in enumerate(starts):
         end = starts[i + 1] if i + 1 < len(starts) else len(html)
-        # The card's own <li> opening tag position; find its matching </li>
-        # naively by slicing to the next card (good enough given flat structure).
         inner = html[s:end]
-        # Trim trailing to the last </li> before the next card.
         close = inner.rfind("</li>")
         if close != -1 and i + 1 < len(starts):
             inner = inner[: close + len("</li>")]
@@ -377,8 +378,8 @@ def parse_card(card_html: str, source_url: str) -> Model | None:
     if not path or path == "/library" or path.startswith("/search"):
         return None
 
-    # --- name: x-test-search-response-title (search) or x-test-model-title
-    # attribute (library) ---
+    # --- name: from the <div title="modelName"> attribute, or from the
+    # <span class="group-hover:underline truncate">modelName</span> ---
     name = ""
     tm = re.search(
         r"x-test-search-response-title[^>]*>(.*?)</span>", card_html, re.DOTALL
@@ -390,6 +391,18 @@ def parse_card(card_html: str, source_url: str) -> Model | None:
         if tm:
             name = tm.group(1)
     if not name:
+        # New markup: <div title="alfred" class="flex flex-col">
+        tm = re.search(r'<div\s+title="([^"]+)"\s+class="flex flex-col"', card_html)
+        if tm:
+            name = tm.group(1)
+    if not name:
+        # Fallback: <span class="group-hover:underline truncate">name</span>
+        tm = re.search(
+            r'class="group-hover:underline truncate"[^>]*>([^<]+)</span>', card_html
+        )
+        if tm:
+            name = tm.group(1).strip()
+    if not name:
         name = path.strip("/").split("/")[-1]
 
     # --- description: <p class="... break-words ...">...</p> ---
@@ -398,46 +411,116 @@ def parse_card(card_html: str, source_url: str) -> Model | None:
     if dm:
         desc = strip_tags(dm.group(1))
 
-    # --- capabilities (indigo x-test-capability) ---
+    # --- capabilities: indigo badges (bg-indigo-50 text-indigo-600) ---
+    # Old markup used x-test-capability. New markup: <span class="... bg-indigo-50
+    # ... text-indigo-600 ...">capability</span>
     capabilities = []
+    # Try old x-test-capability first
     for cap in _find_spans_with_attr(card_html, "x-test-capability"):
         if cap and cap not in capabilities:
             capabilities.append(cap)
+    # New markup: indigo badges
+    if not capabilities:
+        for m in re.finditer(
+            r'<span\s+class="[^"]*bg-indigo-50[^"]*text-indigo-600[^"]*"[^>]*>([^<]+)</span>',
+            card_html,
+        ):
+            cap = m.group(1).strip()
+            if cap and cap not in capabilities:
+                capabilities.append(cap)
 
-    # --- cloud: a <span ...>cloud</span> with the cyan badge classes ---
+    # --- cloud: cyan badge (bg-cyan-50 text-cyan-500) ---
     cloud = False
-    for m in re.finditer(r"<span\b[^>]*>(.*?)</span>", card_html, re.DOTALL):
-        if strip_tags(m.group(1)).lower() == "cloud":
-            # only count the cyan badge variant
-            if "text-cyan" in m.group(0) or "bg-cyan" in m.group(0):
+    # Old: x-test or text-cyan. New: bg-cyan-50 text-cyan-500
+    if "bg-cyan-50" in card_html and "text-cyan" in card_html:
+        cloud = True
+    elif "text-cyan" in card_html:
+        # Fallback for older markup
+        for m in re.finditer(r"<span\b[^>]*>(.*?)</span>", card_html, re.DOTALL):
+            if strip_tags(m.group(1)).lower() == "cloud":
                 cloud = True
-            else:
-                # fallback: any cloud text counts
-                cloud = True
-            break
+                break
 
-    # --- sizes (blue x-test-size) ---
+    # --- sizes: blue badges (bg-[#ddf4ff] text-blue-600) ---
+    # Old: x-test-size. New: bg-[#ddf4ff] text-blue-600
     sizes = []
     for s in _find_spans_with_attr(card_html, "x-test-size"):
         if s and s not in sizes:
             sizes.append(s)
+    if not sizes:
+        for m in re.finditer(
+            r'<span\s+class="[^"]*bg-\[#ddf4ff\][^"]*text-blue-600[^"]*"[^>]*>([^<]+)</span>',
+            card_html,
+        ):
+            s = m.group(1).strip()
+            if s and s not in sizes:
+                sizes.append(s)
 
     # --- pulls / tags / updated ---
+    # Old: x-test-pull-count, x-test-tag-count, x-test-updated
     pulls_spans = _find_spans_with_attr(card_html, "x-test-pull-count")
     pulls = parse_count(pulls_spans[0]) if pulls_spans else 0
     tag_spans = _find_spans_with_attr(card_html, "x-test-tag-count")
     tag_count = parse_count(tag_spans[0]) if tag_spans else 0
     upd_spans = _find_spans_with_attr(card_html, "x-test-updated")
     updated = upd_spans[0] if upd_spans else ""
+
+    # New markup: pulls/tags are in <span> elements preceded by specific SVG paths
+    # The SVG path for downloads (pulls) contains "M3 16.5v2.25"
+    # The SVG path for tags contains "M9.568 3H5.25"
+    if not pulls:
+        # Find the span after the download SVG
+        pm = re.search(
+            r'd="M3 16\.5v2\.25[^"]*"[^>]*>.*?<span\s*>([^<]+)</span>',
+            card_html,
+            re.DOTALL,
+        )
+        if pm:
+            pulls = parse_count(pm.group(1).strip())
+    if not tag_count:
+        # Find the span after the tag SVG
+        pm = re.search(
+            r'd="M9\.568 3H5\.25[^"]*"[^>]*>.*?<span\s*>([^<]+)</span>',
+            card_html,
+            re.DOTALL,
+        )
+        if pm:
+            tag_count = parse_count(pm.group(1).strip())
+
+    # Updated: new markup has <span class="flex items-center" title="...">
+    # with clock SVG path "M12 6v6h4.5"
+    if not updated:
+        # Find the span with the clock SVG, then the text span after it
+        um = re.search(
+            r'd="M12 6v6h4\.5[^"]*"[^>]*>.*?<span\s*>([^<]+)</span>',
+            card_html,
+            re.DOTALL,
+        )
+        if um:
+            updated = um.group(1).strip()
+            # Also look for "Updated" prefix span
+            if updated.startswith("Updated"):
+                updated = updated.replace("Updated", "").strip()
+
     # The updated timestamp tooltip (when present) is a title= on the <span>
-    # wrapping the clock SVG + the x-test-updated span. Match only that span,
-    # not the model-title div's title (which holds the model name).
+    # wrapping the clock SVG. In new markup: <span class="flex items-center" title="Nov 19, 2023 1:58 PM UTC">
     updated_title = ""
     if upd_spans:
         pm = re.search(
             r'<span[^>]*\btitle="([^"]+)"[^>]*>\s*<svg[^>]*>.*?'
             r'd="M12 6v6h4\.5m4\.5 0a9 9 0.*?"[^>]*>.*?'
             r"x-test-updated",
+            card_html,
+            re.DOTALL,
+        )
+        if pm:
+            updated_title = pm.group(1)
+    if not updated_title:
+        # New markup: <span class="flex items-center" title="Nov 19, 2023 1:58 PM UTC">
+        # followed by clock SVG with path "M12 6v6h4.5"
+        pm = re.search(
+            r'<span\s+class="flex items-center"\s+title="([^"]+)"\s*>'
+            r'\s*<svg[^>]*>.*?d="M12 6v6h4\.5',
             card_html,
             re.DOTALL,
         )
