@@ -1,0 +1,125 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:12b-nvfp4/blobs/a8349d9bd64c",
+      "content_preview": "{\n\"bos_token_id\": 2,\n\"do_sample\": true,\n\"eos_token_id\": [\n1,\n106,\n50\n],\n\"pad_token_id\": 0,\n\"suppress",
+      "parameters": "",
+      "quantization": "",
+      "size": "260B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:12b-nvfp4/blobs/e61b58716094",
+      "content_preview": "{\n\"producer\": {\n\"name\": \"modelopt\",\n\"version\": \"0.45.0.dev110+g04f58166a\"\n},\n\"quantization\": {\n\"quan",
+      "parameters": "",
+      "quantization": "",
+      "size": "41kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:12b-nvfp4/blobs/6b938e76555b",
+      "content_preview": "{\n\"audio_ms_per_token\": 40,\n\"audio_seq_length\": 750,\n\"feature_extractor\": {\n\"audio_samples_per_token",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.4kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:12b-nvfp4/blobs/cc8d3a0ce364",
+      "content_preview": "{\n\"version\": \"1.0\",\n\"truncation\": null,\n\"padding\": null,\n\"added_tokens\": [\n{\n\"id\": 0,\n\"content\": \"<p",
+      "parameters": "",
+      "quantization": "",
+      "size": "32MB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:12b-nvfp4/blobs/e83d50c8efdd",
+      "content_preview": "{\n\"audio_token\": \"<|audio|>\",\n\"backend\": \"tokenizers\",\n\"boa_token\": \"<|audio>\",\n\"boi_token\": \"<|imag",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.7kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:12b-nvfp4/blobs/14b0b5aaf661",
+      "content_preview": "{\n\"architectures\": [\n\"Gemma4UnifiedAssistantForCausalLM\"\n],\n\"audio_token_id\": 258881,\n\"backbone_hidd",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.3kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:12b-nvfp4/blobs/02b56bd11e1c",
+      "content_preview": "{\n\"bos_token_id\": 2,\n\"do_sample\": true,\n\"eos_token_id\": 1,\n\"pad_token_id\": 0,\n\"suppress_tokens\": [\n2",
+      "parameters": "",
+      "quantization": "",
+      "size": "233B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:12b-nvfp4/blobs/c001d9ada50a",
+      "content_preview": "{\n\"version\": \"1.0\",\n\"truncation\": null,\n\"padding\": null,\n\"added_tokens\": [\n{\n\"id\": 0,\n\"content\": \"<p",
+      "parameters": "",
+      "quantization": "",
+      "size": "32MB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:12b-nvfp4/blobs/089594a3924f",
+      "content_preview": "{\n\"audio_token\": \"<|audio|>\",\n\"backend\": \"tokenizers\",\n\"boa_token\": \"<|audio>\",\n\"boi_token\": \"<|imag",
+      "parameters": "",
+      "quantization": "",
+      "size": "822B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:12b-nvfp4/blobs/0d542e0c8804",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "10kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:12b-nvfp4/blobs/56380ca2ab89",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_k\": 64,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "42B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:12b-nvfp4/blobs/2e7920b89307",
+      "content_preview": "{\n\"architectures\": [\n\"Gemma4UnifiedForConditionalGeneration\"\n],\n\"audio_config\": {\n\"_name_or_path\": \"",
+      "parameters": "",
+      "quantization": "",
+      "size": "79kB",
+      "type": "json"
+    }
+  ],
+  "full_path": "/library/gemma4:12b-nvfp4",
+  "manifest_digest": "117d0d84cf2a",
+  "manifest_size": "7.7GB",
+  "manifest_updated": "2 weeks ago",
+  "path": "/library/gemma4",
+  "tag_name": "12b-nvfp4"
+}
