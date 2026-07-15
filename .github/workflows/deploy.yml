@@ -51,18 +51,16 @@ jobs:
             cd "$GITHUB_WORKSPACE"
           fi
 
-      - name: Quick check for changes
-        id: check
-        run: |
-          if python3 scraper/scrape.py --check-only; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          fi
-
       # ── Cycle 1: scrape 2h → build → deploy to gh-pages ──
+      # Always run --smart. The previous --check-only gate (a 2-request catalog
+      # card hash) could not detect per-tag changes that ollama.com surfaces
+      # only on the /<model>/tags page — notably cloud usage tier (Low/Medium/
+      # High/Max), which moved gemma4:cloud from "medium" to "low" without
+      # changing the catalog card's tag_count or updated_title. --smart mode
+      # already re-fetches each model's lightweight /tags page and compares a
+      # fingerprint including usage_level, so it catches tier changes while
+      # skipping the heavy tag-page/blob scraping for unchanged models.
       - name: Scrape cycle 1 (2h max)
-        if: steps.check.outputs.changed == 'true' || github.event_name != 'schedule'
         id: scrape1
         continue-on-error: true
         env:

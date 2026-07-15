@@ -1494,6 +1494,275 @@ def save_blob_page(blob_url: str, page: BlobPage) -> None:
 
 
 # --------------------------------------------------------------------------- #
+# Parameter size inference (for models without Xb size tags on ollama.com)
+# --------------------------------------------------------------------------- #
+
+# Tag-name pattern: "120b-q2_K", "7b-mistral-v2-q2_K", "137m-v1.5-fp16"
+_TAG_SIZE_RE = re.compile(r"^(\d+(?:\.\d+)?)([bm])\b", re.IGNORECASE)
+# Model-name pattern: "sweep-next-edit-1.5B"
+_NAME_SIZE_RE = re.compile(r"(\d+(?:\.\d+)?)\s*[bB]\b")
+# Tensor shape string: "[2880, 201088]" or "[512]"
+_SHAPE_RE = re.compile(r"\[\s*([\d,\s]+)\s*\]")
+
+
+def _load_tags_for_model(model: Model) -> list[Tag]:
+    """Load cached tags for a model from scraper/tags/<slug>.json.
+
+    Returns an empty list if the file is missing or unreadable. Used by
+    infer_param_size() to avoid HTTP requests.
+    """
+    slug = slugify(model.path)
+    tf = TAGS_DIR / f"{slug}.json"
+    if not tf.exists():
+        return []
+    try:
+        data = json.loads(tf.read_text())
+    except Exception:
+        return []
+    out: list[Tag] = []
+    for t in data.get("tags", []):
+        try:
+            out.append(
+                Tag(
+                    name=t.get("name", ""),
+                    size_bytes=t.get("size_bytes"),
+                    size_text=t.get("size_text", ""),
+                    context=t.get("context", ""),
+                    input_type=t.get("input_type", ""),
+                    digest=t.get("digest", ""),
+                    updated=t.get("updated", ""),
+                    format=t.get("format", "gguf"),
+                    usage_level=t.get("usage_level", ""),
+                    usage_active_slots=t.get("usage_active_slots", 0),
+                )
+            )
+        except Exception:
+            continue
+    return out
+
+
+def _is_cloud_only_tags(tags: list[Tag]) -> bool:
+    """True if every tag is named 'cloud' or ends with '-cloud'."""
+    if not tags:
+        return False
+    return all(t.name == "cloud" or t.name.endswith("-cloud") for t in tags)
+
+
+def _sum_tensor_shapes(blob: dict) -> int:
+    """Sum the element count across every tensor in a blob dict.
+
+    Each tensor's `shape` is a string like "[2880, 201088]"; we parse the
+    integer dimensions and multiply them. Returns 0 if there are no
+    parseable tensors.
+    """
+    total = 0
+    for t in blob.get("tensors", []):
+        shape = t.get("shape", "")
+        if isinstance(shape, list):
+            dims = [d for d in shape if isinstance(d, int)]
+        else:
+            m = _SHAPE_RE.match(str(shape).strip())
+            if not m:
+                continue
+            dims = []
+            for d in m.group(1).split(","):
+                d = d.strip()
+                if d:
+                    try:
+                        dims.append(int(d))
+                    except ValueError:
+                        continue
+        n = 1
+        for d in dims:
+            n *= d
+        total += n
+    return total
+
+
+def _format_param_size(param_count: int) -> str | None:
+    """Convert a raw parameter count into a 'Xb'/'Xm' size string.
+
+    - >= 1e9: round(param_count / 1e9) + 'b'; skip if it rounds to 0.
+    - < 1e9:  round(param_count / 1e6) + 'm'; if 0, fall back to the raw
+              million count (param_count / 1e6) so very small models are
+              still represented.
+    """
+    if param_count <= 0:
+        return None
+    if param_count >= 1_000_000_000:
+        b = round(param_count / 1_000_000_000)
+        if b == 0:
+            return None
+        return f"{b}b"
+    m = round(param_count / 1_000_000)
+    if m == 0:
+        m = max(1, int(param_count / 1_000_000))
+    return f"{m}m"
+
+
+def _infer_from_blobs(model: Model, tags: list[Tag]) -> str | None:
+    """Source 1: sum tensor shapes from a GGUF model blob.
+
+    Iterates the model's GGUF tags, loads each tag_page JSON, finds a file
+    of type 'model' with a blob_url, loads the cached blob JSON, and sums
+    its tensor shapes. Returns the size string for the first usable blob,
+    or None.
+    """
+    slug = slugify(model.path)
+    for t in tags:
+        if t.format != "gguf":
+            continue
+        tp_file = TAG_PAGES_DIR / f"{slug}__{t.name}.json"
+        if not tp_file.exists():
+            continue
+        try:
+            tp = json.loads(tp_file.read_text())
+        except Exception:
+            continue
+        for f in tp.get("files", []):
+            if f.get("type") != "model":
+                continue
+            blob_url = f.get("blob_url", "")
+            if not blob_url:
+                continue
+            digest = blob_url.rstrip("/").rsplit("/blobs/", 1)[-1].split("?", 1)[0]
+            bp = BLOBS_DIR / f"{digest}.json"
+            if not bp.exists():
+                continue
+            try:
+                blob = json.loads(bp.read_text())
+            except Exception:
+                continue
+            if blob.get("blob_type") != "model":
+                continue
+            total = _sum_tensor_shapes(blob)
+            if total > 0:
+                return _format_param_size(total)
+    return None
+
+
+def _infer_from_tag_names(tags: list[Tag]) -> str | None:
+    """Source 2: extract a size from a tag name like '120b-q2_K'."""
+    for t in tags:
+        m = _TAG_SIZE_RE.match(t.name)
+        if m:
+            return f"{m.group(1)}{m.group(2).lower()}"
+    return None
+
+
+def _infer_from_model_name(name: str) -> str | None:
+    """Source 3: extract a size from the model name like 'sweep-...-1.5B'."""
+    m = _NAME_SIZE_RE.search(name)
+    if m:
+        return f"{m.group(1)}b"
+    return None
+
+
+def infer_param_size(model: Model, tags: list[Tag] | None = None) -> str | None:
+    """Infer a parameter-size string (e.g. "33b", "137m") for a model.
+
+    Used for models whose ollama.com catalog card has an empty `sizes`
+    list (the site omits size tags when a model has only one size).
+
+    Priority:
+      1. Sum tensor shapes from a downloadable GGUF model blob (most
+         accurate — exact parameter count).
+      2. Extract from a tag name that starts with `<digits>[bm]`
+         (e.g. "120b-q2_K" -> "120b").
+      3. Extract from the model name (e.g. "sweep-next-edit-1.5B" -> "1.5b").
+
+    Returns None for cloud-only models (all tags named 'cloud' or ending
+    with '-cloud') and when no size can be inferred.
+    """
+    if tags is None:
+        tags = _load_tags_for_model(model)
+
+    if _is_cloud_only_tags(tags):
+        return None
+
+    size = _infer_from_blobs(model, tags)
+    if size:
+        return size
+    size = _infer_from_tag_names(tags)
+    if size:
+        return size
+    return _infer_from_model_name(model.name)
+
+
+def run_infer_sizes() -> int:
+    """Load models.json, infer sizes for sizeless models, save, and summarize."""
+    models_file = DATA / "models.json"
+    if not models_file.exists():
+        print("models.json missing", file=sys.stderr)
+        return 1
+    data = json.loads(models_file.read_text())
+    models = data.get("models", [])
+
+    inferred = 0
+    skipped_cloud = 0
+    no_size = 0
+    by_source: dict[str, int] = {"blob": 0, "tag": 0, "name": 0}
+
+    for m in models:
+        if m.get("sizes"):
+            continue
+        # Reconstruct a minimal Model for infer_param_size(). We only need
+        # name + path (for slugify / tag_page lookup); tags are loaded from
+        # the cache inside infer_param_size().
+        model = Model(
+            name=m.get("name", ""),
+            path=m.get("path", ""),
+            description=m.get("description", ""),
+            capabilities=m.get("capabilities", []),
+            cloud=m.get("cloud", False),
+            sizes=m.get("sizes", []),
+            pulls=m.get("pulls", 0),
+            tag_count=m.get("tag_count", 0),
+            updated=m.get("updated", ""),
+            updated_title=m.get("updated_title", ""),
+            official=m.get("official", False),
+            owner=m.get("owner"),
+            source_url=m.get("source_url", ""),
+            cloud_only=m.get("cloud_only", False),
+        )
+        tags = _load_tags_for_model(model)
+        if _is_cloud_only_tags(tags):
+            skipped_cloud += 1
+            continue
+        # Determine the source explicitly for the summary.
+        size = _infer_from_blobs(model, tags)
+        source = "blob" if size else None
+        if not size:
+            size = _infer_from_tag_names(tags)
+            source = "tag" if size else None
+        if not size:
+            size = _infer_from_model_name(model.name)
+            source = "name" if size else None
+        if size:
+            m["sizes"] = [size]
+            inferred += 1
+            if source:
+                by_source[source] += 1
+            print(f"  inferred {model.name:30} -> {size}  (source={source})")
+        else:
+            no_size += 1
+            print(f"  no size      {model.name:30}  (no blobs/tags/name)")
+
+    _atomic_write(
+        models_file,
+        json.dumps(data, indent=2, sort_keys=True, ensure_ascii=False),
+    )
+    print()
+    print(f"inferred sizes for {inferred} models")
+    print(f"  from blob tensors: {by_source['blob']}")
+    print(f"  from tag names:    {by_source['tag']}")
+    print(f"  from model name:   {by_source['name']}")
+    print(f"skipped (cloud-only): {skipped_cloud}")
+    print(f"still without sizes: {no_size}")
+    return 0
+
+
+# --------------------------------------------------------------------------- #
 # Profile page scraping (e.g. /maternion)
 # --------------------------------------------------------------------------- #
 
@@ -2068,6 +2337,13 @@ def main(argv: list[str] | None = None) -> int:
         help="only scrape the /download and /pricing static pages, then exit",
     )
     ap.add_argument(
+        "--infer-sizes",
+        action="store_true",
+        help="infer parameter sizes for models with empty `sizes` arrays "
+        "(using cached blobs/tag-pages/tags, no HTTP), update models.json, "
+        "print a summary, and exit",
+    )
+    ap.add_argument(
         "--max-runtime",
         type=int,
         default=0,
@@ -2100,6 +2376,9 @@ def main(argv: list[str] | None = None) -> int:
         finally:
             client.close()
         return 0
+
+    if args.infer_sizes:
+        return run_infer_sizes()
 
     client = Client()
     try:
@@ -2595,6 +2874,18 @@ def main(argv: list[str] | None = None) -> int:
                     and t.size_bytes
                 ]
                 m.cloud_only = len(local_tags) == 0
+
+        # Infer parameter sizes for models whose `sizes` list is empty
+        # (ollama.com omits size tags when a model has only one size).
+        for m in models.values():
+            if m.sizes:
+                continue
+            if not m.tags:
+                m.tags = _load_tags_for_model(m)
+            size = infer_param_size(m, m.tags)
+            if size and size not in m.sizes:
+                m.sizes.append(size)
+                log.info("  inferred size %s for %s", size, m.path)
 
         save_models(models.values())
 
