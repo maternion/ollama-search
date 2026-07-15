@@ -1,19 +1,18 @@
 {
-  "path": "/library/mistral-large-3",
   "name": "mistral-large-3",
-  "scraped_at": "2026-07-13T19:27:27.883223+00:00",
+  "path": "/library/mistral-large-3",
   "tags": [
     {
+      "context": "256K",
+      "digest": "3130fd5a5a1e",
+      "format": "gguf",
+      "input_type": "Text, Image",
       "name": "675b-cloud",
       "size_bytes": 675,
       "size_text": "675b",
-      "context": "256K",
-      "input_type": "Text, Image",
-      "digest": "3130fd5a5a1e",
       "updated": "7 months ago",
-      "format": "gguf",
-      "usage_level": "high",
-      "usage_active_slots": 3
+      "usage_active_slots": 0,
+      "usage_level": ""
     }
   ]
 }

@@ -1,19 +1,18 @@
 {
-  "path": "/library/deepseek-v4-pro",
   "name": "deepseek-v4-pro",
-  "scraped_at": "2026-07-14T04:09:13.514041+00:00",
+  "path": "/library/deepseek-v4-pro",
   "tags": [
     {
+      "context": "1M",
+      "digest": "22bfd5026abd",
+      "format": "gguf",
+      "input_type": "Text",
       "name": "cloud",
       "size_bytes": null,
       "size_text": "",
-      "context": "1M",
-      "input_type": "Text",
-      "digest": "22bfd5026abd",
       "updated": "2 months ago",
-      "format": "gguf",
-      "usage_level": "high",
-      "usage_active_slots": 4
+      "usage_active_slots": 0,
+      "usage_level": ""
     }
   ]
 }

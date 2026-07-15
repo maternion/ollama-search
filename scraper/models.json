@@ -12258,7 +12258,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "DeepSeek-V4-Flash is a preview of the DeepSeek-V4 series, a Mixture-of-Experts model with 284B total parameters and 13B activated, built for efficient reasoning across a 1M-token context window.",
       "name": "deepseek-v4-flash",
       "official": true,
@@ -12278,8 +12278,8 @@
           "size_bytes": null,
           "size_text": "",
           "updated": "2 months ago",
-          "usage_active_slots": 2,
-          "usage_level": "medium"
+          "usage_active_slots": 0,
+          "usage_level": ""
         }
       ],
       "updated": "2 months ago",
@@ -12291,7 +12291,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "DeepSeek-V4-Pro is a frontier Mixture-of-Experts model with a large context window and three reasoning modes.",
       "name": "deepseek-v4-pro",
       "official": true,
@@ -12311,8 +12311,8 @@
           "size_bytes": null,
           "size_text": "",
           "updated": "2 months ago",
-          "usage_active_slots": 4,
-          "usage_level": "high"
+          "usage_active_slots": 0,
+          "usage_level": ""
         }
       ],
       "updated": "2 months ago",
@@ -12534,8 +12534,8 @@
           "size_bytes": 24,
           "size_text": "24b",
           "updated": "7 months ago",
-          "usage_active_slots": 1,
-          "usage_level": "low"
+          "usage_active_slots": 0,
+          "usage_level": ""
         },
         {
           "context": "384K",
@@ -18406,7 +18406,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "Gemini 3 Flash offers frontier intelligence built for speed at a fraction of the cost.",
       "name": "gemini-3-flash-preview",
       "official": true,
@@ -21340,9 +21340,9 @@
           "name": "cloud",
           "size_bytes": null,
           "size_text": "",
-          "updated": "2 weeks ago",
-          "usage_active_slots": 2,
-          "usage_level": "medium"
+          "updated": "3 weeks ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
         },
         {
           "context": "128K",
@@ -21460,7 +21460,7 @@
           "name": "e2b-mlx",
           "size_bytes": 6500000000,
           "size_text": "6.5GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21472,7 +21472,7 @@
           "name": "e2b-mlx-bf16",
           "size_bytes": 10000000000,
           "size_text": "10GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21484,7 +21484,7 @@
           "name": "e2b-mxfp8",
           "size_bytes": 8100000000,
           "size_text": "8.1GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21496,7 +21496,7 @@
           "name": "e2b-nvfp4",
           "size_bytes": 6500000000,
           "size_text": "6.5GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21556,7 +21556,7 @@
           "name": "e4b-mlx",
           "size_bytes": 8800000000,
           "size_text": "8.8GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21568,7 +21568,7 @@
           "name": "e4b-mlx-bf16",
           "size_bytes": 16000000000,
           "size_text": "16GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21580,7 +21580,7 @@
           "name": "e4b-mxfp8",
           "size_bytes": 12000000000,
           "size_text": "12GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21592,7 +21592,7 @@
           "name": "e4b-nvfp4",
           "size_bytes": 8800000000,
           "size_text": "8.8GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21652,7 +21652,7 @@
           "name": "12b-mlx",
           "size_bytes": 7700000000,
           "size_text": "7.7GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21664,7 +21664,7 @@
           "name": "12b-mlx-bf16",
           "size_bytes": 25000000000,
           "size_text": "25GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21676,7 +21676,7 @@
           "name": "12b-mxfp8",
           "size_bytes": 13000000000,
           "size_text": "13GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21688,7 +21688,7 @@
           "name": "12b-nvfp4",
           "size_bytes": 7700000000,
           "size_text": "7.7GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21736,7 +21736,7 @@
           "name": "26b-a4b-it-bf16",
           "size_bytes": 52000000000,
           "size_text": "52GB",
-          "updated": "4 weeks ago",
+          "updated": "1 month ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21748,7 +21748,7 @@
           "name": "26b-mlx",
           "size_bytes": 18000000000,
           "size_text": "18GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21760,7 +21760,7 @@
           "name": "26b-mlx-bf16",
           "size_bytes": 53000000000,
           "size_text": "53GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21772,7 +21772,7 @@
           "name": "26b-mxfp8",
           "size_bytes": 28000000000,
           "size_text": "28GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21784,7 +21784,7 @@
           "name": "26b-nvfp4",
           "size_bytes": 18000000000,
           "size_text": "18GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21797,8 +21797,8 @@
           "size_bytes": 31,
           "size_text": "31b",
           "updated": "3 months ago",
-          "usage_active_slots": 2,
-          "usage_level": "medium"
+          "usage_active_slots": 0,
+          "usage_level": ""
         },
         {
           "context": "256K",
@@ -21868,7 +21868,7 @@
           "name": "31b-mlx",
           "size_bytes": 19000000000,
           "size_text": "19GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21880,7 +21880,7 @@
           "name": "31b-mlx-bf16",
           "size_bytes": 64000000000,
           "size_text": "64GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21892,7 +21892,7 @@
           "name": "31b-mxfp8",
           "size_bytes": 33000000000,
           "size_text": "33GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -21904,7 +21904,7 @@
           "name": "31b-nvfp4",
           "size_bytes": 19000000000,
           "size_text": "19GB",
-          "updated": "1 week ago",
+          "updated": "2 weeks ago",
           "usage_active_slots": 0,
           "usage_level": ""
         }
@@ -21925,9 +21925,7 @@
       "owner": null,
       "path": "/library/glm-4.7-flash",
       "pulls": 1300000,
-      "sizes": [
-        "30b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/glm-4.7-flash",
       "tag_count": 4,
       "tags": [
@@ -21989,7 +21987,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "GLM-5.1 is our next-generation flagship model for agentic engineering, with significantly stronger coding capabilities than its predecessor. It achieves state-of-the-art performance on SWE-Bench Pro and leads GLM-5 by a wide margin.",
       "name": "glm-5.1",
       "official": true,
@@ -22009,8 +22007,8 @@
           "size_bytes": null,
           "size_text": "",
           "updated": "3 months ago",
-          "usage_active_slots": 3,
-          "usage_level": "high"
+          "usage_active_slots": 0,
+          "usage_level": ""
         }
       ],
       "updated": "3 months ago",
@@ -22022,7 +22020,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "GLM-5.2 is Z.ai’s flagship model for the era of long-horizon tasks.",
       "name": "glm-5.2",
       "official": true,
@@ -22041,9 +22039,9 @@
           "name": "cloud",
           "size_bytes": null,
           "size_text": "",
-          "updated": "3 weeks ago",
-          "usage_active_slots": 3,
-          "usage_level": "high"
+          "updated": "4 weeks ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
         }
       ],
       "updated": "4 weeks ago",
@@ -22062,9 +22060,7 @@
       "owner": null,
       "path": "/library/glm-ocr",
       "pulls": 6200000,
-      "sizes": [
-        "1b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/glm-ocr",
       "tag_count": 3,
       "tags": [
@@ -22522,9 +22518,7 @@
       "owner": null,
       "path": "/library/goliath",
       "pulls": 464800,
-      "sizes": [
-        "118b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/goliath",
       "tag_count": 16,
       "tags": [
@@ -22789,8 +22783,8 @@
           "size_bytes": 20,
           "size_text": "20b",
           "updated": "9 months ago",
-          "usage_active_slots": 1,
-          "usage_level": "low"
+          "usage_active_slots": 0,
+          "usage_level": ""
         },
         {
           "context": "128K",
@@ -22801,8 +22795,8 @@
           "size_bytes": 120,
           "size_text": "120b",
           "updated": "9 months ago",
-          "usage_active_slots": 2,
-          "usage_level": "medium"
+          "usage_active_slots": 0,
+          "usage_level": ""
         }
       ],
       "updated": "9 months ago",
@@ -29678,7 +29672,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "Kimi K2.5 is an open-source, native multimodal agentic model that seamlessly integrates vision and language understanding with advanced agentic capabilities, instant and thinking modes, as well as conversational and agentic paradigms.",
       "name": "kimi-k2.5",
       "official": true,
@@ -29698,8 +29692,8 @@
           "size_bytes": null,
           "size_text": "",
           "updated": "5 months ago",
-          "usage_active_slots": 3,
-          "usage_level": "high"
+          "usage_active_slots": 0,
+          "usage_level": ""
         }
       ],
       "updated": "5 months ago",
@@ -29712,13 +29706,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "Kimi K2.6 is an open-source, native multimodal agentic model that advances practical capabilities in long-horizon coding, coding-driven design, proactive autonomous execution, and swarm-based task orchestration.",
       "name": "kimi-k2.6",
       "official": true,
       "owner": null,
       "path": "/library/kimi-k2.6",
-      "pulls": 377900,
+      "pulls": 378000,
       "sizes": [],
       "source_url": "https://ollama.com/library/kimi-k2.6",
       "tag_count": 1,
@@ -29732,8 +29726,8 @@
           "size_bytes": null,
           "size_text": "",
           "updated": "2 months ago",
-          "usage_active_slots": 3,
-          "usage_level": "high"
+          "usage_active_slots": 0,
+          "usage_level": ""
         }
       ],
       "updated": "2 months ago",
@@ -29746,7 +29740,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "Kimi K2.7 Code is Moonshot AI's coding-focused agentic model built upon Kimi K2.6, with substantial improvements on real-world long-horizon coding tasks and roughly 30% lower thinking-token usage.",
       "name": "kimi-k2.7-code",
       "official": true,
@@ -29766,8 +29760,8 @@
           "size_bytes": null,
           "size_text": "",
           "updated": "1 month ago",
-          "usage_active_slots": 3,
-          "usage_level": "high"
+          "usage_active_slots": 0,
+          "usage_level": ""
         }
       ],
       "updated": "1 month ago",
@@ -29786,9 +29780,7 @@
       "owner": null,
       "path": "/library/laguna-xs-2.1",
       "pulls": 38200,
-      "sizes": [
-        "33b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/laguna-xs-2.1",
       "tag_count": 4,
       "tags": [
@@ -29857,9 +29849,7 @@
       "owner": null,
       "path": "/library/laguna-xs.2",
       "pulls": 21100,
-      "sizes": [
-        "33b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/laguna-xs.2",
       "tag_count": 7,
       "tags": [
@@ -30637,9 +30627,7 @@
       "owner": null,
       "path": "/library/llama-pro",
       "pulls": 878600,
-      "sizes": [
-        "8b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/llama-pro",
       "tag_count": 33,
       "tags": [
@@ -39683,7 +39671,7 @@
           "name": "latest",
           "size_bytes": 3300000000,
           "size_text": "3.3GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -39695,7 +39683,7 @@
           "name": "4b",
           "size_bytes": 3300000000,
           "size_text": "3.3GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -39707,7 +39695,7 @@
           "name": "27b",
           "size_bytes": 17000000000,
           "size_text": "17GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -39719,7 +39707,7 @@
           "name": "4b-it-q4_K_M",
           "size_bytes": 3300000000,
           "size_text": "3.3GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -39731,7 +39719,7 @@
           "name": "4b-it-q8_0",
           "size_bytes": 5000000000,
           "size_text": "5.0GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -39743,7 +39731,7 @@
           "name": "4b-it-bf16",
           "size_bytes": 8600000000,
           "size_text": "8.6GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -39755,7 +39743,7 @@
           "name": "27b-it-q4_K_M",
           "size_bytes": 17000000000,
           "size_text": "17GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -39767,7 +39755,7 @@
           "name": "27b-it-q8_0",
           "size_bytes": 30000000000,
           "size_text": "30GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -39779,7 +39767,7 @@
           "name": "27b-it-bf16",
           "size_bytes": 55000000000,
           "size_text": "55GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         }
@@ -39813,7 +39801,7 @@
           "name": "latest",
           "size_bytes": 3300000000,
           "size_text": "3.3GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -39825,7 +39813,7 @@
           "name": "4b",
           "size_bytes": 3300000000,
           "size_text": "3.3GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -39837,7 +39825,7 @@
           "name": "4b-it-q4_K_M",
           "size_bytes": 3300000000,
           "size_text": "3.3GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -39849,7 +39837,7 @@
           "name": "4b-it-q8_0",
           "size_bytes": 5000000000,
           "size_text": "5.0GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -39861,7 +39849,7 @@
           "name": "4b-it-bf16",
           "size_bytes": 8600000000,
           "size_text": "8.6GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         }
@@ -41214,7 +41202,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "MiniMax-M2.5 is a state-of-the-art large language model designed for real-world productivity and coding tasks.",
       "name": "minimax-m2.5",
       "official": true,
@@ -41234,8 +41222,8 @@
           "size_bytes": null,
           "size_text": "",
           "updated": "5 months ago",
-          "usage_active_slots": 2,
-          "usage_level": "medium"
+          "usage_active_slots": 0,
+          "usage_level": ""
         }
       ],
       "updated": "5 months ago",
@@ -41247,7 +41235,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "MiniMax's M2-series model for coding, agentic workflows, and professional productivity.",
       "name": "minimax-m2.7",
       "official": true,
@@ -41267,8 +41255,8 @@
           "size_bytes": null,
           "size_text": "",
           "updated": "3 months ago",
-          "usage_active_slots": 2,
-          "usage_level": "medium"
+          "usage_active_slots": 0,
+          "usage_level": ""
         }
       ],
       "updated": "3 months ago",
@@ -41281,7 +41269,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "MiniMax M3: Coding & Agentic Frontier. 1M context window. Native Multimodality.",
       "name": "minimax-m3",
       "official": true,
@@ -41301,8 +41289,8 @@
           "size_bytes": null,
           "size_text": "",
           "updated": "1 month ago",
-          "usage_active_slots": 3,
-          "usage_level": "high"
+          "usage_active_slots": 0,
+          "usage_level": ""
         }
       ],
       "updated": "1 month ago",
@@ -42931,7 +42919,7 @@
         "tools"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "A general-purpose multimodal mixture-of-experts model for production-grade tasks and enterprise workloads.",
       "name": "mistral-large-3",
       "official": true,
@@ -42951,8 +42939,8 @@
           "size_bytes": 675,
           "size_text": "675b",
           "updated": "7 months ago",
-          "usage_active_slots": 3,
-          "usage_level": "high"
+          "usage_active_slots": 0,
+          "usage_level": ""
         }
       ],
       "updated": "7 months ago",
@@ -45582,7 +45570,7 @@
           "name": "latest",
           "size_bytes": 24000000000,
           "size_text": "24GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -45594,7 +45582,7 @@
           "name": "4b",
           "size_bytes": 2800000000,
           "size_text": "2.8GB",
-          "updated": "3 months ago",
+          "updated": "4 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -45606,7 +45594,7 @@
           "name": "30b",
           "size_bytes": 24000000000,
           "size_text": "24GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -45618,7 +45606,7 @@
           "name": "4b-q8_0",
           "size_bytes": 4200000000,
           "size_text": "4.2GB",
-          "updated": "3 months ago",
+          "updated": "4 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -45630,7 +45618,7 @@
           "name": "4b-bf16",
           "size_bytes": 8000000000,
           "size_text": "8.0GB",
-          "updated": "3 months ago",
+          "updated": "4 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -45642,7 +45630,7 @@
           "name": "30b-a3b-q4_K_M",
           "size_bytes": 24000000000,
           "size_text": "24GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -45654,7 +45642,7 @@
           "name": "30b-a3b-q8_0",
           "size_bytes": 34000000000,
           "size_text": "34GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -45666,7 +45654,7 @@
           "name": "30b-a3b-fp16",
           "size_bytes": 63000000000,
           "size_text": "63GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -45678,9 +45666,9 @@
           "name": "30b-cloud",
           "size_bytes": 30,
           "size_text": "30b",
-          "updated": "6 months ago",
-          "usage_active_slots": 1,
-          "usage_level": "low"
+          "updated": "7 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
         }
       ],
       "updated": "4 months ago",
@@ -45726,8 +45714,8 @@
           "size_bytes": null,
           "size_text": "",
           "updated": "4 months ago",
-          "usage_active_slots": 2,
-          "usage_level": "medium"
+          "usage_active_slots": 0,
+          "usage_level": ""
         },
         {
           "context": "256K",
@@ -45799,7 +45787,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "NVIDIA Nemotron 3 Ultra is built for high-throughput reasoning and long-running agent workflows.",
       "name": "nemotron-3-ultra",
       "official": true,
@@ -45819,8 +45807,8 @@
           "size_bytes": null,
           "size_text": "",
           "updated": "1 month ago",
-          "usage_active_slots": 3,
-          "usage_level": "high"
+          "usage_active_slots": 0,
+          "usage_level": ""
         }
       ],
       "updated": "1 month ago",
@@ -47220,9 +47208,7 @@
       "owner": null,
       "path": "/library/nomic-embed-text",
       "pulls": 78500000,
-      "sizes": [
-        "137m"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/nomic-embed-text",
       "tag_count": 3,
       "tags": [
@@ -47278,9 +47264,7 @@
       "owner": null,
       "path": "/library/nomic-embed-text-v2-moe",
       "pulls": 508500,
-      "sizes": [
-        "475m"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/nomic-embed-text-v2-moe",
       "tag_count": 1,
       "tags": [
@@ -47313,9 +47297,7 @@
       "owner": null,
       "path": "/library/north-mini-code-1.0",
       "pulls": 25200,
-      "sizes": [
-        "30b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/north-mini-code-1.0",
       "tag_count": 7,
       "tags": [
@@ -49558,7 +49540,7 @@
           "name": "latest",
           "size_bytes": 4500000000,
           "size_text": "4.5GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49570,7 +49552,7 @@
           "name": "7b",
           "size_bytes": 4500000000,
           "size_text": "4.5GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49582,7 +49564,7 @@
           "name": "32b",
           "size_bytes": 19000000000,
           "size_text": "19GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49594,7 +49576,7 @@
           "name": "7b-instruct",
           "size_bytes": 4500000000,
           "size_text": "4.5GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49606,7 +49588,7 @@
           "name": "7b-instruct-q4_K_M",
           "size_bytes": 4500000000,
           "size_text": "4.5GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49618,7 +49600,7 @@
           "name": "7b-instruct-q8_0",
           "size_bytes": 7800000000,
           "size_text": "7.8GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49630,7 +49612,7 @@
           "name": "7b-instruct-fp16",
           "size_bytes": 15000000000,
           "size_text": "15GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49642,7 +49624,7 @@
           "name": "7b-think",
           "size_bytes": 4500000000,
           "size_text": "4.5GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49654,7 +49636,7 @@
           "name": "7b-think-q4_K_M",
           "size_bytes": 4500000000,
           "size_text": "4.5GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49666,7 +49648,7 @@
           "name": "7b-think-q8_0",
           "size_bytes": 7800000000,
           "size_text": "7.8GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49678,7 +49660,7 @@
           "name": "7b-think-fp16",
           "size_bytes": 15000000000,
           "size_text": "15GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49690,7 +49672,7 @@
           "name": "32b-think",
           "size_bytes": 19000000000,
           "size_text": "19GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49702,7 +49684,7 @@
           "name": "32b-think-q4_K_M",
           "size_bytes": 19000000000,
           "size_text": "19GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49714,7 +49696,7 @@
           "name": "32b-think-q8_0",
           "size_bytes": 34000000000,
           "size_text": "34GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49726,7 +49708,7 @@
           "name": "32b-think-fp16",
           "size_bytes": 64000000000,
           "size_text": "64GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         }
@@ -49760,7 +49742,7 @@
           "name": "latest",
           "size_bytes": 19000000000,
           "size_text": "19GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49772,7 +49754,7 @@
           "name": "32b",
           "size_bytes": 19000000000,
           "size_text": "19GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49784,7 +49766,7 @@
           "name": "32b-instruct",
           "size_bytes": 19000000000,
           "size_text": "19GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49796,7 +49778,7 @@
           "name": "32b-instruct-q4_K_M",
           "size_bytes": 19000000000,
           "size_text": "19GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49808,7 +49790,7 @@
           "name": "32b-instruct-q8_0",
           "size_bytes": 34000000000,
           "size_text": "34GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49820,7 +49802,7 @@
           "name": "32b-instruct-fp16",
           "size_bytes": 64000000000,
           "size_text": "64GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49832,7 +49814,7 @@
           "name": "32b-think",
           "size_bytes": 19000000000,
           "size_text": "19GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49844,7 +49826,7 @@
           "name": "32b-think-q4_K_M",
           "size_bytes": 19000000000,
           "size_text": "19GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49856,7 +49838,7 @@
           "name": "32b-think-q8_0",
           "size_bytes": 34000000000,
           "size_text": "34GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -49868,7 +49850,7 @@
           "name": "32b-think-fp16",
           "size_bytes": 64000000000,
           "size_text": "64GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         }
@@ -50988,9 +50970,7 @@
       "owner": null,
       "path": "/library/openhermes",
       "pulls": 1100000,
-      "sizes": [
-        "7b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/openhermes",
       "tag_count": 35,
       "tags": [
@@ -67544,9 +67524,7 @@
       "owner": null,
       "path": "/library/qwen3-coder-next",
       "pulls": 1800000,
-      "sizes": [
-        "80b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/qwen3-coder-next",
       "tag_count": 3,
       "tags": [
@@ -68649,8 +68627,8 @@
           "size_bytes": null,
           "size_text": "",
           "updated": "4 months ago",
-          "usage_active_slots": 2,
-          "usage_level": "medium"
+          "usage_active_slots": 0,
+          "usage_level": ""
         },
         {
           "context": "256K",
@@ -69393,8 +69371,8 @@
           "size_bytes": 397,
           "size_text": "397b",
           "updated": "4 months ago",
-          "usage_active_slots": 2,
-          "usage_level": "medium"
+          "usage_active_slots": 0,
+          "usage_level": ""
         }
       ],
       "updated": "1 month ago",
@@ -69429,7 +69407,7 @@
           "name": "latest",
           "size_bytes": 24000000000,
           "size_text": "24GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -69621,7 +69599,7 @@
           "name": "35b-a3b",
           "size_bytes": 24000000000,
           "size_text": "24GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -69669,7 +69647,7 @@
           "name": "35b-a3b-mlx-bf16",
           "size_bytes": 70000000000,
           "size_text": "70GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -69693,7 +69671,7 @@
           "name": "35b-a3b-q4_K_M",
           "size_bytes": 24000000000,
           "size_text": "24GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -69717,7 +69695,7 @@
           "name": "35b-a3b-nvfp4",
           "size_bytes": 22000000000,
           "size_text": "22GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -69729,7 +69707,7 @@
           "name": "35b-a3b-q8_0",
           "size_bytes": 39000000000,
           "size_text": "39GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -69741,7 +69719,7 @@
           "name": "35b-a3b-bf16",
           "size_bytes": 71000000000,
           "size_text": "71GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -69765,7 +69743,7 @@
           "name": "35b-a3b-mxfp8",
           "size_bytes": 38000000000,
           "size_text": "38GB",
-          "updated": "2 months ago",
+          "updated": "3 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -81038,7 +81016,7 @@
           "name": "latest",
           "size_bytes": 3300000000,
           "size_text": "3.3GB",
-          "updated": "5 months ago",
+          "updated": "6 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -81050,7 +81028,7 @@
           "name": "4b",
           "size_bytes": 3300000000,
           "size_text": "3.3GB",
-          "updated": "5 months ago",
+          "updated": "6 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -81086,7 +81064,7 @@
           "name": "4b-it-q4_K_M",
           "size_bytes": 3300000000,
           "size_text": "3.3GB",
-          "updated": "5 months ago",
+          "updated": "6 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -81098,7 +81076,7 @@
           "name": "4b-it-q8_0",
           "size_bytes": 4900000000,
           "size_text": "4.9GB",
-          "updated": "5 months ago",
+          "updated": "6 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -81110,7 +81088,7 @@
           "name": "4b-it-bf16",
           "size_bytes": 8600000000,
           "size_text": "8.6GB",
-          "updated": "5 months ago",
+          "updated": "6 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -81134,7 +81112,7 @@
           "name": "12b-it-q8_0",
           "size_bytes": 13000000000,
           "size_text": "13GB",
-          "updated": "5 months ago",
+          "updated": "6 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -81146,7 +81124,7 @@
           "name": "12b-it-bf16",
           "size_bytes": 24000000000,
           "size_text": "24GB",
-          "updated": "5 months ago",
+          "updated": "6 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -81170,7 +81148,7 @@
           "name": "27b-it-q8_0",
           "size_bytes": 30000000000,
           "size_text": "30GB",
-          "updated": "5 months ago",
+          "updated": "6 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -85131,9 +85109,7 @@
       "owner": null,
       "path": "/library/wizardlm",
       "pulls": 857900,
-      "sizes": [
-        "7b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/wizardlm",
       "tag_count": 73,
       "tags": [
