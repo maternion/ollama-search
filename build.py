@@ -427,6 +427,9 @@ def render_card(
 ) -> str:
     name = esc(m["name"])
     name_raw = m["name"]
+    owner = m.get("owner") or ""
+    official = m.get("official", True)
+    display_name = f"{owner}/{name}" if owner and not official else name
     desc = esc(m["description"])
     caps = capability_spans(m["capabilities"], m["cloud"])
     sizes = size_spans(m["sizes"])
@@ -463,9 +466,9 @@ def render_card(
 
     return f"""  <li x-test-model {data_attrs} class="flex items-baseline border-b border-neutral-200 dark:border-neutral-800 py-6">
   <a href="{href}" class="group w-full">
-    <div class="flex flex-col mb-1" title="{name}">
+    <div class="flex flex-col mb-1" title="{esc(display_name)}">
       <h2 class="truncate text-xl font-medium underline-offset-2 group-hover:underline md:text-2xl dark:text-neutral-100">
-        <span x-test-search-response-title>{name}</span>
+        <span x-test-search-response-title>{esc(display_name)}</span>
       </h2>
       <p class="max-w-lg break-words text-neutral-800 dark:text-neutral-300 text-md">{desc}</p>
     </div>
@@ -2310,8 +2313,6 @@ function initApp() {
     document.querySelectorAll('.cap-filter').forEach(function(cb) { cb.addEventListener('change', applyFilters); });
     var cloudFilter = document.getElementById('cloud-filter');
     if (cloudFilter) cloudFilter.addEventListener('change', applyFilters);
-    if (desktopSort) desktopSort.addEventListener('change', applyFilters);
-    if (mobileSort) mobileSort.addEventListener('change', applyFilters);
     // read ?q= from URL query string
     var params = new URLSearchParams(location.search);
     var q = params.get('q');
