@@ -1,0 +1,44 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "mistral3",
+      "blob_url": "/library/devstral-small-2:24b-instruct-2512-q8_0/blobs/060ee174af27",
+      "content_preview": "arch  mistral3",
+      "parameters": "24B",
+      "quantization": "Q8_0",
+      "size": "26GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/devstral-small-2:24b-instruct-2512-q8_0/blobs/e0daf17ff83e",
+      "content_preview": "{\n    \"temperature\": 0.15\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "21B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/devstral-small-2:24b-instruct-2512-q8_0/blobs/580f051b6624",
+      "content_preview": "{{- $lastUserIndex := -1 }}\n{{- $hasSystemPrompt := false }}\n{{- range $index, $_ := .Messages }}\n{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "3.4kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/devstral-small-2:24b-instruct-2512-q8_0",
+  "manifest_digest": "691a8e03a6dd",
+  "manifest_size": "26GB",
+  "manifest_updated": "7 months ago",
+  "path": "/library/devstral-small-2",
+  "tag_name": "24b-instruct-2512-q8_0"
+}
