@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
-"""Simple dev server for ollama-search with proper redirects.
+"""Simple dev server for ollama-search.
 
 Usage: python3 serve.py [port]
   Defaults to port 8000.
-Serves ~/ollama-search/public/ with:
-  /          -> /search/
-  /search    -> /search/
+Serves ~/ollama-search/public/ at http://localhost:{PORT}/
 """
 
 import http.server
@@ -21,8 +19,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         super().__init__(*args, directory=str(DIRECTORY), **kwargs)
 
     def do_GET(self):
-        # Redirect / and /search to /search/
-        if self.path == "/" or self.path == "/search":
+        # Redirect /search to /search/ (trailing slash only)
+        # / serves index.html directly (no redirect)
+        if self.path == "/search":
             self.send_response(301)
             self.send_header("Location", "/search/")
             self.end_headers()
@@ -35,5 +34,5 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    print(f"Serving {DIRECTORY} at http://localhost:{PORT}/search/")
+    print(f"Serving {DIRECTORY} at http://localhost:{PORT}/")
     http.server.HTTPServer(("0.0.0.0", PORT), Handler).serve_forever()

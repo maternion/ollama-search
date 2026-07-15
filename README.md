@@ -27,7 +27,7 @@ python3 build.py
 
 # 3. Serve locally
 python3 serve.py
-# → http://localhost:8000/search/
+# → http://localhost:8000/
 ```
 
 ### GitHub Pages build

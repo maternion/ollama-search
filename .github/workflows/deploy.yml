@@ -93,7 +93,11 @@ jobs:
             git tag "deploy-pre-$(date -u '+%Y%m%d-%H%M%S')" origin/gh-pages
             # Keep only the 10 most recent deploy-pre-* tags locally + remotely.
             git tag -l "deploy-pre-*" --sort=-creatordate | tail -n +11 | xargs -r git tag -d
-            git push origin --tags --force
+            git push origin --tags
+            old_tags=$(git tag -l "deploy-pre-*" --sort=-creatordate | tail -n +11)
+            if [ -n "$old_tags" ]; then
+              echo "$old_tags" | xargs -r -n1 git push origin --delete
+            fi
           fi
           # Deploy to gh-pages branch
           git worktree add /tmp/gh-pages gh-pages 2>/dev/null || git worktree add --orphan -b gh-pages /tmp/gh-pages 2>/dev/null || true
@@ -105,10 +109,12 @@ jobs:
           git commit -m "deploy cycle 1 $(date -u '+%Y-%m-%d %H:%M:%S UTC') [skip ci]" || true
           git push origin gh-pages || true
           cd "$GITHUB_WORKSPACE"
-          # Cycle 2 only runs if cycle 1 did NOT complete fully. The scraper
-          # writes scraper/.scrape-complete only when it finished without
-          # hitting the time limit or bailing out.
-          if [ -f scraper/.scrape-complete ]; then
+          # Cycle 2 only runs if cycle 1 ran AND did NOT complete fully.
+          # If check-only skipped the scrape, cycle 2 is also skipped.
+          if [ "${{ steps.scrape1.outcome }}" = "skipped" ]; then
+            echo "cycle1_complete=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Scrape skipped (no changes) — skipping cycle 2"
+          elif [ -f scraper/.scrape-complete ]; then
             echo "cycle1_complete=true" >> "$GITHUB_OUTPUT"
             echo "::notice::Cycle 1 completed fully — skipping cycle 2"
           else
@@ -159,7 +165,11 @@ jobs:
           if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
             git tag "deploy-pre-$(date -u '+%Y%m%d-%H%M%S')" origin/gh-pages
             git tag -l "deploy-pre-*" --sort=-creatordate | tail -n +11 | xargs -r git tag -d
-            git push origin --tags --force
+            git push origin --tags
+            old_tags=$(git tag -l "deploy-pre-*" --sort=-creatordate | tail -n +11)
+            if [ -n "$old_tags" ]; then
+              echo "$old_tags" | xargs -r -n1 git push origin --delete
+            fi
           fi
           # Deploy to gh-pages branch (reuse worktree from cycle 1)
           cd /tmp/gh-pages

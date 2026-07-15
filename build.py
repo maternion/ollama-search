@@ -211,19 +211,25 @@ def load_tag_page(model_path: str, tag_name: str) -> dict | None:
 BLOBS_DIR = SCRAPER / "blobs"
 
 
+_BLOB_LOAD_CACHE: dict[str, dict | None] = {}
+
+
 def load_blob_page(blob_url: str) -> dict | None:
     # Blobs are stored once per digest at BLOBS_DIR/<digest>.json. Extract the
     # digest from the blob URL (last path segment before any query string):
     # /library/model:tag/blobs/<digest> -> <digest>.
     digest = blob_url.rstrip("/").rsplit("/blobs/", 1)[-1].split("?", 1)[0]
-    if not digest or "/" in digest:
-        # Not a blob URL shape; fall back to the legacy derived filename.
-        safe = blob_url.strip("/").replace("/", "__").replace(":", "_")
-        digest = safe
+    if not digest or "/" in digest or not re.match(r"^[a-fA-F0-9]+$", digest):
+        return None
+    if digest in _BLOB_LOAD_CACHE:
+        return _BLOB_LOAD_CACHE[digest]
     bf = BLOBS_DIR / f"{digest}.json"
     if not bf.exists():
+        _BLOB_LOAD_CACHE[digest] = None
         return None
-    return json.loads(bf.read_text())
+    result = json.loads(bf.read_text())
+    _BLOB_LOAD_CACHE[digest] = result
+    return result
 
 
 def _blob_href(blob_url: str) -> str:
@@ -362,128 +368,23 @@ def theme_script_head() -> str:
 
 
 def theme_script() -> str:
-    """Toggle handler — placed at end of body (only needs DOMContentLoaded)."""
-    return """<script>
+    """Toggle handler — placed at end of body."""
+    return r"""<script>
 (function() {
   function toggle() {
     var isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }
-var NAV_MODELS = null;
-var NAV_BASE = (function() {
-  var s = document.querySelector('script[src*="assets/app.js"]');
-  if (s) {
-    var src = s.getAttribute('src');
-    var idx = src.indexOf('assets/app.js');
-    if (idx > 0) return src.substring(0, idx);
-  }
-  return '/';
-})();
-
-function loadNavModels(cb) {
-  if (NAV_MODELS) { cb(NAV_MODELS); return; }
-  var cached = null;
-  try { cached = sessionStorage.getItem('nav-models'); } catch (e) {}
-  if (cached) {
-    try { NAV_MODELS = JSON.parse(cached); cb(NAV_MODELS); return; } catch (e) {}
-  }
-  fetch(NAV_BASE + 'assets/models.json').then(function(r) { return r.json(); }).then(function(data) {
-    NAV_MODELS = data;
-    try { sessionStorage.setItem('nav-models', JSON.stringify(data)); } catch (e) {}
-    cb(NAV_MODELS);
-  }).catch(function() { cb([]); });
-}
-
-function escHtml(s) {
-  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
-
-function renderNavSuggest(query) {
-  var sp = document.getElementById('searchpreview');
-  if (!sp) return;
-  var q = query.toLowerCase().trim();
-  if (!q) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
-
-  var html = '<div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl w-full shadow-2xl shadow-black/5 overflow-hidden" id="search-preview-container" tabindex="0">';
-  html += '<div role="list" id="search-preview-list" class="group">';
-
-  var results = [];
-  for (var i = 0; i < NAV_MODELS.length; i++) {
-    var m = NAV_MODELS[i];
-    var name = m.name || '';
-    var desc = m.description || '';
-    if (name.toLowerCase().indexOf(q) !== -1 || desc.toLowerCase().indexOf(q) !== -1) {
-      results.push(m);
-    }
-  }
-  results.sort(function(a, b) { return (b.pulls || 0) - (a.pulls || 0); });
-  var top = results.slice(0, 5);
-
-  if (top.length === 0) {
-    html += '<div class="px-6 py-4 text-neutral-800 dark:text-neutral-300 text-sm">No models found.</div>';
-  } else {
-    for (var i = 0; i < top.length; i++) {
-      var m = top[i];
-      var path = m.path || ('/library/' + m.name);
-      html += '<div result>';
-      html += '<a tabindex="0" href="' + NAV_BASE + path.replace(/^\//, '') + '" class="flex items-center h-16 px-6 py-4 hover:bg-neutral-50 dark:hover:bg-white/5 focus:ring-0 focus:outline-none focus:bg-neutral-50 dark:focus:bg-white/5">';
-      html += '<div class="min-w-0 flex-1">';
-      html += '<h2 class="text-sm font-medium truncate dark:text-neutral-100">' + escHtml(m.name) + '</h2>';
-      html += '<p class="text-xs text-gray-600 dark:text-gray-600 truncate">' + escHtml(m.description) + '</p>';
-      html += '</div></a></div>';
-    }
-  }
-
-  html += '</div>';
-  html += '<a tabindex="0" id="view-all-link" href="' + NAV_BASE + '?q=' + encodeURIComponent(query) + '" class="' + (top.length === 0 ? 'hidden' : '') + ' block px-6 py-3 border-t border-neutral-200 dark:border-neutral-800 text-center text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-white/5 focus:bg-neutral-50 dark:focus:bg-white/5 focus:outline-none focus:ring-0 dark:text-neutral-200">View all &#8594;</a>';
-  html += '</div>';
-
-  sp.innerHTML = html;
-  sp.classList.remove('hidden');
-}
-
-var navSuggestTimer = null;
-function initNavSuggest() {
-  var input = document.getElementById('navbar-input');
-  var sp = document.getElementById('searchpreview');
-  if (!input || !sp) return;
-
-  input.addEventListener('input', function() {
-    if (navSuggestTimer) clearTimeout(navSuggestTimer);
-    navSuggestTimer = setTimeout(function() {
-      var v = input.value;
-      if (!v.trim()) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
-      loadNavModels(function() { renderNavSuggest(v); });
-    }, 100);
-  });
-
-  sp.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      sp.classList.add('hidden');
-      input.focus();
-      e.preventDefault();
-      return;
-    }
-    if (e.key === 'Enter') {
-      var el = document.activeElement;
-      if (el && el.tagName === 'A') { el.click(); e.preventDefault(); return; }
-    }
-    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-      var items = Array.from(sp.querySelectorAll('#search-preview-list a, #view-all-link'));
-      var ci = items.indexOf(document.activeElement);
-      var ni = e.key === 'ArrowDown' ? ci + 1 : ci - 1;
-      if (ni >= items.length) ni = 0;
-      if (ni < 0) ni = items.length - 1;
-      if (items[ni]) items[ni].focus();
-      e.preventDefault();
-    }
-  });
-}
-
-function initSearch() {
+  function initSearch() {
     document.getElementById('theme-toggle')?.addEventListener('click', toggle);
     document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggle);
-  });
+  }
+  window.initSearch = initSearch;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSearch);
+  } else {
+    initSearch();
+  }
 })();
 </script>"""
 
@@ -709,18 +610,19 @@ def build_index(models: list[dict], ranks: dict) -> None:
 
 def _fmt_pills(prefix: str, all_count: int, gguf_count: int, mlx_count: int) -> str:
     """GGUF/MLX pill radio filters. prefix is 'models' or 'tags'."""
+    p = prefix
     return f"""<div class="flex flex-wrap gap-2 mb-4">
   <div class="relative inline-block">
-    <input type="radio" name="fmt" value="all" id="fmt-all" class="peer sr-only fmt-radio" data-fmt="all" checked>
-    <label for="fmt-all" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-300 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">All ({all_count})</label>
+    <input type="radio" name="fmt-{p}" value="all" id="fmt-{p}-all" class="peer sr-only fmt-radio" data-fmt="all" checked>
+    <label for="fmt-{p}-all" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-300 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">All ({all_count})</label>
   </div>
   <div class="relative inline-block">
-    <input type="radio" name="fmt" value="gguf" id="fmt-gguf" class="peer sr-only fmt-radio" data-fmt="gguf">
-    <label for="fmt-gguf" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-300 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">GGUF ({gguf_count})</label>
+    <input type="radio" name="fmt-{p}" value="gguf" id="fmt-{p}-gguf" class="peer sr-only fmt-radio" data-fmt="gguf">
+    <label for="fmt-{p}-gguf" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-300 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">GGUF ({gguf_count})</label>
   </div>
   <div class="relative inline-block">
-    <input type="radio" name="fmt" value="mlx" id="fmt-mlx" class="peer sr-only fmt-radio" data-fmt="mlx">
-    <label for="fmt-mlx" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-300 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">MLX ({mlx_count})</label>
+    <input type="radio" name="fmt-{p}" value="mlx" id="fmt-{p}-mlx" class="peer sr-only fmt-radio" data-fmt="mlx">
+    <label for="fmt-{p}-mlx" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-300 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">MLX ({mlx_count})</label>
   </div>
 </div>"""
 
@@ -1566,15 +1468,15 @@ def build_tag_page(m: dict, tag: dict, tp: dict | None) -> None:
 
     # The readme is stored once per model (in the model page JSON), not per
     # tag. Load it from the model page so tag pages share the single source.
-    model_page = load_model_page(path)
-
     if tp and (tp.get("files") or tp.get("manifest_digest")):
+        model_page = load_model_page(path)
         details_section = _details_section(tp)
-        readme_section = _readme_section(model_page)
+        readme_section = _readme_section(model_page) if model_page else ""
     elif tp:
         # Has tag page data but no files (cloud tag) — skip Details, show readme only
+        model_page = load_model_page(path)
         details_section = ""
-        readme_section = _readme_section(model_page)
+        readme_section = _readme_section(model_page) if model_page else ""
     else:
         # Fallback minimal details box from tag list data
         digest = esc(tag.get("digest") or "") or "—"
@@ -1870,6 +1772,14 @@ def copy_assets() -> None:
         ("icon-48x48.png", "https://ollama.com/public/icon-48x48.png"),
         ("icon-64x64.png", "https://ollama.com/public/icon-64x64.png"),
         ("apple-touch-icon.png", "https://ollama.com/public/apple-touch-icon.png"),
+        (
+            "android-chrome-icon-192x192.png",
+            "https://ollama.com/public/android-chrome-icon-192x192.png",
+        ),
+        (
+            "android-chrome-icon-512x512.png",
+            "https://ollama.com/public/android-chrome-icon-512x512.png",
+        ),
     ]:
         dst = assets / icon
         if dst.exists():
@@ -2107,6 +2017,117 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 APP_JS = r"""// ollama-search frontend logic.
 // Filtering, sorting, dark-mode, tab switching, copy-to-clipboard.
 
+var NAV_MODELS = null;
+var NAV_BASE = (function() {
+  var s = document.querySelector('script[src*="assets/app.js"]');
+  if (s) {
+    var src = s.getAttribute('src');
+    var idx = src.indexOf('assets/app.js');
+    if (idx > 0) return src.substring(0, idx);
+  }
+  return '/';
+})();
+
+function loadNavModels(cb) {
+  if (NAV_MODELS) { cb(NAV_MODELS); return; }
+  var cached = null;
+  try { cached = sessionStorage.getItem('nav-models'); } catch (e) {}
+  if (cached) {
+    try { NAV_MODELS = JSON.parse(cached); cb(NAV_MODELS); return; } catch (e) {}
+  }
+  fetch(NAV_BASE + 'assets/models.json').then(function(r) { return r.json(); }).then(function(data) {
+    NAV_MODELS = data;
+    try { sessionStorage.setItem('nav-models', JSON.stringify(data)); } catch (e) {}
+    cb(NAV_MODELS);
+  }).catch(function() { cb([]); });
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+function renderNavSuggest(query) {
+  var sp = document.getElementById('searchpreview');
+  if (!sp) return;
+  var q = query.toLowerCase().trim();
+  if (!q) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
+
+  var html = '<div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl w-full shadow-2xl shadow-black/5 overflow-hidden" id="search-preview-container" tabindex="0">';
+  html += '<div role="list" id="search-preview-list" class="group">';
+
+  var results = [];
+  for (var i = 0; i < NAV_MODELS.length; i++) {
+    var m = NAV_MODELS[i];
+    var name = m.name || '';
+    var desc = m.description || '';
+    if (name.toLowerCase().indexOf(q) !== -1 || desc.toLowerCase().indexOf(q) !== -1) {
+      results.push(m);
+    }
+  }
+  results.sort(function(a, b) { return (b.pulls || 0) - (a.pulls || 0); });
+  var top = results.slice(0, 5);
+
+  if (top.length === 0) {
+    html += '<div class="px-6 py-4 text-neutral-800 dark:text-neutral-300 text-sm">No models found.</div>';
+  } else {
+    for (var i = 0; i < top.length; i++) {
+      var m = top[i];
+      var path = m.path || ('/library/' + m.name);
+      html += '<div result>';
+      html += '<a tabindex="0" href="' + NAV_BASE + path.replace(/^\//, '') + '" class="flex items-center h-16 px-6 py-4 hover:bg-neutral-50 dark:hover:bg-white/5 focus:ring-0 focus:outline-none focus:bg-neutral-50 dark:focus:bg-white/5">';
+      html += '<div class="min-w-0 flex-1">';
+      html += '<h2 class="text-sm font-medium truncate dark:text-neutral-100">' + escHtml(m.name) + '</h2>';
+      html += '<p class="text-xs text-gray-600 dark:text-gray-600 truncate">' + escHtml(m.description) + '</p>';
+      html += '</div></a></div>';
+    }
+  }
+
+  html += '</div>';
+  html += '<a tabindex="0" id="view-all-link" href="' + NAV_BASE + '?q=' + encodeURIComponent(query) + '" class="' + (top.length === 0 ? 'hidden' : '') + ' block px-6 py-3 border-t border-neutral-200 dark:border-neutral-800 text-center text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-white/5 focus:bg-neutral-50 dark:focus:bg-white/5 focus:outline-none focus:ring-0 dark:text-neutral-200">View all &#8594;</a>';
+  html += '</div>';
+
+  sp.innerHTML = html;
+  sp.classList.remove('hidden');
+}
+
+var navSuggestTimer = null;
+function initNavSuggest() {
+  var input = document.getElementById('navbar-input');
+  var sp = document.getElementById('searchpreview');
+  if (!input || !sp) return;
+
+  input.addEventListener('input', function() {
+    if (navSuggestTimer) clearTimeout(navSuggestTimer);
+    navSuggestTimer = setTimeout(function() {
+      var v = input.value;
+      if (!v.trim()) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
+      loadNavModels(function() { renderNavSuggest(v); });
+    }, 100);
+  });
+
+  sp.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      sp.classList.add('hidden');
+      input.focus();
+      e.preventDefault();
+      return;
+    }
+    if (e.key === 'Enter') {
+      var el = document.activeElement;
+      if (el && el.tagName === 'A') { el.click(); e.preventDefault(); return; }
+    }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      var items = Array.from(sp.querySelectorAll('#search-preview-list a, #view-all-link'));
+      var ci = items.indexOf(document.activeElement);
+      var ni = e.key === 'ArrowDown' ? ci + 1 : ci - 1;
+      if (ni >= items.length) ni = 0;
+      if (ni < 0) ni = items.length - 1;
+      if (items[ni]) items[ni].focus();
+      e.preventDefault();
+    }
+  });
+}
+
 function copyToClipboard(btn) {
   var input = btn.parentElement.querySelector('input.command');
   if (!input) return;
@@ -2186,7 +2207,7 @@ function applyFilters() {
     'oldest': 'data-oldest-rank',
     'updated': 'data-updated-rank',
     'pulls': 'data-pulls',
-    'tags': 'data-sizes-count',
+    'tags': 'data-tag-count',
     'name': 'data-name',
   };
   var attr = rankAttr[sort] || rankAttr['popular'];
@@ -2267,7 +2288,7 @@ function syncSort(source, target) {
   }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+function initApp() {
   var desktopSort = document.getElementById('desktop-sort-select');
   var mobileSort = document.getElementById('mobile-sort-select');
   if (desktopSort && mobileSort) {
@@ -2309,9 +2330,9 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initSearch);
+  document.addEventListener('DOMContentLoaded', initApp);
 } else {
-  initSearch();
+  initApp();
 }
 """
 
