@@ -552,7 +552,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 <!-- Background track -->
                 <div class="absolute left-0 right-0 rounded-full border bg-transparent border-neutral-300 dark:border-neutral-700" id="size-slider-track" style="top: 50%; transform: translateY(-50%); height: 6px;"></div>
                 <!-- Filled portion -->
-                <div id="size-slider-fill" class="absolute rounded-full bg-neutral-800 dark:bg-neutral-300" style="top: 50%; transform: translateY(-50%); height: 6px; left: 0%; width: 100%;"></div>
+                <div id="size-slider-fill" class="absolute rounded-full bg-neutral-400 dark:bg-neutral-500" style="top: 50%; transform: translateY(-50%); height: 6px; left: 0%; width: 100%;"></div>
                 <!-- Tick marks (same height as track) -->
                 <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 10%;"></div>
                 <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 20%;"></div>
@@ -565,12 +565,12 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 90%;"></div>
                 <!-- Min handle -->
                 <button type="button" id="size-handle-min" class="absolute z-10 cursor-pointer touch-none" style="top: 50%; left: 0%; transform: translate(-50%, -50%); width: 16px; height: 16px;">
-                  <div class="rounded-full bg-neutral-800 dark:bg-neutral-200 border-2 border-white dark:border-neutral-900 shadow" style="width: 10px; height: 10px; margin: 3px;"></div>
+                  <div class="rounded-full bg-neutral-500 dark:bg-neutral-400" style="width: 10px; height: 10px; margin: 3px;"></div>
                   <span id="size-min-tooltip" class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded border px-1 py-0.5 text-xs bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-white dark:border-neutral-700 hidden">&lt; 1b</span>
                 </button>
                 <!-- Max handle -->
                 <button type="button" id="size-handle-max" class="absolute z-10 cursor-pointer touch-none" style="top: 50%; left: 100%; transform: translate(-50%, -50%); width: 16px; height: 16px;">
-                  <div class="rounded-full bg-neutral-800 dark:bg-neutral-200 border-2 border-white dark:border-neutral-900 shadow" style="width: 10px; height: 10px; margin: 3px;"></div>
+                  <div class="rounded-full bg-neutral-500 dark:bg-neutral-400" style="width: 10px; height: 10px; margin: 3px;"></div>
                   <span id="size-max-tooltip" class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded border px-1 py-0.5 text-xs bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-white dark:border-neutral-700 hidden">&gt; 500b</span>
                 </button>
               </div>
@@ -2079,6 +2079,14 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 .dark .dark\:text-gray-600 { color: #a3a3a3; }
 .dark .dark\:hover\:bg-white\/5:hover { background-color: rgba(255,255,255,0.05); }
 .dark .dark\:focus\:bg-white\/5:focus { background-color: rgba(255,255,255,0.05); }
+
+/* --- Size slider: neutral classes missing from vendored tailwind.css --- */
+/* Light mode only — do NOT override any dark: classes */
+.bg-neutral-300 { background-color: #d4d4d4; }
+.bg-neutral-400 { background-color: #a3a3a3; }
+.bg-neutral-500 { background-color: #737373; }
+.hover\:bg-neutral-300:hover { background-color: #d4d4d4; }
+.hover\:bg-neutral-100:hover { background-color: #f5f5f5; }
 """
 
 APP_JS = r"""// ollama-search frontend logic.
