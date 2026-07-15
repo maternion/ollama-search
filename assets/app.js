@@ -294,8 +294,6 @@ function initApp() {
     document.querySelectorAll('.cap-filter').forEach(function(cb) { cb.addEventListener('change', applyFilters); });
     var cloudFilter = document.getElementById('cloud-filter');
     if (cloudFilter) cloudFilter.addEventListener('change', applyFilters);
-    if (desktopSort) desktopSort.addEventListener('change', applyFilters);
-    if (mobileSort) mobileSort.addEventListener('change', applyFilters);
     // read ?q= from URL query string
     var params = new URLSearchParams(location.search);
     var q = params.get('q');
