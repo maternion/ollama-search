@@ -334,21 +334,22 @@ class BlobPage:
 # Card parsing (two markup variants: /library and /search)
 # --------------------------------------------------------------------------- #
 
-# A card <li x-test-model ...> ... </li>. We split on the opening tag of each
-# card; the card ends at the next "<li x-test-model" or at a known footer.
-_CARD_OPEN_RE = re.compile(r"<li\s+x-test-model[^>]*>", re.IGNORECASE)
+# A card is a <li class="flex items-baseline border-b ..."> element.
+# ollama.com removed x-test-* attributes; we now match by the li class.
+_CARD_OPEN_RE = re.compile(
+    r'<li\s+class="flex items-baseline border-b[^"]*">\s*'
+    r'<a\s+href="(/library/[^"]+)"',
+    re.IGNORECASE,
+)
 
 
 def _extract_cards(html: str) -> list[str]:
-    """Return the inner HTML of every <li x-test-model> card."""
+    """Return the inner HTML of every model card <li>."""
     starts = [m.start() for m in _CARD_OPEN_RE.finditer(html)]
     cards: list[str] = []
     for i, s in enumerate(starts):
         end = starts[i + 1] if i + 1 < len(starts) else len(html)
-        # The card's own <li> opening tag position; find its matching </li>
-        # naively by slicing to the next card (good enough given flat structure).
         inner = html[s:end]
-        # Trim trailing to the last </li> before the next card.
         close = inner.rfind("</li>")
         if close != -1 and i + 1 < len(starts):
             inner = inner[: close + len("</li>")]
@@ -377,8 +378,8 @@ def parse_card(card_html: str, source_url: str) -> Model | None:
     if not path or path == "/library" or path.startswith("/search"):
         return None
 
-    # --- name: x-test-search-response-title (search) or x-test-model-title
-    # attribute (library) ---
+    # --- name: from the <div title="modelName"> attribute, or from the
+    # <span class="group-hover:underline truncate">modelName</span> ---
     name = ""
     tm = re.search(
         r"x-test-search-response-title[^>]*>(.*?)</span>", card_html, re.DOTALL
@@ -390,6 +391,18 @@ def parse_card(card_html: str, source_url: str) -> Model | None:
         if tm:
             name = tm.group(1)
     if not name:
+        # New markup: <div title="alfred" class="flex flex-col">
+        tm = re.search(r'<div\s+title="([^"]+)"\s+class="flex flex-col"', card_html)
+        if tm:
+            name = tm.group(1)
+    if not name:
+        # Fallback: <span class="group-hover:underline truncate">name</span>
+        tm = re.search(
+            r'class="group-hover:underline truncate"[^>]*>([^<]+)</span>', card_html
+        )
+        if tm:
+            name = tm.group(1).strip()
+    if not name:
         name = path.strip("/").split("/")[-1]
 
     # --- description: <p class="... break-words ...">...</p> ---
@@ -398,46 +411,116 @@ def parse_card(card_html: str, source_url: str) -> Model | None:
     if dm:
         desc = strip_tags(dm.group(1))
 
-    # --- capabilities (indigo x-test-capability) ---
+    # --- capabilities: indigo badges (bg-indigo-50 text-indigo-600) ---
+    # Old markup used x-test-capability. New markup: <span class="... bg-indigo-50
+    # ... text-indigo-600 ...">capability</span>
     capabilities = []
+    # Try old x-test-capability first
     for cap in _find_spans_with_attr(card_html, "x-test-capability"):
         if cap and cap not in capabilities:
             capabilities.append(cap)
+    # New markup: indigo badges
+    if not capabilities:
+        for m in re.finditer(
+            r'<span\s+class="[^"]*bg-indigo-50[^"]*text-indigo-600[^"]*"[^>]*>([^<]+)</span>',
+            card_html,
+        ):
+            cap = m.group(1).strip()
+            if cap and cap not in capabilities:
+                capabilities.append(cap)
 
-    # --- cloud: a <span ...>cloud</span> with the cyan badge classes ---
+    # --- cloud: cyan badge (bg-cyan-50 text-cyan-500) ---
     cloud = False
-    for m in re.finditer(r"<span\b[^>]*>(.*?)</span>", card_html, re.DOTALL):
-        if strip_tags(m.group(1)).lower() == "cloud":
-            # only count the cyan badge variant
-            if "text-cyan" in m.group(0) or "bg-cyan" in m.group(0):
+    # Old: x-test or text-cyan. New: bg-cyan-50 text-cyan-500
+    if "bg-cyan-50" in card_html and "text-cyan" in card_html:
+        cloud = True
+    elif "text-cyan" in card_html:
+        # Fallback for older markup
+        for m in re.finditer(r"<span\b[^>]*>(.*?)</span>", card_html, re.DOTALL):
+            if strip_tags(m.group(1)).lower() == "cloud":
                 cloud = True
-            else:
-                # fallback: any cloud text counts
-                cloud = True
-            break
+                break
 
-    # --- sizes (blue x-test-size) ---
+    # --- sizes: blue badges (bg-[#ddf4ff] text-blue-600) ---
+    # Old: x-test-size. New: bg-[#ddf4ff] text-blue-600
     sizes = []
     for s in _find_spans_with_attr(card_html, "x-test-size"):
         if s and s not in sizes:
             sizes.append(s)
+    if not sizes:
+        for m in re.finditer(
+            r'<span\s+class="[^"]*bg-\[#ddf4ff\][^"]*text-blue-600[^"]*"[^>]*>([^<]+)</span>',
+            card_html,
+        ):
+            s = m.group(1).strip()
+            if s and s not in sizes:
+                sizes.append(s)
 
     # --- pulls / tags / updated ---
+    # Old: x-test-pull-count, x-test-tag-count, x-test-updated
     pulls_spans = _find_spans_with_attr(card_html, "x-test-pull-count")
     pulls = parse_count(pulls_spans[0]) if pulls_spans else 0
     tag_spans = _find_spans_with_attr(card_html, "x-test-tag-count")
     tag_count = parse_count(tag_spans[0]) if tag_spans else 0
     upd_spans = _find_spans_with_attr(card_html, "x-test-updated")
     updated = upd_spans[0] if upd_spans else ""
+
+    # New markup: pulls/tags are in <span> elements preceded by specific SVG paths
+    # The SVG path for downloads (pulls) contains "M3 16.5v2.25"
+    # The SVG path for tags contains "M9.568 3H5.25"
+    if not pulls:
+        # Find the span after the download SVG
+        pm = re.search(
+            r'd="M3 16\.5v2\.25[^"]*"[^>]*>.*?<span\s*>([^<]+)</span>',
+            card_html,
+            re.DOTALL,
+        )
+        if pm:
+            pulls = parse_count(pm.group(1).strip())
+    if not tag_count:
+        # Find the span after the tag SVG
+        pm = re.search(
+            r'd="M9\.568 3H5\.25[^"]*"[^>]*>.*?<span\s*>([^<]+)</span>',
+            card_html,
+            re.DOTALL,
+        )
+        if pm:
+            tag_count = parse_count(pm.group(1).strip())
+
+    # Updated: new markup has <span class="flex items-center" title="...">
+    # with clock SVG path "M12 6v6h4.5"
+    if not updated:
+        # Find the span with the clock SVG, then the text span after it
+        um = re.search(
+            r'd="M12 6v6h4\.5[^"]*"[^>]*>.*?<span\s*>([^<]+)</span>',
+            card_html,
+            re.DOTALL,
+        )
+        if um:
+            updated = um.group(1).strip()
+            # Also look for "Updated" prefix span
+            if updated.startswith("Updated"):
+                updated = updated.replace("Updated", "").strip()
+
     # The updated timestamp tooltip (when present) is a title= on the <span>
-    # wrapping the clock SVG + the x-test-updated span. Match only that span,
-    # not the model-title div's title (which holds the model name).
+    # wrapping the clock SVG. In new markup: <span class="flex items-center" title="Nov 19, 2023 1:58 PM UTC">
     updated_title = ""
     if upd_spans:
         pm = re.search(
             r'<span[^>]*\btitle="([^"]+)"[^>]*>\s*<svg[^>]*>.*?'
             r'd="M12 6v6h4\.5m4\.5 0a9 9 0.*?"[^>]*>.*?'
             r"x-test-updated",
+            card_html,
+            re.DOTALL,
+        )
+        if pm:
+            updated_title = pm.group(1)
+    if not updated_title:
+        # New markup: <span class="flex items-center" title="Nov 19, 2023 1:58 PM UTC">
+        # followed by clock SVG with path "M12 6v6h4.5"
+        pm = re.search(
+            r'<span\s+class="flex items-center"\s+title="([^"]+)"\s*>'
+            r'\s*<svg[^>]*>.*?d="M12 6v6h4\.5',
             card_html,
             re.DOTALL,
         )
@@ -1494,6 +1577,275 @@ def save_blob_page(blob_url: str, page: BlobPage) -> None:
 
 
 # --------------------------------------------------------------------------- #
+# Parameter size inference (for models without Xb size tags on ollama.com)
+# --------------------------------------------------------------------------- #
+
+# Tag-name pattern: "120b-q2_K", "7b-mistral-v2-q2_K", "137m-v1.5-fp16"
+_TAG_SIZE_RE = re.compile(r"^(\d+(?:\.\d+)?)([bm])\b", re.IGNORECASE)
+# Model-name pattern: "sweep-next-edit-1.5B"
+_NAME_SIZE_RE = re.compile(r"(\d+(?:\.\d+)?)\s*[bB]\b")
+# Tensor shape string: "[2880, 201088]" or "[512]"
+_SHAPE_RE = re.compile(r"\[\s*([\d,\s]+)\s*\]")
+
+
+def _load_tags_for_model(model: Model) -> list[Tag]:
+    """Load cached tags for a model from scraper/tags/<slug>.json.
+
+    Returns an empty list if the file is missing or unreadable. Used by
+    infer_param_size() to avoid HTTP requests.
+    """
+    slug = slugify(model.path)
+    tf = TAGS_DIR / f"{slug}.json"
+    if not tf.exists():
+        return []
+    try:
+        data = json.loads(tf.read_text())
+    except Exception:
+        return []
+    out: list[Tag] = []
+    for t in data.get("tags", []):
+        try:
+            out.append(
+                Tag(
+                    name=t.get("name", ""),
+                    size_bytes=t.get("size_bytes"),
+                    size_text=t.get("size_text", ""),
+                    context=t.get("context", ""),
+                    input_type=t.get("input_type", ""),
+                    digest=t.get("digest", ""),
+                    updated=t.get("updated", ""),
+                    format=t.get("format", "gguf"),
+                    usage_level=t.get("usage_level", ""),
+                    usage_active_slots=t.get("usage_active_slots", 0),
+                )
+            )
+        except Exception:
+            continue
+    return out
+
+
+def _is_cloud_only_tags(tags: list[Tag]) -> bool:
+    """True if every tag is named 'cloud' or ends with '-cloud'."""
+    if not tags:
+        return False
+    return all(t.name == "cloud" or t.name.endswith("-cloud") for t in tags)
+
+
+def _sum_tensor_shapes(blob: dict) -> int:
+    """Sum the element count across every tensor in a blob dict.
+
+    Each tensor's `shape` is a string like "[2880, 201088]"; we parse the
+    integer dimensions and multiply them. Returns 0 if there are no
+    parseable tensors.
+    """
+    total = 0
+    for t in blob.get("tensors", []):
+        shape = t.get("shape", "")
+        if isinstance(shape, list):
+            dims = [d for d in shape if isinstance(d, int)]
+        else:
+            m = _SHAPE_RE.match(str(shape).strip())
+            if not m:
+                continue
+            dims = []
+            for d in m.group(1).split(","):
+                d = d.strip()
+                if d:
+                    try:
+                        dims.append(int(d))
+                    except ValueError:
+                        continue
+        n = 1
+        for d in dims:
+            n *= d
+        total += n
+    return total
+
+
+def _format_param_size(param_count: int) -> str | None:
+    """Convert a raw parameter count into a 'Xb'/'Xm' size string.
+
+    - >= 1e9: round(param_count / 1e9) + 'b'; skip if it rounds to 0.
+    - < 1e9:  round(param_count / 1e6) + 'm'; if 0, fall back to the raw
+              million count (param_count / 1e6) so very small models are
+              still represented.
+    """
+    if param_count <= 0:
+        return None
+    if param_count >= 1_000_000_000:
+        b = round(param_count / 1_000_000_000)
+        if b == 0:
+            return None
+        return f"{b}b"
+    m = round(param_count / 1_000_000)
+    if m == 0:
+        m = max(1, int(param_count / 1_000_000))
+    return f"{m}m"
+
+
+def _infer_from_blobs(model: Model, tags: list[Tag]) -> str | None:
+    """Source 1: sum tensor shapes from a GGUF model blob.
+
+    Iterates the model's GGUF tags, loads each tag_page JSON, finds a file
+    of type 'model' with a blob_url, loads the cached blob JSON, and sums
+    its tensor shapes. Returns the size string for the first usable blob,
+    or None.
+    """
+    slug = slugify(model.path)
+    for t in tags:
+        if t.format != "gguf":
+            continue
+        tp_file = TAG_PAGES_DIR / f"{slug}__{t.name}.json"
+        if not tp_file.exists():
+            continue
+        try:
+            tp = json.loads(tp_file.read_text())
+        except Exception:
+            continue
+        for f in tp.get("files", []):
+            if f.get("type") != "model":
+                continue
+            blob_url = f.get("blob_url", "")
+            if not blob_url:
+                continue
+            digest = blob_url.rstrip("/").rsplit("/blobs/", 1)[-1].split("?", 1)[0]
+            bp = BLOBS_DIR / f"{digest}.json"
+            if not bp.exists():
+                continue
+            try:
+                blob = json.loads(bp.read_text())
+            except Exception:
+                continue
+            if blob.get("blob_type") != "model":
+                continue
+            total = _sum_tensor_shapes(blob)
+            if total > 0:
+                return _format_param_size(total)
+    return None
+
+
+def _infer_from_tag_names(tags: list[Tag]) -> str | None:
+    """Source 2: extract a size from a tag name like '120b-q2_K'."""
+    for t in tags:
+        m = _TAG_SIZE_RE.match(t.name)
+        if m:
+            return f"{m.group(1)}{m.group(2).lower()}"
+    return None
+
+
+def _infer_from_model_name(name: str) -> str | None:
+    """Source 3: extract a size from the model name like 'sweep-...-1.5B'."""
+    m = _NAME_SIZE_RE.search(name)
+    if m:
+        return f"{m.group(1)}b"
+    return None
+
+
+def infer_param_size(model: Model, tags: list[Tag] | None = None) -> str | None:
+    """Infer a parameter-size string (e.g. "33b", "137m") for a model.
+
+    Used for models whose ollama.com catalog card has an empty `sizes`
+    list (the site omits size tags when a model has only one size).
+
+    Priority:
+      1. Sum tensor shapes from a downloadable GGUF model blob (most
+         accurate — exact parameter count).
+      2. Extract from a tag name that starts with `<digits>[bm]`
+         (e.g. "120b-q2_K" -> "120b").
+      3. Extract from the model name (e.g. "sweep-next-edit-1.5B" -> "1.5b").
+
+    Returns None for cloud-only models (all tags named 'cloud' or ending
+    with '-cloud') and when no size can be inferred.
+    """
+    if tags is None:
+        tags = _load_tags_for_model(model)
+
+    if _is_cloud_only_tags(tags):
+        return None
+
+    size = _infer_from_blobs(model, tags)
+    if size:
+        return size
+    size = _infer_from_tag_names(tags)
+    if size:
+        return size
+    return _infer_from_model_name(model.name)
+
+
+def run_infer_sizes() -> int:
+    """Load models.json, infer sizes for sizeless models, save, and summarize."""
+    models_file = DATA / "models.json"
+    if not models_file.exists():
+        print("models.json missing", file=sys.stderr)
+        return 1
+    data = json.loads(models_file.read_text())
+    models = data.get("models", [])
+
+    inferred = 0
+    skipped_cloud = 0
+    no_size = 0
+    by_source: dict[str, int] = {"blob": 0, "tag": 0, "name": 0}
+
+    for m in models:
+        if m.get("sizes"):
+            continue
+        # Reconstruct a minimal Model for infer_param_size(). We only need
+        # name + path (for slugify / tag_page lookup); tags are loaded from
+        # the cache inside infer_param_size().
+        model = Model(
+            name=m.get("name", ""),
+            path=m.get("path", ""),
+            description=m.get("description", ""),
+            capabilities=m.get("capabilities", []),
+            cloud=m.get("cloud", False),
+            sizes=m.get("sizes", []),
+            pulls=m.get("pulls", 0),
+            tag_count=m.get("tag_count", 0),
+            updated=m.get("updated", ""),
+            updated_title=m.get("updated_title", ""),
+            official=m.get("official", False),
+            owner=m.get("owner"),
+            source_url=m.get("source_url", ""),
+            cloud_only=m.get("cloud_only", False),
+        )
+        tags = _load_tags_for_model(model)
+        if _is_cloud_only_tags(tags):
+            skipped_cloud += 1
+            continue
+        # Determine the source explicitly for the summary.
+        size = _infer_from_blobs(model, tags)
+        source = "blob" if size else None
+        if not size:
+            size = _infer_from_tag_names(tags)
+            source = "tag" if size else None
+        if not size:
+            size = _infer_from_model_name(model.name)
+            source = "name" if size else None
+        if size:
+            m["sizes"] = [size]
+            inferred += 1
+            if source:
+                by_source[source] += 1
+            print(f"  inferred {model.name:30} -> {size}  (source={source})")
+        else:
+            no_size += 1
+            print(f"  no size      {model.name:30}  (no blobs/tags/name)")
+
+    _atomic_write(
+        models_file,
+        json.dumps(data, indent=2, sort_keys=True, ensure_ascii=False),
+    )
+    print()
+    print(f"inferred sizes for {inferred} models")
+    print(f"  from blob tensors: {by_source['blob']}")
+    print(f"  from tag names:    {by_source['tag']}")
+    print(f"  from model name:   {by_source['name']}")
+    print(f"skipped (cloud-only): {skipped_cloud}")
+    print(f"still without sizes: {no_size}")
+    return 0
+
+
+# --------------------------------------------------------------------------- #
 # Profile page scraping (e.g. /maternion)
 # --------------------------------------------------------------------------- #
 
@@ -1619,6 +1971,51 @@ def save_sort_data(sort_orders: dict, models: dict) -> None:
         json.dumps(ranks, indent=2, sort_keys=True, ensure_ascii=False),
     )
     log.info("wrote sort_orders.json + sort_ranks.json")
+
+
+def _load_cached_tag_fingerprint(model: Model) -> dict[str, str]:
+    """Return {tag_name: digest:usage_level} from the cached per-model tags file.
+
+    Used by --smart mode to detect tag-level changes (added, removed, or
+    re-pushed tags, or usage tier changes) that the catalog card's
+    tag_count/updated_title do NOT reflect — e.g. ollama.com retiring a tag
+    or changing its cloud usage tier without bumping the model's "updated"
+    timestamp. Returns {} if no cache exists or it is unreadable.
+    """
+    slug = slugify(model.path)
+    tf = TAGS_DIR / f"{slug}.json"
+    if not tf.exists():
+        return {}
+    try:
+        data = json.loads(tf.read_text())
+    except Exception:
+        return {}
+    return {
+        t.get("name", ""): f"{t.get('digest', '')}:{t.get('usage_level', '')}"
+        for t in data.get("tags", [])
+    }
+
+
+def _tags_differ(
+    new_tags: list[Tag], cached: dict[str, str]
+) -> tuple[bool, set[str], set[str]]:
+    """Compare freshly-fetched tags against the cached {name: digest:usage_level} map.
+
+    Returns (changed, added_or_changed, removed). `changed` is True if any tag
+    name was added, removed, had its digest change, or had its usage_level
+    change (e.g. cloud tier moved from medium to low). This catches tag
+    retirements (removed), re-pushes (digest changed), and usage tier changes
+    that the catalog page does not surface.
+    """
+    new_map = {t.name: f"{t.digest}:{t.usage_level}" for t in new_tags}
+    new_names = set(new_map)
+    cached_names = set(cached)
+    added_or_changed = {
+        n for n in new_names if n not in cached or cached[n] != new_map[n]
+    }
+    removed = cached_names - new_names
+    changed = bool(added_or_changed or removed)
+    return changed, added_or_changed, removed
 
 
 def save_tags(model: Model, tags: list[Tag]) -> None:
@@ -1747,6 +2144,232 @@ def check_only() -> int:
         return 1
 
 
+# --------------------------------------------------------------------------- #
+# Static pages: /download + /pricing
+# --------------------------------------------------------------------------- #
+
+# OS labels in the order shown on ollama.com's download page.
+_DOWNLOAD_OS = [
+    ("mac", "macOS", f"{BASE}/download/mac"),
+    ("linux", "Linux", f"{BASE}/download/linux"),
+    ("windows", "Windows", f"{BASE}/download/windows"),
+]
+
+_CMD_RE = re.compile(r'<code class="command[^"]*">(.*?)</code>', re.DOTALL)
+_HELPER_RE = re.compile(r'<p class="text-xs[^"]*mt-1">(.*?)</p>', re.DOTALL)
+_OR_RE = re.compile(r'<p class="my-2 text-xs[^"]*">or</p>', re.DOTALL)
+# Download button: <a class="...rounded-3xl..." href="/download/...">Label</a>.
+# The anchor spans multiple lines (class and href on separate lines). Match
+# only buttons whose href starts with "/download/" (a relative ollama.com
+# path) — excludes external github release links that contain "/download/".
+_DL_BTN_RE = re.compile(
+    r'<a\b[^>]*class="[^"]*rounded-3xl[^"]*"[^>]*href="(/download/[^"]+)"[^>]*>\s*([^<]+?)\s*</a\b',
+    re.DOTALL,
+)
+_FOOTNOTE_RE = re.compile(r'<p class="mt-4 text-xs[^"]*">(.*?)</p>', re.DOTALL)
+
+
+def _strip_tags(s: str) -> str:
+    """Collapse whitespace and strip HTML tags from a scraped fragment."""
+    s = re.sub(r"<[^>]+>", "", s)
+    s = html_mod.unescape(s)
+    return s.strip()
+
+
+def scrape_download_page(client: Client) -> dict:
+    """Fetch all three OS download variants and parse the install blocks."""
+    tabs = []
+    for os_slug, label, page_url in _DOWNLOAD_OS:
+        html_text = client.get(page_url)
+        if not html_text:
+            log.warning("download page %s: no html", os_slug)
+            continue
+        tab = {"os": os_slug, "label": label}
+
+        m = _CMD_RE.search(html_text)
+        if m:
+            tab["command"] = _strip_tags(m.group(1))
+        else:
+            tab["command"] = ""
+
+        m = _HELPER_RE.search(html_text)
+        if m:
+            tab["helper"] = _strip_tags(m.group(1))
+        else:
+            tab["helper"] = ""
+
+        tab["or_separator"] = bool(_OR_RE.search(html_text))
+
+        m = _DL_BTN_RE.search(html_text)
+        if m:
+            href = m.group(1)
+            tab["download_url"] = href
+            tab["download_label"] = _strip_tags(m.group(2))
+        else:
+            tab["download_url"] = ""
+            tab["download_label"] = ""
+
+        m = _FOOTNOTE_RE.search(html_text)
+        if m:
+            tab["footnote"] = _strip_tags(m.group(1))
+        else:
+            tab["footnote"] = ""
+
+        tabs.append(tab)
+        log.info(
+            "  download %s: cmd=%r dl=%s",
+            os_slug,
+            tab["command"],
+            tab["download_url"] or "(none)",
+        )
+        time.sleep(DELAY)
+    return {"tabs": tabs}
+
+
+# Pricing card: the tier name (h2), description (p), price block, button, features (ul>li>span).
+_TIER_RE = re.compile(
+    r'<div class="md:col-span-(?:2|6)[^"]*"\s*>.*?</div>\s*</div>\s*</div>',
+    re.DOTALL,
+)
+_PRICE_RE = re.compile(
+    r'<div class="text-2xl font-semibold font-rounded">(.*?)</div>', re.DOTALL
+)
+_TIER_NAME_RE = re.compile(r"<h2[^>]*>(.*?)</h2>", re.DOTALL)
+_TIER_DESC_RE = re.compile(
+    r'<p class="(?:text-black )?mb-(?:4|6)">(.*?)</p>', re.DOTALL
+)
+_TIER_BTN_RE = re.compile(
+    r'<a href="([^"]+)"[^>]*class="block w-full[^"]*rounded-full[^"]*"[^>]*>\s*(.*?)\s*</a>',
+    re.DOTALL,
+)
+_FEAT_RE = re.compile(r"<span>(.*?)</span>", re.DOTALL)
+
+
+def _parse_pricing_card(card_html: str) -> dict:
+    name = ""
+    m = _TIER_NAME_RE.search(card_html)
+    if m:
+        name = _strip_tags(m.group(1))
+
+    desc = ""
+    m = _TIER_DESC_RE.search(card_html)
+    if m:
+        desc = _strip_tags(m.group(1))
+
+    price = ""
+    m = _PRICE_RE.search(card_html)
+    if m:
+        price = _strip_tags(m.group(1))
+
+    button_url = ""
+    button_label = ""
+    m = _TIER_BTN_RE.search(card_html)
+    if m:
+        button_url = m.group(1)
+        button_label = _strip_tags(m.group(2))
+
+    features = [
+        fe for fe in (_strip_tags(x) for x in _FEAT_RE.findall(card_html)) if fe
+    ]
+    return {
+        "name": name,
+        "price": price,
+        "description": desc,
+        "button_url": button_url,
+        "button_label": button_label,
+        "features": features,
+    }
+
+
+def _parse_pricing_faq(html_text: str) -> list:
+    """Parse the FAQ section into groups (Models, Usage, Privacy) + Q&A items.
+
+    Each group is a <div> containing an <h3> and a <ul> of <li> items. Each <li>
+    has an <h4> question; the answer is everything after the h4 up to </li>.
+    """
+    faq = []
+    # Locate the FAQ section start.
+    faq_start = html_text.find("Frequently asked questions")
+    if faq_start < 0:
+        return faq
+    section = html_text[faq_start:]
+    # Each group begins with <div> ... <h3 ...>GroupName</h3> ... </ul></div>
+    # Split on the group headings to isolate groups.
+    group_heads = list(re.finditer(r"<h3[^>]*>(.*?)</h3>", section))
+    if not group_heads:
+        return faq
+    for i, gh in enumerate(group_heads):
+        group_name = _strip_tags(gh.group(1))
+        start = gh.end()
+        end = group_heads[i + 1].start() if i + 1 < len(group_heads) else len(section)
+        chunk = section[start:end]
+        items = []
+        for li in re.finditer(r"<li>(.*?)</li>", chunk, re.DOTALL):
+            li_html = li.group(1)
+            qm = re.search(r"<h4[^>]*>(.*?)</h4>", li_html, re.DOTALL)
+            if not qm:
+                continue
+            q = _strip_tags(qm.group(1))
+            # Answer: everything after the closing </h4> within the li.
+            a_html = li_html[qm.end() :]
+            # Trim leading whitespace/newlines.
+            a_html = a_html.strip()
+            items.append({"q": q, "a": a_html})
+        faq.append({"group": group_name, "items": items})
+    return faq
+
+
+def scrape_pricing_page(client: Client) -> dict:
+    """Fetch /pricing and parse the four tier cards + FAQ groups."""
+    html_text = client.get(f"{BASE}/pricing")
+    if not html_text:
+        log.warning("pricing page: no html")
+        return {"tiers": [], "faq": []}
+
+    # Isolate the tier card grid section.
+    grid_start = html_text.find('<section class="grid grid-cols-1 md:grid-cols-6')
+    tiers = []
+    if grid_start >= 0:
+        grid_end = html_text.find("</section>", grid_start)
+        grid = html_text[grid_start:grid_end]
+        # Each card is a top-level <div class="md:col-span-..."> within the grid.
+        # Split on the card divs by finding each card opening.
+        card_starts = [
+            mm.start()
+            for mm in re.finditer(r'<div class="md:col-span-(?:2|6)[^"]*"\s*>', grid)
+        ]
+        for i, cs in enumerate(card_starts):
+            ce = card_starts[i + 1] if i + 1 < len(card_starts) else len(grid)
+            card_html = grid[cs:ce]
+            tiers.append(_parse_pricing_card(card_html))
+
+    faq = _parse_pricing_faq(html_text)
+    log.info("pricing: %d tiers, %d faq groups", len(tiers), len(faq))
+    return {"tiers": tiers, "faq": faq}
+
+
+def scrape_pages(client: Client) -> None:
+    """Scrape the /download and /pricing static pages and save their JSON."""
+    log.info("=== scraping /download + /pricing ===")
+    download = scrape_download_page(client)
+    _atomic_write(
+        DATA / "download.json",
+        json.dumps(download, indent=2, ensure_ascii=False),
+    )
+    log.info("saved download.json (%d tabs)", len(download["tabs"]))
+
+    pricing = scrape_pricing_page(client)
+    _atomic_write(
+        DATA / "pricing.json",
+        json.dumps(pricing, indent=2, ensure_ascii=False),
+    )
+    log.info(
+        "saved pricing.json (%d tiers, %d faq groups)",
+        len(pricing["tiers"]),
+        len(pricing["faq"]),
+    )
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Scrape ollama.com model catalog.")
     ap.add_argument(
@@ -1792,6 +2415,18 @@ def main(argv: list[str] | None = None) -> int:
     )
     ap.add_argument("-v", "--verbose", action="store_true")
     ap.add_argument(
+        "--scrape-pages",
+        action="store_true",
+        help="only scrape the /download and /pricing static pages, then exit",
+    )
+    ap.add_argument(
+        "--infer-sizes",
+        action="store_true",
+        help="infer parameter sizes for models with empty `sizes` arrays "
+        "(using cached blobs/tag-pages/tags, no HTTP), update models.json, "
+        "print a summary, and exit",
+    )
+    ap.add_argument(
         "--max-runtime",
         type=int,
         default=0,
@@ -1817,6 +2452,17 @@ def main(argv: list[str] | None = None) -> int:
     if args.check_only:
         return check_only()
 
+    if args.scrape_pages:
+        client = Client()
+        try:
+            scrape_pages(client)
+        finally:
+            client.close()
+        return 0
+
+    if args.infer_sizes:
+        return run_infer_sizes()
+
     client = Client()
     try:
         # ---- full crawl ----
@@ -1838,6 +2484,13 @@ def main(argv: list[str] | None = None) -> int:
                     prev_models[pm["path"]] = pm
             except Exception:
                 pass
+
+        # Models whose per-model /tags page differed from the cache during the
+        # smart tag sweep. Populated in the tags section below; consumed by the
+        # tag-pages and blobs sections to force a re-scrape even when the
+        # catalog card's updated_title is unchanged (e.g. tag retirements that
+        # the catalog page does not reflect).
+        tags_changed: set[str] = set()
 
         if not args.skip_search:
             log.info("=== crawling /search for user models ===")
@@ -1949,7 +2602,15 @@ def main(argv: list[str] | None = None) -> int:
 
         if not args.skip_tags:
             if args.smart and prev_models:
-                # Determine which models changed
+                # Determine which models changed. The catalog card's
+                # tag_count + updated_title are a fast pre-filter, but they are
+                # NOT sufficient to detect tag retirements: ollama.com often
+                # removes/re-tires tags without updating the model's "updated"
+                # timestamp or the catalog page's tag count. So in --smart mode
+                # we ALWAYS re-fetch the lightweight per-model /tags page (one
+                # HTTP request) and compare the {name: digest} fingerprint
+                # against the cache. Only models whose fingerprint is identical
+                # skip the (expensive) downstream tag-page/blob scrape.
                 to_fetch = []
                 cached = 0
                 for m in models.values():
@@ -1962,14 +2623,42 @@ def main(argv: list[str] | None = None) -> int:
                         and pm.get("tag_count") == m.tag_count
                         and pm.get("updated_title") == m.updated_title
                     ):
-                        # Unchanged — load from cache
-                        try:
-                            existing = json.loads(tf.read_text())
-                            m.tags = [Tag(**t) for t in existing.get("tags", [])]
-                            cached += 1
-                            continue
-                        except Exception:
-                            pass
+                        # Fast path: catalog card unchanged AND we have a
+                        # cached tags file. Still re-fetch the /tags page to
+                        # detect tag retirements the catalog doesn't surface.
+                        cached_fp = _load_cached_tag_fingerprint(m)
+                        if cached_fp:
+                            fresh = fetch_tags(client, m)
+                            time.sleep(DELAY)
+                            if fresh:
+                                changed, _added, _removed = _tags_differ(
+                                    fresh, cached_fp
+                                )
+                                if not changed:
+                                    m.tags = fresh
+                                    # No diff -> keep cache byte-identical; do
+                                    # not rewrite unless content actually
+                                    # changed (avoid spurious git churn).
+                                    if [asdict(t) for t in fresh] != json.loads(
+                                        tf.read_text()
+                                    ).get("tags", []):
+                                        save_tags(m, fresh)
+                                    cached += 1
+                                    continue
+                                # Tags changed (added/removed/re-pushed) ->
+                                # fall through to re-scrape this model fully.
+                                log.info(
+                                    "  %s: tag fingerprint changed (smart), "
+                                    "re-scraping tags",
+                                    m.path,
+                                )
+                                m.tags = fresh
+                                save_tags(m, fresh)
+                                tags_changed.add(m.path)
+                                to_fetch.append(m)
+                                continue
+                        # No cached fingerprint (first run / corrupt cache):
+                        # treat as to-fetch.
                     to_fetch.append(m)
                 log.info(
                     "=== fetching per-model tags (%d cached, %d to fetch) ===",
@@ -1985,6 +2674,7 @@ def main(argv: list[str] | None = None) -> int:
                     log.info("  [%d/%d] %s", i, total, m.path)
                     m.tags = fetch_tags(client, m)
                     save_tags(m, m.tags)
+                    tags_changed.add(m.path)
                     if i % 10 == 0:
                         save_models(models.values())
                         log.info(
@@ -2103,19 +2793,46 @@ def main(argv: list[str] | None = None) -> int:
                 tags_to_fetch = list(m.tags)
                 if not tags_to_fetch:
                     continue
+                # Smart mode: if the tag sweep reported a fingerprint change for
+                # this model, prune any cached tag-page files whose tag is no
+                # longer present (retired/removed tags). Without this, retired
+                # tags would leave stale tag-page JSON that no longer matches
+                # any real tag on ollama.com.
+                if args.smart and m.path in tags_changed:
+                    current_names = {t.name for t in tags_to_fetch}
+                    slug = slugify(m.path)
+                    for stale in TAG_PAGES_DIR.glob(f"{slug}__*.json"):
+                        # filename pattern: <slug>__<tagname>.json
+                        stale_tag = stale.stem.split("__", 1)[-1]
+                        if stale_tag not in current_names:
+                            try:
+                                stale.unlink()
+                                log.info(
+                                    "  pruned retired tag page: %s:%s",
+                                    m.path,
+                                    stale_tag,
+                                )
+                            except Exception:
+                                pass
                 for t in tags_to_fetch:
                     slug = slugify(m.path)
                     tf = TAG_PAGES_DIR / f"{slug}__{t.name}.json"
-                    # Smart mode: tier 1 — skip if whole model unchanged
+                    # Smart mode: tier 1 — skip if whole model unchanged.
+                    # A model is "unchanged" only if its catalog card's
+                    # updated_title matches AND the smart tag sweep did not
+                    # report a tag fingerprint change (added/removed/re-pushed
+                    # tags). The latter catches tag retirements that the
+                    # catalog page does not surface.
                     if args.smart and prev_models:
                         pm = prev_models.get(m.path)
                         if (
                             pm
                             and tf.exists()
                             and pm.get("updated_title") == m.updated_title
+                            and m.path not in tags_changed
                         ):
                             continue
-                    # Smart mode: tier 2 — skip if this tag's digest unchanged
+                    # Smart mode: tier 2 — skip if this tag's digest unchanged.
                     if args.smart and tf.exists():
                         try:
                             existing_tp = json.loads(tf.read_text())
@@ -2175,13 +2892,16 @@ def main(argv: list[str] | None = None) -> int:
                             .split("?", 1)[0]
                         )
                         bf = BLOBS_DIR / f"{bdigest}.json"
-                        # Smart mode: tier 1 — skip if whole model unchanged
+                        # Smart mode: tier 1 — skip if whole model unchanged.
+                        # Also gated by tags_changed so tag retirements (which
+                        # don't bump updated_title) still trigger a re-scrape.
                         if args.smart and prev_models:
                             pm = prev_models.get(m.path)
                             if (
                                 pm
                                 and bf.exists()
                                 and pm.get("updated_title") == m.updated_title
+                                and m.path not in tags_changed
                             ):
                                 continue
                         # Smart mode: tier 2 — skip if tag digest unchanged
@@ -2238,7 +2958,22 @@ def main(argv: list[str] | None = None) -> int:
                 ]
                 m.cloud_only = len(local_tags) == 0
 
+        # Infer parameter sizes for models whose `sizes` list is empty
+        # (ollama.com omits size tags when a model has only one size).
+        for m in models.values():
+            if m.sizes:
+                continue
+            if not m.tags:
+                m.tags = _load_tags_for_model(m)
+            size = infer_param_size(m, m.tags)
+            if size and size not in m.sizes:
+                m.sizes.append(size)
+                log.info("  inferred size %s for %s", size, m.path)
+
         save_models(models.values())
+
+        # Scrape the /download + /pricing static pages (rarely change; always refresh).
+        scrape_pages(client)
 
         # Update sort orderings + derived rank data (in case models changed)
         if sort_orders:
