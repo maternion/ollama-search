@@ -38,7 +38,12 @@ jobs:
           git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
           git fetch origin scraped-data 2>/dev/null || true
           if git rev-parse --verify origin/scraped-data >/dev/null 2>&1; then
-            git checkout origin/scraped-data -- scraper/ 2>/dev/null || true
+            # Restore ONLY data files from scraped-data, NOT scrape.py
+            # (scrape.py comes from the main branch checkout — using the
+            # scraped-data branch's copy would overwrite code fixes).
+            for item in tags pages tag_pages blobs models.json sort_orders.json sort_ranks.json download.json pricing.json profile_maternion.json; do
+              git checkout origin/scraped-data -- "scraper/$item" 2>/dev/null || true
+            done
             git reset HEAD scraper/ 2>/dev/null || true
             echo "Restored scraped data from scraped-data branch"
             git worktree add /tmp/scraped-data scraped-data 2>/dev/null || true
