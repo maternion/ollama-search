@@ -100,21 +100,36 @@ jobs:
             fi
           fi
           # Deploy to gh-pages branch
-          # Use a fresh orphan worktree + rsync for reliable full-file copying.
-          # The previous `cp -r` + `git rm -rf .` approach silently dropped
-          # ~20k of 27k blob pages (paths with colons / stale worktree state).
-          git worktree prune 2>/dev/null || true
+          # Clone gh-pages into a throwaway dir, rsync the build output in, commit, force-push.
+          # This avoids the fragile `git worktree add --orphan` (git <2.42 lacks it, and the
+          # branch can't be reused across runs), which previously left /tmp/gh-pages as a
+          # non-git dir and made `git add -A` fail with "not a git repository" (exit 128).
+          # Cloning is reliable for both first deploys (no gh-pages yet) and updates.
           rm -rf /tmp/gh-pages
-          git worktree add --orphan -b gh-pages-deploy /tmp/gh-pages 2>/dev/null || true
-          rsync -a --delete "$GITHUB_WORKSPACE/public/" /tmp/gh-pages/
+          origin_url="$(git remote get-url origin)"
+          if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
+            git clone --depth=1 --branch gh-pages "$origin_url" /tmp/gh-pages 2>/dev/null || true
+          fi
+          if [ ! -d /tmp/gh-pages/.git ]; then
+            rm -rf /tmp/gh-pages
+            mkdir -p /tmp/gh-pages
+            cd /tmp/gh-pages
+            git init 2>/dev/null || true
+            git checkout -b gh-pages 2>/dev/null || git checkout -B gh-pages 2>/dev/null || true
+            git remote add origin "$origin_url" 2>/dev/null || true
+            cd "$GITHUB_WORKSPACE"
+          fi
+          # Protect .git from rsync --delete (clone has a .git dir, unlike a worktree's .git file).
+          rsync -a --delete --exclude '.git/' "$GITHUB_WORKSPACE/public/" /tmp/gh-pages/
           cd /tmp/gh-pages
-          git add -A
-          echo "Files staged: $(git status --porcelain | wc -l)"
-          git commit -m "deploy cycle 1 $(date -u '+%Y-%m-%d %H:%M:%S UTC') [skip ci]" || true
-          git push origin gh-pages-deploy:gh-pages --force || true
+          git config user.name "GitHub Actions" 2>/dev/null || true
+          git config user.email "actions@github.com" 2>/dev/null || true
+          git add -A || true
+          echo "Files staged: $(git status --porcelain 2>/dev/null | wc -l)"
+          git commit -m "deploy cycle 1 $(date -u '+%Y-%m-%d %H:%M:%S UTC') [skip ci]" 2>/dev/null || true
+          git push origin gh-pages --force 2>/dev/null || true
           cd "$GITHUB_WORKSPACE"
-          git worktree remove /tmp/gh-pages 2>/dev/null || true
-          git branch -D gh-pages-deploy 2>/dev/null || true
+          rm -rf /tmp/gh-pages
 
       # ── Self-check: validate data integrity (soft, non-blocking) ──
       - name: Self-check (data integrity)
