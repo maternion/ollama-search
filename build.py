@@ -298,8 +298,8 @@ def nav_html(active: str = "") -> str:
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="{url("/pricing")}">Pricing</a>
     </div>
-    <div class="flex-grow justify-center items-center hidden lg:flex">
-      <div class="relative w-full xl:max-w-[28rem]">
+    <div class="flex-grow justify-center items-center hidden md:flex">
+      <div class="relative w-full" style="max-width: 448px;">
         <form action="{url("")}" autocomplete="off" id="nav-search-form">
           <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-800 items-center rounded-full" hx-on:focusout="var rt=event.relatedTarget;if(rt&&(this.contains(rt)||document.getElementById('searchpreview').contains(rt)))return;var sp=document.getElementById('searchpreview');if(sp)sp.classList.add('hidden');">
             <span class="pl-2 text-2xl text-neutral-500 dark:text-neutral-400">{SVG_SEARCH}</span>
@@ -559,8 +559,8 @@ def build_index(models: list[dict], ranks: dict) -> None:
 <main class="mx-auto flex w-full max-w-2xl flex-col px-6 py-5 md:py-12 lg:px-8">
   <input type="hidden" id="sort-value" name="o" value="popular">
 
-  <!-- Mobile search bar -->
-  <div class="flex lg:hidden justify-between space-x-2 items-center">
+  <!-- Mobile search bar (shown only below md, where the navbar search is hidden) -->
+  <div class="flex md:hidden justify-between space-x-2 items-center">
     <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-700 items-center rounded-full">
       <span class="pl-4 text-neutral-400">{SVG_SEARCH}</span>
       <input id="form-input" name="q" type="search" value="" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-base sm:text-sm w-full placeholder:text-neutral-400 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autofocus autocomplete="off">
