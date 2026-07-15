@@ -35,15 +35,13 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
           git fetch origin scraped-data 2>/dev/null || true
           if git rev-parse --verify origin/scraped-data >/dev/null 2>&1; then
-            # Restore ONLY data files from scraped-data, NOT scrape.py
-            # (scrape.py comes from the main branch checkout — using the
-            # scraped-data branch's copy would overwrite code fixes).
-            for item in tags pages tag_pages blobs models.json sort_orders.json sort_ranks.json download.json pricing.json profile_maternion.json; do
-              git checkout origin/scraped-data -- "scraper/$item" 2>/dev/null || true
-            done
+            # Restore all scraped data from scraped-data branch, then re-overlay
+            # code files from main so scraper fixes aren't overwritten by the
+            # scraped-data branch's older copy.
+            git checkout origin/scraped-data -- scraper/ 2>/dev/null || true
+            git checkout origin/main -- scraper/scrape.py 2>/dev/null || true
             git reset HEAD scraper/ 2>/dev/null || true
             echo "Restored scraped data from scraped-data branch"
             git worktree add /tmp/scraped-data scraped-data 2>/dev/null || true
@@ -56,16 +54,8 @@ jobs:
             cd "$GITHUB_WORKSPACE"
           fi
 
-      # ── Cycle 1: scrape 2h → build → deploy to gh-pages ──
-      # Always run --smart. The previous --check-only gate (a 2-request catalog
-      # card hash) could not detect per-tag changes that ollama.com surfaces
-      # only on the /<model>/tags page — notably cloud usage tier (Low/Medium/
-      # High/Max), which moved gemma4:cloud from "medium" to "low" without
-      # changing the catalog card's tag_count or updated_title. --smart mode
-      # already re-fetches each model's lightweight /tags page and compares a
-      # fingerprint including usage_level, so it catches tier changes while
-      # skipping the heavy tag-page/blob scraping for unchanged models.
-      - name: Scrape cycle 1 (2h max)
+      # ── Scrape: always run --smart (detects tier changes, tag retirements) ──
+      - name: Scrape (2h max)
         id: scrape1
         continue-on-error: true
         env:
@@ -73,8 +63,7 @@ jobs:
           GIT_CHECKPOINT_WORKTREE: "/tmp/scraped-data"
         run: python3 scraper/scrape.py --smart --skip-search --max-runtime 7200 -v
 
-      - name: Checkpoint + build + deploy cycle 1
-        if: always()
+      - name: Checkpoint + build + self-check
         id: build1
         run: |
           # Push checkpoint to scraped-data
@@ -84,64 +73,20 @@ jobs:
             cp -r scraper/* /tmp/scraped-data/scraper/
             cd /tmp/scraped-data
             git add -A scraper/
-            git commit -m "cycle 1 $(date -u '+%H:%M:%S UTC') [skip ci]" || true
+            git commit -m "checkpoint $(date -u '+%H:%M:%S UTC') [skip ci]" || true
             git push origin scraped-data || true
             cd "$GITHUB_WORKSPACE"
           fi
           # Build site
           python3 build.py --base "/${{ github.event.repository.name }}"
-          # Tag current gh-pages HEAD for rollback before overwriting it.
-          git fetch origin gh-pages 2>/dev/null || true
-          if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
-            git tag "deploy-pre-$(date -u '+%Y%m%d-%H%M%S')" origin/gh-pages
-            # Keep only the 10 most recent deploy-pre-* tags locally + remotely.
-            git tag -l "deploy-pre-*" --sort=-creatordate | tail -n +11 | xargs -r git tag -d
-            git push origin --tags
-            old_tags=$(git tag -l "deploy-pre-*" --sort=-creatordate | tail -n +11)
-            if [ -n "$old_tags" ]; then
-              echo "$old_tags" | xargs -r -n1 git push origin --delete
-            fi
-          fi
-          # Deploy to gh-pages branch
-          # Clone gh-pages into a throwaway dir, rsync the build output in, commit, force-push.
-          # This avoids the fragile `git worktree add --orphan` (git <2.42 lacks it, and the
-          # branch can't be reused across runs), which previously left /tmp/gh-pages as a
-          # non-git dir and made `git add -A` fail with "not a git repository" (exit 128).
-          # Cloning is reliable for both first deploys (no gh-pages yet) and updates.
-          rm -rf /tmp/gh-pages
-          origin_url="$(git remote get-url origin)"
-          if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
-            git clone --depth=1 --branch gh-pages "$origin_url" /tmp/gh-pages 2>/dev/null || true
-          fi
-          if [ ! -d /tmp/gh-pages/.git ]; then
-            rm -rf /tmp/gh-pages
-            mkdir -p /tmp/gh-pages
-            cd /tmp/gh-pages
-            git init 2>/dev/null || true
-            git checkout -b gh-pages 2>/dev/null || git checkout -B gh-pages 2>/dev/null || true
-            git remote add origin "$origin_url" 2>/dev/null || true
-            cd "$GITHUB_WORKSPACE"
-          fi
-          # Protect .git from rsync --delete (clone has a .git dir, unlike a worktree's .git file).
-          rsync -a --delete --exclude '.git/' "$GITHUB_WORKSPACE/public/" /tmp/gh-pages/
-          cd /tmp/gh-pages
-          git config user.name "GitHub Actions" 2>/dev/null || true
-          git config user.email "actions@github.com" 2>/dev/null || true
-          git add -A || true
-          echo "Files staged: $(git status --porcelain 2>/dev/null | wc -l)"
-          git commit -m "deploy cycle 1 $(date -u '+%Y-%m-%d %H:%M:%S UTC') [skip ci]" 2>/dev/null || true
-          git push origin gh-pages --force 2>/dev/null || true
-          cd "$GITHUB_WORKSPACE"
-          rm -rf /tmp/gh-pages
+          # Self-check BEFORE deploy so bad data doesn't go live
+          python3 scraper/scrape.py --self-check
 
-      # ── Self-check: validate data integrity (soft, non-blocking) ──
-      - name: Self-check (data integrity)
-        if: always()
-        continue-on-error: true
-        run: |
-          echo "::notice::Running self-check..."
-          if python3 scraper/scrape.py --self-check; then
-            echo "::notice::Self-check passed"
-          else
-            echo "::warning::Self-check FAILED — scrape may be partial. Continuing deploy anyway."
-          fi
+      # ── Deploy: upload artifact + deploy-pages (no gh-pages branch needed) ──
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public/
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
