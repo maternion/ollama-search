@@ -2614,6 +2614,9 @@ def main(argv: list[str] | None = None) -> int:
                 to_fetch = []
                 cached = 0
                 for m in models.values():
+                    if client.bail_out or _time_up():
+                        log.warning("STOPPING at smart fast-path tag sweep")
+                        break
                     slug = slugify(m.path)
                     tf = TAGS_DIR / f"{slug}.json"
                     pm = prev_models.get(m.path)
@@ -2672,8 +2675,10 @@ def main(argv: list[str] | None = None) -> int:
                         break
                     slug = slugify(m.path)
                     log.info("  [%d/%d] %s", i, total, m.path)
-                    m.tags = fetch_tags(client, m)
-                    save_tags(m, m.tags)
+                    if not m.tags:
+                        m.tags = fetch_tags(client, m)
+                        save_tags(m, m.tags)
+                        time.sleep(DELAY)
                     tags_changed.add(m.path)
                     if i % 10 == 0:
                         save_models(models.values())
