@@ -107,7 +107,7 @@
             <span x-test-pull-count>2.3M</span>
             <span class="hidden sm:flex">&nbsp;Downloads</span>
           </span>
-          <span class="flex items-center" title="Dec 20, 2025 8:44 PM UTC">
+          <span class="flex items-center" title="Dec 20, 2025 8:43 PM UTC">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 h-[14px] w-[14px] sm:h-4 sm:w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>
             <span class="hidden sm:flex">Updated&nbsp;</span>
             <span x-test-updated>6 months ago</span>
@@ -124,31 +124,7 @@
       </div>
     </div>
   </div>
-  <div x-test-model-metrics class="!mt-8 grid grid-cols-3 overflow-hidden rounded-lg border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
-  <div x-test-model-cost x-test-model-metric="usage" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4 border-r">
-    <div class="text-[13px] font-medium text-neutral-500">Usage</div>
-    <div class="mt-3 flex min-w-0 flex-col gap-1">
-      <div x-test-model-cost-value x-test-model-cost-level class="flex h-5 items-center gap-1">
-        <span x-test-model-cost-slot-active class="block h-1.5 w-5 rounded-full bg-neutral-900 dark:bg-neutral-100"></span><span x-test-model-cost-slot-active class="block h-1.5 w-5 rounded-full bg-neutral-900 dark:bg-neutral-100"></span><span x-test-model-cost-slot-active class="block h-1.5 w-5 rounded-full bg-neutral-900 dark:bg-neutral-100"></span><span x-test-model-cost-slot-active class="block h-1.5 w-5 rounded-full bg-neutral-900 dark:bg-neutral-100"></span>
-      </div>
-      <span class="min-w-0 break-words text-xs leading-tight text-neutral-700 dark:text-neutral-300 sm:text-[14px] sm:leading-5"></span>
-    </div>
-  </div>
-  <div x-test-model-metric="context" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4 border-r">
-    <div class="text-[13px] font-medium text-neutral-500">Context</div>
-    <div class="mt-3 flex min-w-0 flex-col gap-1">
-      <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">1M</span>
-      <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm">tokens</span>
-    </div>
-  </div>
-  <div x-test-model-metric="size" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4">
-    <div class="text-[13px] font-medium text-neutral-500">Size</div>
-    <div class="mt-3 flex min-w-0 flex-col gap-1">
-      <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100"></span>
-      <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm"></span>
-    </div>
-  </div>
-</div>
+  
   <div class="py-8">
     <section data-usage-section class="mb-8">
   <div class="relative rounded-lg border border-neutral-200 dark:border-neutral-800 overflow-hidden bg-white dark:bg-neutral-900">
@@ -262,121 +238,16 @@ console.log(response.message.content)</pre>
     var isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }
-var NAV_MODELS = null;
-var NAV_BASE = (function() {
-  var s = document.querySelector('script[src*="assets/app.js"]');
-  if (s) {
-    var src = s.getAttribute('src');
-    var idx = src.indexOf('assets/app.js');
-    if (idx > 0) return src.substring(0, idx);
-  }
-  return '/';
-})();
-
-function loadNavModels(cb) {
-  if (NAV_MODELS) { cb(NAV_MODELS); return; }
-  var cached = null;
-  try { cached = sessionStorage.getItem('nav-models'); } catch (e) {}
-  if (cached) {
-    try { NAV_MODELS = JSON.parse(cached); cb(NAV_MODELS); return; } catch (e) {}
-  }
-  fetch(NAV_BASE + 'assets/models.json').then(function(r) { return r.json(); }).then(function(data) {
-    NAV_MODELS = data;
-    try { sessionStorage.setItem('nav-models', JSON.stringify(data)); } catch (e) {}
-    cb(NAV_MODELS);
-  }).catch(function() { cb([]); });
-}
-
-function escHtml(s) {
-  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
-
-function renderNavSuggest(query) {
-  var sp = document.getElementById('searchpreview');
-  if (!sp) return;
-  var q = query.toLowerCase().trim();
-  if (!q) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
-
-  var html = '<div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl w-full shadow-2xl shadow-black/5 overflow-hidden" id="search-preview-container" tabindex="0">';
-  html += '<div role="list" id="search-preview-list" class="group">';
-
-  var results = [];
-  for (var i = 0; i < NAV_MODELS.length; i++) {
-    var m = NAV_MODELS[i];
-    var name = m.name || '';
-    var desc = m.description || '';
-    if (name.toLowerCase().indexOf(q) !== -1 || desc.toLowerCase().indexOf(q) !== -1) {
-      results.push(m);
-    }
-  }
-  results.sort(function(a, b) { return (b.pulls || 0) - (a.pulls || 0); });
-  var top = results.slice(0, 5);
-
-  if (top.length === 0) {
-    html += '<div class="px-6 py-4 text-neutral-800 dark:text-neutral-300 text-sm">No models found.</div>';
-  } else {
-    for (var i = 0; i < top.length; i++) {
-      var m = top[i];
-      var path = m.path || ('/library/' + m.name);
-      html += '<div result>';
-      html += '<a tabindex="0" href="' + NAV_BASE + path.replace(/^\//, '') + '" class="flex items-center h-16 px-6 py-4 hover:bg-neutral-50 dark:hover:bg-white/5 focus:ring-0 focus:outline-none focus:bg-neutral-50 dark:focus:bg-white/5">';
-      html += '<div class="min-w-0 flex-1">';
-      html += '<h2 class="text-sm font-medium truncate dark:text-neutral-100">' + escHtml(m.name) + '</h2>';
-      html += '<p class="text-xs text-gray-600 dark:text-gray-600 truncate">' + escHtml(m.description) + '</p>';
-      html += '</div></a></div>';
-    }
-  }
-
-  html += '</div>';
-  html += '<a tabindex="0" id="view-all-link" href="' + NAV_BASE + '?q=' + encodeURIComponent(query) + '" class="' + (top.length === 0 ? 'hidden' : '') + ' block px-6 py-3 border-t border-neutral-200 dark:border-neutral-800 text-center text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-white/5 focus:bg-neutral-50 dark:focus:bg-white/5 focus:outline-none focus:ring-0 dark:text-neutral-200">View all &#8594;</a>';
-  html += '</div>';
-
-  sp.innerHTML = html;
-  sp.classList.remove('hidden');
-}
-
-var navSuggestTimer = null;
-function initNavSuggest() {
-  var input = document.getElementById('navbar-input');
-  var sp = document.getElementById('searchpreview');
-  if (!input || !sp) return;
-
-  input.addEventListener('input', function() {
-    if (navSuggestTimer) clearTimeout(navSuggestTimer);
-    navSuggestTimer = setTimeout(function() {
-      var v = input.value;
-      if (!v.trim()) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
-      loadNavModels(function() { renderNavSuggest(v); });
-    }, 100);
-  });
-
-  sp.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      sp.classList.add('hidden');
-      input.focus();
-      e.preventDefault();
-      return;
-    }
-    if (e.key === 'Enter') {
-      var el = document.activeElement;
-      if (el && el.tagName === 'A') { el.click(); e.preventDefault(); return; }
-    }
-    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-      var items = Array.from(sp.querySelectorAll('#search-preview-list a, #view-all-link'));
-      var ci = items.indexOf(document.activeElement);
-      var ni = e.key === 'ArrowDown' ? ci + 1 : ci - 1;
-      if (ni >= items.length) ni = 0;
-      if (ni < 0) ni = items.length - 1;
-      if (items[ni]) items[ni].focus();
-      e.preventDefault();
-    }
-  });
-}
-
-function initSearch() {
+  function initSearch() {
     document.getElementById('theme-toggle')?.addEventListener('click', toggle);
     document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggle);
-  });
+  }
+  window.initSearch = initSearch;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSearch);
+  } else {
+    initSearch();
+  }
 })();
 </script>
 <script src="/ollama-search/assets/app.js"></script>
