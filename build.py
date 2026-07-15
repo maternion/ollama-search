@@ -533,7 +533,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
         <button id="size-filter-btn" type="button" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center select-none hover:bg-neutral-50 dark:hover:bg-neutral-900">
           Size
         </button>
-        <div id="size-filter-panel" class="hidden absolute top-full left-0 mt-1 z-50 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-3xl pl-4 pr-3 py-2 shadow-lg" style="min-width: 420px;">
+        <div id="size-filter-panel" class="hidden absolute top-full left-0 mt-1.5 z-50 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-3xl pl-4 pr-3 py-2 shadow-lg" style="min-width: 420px;">
           <!-- Slider + Reset side by side -->
           <div class="flex items-end gap-4">
             <!-- Slider area (flex-1) -->
@@ -2318,8 +2318,10 @@ function matchSizeRange(cardSizesAttr) {
     if (b != null) bs.push(b);
   }
   if (bs.length === 0) return false;
-  var largest = Math.max.apply(null, bs);
-  return largest >= minB && largest <= maxB;
+  for (var i = 0; i < bs.length; i++) {
+    if (bs[i] >= minB && bs[i] <= maxB) return true;
+  }
+  return false;
 }
 
 function applyFilters() {
