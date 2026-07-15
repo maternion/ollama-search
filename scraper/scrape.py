@@ -1622,12 +1622,13 @@ def save_sort_data(sort_orders: dict, models: dict) -> None:
 
 
 def _load_cached_tag_fingerprint(model: Model) -> dict[str, str]:
-    """Return {tag_name: digest} from the cached per-model tags file.
+    """Return {tag_name: digest:usage_level} from the cached per-model tags file.
 
     Used by --smart mode to detect tag-level changes (added, removed, or
-    re-pushed tags) that the catalog card's tag_count/updated_title do NOT
-    reflect — e.g. ollama.com retiring a tag without bumping the model's
-    "updated" timestamp. Returns {} if no cache exists or it is unreadable.
+    re-pushed tags, or usage tier changes) that the catalog card's
+    tag_count/updated_title do NOT reflect — e.g. ollama.com retiring a tag
+    or changing its cloud usage tier without bumping the model's "updated"
+    timestamp. Returns {} if no cache exists or it is unreadable.
     """
     slug = slugify(model.path)
     tf = TAGS_DIR / f"{slug}.json"
@@ -1637,20 +1638,24 @@ def _load_cached_tag_fingerprint(model: Model) -> dict[str, str]:
         data = json.loads(tf.read_text())
     except Exception:
         return {}
-    return {t.get("name", ""): t.get("digest", "") for t in data.get("tags", [])}
+    return {
+        t.get("name", ""): f"{t.get('digest', '')}:{t.get('usage_level', '')}"
+        for t in data.get("tags", [])
+    }
 
 
 def _tags_differ(
     new_tags: list[Tag], cached: dict[str, str]
 ) -> tuple[bool, set[str], set[str]]:
-    """Compare freshly-fetched tags against the cached {name: digest} map.
+    """Compare freshly-fetched tags against the cached {name: digest:usage_level} map.
 
     Returns (changed, added_or_changed, removed). `changed` is True if any tag
-    name was added, removed, or had its digest change. This catches tag
-    retirements (removed) and re-pushes (digest changed) that the catalog page
-    does not surface.
+    name was added, removed, had its digest change, or had its usage_level
+    change (e.g. cloud tier moved from medium to low). This catches tag
+    retirements (removed), re-pushes (digest changed), and usage tier changes
+    that the catalog page does not surface.
     """
-    new_map = {t.name: t.digest for t in new_tags}
+    new_map = {t.name: f"{t.digest}:{t.usage_level}" for t in new_tags}
     new_names = set(new_map)
     cached_names = set(cached)
     added_or_changed = {
