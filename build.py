@@ -270,8 +270,7 @@ def head_html(title: str, description: str, extra_css: bool = False) -> str:
     <link rel="icon" type="image/png" sizes="48x48" href="{url("/assets/icon-48x48.png")}" />
     <link rel="icon" type="image/png" sizes="64x64" href="{url("/assets/icon-64x64.png")}" />
     <link rel="apple-touch-icon" sizes="180x" href="{url("/assets/apple-touch-icon.png")}" />
-    <link rel="icon" type="image/png" sizes="192x192" href="{url("/assets/android-chrome-icon-192x192.png")}" />
-    <link rel="icon" type="image/png" sizes="512x512" href="{url("/assets/android-chrome-icon-512x512.png")}" />
+
     {theme_script_head()}
     <link href="{url("/assets/tailwind.css")}" rel="stylesheet" />
     <link href="{url("/assets/prism.css")}" rel="stylesheet" />
@@ -1775,14 +1774,6 @@ def copy_assets() -> None:
         ("icon-48x48.png", "https://ollama.com/public/icon-48x48.png"),
         ("icon-64x64.png", "https://ollama.com/public/icon-64x64.png"),
         ("apple-touch-icon.png", "https://ollama.com/public/apple-touch-icon.png"),
-        (
-            "android-chrome-icon-192x192.png",
-            "https://ollama.com/public/android-chrome-icon-192x192.png",
-        ),
-        (
-            "android-chrome-icon-512x512.png",
-            "https://ollama.com/public/android-chrome-icon-512x512.png",
-        ),
     ]:
         dst = assets / icon
         if dst.exists():
