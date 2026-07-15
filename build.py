@@ -720,6 +720,18 @@ def _main_tags(m: dict, tags: list[dict]) -> list[dict]:
     cloud, and cloud-only size tags."""
     by_name = {t["name"]: t for t in tags}
     sizes = m.get("sizes", [])
+    # Sizeless models have no size tags to curate against, so show every tag:
+    # "latest" first, then the remaining tags in their original order.
+    if not sizes:
+        ordered: list[str] = ["latest"] if "latest" in by_name else []
+        ordered += [t["name"] for t in tags if t["name"] not in ordered]
+        seen = set()
+        out = []
+        for n in ordered:
+            if n in by_name and n not in seen:
+                seen.add(n)
+                out.append(by_name[n])
+        return out
     ordered: list[str] = ["latest"]
     # Base size tags that exist
     ordered += [s for s in sizes if s in by_name]
