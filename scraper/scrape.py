@@ -1747,6 +1747,232 @@ def check_only() -> int:
         return 1
 
 
+# --------------------------------------------------------------------------- #
+# Static pages: /download + /pricing
+# --------------------------------------------------------------------------- #
+
+# OS labels in the order shown on ollama.com's download page.
+_DOWNLOAD_OS = [
+    ("mac", "macOS", f"{BASE}/download/mac"),
+    ("linux", "Linux", f"{BASE}/download/linux"),
+    ("windows", "Windows", f"{BASE}/download/windows"),
+]
+
+_CMD_RE = re.compile(r'<code class="command[^"]*">(.*?)</code>', re.DOTALL)
+_HELPER_RE = re.compile(r'<p class="text-xs[^"]*mt-1">(.*?)</p>', re.DOTALL)
+_OR_RE = re.compile(r'<p class="my-2 text-xs[^"]*">or</p>', re.DOTALL)
+# Download button: <a class="...rounded-3xl..." href="/download/...">Label</a>.
+# The anchor spans multiple lines (class and href on separate lines). Match
+# only buttons whose href starts with "/download/" (a relative ollama.com
+# path) — excludes external github release links that contain "/download/".
+_DL_BTN_RE = re.compile(
+    r'<a\b[^>]*class="[^"]*rounded-3xl[^"]*"[^>]*href="(/download/[^"]+)"[^>]*>\s*([^<]+?)\s*</a\b',
+    re.DOTALL,
+)
+_FOOTNOTE_RE = re.compile(r'<p class="mt-4 text-xs[^"]*">(.*?)</p>', re.DOTALL)
+
+
+def _strip_tags(s: str) -> str:
+    """Collapse whitespace and strip HTML tags from a scraped fragment."""
+    s = re.sub(r"<[^>]+>", "", s)
+    s = html_mod.unescape(s)
+    return s.strip()
+
+
+def scrape_download_page(client: Client) -> dict:
+    """Fetch all three OS download variants and parse the install blocks."""
+    tabs = []
+    for os_slug, label, page_url in _DOWNLOAD_OS:
+        html_text = client.get(page_url)
+        if not html_text:
+            log.warning("download page %s: no html", os_slug)
+            continue
+        tab = {"os": os_slug, "label": label}
+
+        m = _CMD_RE.search(html_text)
+        if m:
+            tab["command"] = _strip_tags(m.group(1))
+        else:
+            tab["command"] = ""
+
+        m = _HELPER_RE.search(html_text)
+        if m:
+            tab["helper"] = _strip_tags(m.group(1))
+        else:
+            tab["helper"] = ""
+
+        tab["or_separator"] = bool(_OR_RE.search(html_text))
+
+        m = _DL_BTN_RE.search(html_text)
+        if m:
+            href = m.group(1)
+            tab["download_url"] = href
+            tab["download_label"] = _strip_tags(m.group(2))
+        else:
+            tab["download_url"] = ""
+            tab["download_label"] = ""
+
+        m = _FOOTNOTE_RE.search(html_text)
+        if m:
+            tab["footnote"] = _strip_tags(m.group(1))
+        else:
+            tab["footnote"] = ""
+
+        tabs.append(tab)
+        log.info(
+            "  download %s: cmd=%r dl=%s",
+            os_slug,
+            tab["command"],
+            tab["download_url"] or "(none)",
+        )
+        time.sleep(DELAY)
+    return {"tabs": tabs}
+
+
+# Pricing card: the tier name (h2), description (p), price block, button, features (ul>li>span).
+_TIER_RE = re.compile(
+    r'<div class="md:col-span-(?:2|6)[^"]*"\s*>.*?</div>\s*</div>\s*</div>',
+    re.DOTALL,
+)
+_PRICE_RE = re.compile(
+    r'<div class="text-2xl font-semibold font-rounded">(.*?)</div>', re.DOTALL
+)
+_TIER_NAME_RE = re.compile(r"<h2[^>]*>(.*?)</h2>", re.DOTALL)
+_TIER_DESC_RE = re.compile(
+    r'<p class="(?:text-black )?mb-(?:4|6)">(.*?)</p>', re.DOTALL
+)
+_TIER_BTN_RE = re.compile(
+    r'<a href="([^"]+)"[^>]*class="block w-full[^"]*rounded-full[^"]*"[^>]*>\s*(.*?)\s*</a>',
+    re.DOTALL,
+)
+_FEAT_RE = re.compile(r"<span>(.*?)</span>", re.DOTALL)
+
+
+def _parse_pricing_card(card_html: str) -> dict:
+    name = ""
+    m = _TIER_NAME_RE.search(card_html)
+    if m:
+        name = _strip_tags(m.group(1))
+
+    desc = ""
+    m = _TIER_DESC_RE.search(card_html)
+    if m:
+        desc = _strip_tags(m.group(1))
+
+    price = ""
+    m = _PRICE_RE.search(card_html)
+    if m:
+        price = _strip_tags(m.group(1))
+
+    button_url = ""
+    button_label = ""
+    m = _TIER_BTN_RE.search(card_html)
+    if m:
+        button_url = m.group(1)
+        button_label = _strip_tags(m.group(2))
+
+    features = [
+        fe for fe in (_strip_tags(x) for x in _FEAT_RE.findall(card_html)) if fe
+    ]
+    return {
+        "name": name,
+        "price": price,
+        "description": desc,
+        "button_url": button_url,
+        "button_label": button_label,
+        "features": features,
+    }
+
+
+def _parse_pricing_faq(html_text: str) -> list:
+    """Parse the FAQ section into groups (Models, Usage, Privacy) + Q&A items.
+
+    Each group is a <div> containing an <h3> and a <ul> of <li> items. Each <li>
+    has an <h4> question; the answer is everything after the h4 up to </li>.
+    """
+    faq = []
+    # Locate the FAQ section start.
+    faq_start = html_text.find("Frequently asked questions")
+    if faq_start < 0:
+        return faq
+    section = html_text[faq_start:]
+    # Each group begins with <div> ... <h3 ...>GroupName</h3> ... </ul></div>
+    # Split on the group headings to isolate groups.
+    group_heads = list(re.finditer(r"<h3[^>]*>(.*?)</h3>", section))
+    if not group_heads:
+        return faq
+    for i, gh in enumerate(group_heads):
+        group_name = _strip_tags(gh.group(1))
+        start = gh.end()
+        end = group_heads[i + 1].start() if i + 1 < len(group_heads) else len(section)
+        chunk = section[start:end]
+        items = []
+        for li in re.finditer(r"<li>(.*?)</li>", chunk, re.DOTALL):
+            li_html = li.group(1)
+            qm = re.search(r"<h4[^>]*>(.*?)</h4>", li_html, re.DOTALL)
+            if not qm:
+                continue
+            q = _strip_tags(qm.group(1))
+            # Answer: everything after the closing </h4> within the li.
+            a_html = li_html[qm.end() :]
+            # Trim leading whitespace/newlines.
+            a_html = a_html.strip()
+            items.append({"q": q, "a": a_html})
+        faq.append({"group": group_name, "items": items})
+    return faq
+
+
+def scrape_pricing_page(client: Client) -> dict:
+    """Fetch /pricing and parse the four tier cards + FAQ groups."""
+    html_text = client.get(f"{BASE}/pricing")
+    if not html_text:
+        log.warning("pricing page: no html")
+        return {"tiers": [], "faq": []}
+
+    # Isolate the tier card grid section.
+    grid_start = html_text.find('<section class="grid grid-cols-1 md:grid-cols-6')
+    tiers = []
+    if grid_start >= 0:
+        grid_end = html_text.find("</section>", grid_start)
+        grid = html_text[grid_start:grid_end]
+        # Each card is a top-level <div class="md:col-span-..."> within the grid.
+        # Split on the card divs by finding each card opening.
+        card_starts = [
+            mm.start()
+            for mm in re.finditer(r'<div class="md:col-span-(?:2|6)[^"]*"\s*>', grid)
+        ]
+        for i, cs in enumerate(card_starts):
+            ce = card_starts[i + 1] if i + 1 < len(card_starts) else len(grid)
+            card_html = grid[cs:ce]
+            tiers.append(_parse_pricing_card(card_html))
+
+    faq = _parse_pricing_faq(html_text)
+    log.info("pricing: %d tiers, %d faq groups", len(tiers), len(faq))
+    return {"tiers": tiers, "faq": faq}
+
+
+def scrape_pages(client: Client) -> None:
+    """Scrape the /download and /pricing static pages and save their JSON."""
+    log.info("=== scraping /download + /pricing ===")
+    download = scrape_download_page(client)
+    _atomic_write(
+        DATA / "download.json",
+        json.dumps(download, indent=2, ensure_ascii=False),
+    )
+    log.info("saved download.json (%d tabs)", len(download["tabs"]))
+
+    pricing = scrape_pricing_page(client)
+    _atomic_write(
+        DATA / "pricing.json",
+        json.dumps(pricing, indent=2, ensure_ascii=False),
+    )
+    log.info(
+        "saved pricing.json (%d tiers, %d faq groups)",
+        len(pricing["tiers"]),
+        len(pricing["faq"]),
+    )
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Scrape ollama.com model catalog.")
     ap.add_argument(
@@ -1792,6 +2018,11 @@ def main(argv: list[str] | None = None) -> int:
     )
     ap.add_argument("-v", "--verbose", action="store_true")
     ap.add_argument(
+        "--scrape-pages",
+        action="store_true",
+        help="only scrape the /download and /pricing static pages, then exit",
+    )
+    ap.add_argument(
         "--max-runtime",
         type=int,
         default=0,
@@ -1816,6 +2047,14 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.check_only:
         return check_only()
+
+    if args.scrape_pages:
+        client = Client()
+        try:
+            scrape_pages(client)
+        finally:
+            client.close()
+        return 0
 
     client = Client()
     try:
@@ -2239,6 +2478,9 @@ def main(argv: list[str] | None = None) -> int:
                 m.cloud_only = len(local_tags) == 0
 
         save_models(models.values())
+
+        # Scrape the /download + /pricing static pages (rarely change; always refresh).
+        scrape_pages(client)
 
         # Update sort orderings + derived rank data (in case models changed)
         if sort_orders:

@@ -296,7 +296,7 @@ def nav_html(active: str = "") -> str:
     <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="{url("/")}">Models</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
-      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://ollama.com/pricing">Pricing</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="{url("/pricing")}">Pricing</a>
     </div>
     <div class="flex-grow justify-center items-center hidden lg:flex">
       <div class="relative w-full xl:max-w-[28rem]">
@@ -314,7 +314,7 @@ def nav_html(active: str = "") -> str:
         <span class="dark:hidden">{SVG_MOON}</span>
         <span class="hidden dark:block">{SVG_SUN}</span>
       </button>
-      <a class="flex cursor-pointer items-center rounded-full bg-neutral-800 dark:bg-neutral-100 text-lg px-4 py-1.5 text-white dark:text-neutral-900 hover:bg-black dark:hover:bg-white whitespace-nowrap focus:bg-black dark:focus:bg-white" href="https://ollama.com/download">Download</a>
+      <a class="flex cursor-pointer items-center rounded-full bg-neutral-800 dark:bg-neutral-100 text-lg px-4 py-1.5 text-white dark:text-neutral-900 hover:bg-black dark:hover:bg-white whitespace-nowrap focus:bg-black dark:focus:bg-white" href="{url("/download")}">Download</a>
     </div>
     <div class="lg:hidden flex items-center">
       <button id="theme-toggle-mobile" class="flex items-center rounded-full bg-black/5 dark:bg-white/10 px-3 py-1.5 mr-2 text-black dark:text-neutral-200">
@@ -332,23 +332,23 @@ def footer_html() -> str:
     <div class="flex items-center justify-between px-6 py-3.5">
       <div class="text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="{url("/maternion/")}" class="hover:underline">Maternion</a></div>
       <div class="flex space-x-6 text-xs text-neutral-500 dark:text-neutral-400">
-        <a href="https://ollama.com/download" class="hover:underline">Download</a>
+        <a href="{url("/download")}" class="hover:underline">Download</a>
         <a href="https://ollama.com/blog" class="hover:underline">Blog</a>
         <a href="https://docs.ollama.com" class="hover:underline">Docs</a>
         <a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a>
-        <a href="https://ollama.com/pricing" class="hover:underline">Pricing</a>
+        <a href="{url("/pricing")}" class="hover:underline">Pricing</a>
       </div>
     </div>
   </div>
   <div class="py-4 md:hidden">
-    <ul class="flex flex-col items-center space-y-2 text-xs text-neutral-500 dark:text-neutral-400">
-      <li><a href="https://ollama.com/download" class="hover:underline">Download</a></li>
+    <ul class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-neutral-500 dark:text-neutral-400">
+      <li><a href="{url("/download")}" class="hover:underline">Download</a></li>
       <li><a href="https://ollama.com/blog" class="hover:underline">Blog</a></li>
       <li><a href="https://docs.ollama.com" class="hover:underline">Docs</a></li>
       <li><a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a></li>
-      <li><a href="https://ollama.com/pricing" class="hover:underline">Pricing</a></li>
+      <li><a href="{url("/pricing")}" class="hover:underline">Pricing</a></li>
     </ul>
-    <div class="mt-4 text-center text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="{url("/maternion/")}" class="hover:underline">Maternion</a></div>
+    <div class="mt-2 text-center text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="{url("/maternion/")}" class="hover:underline">Maternion</a></div>
   </div>
 </footer>"""
 
@@ -2541,6 +2541,449 @@ def build_profile_page(username: str) -> None:
     print(f"  profile {username}: {len(profile_models)} models")
 
 
+# --------------------------------------------------------------------------- #
+# Download page (/download)
+# --------------------------------------------------------------------------- #
+
+
+def _absolutize(href: str) -> str:
+    """Make a relative ollama.com URL absolute. Leaves http(s)/mailto links as-is."""
+    if not href:
+        return href
+    if href.startswith(("http://", "https://", "mailto:", "#")):
+        return href
+    if href.startswith("/"):
+        return "https://ollama.com" + href
+    return "https://ollama.com/" + href
+
+
+# OS icon SVGs matching ollama.com
+_OS_SVGS = {
+    "mac": (
+        '<svg fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" '
+        'class="h-8 w-8 p-1" xmlns="http://www.w3.org/2000/svg">'
+        '<path d="M747.4 535.7c-.4-68.2 30.5-119.6 92.9-157.5-34.9-50-87.7-77.5-157.3-82.8-65.9-5.2-138 38.4-164.4 38.4-27.9 0-91.7-36.6-141.9-36.6C273.1 298.8 163 379.8 163 544.6c0 48.7 8.9 99 26.7 150.8 23.8 68.2 109.6 235.3 199.1 232.6 46.8-1.1 79.9-33.2 140.8-33.2 59.1 0 89.7 33.2 141.9 33.2 90.3-1.3 167.9-153.2 190.5-221.6-121.1-57.1-114.6-167.2-114.6-170.7zm-105.1-305c50.7-60.2 46.1-115 44.6-134.7-44.8 2.6-96.6 30.5-126.1 64.8-32.5 36.8-51.6 82.3-47.5 133.6 48.4 3.7 92.6-21.2 129-63.7z"></path>'
+        "</svg>"
+    ),
+    "linux": (
+        '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" '
+        'class="h-8 w-8 p-0.5" xmlns="http://www.w3.org/2000/svg">'
+        '<path d="M220.8 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5.2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4.2-.8.7-.6 1.1.3 1.3 2.3 1.1 3.4 1.7zm-21.9 1.7c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6.2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5.1-1.3.6-3.4 1.5-3.2 2.9.1 1 1.8 1.5 2.8 1.4zM420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72C311.1 85.4 315.7.1 234.8 0 132.4-.2 158 103.4 156.9 135.2c-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9.6 7.9 1.2 11.8 1.2 8.1 2.5 15.7.8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1.6 2.3 1.4 4.6 2.5 6.7v.1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3.4-8.2-4.4-17.3-15.5-29.7z"></path>'
+        "</svg>"
+    ),
+    "windows": (
+        '<svg fill="currentColor" stroke-width="0" viewBox="0 0 448 512" '
+        'class="h-8 w-8 p-1" xmlns="http://www.w3.org/2000/svg">'
+        '<path d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z"></path>'
+        "</svg>"
+    ),
+}
+
+_CHECK_SVG_DL = (
+    '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" '
+    'stroke-width="1.5" stroke="currentColor" class="check-icon hidden h-5 w-5">'
+    '<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>'
+    "</svg>"
+)
+_COPY_SVG_DL = (
+    '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" '
+    'stroke-width="1.5" stroke="currentColor" class="copy-icon h-5 w-5">'
+    '<path stroke-linecap="round" stroke-linejoin="round" '
+    'd="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25'
+    "A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 "
+    "2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 "
+    '0 00-2.25 2.25v6"/>'
+    "</svg>"
+)
+
+
+def build_download_page() -> None:
+    """Build the /download page from scraper/download.json.
+
+    Uses OS tab buttons (like ollama.com) with JS autodetect + click to switch.
+    Only the active OS section is shown at a time.
+    """
+    data_path = SCRAPER / "download.json"
+    if not data_path.exists():
+        print("  download: no data, skipping")
+        return
+    data = json.loads(data_path.read_text())
+    tabs = data.get("tabs", [])
+    if not tabs:
+        print("  download: no tabs, skipping")
+        return
+
+    # Build tab buttons + content sections
+    tab_buttons = []
+    content_sections = []
+    os_slugs = []
+    for tab in tabs:
+        os_slug = tab.get("os", "")
+        os_slugs.append(os_slug)
+        label = esc(tab.get("label", os_slug))
+        icon = _OS_SVGS.get(os_slug, "")
+
+        # Tab button — data-os attribute for JS switching
+        tab_buttons.append(
+            f'<a data-os="{esc(os_slug)}" '
+            f'class="dl-tab flex cursor-pointer flex-col items-center rounded-lg px-6 py-2 '
+            f'hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors" '
+            f'href="#{esc(os_slug)}">'
+            f"{icon}"
+            f"{label}</a>"
+        )
+
+        # Content section
+        command = tab.get("command", "")
+        helper = tab.get("helper", "")
+        or_sep = tab.get("or_separator", False)
+        dl_url = tab.get("download_url", "")
+        dl_label = tab.get("download_label", "")
+        footnote = tab.get("footnote", "")
+
+        cmd_esc = esc(command)
+        cmd_block = ""
+        if command:
+            cmd_block = (
+                '<pre class="language-none mb-2 flex flex-1 justify-center '
+                "whitespace-nowrap rounded-lg bg-neutral-100 dark:bg-neutral-900 "
+                'font-mono text-sm">'
+                f'<code class="command flex-1 py-3 pl-4 pr-4 overflow-auto text-neutral-900 dark:text-neutral-100">{cmd_esc}</code>'
+                '<button class="block py-1 px-3 leading-[0] w-12 text-neutral-500 '
+                'hover:text-black dark:hover:text-white focus:outline-none" '
+                'onclick="copyToClipboard(this)">'
+                f"{_COPY_SVG_DL}"
+                f"{_CHECK_SVG_DL}"
+                "</button></pre>"
+            )
+
+        helper_html = (
+            f'<p class="text-xs text-neutral-800 dark:text-neutral-300 mt-1">{esc(helper)}</p>'
+            if helper
+            else ""
+        )
+        or_html = (
+            '<p class="my-2 text-xs text-neutral-800 dark:text-neutral-300">or</p>'
+            if or_sep
+            else ""
+        )
+        dl_html = ""
+        if dl_url and dl_label:
+            dl_href = esc(_absolutize(dl_url))
+            dl_html = (
+                f'<a class="w-full max-w-[16rem] rounded-3xl bg-neutral-800 dark:bg-neutral-200 '
+                f"px-2 py-2 text-lg text-white dark:text-neutral-900 hover:bg-black "
+                f'dark:hover:bg-white inline-block text-center" href="{dl_href}">'
+                f"{esc(dl_label)}</a>"
+            )
+        footnote_html = (
+            f'<p class="mt-4 text-xs text-neutral-800 dark:text-neutral-300">{esc(footnote)}</p>'
+            if footnote
+            else ""
+        )
+
+        content_sections.append(
+            f'<div id="dl-{esc(os_slug)}" class="dl-section mx-auto mb-16 mt-12 flex w-full min-w-0 flex-col items-center text-center self-center hidden">\n'
+            f'  <div class="min-w-0 max-w-full flex-1 self-center text-center">\n'
+            f"    {cmd_block}\n"
+            f"    {helper_html}\n"
+            f"    {or_html}\n"
+            f"    {dl_html}\n"
+            f"  </div>\n"
+            f"  {footnote_html}\n"
+            f"</div>"
+        )
+
+    tabs_html = "\n".join(tab_buttons)
+    sections_html = "\n".join(content_sections)
+    os_array = ",".join(f'"{esc(s)}"' for s in os_slugs)
+
+    page = f"""<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+{head_html("Download Ollama", "Download Ollama on macOS, Linux, and Windows.")}
+</head>
+<body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
+{nav_html("")}
+<main class="mx-auto flex w-full max-w-6xl flex-col items-center px-6 py-10 md:py-24">
+  <h1 class="mb-12 text-3xl tracking-tight text-neutral-900 dark:text-neutral-100">Download Ollama</h1>
+  <nav class="grid grid-cols-3 gap-4 text-sm">
+{tabs_html}
+  </nav>
+{sections_html}
+</main>
+{footer_html()}
+{theme_script()}
+<script src="{url("/assets/app.js")}"></script>
+<script>
+var dlOSes = [{os_array}];
+function showOS(os) {{
+  document.querySelectorAll('.dl-tab').forEach(function(t) {{
+    var active = t.getAttribute('data-os') === os;
+    if (active) {{
+      t.classList.add('bg-neutral-100','dark:bg-neutral-900');
+    }} else {{
+      t.classList.remove('bg-neutral-100','dark:bg-neutral-900');
+    }}
+  }});
+  document.querySelectorAll('.dl-section').forEach(function(s) {{
+    s.classList.toggle('hidden', s.id !== 'dl-' + os);
+  }});
+}}
+document.querySelectorAll('.dl-tab').forEach(function(t) {{
+  t.addEventListener('click', function(e) {{
+    e.preventDefault();
+    showOS(t.getAttribute('data-os'));
+  }});
+}});
+// Autodetect OS — default to Linux on mobile, matching ollama.com behavior
+var ua = navigator.userAgent;
+var detected = 'linux';
+if (/Mac|iPhone|iPad|iPod/.test(ua)) detected = 'mac';
+else if (/Windows/.test(ua)) detected = 'windows';
+// On mobile, ollama.com shows Linux regardless
+if (/Android|iPhone|iPad|iPod|Mobile|webOS|BlackBerry/.test(ua)) detected = 'linux';
+if (dlOSes.indexOf(detected) === -1) detected = dlOSes[0] || 'linux';
+showOS(detected);
+function copyToClipboard(btn) {{
+  var code = btn.parentElement.querySelector('code.command');
+  if (!code) return;
+  var text = code.textContent;
+  navigator.clipboard.writeText(text).then(function() {{
+    var copyIcon = btn.querySelector('.copy-icon');
+    var checkIcon = btn.querySelector('.check-icon');
+    if (copyIcon && checkIcon) {{
+      copyIcon.classList.add('hidden');
+      checkIcon.classList.remove('hidden');
+      setTimeout(function() {{
+        copyIcon.classList.remove('hidden');
+        checkIcon.classList.add('hidden');
+      }}, 1500);
+    }}
+  }});
+}}
+</script>
+</body>
+</html>"""
+
+    out = PUBLIC / "download"
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "index.html").write_text(page)
+    print(f"  download: {len(tabs)} OS sections")
+
+
+# --------------------------------------------------------------------------- #
+# Pricing page (/pricing)
+# --------------------------------------------------------------------------- #
+
+_CHECK_SVG = (
+    '<svg class="w-4 h-4 text-neutral-400 dark:text-neutral-500 flex-shrink-0 mt-0.5" '
+    'viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" '
+    'd="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414'
+    'L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>'
+)
+
+
+def _pricing_linkify(html_frag: str) -> str:
+    """Rewrite internal ollama.com links in a scraped HTML fragment.
+
+    /search?c=cloud -> site url(); /download -> site url(); /settings and
+    /upgrade?... -> absolute https://ollama.com prefix; leaves mailto/external
+    links untouched.
+    """
+
+    def repl(m):
+        href = m.group(1)
+        if (
+            href.startswith("/search")
+            or href == "/download"
+            or href.startswith("/download?")
+        ):
+            return f'href="{url(href)}"'
+        if href.startswith("/") and not href.startswith("//"):
+            return f'href="https://ollama.com{href}"'
+        return m.group(0)
+
+    return re.sub(r'href="([^"]+)"', lambda m: repl(m), html_frag)
+
+
+def build_pricing_page() -> None:
+    """Build the /pricing page from scraper/pricing.json."""
+    data_path = SCRAPER / "pricing.json"
+    if not data_path.exists():
+        print("  pricing: no data, skipping")
+        return
+    data = json.loads(data_path.read_text())
+    tiers = data.get("tiers", [])
+    faq = data.get("faq", [])
+    if not tiers:
+        print("  pricing: no tiers, skipping")
+        return
+
+    # Tier cards. Free/Pro/Max share a 2-col layout; Team is full-width.
+    cards_html = []
+    for tier in tiers:
+        name = esc(tier.get("name", ""))
+        price_raw = tier.get("price", "")
+        # ollama.com puts "<span>/ mo</span>" inside the price div; we scraped the
+        # text only, so "/ mo" becomes " / mo". Normalize "$20 / mo" -> "$20" + "/ mo".
+        price_main = price_raw
+        price_suffix = ""
+        m = re.match(r"^(.*?)(?:\s*/\s*mo)?$", price_raw)
+        if m:
+            price_main = m.group(1).strip()
+            if "/ mo" in price_raw or "/mo" in price_raw:
+                price_suffix = " / mo"
+        if price_main:
+            suffix_span = (
+                f'<span class="text-base font-normal">{esc(price_suffix)}</span>'
+                if price_suffix
+                else ""
+            )
+            price_html = (
+                '<div class="text-2xl font-semibold font-rounded text-neutral-900 dark:text-neutral-100">'
+                f"{esc(price_main)}{suffix_span}</div>"
+            )
+        else:
+            price_html = '<div class="text-2xl font-semibold font-rounded text-neutral-600 dark:text-neutral-400">—</div>'
+
+        desc = esc(tier.get("description", ""))
+        desc_html = (
+            f'<p class="mb-4 text-neutral-700 dark:text-neutral-300">{desc}</p>'
+            if desc
+            else ""
+        )
+        btn_url_raw = tier.get("button_url", "")
+        # The Free tier's "/download" button links to our internal download page;
+        # other relative ollama.com paths (e.g. /upgrade?plan=pro) stay external.
+        if btn_url_raw == "/download":
+            btn_url = esc(url("/download"))
+        else:
+            btn_url = esc(_absolutize(btn_url_raw))
+        btn_label = esc(tier.get("button_label", ""))
+        # Team uses a dark filled button; Free uses outline; Pro/Max use dark.
+        if tier.get("name") == "Free":
+            btn_cls = (
+                "block w-full text-center border border-neutral-300 dark:border-neutral-700 "
+                "hover:bg-neutral-50 dark:hover:bg-neutral-900 text-black dark:text-neutral-100 "
+                "font-medium py-2 px-6 rounded-full mb-6"
+            )
+        else:
+            btn_cls = (
+                "block w-full text-center bg-neutral-800 dark:bg-neutral-200 "
+                "hover:bg-black dark:hover:bg-white text-white dark:text-neutral-900 "
+                "font-medium py-2 px-6 rounded-full mb-6"
+            )
+        btn_html = (
+            f'<a href="{btn_url}" class="{btn_cls}">{btn_label}</a>' if btn_url else ""
+        )
+
+        features = tier.get("features", [])
+        feat_items = "\n".join(
+            f'        <li class="text-sm flex items-start gap-2 text-neutral-700 dark:text-neutral-300">\n'
+            f"          {_CHECK_SVG}\n"
+            f"          <span>{esc(f)}</span>\n"
+            f"        </li>"
+            for f in features
+        )
+        feats_html = (
+            f'<ul class="flex-1 space-y-3">\n{feat_items}\n      </ul>'
+            if feat_items
+            else ""
+        )
+
+        # Layout: Team spans full width (col-span-6 / md:col-span-6); others span 2.
+        is_team = tier.get("name") == "Team"
+        if is_team:
+            card = f"""    <div class="md:col-span-6 flex flex-col gap-8 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 md:flex-row md:items-start">
+      <div class="flex flex-col md:w-1/3">
+        <div class="flex items-center gap-3 mb-2">
+          <h2 class="text-3xl font-medium text-neutral-900 dark:text-neutral-100">{name}</h2>
+          <span class="inline-flex items-center whitespace-nowrap rounded-full border border-neutral-200 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-900 px-2.5 py-1 text-xs font-medium text-neutral-600 dark:text-neutral-400">Coming soon</span>
+        </div>
+        {desc_html}
+        {btn_html}
+      </div>
+      <div class="flex-1 border-t border-neutral-200 dark:border-neutral-800 pt-6 md:border-l md:border-t-0 md:pl-8 md:pt-0">
+        {feats_html}
+      </div>
+    </div>"""
+        else:
+            card = f"""    <div class="md:col-span-2 flex flex-col border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8">
+      <h2 class="text-3xl font-medium mb-2 text-neutral-900 dark:text-neutral-100">{name}</h2>
+      {desc_html}
+      <div class="mb-3 min-h-[3rem]">
+        {price_html}
+      </div>
+      {btn_html}
+      {feats_html}
+    </div>"""
+        cards_html.append(card)
+
+    cards_section = "\n".join(cards_html)
+
+    # FAQ groups.
+    faq_groups = []
+    for grp in faq:
+        gname = esc(grp.get("group", ""))
+        items = grp.get("items", [])
+        item_html = []
+        for it in items:
+            q = esc(it.get("q", ""))
+            a_raw = it.get("a", "")
+            a_html = _pricing_linkify(a_raw) if a_raw else ""
+            item_html.append(
+                f"""        <li>
+          <h4 class="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">{q}</h4>
+          <div class="text-sm text-neutral-700 dark:text-neutral-300">{a_html}</div>
+        </li>"""
+            )
+        items_block = "\n".join(item_html)
+        faq_groups.append(
+            f"""    <div>
+      <h3 class="text-xl font-semibold font-rounded mb-4 text-neutral-900 dark:text-neutral-100">{gname}</h3>
+      <ul class="space-y-5">
+{items_block}
+      </ul>
+    </div>"""
+        )
+    faq_html = "\n".join(faq_groups)
+
+    page = f"""<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+{head_html("Pricing", "Ollama pricing plans — Free, Pro, Max, and Team.")}
+</head>
+<body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
+{nav_html("")}
+<main class="mx-auto flex w-full max-w-6xl flex-col px-6 py-12 md:py-20">
+  <section class="text-center mb-12">
+    <h1 class="text-4xl md:text-5xl font-semibold font-rounded tracking-tight mb-4 text-neutral-900 dark:text-neutral-100">Pricing</h1>
+  </section>
+
+  <section class="grid grid-cols-1 md:grid-cols-6 gap-4 mb-12">
+{cards_section}
+  </section>
+
+  <section class="flex flex-col w-full max-w-xl mx-auto mt-8">
+    <h2 class="text-2xl font-semibold font-rounded mb-6 text-neutral-900 dark:text-neutral-100">Frequently asked questions</h2>
+    <div class="space-y-10">
+{faq_html}
+    </div>
+  </section>
+</main>
+{footer_html()}
+{theme_script()}
+<script src="{url("/assets/app.js")}"></script>
+</body>
+</html>"""
+
+    out = PUBLIC / "pricing"
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "index.html").write_text(page)
+    print(f"  pricing: {len(tiers)} tiers, {len(faq)} faq groups")
+
+
 def main() -> int:
     global BASE
     if "--base" in sys.argv:
@@ -2575,6 +3018,11 @@ def main() -> int:
     # profile pages (e.g. /maternion) + profile model detail pages
     print("building profile pages ...")
     build_profile_page("maternion")
+
+    # static standalone pages (/download + /pricing)
+    print("building download + pricing pages ...")
+    build_download_page()
+    build_pricing_page()
 
     # Load profile models and add them to the build list
     import json as _json

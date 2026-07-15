@@ -1,0 +1,136 @@
+{
+  "tiers": [
+    {
+      "name": "Free",
+      "price": "$0",
+      "description": "Get started with Ollama",
+      "button_url": "/download",
+      "button_label": "Download",
+      "features": [
+        "Automate coding, document analysis, and other tasks with open models",
+        "Keep your data private",
+        "Run models on your hardware",
+        "Access cloud models",
+        "CLI, API, and desktop apps",
+        "40,000+ community integrations",
+        "Unlimited public models"
+      ]
+    },
+    {
+      "name": "Pro",
+      "price": "$20 / mo",
+      "description": "Solve harder tasks, faster",
+      "button_url": "/upgrade?plan=pro",
+      "button_label": "Get Pro",
+      "features": [
+        "Access larger, more powerful cloud models",
+        "Run 3 cloud models at a time",
+        "50x more cloud usage than Free",
+        "Upload and share private models"
+      ]
+    },
+    {
+      "name": "Max",
+      "price": "$100 / mo",
+      "description": "For your most demanding work",
+      "button_url": "/upgrade?plan=max",
+      "button_label": "Get Max",
+      "features": [
+        "Run 10 cloud models at a time",
+        "5x more usage than Pro"
+      ]
+    },
+    {
+      "name": "Team",
+      "price": "",
+      "description": "Power your team's work with Ollama",
+      "button_url": "https://ollama.typeform.com/to/FFV2AVPu",
+      "button_label": "Contact us",
+      "features": [
+        "Shared usage across your team",
+        "Centralized billing and administration",
+        "Single sign-on (SSO)",
+        "Model access controls",
+        "MDM installer for Windows and macOS",
+        "Priority support and dedicated Slack channel"
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "group": "Models",
+      "items": [
+        {
+          "q": "Which models are available?",
+          "a": "<p class=\"text-sm\">See the full list of cloud-enabled models <a href=\"/search?c=cloud\" class=\"underline\">here</a>.</p>"
+        },
+        {
+          "q": "Do models support tool calling?",
+          "a": "<p class=\"text-sm\">Yes. Cloud models that are trained to support tools are tested for tool calling and with real agent workflows before they go live. If something isn't working, let us know at <a href=\"mailto:hello@ollama.com\" class=\"underline\">hello@ollama.com</a>.</p>"
+        },
+        {
+          "q": "What quantization or data format do cloud models use?",
+          "a": "<p class=\"text-sm\">Native weights, as released by the model provider. On modern NVIDIA hardware, models may use accelerated data formats supported by Blackwell and Vera Rubin architectures (e.g. NVFP4).</p>"
+        },
+        {
+          "q": "How fast is Ollama?",
+          "a": "<p class=\"text-sm\">Speed depends on model size, architecture, and hardware optimization. We target and monitor for low time-to-first-token and high throughput across all cloud models. Priority tiers with faster performance may be available in the future.</p>"
+        }
+      ]
+    },
+    {
+      "group": "Usage",
+      "items": [
+        {
+          "q": "What are the usage limits for each plan?",
+          "a": "<p class=\"text-sm\">Running models on your own hardware is always unlimited. Cloud usage varies by plan:</p>\n            <div class=\"mt-6 overflow-x-auto rounded-lg overflow-hidden max-w-lg\">\n              <table class=\"w-full text-sm border-separate border-spacing-0\">\n                <thead>\n                  <tr>\n                    <th class=\"border-t border-l border-r border-b border-neutral-200 px-3 py-2 text-left font-semibold rounded-tl-lg\">Plan</th>\n                    <th class=\"border-t border-r border-b border-neutral-200 px-3 py-2 text-left font-semibold\">Usage</th>\n                    <th class=\"border-t border-r border-b border-neutral-200 px-3 py-2 text-left font-semibold rounded-tr-lg\">Example use cases</th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr>\n                    <td class=\"border-l border-r border-b border-neutral-200 px-3 py-2\">Free</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2\">Light usage</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2\">Chatting with models, evaluating larger models, coding and AI assistants with smaller models</td>\n                  </tr>\n                  <tr>\n                    <td class=\"border-l border-r border-b border-neutral-200 px-3 py-2\">Pro</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2\">Day-to-day work</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2\">Larger models, coding automation, deep research</td>\n                  </tr>\n                  <tr>\n                    <td class=\"border-l border-r border-b border-neutral-200 px-3 py-2 rounded-bl-lg\">Max</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2\">Heavy, sustained usage</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2 rounded-br-lg\">Continuous agent tasks, multiple concurrent agents, large models over extended sessions</td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n            <p class=\"text-sm mt-6\">Each plan has session limits that reset every 5 hours and weekly limits that reset every 7 days.</p>"
+        },
+        {
+          "q": "How is usage measured?",
+          "a": "<p class=\"text-sm\">Usage reflects actual utilization of Ollama's cloud infrastructure - primarily GPU time, which depends on model size and request duration. Shorter requests and prompts that share cached context use less.</p>\n            <p class=\"text-sm mt-2\">This is different from fixed token or request-based plans. Ollama doesn't cap you at a set number of tokens. As hardware and model architectures get more efficient, you'll get more out of your plan over time.</p>"
+        },
+        {
+          "q": "How much usage does each model use?",
+          "a": "<p class=\"text-sm\">Models consume a different amount of usage based on how difficult they are to run. To view a model's usage level, visit the model's page, where its usage level is displayed from small, light models (level 1), like gpt-oss:20b, to extra heavy models (level 4), like deepseek-v4-pro.</p>"
+        },
+        {
+          "q": "How does extra usage work?",
+          "a": "<p class=\"text-sm\">Pro and Max users can add extra usage balance. Ollama uses your included plan limits first, then draws from your extra usage balance when you go over those limits.</p>"
+        },
+        {
+          "q": "How much more usage does Pro include?",
+          "a": "<p class=\"text-sm\">50x more than Free.</p>"
+        },
+        {
+          "q": "How much more usage does Max include?",
+          "a": "<p class=\"text-sm\">5x more than Pro.</p>"
+        },
+        {
+          "q": "How do I know when I've hit my limit?",
+          "a": "<p class=\"text-sm\">Check your usage <a href=\"/settings\" class=\"underline\">here</a> anytime. At 90% of your plan's limit, Ollama sends an email reminder. You can turn this off in settings.</p>"
+        },
+        {
+          "q": "How many cloud models can I run at once?",
+          "a": "<p class=\"text-sm\">Concurrency limits ensure dedicated capacity for workflows that need multiple models running simultaneously:</p>\n            <div class=\"mt-6 overflow-x-auto rounded-lg overflow-hidden max-w-xs\">\n              <table class=\"w-full text-sm border-separate border-spacing-0\">\n                <thead>\n                  <tr>\n                    <th class=\"border-t border-l border-r border-b border-neutral-200 px-3 py-2 text-left font-semibold rounded-tl-lg\">Plan</th>\n                    <th class=\"border-t border-r border-b border-neutral-200 px-3 py-2 text-left font-semibold rounded-tr-lg\">Concurrent models</th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr>\n                    <td class=\"border-l border-r border-b border-neutral-200 px-3 py-2\">Free</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2\">1</td>\n                  </tr>\n                  <tr>\n                    <td class=\"border-l border-r border-b border-neutral-200 px-3 py-2\">Pro</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2\">3</td>\n                  </tr>\n                  <tr>\n                    <td class=\"border-l border-r border-b border-neutral-200 px-3 py-2 rounded-bl-lg\">Max</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2 rounded-br-lg\">10</td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n            <p class=\"text-sm mt-6\">Requests beyond your plan's concurrency limit are queued and processed as soon as a slot is available. Queued requests are held up to a fixed limit - if the queue is full, the request will be rejected until one of your concurrency slots opens.</p>"
+        }
+      ]
+    },
+    {
+      "group": "Privacy",
+      "items": [
+        {
+          "q": "Where are models hosted?",
+          "a": "<p class=\"text-sm\">Ollama hosts models and compute resources primarily in the United States. To serve global demand, we may route to Europe and Singapore for additional capacity.</p>"
+        },
+        {
+          "q": "Is my prompt or response data trained on?",
+          "a": "<p class=\"text-sm\">Prompt or response data is never logged or trained on.</p>"
+        },
+        {
+          "q": "Who does Ollama partner with to host models?",
+          "a": "<p class=\"text-sm\">Ollama collaborates with NVIDIA Cloud Providers (NCPs) to host open models.</p>\n            <p class=\"text-sm mt-2\">When Ollama partners with providers, we require no logging, no training, and zero data retention policies in place.</p>"
+        }
+      ]
+    }
+  ]
+}
