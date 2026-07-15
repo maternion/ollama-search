@@ -735,16 +735,9 @@ def _main_tags(m: dict, tags: list[dict]) -> list[dict]:
     ordered: list[str] = ["latest"]
     # Base size tags that exist
     ordered += [s for s in sizes if s in by_name]
-    # MLX counterparts that exist
+    # MLX counterparts that exist (only {size}-mlx on the main page;
+    # other MLX quants like mlx-mxfp8, mlx-bf16 are on the /tags page)
     ordered += [f"{s}-mlx" for s in sizes if f"{s}-mlx" in by_name]
-    # MLX tags that don't follow the "{size}-mlx" naming (e.g. mlx-mxfp8, mxfp8, mlx-bf16)
-    ordered += [
-        t["name"]
-        for t in tags
-        if t.get("format") == "mlx"
-        and t["name"] not in ordered
-        and t["name"] != "latest"
-    ]
     # Generic cloud tag
     if "cloud" in by_name:
         ordered.append("cloud")
