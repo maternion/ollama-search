@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen25vl",
+      "blob_url": "/frob/nuextract-2.0:8b-q8_0/blobs/915b418a63d6",
+      "content_preview": "arch  qwen25vl",
+      "parameters": "8.29B",
+      "quantization": "Q8_0",
+      "size": "9.5GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/nuextract-2.0:8b-q8_0/blobs/62865c7c8dd8",
+      "content_preview": "{{- $template := \"\" }}\n{{- $input := \"\" }}\n{{- $output := \"\" }}\n{{- $lastUserIdx := -1 }}\n{{- range",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.2kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/nuextract-2.0:8b-q8_0/blobs/a0451d527692",
+      "content_preview": "MIT License\nCopyright (c) 2025 https://huggingface.co/numind\nPermission is hereby granted, free of c",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/nuextract-2.0:8b-q8_0/blobs/52d2a7aa3a38",
+      "content_preview": "{\n    \"temperature\": 0.0001\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "23B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/frob/nuextract-2.0:8b-q8_0",
+  "manifest_digest": "14c7649305d0",
+  "manifest_size": "9.5GB",
+  "manifest_updated": "5 months ago",
+  "path": "/frob/nuextract-2.0",
+  "tag_name": "8b-q8_0"
+}
