@@ -1,0 +1,44 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "afmoe",
+      "blob_url": "/frob/trinity:398b/blobs/b2138f7a53b6",
+      "content_preview": "arch  afmoe",
+      "parameters": "399B",
+      "quantization": "Q4_K_M",
+      "size": "249GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/trinity:398b/blobs/61d668e8e02b",
+      "content_preview": "{\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ],\n    \"te",
+      "parameters": "",
+      "quantization": "",
+      "size": "119B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/trinity:398b/blobs/eb4402837c78",
+      "content_preview": "{{- if .Messages }}\n{{- if or .System .Tools }}<|im_start|>system\n{{- if .System }}\n{{ .System }}\n{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/frob/trinity:398b",
+  "manifest_digest": "cf5561e5991b",
+  "manifest_size": "249GB",
+  "manifest_updated": "2 weeks ago",
+  "path": "/frob/trinity",
+  "tag_name": "398b"
+}
