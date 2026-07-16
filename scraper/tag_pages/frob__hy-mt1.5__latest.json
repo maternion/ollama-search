@@ -1,0 +1,44 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "hunyuan-dense",
+      "blob_url": "/frob/hy-mt1.5:latest/blobs/7c18b786986d",
+      "content_preview": "arch  hunyuan-dense",
+      "parameters": "1.79B",
+      "quantization": "Q4_K_M",
+      "size": "1.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/hy-mt1.5:latest/blobs/51d49dffeb8a",
+      "content_preview": "<｜hy_begin▁of▁sentence｜>\n{{- if .System }}{{ .System }}<｜hy_place▁holder▁no▁3｜>{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "511B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/hy-mt1.5:latest/blobs/5f07e7fd92eb",
+      "content_preview": "{\n    \"stop\": [\n        \"<｜hy_place▁holder▁no▁8｜>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "58B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/frob/hy-mt1.5:latest",
+  "manifest_digest": "ef6892f0894e",
+  "manifest_size": "1.1GB",
+  "manifest_updated": "6 months ago",
+  "path": "/frob/hy-mt1.5",
+  "tag_name": "latest"
+}

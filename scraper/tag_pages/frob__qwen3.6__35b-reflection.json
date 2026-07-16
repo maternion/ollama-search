@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen35moe",
+      "blob_url": "/frob/qwen3.6:35b-reflection/blobs/f5ee307a2982",
+      "content_preview": "arch  qwen35moe",
+      "parameters": "36B",
+      "quantization": "Q4_K_M",
+      "size": "24GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/qwen3.6:35b-reflection/blobs/2c14c6a1dd6a",
+      "content_preview": "{{ $lastUserIdx := -1 }}{{ $preserveThinking := false }}{{ $thinking := false }}\n{{- range $i, $_ :=",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.8kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/qwen3.6:35b-reflection/blobs/5f3a3c817e78",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/qwen3.6:35b-reflection/blobs/86eff881e8d2",
+      "content_preview": "{\n    \"min_p\": 0,\n    \"presence_penalty\": 1.5,\n    \"repeat_penalty\": 1,\n    \"temperature\": 1,\n    \"t",
+      "parameters": "",
+      "quantization": "",
+      "size": "94B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/frob/qwen3.6:35b-reflection",
+  "manifest_digest": "ed8a595021b9",
+  "manifest_size": "24GB",
+  "manifest_updated": "1 month ago",
+  "path": "/frob/qwen3.6",
+  "tag_name": "35b-reflection"
+}
