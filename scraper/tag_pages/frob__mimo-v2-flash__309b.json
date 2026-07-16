@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "mimo2",
+      "blob_url": "/frob/mimo-v2-flash:309b/blobs/6d0086fb0a9a",
+      "content_preview": "arch  mimo2",
+      "parameters": "309B",
+      "quantization": "Q4_K_M",
+      "size": "178GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/mimo-v2-flash:309b/blobs/a406579cd136",
+      "content_preview": "MIT License\nCopyright (c) [year] [fullname]\nPermission is hereby granted, free of charge, to any per",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/mimo-v2-flash:309b/blobs/70d60f3b99f7",
+      "content_preview": "{\n    \"temperature\": 0.8,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "33B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/mimo-v2-flash:309b/blobs/0033b1da0e18",
+      "content_preview": "<|im_start|>system\n{{- if .System }}\n{{ .System }}\n{{- else }}\nYou are MiMo, a helpful AI assistant",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.6kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/frob/mimo-v2-flash:309b",
+  "manifest_digest": "c598db5dc0f8",
+  "manifest_size": "178GB",
+  "manifest_updated": "2 weeks ago",
+  "path": "/frob/mimo-v2-flash",
+  "tag_name": "309b"
+}

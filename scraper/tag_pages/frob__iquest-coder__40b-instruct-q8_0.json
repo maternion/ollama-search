@@ -1,0 +1,44 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/frob/iquest-coder:40b-instruct-q8_0/blobs/e280b4b9efa9",
+      "content_preview": "arch  llama",
+      "parameters": "39.8B",
+      "quantization": "Q8_0",
+      "size": "42GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/iquest-coder:40b-instruct-q8_0/blobs/cff3f395ef37",
+      "content_preview": "{\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ],\n    \"te",
+      "parameters": "",
+      "quantization": "",
+      "size": "120B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/iquest-coder:40b-instruct-q8_0/blobs/eade0a07cac7",
+      "content_preview": "{{- $lastUserIdx := -1 -}}\n{{- range $idx, $msg := .Messages -}}\n{{- if eq $msg.Role \"user\" }}{{ $la",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.4kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/frob/iquest-coder:40b-instruct-q8_0",
+  "manifest_digest": "4d26b36ce7c9",
+  "manifest_size": "42GB",
+  "manifest_updated": "6 months ago",
+  "path": "/frob/iquest-coder",
+  "tag_name": "40b-instruct-q8_0"
+}
