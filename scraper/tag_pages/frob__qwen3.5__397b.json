@@ -1,0 +1,62 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen35moe",
+      "blob_url": "/frob/qwen3.5:397b/blobs/97172d0cf550",
+      "content_preview": "arch  qwen35moe",
+      "parameters": "396B",
+      "quantization": "Q4_K_M",
+      "size": "214GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/qwen3.5:397b/blobs/b3624272d7b9",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "922MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/qwen3.5:397b/blobs/30f76f323ccd",
+      "content_preview": "{{- $lastUserIdx := -1 -}}\n{{- range $idx, $msg := .Messages -}}\n{{- if eq $msg.Role \"user\" }}{{ $la",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.6kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/qwen3.5:397b/blobs/832dd9e00a68",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/qwen3.5:397b/blobs/628f34ea28cc",
+      "content_preview": "{\n    \"min_p\": 0,\n    \"presence_penalty\": 0,\n    \"repeat_penalty\": 1,\n    \"temperature\": 0.6,\n    \"t",
+      "parameters": "",
+      "quantization": "",
+      "size": "94B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/frob/qwen3.5:397b",
+  "manifest_digest": "6565286fe5e5",
+  "manifest_size": "215GB",
+  "manifest_updated": "2 weeks ago",
+  "path": "/frob/qwen3.5",
+  "tag_name": "397b"
+}
