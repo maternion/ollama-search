@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "mistral3",
+      "blob_url": "/frob/ministral-3:3b-thinking-fp16/blobs/ac5fb9b6cf41",
+      "content_preview": "arch  mistral3",
+      "parameters": "3.85B",
+      "quantization": "F16",
+      "size": "7.7GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/ministral-3:3b-thinking-fp16/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/ministral-3:3b-thinking-fp16/blobs/e0daf17ff83e",
+      "content_preview": "{\n    \"temperature\": 0.15\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "21B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/ministral-3:3b-thinking-fp16/blobs/dac4c45adf08",
+      "content_preview": "{{- $lastUserIndex := -1 }}\n{{- $hasSystemPrompt := false }}\n{{- range $index, $_ := .Messages }}\n{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.3kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/frob/ministral-3:3b-thinking-fp16",
+  "manifest_digest": "dcb8a9dd18b3",
+  "manifest_size": "7.7GB",
+  "manifest_updated": "5 months ago",
+  "path": "/frob/ministral-3",
+  "tag_name": "3b-thinking-fp16"
+}
