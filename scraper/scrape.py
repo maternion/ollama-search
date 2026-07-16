@@ -2503,7 +2503,7 @@ def main(argv: list[str] | None = None) -> int:
             )
 
         # Scrape profile pages (e.g. /maternion)
-        PROFILES = ["maternion"]
+        PROFILES = ["maternion", "frob"]
         for username in PROFILES:
             if client.bail_out or _time_up():
                 break
