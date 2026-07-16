@@ -1,0 +1,42 @@
+{
+  "name": "mixtao",
+  "path": "/frob/mixtao",
+  "tags": [
+    {
+      "context": "32K",
+      "digest": "62cfab6a3523",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "7bx2-moe-v8.1-q4_K_M",
+      "size_bytes": 7800000000,
+      "size_text": "7.8GB",
+      "updated": "5 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "32K",
+      "digest": "5900d7826ac7",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "7bx2-moe-v8.1-q8_0",
+      "size_bytes": 14000000000,
+      "size_text": "14GB",
+      "updated": "5 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "32K",
+      "digest": "1b8331efbdd3",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "7bx2-moe-v8.1-fp16",
+      "size_bytes": 26000000000,
+      "size_text": "26GB",
+      "updated": "5 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    }
+  ]
+}

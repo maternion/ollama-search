@@ -1,0 +1,54 @@
+{
+  "name": "locooperator",
+  "path": "/frob/locooperator",
+  "tags": [
+    {
+      "context": "256K",
+      "digest": "8f165379a9a2",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "latest",
+      "size_bytes": 2500000000,
+      "size_text": "2.5GB",
+      "updated": "4 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "ebd31d67781d",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "4b-q4_K_M",
+      "size_bytes": 2500000000,
+      "size_text": "2.5GB",
+      "updated": "4 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "46bf69b236dc",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "4b-q8_0",
+      "size_bytes": 4300000000,
+      "size_text": "4.3GB",
+      "updated": "4 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "055a2f11fa34",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "4b-fp16",
+      "size_bytes": 8100000000,
+      "size_text": "8.1GB",
+      "updated": "4 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    }
+  ]
+}

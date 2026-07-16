@@ -1,0 +1,30 @@
+{
+  "name": "unlimited-ocr",
+  "path": "/frob/unlimited-ocr",
+  "tags": [
+    {
+      "context": "32K",
+      "digest": "5e0b8e784f09",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "q8_0",
+      "size_bytes": 4000000000,
+      "size_text": "4.0GB",
+      "updated": "2 weeks ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "32K",
+      "digest": "7ab7af98ee6e",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "f16",
+      "size_bytes": 6700000000,
+      "size_text": "6.7GB",
+      "updated": "2 weeks ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "hy-mt1.5",
+  "path": "/frob/hy-mt1.5",
+  "tags": [
+    {
+      "context": "256K",
+      "digest": "ef6892f0894e",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "latest",
+      "size_bytes": 1100000000,
+      "size_text": "1.1GB",
+      "updated": "6 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "ef6892f0894e",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "1.8b-a4_K_M",
+      "size_bytes": 1100000000,
+      "size_text": "1.1GB",
+      "updated": "6 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "03dff982ba09",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "1.8b-fp16",
+      "size_bytes": 3600000000,
+      "size_text": "3.6GB",
+      "updated": "6 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    }
+  ]
+}
