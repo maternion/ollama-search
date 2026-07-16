@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "mistral3",
+      "blob_url": "/frob/ministral-3:8b/blobs/2d6b969d5f2c",
+      "content_preview": "arch  mistral3",
+      "parameters": "8.92B",
+      "quantization": "Q4_K_M",
+      "size": "6.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/ministral-3:8b/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/ministral-3:8b/blobs/e0daf17ff83e",
+      "content_preview": "{\n    \"temperature\": 0.15\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "21B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/ministral-3:8b/blobs/dac4c45adf08",
+      "content_preview": "{{- $lastUserIndex := -1 }}\n{{- $hasSystemPrompt := false }}\n{{- range $index, $_ := .Messages }}\n{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.3kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/frob/ministral-3:8b",
+  "manifest_digest": "a8221cdaea33",
+  "manifest_size": "6.1GB",
+  "manifest_updated": "2 weeks ago",
+  "path": "/frob/ministral-3",
+  "tag_name": "8b"
+}
