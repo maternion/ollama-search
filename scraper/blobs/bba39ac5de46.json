@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/frob/mimo-v2.5:309b-a15b-iq3_s-vision/blobs/bba39ac5de46",
+  "content": "{{/* This template is NOT USED.  Do not set OLLAMA_GO_TEMPLATE=1 */}}{{ .Tools }}{{ range $i, $_ := .Messages }}<think>{{ .Thinking }}</think>{{ end }}",
+  "digest": "bba39ac5de46",
+  "metadata": [],
+  "size": "151B",
+  "tensor_groups": [],
+  "tensors": []
+}
