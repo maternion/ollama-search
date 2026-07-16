@@ -1876,21 +1876,28 @@ def copy_assets() -> None:
         except Exception as e:
             print(f"  WARN: could not download social/{icon}.svg: {e}", file=sys.stderr)
 
-    # Profile images (download if missing)
-    for name, url in [
-        (
-            "maternion-profile.png",
-            "https://ollama.com/public/assets/63fc5cbb-8a8d-4a1a-a991-1ae0c4ed6e99/27b965ab-5457-4bcf-974d-4c3074bf536b.png",
-        ),
-    ]:
-        dst = assets / name
+    # Profile images (download from profile data if available)
+    for _uname in ["maternion", "frob"]:
+        _pf = HERE / "scraper" / f"profile_{_uname}.json"
+        if not _pf.exists():
+            continue
+        _pdata = json.loads(_pf.read_text())
+        _avatar = _pdata.get("avatar", "")
+        if not _avatar:
+            continue
+        _avatar_url = (
+            _avatar if _avatar.startswith("http") else f"https://ollama.com{_avatar}"
+        )
+        _ext = ".png" if ".png" in _avatar else ".jpg"
+        _name = f"{_uname}-profile{_ext}"
+        dst = assets / _name
         if dst.exists():
             continue
         try:
             import urllib.request
 
-            urllib.request.urlretrieve(url, dst)
-            print(f"  downloaded {name}")
+            urllib.request.urlretrieve(_avatar_url, dst)
+            print(f"  downloaded {_name}")
         except Exception as e:
             print(f"  WARN: could not download {name}: {e}", file=sys.stderr)
 
@@ -2351,7 +2358,7 @@ function applyFilters() {
       || (cloudFilter === 'cloud' && isCloud)
       || (cloudFilter === 'local' && !isCloudOnly);
     var show = matchText && matchCaps && matchCloud && matchSize;
-    if (show && !q && !isOfficial) show = false;
+    if (show && !q && !isOfficial && !window.IS_PROFILE_PAGE) show = false;
     card.style.display = show ? '' : 'none';
     if (show) visible++;
   });
@@ -2633,6 +2640,15 @@ def build_profile_page(username: str) -> None:
     links = profile.get("links", [])
     model_paths = profile.get("models", [])
 
+    # Avatar image — use downloaded file if available
+    avatar_file = None
+    for ext in [".png", ".jpg"]:
+        candidate = f"{username}-profile{ext}"
+        if (PUBLIC / "assets" / candidate).exists():
+            avatar_file = candidate
+            break
+    avatar_src = url(f"/assets/{avatar_file}") if avatar_file else ""
+
     # Model data: use profile's embedded card data, fall back to models.json
     all_models = load_models()
     models_by_path = {m["path"]: m for m in all_models}
@@ -2726,6 +2742,7 @@ def build_profile_page(username: str) -> None:
 <html lang="en" class="">
 <head>
 {head_html(username, bio)}
+    <script>window.IS_PROFILE_PAGE = true;</script>
     <script>
       function getIcon(url) {{
         url = url.toLowerCase();
@@ -2751,7 +2768,7 @@ def build_profile_page(username: str) -> None:
     <div class="col-span-1">
       <div class="flex w-20 flex-col items-center md:w-28">
         <div class="group relative h-20 w-20 overflow-hidden rounded-full md:h-28 md:w-28">
-          <img src="{url("/assets/maternion-profile.png")}" alt="profile" class="absolute inset-0 h-full w-full border border-neutral-300 object-cover rounded-full" />
+          <img src="{avatar_src}" alt="profile" class="absolute inset-0 h-full w-full border border-neutral-300 object-cover rounded-full" />
         </div>
       </div>
     </div>

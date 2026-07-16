@@ -338,7 +338,7 @@ class BlobPage:
 # ollama.com removed x-test-* attributes; we now match by the li class.
 _CARD_OPEN_RE = re.compile(
     r'<li\s+class="flex items-baseline border-b[^"]*">\s*'
-    r'<a\s+href="(/library/[^"]+)"',
+    r'<a\s+href="(/(?:library|maternion|frob)/[^"]+)"',
     re.IGNORECASE,
 )
 
@@ -1863,10 +1863,20 @@ def fetch_profile_page(client: Client, username: str) -> dict | None:
         "bio": "",
         "links": [],
         "models": [],
+        "avatar": "",
     }
 
-    # Bio
+    # Avatar image
+    av_m = re.search(r'<img\s+id="profileImg"\s+src="([^"]+)"', html, re.IGNORECASE)
+    if av_m:
+        profile["avatar"] = av_m.group(1)
+
+    # Bio — ollama.com removed x-test-bio, now it's a plain <span> inside <h2>
     bio_m = re.search(r"<span x-test-bio>(.*?)</span>", html, re.DOTALL)
+    if not bio_m:
+        bio_m = re.search(
+            r'<h2 class="break-words[^"]*">\s*<span[^>]*>(.*?)</span>', html, re.DOTALL
+        )
     if bio_m:
         profile["bio"] = strip_tags(bio_m.group(1)).strip()
 
