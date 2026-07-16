@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "mimo2",
+      "blob_url": "/frob/mimo-v2.5:309b-a15b-iq3_s-vision/blobs/6b58e36b9496",
+      "content_preview": "arch  mimo2",
+      "parameters": "310B",
+      "quantization": "Q6_K",
+      "size": "114GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/mimo-v2.5:309b-a15b-iq3_s-vision/blobs/64bda765a8ee",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5GB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/mimo-v2.5:309b-a15b-iq3_s-vision/blobs/bba39ac5de46",
+      "content_preview": "{{/* This template is NOT USED.  Do not set OLLAMA_GO_TEMPLATE=1 */}}{{ .Tools }}{{ range $i, $_ :=",
+      "parameters": "",
+      "quantization": "",
+      "size": "151B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/mimo-v2.5:309b-a15b-iq3_s-vision/blobs/02897ca0d6a3",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/frob/mimo-v2.5:309b-a15b-iq3_s-vision",
+  "manifest_digest": "e719f063c92b",
+  "manifest_size": "116GB",
+  "manifest_updated": "2 weeks ago",
+  "path": "/frob/mimo-v2.5",
+  "tag_name": "309b-a15b-iq3_s-vision"
+}
