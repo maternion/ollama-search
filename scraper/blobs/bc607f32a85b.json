@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/frob/deepseek-v4-flash:latest/blobs/bc607f32a85b",
+  "content": "<｜begin▁of▁sentence｜>{{ .System }}\n{{- if .Tools }}\n## Tools\n\nYou have access to a set of tools to help answer the user's question. You can invoke tools by writing the function name and arguments within <tool_call></tool_call> XML tags using the following JSON format:\n\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n\nString parameters should be specified as is. For all other types (numbers, booleans, arrays, objects), pass the value in JSON format.\n\nIf thinking_mode is enabled (triggered by <think>), you MUST output your complete reasoning inside <think>...</think> BEFORE any tool calls or final response.\n\nOtherwise, output directly after </think> with tool calls or final response.\n\n### Available Tool Schemas\n\n{{ .Tools | json }}\n\nYou MUST strictly follow the above defined tool name and parameter schemas to invoke tool calls.\n{{- end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1}}\n{{- if eq .Role \"user\" }}<｜User｜>{{ .Content }}\n{{- else if eq .Role \"tool\" }}<｜tool▁output▁begin｜>{{ .Content }}<｜tool▁output▁end｜>\n{{- else if eq .Role \"assistant\" }}<｜Assistant｜>\n{{- if and $.IsThinkSet (and $last .Thinking) -}}\n<think>\n{{ .Thinking }}\n</think>\n{{- end }}\n{{- if .ToolCalls }}<tool_call>\n{{- range .ToolCalls }}{\"name\": \"{{ .Function.Name }}\", \"arguments\": {{ .Function.Arguments }}}{{ end }}</tool_call>\n{{- else if .Content }}{{ .Content }}{{- end }}\n{{- if not $last }}<｜end▁of▁sentence｜>{{ end }}\n{{- end }}\n{{- if and $last (ne .Role \"assistant\") }}<｜Assistant｜>\n{{- if and $.IsThinkSet $.Think (not $.Tools) -}}\n<think>\n{{- else -}}\n</think>\n{{- end }}\n{{- end }}\n{{- end }}",
+  "digest": "bc607f32a85b",
+  "metadata": [],
+  "size": "1.7kB",
+  "tensor_groups": [],
+  "tensors": []
+}
