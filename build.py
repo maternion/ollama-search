@@ -586,7 +586,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
       </div>"""
 
     # Cloud dropdown: All models / Cloud only / Local only
-    cloud_dropdown = """      <select id="cloud-filter" class="mr-1.5 mb-1.5 px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 focus:outline-none focus:ring-0 appearance-none">
+    cloud_dropdown = """      <select id="cloud-filter" class="mr-1.5 mb-1.5 px-3 py-1 text-sm font-medium rounded-full cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 focus:outline-none focus:ring-0 appearance-none">
         <option value="all">All models</option>
         <option value="cloud">Cloud only</option>
         <option value="local">Local only</option>
@@ -2087,6 +2087,17 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 .dark .dark\:text-gray-600 { color: #a3a3a3; }
 .dark .dark\:hover\:bg-white\/5:hover { background-color: rgba(255,255,255,0.05); }
 .dark .dark\:focus\:bg-white\/5:focus { background-color: rgba(255,255,255,0.05); }
+
+/* Force-hide native select arrow (appearance-none not enough on some browsers) */
+#cloud-filter {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  text-indent: 1px;
+  text-overflow: "";
+  background-image: none !important;
+}
+#cloud-filter::-ms-expand { display: none; }
 
 /* --- Size slider: neutral classes missing from vendored tailwind.css --- */
 /* Light mode only — do NOT override any dark: classes */
