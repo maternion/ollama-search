@@ -1,55 +1,54 @@
 {
-  "path": "/library/laguna-xs-2.1",
   "name": "laguna-xs-2.1",
-  "scraped_at": "2026-07-14T04:08:57.859850+00:00",
+  "path": "/library/laguna-xs-2.1",
   "tags": [
     {
+      "context": "256K",
+      "digest": "a8562dfd0cad",
+      "format": "gguf",
+      "input_type": "Text",
       "name": "latest",
       "size_bytes": 20000000000,
       "size_text": "20GB",
-      "context": "256K",
-      "input_type": "Text",
-      "digest": "a8562dfd0cad",
-      "updated": "1 week ago",
-      "format": "gguf",
-      "usage_level": "",
-      "usage_active_slots": 0
+      "updated": "2 weeks ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
     },
     {
+      "context": "256K",
+      "digest": "a8562dfd0cad",
+      "format": "gguf",
+      "input_type": "Text",
       "name": "q4_K_M",
       "size_bytes": 20000000000,
       "size_text": "20GB",
-      "context": "256K",
-      "input_type": "Text",
-      "digest": "a8562dfd0cad",
-      "updated": "1 week ago",
-      "format": "gguf",
-      "usage_level": "",
-      "usage_active_slots": 0
+      "updated": "2 weeks ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
     },
     {
+      "context": "256K",
+      "digest": "7073183a9e7c",
+      "format": "gguf",
+      "input_type": "Text",
       "name": "q8_0",
       "size_bytes": 36000000000,
       "size_text": "36GB",
-      "context": "256K",
-      "input_type": "Text",
-      "digest": "7073183a9e7c",
-      "updated": "1 week ago",
-      "format": "gguf",
-      "usage_level": "",
-      "usage_active_slots": 0
+      "updated": "2 weeks ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
     },
     {
+      "context": "256K",
+      "digest": "5bda9bef69e1",
+      "format": "gguf",
+      "input_type": "Text",
       "name": "bf16",
       "size_bytes": 67000000000,
       "size_text": "67GB",
-      "context": "256K",
-      "input_type": "Text",
-      "digest": "5bda9bef69e1",
-      "updated": "1 week ago",
-      "format": "gguf",
-      "usage_level": "",
-      "usage_active_slots": 0
+      "updated": "2 weeks ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
     }
   ]
 }
