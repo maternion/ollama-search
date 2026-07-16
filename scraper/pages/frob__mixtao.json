@@ -1,0 +1,16 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "mixtao",
+  "path": "/frob/mixtao",
+  "readme_html": "\n        \n          <h1>MixTAO-7Bx2-MoE</h1>\n\n<p>MixTAO-7Bx2-MoE is a Mixure of Experts (MoE). This model is mainly used for large model technology experiments, and increasingly perfect iterations will eventually create high-level large language models.</p>\n\n<p>Source: <a href=\"https://huggingface.co/mixtao/MixTAO-7Bx2-MoE-v8.1\" rel=\"nofollow\">https://huggingface.co/mixtao/MixTAO-7Bx2-MoE-v8.1</a></p>\n\n<h1><a href=\"https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard\" rel=\"nofollow\">Open LLM Leaderboard Evaluation Results</a></h1>\n\n<p>Detailed results can be found <a href=\"https://huggingface.co/datasets/open-llm-leaderboard/details_zhengr__MixTAO-7Bx2-MoE-v8.1\" rel=\"nofollow\">here</a></p>\n\n<table>\n<thead>\n<tr>\n<th>Metric</th>\n<th>\tValue</th>\n</tr>\n</thead>\n\n<tbody>\n<tr>\n<td>Avg.</td>\n<td>\t77.50</td>\n</tr>\n\n<tr>\n<td>AI2 Reasoning Challenge (25-Shot)</td>\n<td>\t73.81</td>\n</tr>\n\n<tr>\n<td>HellaSwag (10-Shot)</td>\n<td>\t89.22</td>\n</tr>\n\n<tr>\n<td>MMLU (5-Shot)</td>\n<td>\t64.92</td>\n</tr>\n\n<tr>\n<td>TruthfulQA (0-shot)</td>\n<td>\t78.57</td>\n</tr>\n\n<tr>\n<td>Winogrande (5-shot)</td>\n<td>\t87.37</td>\n</tr>\n\n<tr>\n<td>GSM8k (5-shot)</td>\n<td>\t71.11</td>\n</tr>\n</tbody>\n</table>\n\n        \n      "
+}

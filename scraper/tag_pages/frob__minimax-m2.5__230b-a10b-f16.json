@@ -1,0 +1,44 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "minimax-m2",
+      "blob_url": "/frob/minimax-m2.5:230b-a10b-f16/blobs/56c250618a68",
+      "content_preview": "arch  minimax-m2",
+      "parameters": "229B",
+      "quantization": "F16",
+      "size": "457GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/minimax-m2.5:230b-a10b-f16/blobs/feef319a5485",
+      "content_preview": "{{- $lastUserIdx := -1 -}}\n{{- range $idx, $msg := .Messages -}}\n{{- if eq $msg.Role \"user\" }}{{ $la",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.7kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/minimax-m2.5:230b-a10b-f16/blobs/65c7f2ebe030",
+      "content_preview": "MIT License\nCopyright 2025 MiniMax AI.\nPermission is hereby granted, free of charge, to any person o",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.3kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/frob/minimax-m2.5:230b-a10b-f16",
+  "manifest_digest": "d5fe07b96c50",
+  "manifest_size": "457GB",
+  "manifest_updated": "5 months ago",
+  "path": "/frob/minimax-m2.5",
+  "tag_name": "230b-a10b-f16"
+}
