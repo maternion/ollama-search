@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model frob/minimax-m2.7",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model frob/minimax-m2.7",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model frob/minimax-m2.7",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model frob/minimax-m2.7",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model frob/minimax-m2.7",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model frob/minimax-m2.7",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "minimax-m2.7",
+  "path": "/frob/minimax-m2.7",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://huggingface.co/MiniMaxAI/MiniMax-M2.7\" rel=\"nofollow\">https://huggingface.co/MiniMaxAI/MiniMax-M2.7</a></p>\n\n<pre><code>$ ollama run frob/minimax-m2.7 --experimental --experimental-yolo\n\nThis experimental version of Ollama has the bash tool enabled.\nModels can read files on your computer, or run commands (after you allow them).\n\nwarning: yolo mode - all tool approvals will be skipped\n&gt;&gt;&gt; what is the time?\nThinking...\nThe user is asking what the current time is. I don&#39;t have a direct function to get the system time, but I can use the bash command `date` to check.\n...done thinking.\n\n\nrunning: Bash: date\n  Sun Apr 12 07:46:45 PM CEST 2026\n  \n\nThinking...\nI got the current time from the system. Let me provide this to the user.\n...done thinking.\n\nThe current date and time is:\n\n**Sunday, April 12, 2026 at 7:46:45 PM (CEST)**\n</code></pre>\n\n        \n      "
+}

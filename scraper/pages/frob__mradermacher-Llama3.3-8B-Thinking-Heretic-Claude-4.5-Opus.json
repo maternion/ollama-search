@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus:q8_0",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus:q8_0",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus:q8_0",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus:q8_0",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus:q8_0",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus:q8_0",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
+  "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
+  "readme_html": "\n        \n          <p>Imported from hf.co/mradermacher/Llama3.3-8B-Instruct-Thinking-Heretic-Uncensored-Claude-4.5-Opus-High-Reasoning-GGUF:Q8_0.</p>\n\n<p>Template modified to handle thinking output.</p>\n\n        \n      "
+}

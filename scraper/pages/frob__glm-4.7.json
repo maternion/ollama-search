@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model frob/glm-4.7",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model frob/glm-4.7",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model frob/glm-4.7",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model frob/glm-4.7",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model frob/glm-4.7",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model frob/glm-4.7",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "glm-4.7",
+  "path": "/frob/glm-4.7",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://hf.co/unsloth/GLM-4.7-GGUF\" rel=\"nofollow\">hf.co/unsloth/GLM-4.7-GGUF:Q4_K_M</a></p>\n\n<pre><code>$ ollama-run.py frob/glm-4.7:358b-a32b-q4_K_M what is the time? --tool get_datetime\n</code></pre>\n\n<pre><code>Thinking...\n\nThe user is asking for the current time. I have access to a get_datetime function that can return the current date and time. The function requires a timezone_name parameter, which is optional but if not supplied should use &#39;UTC&#39;. Since the user didn&#39;t specify a timezone, I&#39;ll use UTC as the default.\n\n...done thinking\n</code></pre>\n\n<p><em>calling get_datetime({‘timezone_name’: ‘UTC’})</em></p>\n\n<pre><code>Thinking...\n\nThe function returned the current time in UTC format. The result shows:\n\n- Full date/time: Sunday, January 04, 2026 05:29 UTC  \n- Date: Sunday, January 04, 2026\n- Time: 05:29\n\nI should provide this information to the user clearly.\n\n...done thinking\n</code></pre>\n\n<p>The current time is <strong>05:29 UTC</strong> on Sunday, January 04, 2026.</p>\n\n<p>If you need the time in a different timezone, please let me know which timezone you’d prefer!</p>\n\n        \n      "
+}
