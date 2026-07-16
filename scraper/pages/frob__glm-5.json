@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model frob/glm-5",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model frob/glm-5",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model frob/glm-5",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model frob/glm-5",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model frob/glm-5",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model frob/glm-5",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "glm-5",
+  "path": "/frob/glm-5",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://huggingface.co/unsloth/GLM-5-GGUF\" rel=\"nofollow\">hc.co/unsloth/GLM-5-GGUF</a>.</p>\n\n<p>This model needs 0.30.0 or newer.</p>\n\n<pre><code>$ ollama run frob/glm-5 --experimental --experimental-yolo\n\nThis experimental version of Ollama has the bash tool enabled.\nModels can read files on your computer, or run commands (after you allow them).\n\nwarning: yolo mode - all tool approvals will be skipped\n&gt;&gt;&gt; what is the time?\nThinking...\nThe user is asking for the current time. I can use the bash command `date` \nto get the current date and time.\n\n...done thinking.\n\n\nrunning: Bash: date\n  Mo 16 Feb 2026 19:29:52 CET\n  \n\nThinking...\nThe user asked for the time, and I got the result from the `date` command. \nThe output shows:\n\nMo 16 Feb 2026 19:29:52 CET\n\nThis means it&#39;s Monday, February 16th, 2026, at 19:29:52 (7:29:52 PM) in \nCentral European Time (CET).\n\nI should provide this information to the user in a clear and friendly way.\n...done thinking.\n\nThe current time is **19:29:52 CET** (Central European Time).\n\nIt&#39;s Monday, February 16th, 2026.\n</code></pre>\n\n<pre><code>$ ollama run frob/glm-5 hello --think=false\nHello! 👋 I&#39;m your GLM model trained by Z.ai. How can I help you today? \nWhether you have questions, need assistance with tasks, or just want to \nchat, I&#39;m here for you. What would you like to discuss?\n</code></pre>\n\n        \n      "
+}

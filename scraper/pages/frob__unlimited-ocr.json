@@ -1,0 +1,16 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "unlimited-ocr",
+  "path": "/frob/unlimited-ocr",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://huggingface.co/baidu/Unlimited-OCR\" rel=\"nofollow\">https://huggingface.co/baidu/Unlimited-OCR</a></p>\n\n<pre><code>$ ollama run frob/unlimited-ocr:f16 &#39;ocr [img]&#39; /tmp/Screenshot\\ from\\ 2026-07-01\\ 00-42-42.png \nAdded image &#39;/tmp/Screenshot from 2026-07-01 00-42-42.png&#39;\ntitle [6, 17, 991, 82]Model Request: baidu/Unlimited-OCR #16938\nheader [961, 28, 988, 62]/\nimage [18, 118, 50, 151]\ntext [51, 124, 105, 149]Open\nimage [15, 221, 56, 271]\ntext [63, 230, 327, 260]th1nhdk opened 4 days ago\ntext [29, 314, 735, 386]It&#39;s a upgraded version of Deepseek-OCR, which is already available in Ollama https://github.com/baidu/Unlimited-OCR\ntext [42, 443, 177, 467]Create sub-issue\nimage [200, 438, 214, 460]\nimage [246, 433, 273, 474]\nimage [17, 554, 48, 596]\ntext [57, 563, 264, 594]rick-github 4 days ago\ntext [29, 647, 272, 676]ggml-org/llama.cpp#24969\ntext [28, 714, 470, 746]Available after the next llama.cpp version update.\nimage [34, 770, 71, 815]\nimage [32, 906, 57, 940]\ntext [70, 907, 217, 937]rick-github added\ntext [218, 914, 275, 935]model\ntext [284, 912, 326, 934]model\ntext [348, 910, 454, 940]3 days ago\n</code></pre>\n\n<p><img src=\"/assets/frob/unlimited-ocr/41ebe779-fa6f-4f2f-8e97-e87266cfd407\" alt=\"image.png\"/></p>\n\n        \n      "
+}

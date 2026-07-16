@@ -1,0 +1,16 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "nuextract-2.0",
+  "path": "/frob/nuextract-2.0",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://huggingface.co/numind/NuExtract-2.0-8B\" rel=\"nofollow\">https://huggingface.co/numind/NuExtract-2.0-8B</a></p>\n\n<pre><code>#!/usr/bin/env python3\n\nimport ollama\nimport json\nimport os\n\nmodel = os.getenv(&#34;MODEL&#34;, &#34;frob/nuextract-2.0:8b-q8_0&#34;)\n\ntemplate = {\n  &#34;names&#34;:  [&#34;string&#34;],\n  &#34;places&#34;: [&#34;string&#34;]\n}\n\ndocument = &#34;John went to the restaurant with Mary. James went to the cinema.&#34;\n\nexamples = {\n  &#34;input&#34;:  &#34;Stephen is the manager at Susan&#39;s store.&#34;,\n  &#34;output&#34;: &#34;&#34;&#34;{&#34;names&#34;: [&#34;STEPHEN&#34;, &#34;SUSAN&#34;]}&#34;&#34;&#34;\n}\n\nmessages = [\n  {&#34;role&#34;: &#34;template&#34;,        &#34;content&#34;: json.dumps(template)},\n  {&#34;role&#34;: &#34;examples.input&#34;,  &#34;content&#34;: examples[&#34;input&#34;]},\n  {&#34;role&#34;: &#34;examples.output&#34;, &#34;content&#34;: examples[&#34;output&#34;]},\n  {&#34;role&#34;: &#34;user&#34;,            &#34;content&#34;: document},\n]\n\nresponse = ollama.chat(\n    model=model,\n    messages=messages\n)\n\nprint(json.dumps({&#34;model&#34;:model,**json.loads(response.message.content)}, indent=4))\n</code></pre>\n\n<pre><code>$ python3 nuextract.py\n{\n    &#34;model&#34;: &#34;frob/nuextract-2.0:8b-q8_0&#34;,\n    &#34;names&#34;: [\n        &#34;JOHN&#34;,\n        &#34;MARY&#34;,\n        &#34;JAMES&#34;\n    ],\n    &#34;places&#34;: [\n        &#34;restaurant&#34;,\n        &#34;cinema&#34;\n    ]\n}\n</code></pre>\n\n        \n      "
+}

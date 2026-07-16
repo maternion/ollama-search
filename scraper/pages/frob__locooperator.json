@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model frob/locooperator",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model frob/locooperator",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model frob/locooperator",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model frob/locooperator",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model frob/locooperator",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model frob/locooperator",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "locooperator",
+  "path": "/frob/locooperator",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://huggingface.co/LocoreMind/LocoOperator-4B\" rel=\"nofollow\">https://huggingface.co/LocoreMind/LocoOperator-4B</a></p>\n\n<p>LocoOperator-4B is a 4B-parameter tool-calling agent model trained via knowledge distillation from Qwen3-Coder-Next inference traces. It specializes in multi-turn codebase exploration — reading files, searching code, and navigating project structures within a Claude Code-style agent loop. Designed as a local sub agent, it runs via llama.cpp and ollama at zero API cost.</p>\n\n<pre><code>$ ollama run frob/locooperator --experimental --experimental-yolo\n\nThis experimental version of Ollama has the bash tool enabled.\nModels can read files on your computer, or run commands (after you allow them).\n\nwarning: yolo mode - all tool approvals will be skipped\n&gt;&gt;&gt; what is the time?\n\nrunning: Bash: date\n  So 01 Mär 2026 14:45:13 CET\n  \n\nThe current time is 14:45:13 CET (Central European Time) on March \n1, 2026.\n</code></pre>\n\n        \n      "
+}
