@@ -1,0 +1,35 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "minimax-m2",
+      "blob_url": "/frob/minimax-m2.1:230b/blobs/02d84e632d76",
+      "content_preview": "arch  minimax-m2",
+      "parameters": "229B",
+      "quantization": "Q4_K_M",
+      "size": "138GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/minimax-m2.1:230b/blobs/6dc1fe3f1a44",
+      "content_preview": "{{- $lastUserIdx := -1 -}}\n{{- range $idx, $msg := .Messages -}}\n{{- if eq $msg.Role \"user\" }}{{ $la",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.6kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/frob/minimax-m2.1:230b",
+  "manifest_digest": "5ab71149cfc5",
+  "manifest_size": "138GB",
+  "manifest_updated": "2 weeks ago",
+  "path": "/frob/minimax-m2.1",
+  "tag_name": "230b"
+}
