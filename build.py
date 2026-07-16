@@ -533,7 +533,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
         <button id="size-filter-btn" type="button" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center select-none hover:bg-neutral-50 dark:hover:bg-neutral-900">
           Size
         </button>
-        <div id="size-filter-panel" class="hidden absolute left-0 z-50 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-3xl pl-4 pr-3 py-2 shadow-lg" style="min-width: 420px; top: calc(100% + 20px);">
+        <div id="size-filter-panel" class="hidden absolute left-0 z-50 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-3xl pl-4 pr-3 py-2 shadow-lg" style="min-width: 420px; top: calc(100% + 6px);">
           <!-- Slider + Reset side by side -->
           <div class="flex items-end gap-4">
             <!-- Slider area (flex-1) -->
@@ -637,8 +637,8 @@ def build_index(models: list[dict], ranks: dict) -> None:
     <div class="flex justify-between items-start gap-2 mt-2">
       <fieldset class="flex flex-wrap items-center gap-1.5">
 {chips_html}
-{size_dropdown}
 {cloud_dropdown}
+{size_dropdown}
       </fieldset>
       <div class="hidden sm:block shrink-0 mt-1.5">
         <select id="desktop-sort-select" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600 min-w-[120px] text-sm px-3 py-1.5">
@@ -2493,8 +2493,8 @@ function initApp() {
     var sizeBtnLabel = document.getElementById('size-filter-btn');
 
     function sizeLabel(v) {
-      if (v === 0) return '< 1b';
-      if (v >= 500) return '> 500b';
+      if (v === 0) return '<1b';
+      if (v >= 500) return '>500b';
       return v + 'b';
     }
 
@@ -2513,7 +2513,7 @@ function initApp() {
       if (mn === 0 && mx === 500) {
         sizeBtnLabel.textContent = 'Size';
       } else {
-        sizeBtnLabel.textContent = 'Size: ' + sizeLabel(mn) + '–' + sizeLabel(mx);
+        sizeBtnLabel.textContent = 'Size: ' + sizeLabel(mn) + ' - ' + sizeLabel(mx);
       }
       applyFilters();
     }
