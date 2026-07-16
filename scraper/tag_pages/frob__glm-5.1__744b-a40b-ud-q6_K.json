@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "glm-dsa",
+      "blob_url": "/frob/glm-5.1:744b-a40b-ud-q6_K/blobs/e19bad7c622c",
+      "content_preview": "arch  glm-dsa",
+      "parameters": "754B",
+      "quantization": "Q6_K",
+      "size": "621GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/glm-5.1:744b-a40b-ud-q6_K/blobs/b1bca6ec8117",
+      "content_preview": "MIT License\nCopyright (c) [year] [fullname]\nPermission is hereby granted, free of charge, to any per",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/glm-5.1:744b-a40b-ud-q6_K/blobs/142153cc21a9",
+      "content_preview": "{{- $lastUserIdx := -1 }}\n{{- range $i, $_ := .Messages }}\n{{- if eq .Role \"user\" }}{{- $lastUserIdx",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/glm-5.1:744b-a40b-ud-q6_K/blobs/4134f3eb0516",
+      "content_preview": "{\n    \"stop\": [\n        \"<|system|>\",\n        \"<|user|>\",\n        \"<|assistant|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "81B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/frob/glm-5.1:744b-a40b-ud-q6_K",
+  "manifest_digest": "601036cb4975",
+  "manifest_size": "621GB",
+  "manifest_updated": "3 months ago",
+  "path": "/frob/glm-5.1",
+  "tag_name": "744b-a40b-ud-q6_K"
+}
