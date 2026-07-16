@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model frob/minimax-m2.1",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model frob/minimax-m2.1",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model frob/minimax-m2.1",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model frob/minimax-m2.1",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model frob/minimax-m2.1",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model frob/minimax-m2.1",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "minimax-m2.1",
+  "path": "/frob/minimax-m2.1",
+  "readme_html": "\n        \n          <p>Ollama template added to  <a href=\"https://huggingface.co/unsloth/MiniMax-M2.1-GGUF\" rel=\"nofollow\">https://huggingface.co/unsloth/MiniMax-M2.1-GGUF</a></p>\n\n<pre><code>$ ollama-run.py minimax-m2.1:230b-a10b-q4_K_M hello what is the time? --tool get_datetime --context 4096 \n</code></pre>\n\n<p>Thinking…</p>\n\n<p>Let me think about this request. The user is asking for the current time, which seems straightforward. I have access to a tool called “get_datetime” that can provide date and time information.</p>\n\n<p>Looking at the tool description, it returns data in a JSON format with fields for full date, date, and time (in 24-hour format). This is exactly what I need to answer the user’s question about the current time.</p>\n\n<p>The tool requires a timezone parameter called “timezone_name” which should be in the format ‘Country/City’ or just ‘TZ’. The description mentions that if no timezone is provided, it defaults to UTC.</p>\n\n<p>Hmm, but wait - the user didn’t specify which timezone they want the time for. There are two possibilities here:</p>\n\n<ol>\n<li>I could assume they want their local time (wherever they’re located)</li>\n<li>I could default to UTC as suggested by the tool description</li>\n</ol>\n\n<p>Since this is a simple query and many users asking “what’s the time” expect their local time, but I don’t know where the user is located, the safest approach would be to ask for clarification. However, I notice that in my system instructions it says I should use the ‘UTC’ timezone by default.</p>\n\n<p>Actually, let me just proceed with UTC since that’s what the tool defaults to anyway when no timezone is specified. This will give a consistent answer regardless of where the user is located. If they need a different timezone, they can always ask follow-up questions.</p>\n\n<p>So I’ll call the get_datetime tool with “timezone_name” set to “UTC”. The tool should return the current date and time information in UTC, which I can then format into a human-readable response for the user.</p>\n\n<p>…done thinking</p>\n\n<p><em>calling get_datetime({‘timezone_name’: ‘UTC’})</em></p>\n\n<p>Thinking…</p>\n\n<p>Okay, I’ve received the response from the get_datetime tool. Let me analyze what information I have and how to present it clearly to the user.</p>\n\n<p>The tool returned a JSON object with three fields:</p>\n\n<ul>\n<li>fulldate: “Sunday, January 04, 2026 01:26 UTC”</li>\n<li>date: “Sunday, January 04, 2026”</li>\n<li>time: “01:26”</li>\n</ul>\n\n<p>This gives me all the information I need to answer the user’s question about what time it is. The most direct answer would be to provide the current time in UTC format, which is 01:26.</p>\n\n<p>However, I should also consider adding context. Since the user didn’t specify a timezone, and I defaulted to UTC, they might want to know this is UTC time specifically. It’s good practice to explicitly mention “UTC” so there’s no confusion about what timezone I’m referring to.</p>\n\n<p>I could format my response in different ways:</p>\n\n<ol>\n<li>Just give the raw time: “01:26”</li>\n<li>Include the full date and time: “Sunday, January 04, 2026 01:26 UTC”</li>\n<li>Keep it simple but mention it’s UTC: “The current time is 01:26 (UTC)”</li>\n</ol>\n\n<p>Option 3 seems most appropriate - it’s concise yet informative. The user asked a simple question about the time, so they likely want a straightforward answer without too much additional information.</p>\n\n<p>I don’t need to include all the JSON fields in my response as that would be unnecessarily technical and hard to read. Just providing the key information (the current UTC time) in plain language is sufficient.</p>\n\n<p>If the user wants to know what time this corresponds to in their local timezone, they can ask a follow-up question where I could either convert it or ask which specific timezone they’re interested in.</p>\n\n<p>…done thinking</p>\n\n<p><strong>The current time is 01:26 (UTC).</strong></p>\n\n        \n      "
+}

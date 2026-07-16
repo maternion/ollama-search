@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model frob/ministral-3:3b",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model frob/ministral-3:3b",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model frob/ministral-3:3b",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model frob/ministral-3:3b",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model frob/ministral-3:3b",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model frob/ministral-3:3b",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "ministral-3",
+  "path": "/frob/ministral-3",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://hf.co/mistralai/Ministral-3-14B-Reasoning-2512\" rel=\"nofollow\">hf.co/mistralai/Ministral-3-14B-Reasoning-2512</a>.</p>\n\n<p>This is a fused model (text and vision weights in the same GGUF) and so will run on the ollama engine.</p>\n\n<p>This model does not use the <code>mistral</code> parser as the parser does not support thinking.  As a result, tool performance may not be as good as the equivalent <a href=\"https://ollama.com/library/ministral-3\" rel=\"nofollow\">ministral-3 instruct</a> model.</p>\n\n<p>The thinking does tend to waffle.</p>\n\n<pre><code>$ ollama run frob/ministral-3:14b-thinking-fp16 tell me concisely what animal is in this image ./image1.jpg \nAdded image &#39;./image1.jpg&#39;\nThinking...\nThe image shows a small, white animal with a fluffy coat. It has a red collar with a\nbell  attached, and it&#39;s sitting on a stone surface. The animal appears to be a young\npuppy,  likely a small breed due to its size. The most distinctive features are its\nwhite fur,  pointed ears, and the red collar with a bell. I recall that there are\nseveral small white  dog breeds, such as the Havanese, Maltese, or a small\nSamoyed, but the exact breed isn&#39;t  immediately clear from the image alone.\nHowever, the overall appearance is that of a  small, white dog puppy.\n\nI need to confirm if it&#39;s indeed a dog. The image doesn&#39;t show any non-canine features \nthat would suggest it&#39;s another animal, like a cat or a fox. The shape of the ears,\nthe  structure of the face, and the overall body shape are consistent with that of a\ndog.\n\nGiven that, the most concise way to describe the animal in the image is to say it&#39;s a \nsmall white dog puppy. I don&#39;t need to specify the breed unless the user asks for more \ndetails, as the question asks for a concise description. So, the response should be \nstraightforward and to the point.\n...done thinking.\n\nThe animal in the image is a small white dog puppy.\n</code></pre>\n\n<pre><code>$ ollama run frob/ministral-3:14b-thinking-fp16 tell me concisely what animal is in this image ./image1.jpg  --think=false\nAdded image &#39;./image1.jpg&#39;\nThe animal in the image is a puppy.\n</code></pre>\n\n<pre><code>$ ollama run frob/ministral-3:14b-thinking-fp16 --experimental --experimental-yolo\n\nThis experimental version of Ollama has the bash tool enabled.\nModels can read files on your computer, or run commands (after you allow them).\n\nwarning: yolo mode - all tool approvals will be skipped\n&gt;&gt;&gt; what is the time?\nThinking...\nI need to provide the current time. Since my knowledge cutoff is 2023-10-01, I don&#39;t\nhave  real-time information by default. However, I can use a tool to fetch the current\ntime if  available. Let me check if there&#39;s a tool for that.\n\nI recall that there might be a tool to get the current date and time. I&#39;ll try to use it.\n\nI&#39;ll call the bash tool to get the current time. The command would be something like \n`date` in bash, which outputs the current date and time.\n\nLet me try that.\n...done thinking.\n\n\nrunning: Bash: date\n  Do 05 Feb 2026 19:40:32 CET\n  \n\nThinking...\nThe bash command returned the current date and time as &#34;Do 05 Feb 2026 19:40:32 CET&#34;.\nI need to format this properly for the user. The date is in German format, so &#34;Do&#34;\nstands  for &#34;Donnerstag&#34; which means Thursday. I can rephrase this in English for clarity.\n\nThe current time is 19:40:32 (7:40:32 PM) on Thursday, February 5, 2026, in the\nCentral  European Time (CET) zone. I should confirm the timezone abbreviation\nto ensure accuracy.  CET is indeed Central European Time, which is UTC+1\nduring standard time.\n\nI&#39;ll present this information clearly to the user.\n...done thinking.\n\nThe current time is 7:40:32 PM (19:40:32) on Thursday, February 5, 2026, in the\nCentral European Time (CET) zone.\n</code></pre>\n\n        \n      "
+}

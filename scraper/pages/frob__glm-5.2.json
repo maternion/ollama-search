@@ -1,0 +1,16 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "glm-5.2",
+  "path": "/frob/glm-5.2",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://huggingface.co/unsloth/GLM-5.2-GGUF\" rel=\"nofollow\">https://huggingface.co/unsloth/GLM-5.2-GGUF</a>.</p>\n\n<p>Needs ollama v0.30+.</p>\n\n<pre><code>$ ollama run frob/glm-5.2 --experimental --experimental-yolo\n\nThis experimental version of Ollama has the bash tool enabled.\nModels can read files on your computer, or run commands (after you allow them).\n\nwarning: yolo mode - all tool approvals will be skipped\n&gt;&gt;&gt; what time is it?\nThinking...\nThe user wants to know what time it is. I can use the `date` command in bash to get the \ncurrent time.\n...done thinking.\n\n\nrunning: Bash: date\n  Fr 19 Jun 2026 16:41:18 CEST\n  \n\nThinking...\nThe current date and time is Friday, June 19, 2026, at 16:41:18 CEST (Central European \nSummer Time).\n...done thinking.\n\nIt&#39;s currently **4:41 PM** on **Friday, June 19, 2026** in Central European Summer Time \n(CEST).\n</code></pre>\n\n<pre><code>$ ollama run frob/glm-5.2 --think=false\n&gt;&gt;&gt; hello, how are you?\nHello! I&#39;m just a computer program so I don&#39;t have feelings, but I&#39;m here and ready to \nhelp you. How can I assist you today?\n</code></pre>\n\n        \n      "
+}
