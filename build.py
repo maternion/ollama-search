@@ -452,7 +452,8 @@ def render_card(
         f'data-sizes="{" ".join(m.get("sizes", []))}" '
         f'data-name="{esc(name_raw).lower()}" '
         f'data-cloud="{str(m.get("cloud", False)).lower()}" '
-        f'data-cloud-only="{str(m.get("cloud_only", False)).lower()}"'
+        f'data-cloud-only="{str(m.get("cloud_only", False)).lower()}" '
+        f'data-official="{str(m.get("official", True)).lower()}"'
     )
 
     # MLX pill for models that have MLX variants (black bg, white text, same size as other pills)
@@ -2342,6 +2343,7 @@ function applyFilters() {
     var isCloud = card.getAttribute('data-cloud') === 'true';
     var isCloudOnly = card.getAttribute('data-cloud-only') === 'true';
     var cardSizes = card.getAttribute('data-sizes') || '';
+    var isOfficial = card.getAttribute('data-official') !== 'false';
     var matchSize = matchSizeRange(cardSizes);
     var matchText = !q || title.indexOf(q) !== -1 || desc.indexOf(q) !== -1;
     var matchCaps = caps.length === 0 || caps.every(function(c) { return cardCaps.indexOf(c) !== -1; });
@@ -2349,6 +2351,7 @@ function applyFilters() {
       || (cloudFilter === 'cloud' && isCloud)
       || (cloudFilter === 'local' && !isCloudOnly);
     var show = matchText && matchCaps && matchCloud && matchSize;
+    if (show && !q && !isOfficial) show = false;
     card.style.display = show ? '' : 'none';
     if (show) visible++;
   });
@@ -2611,6 +2614,13 @@ if (document.readyState === 'loading') {
 # --------------------------------------------------------------------------- #
 
 
+PROFILE_BLOCKLIST = {
+    "/frob/whyhow-ai_PatientSeek",
+    "/frob/mixtao",
+    "/frob/NireeskshanAI_Niri",
+}
+
+
 def build_profile_page(username: str) -> None:
     """Build a user profile page (e.g. /maternion) mirroring ollama.com layout."""
     profile_path = HERE / "scraper" / f"profile_{username}.json"
@@ -2629,9 +2639,12 @@ def build_profile_page(username: str) -> None:
     profile_models = []
     for m in model_paths:
         if isinstance(m, dict):
+            if m.get("path") in PROFILE_BLOCKLIST:
+                continue
             profile_models.append(m)
         elif isinstance(m, str) and m in models_by_path:
-            profile_models.append(models_by_path[m])
+            if m not in PROFILE_BLOCKLIST:
+                profile_models.append(models_by_path[m])
 
     # Build model cards (reuse render_card)
     # Compute profile-specific ranks: popular = pulls desc, newest = updated_title desc.
@@ -3275,6 +3288,7 @@ def main() -> int:
     # profile pages (e.g. /maternion) + profile model detail pages
     print("building profile pages ...")
     build_profile_page("maternion")
+    build_profile_page("frob")
 
     # static standalone pages (/download + /pricing)
     print("building download + pricing pages ...")
@@ -3285,14 +3299,15 @@ def main() -> int:
     import json as _json
 
     _all_models = list(models)
-    for _username in ["maternion"]:
+    for _username in ["maternion", "frob"]:
         _pf = HERE / "scraper" / f"profile_{_username}.json"
         if _pf.exists():
             _pdata = _json.loads(_pf.read_text())
             _existing_paths = {m["path"] for m in _all_models}
             for _m in _pdata.get("models", []):
                 if isinstance(_m, dict) and _m["path"] not in _existing_paths:
-                    _all_models.append(_m)
+                    if _m["path"] not in PROFILE_BLOCKLIST:
+                        _all_models.append(_m)
 
     # model detail + tags + per-tag pages
     print(f"building model detail + tags + tag pages ({len(_all_models)} models) ...")
