@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model frob/mimo-v2-flash",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model frob/mimo-v2-flash",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model frob/mimo-v2-flash",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model frob/mimo-v2-flash",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model frob/mimo-v2-flash",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model frob/mimo-v2-flash",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "mimo-v2-flash",
+  "path": "/frob/mimo-v2-flash",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://huggingface.co/unsloth/MiMo-V2-Flash-GGUF\" rel=\"nofollow\">hf.co/unsloth/MiMo-V2-Flash-GGUF</a>.</p>\n\n<p>This model needs 0.30.0 or newer.</p>\n\n<pre><code>$ ollama run frob/mimo-v2-flash --experimental --experimental-yolo\n\nThis experimental version of Ollama has the bash tool enabled.\nModels can read files on your computer, or run commands (after you allow them).\n\nwarning: yolo mode - all tool approvals will be skipped\n&gt;&gt;&gt; what is the time?\nThinking...\nI need to check the current time on the system. I can use bash to run a\ncommand like `date`. Let me do that.\n...done thinking.\n\n\nrunning: Bash: date\n  Thu Apr 30 10:49:03 AM CEST 2026\n  \n\nThinking...\nThe current time is Thu Apr 30 10:49:03 AM CEST 2026. I should respond with this\ninformation. Let me also check the timezone maybe, but the date command already\nshows CEST. I&#39;ll output the result to the user.\n...done thinking.\n\nThe current time is **Thu Apr 30 10:49:03 AM CEST 2026**.\n</code></pre>\n\n<pre><code>$ ollama run frob/mimo-v2-flash --think=false\n&gt;&gt;&gt; hello\nHello! How can I help you today?\n</code></pre>\n\n        \n      "
+}

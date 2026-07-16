@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model frob/mimo-v2.5",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model frob/mimo-v2.5",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model frob/mimo-v2.5",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model frob/mimo-v2.5",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model frob/mimo-v2.5",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model frob/mimo-v2.5",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "mimo-v2.5",
+  "path": "/frob/mimo-v2.5",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://hf.co/AesSedai/MiMo-V2.5-GGUF\" rel=\"nofollow\">hf.co/AesSedai/MiMo-V2.5-GGUF</a>.</p>\n\n<p>Note that ollama does not yet support this model.  To run it, ollama needs to be patched with <a href=\"https://github.com/ollama/ollama/pull/14864\" rel=\"nofollow\">#14864</a>.</p>\n\n<pre><code>$ git clone https://github.com/ollama/ollama.git .\n$ git checkout v0.20.0\n$ curl -L https://github.com/ollama/ollama/pull/14864.diff | patch -p1\n$ docker build -t ollama/ollama:0.20.0-14864 .\n</code></pre>\n\n<p>This is still a work in progress.  While -14864 supports the text-only version of the model, there is an open <a href=\"https://github.com/ggml-org/llama.cpp/pull/22493\" rel=\"nofollow\">PR</a> for supporting other modalities.</p>\n\n<pre><code>$ ollama run frob/mimo-v2.5 --experimental --experimental-yolo\n\nThis experimental version of Ollama has the bash tool enabled.\nModels can read files on your computer, or run commands (after you allow them).\n\nwarning: yolo mode - all tool approvals will be skipped\n&gt;&gt;&gt; what is the time?\nThinking...\nThe user is asking &#34;what is the time?&#34; I should check the current system time using a bash command. Let me use `date` to get the current time.\n...done thinking.\n\n\nrunning: Bash: date\n  Mon May  4 11:34:00 AM CEST 2026\n  \n\nThinking...\nThe system time is Mon May  4 11:34:00 AM CEST 2026. I should inform the user of the current time.\n...done thinking.\n\nThe current time is **Mon May 4, 11:34:00 AM CEST 2026**.\n</code></pre>\n\n<pre><code>$ ollama run frob/mimo-v2.5 --think=false hello\nHello! How can I help you today?\n</code></pre>\n\n        \n      "
+}

@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model frob/iquest-coder",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model frob/iquest-coder",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model frob/iquest-coder",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model frob/iquest-coder",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model frob/iquest-coder",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model frob/iquest-coder",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "iquest-coder",
+  "path": "/frob/iquest-coder",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://hf.co/mradermacher/IQuest-Coder-V1-40B-Instruct-GGUF\" rel=\"nofollow\">hf.co/mradermacher/IQuest-Coder-V1-40B-Instruct-GGUF:Q4_K_M</a></p>\n\n<pre><code>$ ollama run frob/iquest-coder write a golang function that prints hello world\nHere&#39;s a simple Go function that prints &#34;Hello, World!&#34;:\n\n```go\npackage main\n\nimport &#34;fmt&#34;\n\nfunc printHelloWorld() {\n    fmt.Println(&#34;Hello, World!&#34;)\n}\n\nfunc main() {\n    printHelloWorld()\n}\n```\n\nThis code includes:\n- A `printHelloWorld()` function that prints the message using `fmt.Println()`\n- A `main()` function that calls it (required for Go programs)\n\nTo run this:\n1. Save it to a file (e.g., `hello.go`)\n2. Run `go run hello.go`\n\nOr if you just want the function without the main wrapper:\n\n```go\nfunc printHelloWorld() {\n    fmt.Println(&#34;Hello, World!&#34;)\n}\n```\n</code></pre>\n\n        \n      "
+}

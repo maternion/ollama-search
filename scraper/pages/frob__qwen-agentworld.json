@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model frob/qwen-agentworld",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model frob/qwen-agentworld",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model frob/qwen-agentworld",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model frob/qwen-agentworld",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model frob/qwen-agentworld",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model frob/qwen-agentworld",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "qwen-agentworld",
+  "path": "/frob/qwen-agentworld",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://huggingface.co/unsloth/Qwen-AgentWorld-35B-A3B-GGUF\" rel=\"nofollow\">https://huggingface.co/unsloth/Qwen-AgentWorld-35B-A3B-GGUF</a></p>\n\n<p><img src=\"/assets/frob/qwen-agentworld/d773246f-a67e-4c8f-ac68-7cf3ba51f941\" alt=\"image.png\"/></p>\n\n<p><a href=\"https://huggingface.co/Qwen/Qwen-AgentWorld-35B-A3B\" rel=\"nofollow\">Qwen-AgentWorld</a> is the first language world model to cover seven agent interaction domains within a single model. It simulates agentic environments via long chain-of-thought reasoning, predicting the next environment state given an agent’s action and interaction history. Trained through a three-stage pipeline — CPT injects environment knowledge, SFT activates next-state-prediction reasoning, RL sharpens simulation fidelity — Qwen-AgentWorld is a native world model: environment modeling is the training objective from the CPT stage onward, not a post-hoc add-on.</p>\n\n<pre><code>$ ollama launch opencode \\\n    --model frob/qwen-agentworld \\\n    -- \\\n    run &#34;Create a file README with the contents &#39;hello world&#39;&#34;\n\n&gt; build · frob/qwen-agentworld:latest\n\n← Write README\nWrote file successfully.\n\nFile README created with contents &#39;hello world&#39;.\n\n$ cat README \nhello world\n</code></pre>\n\n        \n      "
+}
