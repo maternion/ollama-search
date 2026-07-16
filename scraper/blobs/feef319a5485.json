@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/frob/minimax-m2.5:latest/blobs/feef319a5485",
+  "content": "\n{{- $lastUserIdx := -1 -}}\n{{- range $idx, $msg := .Messages -}}\n{{- if eq $msg.Role \"user\" }}{{ $lastUserIdx = $idx }}{{ end }}\n{{- end -}}\n\n]~!b[]~b]system\n{{- if .System }}\n{{ .System }}\n{{- else }}\nYou are a helpful assistant. Your name is MiniMax-M2.5 and is built by MiniMax.\n{{- end }}\n\nCurrent date: {{ currentDate }}\n{{- if .Tools }}\n\n# Tools\n\nYou may call one or more tools to assist with the user query.\n\nHere are the tools available in JSONSchema format:\n<tools>\n{{- range .Tools }}\n{\"type\": \"function\", \"function\": {{ .Function }}}\n{{- end }}\n</tools>\n\nWhen making tool calls, use a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n{{- end -}}\n[e~[\n{{- $inTool := false }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n\n{{- if $inTool }}\n{{- if ne .Role \"tool\" }}\n{{- $inTool = false -}}\n[e~[\n{{- end }}\n{{- end }}\n\n{{- if eq .Role \"assistant\" }}\n]~b]ai\n{{- if (and $.IsThinkSet (and .Thinking (or $last (gt $i $lastUserIdx)))) -}}\n<think>\n{{ .Thinking }}\n</think>\n{{ end }}\n{{- if .Content }}\n{{ .Content }}\n{{- end }}\n{{- if .ToolCalls -}}\n<tool_call>\n{{ range .ToolCalls }}{\"name\": \"{{ .Function.Name }}\", \"arguments\": {{ .Function.Arguments }}}\n{{- end -}}\n</tool_call>\n{{- end -}}\n[e~[\n{{- end }}\n\n{{- if eq .Role \"user\" }}\n]~b]user\n{{ .Content -}}\n[e~[\n{{- end }}\n\n{{- if eq .Role \"tool\" }}\n{{- if not $inTool }}{{ $inTool = true -}}\n]~b]tool\n{{- end }}\n<response>\n{{ .Content }}\n</response>\n{{- if $last }}\n{{- $inTool = false -}}\n[e~[\n{{- end }}\n{{- end }}\n\n{{- if and (ne .Role \"assistant\") $last }}\n]~b]ai\n<think>\n{{ end }}\n{{- end -}}",
+  "digest": "feef319a5485",
+  "metadata": [],
+  "size": "1.7kB",
+  "tensor_groups": [],
+  "tensors": []
+}
