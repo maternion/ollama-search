@@ -1940,6 +1940,77 @@ def save_scrape_manifest(models_count: int) -> None:
     log.info("wrote %s (%d models)", fp.name, models_count)
 
 
+def infer_capabilities(models: dict[str, Model]) -> None:
+    """Infer missing capabilities from system prompts and GGUF chat_template metadata.
+
+    For models where ollama.com doesn't show capability badges, we check:
+    1. GGUF metadata: tokenizer.chat_template.tool_use or tokenizer.chat_templates
+    2. System prompt: mentions "tools" or "Think step by step"
+    """
+    blobs_dir = HERE / "blobs"
+    if not blobs_dir.exists():
+        return
+
+    # Build a map: model_path -> list of blob files
+    model_blobs: dict[str, list[dict]] = {}
+    for bf in blobs_dir.iterdir():
+        if not bf.suffix == ".json":
+            continue
+        try:
+            bd = json.loads(bf.read_text())
+        except Exception:
+            continue
+        url = bd.get("blob_url", "")
+        if not url:
+            continue
+        # Extract model path from blob URL: /library/ornith:9b/blobs/xxx -> /library/ornith
+        parts = url.strip("/").split("/")
+        if len(parts) < 3:
+            continue
+        if parts[0] in ("library", "maternion", "frob"):
+            model_name = parts[1].split(":")[0]  # strip :tag
+            model_path = "/" + parts[0] + "/" + model_name
+            model_blobs.setdefault(model_path, []).append(bd)
+
+    inferred = 0
+    for path, m in models.items():
+        if m.capabilities:  # already has capabilities from badges
+            continue
+        blobs = model_blobs.get(path, [])
+        caps: list[str] = []
+        for bd in blobs:
+            # Check GGUF metadata for chat_template.tool_use
+            for meta in bd.get("metadata", []):
+                key = meta.get("key", "").lower()
+                val = meta.get("value", "").lower()
+                if "chat_template" in key and ("tool" in key or "tool" in val):
+                    if "tools" not in caps:
+                        caps.append("tools")
+                if "chat_template" in key and "think" in key:
+                    if "thinking" not in caps:
+                        caps.append("thinking")
+            # Check system prompt content
+            if bd.get("blob_type") == "system":
+                content = (bd.get("content") or "").lower()
+                if "tool" in content and "tools" not in caps:
+                    caps.append("tools")
+                if (
+                    "think step by step" in content
+                    or "reasoning block" in content
+                    or "think>" in content
+                    or "<think>" in content
+                ):
+                    if "thinking" not in caps:
+                        caps.append("thinking")
+        if caps:
+            m.capabilities = caps
+            inferred += 1
+            log.debug("inferred caps for %s: %s", path, caps)
+
+    if inferred:
+        log.info("inferred capabilities for %d models", inferred)
+
+
 def save_models(models: Iterable[Model]) -> None:
     data: dict = {
         "count": 0,
@@ -2983,6 +3054,7 @@ def main(argv: list[str] | None = None) -> int:
                     )
                     save_models(models.values())
             log.info("fetched %d blob pages", total_blobs)
+            infer_capabilities(models)
             save_models(models.values())
             git_checkpoint("blobs done")
 
@@ -3010,6 +3082,9 @@ def main(argv: list[str] | None = None) -> int:
             if size and size not in m.sizes:
                 m.sizes.append(size)
                 log.info("  inferred size %s for %s", size, m.path)
+
+        # Infer capabilities from system prompts + GGUF chat_template metadata
+        infer_capabilities(models)
 
         save_models(models.values())
 
