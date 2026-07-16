@@ -1,0 +1,44 @@
+{
+  "blob_type": "model",
+  "blob_url": "/frob/qwen-agentworld:do-not-download/blobs/e9f91f4e2a93",
+  "content": "",
+  "digest": "e9f91f4e2a93",
+  "metadata": [
+    {
+      "key": "general.architecture",
+      "value": "llama"
+    },
+    {
+      "key": "general.file_type",
+      "value": "F32"
+    },
+    {
+      "key": "llama.attention.layer_norm_rms_epsilon",
+      "value": "0.12345679"
+    },
+    {
+      "key": "llama.block_count",
+      "value": "1"
+    },
+    {
+      "key": "llama.context_length",
+      "value": "2147483640"
+    },
+    {
+      "key": "llama.embedding_length",
+      "value": "1234"
+    }
+  ],
+  "size": "3.6kB",
+  "tensor_groups": [
+    "blk.0"
+  ],
+  "tensors": [
+    {
+      "dtype": "F32",
+      "group": "blk.0",
+      "name": "blk.0.attn_k.weight",
+      "shape": "[4, 7, 9, 3]"
+    }
+  ]
+}
