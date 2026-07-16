@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "glm4moe",
+      "blob_url": "/frob/glm-4.7:latest/blobs/12cfccb036cf",
+      "content_preview": "arch  glm4moe",
+      "parameters": "358B",
+      "quantization": "Q4_K_M",
+      "size": "216GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/glm-4.7:latest/blobs/c472d4e701fd",
+      "content_preview": "The glm-4-9b License\n1. 定义\n“许可方”是指分发其软件的 glm-4-9b 模型团队。\n“�",
+      "parameters": "",
+      "quantization": "",
+      "size": "6.4kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/glm-4.7:latest/blobs/d4979126e2a5",
+      "content_preview": "{{- $lastUserIdx := -1 }}\n{{- range $i, $_ := .Messages }}\n{{- if eq .Role \"user\" }}{{- $lastUserIdx",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/glm-4.7:latest/blobs/4134f3eb0516",
+      "content_preview": "{\n    \"stop\": [\n        \"<|system|>\",\n        \"<|user|>\",\n        \"<|assistant|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "81B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/frob/glm-4.7:latest",
+  "manifest_digest": "e3d703291377",
+  "manifest_size": "216GB",
+  "manifest_updated": "5 months ago",
+  "path": "/frob/glm-4.7",
+  "tag_name": "latest"
+}

@@ -1,0 +1,62 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen35",
+      "blob_url": "/frob/davidau-qwen3.6-uncensored:40b-q4_K_M/blobs/c5c89ebca7af",
+      "content_preview": "arch  qwen35",
+      "parameters": "39.1B",
+      "quantization": "Q4_K_M",
+      "size": "24GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/davidau-qwen3.6-uncensored:40b-q4_K_M/blobs/eacf610d1ee4",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "928MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/davidau-qwen3.6-uncensored:40b-q4_K_M/blobs/5f3a3c817e78",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/davidau-qwen3.6-uncensored:40b-q4_K_M/blobs/735e07a6a0c7",
+      "content_preview": "{\n    \"min_p\": 0,\n    \"presence_penalty\": 1.5,\n    \"repeat_penalty\": 1.05,\n    \"temperature\": 0.7,",
+      "parameters": "",
+      "quantization": "",
+      "size": "99B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/davidau-qwen3.6-uncensored:40b-q4_K_M/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/frob/davidau-qwen3.6-uncensored:40b-q4_K_M",
+  "manifest_digest": "fbe7fb67022c",
+  "manifest_size": "25GB",
+  "manifest_updated": "1 month ago",
+  "path": "/frob/davidau-qwen3.6-uncensored",
+  "tag_name": "40b-q4_K_M"
+}
