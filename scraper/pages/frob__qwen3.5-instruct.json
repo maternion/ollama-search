@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model frob/qwen3.5-instruct",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model frob/qwen3.5-instruct",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model frob/qwen3.5-instruct",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model frob/qwen3.5-instruct",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model frob/qwen3.5-instruct",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model frob/qwen3.5-instruct",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "qwen3.5-instruct",
+  "path": "/frob/qwen3.5-instruct",
+  "readme_html": "\n        \n          <p>These are the standard qwen3.5 ollama models modified to be non-thinking.  These models do not use the RENDERER/PARSER of the main library models, so tool handling may not be as good as the <a href=\"https://ollama.com/library/qwen3.5\" rel=\"nofollow\">thinking</a> versions.</p>\n\n<pre><code>$ ollama run frob/qwen3.5-instruct --experimental --experimental-yolo\n\nThis experimental version of Ollama has the bash tool enabled.\nModels can read files on your computer, or run commands (after you allow them).\n\nwarning: yolo mode - all tool approvals will be skipped\n&gt;&gt;&gt; what is the time?\n\nrunning: Bash: date\n  Do 12 Mär 2026 14:21:58 CET\n  \n\nThe current time is 14:21:58 CET on Sunday, March 12, 2026.\n</code></pre>\n\n<pre><code>$ ollama run frob/qwen3.5-instruct describe this image ./image1.jpg \nAdded image &#39;./image1.jpg&#39;\nThis is a heartwarming, close-up portrait of an adorable white puppy. Here’s a \ndetailed description:\n\n**Subject:**\n- The main subject is a small, fluffy white puppy, likely a young breed such \nas a Maltese, Bichon Frisé, or similar toy breed.\n- It has soft, plush fur that appears clean and well-groomed.\n- Its ears are small, rounded, and folded forward.\n- The puppy’s eyes are dark, expressive, and slightly glossy, giving it a \ncurious and innocent look.\n- Its nose is small and black, and its mouth is closed in a calm expression.\n- A few delicate whiskers are visible on its snout.\n\n**Accessories:**\n- Around its neck, the puppy wears a simple red collar, possibly made of \nleather or fabric with a metallic buckle.\n- Attached to the collar is a small, round, gold-colored tag or bell that \nhangs down its chest.\n\n**Posture &amp; Setting:**\n- The puppy is sitting upright on all four paws on what appears to be a light \ngray stone or concrete step or ledge.\n- Its body is angled slightly toward the right side of the frame, and its head \nis turned in the same direction, as if it’s listening to or watching something \noff-camera.\n- The background is softly blurred (shallow depth of field), showing \nindistinct shapes in muted tones — perhaps a wooden surface above and a darker \narea beyond — which helps keep the focus entirely on the puppy.\n\n**Lighting &amp; Mood:**\n- The lighting is soft and natural, highlighting the texture of the puppy’s \nfur without harsh shadows.\n- The overall mood is peaceful, tender, and charming — evoking feelings of \nwarmth, curiosity, and affection.\n\nIn summary: This image captures a serene moment featuring a sweet, fluffy \nwhite puppy wearing a red collar and golden tag, sitting attentively on a \nstone surface against a blurred background — perfect for conveying innocence \nand endearment.\n</code></pre>\n\n        \n      "
+}

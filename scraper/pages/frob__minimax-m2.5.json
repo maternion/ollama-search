@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model frob/minimax-m2.5",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model frob/minimax-m2.5",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model frob/minimax-m2.5",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model frob/minimax-m2.5",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model frob/minimax-m2.5",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model frob/minimax-m2.5",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "minimax-m2.5",
+  "path": "/frob/minimax-m2.5",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://huggingface.co/MiniMaxAI/MiniMax-M2.5\" rel=\"nofollow\">https://huggingface.co/MiniMaxAI/MiniMax-M2.5</a></p>\n\n<pre><code>$ ollama run frob/minimax-m2.5 --experimental --experimental-yolo\n\nThis experimental version of Ollama has the bash tool enabled.\nModels can read files on your computer, or run commands (after you allow them).\n\nwarning: yolo mode - all tool approvals will be skipped\n&gt;&gt;&gt; hello\nThinking...\nThe user has simply said &#34;hello&#34;. This is a greeting, so I should respond in a friendly manner and offer to help them with whatever they need.\n...done thinking.\n\nHello! How can I help you today? Whether it&#39;s running some code, exploring files, or working on a project, I&#39;m here to assist.\n\n&gt;&gt;&gt; what is the time?\nThinking...\nThe user is asking about the current time. I can check this using a bash command like `date`.\n...done thinking.\n\n\nrunning: Bash: date\n  Sat Feb 14 04:00:07 AM CET 2026\n  \n\nThinking...\nThe date command returned the current time. Let me share this with the user.\n...done thinking.\n\nThe current time is **Saturday, February 14, 2026 at 4:00:07 AM CET** (Central European Time).\n\nIs there anything else you&#39;d like help with?\n</code></pre>\n\n        \n      "
+}
