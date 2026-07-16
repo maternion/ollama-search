@@ -1,0 +1,35 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "deepseek2-ocr",
+      "blob_url": "/frob/unlimited-ocr:f16/blobs/de37695e0417",
+      "content_preview": "arch  deepseek2-ocr",
+      "parameters": "2.93B",
+      "quantization": "F16",
+      "size": "5.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/unlimited-ocr:f16/blobs/810660e618d1",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "825MB",
+      "type": "projector"
+    }
+  ],
+  "full_path": "/frob/unlimited-ocr:f16",
+  "manifest_digest": "7ab7af98ee6e",
+  "manifest_size": "6.7GB",
+  "manifest_updated": "2 weeks ago",
+  "path": "/frob/unlimited-ocr",
+  "tag_name": "f16"
+}
