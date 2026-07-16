@@ -12258,7 +12258,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "DeepSeek-V4-Flash is a preview of the DeepSeek-V4 series, a Mixture-of-Experts model with 284B total parameters and 13B activated, built for efficient reasoning across a 1M-token context window.",
       "name": "deepseek-v4-flash",
       "official": true,
@@ -12291,7 +12291,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "DeepSeek-V4-Pro is a frontier Mixture-of-Experts model with a large context window and three reasoning modes.",
       "name": "deepseek-v4-pro",
       "official": true,
@@ -18406,7 +18406,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "Gemini 3 Flash offers frontier intelligence built for speed at a fraction of the cost.",
       "name": "gemini-3-flash-preview",
       "official": true,
@@ -21925,7 +21925,9 @@
       "owner": null,
       "path": "/library/glm-4.7-flash",
       "pulls": 1300000,
-      "sizes": [],
+      "sizes": [
+        "30b"
+      ],
       "source_url": "https://ollama.com/library/glm-4.7-flash",
       "tag_count": 4,
       "tags": [
@@ -21987,7 +21989,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "GLM-5.1 is our next-generation flagship model for agentic engineering, with significantly stronger coding capabilities than its predecessor. It achieves state-of-the-art performance on SWE-Bench Pro and leads GLM-5 by a wide margin.",
       "name": "glm-5.1",
       "official": true,
@@ -22020,7 +22022,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "GLM-5.2 is Z.ai’s flagship model for the era of long-horizon tasks.",
       "name": "glm-5.2",
       "official": true,
@@ -22060,7 +22062,9 @@
       "owner": null,
       "path": "/library/glm-ocr",
       "pulls": 6200000,
-      "sizes": [],
+      "sizes": [
+        "1b"
+      ],
       "source_url": "https://ollama.com/library/glm-ocr",
       "tag_count": 3,
       "tags": [
@@ -22518,7 +22522,9 @@
       "owner": null,
       "path": "/library/goliath",
       "pulls": 465000,
-      "sizes": [],
+      "sizes": [
+        "118b"
+      ],
       "source_url": "https://ollama.com/library/goliath",
       "tag_count": 16,
       "tags": [
@@ -29672,7 +29678,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "Kimi K2.5 is an open-source, native multimodal agentic model that seamlessly integrates vision and language understanding with advanced agentic capabilities, instant and thinking modes, as well as conversational and agentic paradigms.",
       "name": "kimi-k2.5",
       "official": true,
@@ -29706,7 +29712,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "Kimi K2.6 is an open-source, native multimodal agentic model that advances practical capabilities in long-horizon coding, coding-driven design, proactive autonomous execution, and swarm-based task orchestration.",
       "name": "kimi-k2.6",
       "official": true,
@@ -29740,7 +29746,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "Kimi K2.7 Code is Moonshot AI's coding-focused agentic model built upon Kimi K2.6, with substantial improvements on real-world long-horizon coding tasks and roughly 30% lower thinking-token usage.",
       "name": "kimi-k2.7-code",
       "official": true,
@@ -29780,7 +29786,9 @@
       "owner": null,
       "path": "/library/laguna-xs-2.1",
       "pulls": 41400,
-      "sizes": [],
+      "sizes": [
+        "33b"
+      ],
       "source_url": "https://ollama.com/library/laguna-xs-2.1",
       "tag_count": 4,
       "tags": [
@@ -29849,7 +29857,9 @@
       "owner": null,
       "path": "/library/laguna-xs.2",
       "pulls": 21100,
-      "sizes": [],
+      "sizes": [
+        "33b"
+      ],
       "source_url": "https://ollama.com/library/laguna-xs.2",
       "tag_count": 7,
       "tags": [
@@ -30627,7 +30637,9 @@
       "owner": null,
       "path": "/library/llama-pro",
       "pulls": 878900,
-      "sizes": [],
+      "sizes": [
+        "8b"
+      ],
       "source_url": "https://ollama.com/library/llama-pro",
       "tag_count": 33,
       "tags": [
@@ -41202,7 +41214,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "MiniMax-M2.5 is a state-of-the-art large language model designed for real-world productivity and coding tasks.",
       "name": "minimax-m2.5",
       "official": true,
@@ -41235,7 +41247,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "MiniMax's M2-series model for coding, agentic workflows, and professional productivity.",
       "name": "minimax-m2.7",
       "official": true,
@@ -41269,7 +41281,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "MiniMax M3: Coding & Agentic Frontier. 1M context window. Native Multimodality.",
       "name": "minimax-m3",
       "official": true,
@@ -42919,7 +42931,7 @@
         "tools"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "A general-purpose multimodal mixture-of-experts model for production-grade tasks and enterprise workloads.",
       "name": "mistral-large-3",
       "official": true,
@@ -45787,7 +45799,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": false,
+      "cloud_only": true,
       "description": "NVIDIA Nemotron 3 Ultra is built for high-throughput reasoning and long-running agent workflows.",
       "name": "nemotron-3-ultra",
       "official": true,
@@ -47208,7 +47220,9 @@
       "owner": null,
       "path": "/library/nomic-embed-text",
       "pulls": 78500000,
-      "sizes": [],
+      "sizes": [
+        "137m"
+      ],
       "source_url": "https://ollama.com/library/nomic-embed-text",
       "tag_count": 3,
       "tags": [
@@ -47264,7 +47278,9 @@
       "owner": null,
       "path": "/library/nomic-embed-text-v2-moe",
       "pulls": 513700,
-      "sizes": [],
+      "sizes": [
+        "475m"
+      ],
       "source_url": "https://ollama.com/library/nomic-embed-text-v2-moe",
       "tag_count": 1,
       "tags": [
@@ -47297,7 +47313,9 @@
       "owner": null,
       "path": "/library/north-mini-code-1.0",
       "pulls": 25400,
-      "sizes": [],
+      "sizes": [
+        "30b"
+      ],
       "source_url": "https://ollama.com/library/north-mini-code-1.0",
       "tag_count": 7,
       "tags": [
@@ -50970,7 +50988,9 @@
       "owner": null,
       "path": "/library/openhermes",
       "pulls": 1100000,
-      "sizes": [],
+      "sizes": [
+        "7b"
+      ],
       "source_url": "https://ollama.com/library/openhermes",
       "tag_count": 35,
       "tags": [
@@ -67524,7 +67544,9 @@
       "owner": null,
       "path": "/library/qwen3-coder-next",
       "pulls": 1800000,
-      "sizes": [],
+      "sizes": [
+        "80b"
+      ],
       "source_url": "https://ollama.com/library/qwen3-coder-next",
       "tag_count": 3,
       "tags": [
@@ -85109,7 +85131,9 @@
       "owner": null,
       "path": "/library/wizardlm",
       "pulls": 858600,
-      "sizes": [],
+      "sizes": [
+        "7b"
+      ],
       "source_url": "https://ollama.com/library/wizardlm",
       "tag_count": 73,
       "tags": [
