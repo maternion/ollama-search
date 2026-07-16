@@ -1,0 +1,44 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus:q8_0/blobs/5507624bb43d",
+      "content_preview": "arch  llama",
+      "parameters": "8.03B",
+      "quantization": "Q8_0",
+      "size": "8.5GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus:q8_0/blobs/1b4fd6019932",
+      "content_preview": "{{- if or .System .Tools }}<|start_header_id|>system<|end_header_id|>\n{{- if .System }}\n{{ .System }",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.6kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus:q8_0/blobs/56bb8bd477a5",
+      "content_preview": "{\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",\n        \"<|eot_id|>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "96B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus:q8_0",
+  "manifest_digest": "f41b346280cf",
+  "manifest_size": "8.5GB",
+  "manifest_updated": "4 months ago",
+  "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
+  "tag_name": "q8_0"
+}
