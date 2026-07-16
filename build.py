@@ -421,6 +421,119 @@ def size_spans(sizes: list[str]) -> str:
     return "\n        ".join(parts) if parts else ""
 
 
+RENDERER_ARCHS = {
+    "gemma4",
+    "olmo3",
+    "qwen35",
+    "qwen35moe",
+    "qwen3vl",
+    "qwen3vlmoe",
+    "glm4moelite",
+    "glmocr",
+    "deepseekocr",
+    "cohere2moe",
+    "nemotron_h",
+    "nemotron_h_moe",
+    "nemotron_h_omni",
+    "qwen3moe",
+    "qwen3next",
+    "lfm2",
+    "lfm2moe",
+}
+
+
+def _model_blob_metadata(model_path: str) -> list[dict]:
+    """Load metadata from the model blob of the latest tag page."""
+    slug = model_path.strip("/").replace("/", "__")
+    tp_file = TAG_PAGES_DIR / f"{slug}__latest.json"
+    if not tp_file.exists():
+        return []
+    tp = json.loads(tp_file.read_text())
+    for f in tp.get("files") or []:
+        if f.get("type") == "model":
+            digest = f.get("blob_url", "").rsplit("/blobs/", 1)[-1].split("?")[0]
+            bf = BLOBS_DIR / f"{digest}.json"
+            if bf.exists():
+                b = json.loads(bf.read_text())
+                return b.get("metadata") or []
+    return []
+
+
+def _template_blob_content(model_path: str) -> str | None:
+    """Load the template blob content from the latest tag page, or None if no template row."""
+    slug = model_path.strip("/").replace("/", "__")
+    tp_file = TAG_PAGES_DIR / f"{slug}__latest.json"
+    if not tp_file.exists():
+        return None
+    tp = json.loads(tp_file.read_text())
+    for f in tp.get("files") or []:
+        if f.get("type") == "template":
+            digest = f.get("blob_url", "").rsplit("/blobs/", 1)[-1].split("?")[0]
+            bf = BLOBS_DIR / f"{digest}.json"
+            if bf.exists():
+                b = json.loads(bf.read_text())
+                return b.get("content") or ""
+    return None
+
+
+def _has_moe(model_path: str, tags: list[dict] | None = None) -> bool:
+    """Check if any tag's model blob metadata has expert_count."""
+    slug = model_path.strip("/").replace("/", "__")
+    # Check all tags, not just latest
+    tag_names = []
+    if tags:
+        tag_names = [t.get("name", "") for t in tags if t.get("name")]
+    if not tag_names:
+        tag_names = ["latest"]
+    for tag_name in tag_names:
+        tp_file = TAG_PAGES_DIR / f"{slug}__{tag_name}.json"
+        if not tp_file.exists():
+            continue
+        tp = json.loads(tp_file.read_text())
+        for f in tp.get("files") or []:
+            if f.get("type") == "model":
+                digest = f.get("blob_url", "").rsplit("/blobs/", 1)[-1].split("?")[0]
+                bf = BLOBS_DIR / f"{digest}.json"
+                if bf.exists():
+                    b = json.loads(bf.read_text())
+                    for md in b.get("metadata") or []:
+                        if "expert_count" in md.get("key", ""):
+                            return True
+    return False
+
+
+def _classify_template(model_path: str) -> str:
+    """Classify template type: go, jinja, renderer, or base.
+
+    - go: has a template blob with real Go template content
+    - renderer: no template blob, or template is trivial ({{ .Prompt }})
+    - jinja: no template blob but has a system blob (embedded Jinja)
+    - base: no template, no system (embed/text/code models)
+    """
+    slug = model_path.strip("/").replace("/", "__")
+    tp_file = TAG_PAGES_DIR / f"{slug}__latest.json"
+    if not tp_file.exists():
+        return "base"
+    tp = json.loads(tp_file.read_text())
+    types = {f.get("type") for f in (tp.get("files") or [])}
+    if "template" in types:
+        content = _template_blob_content(model_path)
+        if content is not None and len(content.strip()) <= 20:
+            return "renderer"
+        return "go"
+    if "system" in types:
+        return "jinja"
+    # No template, no system — check arch for renderer
+    arch = ""
+    for md in _model_blob_metadata(model_path):
+        if md.get("key") == "general.architecture":
+            arch = md.get("value", "")
+            break
+    if arch in RENDERER_ARCHS:
+        return "renderer"
+    return "base"
+
+
 def render_card(
     m: dict, tags: list[dict] | None = None, ranks: dict | None = None
 ) -> str:
@@ -453,7 +566,12 @@ def render_card(
         f'data-name="{esc(name_raw).lower()}" '
         f'data-cloud="{str(m.get("cloud", False)).lower()}" '
         f'data-cloud-only="{str(m.get("cloud_only", False)).lower()}" '
-        f'data-official="{str(m.get("official", True)).lower()}"'
+        f'data-official="{str(m.get("official", True)).lower()}" '
+        f'data-audio="{"true" if "audio" in (m.get("capabilities") or []) else "false"}" '
+        f'data-mlx="{"true" if any((t.get("format") == "mlx") for t in (m.get("tags") or [])) else "false"}" '
+        f'data-moe="{"true" if _has_moe(m["path"], m.get("tags")) else "false"}" '
+        f'data-mtp="{"true" if any("-mtp" in (t.get("name", "").lower()) for t in (m.get("tags") or [])) else "false"}" '
+        f'data-template-type="{_classify_template(m["path"])}"'
     )
 
     # MLX pill for models that have MLX variants (black bg, white text, same size as other pills)
@@ -585,6 +703,72 @@ def build_index(models: list[dict], ranks: dict) -> None:
         </div>
       </div>"""
 
+    # More dropdown: Audio / MLX / MTP / Architecture / Template filters
+    more_dropdown = """      <div class="relative inline-block mr-1.5 mb-1.5">
+        <button id="more-filter-btn" type="button" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center select-none hover:bg-neutral-50 dark:hover:bg-neutral-900">
+          More
+        </button>
+        <div id="more-filter-panel" class="hidden absolute left-0 z-50 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-3xl shadow-lg" style="top: calc(100% + 6px); width: max-content;">
+          <div class="flex flex-col p-4" style="gap: 12px;">
+            <!-- Row 1: Audio + MLX + MTP left-aligned -->
+            <div class="flex gap-1.5">
+              <div class="relative inline-block">
+                <input type="checkbox" id="more-audio" class="more-filter peer sr-only" data-more="audio">
+                <label for="more-audio" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">Audio</label>
+              </div>
+              <div class="relative inline-block">
+                <input type="checkbox" id="more-mlx" class="more-filter peer sr-only" data-more="mlx">
+                <label for="more-mlx" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">MLX</label>
+              </div>
+              <div class="relative inline-block">
+                <input type="checkbox" id="more-mtp" class="more-filter peer sr-only" data-more="mtp">
+                <label for="more-mtp" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">MTP</label>
+              </div>
+            </div>
+            <!-- Row 2: Architecture (All / Dense / MoE) -->
+            <div>
+              <div class="text-xs text-neutral-500 dark:text-neutral-400 mb-1.5">Architecture</div>
+              <div class="flex flex-wrap gap-1.5">
+                <div class="relative inline-block">
+                  <input type="radio" name="moe-filter" value="all" id="moe-all" class="moe-radio peer sr-only" checked>
+                  <label for="moe-all" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">All</label>
+                </div>
+                <div class="relative inline-block">
+                  <input type="radio" name="moe-filter" value="dense" id="moe-dense" class="moe-radio peer sr-only">
+                  <label for="moe-dense" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">Dense</label>
+                </div>
+                <div class="relative inline-block">
+                  <input type="radio" name="moe-filter" value="moe" id="moe-moe" class="moe-radio peer sr-only">
+                  <label for="moe-moe" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">MoE</label>
+                </div>
+              </div>
+            </div>
+            <!-- Row 3: Template (at bottom) -->
+            <div>
+              <div class="text-xs text-neutral-500 dark:text-neutral-400 mb-1.5">Template</div>
+              <div class="flex flex-wrap gap-1.5">
+                <div class="relative inline-block">
+                  <input type="radio" name="tpl-filter" value="all" id="tpl-all" class="tpl-radio peer sr-only" checked>
+                  <label for="tpl-all" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">All</label>
+                </div>
+                <div class="relative inline-block">
+                  <input type="radio" name="tpl-filter" value="go" id="tpl-go" class="tpl-radio peer sr-only">
+                  <label for="tpl-go" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">Go Template</label>
+                </div>
+                <div class="relative inline-block">
+                  <input type="radio" name="tpl-filter" value="renderer" id="tpl-renderer" class="tpl-radio peer sr-only">
+                  <label for="tpl-renderer" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">Renderer/Parser</label>
+                </div>
+                <div class="relative inline-block">
+                  <input type="radio" name="tpl-filter" value="jinja" id="tpl-jinja" class="tpl-radio peer sr-only">
+                  <label for="tpl-jinja" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">Jinja</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>"""
+
     # Cloud dropdown: All models / Cloud only / Local only
     cloud_dropdown = """      <select id="cloud-filter" class="mr-1.5 mb-1.5 px-3 py-1 text-sm font-medium rounded-full cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 focus:outline-none focus:ring-0 appearance-none">
         <option value="all">All models</option>
@@ -640,7 +824,8 @@ def build_index(models: list[dict], ranks: dict) -> None:
 {chips_html}
 {cloud_dropdown}
 {size_dropdown}
-      </fieldset>
+{more_dropdown}
+       </fieldset>
       <div class="hidden sm:block shrink-0 mt-1.5">
         <select id="desktop-sort-select" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600 min-w-[120px] text-sm px-3 py-1.5">
 {opt_html}
@@ -2078,8 +2263,9 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 /* --- text-green-700 for code snippets (dark mode only; light is in tailwind.css) --- */
 .dark .text-green-700 { color: #4ade80; }
 
-/* --- fmt pill radio dark mode --- */
+/* --- pill active state (purple) for peer-checked and JS-toggled buttons --- */
 .dark .peer:checked ~ label { background-color: #1e1b4b; border-color: #6366f1; }
+.dark .dark\:bg-neutral-800 { background-color: #1e1b4b; border-color: #6366f1; }
 
 /* --- search preview dropdown --- */
 #searchpreview { max-height: 24rem; overflow-y: auto; }
@@ -2106,6 +2292,8 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 .bg-neutral-500 { background-color: #737373; }
 .hover\:bg-neutral-300:hover { background-color: #d4d4d4; }
 .hover\:bg-neutral-100:hover { background-color: #f5f5f5; }
+/* gap-1.5 missing from vendored tailwind.css */
+.gap-1\.5 { gap: 0.375rem; }
 """
 
 APP_JS = r"""// ollama-search frontend logic.
@@ -2351,6 +2539,16 @@ function applyFilters() {
   var list = document.getElementById('card-list');
   if (!list) return;
   var cards = Array.from(list.querySelectorAll('li[x-test-model]'));
+  var moreAudio = document.getElementById('more-audio');
+  var moreMlx = document.getElementById('more-mlx');
+  var moreMtp = document.getElementById('more-mtp');
+  var moeRadio = document.querySelector('input[name="moe-filter"]:checked');
+  var moreAudioOn = moreAudio && moreAudio.checked;
+  var moreMlxOn = moreMlx && moreMlx.checked;
+  var moreMtpOn = moreMtp && moreMtp.checked;
+  var moeVal = moeRadio ? moeRadio.value : 'all';
+  var tplRadio = document.querySelector('input[name="tpl-filter"]:checked');
+  var tplVal = tplRadio ? tplRadio.value : 'all';
   // Filter
   var visible = 0;
   cards.forEach(function(card) {
@@ -2368,7 +2566,17 @@ function applyFilters() {
     var matchCloud = cloudFilter === 'all'
       || (cloudFilter === 'cloud' && isCloud)
       || (cloudFilter === 'local' && !isCloudOnly);
-    var show = matchText && matchCaps && matchCloud && matchSize;
+    var isAudio = card.getAttribute('data-audio') === 'true';
+    var isMlx = card.getAttribute('data-mlx') === 'true';
+    var isMoe = card.getAttribute('data-moe') === 'true';
+    var isMtp = card.getAttribute('data-mtp') === 'true';
+    var cardTpl = card.getAttribute('data-template-type') || 'base';
+    var matchMoreAudio = !moreAudioOn || isAudio;
+    var matchMoreMlx = !moreMlxOn || isMlx;
+    var matchMoreMtp = !moreMtpOn || isMtp;
+    var matchMoe = moeVal === 'all' || (moeVal === 'moe' && isMoe) || (moeVal === 'dense' && !isMoe);
+    var matchTpl = tplVal === 'all' || cardTpl === tplVal;
+    var show = matchText && matchCaps && matchCloud && matchSize && matchMoreAudio && matchMoreMlx && matchMoreMtp && matchMoe && matchTpl;
     if (show && !q && !isOfficial && !window.IS_PROFILE_PAGE) show = false;
     card.style.display = show ? '' : 'none';
     if (show) visible++;
@@ -2402,6 +2610,30 @@ function applyFilters() {
     return cmp;
   });
   cards.forEach(function(c) { list.appendChild(c); });
+
+  // Update Size/More pill active state based on non-default filter values
+  var sizeBtnEl = document.getElementById('size-filter-btn');
+  if (sizeBtnEl) {
+    var sMin = getSizeMin();
+    var sMax = getSizeMax();
+    var sizeActive = !(sMin === 0 && sMax === 500);
+    sizeBtnEl.classList.toggle('bg-neutral-100', sizeActive);
+    sizeBtnEl.classList.toggle('dark:bg-neutral-800', sizeActive);
+  }
+  var moreBtnEl = document.getElementById('more-filter-btn');
+  if (moreBtnEl) {
+    var moreActive = false;
+    var ma = document.getElementById('more-audio');
+    var ml = document.getElementById('more-mlx');
+    var mt = document.getElementById('more-mtp');
+    if ((ma && ma.checked) || (ml && ml.checked) || (mt && mt.checked)) moreActive = true;
+    var mr = document.querySelector('input[name="moe-filter"]:checked');
+    if (mr && mr.value !== 'all') moreActive = true;
+    var tr = document.querySelector('input[name="tpl-filter"]:checked');
+    if (tr && tr.value !== 'all') moreActive = true;
+    moreBtnEl.classList.toggle('bg-neutral-100', moreActive);
+    moreBtnEl.classList.toggle('dark:bg-neutral-800', moreActive);
+  }
 }
 
 // --- Usage section: tab switching + copy ---
@@ -2492,16 +2724,30 @@ function initApp() {
       sizeBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         sizePanel.classList.toggle('hidden');
-        sizeBtn.classList.toggle('bg-neutral-100', !sizePanel.classList.contains('hidden'));
-        sizeBtn.classList.toggle('dark:bg-neutral-800', !sizePanel.classList.contains('hidden'));
       });
       document.addEventListener('click', function(e) {
         if (!sizePanel.contains(e.target) && e.target !== sizeBtn) {
           sizePanel.classList.add('hidden');
-          sizeBtn.classList.remove('bg-neutral-100', 'dark:bg-neutral-800');
         }
       });
     }
+
+    var moreBtn = document.getElementById('more-filter-btn');
+    var morePanel = document.getElementById('more-filter-panel');
+    if (moreBtn && morePanel) {
+      moreBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        morePanel.classList.toggle('hidden');
+      });
+      document.addEventListener('click', function(e) {
+        if (!morePanel.contains(e.target) && e.target !== moreBtn) {
+          morePanel.classList.add('hidden');
+        }
+      });
+    }
+    document.querySelectorAll('.more-filter').forEach(function(cb) { cb.addEventListener('change', applyFilters); });
+    document.querySelectorAll('.moe-radio').forEach(function(r) { r.addEventListener('change', applyFilters); });
+    document.querySelectorAll('.tpl-radio').forEach(function(r) { r.addEventListener('change', applyFilters); });
 
     // Dual-handle slider (HuggingFace-style)
     var sizeMin = document.getElementById('size-min');
