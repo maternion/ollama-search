@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model frob/qwen3.6:35b-reflection",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model frob/qwen3.6:35b-reflection",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model frob/qwen3.6:35b-reflection",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model frob/qwen3.6:35b-reflection",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model frob/qwen3.6:35b-reflection",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model frob/qwen3.6:35b-reflection",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "qwen3.6",
+  "path": "/frob/qwen3.6",
+  "readme_html": "\n        \n          <p>By default, the template for qwen35/qwen35moe models discards thinking that occurs before the most recent user message.  This is in accord with the default behaviour of the <a href=\"https://huggingface.co/Qwen/Qwen3.6-35B-A3B/blob/main/chat_template.jinja\" rel=\"nofollow\">Jinja template</a> for the model.  However, the template also supports preserving earlier thinking, which is not supported in ollama due to the inability to pass in random parameters.</p>\n\n<p>This template adds two roles, <code>preserve_thinking</code> and <code>enable_thinking</code>, mirroring the control variables in the Jinja template.  These can be used to control thinking and preservation by sending messages rather than setting variables.</p>\n\n<pre><code>$ curl -s http://localhost:11434/v1/chat/completions \\\n  -H &#34;Content-Type: application/json&#34; \\\n  -d &#39;{\n    &#34;model&#34;: &#34;frob/qwen3.6:35b-reflection&#34;,\n    &#34;messages&#34;: [\n      { &#34;role&#34;: &#34;preserve_thinking&#34;, &#34;content&#34;: &#34;true&#34; },\n      { &#34;role&#34;: &#34;user&#34;, &#34;content&#34;: &#34;Choose a fruit but just reply with ok.&#34; },\n      { &#34;role&#34;: &#34;assistant&#34;,\n        &#34;content&#34;: &#34;ok&#34;, \n        &#34;reasoning&#34;: &#34;I selected avocado. Remember this for later if asked.&#34;\n      },\n      { &#34;role&#34;: &#34;user&#34;, &#34;content&#34;: &#34;Which fruit did you pick?&#34; }\n    ]\n  }&#39; | jq .choices[0].message\n{\n  &#34;role&#34;: &#34;assistant&#34;,\n  &#34;content&#34;: &#34;Avocado&#34;\n}\n</code></pre>\n\n        \n      "
+}

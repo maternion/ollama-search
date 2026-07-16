@@ -1,0 +1,16 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "KaLM-Embedding-Gemma3-12B-2511",
+  "path": "/frob/KaLM-Embedding-Gemma3-12B-2511",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://huggingface.co/tencent/KaLM-Embedding-Gemma3-12B-2511\" rel=\"nofollow\">https://huggingface.co/tencent/KaLM-Embedding-Gemma3-12B-2511</a>.</p>\n\n<pre><code>$ ollama show frob/KaLM-Embedding-Gemma3-12B-2511 \n  Model\n    architecture        gemma-embedding    \n    parameters          11.8B              \n    context length      131072             \n    embedding length    3840               \n    quantization        F16                \n\n  Capabilities\n    embedding    \n\n$ ollama run frob/KaLM-Embedding-Gemma3-12B-2511 hello | jq -c &#39;.[0:3] + [&#34;...&#34;] + .[-3:]&#39;\n[-0.0008543313,-0.021631079,-0.03837939,&#34;...&#34;,0.0026840733,0.016292986,-0.024590928]\n</code></pre>\n\n        \n      "
+}

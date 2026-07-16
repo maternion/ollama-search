@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model frob/kimi-k2.5-prism-reap",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model frob/kimi-k2.5-prism-reap",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model frob/kimi-k2.5-prism-reap",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model frob/kimi-k2.5-prism-reap",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model frob/kimi-k2.5-prism-reap",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model frob/kimi-k2.5-prism-reap",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "kimi-k2.5-prism-reap",
+  "path": "/frob/kimi-k2.5-prism-reap",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://huggingface.co/Ex0bit/Kimi-K2.5-PRISM-REAP-530B-A32B\" rel=\"nofollow\">https://huggingface.co/Ex0bit/Kimi-K2.5-PRISM-REAP-530B-A32B</a></p>\n\n<p><strong>50% REAP expert-pruned</strong> version of <a href=\"https://huggingface.co/moonshotai/Kimi-K2.5\" rel=\"nofollow\">moonshotai/Kimi-K2.5</a>, built from the <a href=\"https://huggingface.co/Ex0bit/Kimi-K2.5-PRISM\" rel=\"nofollow\">PRISM</a> variant.</p>\n\n<h2>What is REAP?</h2>\n\n<p><a href=\"https://arxiv.org/abs/2510.13999\" rel=\"nofollow\">REAP</a> (Cerebras Research, 2025) is a one-shot expert pruning method for Mixture-of-Experts models. It computes saliency scores using the router-weighted expert output norms from real forward passes.</p>\n\n<h2>What is PRISM?</h2>\n\n<p>This model was first treated using our SOTA PRISM-LITE pipeline,  softening over-refusal and bias behaviors while preserving model quality. The REAP pruning was then applied on top of the PRISM model.</p>\n\n<h2>This model needs 0.30.0 or newer.</h2>\n\n<pre><code>$ ollama run frob/kimi-k2.5-prism-reap:530b-a32b-q8_0 --experimental --experimental-yolo\n\nThis experimental version of Ollama has the bash tool enabled.\nModels can read files on your computer, or run commands (after you allow them).\n\nwarning: yolo mode - all tool approvals will be skipped\n&gt;&gt;&gt; what is the time?\nThinking...\nThe user asked &#34;what is the time?&#34; - I can use the bash tool to run a command to check the current time on the system. The `date` command would work well for this.\n\nLet me execute a bash command to get the current time.\n...done thinking.\n\n\nrunning: Bash: date\n  Do 05 Mär 2026 03:23:40 CET\n  \n\nThinking...\nThe output shows &#34;Do 05 Mär 2026 03:23:40 CET&#34; which seems to be a date in German/Finnish (CET timezone). Let me provide this information to the user.\n\nThe time is approximately **03:23** (or 3:23 AM) on March 5, 2026 according to the system.\n...done thinking.\n\nThe current time is:\n\n**03:23:40 CET**  \n*(March 5, 2026)*\n\nSo it&#39;s approximately **3:24 PM/AM Central European Time** (CET).\n</code></pre>\n\n<pre><code>$ ollama run frob/kimi-k2.5-prism-reap:530b-a32b-q8_0 describe this image ./image1.jpg  --think=false\nAdded image &#39;./image1.jpg&#39;\nThis is a photo of a small, fluffy white puppy sitting on stone steps. The puppy \nhas pure white fur with soft, rounded features - small floppy cars, a gentle \nsnout nose, and plump little limbs. Around its neck it wears a thin red collar \nwith a tiny round gold colored charm pendant hanging from it. The animal looks \nquite young, perhaps only weeks old, with that characteristic plump baby shaped \nbody and short stature.\n\nThe puppy sits posed on weathered concrete or stone steps - the surface appears \nslightly worn with some faded pale discoloration marks visible. Behind the puppy \nstretches a dark empty background space framed by what looks like a light brown \nwooden horizontal bar structure above. The lighting creates soft shadows around \nthe small form, suggesting natural or moderate directional illumination. The \noverall impression is of an adorable newborn domestic pet captured in a quiet \nmoment photographed from a slightly elevated camera angle.\n</code></pre>\n\n        \n      "
+}
