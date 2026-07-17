@@ -259,7 +259,7 @@
       "official": true,
       "owner": null,
       "path": "/library/athene-v2",
-      "pulls": 573100,
+      "pulls": 573200,
       "sizes": [
         "72b"
       ],
@@ -475,9 +475,7 @@
       "updated_title": "Nov 15, 2024 11:37 PM UTC"
     },
     {
-      "capabilities": [
-        "tools"
-      ],
+      "capabilities": [],
       "cloud": false,
       "cloud_only": false,
       "description": "Aya 23, released by Cohere, is a new family of state-of-the-art, multilingual models that support 23 languages.",
@@ -904,7 +902,7 @@
       "official": true,
       "owner": null,
       "path": "/library/aya-expanse",
-      "pulls": 966900,
+      "pulls": 967000,
       "sizes": [
         "8b",
         "32b"
@@ -1887,7 +1885,7 @@
       "official": true,
       "owner": null,
       "path": "/library/codebooga",
-      "pulls": 482000,
+      "pulls": 482100,
       "sizes": [
         "34b"
       ],
@@ -6893,7 +6891,7 @@
       "official": true,
       "owner": null,
       "path": "/library/cogito-2.1",
-      "pulls": 201700,
+      "pulls": 201800,
       "sizes": [
         "671b"
       ],
@@ -6920,7 +6918,7 @@
           "name": "671b",
           "size_bytes": 1300000000000,
           "size_text": "1.3TB",
-          "updated": "7 months ago",
+          "updated": "8 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -6961,7 +6959,7 @@
           "usage_level": ""
         }
       ],
-      "updated": "7 months ago",
+      "updated": "8 months ago",
       "updated_title": "Nov 19, 2025 6:22 PM UTC"
     },
     {
@@ -11972,7 +11970,7 @@
       "official": true,
       "owner": null,
       "path": "/library/deepseek-v2.5",
-      "pulls": 280700,
+      "pulls": 280800,
       "sizes": [
         "236b"
       ],
@@ -12159,7 +12157,7 @@
       "official": true,
       "owner": null,
       "path": "/library/deepseek-v3.1",
-      "pulls": 709400,
+      "pulls": 709500,
       "sizes": [
         "671b"
       ],
@@ -12260,13 +12258,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "DeepSeek-V4-Flash is a preview of the DeepSeek-V4 series, a Mixture-of-Experts model with 284B total parameters and 13B activated, built for efficient reasoning across a 1M-token context window.",
       "name": "deepseek-v4-flash",
       "official": true,
       "owner": null,
       "path": "/library/deepseek-v4-flash",
-      "pulls": 242300,
+      "pulls": 242600,
       "sizes": [],
       "source_url": "https://ollama.com/library/deepseek-v4-flash",
       "tag_count": 1,
@@ -12293,13 +12291,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "DeepSeek-V4-Pro is a frontier Mixture-of-Experts model with a large context window and three reasoning modes.",
       "name": "deepseek-v4-pro",
       "official": true,
       "owner": null,
       "path": "/library/deepseek-v4-pro",
-      "pulls": 241500,
+      "pulls": 241900,
       "sizes": [],
       "source_url": "https://ollama.com/library/deepseek-v4-pro",
       "tag_count": 1,
@@ -12331,7 +12329,7 @@
       "official": true,
       "owner": null,
       "path": "/library/devstral",
-      "pulls": 982300,
+      "pulls": 982400,
       "sizes": [
         "24b"
       ],
@@ -12496,7 +12494,7 @@
       "official": true,
       "owner": null,
       "path": "/library/devstral-small-2",
-      "pulls": 908300,
+      "pulls": 908400,
       "sizes": [
         "24b"
       ],
@@ -15846,7 +15844,7 @@
       "official": true,
       "owner": null,
       "path": "/library/dolphincoder",
-      "pulls": 974100,
+      "pulls": 974200,
       "sizes": [
         "7b",
         "15b"
@@ -16287,7 +16285,7 @@
       "official": true,
       "owner": null,
       "path": "/library/duckdb-nsql",
-      "pulls": 511600,
+      "pulls": 511700,
       "sizes": [
         "7b"
       ],
@@ -17007,7 +17005,7 @@
       "official": true,
       "owner": null,
       "path": "/library/exaone3.5",
-      "pulls": 526800,
+      "pulls": 526900,
       "sizes": [
         "2.4b",
         "7.8b",
@@ -18408,7 +18406,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "Gemini 3 Flash offers frontier intelligence built for speed at a fraction of the cost.",
       "name": "gemini-3-flash-preview",
       "official": true,
@@ -19689,7 +19687,7 @@
       "official": true,
       "owner": null,
       "path": "/library/gemma2",
-      "pulls": 27900000,
+      "pulls": 28000000,
       "sizes": [
         "2b",
         "9b",
@@ -21927,9 +21925,7 @@
       "owner": null,
       "path": "/library/glm-4.7-flash",
       "pulls": 1300000,
-      "sizes": [
-        "30b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/glm-4.7-flash",
       "tag_count": 4,
       "tags": [
@@ -21991,7 +21987,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "GLM-5.1 is our next-generation flagship model for agentic engineering, with significantly stronger coding capabilities than its predecessor. It achieves state-of-the-art performance on SWE-Bench Pro and leads GLM-5 by a wide margin.",
       "name": "glm-5.1",
       "official": true,
@@ -22024,13 +22020,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "GLM-5.2 is Z.ai’s flagship model for the era of long-horizon tasks.",
       "name": "glm-5.2",
       "official": true,
       "owner": null,
       "path": "/library/glm-5.2",
-      "pulls": 226100,
+      "pulls": 226400,
       "sizes": [],
       "source_url": "https://ollama.com/library/glm-5.2",
       "tag_count": 1,
@@ -22064,9 +22060,7 @@
       "owner": null,
       "path": "/library/glm-ocr",
       "pulls": 6200000,
-      "sizes": [
-        "1b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/glm-ocr",
       "tag_count": 3,
       "tags": [
@@ -22524,9 +22518,7 @@
       "owner": null,
       "path": "/library/goliath",
       "pulls": 465300,
-      "sizes": [
-        "118b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/goliath",
       "tag_count": 16,
       "tags": [
@@ -24848,7 +24840,7 @@
       "official": true,
       "owner": null,
       "path": "/library/granite-embedding",
-      "pulls": 339000,
+      "pulls": 339100,
       "sizes": [
         "30m",
         "278m"
@@ -24943,7 +24935,7 @@
       "official": true,
       "owner": null,
       "path": "/library/granite3-dense",
-      "pulls": 989700,
+      "pulls": 989800,
       "sizes": [
         "2b",
         "8b"
@@ -26760,7 +26752,7 @@
       "official": true,
       "owner": null,
       "path": "/library/granite3.2",
-      "pulls": 443400,
+      "pulls": 443500,
       "sizes": [
         "2b",
         "8b"
@@ -26892,7 +26884,7 @@
       "official": true,
       "owner": null,
       "path": "/library/granite3.2-vision",
-      "pulls": 944700,
+      "pulls": 944800,
       "sizes": [
         "2b"
       ],
@@ -27261,7 +27253,7 @@
       "official": true,
       "owner": null,
       "path": "/library/granite4.1",
-      "pulls": 255900,
+      "pulls": 256200,
       "sizes": [
         "3b",
         "8b",
@@ -27862,7 +27854,7 @@
       "official": true,
       "owner": null,
       "path": "/library/granite4.1-guardian",
-      "pulls": 4402,
+      "pulls": 4411,
       "sizes": [
         "8b"
       ],
@@ -29680,7 +29672,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "Kimi K2.5 is an open-source, native multimodal agentic model that seamlessly integrates vision and language understanding with advanced agentic capabilities, instant and thinking modes, as well as conversational and agentic paradigms.",
       "name": "kimi-k2.5",
       "official": true,
@@ -29714,13 +29706,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "Kimi K2.6 is an open-source, native multimodal agentic model that advances practical capabilities in long-horizon coding, coding-driven design, proactive autonomous execution, and swarm-based task orchestration.",
       "name": "kimi-k2.6",
       "official": true,
       "owner": null,
       "path": "/library/kimi-k2.6",
-      "pulls": 381600,
+      "pulls": 381700,
       "sizes": [],
       "source_url": "https://ollama.com/library/kimi-k2.6",
       "tag_count": 1,
@@ -29748,13 +29740,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "Kimi K2.7 Code is Moonshot AI's coding-focused agentic model built upon Kimi K2.6, with substantial improvements on real-world long-horizon coding tasks and roughly 30% lower thinking-token usage.",
       "name": "kimi-k2.7-code",
       "official": true,
       "owner": null,
       "path": "/library/kimi-k2.7-code",
-      "pulls": 146100,
+      "pulls": 146800,
       "sizes": [],
       "source_url": "https://ollama.com/library/kimi-k2.7-code",
       "tag_count": 1,
@@ -29788,9 +29780,7 @@
       "owner": null,
       "path": "/library/laguna-xs-2.1",
       "pulls": 45500,
-      "sizes": [
-        "33b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/laguna-xs-2.1",
       "tag_count": 4,
       "tags": [
@@ -29859,9 +29849,7 @@
       "owner": null,
       "path": "/library/laguna-xs.2",
       "pulls": 21300,
-      "sizes": [
-        "33b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/laguna-xs.2",
       "tag_count": 7,
       "tags": [
@@ -30059,7 +30047,7 @@
       "official": true,
       "owner": null,
       "path": "/library/lfm2.5",
-      "pulls": 66100,
+      "pulls": 66200,
       "sizes": [
         "8b"
       ],
@@ -30222,7 +30210,7 @@
       "official": true,
       "owner": null,
       "path": "/library/llama-guard3",
-      "pulls": 986600,
+      "pulls": 986700,
       "sizes": [
         "1b",
         "8b"
@@ -30640,9 +30628,7 @@
       "owner": null,
       "path": "/library/llama-pro",
       "pulls": 879500,
-      "sizes": [
-        "8b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/llama-pro",
       "tag_count": 33,
       "tags": [
@@ -34892,7 +34878,7 @@
       "official": true,
       "owner": null,
       "path": "/library/llama3-groq-tool-use",
-      "pulls": 960600,
+      "pulls": 960700,
       "sizes": [
         "8b",
         "70b"
@@ -37768,7 +37754,7 @@
           "context": "4K",
           "digest": "3d2d24f46674",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "34b",
           "size_bytes": 20000000000,
           "size_text": "20GB",
@@ -37780,7 +37766,7 @@
           "context": "4K",
           "digest": "33973d2589d1",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.5-q2_K",
           "size_bytes": 3500000000,
           "size_text": "3.5GB",
@@ -37792,7 +37778,7 @@
           "context": "4K",
           "digest": "605b68e0b568",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.5-q3_K_S",
           "size_bytes": 3600000000,
           "size_text": "3.6GB",
@@ -37804,7 +37790,7 @@
           "context": "4K",
           "digest": "9d738df24288",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.5-q3_K_M",
           "size_bytes": 3900000000,
           "size_text": "3.9GB",
@@ -37816,7 +37802,7 @@
           "context": "4K",
           "digest": "057fefd59cdb",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.5-q3_K_L",
           "size_bytes": 4200000000,
           "size_text": "4.2GB",
@@ -37828,7 +37814,7 @@
           "context": "4K",
           "digest": "cd3274b81a85",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.5-q4_0",
           "size_bytes": 4500000000,
           "size_text": "4.5GB",
@@ -37840,7 +37826,7 @@
           "context": "4K",
           "digest": "146a55d9df75",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.5-q4_1",
           "size_bytes": 4900000000,
           "size_text": "4.9GB",
@@ -37852,7 +37838,7 @@
           "context": "4K",
           "digest": "d8d545afa5f0",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.5-q4_K_S",
           "size_bytes": 4500000000,
           "size_text": "4.5GB",
@@ -37864,7 +37850,7 @@
           "context": "4K",
           "digest": "75a9333e75cd",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.5-q4_K_M",
           "size_bytes": 4700000000,
           "size_text": "4.7GB",
@@ -37876,7 +37862,7 @@
           "context": "4K",
           "digest": "339249626980",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.5-q5_0",
           "size_bytes": 5300000000,
           "size_text": "5.3GB",
@@ -37888,7 +37874,7 @@
           "context": "4K",
           "digest": "6d97e8715c53",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.5-q5_1",
           "size_bytes": 5700000000,
           "size_text": "5.7GB",
@@ -37900,7 +37886,7 @@
           "context": "4K",
           "digest": "34f9b24f2315",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.5-q5_K_S",
           "size_bytes": 5300000000,
           "size_text": "5.3GB",
@@ -37912,7 +37898,7 @@
           "context": "4K",
           "digest": "4fb097b9cfa3",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.5-q5_K_M",
           "size_bytes": 5400000000,
           "size_text": "5.4GB",
@@ -37924,7 +37910,7 @@
           "context": "4K",
           "digest": "df0203e92f79",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.5-q6_K",
           "size_bytes": 6200000000,
           "size_text": "6.2GB",
@@ -37936,7 +37922,7 @@
           "context": "4K",
           "digest": "c684b68b3f34",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.5-q8_0",
           "size_bytes": 7800000000,
           "size_text": "7.8GB",
@@ -37948,7 +37934,7 @@
           "context": "4K",
           "digest": "337a5b25bada",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.5-fp16",
           "size_bytes": 14000000000,
           "size_text": "14GB",
@@ -38152,7 +38138,7 @@
           "context": "4K",
           "digest": "6321163f3833",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.6-vicuna-q2_K",
           "size_bytes": 3200000000,
           "size_text": "3.2GB",
@@ -38164,7 +38150,7 @@
           "context": "4K",
           "digest": "7701df672950",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.6-vicuna-q3_K_S",
           "size_bytes": 3600000000,
           "size_text": "3.6GB",
@@ -38176,7 +38162,7 @@
           "context": "4K",
           "digest": "7004e1f24eb1",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.6-vicuna-q3_K_M",
           "size_bytes": 3900000000,
           "size_text": "3.9GB",
@@ -38188,7 +38174,7 @@
           "context": "4K",
           "digest": "0127d9087e07",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.6-vicuna-q3_K_L",
           "size_bytes": 4200000000,
           "size_text": "4.2GB",
@@ -38200,7 +38186,7 @@
           "context": "4K",
           "digest": "b6cbe07f1d5e",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.6-vicuna-q4_0",
           "size_bytes": 4500000000,
           "size_text": "4.5GB",
@@ -38212,7 +38198,7 @@
           "context": "4K",
           "digest": "f8a27e237e97",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.6-vicuna-q4_1",
           "size_bytes": 4900000000,
           "size_text": "4.9GB",
@@ -38224,7 +38210,7 @@
           "context": "4K",
           "digest": "5006a8a41d2b",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.6-vicuna-q4_K_S",
           "size_bytes": 4500000000,
           "size_text": "4.5GB",
@@ -38236,7 +38222,7 @@
           "context": "4K",
           "digest": "15360a9e0fb9",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.6-vicuna-q4_K_M",
           "size_bytes": 4700000000,
           "size_text": "4.7GB",
@@ -38248,7 +38234,7 @@
           "context": "4K",
           "digest": "6a2bb61a611a",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.6-vicuna-q5_0",
           "size_bytes": 5300000000,
           "size_text": "5.3GB",
@@ -38260,7 +38246,7 @@
           "context": "4K",
           "digest": "1bd37032ec33",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.6-vicuna-q5_1",
           "size_bytes": 5700000000,
           "size_text": "5.7GB",
@@ -38272,7 +38258,7 @@
           "context": "4K",
           "digest": "4aaa19502e34",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.6-vicuna-q5_K_S",
           "size_bytes": 5300000000,
           "size_text": "5.3GB",
@@ -38284,7 +38270,7 @@
           "context": "4K",
           "digest": "b22b0c041223",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.6-vicuna-q5_K_M",
           "size_bytes": 5400000000,
           "size_text": "5.4GB",
@@ -38296,7 +38282,7 @@
           "context": "4K",
           "digest": "11bd55683f9c",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.6-vicuna-q6_K",
           "size_bytes": 6200000000,
           "size_text": "6.2GB",
@@ -38308,7 +38294,7 @@
           "context": "4K",
           "digest": "6da20a71d9bb",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.6-vicuna-q8_0",
           "size_bytes": 7800000000,
           "size_text": "7.8GB",
@@ -38320,7 +38306,7 @@
           "context": "4K",
           "digest": "bb8da134bacb",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "7b-v1.6-vicuna-fp16",
           "size_bytes": 14000000000,
           "size_text": "14GB",
@@ -38332,7 +38318,7 @@
           "context": "4K",
           "digest": "3cdd3869f154",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "13b-v1.5-q2_K",
           "size_bytes": 6100000000,
           "size_text": "6.1GB",
@@ -38344,7 +38330,7 @@
           "context": "4K",
           "digest": "c860f869008d",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "13b-v1.5-q3_K_S",
           "size_bytes": 6300000000,
           "size_text": "6.3GB",
@@ -38356,7 +38342,7 @@
           "context": "4K",
           "digest": "61441e82808c",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "13b-v1.5-q3_K_M",
           "size_bytes": 7000000000,
           "size_text": "7.0GB",
@@ -38368,7 +38354,7 @@
           "context": "4K",
           "digest": "07b1b74ec398",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "13b-v1.5-q3_K_L",
           "size_bytes": 7600000000,
           "size_text": "7.6GB",
@@ -38380,7 +38366,7 @@
           "context": "4K",
           "digest": "e3b7997801dc",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "13b-v1.5-q4_0",
           "size_bytes": 8000000000,
           "size_text": "8.0GB",
@@ -38392,7 +38378,7 @@
           "context": "4K",
           "digest": "0ca30ff66062",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "13b-v1.5-q4_1",
           "size_bytes": 8800000000,
           "size_text": "8.8GB",
@@ -38404,7 +38390,7 @@
           "context": "4K",
           "digest": "16939c152bd9",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "13b-v1.5-q4_K_S",
           "size_bytes": 8100000000,
           "size_text": "8.1GB",
@@ -38416,7 +38402,7 @@
           "context": "4K",
           "digest": "d0a6a3f0e6c4",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "13b-v1.5-q4_K_M",
           "size_bytes": 8500000000,
           "size_text": "8.5GB",
@@ -38428,7 +38414,7 @@
           "context": "4K",
           "digest": "78e17026912a",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "13b-v1.5-q5_0",
           "size_bytes": 9600000000,
           "size_text": "9.6GB",
@@ -38440,7 +38426,7 @@
           "context": "4K",
           "digest": "b11f33bc65fa",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "13b-v1.5-q5_1",
           "size_bytes": 10000000000,
           "size_text": "10GB",
@@ -38452,7 +38438,7 @@
           "context": "4K",
           "digest": "c7f4b8076a0e",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "13b-v1.5-q5_K_S",
           "size_bytes": 9600000000,
           "size_text": "9.6GB",
@@ -38464,7 +38450,7 @@
           "context": "4K",
           "digest": "48418b116e18",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "13b-v1.5-q5_K_M",
           "size_bytes": 9900000000,
           "size_text": "9.9GB",
@@ -38476,7 +38462,7 @@
           "context": "4K",
           "digest": "3c085b55f924",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "13b-v1.5-q6_K",
           "size_bytes": 11000000000,
           "size_text": "11GB",
@@ -38488,7 +38474,7 @@
           "context": "4K",
           "digest": "4e00c435bb25",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "13b-v1.5-q8_0",
           "size_bytes": 14000000000,
           "size_text": "14GB",
@@ -38500,7 +38486,7 @@
           "context": "4K",
           "digest": "ce3bde71eaa7",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "13b-v1.5-fp16",
           "size_bytes": 27000000000,
           "size_text": "27GB",
@@ -38704,7 +38690,7 @@
           "context": "4K",
           "digest": "3d2d24f46674",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "34b-v1.6",
           "size_bytes": 20000000000,
           "size_text": "20GB",
@@ -38716,7 +38702,7 @@
           "context": "4K",
           "digest": "6326f59da4f1",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "34b-v1.6-q2_K",
           "size_bytes": 14000000000,
           "size_text": "14GB",
@@ -38728,7 +38714,7 @@
           "context": "4K",
           "digest": "a0376a205682",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "34b-v1.6-q3_K_S",
           "size_bytes": 16000000000,
           "size_text": "16GB",
@@ -38740,7 +38726,7 @@
           "context": "4K",
           "digest": "89e924fed7d4",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "34b-v1.6-q3_K_M",
           "size_bytes": 17000000000,
           "size_text": "17GB",
@@ -38752,7 +38738,7 @@
           "context": "4K",
           "digest": "7f9889648d1a",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "34b-v1.6-q3_K_L",
           "size_bytes": 19000000000,
           "size_text": "19GB",
@@ -38764,7 +38750,7 @@
           "context": "4K",
           "digest": "3d2d24f46674",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "34b-v1.6-q4_0",
           "size_bytes": 20000000000,
           "size_text": "20GB",
@@ -38776,7 +38762,7 @@
           "context": "4K",
           "digest": "96d20de28a1a",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "34b-v1.6-q4_1",
           "size_bytes": 22000000000,
           "size_text": "22GB",
@@ -38788,7 +38774,7 @@
           "context": "4K",
           "digest": "787b2213f0db",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "34b-v1.6-q4_K_S",
           "size_bytes": 20000000000,
           "size_text": "20GB",
@@ -38800,7 +38786,7 @@
           "context": "4K",
           "digest": "538ff4c5a8b8",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "34b-v1.6-q4_K_M",
           "size_bytes": 21000000000,
           "size_text": "21GB",
@@ -38812,7 +38798,7 @@
           "context": "4K",
           "digest": "b239e218bdf0",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "34b-v1.6-q5_0",
           "size_bytes": 24000000000,
           "size_text": "24GB",
@@ -38824,7 +38810,7 @@
           "context": "4K",
           "digest": "60926fd725ec",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "34b-v1.6-q5_1",
           "size_bytes": 27000000000,
           "size_text": "27GB",
@@ -38836,7 +38822,7 @@
           "context": "4K",
           "digest": "cdd8d5db3870",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "34b-v1.6-q5_K_S",
           "size_bytes": 24000000000,
           "size_text": "24GB",
@@ -38848,7 +38834,7 @@
           "context": "4K",
           "digest": "0eb2ab10d35c",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "34b-v1.6-q5_K_M",
           "size_bytes": 25000000000,
           "size_text": "25GB",
@@ -38860,7 +38846,7 @@
           "context": "4K",
           "digest": "8f572ea02185",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "34b-v1.6-q6_K",
           "size_bytes": 29000000000,
           "size_text": "29GB",
@@ -38872,7 +38858,7 @@
           "context": "4K",
           "digest": "959065f30849",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "34b-v1.6-q8_0",
           "size_bytes": 37000000000,
           "size_text": "37GB",
@@ -38884,7 +38870,7 @@
           "context": "4K",
           "digest": "89c50af82d5e",
           "format": "gguf",
-          "input_type": "Text",
+          "input_type": "Text, Image",
           "name": "34b-v1.6-fp16",
           "size_bytes": 69000000000,
           "size_text": "69GB",
@@ -39670,7 +39656,7 @@
       "official": true,
       "owner": null,
       "path": "/library/medgemma",
-      "pulls": 173300,
+      "pulls": 173600,
       "sizes": [
         "4b",
         "27b"
@@ -39801,7 +39787,7 @@
       "official": true,
       "owner": null,
       "path": "/library/medgemma1.5",
-      "pulls": 82000,
+      "pulls": 82100,
       "sizes": [
         "4b"
       ],
@@ -39881,7 +39867,7 @@
       "official": true,
       "owner": null,
       "path": "/library/meditron",
-      "pulls": 765000,
+      "pulls": 765100,
       "sizes": [
         "7b",
         "70b"
@@ -40166,7 +40152,7 @@
       "official": true,
       "owner": null,
       "path": "/library/medllama2",
-      "pulls": 605600,
+      "pulls": 605700,
       "sizes": [
         "7b"
       ],
@@ -40866,7 +40852,7 @@
       "official": true,
       "owner": null,
       "path": "/library/minicpm-v4.5",
-      "pulls": 14000,
+      "pulls": 14100,
       "sizes": [
         "8b"
       ],
@@ -41217,7 +41203,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "MiniMax-M2.5 is a state-of-the-art large language model designed for real-world productivity and coding tasks.",
       "name": "minimax-m2.5",
       "official": true,
@@ -41250,7 +41236,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "MiniMax's M2-series model for coding, agentic workflows, and professional productivity.",
       "name": "minimax-m2.7",
       "official": true,
@@ -41284,13 +41270,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "MiniMax M3: Coding & Agentic Frontier. 1M context window. Native Multimodality.",
       "name": "minimax-m3",
       "official": true,
       "owner": null,
       "path": "/library/minimax-m3",
-      "pulls": 258700,
+      "pulls": 259300,
       "sizes": [],
       "source_url": "https://ollama.com/library/minimax-m3",
       "tag_count": 1,
@@ -42934,7 +42920,7 @@
         "tools"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "A general-purpose multimodal mixture-of-experts model for production-grade tasks and enterprise workloads.",
       "name": "mistral-large-3",
       "official": true,
@@ -45569,7 +45555,7 @@
       "official": true,
       "owner": null,
       "path": "/library/nemotron-3-nano",
-      "pulls": 589600,
+      "pulls": 589700,
       "sizes": [
         "4b",
         "30b"
@@ -45802,13 +45788,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "NVIDIA Nemotron 3 Ultra is built for high-throughput reasoning and long-running agent workflows.",
       "name": "nemotron-3-ultra",
       "official": true,
       "owner": null,
       "path": "/library/nemotron-3-ultra",
-      "pulls": 25700,
+      "pulls": 25800,
       "sizes": [],
       "source_url": "https://ollama.com/library/nemotron-3-ultra",
       "tag_count": 1,
@@ -45841,7 +45827,7 @@
       "official": true,
       "owner": null,
       "path": "/library/nemotron-cascade-2",
-      "pulls": 133500,
+      "pulls": 133600,
       "sizes": [
         "30b"
       ],
@@ -47223,9 +47209,7 @@
       "owner": null,
       "path": "/library/nomic-embed-text",
       "pulls": 78700000,
-      "sizes": [
-        "137m"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/nomic-embed-text",
       "tag_count": 3,
       "tags": [
@@ -47280,10 +47264,8 @@
       "official": true,
       "owner": null,
       "path": "/library/nomic-embed-text-v2-moe",
-      "pulls": 521299,
-      "sizes": [
-        "475m"
-      ],
+      "pulls": 521500,
+      "sizes": [],
       "source_url": "https://ollama.com/library/nomic-embed-text-v2-moe",
       "tag_count": 1,
       "tags": [
@@ -47316,9 +47298,7 @@
       "owner": null,
       "path": "/library/north-mini-code-1.0",
       "pulls": 26500,
-      "sizes": [
-        "30b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/north-mini-code-1.0",
       "tag_count": 7,
       "tags": [
@@ -47419,7 +47399,7 @@
       "official": true,
       "owner": null,
       "path": "/library/notus",
-      "pulls": 523100,
+      "pulls": 523200,
       "sizes": [
         "7b"
       ],
@@ -49545,7 +49525,7 @@
       "official": true,
       "owner": null,
       "path": "/library/olmo-3",
-      "pulls": 441600,
+      "pulls": 441700,
       "sizes": [
         "7b",
         "32b"
@@ -50991,9 +50971,7 @@
       "owner": null,
       "path": "/library/openhermes",
       "pulls": 1100000,
-      "sizes": [
-        "7b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/openhermes",
       "tag_count": 35,
       "tags": [
@@ -53491,10 +53469,7 @@
       "updated_title": "Nov 22, 2023 10:13 PM UTC"
     },
     {
-      "capabilities": [
-        "tools",
-        "thinking"
-      ],
+      "capabilities": [],
       "cloud": false,
       "cloud_only": false,
       "description": "A self-improving family of open-source models for agentic coding",
@@ -53502,7 +53477,7 @@
       "official": true,
       "owner": null,
       "path": "/library/ornith",
-      "pulls": 258300,
+      "pulls": 258700,
       "sizes": [
         "9b",
         "35b"
@@ -53633,7 +53608,7 @@
       "official": true,
       "owner": null,
       "path": "/library/paraphrase-multilingual",
-      "pulls": 925400,
+      "pulls": 925500,
       "sizes": [
         "278m"
       ],
@@ -54810,7 +54785,7 @@
       "official": true,
       "owner": null,
       "path": "/library/phi3.5",
-      "pulls": 984300,
+      "pulls": 984400,
       "sizes": [
         "3.8b"
       ],
@@ -55268,9 +55243,7 @@
       "updated_title": "May 1, 2025 3:53 AM UTC"
     },
     {
-      "capabilities": [
-        "thinking"
-      ],
+      "capabilities": [],
       "cloud": false,
       "cloud_only": false,
       "description": "Phi 4 reasoning and reasoning plus are 14-billion parameter open-weight reasoning models that rival much larger models on complex reasoning tasks.",
@@ -67552,9 +67525,7 @@
       "owner": null,
       "path": "/library/qwen3-coder-next",
       "pulls": 1800000,
-      "sizes": [
-        "80b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/qwen3-coder-next",
       "tag_count": 3,
       "tags": [
@@ -67778,7 +67749,7 @@
       "official": true,
       "owner": null,
       "path": "/library/qwen3-next",
-      "pulls": 573300,
+      "pulls": 573400,
       "sizes": [
         "80b"
       ],
@@ -70692,7 +70663,7 @@
       "official": true,
       "owner": null,
       "path": "/library/rnj-1",
-      "pulls": 486500,
+      "pulls": 486600,
       "sizes": [
         "8b"
       ],
@@ -75523,7 +75494,7 @@
       "official": true,
       "owner": null,
       "path": "/library/stable-beluga",
-      "pulls": 901300,
+      "pulls": 901400,
       "sizes": [
         "7b",
         "13b",
@@ -79887,7 +79858,7 @@
       "official": true,
       "owner": null,
       "path": "/library/starling-lm",
-      "pulls": 940400,
+      "pulls": 940500,
       "sizes": [
         "7b"
       ],
@@ -81207,7 +81178,7 @@
       "official": true,
       "owner": null,
       "path": "/library/tulu3",
-      "pulls": 370600,
+      "pulls": 370700,
       "sizes": [
         "8b",
         "70b"
@@ -82690,7 +82661,7 @@
       "official": true,
       "owner": null,
       "path": "/library/wizard-math",
-      "pulls": 977900,
+      "pulls": 978000,
       "sizes": [
         "7b",
         "13b",
@@ -85139,9 +85110,7 @@
       "owner": null,
       "path": "/library/wizardlm",
       "pulls": 860000,
-      "sizes": [
-        "7b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/wizardlm",
       "tag_count": 73,
       "tags": [
@@ -92370,10 +92339,8 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 231,
-      "sizes": [
-        "284b"
-      ],
+      "pulls": 232,
+      "sizes": [],
       "source_url": "https://ollama.com/frob/deepseek-v4-flash",
       "tag_count": 2,
       "tags": [
@@ -92803,9 +92770,7 @@
       "owner": "frob",
       "path": "/frob/hy-mt1.5",
       "pulls": 45,
-      "sizes": [
-        "2b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/hy-mt1.5",
       "tag_count": 3,
       "tags": [
@@ -92858,7 +92823,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 1569,
+      "pulls": 1573,
       "sizes": [
         "1.8b",
         "7b",
@@ -92967,9 +92932,7 @@
       "owner": "frob",
       "path": "/frob/iquest-coder",
       "pulls": 384,
-      "sizes": [
-        "40b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/iquest-coder",
       "tag_count": 3,
       "tags": [
@@ -93025,9 +92988,7 @@
       "owner": "frob",
       "path": "/frob/KaLM-Embedding-Gemma3-12B-2511",
       "pulls": 192,
-      "sizes": [
-        "12b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/KaLM-Embedding-Gemma3-12B-2511",
       "tag_count": 1,
       "tags": [
@@ -93145,9 +93106,7 @@
       "owner": "frob",
       "path": "/frob/kimi-k2.5-prism-reap",
       "pulls": 154,
-      "sizes": [
-        "519b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/kimi-k2.5-prism-reap",
       "tag_count": 3,
       "tags": [
@@ -93524,9 +93483,7 @@
       "owner": "frob",
       "path": "/frob/llama3.2-vision",
       "pulls": 73,
-      "sizes": [
-        "10b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/llama3.2-vision",
       "tag_count": 2,
       "tags": [
@@ -93569,10 +93526,8 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 605,
-      "sizes": [
-        "4b"
-      ],
+      "pulls": 606,
+      "sizes": [],
       "source_url": "https://ollama.com/frob/locooperator",
       "tag_count": 4,
       "tags": [
@@ -93656,7 +93611,7 @@
           "name": "2b",
           "size_bytes": 2600000000,
           "size_text": "2.6GB",
-          "updated": "5 months ago",
+          "updated": "6 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -93680,7 +93635,7 @@
           "name": "2b-Q4_K_M",
           "size_bytes": 1900000000,
           "size_text": "1.9GB",
-          "updated": "5 months ago",
+          "updated": "6 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -93692,7 +93647,7 @@
           "name": "2b-Q8_0",
           "size_bytes": 2600000000,
           "size_text": "2.6GB",
-          "updated": "5 months ago",
+          "updated": "6 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -93704,7 +93659,7 @@
           "name": "2b-F16",
           "size_bytes": 4300000000,
           "size_text": "4.3GB",
-          "updated": "5 months ago",
+          "updated": "6 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -93728,7 +93683,7 @@
           "name": "8b-Q8_0",
           "size_bytes": 9800000000,
           "size_text": "9.8GB",
-          "updated": "5 months ago",
+          "updated": "6 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -93740,7 +93695,7 @@
           "name": "8b-F16",
           "size_bytes": 18000000000,
           "size_text": "18GB",
-          "updated": "5 months ago",
+          "updated": "6 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         }
@@ -94402,9 +94357,7 @@
       "owner": "frob",
       "path": "/frob/mixtao",
       "pulls": 1,
-      "sizes": [
-        "13b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/mixtao",
       "tag_count": 3,
       "tags": [
@@ -94461,9 +94414,7 @@
       "owner": "frob",
       "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "pulls": 683,
-      "sizes": [
-        "8b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "tag_count": 1,
       "tags": [
@@ -94493,9 +94444,7 @@
       "owner": "frob",
       "path": "/frob/NireeskshanAI_Niri",
       "pulls": 1,
-      "sizes": [
-        "7b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/NireeskshanAI_Niri",
       "tag_count": 3,
       "tags": [
@@ -94551,9 +94500,7 @@
       "owner": "frob",
       "path": "/frob/nuextract-2.0",
       "pulls": 530,
-      "sizes": [
-        "8b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/nuextract-2.0",
       "tag_count": 4,
       "tags": [
@@ -94835,9 +94782,7 @@
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
       "pulls": 3372,
-      "sizes": [
-        "80b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/qwen3-coder-next",
       "tag_count": 7,
       "tags": [
@@ -95211,9 +95156,7 @@
       "owner": "frob",
       "path": "/frob/qwen3.6",
       "pulls": 78,
-      "sizes": [
-        "36b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/qwen3.6",
       "tag_count": 1,
       "tags": [
@@ -95244,7 +95187,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/strand-rust-coder",
-      "pulls": 1145,
+      "pulls": 1146,
       "sizes": [
         "14b"
       ],
@@ -95303,9 +95246,7 @@
       "owner": "maternion",
       "path": "/maternion/sweep-next-edit-1.5B",
       "pulls": 367,
-      "sizes": [
-        "1b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/maternion/sweep-next-edit-1.5B",
       "tag_count": 1,
       "tags": [
@@ -95418,10 +95359,8 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 612,
-      "sizes": [
-        "3b"
-      ],
+      "pulls": 614,
+      "sizes": [],
       "source_url": "https://ollama.com/frob/unlimited-ocr",
       "tag_count": 2,
       "tags": [
@@ -95465,9 +95404,7 @@
       "owner": "frob",
       "path": "/frob/whyhow-ai_PatientSeek",
       "pulls": 8,
-      "sizes": [
-        "8b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/whyhow-ai_PatientSeek",
       "tag_count": 2,
       "tags": [
