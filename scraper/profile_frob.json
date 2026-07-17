@@ -103,7 +103,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1439,
+      "pulls": 1441,
       "sizes": [
         "753b"
       ],
@@ -194,7 +194,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.1",
-      "pulls": 816,
+      "pulls": 817,
       "sizes": [
         "744b"
       ],
@@ -271,6 +271,25 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "unlimited-ocr",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/unlimited-ocr",
+      "pulls": 612,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/unlimited-ocr",
+      "tag_count": 2,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Jun 30, 2026 11:39 PM UTC"
+    },
+    {
+      "capabilities": [
         "tools"
       ],
       "cloud": false,
@@ -287,25 +306,6 @@
       "tags": [],
       "updated": "4 months ago",
       "updated_title": "Mar 1, 2026 1:44 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "unlimited-ocr",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/unlimited-ocr",
-      "pulls": 605,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/unlimited-ocr",
-      "tag_count": 2,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Jun 30, 2026 11:39 PM UTC"
     },
     {
       "capabilities": [
@@ -341,7 +341,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/nuextract-2.0",
-      "pulls": 529,
+      "pulls": 530,
       "sizes": [],
       "source_url": "https://ollama.com/frob/nuextract-2.0",
       "tag_count": 4,
@@ -361,7 +361,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5",
-      "pulls": 472,
+      "pulls": 474,
       "sizes": [
         "744b"
       ],
@@ -425,7 +425,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.5",
-      "pulls": 317,
+      "pulls": 318,
       "sizes": [
         "309b"
       ],
@@ -447,7 +447,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 229,
+      "pulls": 231,
       "sizes": [],
       "source_url": "https://ollama.com/frob/deepseek-v4-flash",
       "tag_count": 2,
@@ -530,7 +530,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.6",
-      "pulls": 77,
+      "pulls": 78,
       "sizes": [],
       "source_url": "https://ollama.com/frob/qwen3.6",
       "tag_count": 1,
