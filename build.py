@@ -652,7 +652,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
         <button id="size-filter-btn" type="button" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center select-none hover:bg-neutral-50 dark:hover:bg-neutral-900">
           Size
         </button>
-        <div id="size-filter-panel" class="hidden absolute left-0 z-50 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-3xl pl-4 pr-3 py-2 shadow-lg" style="min-width: 420px; top: calc(100% + 6px);">
+        <div id="size-filter-panel" class="hidden absolute z-50 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-3xl pl-4 pr-3 py-2 shadow-lg left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0" style="top: calc(100% + 6px); width: calc(100vw - 1rem); max-width: 420px;">
           <!-- Slider + Reset side by side -->
           <div class="flex items-end gap-4">
             <!-- Slider area (flex-1) -->
@@ -708,7 +708,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
         <button id="more-filter-btn" type="button" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center select-none hover:bg-neutral-50 dark:hover:bg-neutral-900">
           More
         </button>
-        <div id="more-filter-panel" class="hidden absolute left-0 z-50 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-3xl shadow-lg" style="top: calc(100% + 6px); width: max-content;">
+        <div id="more-filter-panel" class="hidden absolute z-50 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-3xl shadow-lg left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0" style="top: calc(100% + 6px); width: max-content; max-width: calc(100vw - 1rem);">
           <div class="flex flex-col p-4" style="gap: 12px;">
             <!-- Row 1: Audio + MLX + MTP left-aligned -->
             <div class="flex gap-1.5">
@@ -2264,8 +2264,8 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 .dark .text-green-700 { color: #4ade80; }
 
 /* --- pill active state (purple) for peer-checked and JS-toggled buttons --- */
-.dark .peer:checked ~ label { background-color: #1e1b4b; border-color: #6366f1; }
-.dark .dark\:bg-neutral-800 { background-color: #1e1b4b; border-color: #6366f1; }
+.dark .peer:checked ~ label { background-color: #1e1b4b !important; border-color: #6366f1 !important; }
+.dark .dark\:bg-neutral-800 { background-color: #1e1b4b !important; border-color: #6366f1 !important; }
 
 /* --- search preview dropdown --- */
 #searchpreview { max-height: 24rem; overflow-y: auto; }
@@ -2294,6 +2294,14 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 .hover\:bg-neutral-100:hover { background-color: #f5f5f5; }
 /* gap-1.5 missing from vendored tailwind.css */
 .gap-1\.5 { gap: 0.375rem; }
+
+/* --- Responsive dropdown panel positioning --- */
+/* Mobile: center under button, shrink to fit viewport */
+/* Desktop (md+): left-align under button, natural width */
+@media (min-width: 768px) {
+  .md\:left-0 { left: 0 !important; }
+  .md\:translate-x-0 { --tw-translate-x: 0 !important; transform: translate(0,var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important; }
+}
 """
 
 APP_JS = r"""// ollama-search frontend logic.
@@ -2720,10 +2728,15 @@ function initApp() {
 
     var sizeBtn = document.getElementById('size-filter-btn');
     var sizePanel = document.getElementById('size-filter-panel');
+    var moreBtn = document.getElementById('more-filter-btn');
+    var morePanel = document.getElementById('more-filter-panel');
     if (sizeBtn && sizePanel) {
       sizeBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         sizePanel.classList.toggle('hidden');
+        if (!sizePanel.classList.contains('hidden') && morePanel) {
+          morePanel.classList.add('hidden');
+        }
       });
       document.addEventListener('click', function(e) {
         if (!sizePanel.contains(e.target) && e.target !== sizeBtn) {
@@ -2732,12 +2745,13 @@ function initApp() {
       });
     }
 
-    var moreBtn = document.getElementById('more-filter-btn');
-    var morePanel = document.getElementById('more-filter-panel');
     if (moreBtn && morePanel) {
       moreBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         morePanel.classList.toggle('hidden');
+        if (!morePanel.classList.contains('hidden') && sizePanel) {
+          sizePanel.classList.add('hidden');
+        }
       });
       document.addEventListener('click', function(e) {
         if (!morePanel.contains(e.target) && e.target !== moreBtn) {
