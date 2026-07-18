@@ -652,7 +652,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
         <button id="size-filter-btn" type="button" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center select-none hover:bg-neutral-50 dark:hover:bg-neutral-900">
           Size
         </button>
-        <div id="size-filter-panel" class="hidden absolute z-50 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-3xl pl-4 pr-3 py-2 shadow-lg left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0" style="top: calc(100% + 6px); width: calc(100vw - 1rem); max-width: 420px;">
+        <div id="size-filter-panel" class="hidden absolute z-50 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-3xl pl-4 pr-3 py-2 shadow-lg md:left-0 md:translate-x-0" style="width: calc(100vw - 1rem); max-width: 420px;">
           <!-- Slider + Reset side by side -->
           <div class="flex items-end gap-4">
             <!-- Slider area (flex-1) -->
@@ -708,7 +708,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
         <button id="more-filter-btn" type="button" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center select-none hover:bg-neutral-50 dark:hover:bg-neutral-900">
           More
         </button>
-        <div id="more-filter-panel" class="hidden absolute z-50 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-3xl shadow-lg left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0" style="top: calc(100% + 6px); width: max-content; max-width: calc(100vw - 1rem);">
+        <div id="more-filter-panel" class="hidden absolute z-50 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-3xl shadow-lg md:left-0 md:translate-x-0" style="width: max-content; max-width: calc(100vw - 1rem);">
           <div class="flex flex-col p-4" style="gap: 12px;">
             <!-- Row 1: Audio + MLX + MTP left-aligned -->
             <div class="flex gap-1.5">
@@ -2296,11 +2296,35 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 .gap-1\.5 { gap: 0.375rem; }
 
 /* --- Responsive dropdown panel positioning --- */
-/* Mobile: center under button, shrink to fit viewport */
-/* Desktop (md+): left-align under button, natural width */
+/* Mobile (<768px): position: fixed relative to viewport so the panel is always
+   fully visible (no overflow off either edge). left/right pin it to the viewport
+   with 0.5rem gutters; width:auto lets it stretch to fill. top is set via JS
+   (viewport-relative, computed from the button's position) when the panel opens.
+   Desktop (>=768px): position: absolute relative to the button wrapper; left-0
+   aligns it under the button; inline width/max-width apply for natural sizing. */
+@media (max-width: 767px) {
+  #size-filter-panel,
+  #more-filter-panel {
+    position: fixed !important;
+    left: 0.5rem !important;
+    right: 0.5rem !important;
+    width: auto !important;
+    max-width: none !important;
+    transform: none !important;
+    /* top is supplied via JS (var(--panel-top)); fallback keeps it just under
+       the viewport top so it is never off-screen before JS runs. */
+    top: var(--panel-top, 4rem);
+  }
+}
 @media (min-width: 768px) {
   .md\:left-0 { left: 0 !important; }
   .md\:translate-x-0 { --tw-translate-x: 0 !important; transform: translate(0,var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important; }
+  /* On desktop, clear any viewport-relative top that JS set while in mobile view,
+     so the inline `top: calc(100% + 6px)` (relative to the button wrapper) applies. */
+  #size-filter-panel,
+  #more-filter-panel {
+    top: calc(100% + 6px) !important;
+  }
 }
 """
 
@@ -2730,12 +2754,29 @@ function initApp() {
     var sizePanel = document.getElementById('size-filter-panel');
     var moreBtn = document.getElementById('more-filter-btn');
     var morePanel = document.getElementById('more-filter-panel');
+
+    // On mobile the panels are position:fixed relative to the viewport (see CSS).
+    // Set a viewport-relative top so the panel sits just under its button, and
+    // never off the bottom of the screen. Recomputed each time a panel opens and
+    // on resize. On desktop (>=768px) the CSS overrides `top` back to the
+    // button-relative calc(100% + 6px), so this var is harmless there.
+    function isMobile() { return window.innerWidth < 768; }
+    function placePanel(panel, btn) {
+      if (!panel || !btn) return;
+      if (!isMobile()) { panel.style.removeProperty('--panel-top'); return; }
+      var top = btn.getBoundingClientRect().bottom + 6;
+      var max = window.innerHeight - 80; // leave room so it can't render fully off-screen
+      if (top > max) top = Math.max(8, max);
+      panel.style.setProperty('--panel-top', top + 'px');
+    }
+
     if (sizeBtn && sizePanel) {
       sizeBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         sizePanel.classList.toggle('hidden');
-        if (!sizePanel.classList.contains('hidden') && morePanel) {
-          morePanel.classList.add('hidden');
+        if (!sizePanel.classList.contains('hidden')) {
+          if (morePanel) morePanel.classList.add('hidden');
+          placePanel(sizePanel, sizeBtn);
         }
       });
       document.addEventListener('click', function(e) {
@@ -2749,8 +2790,9 @@ function initApp() {
       moreBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         morePanel.classList.toggle('hidden');
-        if (!morePanel.classList.contains('hidden') && sizePanel) {
-          sizePanel.classList.add('hidden');
+        if (!morePanel.classList.contains('hidden')) {
+          if (sizePanel) sizePanel.classList.add('hidden');
+          placePanel(morePanel, moreBtn);
         }
       });
       document.addEventListener('click', function(e) {
@@ -2759,6 +2801,12 @@ function initApp() {
         }
       });
     }
+
+    // Re-place any open panel when the viewport size/orientation changes.
+    window.addEventListener('resize', function() {
+      if (sizePanel && !sizePanel.classList.contains('hidden')) placePanel(sizePanel, sizeBtn);
+      if (morePanel && !morePanel.classList.contains('hidden')) placePanel(morePanel, moreBtn);
+    });
     document.querySelectorAll('.more-filter').forEach(function(cb) { cb.addEventListener('change', applyFilters); });
     document.querySelectorAll('.moe-radio').forEach(function(r) { r.addEventListener('change', applyFilters); });
     document.querySelectorAll('.tpl-radio').forEach(function(r) { r.addEventListener('change', applyFilters); });
