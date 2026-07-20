@@ -103,7 +103,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1481,
+      "pulls": 1491,
       "sizes": [
         "753b"
       ],
@@ -217,7 +217,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/davidau-qwen3.6-uncensored",
-      "pulls": 798,
+      "pulls": 799,
       "sizes": [
         "40b"
       ],
@@ -251,6 +251,25 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "unlimited-ocr",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/unlimited-ocr",
+      "pulls": 692,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/unlimited-ocr",
+      "tag_count": 2,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Jun 30, 2026 11:39 PM UTC"
+    },
+    {
+      "capabilities": [
         "tools",
         "thinking"
       ],
@@ -261,32 +280,13 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "pulls": 689,
+      "pulls": 690,
       "sizes": [],
       "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "tag_count": 1,
       "tags": [],
       "updated": "4 months ago",
       "updated_title": "Mar 14, 2026 12:46 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "unlimited-ocr",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/unlimited-ocr",
-      "pulls": 675,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/unlimited-ocr",
-      "tag_count": 2,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Jun 30, 2026 11:39 PM UTC"
     },
     {
       "capabilities": [
@@ -402,7 +402,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2-flash",
-      "pulls": 341,
+      "pulls": 345,
       "sizes": [
         "309b"
       ],
@@ -447,7 +447,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 252,
+      "pulls": 253,
       "sizes": [],
       "source_url": "https://ollama.com/frob/deepseek-v4-flash",
       "tag_count": 2,
