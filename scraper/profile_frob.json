@@ -62,7 +62,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3388,
+      "pulls": 3391,
       "sizes": [],
       "source_url": "https://ollama.com/frob/qwen3-coder-next",
       "tag_count": 7,
@@ -103,7 +103,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1512,
+      "pulls": 1515,
       "sizes": [
         "753b"
       ],
@@ -206,6 +206,25 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "unlimited-ocr",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/unlimited-ocr",
+      "pulls": 811,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/unlimited-ocr",
+      "tag_count": 2,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Jun 30, 2026 11:39 PM UTC"
+    },
+    {
+      "capabilities": [
         "vision",
         "tools",
         "thinking"
@@ -226,25 +245,6 @@
       "tags": [],
       "updated": "3 weeks ago",
       "updated_title": "Jun 26, 2026 3:15 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "unlimited-ocr",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/unlimited-ocr",
-      "pulls": 791,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/unlimited-ocr",
-      "tag_count": 2,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Jun 30, 2026 11:39 PM UTC"
     },
     {
       "capabilities": [
@@ -280,7 +280,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "pulls": 692,
+      "pulls": 693,
       "sizes": [],
       "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "tag_count": 1,
@@ -361,7 +361,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5",
-      "pulls": 475,
+      "pulls": 476,
       "sizes": [
         "744b"
       ],
