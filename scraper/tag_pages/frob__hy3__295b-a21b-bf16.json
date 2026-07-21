@@ -1,0 +1,35 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "hy_v3",
+      "blob_url": "/frob/hy3:295b-a21b-bf16/blobs/a94787115277",
+      "content_preview": "arch  hy_v3",
+      "parameters": "299B",
+      "quantization": "BF16",
+      "size": "598GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/hy3:295b-a21b-bf16/blobs/99d0ca962a6f",
+      "content_preview": "Tencent is pleased to support the open source community by making Tencent Hy3 available.\nCopyright (",
+      "parameters": "",
+      "quantization": "",
+      "size": "12kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/frob/hy3:295b-a21b-bf16",
+  "manifest_digest": "1f3585533864",
+  "manifest_size": "598GB",
+  "manifest_updated": "32 minutes ago",
+  "path": "/frob/hy3",
+  "tag_name": "295b-a21b-bf16"
+}

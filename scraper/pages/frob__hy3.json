@@ -1,0 +1,16 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "hy3",
+  "path": "/frob/hy3",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://huggingface.co/tencent/Hy3\" rel=\"nofollow\">https://huggingface.co/tencent/Hy3</a></p>\n\n<p>Needs ollama 0.32.2+</p>\n\n<pre><code>$ ollama run frob/hy3 --experimental --experimental-yolo\n\nThis experimental version of Ollama has the bash tool enabled.\nModels can read files on your computer, or run commands (after you allow them).\n\nwarning: yolo mode - all tool approvals will be skipped\n&gt;&gt;&gt; what is the time?\n\nrunning: Bash: date\n  Tue Jul 21 07:06:16 PM CEST 2026\n  \n\nThe current time is **7:06 PM CEST** on Tuesday, July 21, 2026.\n</code></pre>\n\n        \n      "
+}
