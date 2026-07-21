@@ -1,0 +1,44 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "laguna",
+      "blob_url": "/library/laguna-s-2.1:q4_k_m/blobs/71693018bafb",
+      "content_preview": "arch  laguna",
+      "parameters": "118B",
+      "quantization": "Q4_K_M",
+      "size": "75GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/laguna-s-2.1:q4_k_m/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/laguna-s-2.1:q4_k_m/blobs/5b9b5691fcbe",
+      "content_preview": "OpenMDW License Agreement, version 1.1 (OpenMDW-1.1)\nBy exercising rights granted to you under this",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.6kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/laguna-s-2.1:q4_k_m",
+  "manifest_digest": "592a1286688e",
+  "manifest_size": "75GB",
+  "manifest_updated": "yesterday",
+  "path": "/library/laguna-s-2.1",
+  "tag_name": "q4_k_m"
+}

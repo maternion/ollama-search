@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model laguna-s-2.1",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model laguna-s-2.1",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model laguna-s-2.1",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model laguna-s-2.1",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model laguna-s-2.1",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model laguna-s-2.1",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "laguna-s-2.1",
+  "path": "/library/laguna-s-2.1",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/laguna-s-2.1/0f2f47dd-ff7b-47ad-85dd-83c15d521055\" alt=\"laguna-s-2-1-banner.svg\"/></p>\n\n<h1>Laguna S 2.1</h1>\n\n<h2>Overview</h2>\n\n<p>Laguna S 2.1 is a Mixture-of-Experts model built for agentic coding and\nextended reasoning. It is the larger sibling of Laguna XS 2.1, trading a\nbigger memory footprint for stronger coding and reasoning performance while\nkeeping a small activated-parameter count so it stays practical to run on a\nsingle high-memory machine.</p>\n\n<h2>Key Specifications</h2>\n\n<ul>\n<li><strong>Total Parameters</strong>: 118B (8B activated per token)</li>\n<li><strong>Architecture</strong>: 48 layers with mixed attention (12 global, 36 sliding window at 512)</li>\n<li><strong>Experts</strong>: 256 routed (top-10 per token) with 1 shared expert</li>\n<li><strong>Context Window</strong>: 256K tokens</li>\n<li><strong>License</strong>: OpenMDW-1.1</li>\n</ul>\n\n<h2>Available Model Variants</h2>\n\n<table>\n<thead>\n<tr>\n<th>Tag</th>\n<th>Size</th>\n<th>Context</th>\n<th>Type</th>\n</tr>\n</thead>\n\n<tbody>\n<tr>\n<td>laguna-s-2.1:latest</td>\n<td>75GB</td>\n<td>256K</td>\n<td>Text</td>\n</tr>\n\n<tr>\n<td>laguna-s-2.1:q4_k_m</td>\n<td>75GB</td>\n<td>256K</td>\n<td>Text</td>\n</tr>\n\n<tr>\n<td>laguna-s-2.1:q8_0</td>\n<td>128GB</td>\n<td>256K</td>\n<td>Text</td>\n</tr>\n\n<tr>\n<td>laguna-s-2.1:f16</td>\n<td>235GB</td>\n<td>256K</td>\n<td>Text</td>\n</tr>\n</tbody>\n</table>\n\n<h2>Benchmark Results</h2>\n\n\n\n<h2>Technical Highlights</h2>\n\n<p>Sigmoid expert gating with normalised expert weights and per-layer rotary\nscales. Attention alternates one global layer for every three sliding-window\nlayers, with grouped-query attention (8 KV heads) keeping the KV cache small\nat long context. Supports tool calling and interleaved thinking, with thinking\nenabled or disabled per request.</p>\n\n<h2>Usage</h2>\n\n<pre><code>ollama run laguna-s-2.1\n</code></pre>\n\n<p>Use our coding agent, <a href=\"https://github.com/poolsideai/pool\" rel=\"nofollow\">pool</a>, for the best experience.</p>\n\n<pre><code>POOLSIDE_STANDALONE_CONTEXT_LENGTH=262144\nollama launch pool --model laguna-s-2.1\n</code></pre>\n\n<p>Tool calling and thinking work through Ollama’s built-in template:</p>\n\n<pre><code># thinking on a single request\ncurl http://localhost:11434/api/chat -d &#39;{\n  &#34;model&#34;: &#34;laguna-s-2.1&#34;,\n  &#34;messages&#34;: [{&#34;role&#34;: &#34;user&#34;, &#34;content&#34;: &#34;If 3x+6=21, what is x?&#34;}],\n  &#34;think&#34;: true\n}&#39;\n</code></pre>\n\n<h3>Hardware and settings</h3>\n\n<p>The q4_k_m weights need roughly 75GB of memory, so a 128GB unified-memory\nmachine (Apple Silicon or DGX Spark) is the practical minimum, and measured\nsingle-stream decode is around 13-18 tokens/s on that class of hardware. It\nalso runs on datacenter GPUs such as the NVIDIA H200, where far higher memory\nbandwidth gives correspondingly faster generation.</p>\n\n<p>Two settings matter in practice:</p>\n\n<ul>\n<li><strong>Increase the load timeout.</strong> A cold start reads 75GB from disk, which can\nexceed Ollama’s default 5 minute model load timeout on slower storage. Set\n<code>OLLAMA_LOAD_TIMEOUT=20m</code> if the first run times out.</li>\n<li><strong>Raise <code>num_ctx</code> deliberately.</strong> Ollama defaults to a small context; long\ncontext costs memory on top of the 75GB of weights, so raise it only as far\nas your machine allows.</li>\n</ul>\n\n<p>Thinking consumes output tokens before the final answer appears, so allow a\ngenerous <code>num_predict</code> on reasoning prompts or the reply can be cut off\nmid-thought.</p>\n\n<h2>Notes</h2>\n\n<p>Verified on macOS (Apple Silicon, Metal), NVIDIA DGX Spark (GB10), and\nNVIDIA H200, with Ollama 0.31 and 0.32.</p>\n\n        \n      "
+}

@@ -1,0 +1,44 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "laguna",
+      "blob_url": "/library/laguna-s-2.1:f16/blobs/ee53c3b9ffa3",
+      "content_preview": "arch  laguna",
+      "parameters": "118B",
+      "quantization": "F16",
+      "size": "235GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/laguna-s-2.1:f16/blobs/5b9b5691fcbe",
+      "content_preview": "OpenMDW License Agreement, version 1.1 (OpenMDW-1.1)\nBy exercising rights granted to you under this",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.6kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/laguna-s-2.1:f16/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/laguna-s-2.1:f16",
+  "manifest_digest": "04f368f2a5f5",
+  "manifest_size": "235GB",
+  "manifest_updated": "yesterday",
+  "path": "/library/laguna-s-2.1",
+  "tag_name": "f16"
+}
