@@ -71,6 +71,25 @@
       "updated_title": "Feb 3, 2026 9:15 PM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "glm-5.2",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/glm-5.2",
+      "pulls": 1547,
+      "sizes": [
+        "753b"
+      ],
+      "source_url": "https://ollama.com/frob/glm-5.2",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "3 weeks ago",
+      "updated_title": "Jun 26, 2026 3:11 PM UTC"
+    },
+    {
       "capabilities": [
         "vision",
         "tools",
@@ -83,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.5",
-      "pulls": 1540,
+      "pulls": 1541,
       "sizes": [
         "122b",
         "397b"
@@ -93,25 +112,6 @@
       "tags": [],
       "updated": "3 weeks ago",
       "updated_title": "Jun 26, 2026 3:19 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "glm-5.2",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/glm-5.2",
-      "pulls": 1536,
-      "sizes": [
-        "753b"
-      ],
-      "source_url": "https://ollama.com/frob/glm-5.2",
-      "tag_count": 6,
-      "tags": [],
-      "updated": "3 weeks ago",
-      "updated_title": "Jun 26, 2026 3:11 PM UTC"
     },
     {
       "capabilities": [
@@ -140,6 +140,25 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "unlimited-ocr",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/unlimited-ocr",
+      "pulls": 946,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/unlimited-ocr",
+      "tag_count": 2,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Jun 30, 2026 11:39 PM UTC"
+    },
+    {
+      "capabilities": [
         "tools",
         "thinking"
       ],
@@ -159,25 +178,6 @@
       "tags": [],
       "updated": "3 weeks ago",
       "updated_title": "Jun 26, 2026 3:20 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "unlimited-ocr",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/unlimited-ocr",
-      "pulls": 905,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/unlimited-ocr",
-      "tag_count": 2,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Jun 30, 2026 11:39 PM UTC"
     },
     {
       "capabilities": [
@@ -320,7 +320,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kimi-k2.5",
-      "pulls": 584,
+      "pulls": 588,
       "sizes": [
         "1030b"
       ],
@@ -341,7 +341,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/nuextract-2.0",
-      "pulls": 551,
+      "pulls": 553,
       "sizes": [],
       "source_url": "https://ollama.com/frob/nuextract-2.0",
       "tag_count": 4,
@@ -447,7 +447,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 274,
+      "pulls": 276,
       "sizes": [],
       "source_url": "https://ollama.com/frob/deepseek-v4-flash",
       "tag_count": 2,
@@ -467,7 +467,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen-agentworld",
-      "pulls": 221,
+      "pulls": 222,
       "sizes": [
         "35b"
       ],
@@ -509,7 +509,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kimi-k2.5-prism-reap",
-      "pulls": 154,
+      "pulls": 155,
       "sizes": [],
       "source_url": "https://ollama.com/frob/kimi-k2.5-prism-reap",
       "tag_count": 3,
