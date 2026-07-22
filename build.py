@@ -182,6 +182,22 @@ def load_ranks() -> dict:
     return {}
 
 
+def _parse_updated_title(s: str):
+    """Parse an ollama.com absolute update timestamp e.g. "Nov 19, 2023 1:58 PM UTC".
+
+    Returns a sortable datetime (datetime.min on failure). Used to derive
+    the "updated" sort order (most-recent tag update), which is distinct
+    from the "newest" sort order (model creation/first-publish, sourced
+    from ollama.com's /library?sort=newest and stored as newest_rank).
+    """
+    from datetime import datetime as _dt
+
+    try:
+        return _dt.strptime(s, "%b %d, %Y %I:%M %p UTC")
+    except Exception:
+        return _dt.min
+
+
 def load_tags(model_path: str) -> list[dict]:
     tf = TAGS_DIR / f"{slugify(model_path)}.json"
     if not tf.exists():
@@ -625,6 +641,27 @@ def render_card(
 
 
 def build_index(models: list[dict], ranks: dict) -> None:
+    # Augment ranks with sort orders the scraper does not provide.
+    # updated_rank: most-recent tag update, descending (newest update = 0)
+    # oldest_rank: model creation, ascending (oldest model = 0)
+    updated_order = sorted(
+        models,
+        key=lambda m: _parse_updated_title(m.get("updated_title") or ""),
+        reverse=True,
+    )
+    for rank, m in enumerate(updated_order):
+        ranks.setdefault(m["name"], {})["updated_rank"] = rank
+    oldest_order = sorted(
+        models,
+        key=lambda m: (
+            ranks.get(m["name"], {}).get("newest_rank", 9999) == 9999,
+            -ranks.get(m["name"], {}).get("newest_rank", 9999),
+        ),
+    )
+    for rank, m in enumerate(oldest_order):
+        nr = ranks.get(m["name"], {}).get("newest_rank", 9999)
+        ranks.setdefault(m["name"], {})["oldest_rank"] = 9999 if nr == 9999 else rank
+
     sorted_models = sorted(
         models,
         key=lambda m: ranks.get(m["name"], {}).get("popular_rank", 9999),
@@ -2062,7 +2099,7 @@ def copy_assets() -> None:
             print(f"  WARN: could not download social/{icon}.svg: {e}", file=sys.stderr)
 
     # Profile images (download from profile data if available)
-    for _uname in ["maternion", "frob"]:
+    for _uname in ["maternion", "frob", "huihui_ai"]:
         _pf = HERE / "scraper" / f"profile_{_uname}.json"
         if not _pf.exists():
             continue
@@ -3625,6 +3662,7 @@ def main() -> int:
     print("building profile pages ...")
     build_profile_page("maternion")
     build_profile_page("frob")
+    build_profile_page("huihui_ai")
 
     # static standalone pages (/download + /pricing)
     print("building download + pricing pages ...")
@@ -3635,7 +3673,7 @@ def main() -> int:
     import json as _json
 
     _all_models = list(models)
-    for _username in ["maternion", "frob"]:
+    for _username in ["maternion", "frob", "huihui_ai"]:
         _pf = HERE / "scraper" / f"profile_{_username}.json"
         if _pf.exists():
             _pdata = _json.loads(_pf.read_text())
