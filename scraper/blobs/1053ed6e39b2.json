@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/huihui_ai/seed-coder-abliterate:latest/blobs/1053ed6e39b2",
+  "content": "<[begin▁of▁sentence]>system\n{{- if .System }}\n{{ .System }}\n{{- else }}\nYou are a helpful assistant.{{- end }}<[end▁of▁sentence]>\n{{- range .Messages }}<[begin▁of▁sentence]>{{ .Role }}<[end▁of▁sentence]>\n{{ .Content }}<[end▁of▁sentence]>\n{{- end }}<[begin▁of▁sentence]>assistant<[end▁of▁sentence]>",
+  "digest": "1053ed6e39b2",
+  "metadata": [],
+  "size": "326B",
+  "tensor_groups": [],
+  "tensors": []
+}
