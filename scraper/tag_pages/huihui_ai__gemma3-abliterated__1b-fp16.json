@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gemma3",
+      "blob_url": "/huihui_ai/gemma3-abliterated:1b-fp16/blobs/10af4b9f64e9",
+      "content_preview": "arch  gemma3",
+      "parameters": "1000M",
+      "quantization": "F16",
+      "size": "2.0GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/gemma3-abliterated:1b-fp16/blobs/dd084c7d92a3",
+      "content_preview": "Gemma Terms of Use\nLast modified: February 21, 2024\nBy using, reproducing, modifying, distributing,",
+      "parameters": "",
+      "quantization": "",
+      "size": "8.4kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/gemma3-abliterated:1b-fp16/blobs/0a74a8735bf3",
+      "content_preview": "{\n    \"stop\": [\n        \"<end_of_turn>\"\n    ],\n    \"temperature\": 0.1\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "55B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/gemma3-abliterated:1b-fp16/blobs/e0a42594d802",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if or (eq .Rol",
+      "parameters": "",
+      "quantization": "",
+      "size": "358B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/gemma3-abliterated:1b-fp16",
+  "manifest_digest": "c15baadb8c1f",
+  "manifest_size": "2.0GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/gemma3-abliterated",
+  "tag_name": "1b-fp16"
+}
