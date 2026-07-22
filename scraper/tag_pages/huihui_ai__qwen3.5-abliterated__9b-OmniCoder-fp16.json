@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen35",
+      "blob_url": "/huihui_ai/qwen3.5-abliterated:9b-OmniCoder-fp16/blobs/a2da767e4673",
+      "content_preview": "arch  qwen35",
+      "parameters": "9.41B",
+      "quantization": "F16",
+      "size": "19GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen3.5-abliterated:9b-OmniCoder-fp16/blobs/7339fa418c9a",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen3.5-abliterated:9b-OmniCoder-fp16/blobs/f6417cb1e269",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_k\": 20,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "42B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen3.5-abliterated:9b-OmniCoder-fp16/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/qwen3.5-abliterated:9b-OmniCoder-fp16",
+  "manifest_digest": "3500e98452c6",
+  "manifest_size": "19GB",
+  "manifest_updated": "3 months ago",
+  "path": "/huihui_ai/qwen3.5-abliterated",
+  "tag_name": "9b-OmniCoder-fp16"
+}
