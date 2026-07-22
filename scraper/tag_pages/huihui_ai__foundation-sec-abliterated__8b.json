@@ -1,0 +1,62 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/foundation-sec-abliterated:8b/blobs/001c7a46728c",
+      "content_preview": "arch  llama",
+      "parameters": "8.03B",
+      "quantization": "Q4_K_M",
+      "size": "4.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/foundation-sec-abliterated:8b/blobs/143c97b5aa15",
+      "content_preview": "You are a cybersecurity expert AI, providing accurate and concise answers about vulnerabilities and",
+      "parameters": "",
+      "quantization": "",
+      "size": "150B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/foundation-sec-abliterated:8b/blobs/d18a5cc71b84",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/foundation-sec-abliterated:8b/blobs/322ebd3b7b1e",
+      "content_preview": "{\n    \"stop\": [\n        \"<|begin_of_text|>\",\n        \"<|end_of_text|>\",\n        \"<|start_header_id|>",
+      "parameters": "",
+      "quantization": "",
+      "size": "154B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/foundation-sec-abliterated:8b/blobs/9cfa67fbfcce",
+      "content_preview": "{% if .System %}<|begin_of_text|>system\n{{ .System }}<|end_of_text|>\n{% endif %}<|begin_of_text|>use",
+      "parameters": "",
+      "quantization": "",
+      "size": "222B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/foundation-sec-abliterated:8b",
+  "manifest_digest": "0a7457372cbc",
+  "manifest_size": "4.9GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/foundation-sec-abliterated",
+  "tag_name": "8b"
+}
