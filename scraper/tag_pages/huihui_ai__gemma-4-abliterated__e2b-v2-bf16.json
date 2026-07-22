@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gemma4",
+      "blob_url": "/huihui_ai/gemma-4-abliterated:e2b-v2-bf16/blobs/82e6c81e1343",
+      "content_preview": "arch  gemma4",
+      "parameters": "5.12B",
+      "quantization": "F16",
+      "size": "10GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/gemma-4-abliterated:e2b-v2-bf16/blobs/7339fa418c9a",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/gemma-4-abliterated:e2b-v2-bf16/blobs/56380ca2ab89",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_k\": 64,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "42B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/gemma-4-abliterated:e2b-v2-bf16/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/gemma-4-abliterated:e2b-v2-bf16",
+  "manifest_digest": "0554157a1060",
+  "manifest_size": "10GB",
+  "manifest_updated": "3 months ago",
+  "path": "/huihui_ai/gemma-4-abliterated",
+  "tag_name": "e2b-v2-bf16"
+}
