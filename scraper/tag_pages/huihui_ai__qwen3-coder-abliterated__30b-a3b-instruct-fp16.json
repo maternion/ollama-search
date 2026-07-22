@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen3moe",
+      "blob_url": "/huihui_ai/qwen3-coder-abliterated:30b-a3b-instruct-fp16/blobs/8737e57fb8e0",
+      "content_preview": "arch  qwen3moe",
+      "parameters": "30.5B",
+      "quantization": "F16",
+      "size": "61GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen3-coder-abliterated:30b-a3b-instruct-fp16/blobs/69aa441ea44f",
+      "content_preview": "{\n    \"repeat_penalty\": 1.05,\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\",\n        \"<",
+      "parameters": "",
+      "quantization": "",
+      "size": "148B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen3-coder-abliterated:30b-a3b-instruct-fp16/blobs/d18a5cc71b84",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen3-coder-abliterated:30b-a3b-instruct-fp16/blobs/c6a614465b37",
+      "content_preview": "{{- if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}\n{{- range $i, $_ := .Messages",
+      "parameters": "",
+      "quantization": "",
+      "size": "424B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/qwen3-coder-abliterated:30b-a3b-instruct-fp16",
+  "manifest_digest": "90645341951d",
+  "manifest_size": "61GB",
+  "manifest_updated": "11 months ago",
+  "path": "/huihui_ai/qwen3-coder-abliterated",
+  "tag_name": "30b-a3b-instruct-fp16"
+}
