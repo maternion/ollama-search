@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/megrez-abliterated:7b-instruct-q4_K_M/blobs/4e1b5c0113fd",
+      "content_preview": "arch  llama",
+      "parameters": "2.92B",
+      "quantization": "Q4_K_M",
+      "size": "1.8GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/megrez-abliterated:7b-instruct-q4_K_M/blobs/64e1b2889b78",
+      "content_preview": "LLAMA 3.1 COMMUNITY LICENSE AGREEMENT\nLlama 3.1 Version Release Date: July 23, 2024\n“Agreement”",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.6kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/megrez-abliterated:7b-instruct-q4_K_M/blobs/56bb8bd477a5",
+      "content_preview": "{\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",\n        \"<|eot_id|>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "96B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/megrez-abliterated:7b-instruct-q4_K_M/blobs/966de95ca8a6",
+      "content_preview": "<|start_header_id|>system<|end_header_id|>\nCutting Knowledge Date: December 2023\n{{ if .System }}{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.4kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/megrez-abliterated:7b-instruct-q4_K_M",
+  "manifest_digest": "ea676d90cd75",
+  "manifest_size": "1.8GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/megrez-abliterated",
+  "tag_name": "7b-instruct-q4_K_M"
+}
