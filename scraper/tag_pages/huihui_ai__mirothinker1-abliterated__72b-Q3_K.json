@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/huihui_ai/mirothinker1-abliterated:72b-Q3_K/blobs/a3b51cedd591",
+      "content_preview": "arch  qwen2",
+      "parameters": "72.7B",
+      "quantization": "Q3_K_M",
+      "size": "38GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/mirothinker1-abliterated:72b-Q3_K/blobs/9bd9d0f1b7f7",
+      "content_preview": "MIT License\nCopyright (c) [year] [fullname]\nPermission is hereby granted, free of charge, to any per",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/mirothinker1-abliterated:72b-Q3_K/blobs/cff3f395ef37",
+      "content_preview": "{\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ],\n    \"te",
+      "parameters": "",
+      "quantization": "",
+      "size": "120B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/mirothinker1-abliterated:72b-Q3_K/blobs/ae370d884f10",
+      "content_preview": "{{- $lastUserIdx := -1 -}}\n{{- range $idx, $msg := .Messages -}}\n{{- if eq $msg.Role \"user\" }}{{ $la",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.7kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/mirothinker1-abliterated:72b-Q3_K",
+  "manifest_digest": "9c5ca464cfb4",
+  "manifest_size": "38GB",
+  "manifest_updated": "8 months ago",
+  "path": "/huihui_ai/mirothinker1-abliterated",
+  "tag_name": "72b-Q3_K"
+}
