@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/huihui_ai/qwen2.5-abliterate:7b-instruct-q8_0/blobs/4f8d345db7a9",
+      "content_preview": "arch  qwen2",
+      "parameters": "7.62B",
+      "quantization": "Q8_0",
+      "size": "8.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen2.5-abliterate:7b-instruct-q8_0/blobs/66b9ea09bd5b",
+      "content_preview": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "68B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen2.5-abliterate:7b-instruct-q8_0/blobs/832dd9e00a68",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen2.5-abliterate:7b-instruct-q8_0/blobs/eb4402837c78",
+      "content_preview": "{{- if .Messages }}\n{{- if or .System .Tools }}<|im_start|>system\n{{- if .System }}\n{{ .System }}\n{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/qwen2.5-abliterate:7b-instruct-q8_0",
+  "manifest_digest": "64ef7c00fc36",
+  "manifest_size": "8.1GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/qwen2.5-abliterate",
+  "tag_name": "7b-instruct-q8_0"
+}
