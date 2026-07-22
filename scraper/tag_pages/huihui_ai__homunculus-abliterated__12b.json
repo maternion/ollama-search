@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/homunculus-abliterated:12b/blobs/604da4b8f1fa",
+      "content_preview": "arch  llama",
+      "parameters": "12.5B",
+      "quantization": "Q4_K_M",
+      "size": "7.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/homunculus-abliterated:12b/blobs/4a2cfb568746",
+      "content_preview": "{{- if .System }}<|im_start|>system\n{{ .System }}<|im_end|>{{ end }}\n{{- range $i, $_ := .Messages }",
+      "parameters": "",
+      "quantization": "",
+      "size": "581B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/homunculus-abliterated:12b/blobs/0a2e5578e7c7",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "10kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/homunculus-abliterated:12b/blobs/2003c290ae18",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\",\n        \"<|endoftext|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "85B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/huihui_ai/homunculus-abliterated:12b",
+  "manifest_digest": "363268e62674",
+  "manifest_size": "7.6GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/homunculus-abliterated",
+  "tag_name": "12b"
+}
