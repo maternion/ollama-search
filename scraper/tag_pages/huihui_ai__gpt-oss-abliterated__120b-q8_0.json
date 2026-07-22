@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gpt-oss",
+      "blob_url": "/huihui_ai/gpt-oss-abliterated:120b-q8_0/blobs/206683477f87",
+      "content_preview": "arch  gpt-oss",
+      "parameters": "117B",
+      "quantization": "Q8_0",
+      "size": "124GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/gpt-oss-abliterated:120b-q8_0/blobs/f60356777647",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/gpt-oss-abliterated:120b-q8_0/blobs/d8ba2f9a17b3",
+      "content_preview": "{\n    \"temperature\": 1\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "18B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/gpt-oss-abliterated:120b-q8_0/blobs/51468a0fd901",
+      "content_preview": "<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.\nKnowledge cutof",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.4kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/gpt-oss-abliterated:120b-q8_0",
+  "manifest_digest": "8594c3e4ccd6",
+  "manifest_size": "124GB",
+  "manifest_updated": "10 months ago",
+  "path": "/huihui_ai/gpt-oss-abliterated",
+  "tag_name": "120b-q8_0"
+}
