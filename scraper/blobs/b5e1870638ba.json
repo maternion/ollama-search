@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/huihui_ai/kanana-nano-abliterated:latest/blobs/b5e1870638ba",
+  "content": "\n<|start_header_id|>system<|end_header_id|>\n\n{{ .System }}<|eot_id|>\n<|start_header_id|>user<|end_header_id|>\n\n{{ .Prompt }}<|eot_id|>\n<|start_header_id|>assistant<|end_header_id|>\n\n{{ .Response }}<|eot_id|>",
+  "digest": "b5e1870638ba",
+  "metadata": [],
+  "size": "208B",
+  "tensor_groups": [],
+  "tensors": []
+}
