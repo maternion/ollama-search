@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen3moe",
+      "blob_url": "/huihui_ai/huihui-moe-abliterated:46b-a14b/blobs/4d597cd26fa5",
+      "content_preview": "arch  qwen3moe",
+      "parameters": "46.9B",
+      "quantization": "Q4_K_M",
+      "size": "28GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/huihui-moe-abliterated:46b-a14b/blobs/d18a5cc71b84",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/huihui-moe-abliterated:46b-a14b/blobs/cff3f395ef37",
+      "content_preview": "{\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ],\n    \"te",
+      "parameters": "",
+      "quantization": "",
+      "size": "120B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/huihui-moe-abliterated:46b-a14b/blobs/ae370d884f10",
+      "content_preview": "{{- $lastUserIdx := -1 -}}\n{{- range $idx, $msg := .Messages -}}\n{{- if eq $msg.Role \"user\" }}{{ $la",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.7kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/huihui-moe-abliterated:46b-a14b",
+  "manifest_digest": "fb5860822e35",
+  "manifest_size": "28GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/huihui-moe-abliterated",
+  "tag_name": "46b-a14b"
+}
