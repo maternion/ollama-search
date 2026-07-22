@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/perplexity-ai-r1-abliterated:70b-distill-llama-fp16/blobs/f0b825313e24",
+      "content_preview": "arch  llama",
+      "parameters": "70.6B",
+      "quantization": "F16",
+      "size": "141GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/perplexity-ai-r1-abliterated:70b-distill-llama-fp16/blobs/508a77d2e7b5",
+      "content_preview": "MIT License\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this sof",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/perplexity-ai-r1-abliterated:70b-distill-llama-fp16/blobs/f4d24e9138dd",
+      "content_preview": "{\n    \"stop\": [\n        \"<｜begin▁of▁sentence｜>\",\n        \"<｜end▁of▁sentence｜>\",",
+      "parameters": "",
+      "quantization": "",
+      "size": "148B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/perplexity-ai-r1-abliterated:70b-distill-llama-fp16/blobs/369ca498f347",
+      "content_preview": "{{- if .System }}{{ .System }}{{ end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice",
+      "parameters": "",
+      "quantization": "",
+      "size": "387B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/perplexity-ai-r1-abliterated:70b-distill-llama-fp16",
+  "manifest_digest": "b0358e96c67f",
+  "manifest_size": "141GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/perplexity-ai-r1-abliterated",
+  "tag_name": "70b-distill-llama-fp16"
+}
