@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "phi3",
+      "blob_url": "/huihui_ai/phi4-reasoning-abliterated:3.8b/blobs/fd56789f38bc",
+      "content_preview": "arch  phi3",
+      "parameters": "3.84B",
+      "quantization": "Q4_K_M",
+      "size": "2.5GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/phi4-reasoning-abliterated:3.8b/blobs/c895a1f8e8c6",
+      "content_preview": "{{- if .System }}<|system|>{{ .System }}\n{{- end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq",
+      "parameters": "",
+      "quantization": "",
+      "size": "323B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/phi4-reasoning-abliterated:3.8b/blobs/239959082ea5",
+      "content_preview": "Your name is Phi, an AI math expert developed by Microsoft.",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/phi4-reasoning-abliterated:3.8b/blobs/fa8235e5b48f",
+      "content_preview": "Microsoft.\nCopyright (c) Microsoft Corporation.\nMIT License\nPermission is hereby granted, free of ch",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/huihui_ai/phi4-reasoning-abliterated:3.8b",
+  "manifest_digest": "76f554a8e1a8",
+  "manifest_size": "2.5GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/phi4-reasoning-abliterated",
+  "tag_name": "3.8b"
+}
