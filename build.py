@@ -2679,19 +2679,19 @@ function applyFilters() {
     var cmp;
     if (sort === 'name') {
       cmp = va.localeCompare(vb);
-    } else if (sort === 'popular') {
-      var ra = parseFloat(a.getAttribute('data-popular-rank') || '9999');
-      var rb = parseFloat(b.getAttribute('data-popular-rank') || '9999');
+    } else if (sort === 'popular' || sort === 'newest' || sort === 'oldest') {
       var aOff = a.getAttribute('data-official') !== 'false';
       var bOff = b.getAttribute('data-official') !== 'false';
+      var ra = parseFloat(a.getAttribute(attr) || '9999');
+      var rb = parseFloat(b.getAttribute(attr) || '9999');
       if (!aOff) ra = 9999;
       if (!bOff) rb = 9999;
       if (ra !== 9999 || rb !== 9999) {
         cmp = ra - rb;
       } else {
-        var pa = parseFloat(a.getAttribute('data-pulls') || '0');
-        var pb = parseFloat(b.getAttribute('data-pulls') || '0');
-        cmp = pb - pa;
+        var ua = parseFloat(a.getAttribute('data-updated-rank') || '9999');
+        var ub = parseFloat(b.getAttribute('data-updated-rank') || '9999');
+        cmp = ua - ub;
       }
     } else {
       var na = parseFloat(va) || 0;
