@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/huihui_ai/qwenlong-abliterated:32b/blobs/6ad631af227c",
+      "content_preview": "arch  qwen2",
+      "parameters": "32.8B",
+      "quantization": "Q4_K_M",
+      "size": "20GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwenlong-abliterated:32b/blobs/b87250e4478f",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwenlong-abliterated:32b/blobs/ed8474dc73db",
+      "content_preview": "{\n    \"stop\": [\n        \"<｜begin▁of▁sentence｜>\",\n        \"<｜end▁of▁sentence｜>\",",
+      "parameters": "",
+      "quantization": "",
+      "size": "179B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwenlong-abliterated:32b/blobs/c5ad996bda6e",
+      "content_preview": "{{- if .System }}{{ .System }}{{ end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice",
+      "parameters": "",
+      "quantization": "",
+      "size": "556B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/qwenlong-abliterated:32b",
+  "manifest_digest": "e0baf0487e8d",
+  "manifest_size": "20GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/qwenlong-abliterated",
+  "tag_name": "32b"
+}
