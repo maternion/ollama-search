@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/deephermes3-abliterated:8b-preview/blobs/64dd3b9c4eaf",
+      "content_preview": "arch  llama",
+      "parameters": "8.03B",
+      "quantization": "Q4_K_M",
+      "size": "4.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/deephermes3-abliterated:8b-preview/blobs/330f7f5f7417",
+      "content_preview": "{{- if .System }}<|start_header_id|>system<|end_header_id|>\n{{ .System }}<|eot_id|>\n{{- end }}\n{{- r",
+      "parameters": "",
+      "quantization": "",
+      "size": "249B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/deephermes3-abliterated:8b-preview/blobs/58437a15695a",
+      "content_preview": "You are a deep thinking AI, you may use extremely long chains of thought to deeply consider the prob",
+      "parameters": "",
+      "quantization": "",
+      "size": "367B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/deephermes3-abliterated:8b-preview/blobs/7c1a2172f1d5",
+      "content_preview": "{\n    \"stop\": [\n        \"<|end_of_text|>\",\n        \"<|eot_id|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "62B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/huihui_ai/deephermes3-abliterated:8b-preview",
+  "manifest_digest": "5e0dd34c75ce",
+  "manifest_size": "4.9GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/deephermes3-abliterated",
+  "tag_name": "8b-preview"
+}
