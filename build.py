@@ -198,6 +198,26 @@ def _parse_updated_title(s: str):
         return _dt.min
 
 
+def load_profile_ranks() -> dict:
+    """Load popular_rank and newest_rank for profile models, keyed by path.
+
+    Profile pages on ollama.com support ?sort=popular (pulls) and ?sort=newest.
+    The scraper stores both orderings in profile_<username>.json.
+    Returns a dict: {model_path: {popular_rank: int, newest_rank: int}}.
+    """
+    ranks: dict[str, dict] = {}
+    for username in ("maternion", "frob", "huihui_ai"):
+        pf = SCRAPER / f"profile_{username}.json"
+        if not pf.exists():
+            continue
+        pdata = json.loads(pf.read_text())
+        for rank, path in enumerate(pdata.get("popular_order", [])):
+            ranks.setdefault(path, {})["popular_rank"] = rank
+        for rank, path in enumerate(pdata.get("newest_order", [])):
+            ranks.setdefault(path, {})["newest_rank"] = rank
+    return ranks
+
+
 def load_tags(model_path: str, model: dict | None = None) -> list[dict]:
     tf = TAGS_DIR / f"{slugify(model_path)}.json"
     if tf.exists():
@@ -553,7 +573,8 @@ def _classify_template(model_path: str) -> str:
 
 
 def render_card(
-    m: dict, tags: list[dict] | None = None, ranks: dict | None = None
+    m: dict, tags: list[dict] | None = None, ranks: dict | None = None,
+    profile_ranks: dict | None = None
 ) -> str:
     name = esc(m["name"])
     name_raw = m["name"]
@@ -571,7 +592,12 @@ def render_card(
     href = url(esc(m["path"]))
 
     # Sort rank data attributes
-    r = (ranks or {}).get(name_raw, {})
+    # Official models: look up by name in sort_ranks.json
+    # Profile models: look up by path in profile_ranks (from profile page orderings)
+    if official:
+        r = (ranks or {}).get(name_raw, {})
+    else:
+        r = (profile_ranks or {}).get(m["path"], {})
     data_attrs = (
         f'data-popular-rank="{r.get("popular_rank", 9999)}" '
         f'data-newest-rank="{r.get("newest_rank", 9999)}" '
@@ -644,6 +670,9 @@ def render_card(
 
 
 def build_index(models: list[dict], ranks: dict) -> None:
+    # Load profile-specific ranks (keyed by path, not name)
+    profile_ranks = load_profile_ranks()
+
     # Augment ranks with sort orders the scraper does not provide.
     # updated_rank: most-recent tag update, descending (newest update = 0)
     # oldest_rank: model creation, ascending (oldest model = 0)
@@ -653,24 +682,37 @@ def build_index(models: list[dict], ranks: dict) -> None:
         reverse=True,
     )
     for rank, m in enumerate(updated_order):
-        ranks.setdefault(m["name"], {})["updated_rank"] = rank
+        r = profile_ranks if not m.get("official", True) else ranks
+        key = m["path"] if not m.get("official", True) else m["name"]
+        r.setdefault(key, {})["updated_rank"] = rank
     oldest_order = sorted(
         models,
         key=lambda m: (
-            ranks.get(m["name"], {}).get("newest_rank", 9999) == 9999,
-            -ranks.get(m["name"], {}).get("newest_rank", 9999),
+            (profile_ranks if not m.get("official", True) else ranks).get(
+                m["path"] if not m.get("official", True) else m["name"], {}
+            ).get("newest_rank", 9999) == 9999,
+            -(profile_ranks if not m.get("official", True) else ranks).get(
+                m["path"] if not m.get("official", True) else m["name"], {}
+            ).get("newest_rank", 9999),
         ),
     )
     for rank, m in enumerate(oldest_order):
-        nr = ranks.get(m["name"], {}).get("newest_rank", 9999)
-        ranks.setdefault(m["name"], {})["oldest_rank"] = 9999 if nr == 9999 else rank
+        r = profile_ranks if not m.get("official", True) else ranks
+        key = m["path"] if not m.get("official", True) else m["name"]
+        nr = r.get(key, {}).get("newest_rank", 9999)
+        r.setdefault(key, {})["oldest_rank"] = 9999 if nr == 9999 else rank
 
     sorted_models = sorted(
         models,
-        key=lambda m: ranks.get(m["name"], {}).get("popular_rank", 9999),
+        key=lambda m: (
+            (profile_ranks if not m.get("official", True) else ranks).get(
+                m["path"] if not m.get("official", True) else m["name"], {}
+            ).get("popular_rank", 9999)
+        ),
     )
     cards = "\n".join(
-        render_card(m, load_tags(m["path"], m), ranks) for m in sorted_models
+        render_card(m, load_tags(m["path"], m), ranks, profile_ranks)
+        for m in sorted_models
     )
 
     # Capability filter chips (Embedding/Vision/Tools/Thinking — no Cloud, it's a dropdown)
@@ -2680,12 +2722,8 @@ function applyFilters() {
     if (sort === 'name') {
       cmp = va.localeCompare(vb);
     } else if (sort === 'popular' || sort === 'newest' || sort === 'oldest') {
-      var aOff = a.getAttribute('data-official') !== 'false';
-      var bOff = b.getAttribute('data-official') !== 'false';
       var ra = parseFloat(a.getAttribute(attr) || '9999');
       var rb = parseFloat(b.getAttribute(attr) || '9999');
-      if (!aOff) ra = 9999;
-      if (!bOff) rb = 9999;
       if (ra !== 9999 || rb !== 9999) {
         cmp = ra - rb;
       } else if (sort === 'popular') {
@@ -3054,18 +3092,17 @@ def build_profile_page(username: str) -> None:
     # Merge with global ranks so models present there keep their global ranks; the
     # rest get local ranks so the sort dropdown works on the profile page too.
     global_ranks = load_ranks()
-    profile_ranks = dict(global_ranks)
+    # Profile ranks keyed by path for non-official models
+    profile_ranks = {}
 
-    # Popular rank from pulls (descending)
+    # Popular rank from profile page ordering (pulls descending)
     popular_order = sorted(
         profile_models,
         key=lambda m: m.get("pulls", 0),
         reverse=True,
     )
     for rank, m in enumerate(popular_order):
-        nm = m["name"]
-        pr = profile_ranks.setdefault(nm, {})
-        pr["popular_rank"] = rank
+        profile_ranks.setdefault(m["path"], {})["popular_rank"] = rank
 
     # Newest rank from updated_title (descending date)
     from datetime import datetime as _dt
@@ -3082,19 +3119,25 @@ def build_profile_page(username: str) -> None:
         reverse=True,
     )
     for rank, m in enumerate(newest_order):
-        nm = m["name"]
-        pr = profile_ranks.setdefault(nm, {})
-        pr["newest_rank"] = rank
+        profile_ranks.setdefault(m["path"], {})["newest_rank"] = rank
+
+    # Updated rank
+    for rank, m in enumerate(newest_order):
+        profile_ranks.setdefault(m["path"], {})["updated_rank"] = rank
+
+    # Oldest rank (reverse of newest)
+    for rank, m in enumerate(reversed(newest_order)):
+        profile_ranks.setdefault(m["path"], {})["oldest_rank"] = rank
 
     # Default server-side order: popular (pulls descending) — matches ?sort=popular default
     sorted_models = sorted(
         profile_models,
-        key=lambda m: profile_ranks.get(m["name"], {}).get("popular_rank", 9999),
+        key=lambda m: profile_ranks.get(m["path"], {}).get("popular_rank", 9999),
     )
     cards_html = ""
     for m in sorted_models:
         tags = load_tags(m["path"], m)
-        cards_html += render_card(m, tags, profile_ranks)
+        cards_html += render_card(m, tags, global_ranks, profile_ranks)
 
     if not cards_html:
         cards_html = '<p class="text-neutral-500 dark:text-neutral-400 py-8">No models found.</p>'

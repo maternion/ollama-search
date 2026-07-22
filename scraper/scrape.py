@@ -1851,7 +1851,11 @@ def run_infer_sizes() -> int:
 
 
 def fetch_profile_page(client: Client, username: str) -> dict | None:
-    """Fetch a user profile page (e.g. /maternion) and parse it."""
+    """Fetch a user profile page (e.g. /maternion) and parse it.
+
+    Fetches the default (popular/pulls) ordering plus ?sort=newest so
+    build.py can assign popular_rank and newest_rank to profile models.
+    """
     profile_url = f"{BASE}/{username}"
     html = client.get(profile_url)
     if html is None:
@@ -1864,6 +1868,8 @@ def fetch_profile_page(client: Client, username: str) -> dict | None:
         "links": [],
         "models": [],
         "avatar": "",
+        "popular_order": [],
+        "newest_order": [],
     }
 
     # Avatar image
@@ -1883,19 +1889,32 @@ def fetch_profile_page(client: Client, username: str) -> dict | None:
     # Links
     for lm in re.finditer(
         r'<a href="//([^"]+)" target="_blank" class="hover:underline" data-url="([^"]+)">\s*(.*?)\s*</a>',
-        html,
-        re.DOTALL,
+        html, re.DOTALL,
     ):
         href = lm.group(1)
         label = strip_tags(lm.group(3)).strip()
         if href and label:
             profile["links"].append({"url": href, "label": label})
 
-    # Models on the profile page — save full card data
+    # Models on the profile page (default = popular/pulls order)
     cards = parse_cards(html, profile_url)
     for c in cards:
         if c.path.startswith(f"/{username}/"):
             profile["models"].append(asdict(c))
+            profile["popular_order"].append(c.path)
+
+    # Also fetch ?sort=newest for creation/publish order
+    time.sleep(DELAY)
+    newest_url = f"{BASE}/{username}?sort=newest"
+    newest_html = client.get(newest_url)
+    if newest_html:
+        newest_cards = parse_cards(newest_html, newest_url)
+        profile["newest_order"] = [
+            c.path for c in newest_cards if c.path.startswith(f"/{username}/")
+        ]
+        log.info(
+            "profile %s newest: %d models", username, len(profile["newest_order"])
+        )
 
     log.info(
         "profile %s: bio=%r, %d links, %d models",
@@ -1905,7 +1924,6 @@ def fetch_profile_page(client: Client, username: str) -> dict | None:
         len(profile["models"]),
     )
     return profile
-
 
 def save_profile_page(username: str, data: dict) -> None:
     fp = DATA / f"profile_{username}.json"
