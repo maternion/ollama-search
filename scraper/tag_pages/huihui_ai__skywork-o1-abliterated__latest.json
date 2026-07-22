@@ -1,0 +1,62 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/skywork-o1-abliterated:latest/blobs/f5379300794f",
+      "content_preview": "arch  llama",
+      "parameters": "8.03B",
+      "quantization": "Q4_K_M",
+      "size": "4.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/skywork-o1-abliterated:latest/blobs/fcabb41e84a1",
+      "content_preview": "You are Skywork-o1, a thinking model developed by Skywork AI, specializing in solving complex proble",
+      "parameters": "",
+      "quantization": "",
+      "size": "433B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/skywork-o1-abliterated:latest/blobs/dd57e93d8b41",
+      "content_preview": "The community usage of Skywork models require Skywork Community License. The Skywork models support",
+      "parameters": "",
+      "quantization": "",
+      "size": "271B",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/skywork-o1-abliterated:latest/blobs/56bb8bd477a5",
+      "content_preview": "{\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",\n        \"<|eot_id|>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "96B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/skywork-o1-abliterated:latest/blobs/948af2743fc7",
+      "content_preview": "{{- if or .System .Tools }}<|start_header_id|>system<|end_header_id|>\n{{- if .System }}\n{{ .System }",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/skywork-o1-abliterated:latest",
+  "manifest_digest": "67c14ead13ce",
+  "manifest_size": "4.9GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/skywork-o1-abliterated",
+  "tag_name": "latest"
+}
