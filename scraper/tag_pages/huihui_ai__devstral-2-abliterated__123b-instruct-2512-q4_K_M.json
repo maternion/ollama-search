@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "mistral3",
+      "blob_url": "/huihui_ai/devstral-2-abliterated:123b-instruct-2512-q4_K_M/blobs/80c5f90cf56a",
+      "content_preview": "arch  mistral3",
+      "parameters": "125B",
+      "quantization": "Q4_K_M",
+      "size": "75GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/devstral-2-abliterated:123b-instruct-2512-q4_K_M/blobs/4eef6db348bb",
+      "content_preview": "Modified MIT License\nAttribution notice: 2025 - Mistral AI\nPermission is hereby granted, free of cha",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.7kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/devstral-2-abliterated:123b-instruct-2512-q4_K_M/blobs/9270cc1cbffb",
+      "content_preview": "{\n    \"repeat_penalty\": 1,\n    \"temperature\": 0.15\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "40B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/devstral-2-abliterated:123b-instruct-2512-q4_K_M/blobs/f01988e6b495",
+      "content_preview": "{{- $lastUserIndex := -1 }}\n{{- $hasSystemPrompt := false }}\n{{- range $index, $_ := .Messages }}\n{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "3.2kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/devstral-2-abliterated:123b-instruct-2512-q4_K_M",
+  "manifest_digest": "d5211c415aba",
+  "manifest_size": "75GB",
+  "manifest_updated": "6 months ago",
+  "path": "/huihui_ai/devstral-2-abliterated",
+  "tag_name": "123b-instruct-2512-q4_K_M"
+}
