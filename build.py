@@ -2682,6 +2682,10 @@ function applyFilters() {
     } else if (sort === 'popular') {
       var ra = parseFloat(a.getAttribute('data-popular-rank') || '9999');
       var rb = parseFloat(b.getAttribute('data-popular-rank') || '9999');
+      var aOff = a.getAttribute('data-official') !== 'false';
+      var bOff = b.getAttribute('data-official') !== 'false';
+      if (!aOff) ra = 9999;
+      if (!bOff) rb = 9999;
       if (ra !== 9999 || rb !== 9999) {
         cmp = ra - rb;
       } else {
