@@ -1,0 +1,35 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "hunyuan-dense",
+      "blob_url": "/huihui_ai/hunyuan-mt-abliterated:latest/blobs/8ab772dd054d",
+      "content_preview": "arch  hunyuan-dense",
+      "parameters": "7.5B",
+      "quantization": "Q4_K_M",
+      "size": "4.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/hunyuan-mt-abliterated:latest/blobs/d8aa720ac0a6",
+      "content_preview": "TEMPLATE \"\"\"{{ $has_head := true }}\n{{ if .System }}<|startoftext|>{{ .System }}<|extra_4|>{{ else }",
+      "parameters": "",
+      "quantization": "",
+      "size": "431B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/hunyuan-mt-abliterated:latest",
+  "manifest_digest": "e47136166800",
+  "manifest_size": "4.6GB",
+  "manifest_updated": "10 months ago",
+  "path": "/huihui_ai/hunyuan-mt-abliterated",
+  "tag_name": "latest"
+}
