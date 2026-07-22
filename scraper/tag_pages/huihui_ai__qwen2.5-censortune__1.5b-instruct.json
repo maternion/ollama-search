@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/huihui_ai/qwen2.5-censortune:1.5b-instruct/blobs/cb1deabcf344",
+      "content_preview": "arch  qwen2",
+      "parameters": "1.54B",
+      "quantization": "Q4_K_M",
+      "size": "986MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen2.5-censortune:1.5b-instruct/blobs/832dd9e00a68",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen2.5-censortune:1.5b-instruct/blobs/75357d685f23",
+      "content_preview": "You are a helpful assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "28B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen2.5-censortune:1.5b-instruct/blobs/eb4402837c78",
+      "content_preview": "{{- if .Messages }}\n{{- if or .System .Tools }}<|im_start|>system\n{{- if .System }}\n{{ .System }}\n{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/qwen2.5-censortune:1.5b-instruct",
+  "manifest_digest": "46cece7438d1",
+  "manifest_size": "986MB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/qwen2.5-censortune",
+  "tag_name": "1.5b-instruct"
+}
