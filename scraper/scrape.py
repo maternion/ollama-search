@@ -338,7 +338,7 @@ class BlobPage:
 # ollama.com removed x-test-* attributes; we now match by the li class.
 _CARD_OPEN_RE = re.compile(
     r'<li\s+class="flex items-baseline border-b[^"]*">\s*'
-    r'<a\s+href="(/(?:library|maternion|frob)/[^"]+)"',
+    r'<a\s+href="(/(?:library|maternion|frob|huihui_ai)/[^"]+)"',
     re.IGNORECASE,
 )
 
@@ -1967,7 +1967,7 @@ def infer_capabilities(models: dict[str, Model]) -> None:
         parts = url.strip("/").split("/")
         if len(parts) < 3:
             continue
-        if parts[0] in ("library", "maternion", "frob"):
+        if parts[0] in ("library", "maternion", "frob", "huihui_ai"):
             model_name = parts[1].split(":")[0]  # strip :tag
             model_path = "/" + parts[0] + "/" + model_name
             model_blobs.setdefault(model_path, []).append(bd)
@@ -2584,7 +2584,7 @@ def main(argv: list[str] | None = None) -> int:
             )
 
         # Scrape profile pages (e.g. /maternion)
-        PROFILES = ["maternion", "frob"]
+        PROFILES = ["maternion", "frob", "huihui_ai"]
         for username in PROFILES:
             if client.bail_out or _time_up():
                 break
