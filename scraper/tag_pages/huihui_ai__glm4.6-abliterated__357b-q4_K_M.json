@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "glm4moe",
+      "blob_url": "/huihui_ai/glm4.6-abliterated:357b-q4_K_M/blobs/7c9bcf3ba2cc",
+      "content_preview": "arch  glm4moe",
+      "parameters": "357B",
+      "quantization": "Q4_K_M",
+      "size": "215GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/glm4.6-abliterated:357b-q4_K_M/blobs/99c830931845",
+      "content_preview": "[gMASK]<sop>\n{{- if .Tools }}<|system|>\n# Tools\nYou may call one or more functions to assist with th",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.8kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/glm4.6-abliterated:357b-q4_K_M/blobs/b1bca6ec8117",
+      "content_preview": "MIT License\nCopyright (c) [year] [fullname]\nPermission is hereby granted, free of charge, to any per",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/glm4.6-abliterated:357b-q4_K_M/blobs/d1593956bc0b",
+      "content_preview": "{\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"<|system|>\",\n        \"<|user|>\",\n        \"<|assist",
+      "parameters": "",
+      "quantization": "",
+      "size": "100B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/huihui_ai/glm4.6-abliterated:357b-q4_K_M",
+  "manifest_digest": "7ba3c06a98ef",
+  "manifest_size": "215GB",
+  "manifest_updated": "7 months ago",
+  "path": "/huihui_ai/glm4.6-abliterated",
+  "tag_name": "357b-q4_K_M"
+}
