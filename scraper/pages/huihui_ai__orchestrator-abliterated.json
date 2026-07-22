@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model huihui_ai/orchestrator-abliterated",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model huihui_ai/orchestrator-abliterated",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model huihui_ai/orchestrator-abliterated",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model huihui_ai/orchestrator-abliterated",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model huihui_ai/orchestrator-abliterated",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model huihui_ai/orchestrator-abliterated",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "orchestrator-abliterated",
+  "path": "/huihui_ai/orchestrator-abliterated",
+  "readme_html": "\n        \n          <p>This is an uncensored version of <a href=\"https://huggingface.co/nvidia/Orchestrator-8B\" rel=\"nofollow\">nvidia/Orchestrator-8B</a> created with abliteration (see <a href=\"https://github.com/Sumandora/remove-refusals-with-transformers\" rel=\"nofollow\">remove-refusals-with-transformers</a> to know more about it).</p>\n\n<h3>Usage Warnings</h3>\n\n<p>“<strong>Risk of Sensitive or Controversial Outputs</strong>“: This model’s safety\n  filtering has been significantly reduced, potentially generating sensitive,\n  controversial, or inappropriate content. Users should exercise caution and\n  rigorously review generated outputs.</p>\n\n<p>“<strong>Not Suitable for All Audiences</strong>:“ Due to limited content filtering, the\n  model’s outputs may be inappropriate for public settings, underage users, or\n  applications requiring high security.</p>\n\n<p>“<strong>Legal and Ethical Responsibilities</strong>“: Users must ensure their usage\n  complies with local laws and ethical standards. Generated content may carry\n  legal or ethical risks, and users are solely responsible for any consequences.</p>\n\n<p>“<strong>Research and Experimental Use</strong>“: It is recommended to use this model for\n  research, testing, or controlled environments, avoiding direct use in\n  production or public-facing commercial applications.</p>\n\n<p>“<strong>Monitoring and Review Recommendations</strong>“: Users are strongly advised to\n  monitor model outputs in real-time and conduct manual reviews when necessary\n  to prevent the dissemination of inappropriate content.</p>\n\n<p>“<strong>No Default Safety Guarantees</strong>“: Unlike standard models, this model has not\n  undergone rigorous safety optimization. huihui.ai bears no responsibility for\n  any consequences arising from its use.</p>\n\n<h3>References</h3>\n\n<p><a href=\"https://huggingface.co/huihui-ai/Huihui-Orchestrator-8B-abliterated\" rel=\"nofollow\">HuggingFace</a></p>\n\n<h3>Donation</h3>\n\n<p>You can follow <a href=\"https://x.com/support_huihui\" rel=\"nofollow\">x.com/support_huihui</a> to get the latest model information from huihui.ai.</p>\n\n<h5>Your donation helps us continue our further development and improvement, a cup of coffee can do it.</h5>\n\n<ul>\n<li>bitcoin:</li>\n</ul>\n\n<pre><code>  bc1qqnkhuchxw0zqjh2ku3lu4hq45hc6gy84uk70ge\n</code></pre>\n\n<ul>\n<li>Support our work on Ko-fi (<a href=\"https://ko-fi.com/huihuiai)!\" rel=\"nofollow\">https://ko-fi.com/huihuiai)!</a></li>\n</ul>\n\n        \n      "
+}
