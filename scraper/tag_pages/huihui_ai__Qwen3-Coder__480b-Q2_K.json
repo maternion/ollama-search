@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen3moe",
+      "blob_url": "/huihui_ai/Qwen3-Coder:480b-Q2_K/blobs/7ec8ca21bb73",
+      "content_preview": "arch  qwen3moe",
+      "parameters": "480B",
+      "quantization": "Q2_K",
+      "size": "175GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/Qwen3-Coder:480b-Q2_K/blobs/d18a5cc71b84",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/Qwen3-Coder:480b-Q2_K/blobs/8ca96d27c642",
+      "content_preview": "{\n    \"num_gpu\": 1,\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end",
+      "parameters": "",
+      "quantization": "",
+      "size": "132B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/Qwen3-Coder:480b-Q2_K/blobs/ae370d884f10",
+      "content_preview": "{{- $lastUserIdx := -1 -}}\n{{- range $idx, $msg := .Messages -}}\n{{- if eq $msg.Role \"user\" }}{{ $la",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.7kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/Qwen3-Coder:480b-Q2_K",
+  "manifest_digest": "e7885187ca40",
+  "manifest_size": "175GB",
+  "manifest_updated": "12 months ago",
+  "path": "/huihui_ai/Qwen3-Coder",
+  "tag_name": "480b-Q2_K"
+}
