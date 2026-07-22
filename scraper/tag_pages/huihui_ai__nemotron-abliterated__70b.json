@@ -1,0 +1,62 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/nemotron-abliterated:70b/blobs/84957875616b",
+      "content_preview": "arch  llama",
+      "parameters": "70.6B",
+      "quantization": "Q4_K_M",
+      "size": "43GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/nemotron-abliterated:70b/blobs/4863fe3335f3",
+      "content_preview": "<|start_header_id|>system<|end_header_id|>\n{{ if .Tools }}You have access to the following functions",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.2kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/nemotron-abliterated:70b/blobs/64e1b2889b78",
+      "content_preview": "LLAMA 3.1 COMMUNITY LICENSE AGREEMENT\nLlama 3.1 Version Release Date: July 23, 2024\n“Agreement”",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.6kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/nemotron-abliterated:70b/blobs/a568f2ebc73c",
+      "content_preview": "# Llama 3.1 Acceptable Use Policy\nMeta is committed to promoting safe and fair use of its tools and",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.7kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/nemotron-abliterated:70b/blobs/56bb8bd477a5",
+      "content_preview": "{\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",\n        \"<|eot_id|>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "96B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/huihui_ai/nemotron-abliterated:70b",
+  "manifest_digest": "0df9bafd4066",
+  "manifest_size": "43GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/nemotron-abliterated",
+  "tag_name": "70b"
+}
