@@ -1,0 +1,44 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gemma3n",
+      "blob_url": "/huihui_ai/gemma3n-abliterated:e2b-fp16/blobs/81091434834b",
+      "content_preview": "arch  gemma3n",
+      "parameters": "4.46B",
+      "quantization": "F16",
+      "size": "8.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/gemma3n-abliterated:e2b-fp16/blobs/1adbfec9dcf0",
+      "content_preview": "Gemma Terms of Use\nLast modified: March 24, 2025\nBy using, reproducing, modifying, distributing, per",
+      "parameters": "",
+      "quantization": "",
+      "size": "8.4kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/gemma3n-abliterated:e2b-fp16/blobs/e0a42594d802",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if or (eq .Rol",
+      "parameters": "",
+      "quantization": "",
+      "size": "358B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/gemma3n-abliterated:e2b-fp16",
+  "manifest_digest": "27a1f4dc8745",
+  "manifest_size": "8.9GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/gemma3n-abliterated",
+  "tag_name": "e2b-fp16"
+}

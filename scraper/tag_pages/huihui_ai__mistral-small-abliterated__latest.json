@@ -1,0 +1,62 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/mistral-small-abliterated:latest/blobs/8ad25d75a88d",
+      "content_preview": "arch  llama",
+      "parameters": "23.6B",
+      "quantization": "Q4_K_M",
+      "size": "14GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/mistral-small-abliterated:latest/blobs/6d7b25ffd247",
+      "content_preview": "You are Mistral Small 3, a Large Language Model (LLM) created by Mistral AI, a French startup headqu",
+      "parameters": "",
+      "quantization": "",
+      "size": "644B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/mistral-small-abliterated:latest/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/mistral-small-abliterated:latest/blobs/e0daf17ff83e",
+      "content_preview": "{\n    \"temperature\": 0.15\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "21B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/mistral-small-abliterated:latest/blobs/6db27cd4e277",
+      "content_preview": "{{- range $index, $_ := .Messages }}\n{{- if eq .Role \"system\" }}[SYSTEM_PROMPT]{{ .Content }}[/SYSTE",
+      "parameters": "",
+      "quantization": "",
+      "size": "695B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/mistral-small-abliterated:latest",
+  "manifest_digest": "87ab165db808",
+  "manifest_size": "14GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/mistral-small-abliterated",
+  "tag_name": "latest"
+}
