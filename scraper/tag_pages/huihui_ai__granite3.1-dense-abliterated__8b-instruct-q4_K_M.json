@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "granite",
+      "blob_url": "/huihui_ai/granite3.1-dense-abliterated:8b-instruct-q4_K_M/blobs/a9b64b692160",
+      "content_preview": "arch  granite",
+      "parameters": "8.17B",
+      "quantization": "Q4_K_M",
+      "size": "4.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/granite3.1-dense-abliterated:8b-instruct-q4_K_M/blobs/f7b956e70ca3",
+      "content_preview": "Knowledge Cutoff Date: April 2024.\nYou are Granite, developed by IBM.",
+      "parameters": "",
+      "quantization": "",
+      "size": "69B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/granite3.1-dense-abliterated:8b-instruct-q4_K_M/blobs/492069a62c25",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/granite3.1-dense-abliterated:8b-instruct-q4_K_M/blobs/f76a906816c4",
+      "content_preview": "<|start_of_role|>system<|end_of_role|>\n{{- if and (gt (len .Messages) 0) (eq (index .Messages 0).Rol",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.4kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/granite3.1-dense-abliterated:8b-instruct-q4_K_M",
+  "manifest_digest": "6567faf671e9",
+  "manifest_size": "4.9GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/granite3.1-dense-abliterated",
+  "tag_name": "8b-instruct-q4_K_M"
+}
