@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "deepseek2",
+      "blob_url": "/huihui_ai/deepseek-r1-pruned:411b-coder-q4_K_M/blobs/fe096c3b248c",
+      "content_preview": "arch  deepseek2",
+      "parameters": "426B",
+      "quantization": "Q4_K_M",
+      "size": "257GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/deepseek-r1-pruned:411b-coder-q4_K_M/blobs/6e4c38e1172f",
+      "content_preview": "MIT License\nCopyright (c) 2023 DeepSeek\nPermission is hereby granted, free of charge, to any person",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/deepseek-r1-pruned:411b-coder-q4_K_M/blobs/d318c0731575",
+      "content_preview": "{\n    \"num_gpu\": 1,\n    \"stop\": [\n        \"<｜begin▁of▁sentence｜>\",\n        \"<｜end▁of▁s",
+      "parameters": "",
+      "quantization": "",
+      "size": "160B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/deepseek-r1-pruned:411b-coder-q4_K_M/blobs/369ca498f347",
+      "content_preview": "{{- if .System }}{{ .System }}{{ end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice",
+      "parameters": "",
+      "quantization": "",
+      "size": "387B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/deepseek-r1-pruned:411b-coder-q4_K_M",
+  "manifest_digest": "014981c453d8",
+  "manifest_size": "257GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/deepseek-r1-pruned",
+  "tag_name": "411b-coder-q4_K_M"
+}
