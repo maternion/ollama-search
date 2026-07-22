@@ -198,11 +198,13 @@ def _parse_updated_title(s: str):
         return _dt.min
 
 
-def load_tags(model_path: str) -> list[dict]:
+def load_tags(model_path: str, model: dict | None = None) -> list[dict]:
     tf = TAGS_DIR / f"{slugify(model_path)}.json"
-    if not tf.exists():
-        return []
-    return json.loads(tf.read_text()).get("tags", [])
+    if tf.exists():
+        return json.loads(tf.read_text()).get("tags", [])
+    if model and model.get("tags"):
+        return model["tags"]
+    return []
 
 
 def has_mlx(tags: list[dict]) -> bool:
@@ -667,7 +669,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
         key=lambda m: ranks.get(m["name"], {}).get("popular_rank", 9999),
     )
     cards = "\n".join(
-        render_card(m, load_tags(m["path"]), ranks) for m in sorted_models
+        render_card(m, load_tags(m["path"], m), ranks) for m in sorted_models
     )
 
     # Capability filter chips (Embedding/Vision/Tools/Thinking — no Cloud, it's a dropdown)
@@ -1028,6 +1030,11 @@ def _main_tags(m: dict, tags: list[dict]) -> list[dict]:
     for n in sorted(by_name.keys()):
         if n.endswith("-cloud") and n != "cloud" and n[:-6] not in by_name:
             ordered.append(n)
+    # If no size-named tags matched, show all tags (latest first)
+    size_matched = any(s in by_name for s in sizes)
+    if not size_matched:
+        ordered = ["latest"] if "latest" in by_name else []
+        ordered += [t["name"] for t in tags if t["name"] not in ordered]
     # Dedupe preserving order, drop missing
     seen = set()
     out = []
@@ -3062,7 +3069,7 @@ def build_profile_page(username: str) -> None:
     )
     cards_html = ""
     for m in sorted_models:
-        tags = load_tags(m["path"])
+        tags = load_tags(m["path"], m)
         cards_html += render_card(m, tags, profile_ranks)
 
     if not cards_html:
@@ -3688,7 +3695,7 @@ def main() -> int:
     tag_pages_built = 0
     blob_pages_built = 0
     for i, m in enumerate(_all_models, 1):
-        tags = load_tags(m["path"])
+        tags = load_tags(m["path"], m)
         build_detail(m, tags)
         build_tags_page(m, tags)
         for t in tags:

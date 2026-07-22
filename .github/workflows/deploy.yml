@@ -20,7 +20,7 @@ jobs:
   scrape-and-deploy:
     runs-on: ubuntu-latest
     environment: github-pages
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
 
@@ -61,7 +61,7 @@ jobs:
         env:
           GIT_CHECKPOINT: "1"
           GIT_CHECKPOINT_WORKTREE: "/tmp/scraped-data"
-        run: python3 scraper/scrape.py --smart --skip-search --max-runtime 7200 -v
+        run: python3 scraper/scrape.py --smart --skip-search --max-runtime 3000 -v
 
       - name: Checkpoint + build + self-check
         id: build1
