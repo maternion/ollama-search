@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model huihui_ai/huihui3.5:67b",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model huihui_ai/huihui3.5:67b",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model huihui_ai/huihui3.5:67b",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model huihui_ai/huihui3.5:67b",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model huihui_ai/huihui3.5:67b",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model huihui_ai/huihui3.5:67b",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "huihui3.5",
+  "path": "/huihui_ai/huihui3.5",
+  "readme_html": "\n        \n          <p>Huihui 3.5:67B is a merged model created by combining <a href=\"https://huggingface.co/Qwen/Qwen3.5-35B-A3B\" rel=\"nofollow\">Qwen/Qwen3.5-35B-A3B</a> and <a href=\"https://huggingface.co/Hcompany/Holo3-35B-A3B\" rel=\"nofollow\">Hcompany/Holo3-35B-A3B</a>.  The base model is <a href=\"https://huggingface.co/Qwen/Qwen3.5-35B-A3B\" rel=\"nofollow\">Qwen/Qwen3.5-35B-A3B</a>, and the total number of experts has been expanded from 256 to 512 experts, while still activating only 8 experts per token.</p>\n\n<p><strong>Note</strong> Huihui 3.5:67B is not an ablated model.</p>\n\n<p>Welcome everyone to test it. If you require the unquantized model, please send an email to support@huihui.ai.</p>\n\n<h3>References</h3>\n\n<p><a href=\"https://huggingface.co/Qwen/Qwen3.5-35B-A3B\" rel=\"nofollow\">Qwen/Qwen3.5-35B-A3B</a>\n<a href=\"https://huggingface.co/Hcompany/Holo3-35B-A3B\" rel=\"nofollow\">Hcompany/Holo3-35B-A3B</a></p>\n\n        \n      "
+}
