@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/huihui_ai/qwq-abliterated:32b-fp16/blobs/8a2558a53658",
+      "content_preview": "arch  qwen2",
+      "parameters": "32.8B",
+      "quantization": "F16",
+      "size": "66GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwq-abliterated:32b-fp16/blobs/d18a5cc71b84",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwq-abliterated:32b-fp16/blobs/4afe5edfdb51",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ],\n    \"temperature\": 0.6\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "77B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwq-abliterated:32b-fp16/blobs/41190096a061",
+      "content_preview": "{{- if or .System .Tools }}<|im_start|>system\n{{- if .System }}\n{{ .System }}\n{{- end }}\n{{- if .Too",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.2kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/qwq-abliterated:32b-fp16",
+  "manifest_digest": "e2d8d53bc716",
+  "manifest_size": "66GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/qwq-abliterated",
+  "tag_name": "32b-fp16"
+}
