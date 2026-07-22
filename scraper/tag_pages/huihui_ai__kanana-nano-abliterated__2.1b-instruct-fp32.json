@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/kanana-nano-abliterated:2.1b-instruct-fp32/blobs/4bcc0096e5d7",
+      "content_preview": "arch  llama",
+      "parameters": "2.09B",
+      "quantization": "F32",
+      "size": "8.4GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/kanana-nano-abliterated:2.1b-instruct-fp32/blobs/b5e1870638ba",
+      "content_preview": "<|start_header_id|>system<|end_header_id|>\n{{ .System }}<|eot_id|>\n<|start_header_id|>user<|end_head",
+      "parameters": "",
+      "quantization": "",
+      "size": "208B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/kanana-nano-abliterated:2.1b-instruct-fp32/blobs/332c6b754b89",
+      "content_preview": "You are a helpful AI assistant developed by Kakao.",
+      "parameters": "",
+      "quantization": "",
+      "size": "50B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/kanana-nano-abliterated:2.1b-instruct-fp32/blobs/0fa1b4c02d86",
+      "content_preview": "{\n    \"num_ctx\": 8192,\n    \"stop\": [\n        \"<|eot_id|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "49B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/huihui_ai/kanana-nano-abliterated:2.1b-instruct-fp32",
+  "manifest_digest": "1b68d97c752f",
+  "manifest_size": "8.4GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/kanana-nano-abliterated",
+  "tag_name": "2.1b-instruct-fp32"
+}
