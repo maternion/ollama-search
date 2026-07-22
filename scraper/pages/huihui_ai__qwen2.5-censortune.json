@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model huihui_ai/qwen2.5-censortune:0.5b",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model huihui_ai/qwen2.5-censortune:0.5b",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model huihui_ai/qwen2.5-censortune:0.5b",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model huihui_ai/qwen2.5-censortune:0.5b",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model huihui_ai/qwen2.5-censortune:0.5b",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model huihui_ai/qwen2.5-censortune:0.5b",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "qwen2.5-censortune",
+  "path": "/huihui_ai/qwen2.5-censortune",
+  "readme_html": "\n        \n          <p>Using CensorTune with SFT, the <a href=\"https://huggingface.co/collections/Qwen/qwen25-66e81a666513e518adb90d9e\" rel=\"nofollow\">Qwen2.5-Instruct</a> model was fine-tuned on 622 harmful instructions in a single iteration, achieving rejection of all 622 and a zero-pass rate for 320. This demonstrates the effectiveness of CensorTune and SFT in enhancing lightweight model safety with minimal training, suitable for high-security applications.</p>\n\n<h3>References</h3>\n\n<p><a href=\"https://huggingface.co/collections/huihui-ai/qwen25-censortune-680e4d5f86c9bda4449e62a1\" rel=\"nofollow\">HuggingFace</a></p>\n\n<h3>Donation</h3>\n\n<p>You can follow <a href=\"https://x.com/support_huihui\" rel=\"nofollow\">x.com/support_huihui</a> to get the latest model information from huihui.ai.</p>\n\n<h5>Your donation helps us continue our further development and improvement, a cup of coffee can do it.</h5>\n\n<ul>\n<li>bitcoin:</li>\n</ul>\n\n<pre><code>  bc1qqnkhuchxw0zqjh2ku3lu4hq45hc6gy84uk70ge\n</code></pre>\n\n        \n      "
+}
