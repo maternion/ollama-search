@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model huihui_ai/aya-expanse-abliterated",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model huihui_ai/aya-expanse-abliterated",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model huihui_ai/aya-expanse-abliterated",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model huihui_ai/aya-expanse-abliterated",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model huihui_ai/aya-expanse-abliterated",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model huihui_ai/aya-expanse-abliterated",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "aya-expanse-abliterated",
+  "path": "/huihui_ai/aya-expanse-abliterated",
+  "readme_html": "\n        \n          <p>This is an uncensored version of <a href=\"https://huggingface.co/collections/CohereForAI/c4ai-aya-expanse-671a83d6b2c07c692beab3c3\" rel=\"nofollow\">CohereForAI/aya-expanse</a> created with abliteration (see <a href=\"https://github.com/Sumandora/remove-refusals-with-transformers\" rel=\"nofollow\">remove-refusals-with-transformers</a> to know more about it).<br>\nThis is a crude, proof-of-concept implementation to remove refusals from an LLM model without using TransformerLens.</p>\n\n<h3>References</h3>\n\n<p><a href=\"https://huggingface.co/collections/huihui-ai/aya-expanse-abliterated-675bcd8892cf2da2d29d305d\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      "
+}

@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model huihui_ai/huihui-4:8b",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model huihui_ai/huihui-4:8b",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model huihui_ai/huihui-4:8b",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model huihui_ai/huihui-4:8b",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model huihui_ai/huihui-4:8b",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model huihui_ai/huihui-4:8b",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "huihui-4",
+  "path": "/huihui_ai/huihui-4",
+  "readme_html": "\n        \n          <p><code>Huihui4-8B-A4B</code> is a lightweight MoE (Mixture of Experts) conversational model optimized from Google’s <code>gemma-4-26B-A4B-it</code> architecture. Through expert pruning and supervised fine-tuning on high-quality dialogue data, this model significantly reduces computational overhead while preserving core reasoning and interaction capabilities. It is specifically designed for deployment on consumer-grade hardware and code-related conversational tasks.</p>\n\n<p><strong>This model is not an ablation variant.</strong></p>\n\n<p>Welcome everyone to test it.</p>\n\n<h3>References</h3>\n\n<p>[<a href=\"https://huggingface.co/huihui-ai/Huihui4-8B-A4B\" rel=\"nofollow\">https://huggingface.co/huihui-ai/Huihui4-8B-A4B</a>]</p>\n\n        \n      "
+}
