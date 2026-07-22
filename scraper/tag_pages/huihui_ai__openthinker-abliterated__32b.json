@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/huihui_ai/openthinker-abliterated:32b/blobs/2ae6df5f0fa9",
+      "content_preview": "arch  qwen2",
+      "parameters": "32.8B",
+      "quantization": "Q4_K_M",
+      "size": "20GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/openthinker-abliterated:32b/blobs/6490a490932e",
+      "content_preview": "Your role as an assistant involves thoroughly exploring questions through a systematic long thinking",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.3kB",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/openthinker-abliterated:32b/blobs/76a95b21160f",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "10kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/openthinker-abliterated:32b/blobs/32695b892af8",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|im_start|>{{ .R",
+      "parameters": "",
+      "quantization": "",
+      "size": "275B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/openthinker-abliterated:32b",
+  "manifest_digest": "ae64cdc10ec0",
+  "manifest_size": "20GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/openthinker-abliterated",
+  "tag_name": "32b"
+}
