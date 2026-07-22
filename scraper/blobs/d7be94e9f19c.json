@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/huihui_ai/magistral-abliterated:latest/blobs/d7be94e9f19c",
+  "content": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1}}\n{{- if eq .Role \"system\" }}[SYSTEM_PROMPT]{{ .Content }}[/SYSTEM_PROMPT]\n{{- else if eq .Role \"user\" }}[INST]{{ .Content }}[/INST]\n{{- else if eq .Role \"assistant\" }}\n{{- if and $.IsThinkSet (and $last .Thinking) -}}\n<think>\n{{ .Thinking }}\n</think>\n{{- end }}\n{{- if .Content }}{{ .Content }}\n{{- end }}\n{{- if not $last }}</s>\n{{- end }}\n{{- end }}\n{{- if and $last (ne .Role \"assistant\") }}\n{{- if and $.IsThinkSet (not $.Think) -}}\n<think>\n\n</think>\n\n{{- end }}\n{{- end }}\n{{- end }}",
+  "digest": "d7be94e9f19c",
+  "metadata": [],
+  "size": "568B",
+  "tensor_groups": [],
+  "tensors": []
+}
