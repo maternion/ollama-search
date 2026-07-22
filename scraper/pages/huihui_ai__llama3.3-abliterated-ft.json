@@ -1,0 +1,47 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model huihui_ai/llama3.3-abliterated-ft",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch codex-app --model huihui_ai/llama3.3-abliterated-ft",
+      "icon_url": "/public/codex-app.png",
+      "name": "Codex App"
+    },
+    {
+      "command": "ollama launch openclaw --model huihui_ai/llama3.3-abliterated-ft",
+      "icon_url": "/public/openclaw.png",
+      "name": "OpenClaw"
+    },
+    {
+      "command": "ollama launch hermes --model huihui_ai/llama3.3-abliterated-ft",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch codex --model huihui_ai/llama3.3-abliterated-ft",
+      "icon_url": "/public/openai.png",
+      "name": "Codex"
+    },
+    {
+      "command": "ollama launch opencode --model huihui_ai/llama3.3-abliterated-ft",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "llama3.3-abliterated-ft",
+  "path": "/huihui_ai/llama3.3-abliterated-ft",
+  "readme_html": "\n        \n          <p>The fine-tuned version of <a href=\"https://huggingface.co/huihui-ai/Llama-3.3-70B-Instruct-abliterated\" rel=\"nofollow\">huihui-ai/Llama-3.3-70B-Instruct-abliterated</a></p>\n\n<h3>References</h3>\n\n<p><a href=\"https://huggingface.co/huihui-ai/Llama-3.3-70B-Instruct-abliterated-finetuned\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      "
+}
