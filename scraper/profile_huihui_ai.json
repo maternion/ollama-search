@@ -1,0 +1,2141 @@
+{
+  "avatar": "/public/assets/34a18f73-177f-4e9b-b665-14e4a929bb05/19605060-7ac3-4566-8187-ee419e37bdb8.png",
+  "bio": "support@huihui.ai",
+  "links": [
+    {
+      "label": "huihui-ai",
+      "url": "huggingface.co/huihui-ai"
+    }
+  ],
+  "models": [
+    {
+      "capabilities": [
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "DeepSeek's first generation reasoning models with comparable performance to OpenAI-o1.",
+      "name": "deepseek-r1-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/deepseek-r1-abliterated",
+      "pulls": 711000,
+      "sizes": [
+        "1.5b",
+        "7b",
+        "8b",
+        "14b",
+        "32b",
+        "70b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/deepseek-r1-abliterated",
+      "tag_count": 55,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "May 30, 2025 5:01 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision",
+        "tools",
+        "thinking",
+        "audio"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Gemma 4 models are designed to deliver frontier-level performance at each size. They are well-suited for reasoning, agentic workflows, coding, and multimodal understanding.",
+      "name": "gemma-4-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/gemma-4-abliterated",
+      "pulls": 710700,
+      "sizes": [
+        "e2b",
+        "e4b",
+        "12b",
+        "26b",
+        "31b",
+        "48b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/gemma-4-abliterated",
+      "tag_count": 36,
+      "tags": [],
+      "updated": "1 month ago",
+      "updated_title": "Jun 11, 2026 3:09 PM UTC"
+    },
+    {
+      "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Qwen 3.5 is a family of open-source multimodal models that delivers exceptional utility and performance.",
+      "name": "qwen3.5-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwen3.5-abliterated",
+      "pulls": 436400,
+      "sizes": [
+        "0.8b",
+        "2b",
+        "4b",
+        "9b",
+        "27b",
+        "35b",
+        "122b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/qwen3.5-abliterated",
+      "tag_count": 58,
+      "tags": [],
+      "updated": "3 months ago",
+      "updated_title": "Apr 5, 2026 7:47 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "OpenAI’s open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases.",
+      "name": "gpt-oss-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/gpt-oss-abliterated",
+      "pulls": 274100,
+      "sizes": [
+        "20b",
+        "120b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/gpt-oss-abliterated",
+      "tag_count": 16,
+      "tags": [],
+      "updated": "9 months ago",
+      "updated_title": "Sep 27, 2025 9:58 PM UTC"
+    },
+    {
+      "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Qwen3.6 delivers substantial upgrades in agentic coding and thinking preservation than previous Qwen models.",
+      "name": "Qwen3.6-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/Qwen3.6-abliterated",
+      "pulls": 249900,
+      "sizes": [
+        "27b",
+        "35b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/Qwen3.6-abliterated",
+      "tag_count": 17,
+      "tags": [],
+      "updated": "3 months ago",
+      "updated_title": "Apr 23, 2026 6:00 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Qwen3 is the latest generation of large language models in Qwen series, offering a comprehensive suite of dense and mixture-of-experts (MoE) models.",
+      "name": "qwen3-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwen3-abliterated",
+      "pulls": 217600,
+      "sizes": [
+        "0.6b",
+        "1.7b",
+        "4b",
+        "8b",
+        "14b",
+        "16b",
+        "30b",
+        "32b",
+        "235b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/qwen3-abliterated",
+      "tag_count": 74,
+      "tags": [],
+      "updated": "11 months ago",
+      "updated_title": "Aug 7, 2025 7:46 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "As the strongest model in the 30B class, GLM-4.7-Flash offers a new option for lightweight deployment that balances performance and efficiency.",
+      "name": "glm-4.7-flash-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/glm-4.7-flash-abliterated",
+      "pulls": 204100,
+      "sizes": [],
+      "source_url": "https://ollama.com/huihui_ai/glm-4.7-flash-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "5 months ago",
+      "updated_title": "Jan 25, 2026 10:22 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "The most powerful vision-language model in the Qwen3 model family to date.",
+      "name": "qwen3-vl-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwen3-vl-abliterated",
+      "pulls": 99100,
+      "sizes": [
+        "2b",
+        "4b",
+        "8b",
+        "30b",
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/qwen3-vl-abliterated",
+      "tag_count": 54,
+      "tags": [],
+      "updated": "8 months ago",
+      "updated_title": "Nov 10, 2025 11:34 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "The current, most capable model that runs on a single GPU.",
+      "name": "gemma3-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/gemma3-abliterated",
+      "pulls": 91900,
+      "sizes": [
+        "270m",
+        "1b",
+        "4b",
+        "12b",
+        "27b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/gemma3-abliterated",
+      "tag_count": 16,
+      "tags": [],
+      "updated": "11 months ago",
+      "updated_title": "Aug 25, 2025 2:33 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "QwQ is an experimental research model focused on advancing AI reasoning capabilities.",
+      "name": "qwq-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwq-abliterated",
+      "pulls": 72000,
+      "sizes": [
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/qwq-abliterated",
+      "tag_count": 17,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Mar 7, 2025 10:25 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Qwen2 is a new series of large language models from Alibaba group",
+      "name": "qwen2.5-abliterate",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwen2.5-abliterate",
+      "pulls": 69700,
+      "sizes": [
+        "0.5b",
+        "1.5b",
+        "3b",
+        "7b",
+        "14b",
+        "32b",
+        "72b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/qwen2.5-abliterate",
+      "tag_count": 46,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Apr 27, 2025 3:05 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Dolphin 3.0 Llama 3.1 8B 🐬 is the next generation of the Dolphin series of instruct-tuned models designed to be the ultimate general purpose local model, enabling coding, math, agentic, function calling, and general use cases.",
+      "name": "dolphin3-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/dolphin3-abliterated",
+      "pulls": 46000,
+      "sizes": [
+        "8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/dolphin3-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jan 8, 2025 10:24 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Meta's Llama 3.2 goes small with 1B and 3B models.",
+      "name": "llama3.2-abliterate",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/llama3.2-abliterate",
+      "pulls": 45300,
+      "sizes": [
+        "1b",
+        "3b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/llama3.2-abliterate",
+      "tag_count": 11,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Nov 25, 2024 12:53 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "EXAONE 3.5 is a collection of instruction-tuned bilingual (English and Korean) generative models ranging from 2.4B to 32B parameters, developed and released by LG AI Research.",
+      "name": "exaone3.5-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/exaone3.5-abliterated",
+      "pulls": 44600,
+      "sizes": [
+        "2.4b",
+        "7.8b",
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/exaone3.5-abliterated",
+      "tag_count": 13,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Dec 19, 2024 10:39 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "New state of the art 70B model. Llama 3.3 70B offers similar performance compared to Llama 3.1 405B model.",
+      "name": "llama3.3-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/llama3.3-abliterated",
+      "pulls": 44500,
+      "sizes": [
+        "70b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/llama3.3-abliterated",
+      "tag_count": 10,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Dec 12, 2024 8:46 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Qwen2.5-1M is the long-context version of the Qwen2.5 series models, supporting a context length of up to 1M tokens.",
+      "name": "qwen2.5-1m-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwen2.5-1m-abliterated",
+      "pulls": 42200,
+      "sizes": [
+        "7b",
+        "14b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/qwen2.5-1m-abliterated",
+      "tag_count": 11,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jan 28, 2025 8:08 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "The latest series of Code-Specific Qwen models, with significant improvements in code generation, code reasoning, and code fixing.",
+      "name": "qwen2.5-coder-abliterate",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwen2.5-coder-abliterate",
+      "pulls": 29500,
+      "sizes": [
+        "0.5b",
+        "1.5b",
+        "3b",
+        "7b",
+        "14b",
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/qwen2.5-coder-abliterate",
+      "tag_count": 31,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Nov 25, 2024 12:55 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "This is an uncensored version of google/gemma-3n created with abliteration",
+      "name": "gemma3n-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/gemma3n-abliterated",
+      "pulls": 20900,
+      "sizes": [],
+      "source_url": "https://ollama.com/huihui_ai/gemma3n-abliterated",
+      "tag_count": 2,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jul 13, 2025 3:40 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Mistral Small 3 sets a new benchmark in the “small” Large Language Models category below 70B.",
+      "name": "mistral-small-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/mistral-small-abliterated",
+      "pulls": 17300,
+      "sizes": [
+        "24b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/mistral-small-abliterated",
+      "tag_count": 10,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Feb 2, 2025 5:12 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Qwen3-Coder featuring the following key enhancements: Significant Performance, Long-context Capabilities, Agentic Coding.",
+      "name": "qwen3-coder-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwen3-coder-abliterated",
+      "pulls": 17100,
+      "sizes": [
+        "30b",
+        "480b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/qwen3-coder-abliterated",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "11 months ago",
+      "updated_title": "Aug 11, 2025 8:22 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Hunyuan Translation Model Version 1.5 includes a 1.8B translation model, HY-MT1.5-1.8B, and a 7B translation mode",
+      "name": "hy-mt1.5-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/hy-mt1.5-abliterated",
+      "pulls": 14400,
+      "sizes": [
+        "1.8b",
+        "7b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/hy-mt1.5-abliterated",
+      "tag_count": 16,
+      "tags": [],
+      "updated": "6 months ago",
+      "updated_title": "Jan 4, 2026 2:33 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Huihui-MoE-abliterated is a **Mixture of Experts (MoE)** language model developed by **huihui.ai**",
+      "name": "huihui-moe-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/huihui-moe-abliterated",
+      "pulls": 14300,
+      "sizes": [
+        "1.5b",
+        "5b",
+        "12b",
+        "23b",
+        "24b",
+        "46b",
+        "57b",
+        "60b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/huihui-moe-abliterated",
+      "tag_count": 40,
+      "tags": [],
+      "updated": "10 months ago",
+      "updated_title": "Sep 9, 2025 10:12 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Phi-4 is a 14B parameter, state-of-the-art open model from Microsoft.",
+      "name": "phi4-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/phi4-abliterated",
+      "pulls": 13400,
+      "sizes": [
+        "14b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/phi4-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jan 14, 2025 11:13 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Flagship vision-language model of Qwen and also a significant leap from the previous Qwen2-VL.",
+      "name": "qwen2.5-vl-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwen2.5-vl-abliterated",
+      "pulls": 12900,
+      "sizes": [
+        "3b",
+        "7b",
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/qwen2.5-vl-abliterated",
+      "tag_count": 16,
+      "tags": [],
+      "updated": "8 months ago",
+      "updated_title": "Nov 7, 2025 11:33 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "This is not the ablation version. Kimi-K2-Instruct is a state-of-the-art mixture-of-experts (MoE) language model with 32 billion activated parameters and 1 trillion total parameters.",
+      "name": "kimi-k2",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/kimi-k2",
+      "pulls": 12000,
+      "sizes": [
+        "1026b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/kimi-k2",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jul 21, 2025 4:04 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "This is an uncensored version of AlicanKiraz0/BaronLLM_Offensive_Security_LLM_Q6_K_GGUF created with abliteration",
+      "name": "baronllm-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/baronllm-abliterated",
+      "pulls": 9338,
+      "sizes": [
+        "8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/baronllm-abliterated",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jun 11, 2025 5:28 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "The Hunyuan Translation Model comprises a translation model, Hunyuan-MT-7B, and an ensemble model, Hunyuan-MT-Chimera.",
+      "name": "hunyuan-mt-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/hunyuan-mt-abliterated",
+      "pulls": 8387,
+      "sizes": [
+        "7b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/hunyuan-mt-abliterated",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "10 months ago",
+      "updated_title": "Sep 4, 2025 12:20 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Dolphin's first generation reasoning models.",
+      "name": "dolphin3-r1-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/dolphin3-r1-abliterated",
+      "pulls": 8369,
+      "sizes": [
+        "24b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/dolphin3-r1-abliterated",
+      "tag_count": 10,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Feb 9, 2025 11:08 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Qwen3-Coder-Next is a coding-focused language model from Alibaba's Qwen team, optimized for agentic coding workflows and local development.",
+      "name": "qwen3-coder-next-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwen3-coder-next-abliterated",
+      "pulls": 7299,
+      "sizes": [],
+      "source_url": "https://ollama.com/huihui_ai/qwen3-coder-next-abliterated",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "5 months ago",
+      "updated_title": "Feb 8, 2026 12:41 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "A strong Mixture-of-Experts (MoE) language model with 671B total parameters with 37B activated for each token.",
+      "name": "deepseek-v3",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/deepseek-v3",
+      "pulls": 7189,
+      "sizes": [],
+      "source_url": "https://ollama.com/huihui_ai/deepseek-v3",
+      "tag_count": 2,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jan 20, 2025 10:11 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision",
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "A compact and efficient vision-language model, specifically designed for visual document understanding, enabling automated content extraction from tables, charts, infographics, plots, diagrams, and more.",
+      "name": "granite3.2-vision-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/granite3.2-vision-abliterated",
+      "pulls": 7036,
+      "sizes": [
+        "2b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/granite3.2-vision-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Mar 5, 2025 8:15 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Phi-4-mini brings significant enhancements in multilingual support, reasoning, and mathematics, and now, the long-awaited function calling feature is finally supported.",
+      "name": "phi4-mini-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/phi4-mini-abliterated",
+      "pulls": 6848,
+      "sizes": [
+        "3.8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/phi4-mini-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Mar 2, 2025 7:26 PM UTC"
+    },
+    {
+      "capabilities": [
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "This is an uncensored version of mistralai/magistral-Small-2506 created with abliteration",
+      "name": "magistral-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/magistral-abliterated",
+      "pulls": 6768,
+      "sizes": [
+        "24b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/magistral-abliterated",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jun 13, 2025 5:26 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "A fully open-source family of reasoning models built using a dataset derived by distilling DeepSeek-R1.",
+      "name": "openthinker-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/openthinker-abliterated",
+      "pulls": 6757,
+      "sizes": [
+        "7b",
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/openthinker-abliterated",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Feb 14, 2025 2:13 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "The first installment in the Qwen3-Next series with strong performance in terms of both parameter efficiency and inference speed.",
+      "name": "qwen3-next-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwen3-next-abliterated",
+      "pulls": 5294,
+      "sizes": [
+        "80b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/qwen3-next-abliterated",
+      "tag_count": 10,
+      "tags": [],
+      "updated": "7 months ago",
+      "updated_title": "Dec 11, 2025 12:57 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Granite 4.1 models have gone through an improved post-training pipeline, including supervised finetuning and reinforcement learning alignment, resulting in enhanced tool calling, instruction following, and chat capabilities.",
+      "name": "granite4.1-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/granite4.1-abliterated",
+      "pulls": 5040,
+      "sizes": [
+        "3b",
+        "8b",
+        "30b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/granite4.1-abliterated",
+      "tag_count": 12,
+      "tags": [],
+      "updated": "2 months ago",
+      "updated_title": "May 4, 2026 8:04 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "DeepHermes 3 Preview is the latest version of our flagship Hermes series of LLMs by Nous Research, and one of the first models in the world to unify Reasoning (long chains of thought that improve answer accuracy) and normal LLM response modes into one mod",
+      "name": "deephermes3-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/deephermes3-abliterated",
+      "pulls": 4529,
+      "sizes": [
+        "8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/deephermes3-abliterated",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Feb 19, 2025 2:36 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "This is an uncensored version of mistralai/Devstral-Small-2505 created with abliteration",
+      "name": "devstral-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/devstral-abliterated",
+      "pulls": 3987,
+      "sizes": [
+        "24b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/devstral-abliterated",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "May 28, 2025 10:57 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "A strong Mixture-of-Experts (MoE) language model with 671B total parameters with 37B activated for each token.",
+      "name": "deepseek-v3-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/deepseek-v3-abliterated",
+      "pulls": 3986,
+      "sizes": [
+        "671b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/deepseek-v3-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Apr 5, 2025 9:37 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "LFM2.5 is a new family of hybrid models designed for on-device deployment.",
+      "name": "lfm2.5-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/lfm2.5-abliterated",
+      "pulls": 3725,
+      "sizes": [
+        "1.2b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/lfm2.5-abliterated",
+      "tag_count": 10,
+      "tags": [],
+      "updated": "5 months ago",
+      "updated_title": "Jan 25, 2026 11:49 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Foundation-Sec-8B-abliterated is an uncensored version fine-tuned based on fdtn-ai/Foundation-Sec-8B. Foundation-Sec-8B is an open-weight, 8-billion-parameter foundational language model designed specifically for cybersecurity applications.",
+      "name": "foundation-sec-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/foundation-sec-abliterated",
+      "pulls": 3529,
+      "sizes": [
+        "8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/foundation-sec-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "May 12, 2025 5:07 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Hermes 3 3B is a small but mighty new addition to the Hermes series of LLMs by Nous Research, and is Nous's first fine-tune in this parameter class.",
+      "name": "Hermes-3-Llama-3.2-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
+      "pulls": 3376,
+      "sizes": [
+        "3b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/Hermes-3-Llama-3.2-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Dec 16, 2024 10:23 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Phi 4 mini reasoning is a lightweight open model that balances efficiency with advanced reasoning ability.",
+      "name": "phi4-reasoning-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/phi4-reasoning-abliterated",
+      "pulls": 3309,
+      "sizes": [
+        "3.8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/phi4-reasoning-abliterated",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "May 6, 2025 1:34 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "This is an uncensored version of Menlo/Jan-nano created with abliteration",
+      "name": "jan-nano-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/jan-nano-abliterated",
+      "pulls": 3215,
+      "sizes": [
+        "4b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/jan-nano-abliterated",
+      "tag_count": 10,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jul 3, 2025 3:27 PM UTC"
+    },
+    {
+      "capabilities": [
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "This is an uncensored version of arcee-ai/Homunculus created with abliteration",
+      "name": "homunculus-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/homunculus-abliterated",
+      "pulls": 3206,
+      "sizes": [
+        "12b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/homunculus-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jun 9, 2025 8:39 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "This is an uncensored version of ByteDance-Seed/Seed-Coder-8B-Instruct created with abliteration",
+      "name": "seed-coder-abliterate",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/seed-coder-abliterate",
+      "pulls": 3144,
+      "sizes": [],
+      "source_url": "https://ollama.com/huihui_ai/seed-coder-abliterate",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "May 13, 2025 1:26 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "tongyi DeepResearch, an agentic large language model featuring 30 billion total parameters, with only 3 billion activated per token.",
+      "name": "tongyi-deepresearch-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/tongyi-deepresearch-abliterated",
+      "pulls": 3066,
+      "sizes": [
+        "30b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/tongyi-deepresearch-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "10 months ago",
+      "updated_title": "Sep 20, 2025 9:25 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "This is an uncensored version of a-m-team/AM-Thinking-v1 created with abliteration",
+      "name": "am-thinking-abliterate",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/am-thinking-abliterate",
+      "pulls": 3033,
+      "sizes": [
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/am-thinking-abliterate",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "May 17, 2025 8:24 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Llama-3.1-Nemotron-70B-Instruct is a large language model customized by NVIDIA to improve the helpfulness of LLM generated responses to user queries.",
+      "name": "nemotron-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/nemotron-abliterated",
+      "pulls": 2995,
+      "sizes": [
+        "70b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/nemotron-abliterated",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Dec 20, 2024 10:04 AM UTC"
+    },
+    {
+      "capabilities": [
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "This is an uncensored version of Tongyi-Zhiwen/QwenLong-L1-32B created with abliteration",
+      "name": "qwenlong-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwenlong-abliterated",
+      "pulls": 2935,
+      "sizes": [
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/qwenlong-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "May 30, 2025 12:43 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Cohere For AI's language models trained to perform well across 23 different languages.",
+      "name": "aya-expanse-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/aya-expanse-abliterated",
+      "pulls": 2839,
+      "sizes": [
+        "8b",
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/aya-expanse-abliterated",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Dec 14, 2024 3:48 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Granite-3.2 is a family of long-context AI models from IBM Granite fine-tuned for thinking capabilities.",
+      "name": "granite3.2-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/granite3.2-abliterated",
+      "pulls": 2679,
+      "sizes": [
+        "2b",
+        "8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/granite3.2-abliterated",
+      "tag_count": 11,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Mar 4, 2025 5:35 PM UTC"
+    },
+    {
+      "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Huihui4-8B-A4B is a lightweight MoE (Mixture of Experts) conversational model optimized from Google's gemma-4-26B-A4B-it architecture",
+      "name": "huihui-4",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/huihui-4",
+      "pulls": 2649,
+      "sizes": [
+        "8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/huihui-4",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "2 months ago",
+      "updated_title": "Apr 25, 2026 5:43 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Arcee-Blitz (24B) is a new Mistral-based 24B model distilled from DeepSeek, designed to be both fast and efficient. We view it as a practical “workhorse” model that can tackle a range of tasks without the overhead of larger architectures.",
+      "name": "arcee-blitz-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/arcee-blitz-abliterated",
+      "pulls": 2643,
+      "sizes": [
+        "24b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/arcee-blitz-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Mar 1, 2025 4:43 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "QwenLong-L1.5, a long-context reasoning model built upon Qwen3-30B-A3B-Thinking, augmented with memory mechanisms to process tasks far beyond its physical context window.",
+      "name": "qwenlong-l1.5-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwenlong-l1.5-abliterated",
+      "pulls": 2559,
+      "sizes": [
+        "30b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/qwenlong-l1.5-abliterated",
+      "tag_count": 8,
+      "tags": [],
+      "updated": "6 months ago",
+      "updated_title": "Dec 25, 2025 11:58 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "This is an uncensored version of nvidia/AceReason-Nemotron created with abliteration Edit",
+      "name": "acereason-nemotron-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/acereason-nemotron-abliterated",
+      "pulls": 2552,
+      "sizes": [
+        "7b",
+        "14b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/acereason-nemotron-abliterated",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "May 27, 2025 8:07 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "DeepSeek-R1-Distill-Qwen-Coder-32B-Fusion-9010 is a mixed model that combines the strengths of two powerful DeepSeek-R1-Distill-Qwen-based models: huihui-ai/DeepSeek-R1-Distill-Qwen-32B-abliterated and huihui-ai/Qwen2.5-Coder-32B-Instruct-abliterated.",
+      "name": "deepseek-r1-Fusion",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/deepseek-r1-Fusion",
+      "pulls": 2504,
+      "sizes": [
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/deepseek-r1-Fusion",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Feb 22, 2025 8:22 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "MiroThinker v1.0 is an open-source research agent designed to advance tool-augmented reasoning and information-seeking capabilities.",
+      "name": "mirothinker1-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/mirothinker1-abliterated",
+      "pulls": 2502,
+      "sizes": [
+        "8b",
+        "30b",
+        "72b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/mirothinker1-abliterated",
+      "tag_count": 18,
+      "tags": [],
+      "updated": "8 months ago",
+      "updated_title": "Nov 23, 2025 11:06 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Tess-R1 is designed with test-time compute in mind, and has the capabilities to produce a Chain-of-Thought (CoT) reasoning before producing the final output.",
+      "name": "tess-r1-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/tess-r1-abliterated",
+      "pulls": 2476,
+      "sizes": [
+        "70b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/tess-r1-abliterated",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Feb 18, 2025 9:21 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "`DeepSeekR1-QwQ-SkyT1-32B-Fusion` is a mixed model that combines the strengths of three powerful Qwen-based models: \nhuihui-ai/DeepSeek-R1-Distill-Qwen-32B-abliterated,\nhuihui-ai/QwQ-32B-Preview-abliterated and \nhuihui-ai/Sky-T1-32B-Preview-abliterated",
+      "name": "deepseekr1-qwq-skyt1-fusion",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/deepseekr1-qwq-skyt1-fusion",
+      "pulls": 2464,
+      "sizes": [
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/deepseekr1-qwq-skyt1-fusion",
+      "tag_count": 14,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Feb 21, 2025 7:00 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Fara-7B is Microsoft's first agentic small language model (SLM) designed specifically for computer use.",
+      "name": "fara-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/fara-abliterated",
+      "pulls": 2434,
+      "sizes": [
+        "7b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/fara-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "7 months ago",
+      "updated_title": "Nov 26, 2025 3:56 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "This is an uncensored version of LGAI-EXAONE/EXAONE-Deep-2.4B created with abliteration",
+      "name": "exaone-deep-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/exaone-deep-abliterated",
+      "pulls": 2103,
+      "sizes": [
+        "2.4b",
+        "7.8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/exaone-deep-abliterated",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jun 23, 2025 6:48 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Orchestrator-8B is a state-of-the-art 8B parameter orchestration model designed to solve complex, multi-turn agentic tasks by coordinating a diverse set of expert models and tools.",
+      "name": "orchestrator-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/orchestrator-abliterated",
+      "pulls": 1971,
+      "sizes": [
+        "8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/orchestrator-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "7 months ago",
+      "updated_title": "Nov 30, 2025 4:43 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "The Skywork o1 Open model series, developed by the Skywork team at Kunlun Inc. This groundbreaking release introduces a series of models that incorporate o1-like slow thinking and reasoning capabilities.",
+      "name": "skywork-o1-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/skywork-o1-abliterated",
+      "pulls": 1960,
+      "sizes": [
+        "8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/skywork-o1-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Nov 27, 2024 4:32 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "A fine-tuned version of Deepseek-R1-Distilled-Qwen-1.5B that surpasses the performance of OpenAI’s o1-preview with just 1.5B parameters on popular math evaluations.",
+      "name": "deepscaler-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/deepscaler-abliterated",
+      "pulls": 1951,
+      "sizes": [
+        "1.5b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/deepscaler-abliterated",
+      "tag_count": 3,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Feb 14, 2025 4:32 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "A family of efficient AI models under 10B parameters performant in science, math, and coding through innovative training techniques.",
+      "name": "falcon3-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/falcon3-abliterated",
+      "pulls": 1879,
+      "sizes": [
+        "1b",
+        "3b",
+        "7b",
+        "10b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/falcon3-abliterated",
+      "tag_count": 21,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Dec 24, 2024 7:42 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "The fine-tuned version of huihui_ai/llama3.3-abliterated",
+      "name": "llama3.3-abliterated-ft",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/llama3.3-abliterated-ft",
+      "pulls": 1826,
+      "sizes": [
+        "70b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/llama3.3-abliterated-ft",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Dec 20, 2024 1:53 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Tiny-R1-32B-Preview, which outperforms the 70B model Deepseek-R1-Distill-Llama-70B and nearly matches the full R1 model in math.",
+      "name": "tinyr1-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/tinyr1-abliterated",
+      "pulls": 1636,
+      "sizes": [
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/tinyr1-abliterated",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Mar 1, 2025 9:26 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Kanana, a series of bilingual language models (developed by Kakao) that demonstrate exceeding performance in Korean and competitive performance in English.",
+      "name": "kanana-nano-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/kanana-nano-abliterated",
+      "pulls": 1564,
+      "sizes": [
+        "2.1b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/kanana-nano-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Mar 2, 2025 2:28 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "A new small reasoning model fine-tuned from the Qwen 2.5 3B Instruct model.",
+      "name": "smallthinker-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/smallthinker-abliterated",
+      "pulls": 1479,
+      "sizes": [
+        "3b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/smallthinker-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jan 1, 2025 11:18 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "An open large reasoning model for real-world solutions by the Alibaba International Digital Commerce Group (AIDC-AI).",
+      "name": "marco-o1-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/marco-o1-abliterated",
+      "pulls": 1426,
+      "sizes": [
+        "7b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/marco-o1-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Nov 25, 2024 4:06 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "The IBM Granite 2B and 8B models are text-only dense LLMs trained on over 12 trillion tokens of data, demonstrated significant improvements over their predecessors in performance and speed in IBM’s initial testing.",
+      "name": "granite3.1-dense-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/granite3.1-dense-abliterated",
+      "pulls": 1424,
+      "sizes": [
+        "2b",
+        "8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/granite3.1-dense-abliterated",
+      "tag_count": 11,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Dec 21, 2024 8:50 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "DeepSeek-V3-Pruned-Coder-411B is a pruned version of the DeepSeek-V3 reduced from 256 experts to 160 experts,  The pruned model is mainly used for code  generation.",
+      "name": "deepseek-v3-pruned",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/deepseek-v3-pruned",
+      "pulls": 1395,
+      "sizes": [
+        "411b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/deepseek-v3-pruned",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Mar 31, 2025 9:05 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "qwq-fusion is a mixed model that combines the strengths of two powerful Qwen-based models: huihui-ai/QwQ-32B-Preview-abliterated and huihui-ai/Qwen2.5-Coder-32B-Instruct-abliterated.",
+      "name": "qwq-fusion",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwq-fusion",
+      "pulls": 1285,
+      "sizes": [
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/qwq-fusion",
+      "tag_count": 14,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Nov 30, 2024 3:56 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "he smallest model in Cohere's R series delivers top-tier speed, efficiency, and quality to build powerful AI applications on commodity GPUs and edge devices.",
+      "name": "command-r7b-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/command-r7b-abliterated",
+      "pulls": 1209,
+      "sizes": [
+        "7b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/command-r7b-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jan 14, 2025 2:54 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "InternLM3 has open-sourced an 8-billion parameter instruction model, InternLM3-8B-Instruct, designed for general-purpose usage and advanced reasoning.",
+      "name": "internlm3-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/internlm3-abliterated",
+      "pulls": 1156,
+      "sizes": [
+        "8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/internlm3-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jan 18, 2025 2:44 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "A version of the DeepSeek-R1 model that has been post trained to provide unbiased, accurate, and factual information by Perplexity.",
+      "name": "perplexity-ai-r1-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/perplexity-ai-r1-abliterated",
+      "pulls": 1110,
+      "sizes": [
+        "70b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/perplexity-ai-r1-abliterated",
+      "tag_count": 10,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Mar 1, 2025 9:31 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Huihui-MoE is a Mixture of Experts (MoE) language model developed by huihui.ai",
+      "name": "huihui-moe",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/huihui-moe",
+      "pulls": 1097,
+      "sizes": [
+        "1.2b",
+        "23b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/huihui-moe",
+      "tag_count": 10,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jun 21, 2025 5:57 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Llama Nemotron, Open, Production-ready Enterprise Models",
+      "name": "nemotron-v1-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/nemotron-v1-abliterated",
+      "pulls": 1076,
+      "sizes": [
+        "8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/nemotron-v1-abliterated",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Apr 20, 2025 3:19 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "OpenHands LM is built on the foundation of Qwen Coder 2.5 Instruct 32B, leveraging its powerful base capabilities for coding tasks.",
+      "name": "openhands-lm-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/openhands-lm-abliterated",
+      "pulls": 956,
+      "sizes": [
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/openhands-lm-abliterated",
+      "tag_count": 7,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Apr 3, 2025 8:51 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "MicroThinker is an experimental research model focused on advancing AI reasoning capabilities.",
+      "name": "microthinker",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/microthinker",
+      "pulls": 886,
+      "sizes": [
+        "1b",
+        "3b",
+        "8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/microthinker",
+      "tag_count": 12,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jan 25, 2025 3:13 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Tülu 3 is a leading instruction following model family, offering fully open-source data, code, and recipes by the The Allen Institute for AI.",
+      "name": "tulu3-abliterate",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/tulu3-abliterate",
+      "pulls": 879,
+      "sizes": [
+        "8b",
+        "70b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/tulu3-abliterate",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Nov 28, 2024 2:11 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Advancing the Coding Capability",
+      "name": "glm-4.7-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/glm-4.7-abliterated",
+      "pulls": 849,
+      "sizes": [],
+      "source_url": "https://ollama.com/huihui_ai/glm-4.7-abliterated",
+      "tag_count": 1,
+      "tags": [],
+      "updated": "5 months ago",
+      "updated_title": "Jan 28, 2026 6:52 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "A state-of-the-art mixture-of-experts (MoE) language model. Kimi K2-Instruct-0905 demonstrates significant improvements in performance on public benchmarks and real-world coding agent tasks.",
+      "name": "kimi-k2-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/kimi-k2-abliterated",
+      "pulls": 820,
+      "sizes": [
+        "1026b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/kimi-k2-abliterated",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "7 months ago",
+      "updated_title": "Dec 17, 2025 2:57 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "This is not the ablation version. Qwen3-Coder featuring the following key enhancements: Significant Performance, Long-context Capabilities, Agentic Coding.",
+      "name": "Qwen3-Coder",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/Qwen3-Coder",
+      "pulls": 799,
+      "sizes": [
+        "480b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/Qwen3-Coder",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "12 months ago",
+      "updated_title": "Jul 26, 2025 1:54 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Advanced agentic, reasoning and coding capabilities.",
+      "name": "glm4.6-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/glm4.6-abliterated",
+      "pulls": 620,
+      "sizes": [
+        "357b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/glm4.6-abliterated",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "7 months ago",
+      "updated_title": "Dec 6, 2025 7:58 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "123B model that excels at using tools to explore codebases, editing multiple files and power software engineering agents.",
+      "name": "devstral-2-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/devstral-2-abliterated",
+      "pulls": 573,
+      "sizes": [
+        "123b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/devstral-2-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "6 months ago",
+      "updated_title": "Dec 30, 2025 6:50 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "A version of the DeepSeek-R1 model that has been post trained to provide unbiased, accurate, and factual information by Perplexity.",
+      "name": "perplexity-ai-r1",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/perplexity-ai-r1",
+      "pulls": 543,
+      "sizes": [],
+      "source_url": "https://ollama.com/huihui_ai/perplexity-ai-r1",
+      "tag_count": 2,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Feb 23, 2025 2:52 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "UwU is an experimental research model focused on advancing AI reasoning capabilities.",
+      "name": "uwu-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/uwu-abliterated",
+      "pulls": 495,
+      "sizes": [
+        "7b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/uwu-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jan 6, 2025 1:39 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "s1 is a reasoning model finetuned from Qwen2.5-32B-Instruct on just 1,000 examples. It matches o1-preview & exhibits test-time scaling via budget forcing.",
+      "name": "s1-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/s1-abliterated",
+      "pulls": 422,
+      "sizes": [
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/s1-abliterated",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Feb 14, 2025 11:56 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Huihui 3.5 is a family of models created by remixing and merging multiple Qwen3.5 models of the same size.",
+      "name": "huihui3.5",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/huihui3.5",
+      "pulls": 396,
+      "sizes": [
+        "67b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/huihui3.5",
+      "tag_count": 1,
+      "tags": [],
+      "updated": "3 months ago",
+      "updated_title": "Apr 4, 2026 6:58 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Lucie-7B is a pretrained 7B parameter causal language model built by LINAGORA and OpenLLM-France.",
+      "name": "Lucie-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/Lucie-abliterated",
+      "pulls": 391,
+      "sizes": [
+        "7b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/Lucie-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jan 17, 2025 5:46 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "This model is a successor of s1-32B with slightly better performance.",
+      "name": "s1.1-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/s1.1-abliterated",
+      "pulls": 387,
+      "sizes": [
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/s1.1-abliterated",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Feb 14, 2025 2:41 PM UTC"
+    },
+    {
+      "capabilities": [
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "DeepSeek's first-generation of reasoning models with comparable performance to OpenAI-o1, including six dense models distilled from DeepSeek-R1 based on Llama and Qwen.",
+      "name": "deepseek-r1",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/deepseek-r1",
+      "pulls": 309,
+      "sizes": [
+        "671b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/deepseek-r1",
+      "tag_count": 12,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jun 10, 2025 6:08 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "fluently-lm/FluentlyLM-Prinum",
+      "name": "fluentlylm-prinum-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/fluentlylm-prinum-abliterated",
+      "pulls": 282,
+      "sizes": [
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/fluentlylm-prinum-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Mar 1, 2025 12:55 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "CensorTune with Supervised Fine-Tuning (SFT) to fine-tune the Qwen2.5-Instruct model on 622 harmful instructions in a single fine-tuning iteration, achieving rejection of these instructions and a zero-pass rate for 320",
+      "name": "qwen2.5-censortune",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwen2.5-censortune",
+      "pulls": 266,
+      "sizes": [
+        "0.5b",
+        "1.5b",
+        "3b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/qwen2.5-censortune",
+      "tag_count": 15,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Apr 29, 2025 2:05 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "This is not the ablation version. DeepSeek-V3.1 is a hybrid model that supports both thinking mode and non-thinking mode.",
+      "name": "deepseek-v3.1",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/deepseek-v3.1",
+      "pulls": 244,
+      "sizes": [
+        "671b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/deepseek-v3.1",
+      "tag_count": 3,
+      "tags": [],
+      "updated": "10 months ago",
+      "updated_title": "Aug 29, 2025 12:07 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Sky-T1-32B-Preview is an experimental research model focused on advancing AI reasoning capabilities",
+      "name": "skyt1-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/skyt1-abliterated",
+      "pulls": 226,
+      "sizes": [
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/skyt1-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jan 19, 2025 8:36 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Megrez-3B aims to provide a fast inference, compact, and powerful edge-side intelligent solution through software-hardware co-design.",
+      "name": "megrez-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/megrez-abliterated",
+      "pulls": 204,
+      "sizes": [
+        "7b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/megrez-abliterated",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jan 7, 2025 3:27 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "DeepSeek-R1-Pruned-Coder-411B is a pruned version of the DeepSeek-R1 reduced from 256 experts to 160 experts, The pruned model is mainly used for code generation.",
+      "name": "deepseek-r1-pruned",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/deepseek-r1-pruned",
+      "pulls": 112,
+      "sizes": [
+        "411b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/deepseek-r1-pruned",
+      "tag_count": 3,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Mar 18, 2025 11:13 PM UTC"
+    }
+  ],
+  "username": "huihui_ai"
+}
