@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/arcee-blitz-abliterated:24b-q4_K_M/blobs/27f43c56bdc7",
+      "content_preview": "arch  llama",
+      "parameters": "23.6B",
+      "quantization": "Q4_K_M",
+      "size": "14GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/arcee-blitz-abliterated:24b-q4_K_M/blobs/cf989ea142f2",
+      "content_preview": "Apache 2.0",
+      "parameters": "",
+      "quantization": "",
+      "size": "10B",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/arcee-blitz-abliterated:24b-q4_K_M/blobs/5bf6e733b25a",
+      "content_preview": "{\n    \"stop\": [\n        \"</s>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "28B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/arcee-blitz-abliterated:24b-q4_K_M/blobs/3b9e03c85cc7",
+      "content_preview": "{{- /* Define default system message */ -}}\n{{- $default_system_message := \"You are Virtouso Medium",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.7kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/arcee-blitz-abliterated:24b-q4_K_M",
+  "manifest_digest": "d31a66a19728",
+  "manifest_size": "14GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/arcee-blitz-abliterated",
+  "tag_name": "24b-q4_K_M"
+}
