@@ -2688,10 +2688,18 @@ function applyFilters() {
       if (!bOff) rb = 9999;
       if (ra !== 9999 || rb !== 9999) {
         cmp = ra - rb;
-      } else {
+      } else if (sort === 'popular') {
+        var pa = parseFloat(a.getAttribute('data-pulls') || '0');
+        var pb = parseFloat(b.getAttribute('data-pulls') || '0');
+        cmp = pb - pa;
+      } else if (sort === 'newest') {
         var ua = parseFloat(a.getAttribute('data-updated-rank') || '9999');
         var ub = parseFloat(b.getAttribute('data-updated-rank') || '9999');
         cmp = ua - ub;
+      } else {
+        var ua = parseFloat(a.getAttribute('data-updated-rank') || '9999');
+        var ub = parseFloat(b.getAttribute('data-updated-rank') || '9999');
+        cmp = ub - ua;
       }
     } else {
       var na = parseFloat(va) || 0;
