@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/huihui_ai/hy-mt1.5-abliterated:latest/blobs/4ceb1d78f4c2",
+  "content": "{{ $has_head := true }}\n{{ if .System }}<|startoftext|>{{ .System }}<|extra_4|>{{ else }}{{ $has_head = false }}{{ end }}\n{{ range $index, $message := .Messages }}\n{{ if eq $message.Role \"user\" }}\n{{ if and (eq $index 0) $has_head }}{{ $message.Content }}<|extra_0|>{{ else }}<|startoftext|>{{ $message.Content }}<|extra_0|>{{ end }}\n{{ else if eq $message.Role \"assistant\" }}\n{{ $message.Content }}\n{{ end }}\n{{ end }}",
+  "digest": "4ceb1d78f4c2",
+  "metadata": [],
+  "size": "419B",
+  "tensor_groups": [],
+  "tensors": []
+}
