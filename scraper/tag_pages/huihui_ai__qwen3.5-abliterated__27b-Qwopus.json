@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen35",
+      "blob_url": "/huihui_ai/qwen3.5-abliterated:27b-Qwopus/blobs/a8e26af7dd23",
+      "content_preview": "arch  qwen35",
+      "parameters": "27.4B",
+      "quantization": "Q4_K_M",
+      "size": "17GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen3.5-abliterated:27b-Qwopus/blobs/7339fa418c9a",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen3.5-abliterated:27b-Qwopus/blobs/f6417cb1e269",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_k\": 20,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "42B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen3.5-abliterated:27b-Qwopus/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/qwen3.5-abliterated:27b-Qwopus",
+  "manifest_digest": "ecf59430f981",
+  "manifest_size": "17GB",
+  "manifest_updated": "3 months ago",
+  "path": "/huihui_ai/qwen3.5-abliterated",
+  "tag_name": "27b-Qwopus"
+}
