@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/falcon3-abliterated:7b-instruct/blobs/8636e5a7b1f8",
+      "content_preview": "arch  llama",
+      "parameters": "7.46B",
+      "quantization": "Q4_K_M",
+      "size": "4.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/falcon3-abliterated:7b-instruct/blobs/803b5adc3448",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|{{ .Role }}|>\n{",
+      "parameters": "",
+      "quantization": "",
+      "size": "218B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/falcon3-abliterated:7b-instruct/blobs/58f83c52a4e3",
+      "content_preview": "Falcon 3 TII Falcon License\nDecember 2024\nFalconLLM.tii.ae\nIntroductory note\nThis license is, in par",
+      "parameters": "",
+      "quantization": "",
+      "size": "13kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/falcon3-abliterated:7b-instruct/blobs/35e31ed4c388",
+      "content_preview": "{\n    \"stop\": [\n        \"<|system|>\",\n        \"<|user|>\",\n        \"<|end|>\",\n        \"<|assistant|>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "101B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/huihui_ai/falcon3-abliterated:7b-instruct",
+  "manifest_digest": "88265e61b52d",
+  "manifest_size": "4.6GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/falcon3-abliterated",
+  "tag_name": "7b-instruct"
+}
