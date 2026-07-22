@@ -582,6 +582,7 @@ def render_card(
         f'data-sizes-count="{len(m["sizes"])}" '
         f'data-sizes="{" ".join(m.get("sizes", []))}" '
         f'data-name="{esc(name_raw).lower()}" '
+        f'data-path="{esc(m["path"].strip("/").lower())}" '
         f'data-cloud="{str(m.get("cloud", False)).lower()}" '
         f'data-cloud-only="{str(m.get("cloud_only", False)).lower()}" '
         f'data-official="{str(m.get("official", True)).lower()}" '
@@ -2637,7 +2638,8 @@ function applyFilters() {
     var cardSizes = card.getAttribute('data-sizes') || '';
     var isOfficial = card.getAttribute('data-official') !== 'false';
     var matchSize = matchSizeRange(cardSizes);
-    var matchText = !q || title.indexOf(q) !== -1 || desc.indexOf(q) !== -1;
+    var cardPath = (card.getAttribute('data-path') || '').toLowerCase();
+    var matchText = !q || title.indexOf(q) !== -1 || desc.indexOf(q) !== -1 || cardPath.indexOf(q) !== -1;
     var matchCaps = caps.length === 0 || caps.every(function(c) { return cardCaps.indexOf(c) !== -1; });
     var matchCloud = cloudFilter === 'all'
       || (cloudFilter === 'cloud' && isCloud)
@@ -2677,6 +2679,16 @@ function applyFilters() {
     var cmp;
     if (sort === 'name') {
       cmp = va.localeCompare(vb);
+    } else if (sort === 'popular') {
+      var ra = parseFloat(a.getAttribute('data-popular-rank') || '9999');
+      var rb = parseFloat(b.getAttribute('data-popular-rank') || '9999');
+      if (ra !== 9999 || rb !== 9999) {
+        cmp = ra - rb;
+      } else {
+        var pa = parseFloat(a.getAttribute('data-pulls') || '0');
+        var pb = parseFloat(b.getAttribute('data-pulls') || '0');
+        cmp = pb - pa;
+      }
     } else {
       var na = parseFloat(va) || 0;
       var nb = parseFloat(vb) || 0;
