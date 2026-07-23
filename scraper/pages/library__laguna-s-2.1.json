@@ -1,36 +1,5 @@
 {
-  "applications": [
-    {
-      "command": "ollama launch claude --model laguna-s-2.1",
-      "icon_url": "/public/claude.png",
-      "name": "Claude Code"
-    },
-    {
-      "command": "ollama launch codex-app --model laguna-s-2.1",
-      "icon_url": "/public/codex-app.png",
-      "name": "Codex App"
-    },
-    {
-      "command": "ollama launch openclaw --model laguna-s-2.1",
-      "icon_url": "/public/openclaw.png",
-      "name": "OpenClaw"
-    },
-    {
-      "command": "ollama launch hermes --model laguna-s-2.1",
-      "icon_url": "/public/hermes.png",
-      "name": "Hermes Agent"
-    },
-    {
-      "command": "ollama launch codex --model laguna-s-2.1",
-      "icon_url": "/public/openai.png",
-      "name": "Codex"
-    },
-    {
-      "command": "ollama launch opencode --model laguna-s-2.1",
-      "icon_url": "/public/opencode.png",
-      "name": "OpenCode"
-    }
-  ],
+  "applications": [],
   "cloud_context": "",
   "cloud_context_unit": "",
   "cloud_size": "",

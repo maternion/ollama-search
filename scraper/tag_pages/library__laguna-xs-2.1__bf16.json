@@ -9,7 +9,7 @@
   "files": [
     {
       "arch": "laguna",
-      "blob_url": "/library/laguna-xs-2.1:bf16/blobs/af830a249880",
+      "blob_url": "/library/laguna-xs-2.1:bf16/blobs/d1d99abe30c3",
       "content_preview": "arch  laguna",
       "parameters": "33.4B",
       "quantization": "BF16",
@@ -18,7 +18,16 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/laguna-xs-2.1:bf16/blobs/bf6afc09321c",
+      "blob_url": "/library/laguna-xs-2.1:bf16/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/laguna-xs-2.1:bf16/blobs/8a0c5e232551",
       "content_preview": "OpenMDW License Agreement, version 1.1 (OpenMDW-1.1)\nBy exercising rights granted to you under this",
       "parameters": "",
       "quantization": "",
@@ -27,10 +36,9 @@
     }
   ],
   "full_path": "/library/laguna-xs-2.1:bf16",
-  "manifest_digest": "5bda9bef69e1",
+  "manifest_digest": "79a64d06873a",
   "manifest_size": "67GB",
-  "manifest_updated": "1 week ago",
+  "manifest_updated": "an hour ago",
   "path": "/library/laguna-xs-2.1",
-  "scraped_at": "2026-07-13T19:31:03.495484+00:00",
   "tag_name": "bf16"
 }
