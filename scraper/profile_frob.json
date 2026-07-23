@@ -62,32 +62,13 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3405,
+      "pulls": 3407,
       "sizes": [],
       "source_url": "https://ollama.com/frob/qwen3-coder-next",
       "tag_count": 7,
       "tags": [],
       "updated": "5 months ago",
       "updated_title": "Feb 3, 2026 9:15 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "glm-5.2",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/glm-5.2",
-      "pulls": 1588,
-      "sizes": [
-        "753b"
-      ],
-      "source_url": "https://ollama.com/frob/glm-5.2",
-      "tag_count": 7,
-      "tags": [],
-      "updated": "yesterday",
-      "updated_title": "Jul 21, 2026 7:45 PM UTC"
     },
     {
       "capabilities": [
@@ -100,13 +81,32 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 1556,
+      "pulls": 1596,
       "sizes": [],
       "source_url": "https://ollama.com/frob/unlimited-ocr",
       "tag_count": 2,
       "tags": [],
       "updated": "3 weeks ago",
       "updated_title": "Jun 30, 2026 11:39 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "glm-5.2",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/glm-5.2",
+      "pulls": 1593,
+      "sizes": [
+        "753b"
+      ],
+      "source_url": "https://ollama.com/frob/glm-5.2",
+      "tag_count": 7,
+      "tags": [],
+      "updated": "yesterday",
+      "updated_title": "Jul 21, 2026 7:45 PM UTC"
     },
     {
       "capabilities": [
@@ -191,7 +191,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/minimax-m2.7",
-      "pulls": 823,
+      "pulls": 824,
       "sizes": [
         "230b"
       ],
@@ -213,7 +213,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.1",
-      "pulls": 822,
+      "pulls": 823,
       "sizes": [
         "744b"
       ],
@@ -299,7 +299,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 614,
+      "pulls": 615,
       "sizes": [],
       "source_url": "https://ollama.com/frob/locooperator",
       "tag_count": 4,
@@ -447,7 +447,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 305,
+      "pulls": 308,
       "sizes": [],
       "source_url": "https://ollama.com/frob/deepseek-v4-flash",
       "tag_count": 2,
@@ -488,7 +488,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/KaLM-Embedding-Gemma3-12B-2511",
-      "pulls": 193,
+      "pulls": 195,
       "sizes": [],
       "source_url": "https://ollama.com/frob/KaLM-Embedding-Gemma3-12B-2511",
       "tag_count": 1,
@@ -704,8 +704,8 @@
     "/frob/minimax-m2.5",
     "/frob/qwen3.5-instruct",
     "/frob/qwen3-coder-next",
-    "/frob/glm-5.2",
     "/frob/unlimited-ocr",
+    "/frob/glm-5.2",
     "/frob/qwen3.5",
     "/frob/ministral-3",
     "/frob/minimax-m2.1",
