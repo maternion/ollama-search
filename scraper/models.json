@@ -259,7 +259,7 @@
       "official": true,
       "owner": null,
       "path": "/library/athene-v2",
-      "pulls": 574500,
+      "pulls": 574600,
       "sizes": [
         "72b"
       ],
@@ -475,9 +475,7 @@
       "updated_title": "Nov 15, 2024 11:37 PM UTC"
     },
     {
-      "capabilities": [
-        "tools"
-      ],
+      "capabilities": [],
       "cloud": false,
       "cloud_only": false,
       "description": "Aya 23, released by Cohere, is a new family of state-of-the-art, multilingual models that support 23 languages.",
@@ -904,7 +902,7 @@
       "official": true,
       "owner": null,
       "path": "/library/aya-expanse",
-      "pulls": 972200,
+      "pulls": 972400,
       "sizes": [
         "8b",
         "32b"
@@ -1547,7 +1545,7 @@
       "official": true,
       "owner": null,
       "path": "/library/bespoke-minicheck",
-      "pulls": 513600,
+      "pulls": 513700,
       "sizes": [
         "7b"
       ],
@@ -1773,7 +1771,7 @@
       "official": true,
       "owner": null,
       "path": "/library/bge-large",
-      "pulls": 275900,
+      "pulls": 276000,
       "sizes": [
         "335m"
       ],
@@ -6379,7 +6377,7 @@
       "official": true,
       "owner": null,
       "path": "/library/codeup",
-      "pulls": 575300,
+      "pulls": 575400,
       "sizes": [
         "13b"
       ],
@@ -7463,7 +7461,7 @@
       "official": true,
       "owner": null,
       "path": "/library/command-r-plus",
-      "pulls": 780100,
+      "pulls": 780200,
       "sizes": [
         "104b"
       ],
@@ -7737,7 +7735,7 @@
       "official": true,
       "owner": null,
       "path": "/library/command-r7b",
-      "pulls": 281800,
+      "pulls": 281900,
       "sizes": [
         "7b"
       ],
@@ -7899,7 +7897,7 @@
       "official": true,
       "owner": null,
       "path": "/library/dbrx",
-      "pulls": 315100,
+      "pulls": 316300,
       "sizes": [
         "132b"
       ],
@@ -11038,7 +11036,7 @@
       "official": true,
       "owner": null,
       "path": "/library/deepseek-ocr",
-      "pulls": 495100,
+      "pulls": 495200,
       "sizes": [
         "3b"
       ],
@@ -11097,7 +11095,7 @@
       "official": true,
       "owner": null,
       "path": "/library/deepseek-r1",
-      "pulls": 90200000,
+      "pulls": 90300000,
       "sizes": [
         "1.5b",
         "7b",
@@ -12260,13 +12258,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "DeepSeek-V4-Flash is a preview of the DeepSeek-V4 series, a Mixture-of-Experts model with 284B total parameters and 13B activated, built for efficient reasoning across a 1M-token context window.",
       "name": "deepseek-v4-flash",
       "official": true,
       "owner": null,
       "path": "/library/deepseek-v4-flash",
-      "pulls": 263300,
+      "pulls": 263800,
       "sizes": [],
       "source_url": "https://ollama.com/library/deepseek-v4-flash",
       "tag_count": 1,
@@ -12293,13 +12291,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "DeepSeek-V4-Pro is a frontier Mixture-of-Experts model with a large context window and three reasoning modes.",
       "name": "deepseek-v4-pro",
       "official": true,
       "owner": null,
       "path": "/library/deepseek-v4-pro",
-      "pulls": 265600,
+      "pulls": 266200,
       "sizes": [],
       "source_url": "https://ollama.com/library/deepseek-v4-pro",
       "tag_count": 1,
@@ -12331,7 +12329,7 @@
       "official": true,
       "owner": null,
       "path": "/library/devstral",
-      "pulls": 986000,
+      "pulls": 986100,
       "sizes": [
         "24b"
       ],
@@ -12413,7 +12411,7 @@
       "official": true,
       "owner": null,
       "path": "/library/devstral-2",
-      "pulls": 274200,
+      "pulls": 276600,
       "sizes": [
         "123b"
       ],
@@ -12496,7 +12494,7 @@
       "official": true,
       "owner": null,
       "path": "/library/devstral-small-2",
-      "pulls": 913300,
+      "pulls": 913400,
       "sizes": [
         "24b"
       ],
@@ -15846,7 +15844,7 @@
       "official": true,
       "owner": null,
       "path": "/library/dolphincoder",
-      "pulls": 977600,
+      "pulls": 977800,
       "sizes": [
         "7b",
         "15b"
@@ -17007,7 +17005,7 @@
       "official": true,
       "owner": null,
       "path": "/library/exaone3.5",
-      "pulls": 530300,
+      "pulls": 530400,
       "sizes": [
         "2.4b",
         "7.8b",
@@ -18408,7 +18406,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "Gemini 3 Flash offers frontier intelligence built for speed at a fraction of the cost.",
       "name": "gemini-3-flash-preview",
       "official": true,
@@ -21927,9 +21925,7 @@
       "owner": null,
       "path": "/library/glm-4.7-flash",
       "pulls": 1400000,
-      "sizes": [
-        "30b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/glm-4.7-flash",
       "tag_count": 4,
       "tags": [
@@ -21991,7 +21987,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "GLM-5.1 is our next-generation flagship model for agentic engineering, with significantly stronger coding capabilities than its predecessor. It achieves state-of-the-art performance on SWE-Bench Pro and leads GLM-5 by a wide margin.",
       "name": "glm-5.1",
       "official": true,
@@ -22024,13 +22020,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "GLM-5.2 is Z.ai’s flagship model for the era of long-horizon tasks.",
       "name": "glm-5.2",
       "official": true,
       "owner": null,
       "path": "/library/glm-5.2",
-      "pulls": 247000,
+      "pulls": 247500,
       "sizes": [],
       "source_url": "https://ollama.com/library/glm-5.2",
       "tag_count": 1,
@@ -22064,9 +22060,7 @@
       "owner": null,
       "path": "/library/glm-ocr",
       "pulls": 6200000,
-      "sizes": [
-        "1b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/glm-ocr",
       "tag_count": 3,
       "tags": [
@@ -22524,9 +22518,7 @@
       "owner": null,
       "path": "/library/goliath",
       "pulls": 466300,
-      "sizes": [
-        "118b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/goliath",
       "tag_count": 16,
       "tags": [
@@ -24848,7 +24840,7 @@
       "official": true,
       "owner": null,
       "path": "/library/granite-embedding",
-      "pulls": 341200,
+      "pulls": 341300,
       "sizes": [
         "30m",
         "278m"
@@ -24943,7 +24935,7 @@
       "official": true,
       "owner": null,
       "path": "/library/granite3-dense",
-      "pulls": 993800,
+      "pulls": 994000,
       "sizes": [
         "2b",
         "8b"
@@ -25360,7 +25352,7 @@
       "official": true,
       "owner": null,
       "path": "/library/granite3-guardian",
-      "pulls": 325500,
+      "pulls": 325600,
       "sizes": [
         "2b",
         "8b"
@@ -25503,7 +25495,7 @@
       "official": true,
       "owner": null,
       "path": "/library/granite3-moe",
-      "pulls": 925200,
+      "pulls": 925400,
       "sizes": [
         "1b",
         "3b"
@@ -25922,7 +25914,7 @@
       "official": true,
       "owner": null,
       "path": "/library/granite3.1-dense",
-      "pulls": 991500,
+      "pulls": 991700,
       "sizes": [
         "2b",
         "8b"
@@ -26892,7 +26884,7 @@
       "official": true,
       "owner": null,
       "path": "/library/granite3.2-vision",
-      "pulls": 948700,
+      "pulls": 948800,
       "sizes": [
         "2b"
       ],
@@ -27261,7 +27253,7 @@
       "official": true,
       "owner": null,
       "path": "/library/granite4.1",
-      "pulls": 270700,
+      "pulls": 271100,
       "sizes": [
         "3b",
         "8b",
@@ -27862,7 +27854,7 @@
       "official": true,
       "owner": null,
       "path": "/library/granite4.1-guardian",
-      "pulls": 5206,
+      "pulls": 5220,
       "sizes": [
         "8b"
       ],
@@ -28879,7 +28871,7 @@
       "official": true,
       "owner": null,
       "path": "/library/internlm2",
-      "pulls": 971700,
+      "pulls": 972000,
       "sizes": [
         "1m",
         "1.8b",
@@ -29680,13 +29672,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "Kimi K2.5 is an open-source, native multimodal agentic model that seamlessly integrates vision and language understanding with advanced agentic capabilities, instant and thinking modes, as well as conversational and agentic paradigms.",
       "name": "kimi-k2.5",
       "official": true,
       "owner": null,
       "path": "/library/kimi-k2.5",
-      "pulls": 365400,
+      "pulls": 365600,
       "sizes": [],
       "source_url": "https://ollama.com/library/kimi-k2.5",
       "tag_count": 1,
@@ -29714,13 +29706,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "Kimi K2.6 is an open-source, native multimodal agentic model that advances practical capabilities in long-horizon coding, coding-driven design, proactive autonomous execution, and swarm-based task orchestration.",
       "name": "kimi-k2.6",
       "official": true,
       "owner": null,
       "path": "/library/kimi-k2.6",
-      "pulls": 392900,
+      "pulls": 393200,
       "sizes": [],
       "source_url": "https://ollama.com/library/kimi-k2.6",
       "tag_count": 1,
@@ -29748,13 +29740,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "Kimi K2.7 Code is Moonshot AI's coding-focused agentic model built upon Kimi K2.6, with substantial improvements on real-world long-horizon coding tasks and roughly 30% lower thinking-token usage.",
       "name": "kimi-k2.7-code",
       "official": true,
       "owner": null,
       "path": "/library/kimi-k2.7-code",
-      "pulls": 174600,
+      "pulls": 175100,
       "sizes": [],
       "source_url": "https://ollama.com/library/kimi-k2.7-code",
       "tag_count": 1,
@@ -29787,10 +29779,8 @@
       "official": true,
       "owner": null,
       "path": "/library/laguna-s-2.1",
-      "pulls": 3056,
-      "sizes": [
-        "118b"
-      ],
+      "pulls": 5638,
+      "sizes": [],
       "source_url": "https://ollama.com/library/laguna-s-2.1",
       "tag_count": 4,
       "tags": [
@@ -29858,10 +29848,8 @@
       "official": true,
       "owner": null,
       "path": "/library/laguna-xs-2.1",
-      "pulls": 64400,
-      "sizes": [
-        "33b"
-      ],
+      "pulls": 67000,
+      "sizes": [],
       "source_url": "https://ollama.com/library/laguna-xs-2.1",
       "tag_count": 4,
       "tags": [
@@ -29930,9 +29918,7 @@
       "owner": null,
       "path": "/library/laguna-xs.2",
       "pulls": 21900,
-      "sizes": [
-        "33b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/laguna-xs.2",
       "tag_count": 7,
       "tags": [
@@ -30130,7 +30116,7 @@
       "official": true,
       "owner": null,
       "path": "/library/lfm2.5",
-      "pulls": 69500,
+      "pulls": 69600,
       "sizes": [
         "8b"
       ],
@@ -30293,7 +30279,7 @@
       "official": true,
       "owner": null,
       "path": "/library/llama-guard3",
-      "pulls": 991600,
+      "pulls": 991800,
       "sizes": [
         "1b",
         "8b"
@@ -30710,10 +30696,8 @@
       "official": true,
       "owner": null,
       "path": "/library/llama-pro",
-      "pulls": 882100,
-      "sizes": [
-        "8b"
-      ],
+      "pulls": 882200,
+      "sizes": [],
       "source_url": "https://ollama.com/library/llama-pro",
       "tag_count": 33,
       "tags": [
@@ -34079,7 +34063,7 @@
       "official": true,
       "owner": null,
       "path": "/library/llama3-chatqa",
-      "pulls": 993700,
+      "pulls": 993900,
       "sizes": [
         "8b",
         "70b"
@@ -34520,7 +34504,7 @@
       "official": true,
       "owner": null,
       "path": "/library/llama3-gradient",
-      "pulls": 971000,
+      "pulls": 971200,
       "sizes": [
         "8b",
         "70b"
@@ -34963,7 +34947,7 @@
       "official": true,
       "owner": null,
       "path": "/library/llama3-groq-tool-use",
-      "pulls": 964600,
+      "pulls": 964800,
       "sizes": [
         "8b",
         "70b"
@@ -39048,7 +39032,7 @@
       "official": true,
       "owner": null,
       "path": "/library/llava-phi3",
-      "pulls": 297400,
+      "pulls": 297500,
       "sizes": [
         "3.8b"
       ],
@@ -39116,7 +39100,7 @@
       "official": true,
       "owner": null,
       "path": "/library/magicoder",
-      "pulls": 540300,
+      "pulls": 540400,
       "sizes": [
         "7b"
       ],
@@ -39515,7 +39499,7 @@
       "official": true,
       "owner": null,
       "path": "/library/mathstral",
-      "pulls": 533500,
+      "pulls": 533600,
       "sizes": [
         "7b"
       ],
@@ -39741,7 +39725,7 @@
       "official": true,
       "owner": null,
       "path": "/library/medgemma",
-      "pulls": 191900,
+      "pulls": 192400,
       "sizes": [
         "4b",
         "27b"
@@ -39872,7 +39856,7 @@
       "official": true,
       "owner": null,
       "path": "/library/medgemma1.5",
-      "pulls": 90500,
+      "pulls": 90800,
       "sizes": [
         "4b"
       ],
@@ -39952,7 +39936,7 @@
       "official": true,
       "owner": null,
       "path": "/library/meditron",
-      "pulls": 775100,
+      "pulls": 775400,
       "sizes": [
         "7b",
         "70b"
@@ -40237,7 +40221,7 @@
       "official": true,
       "owner": null,
       "path": "/library/medllama2",
-      "pulls": 614900,
+      "pulls": 615100,
       "sizes": [
         "7b"
       ],
@@ -41115,7 +41099,7 @@
       "official": true,
       "owner": null,
       "path": "/library/minicpm-v4.6",
-      "pulls": 19800,
+      "pulls": 19900,
       "sizes": [
         "1b"
       ],
@@ -41288,7 +41272,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "MiniMax-M2.5 is a state-of-the-art large language model designed for real-world productivity and coding tasks.",
       "name": "minimax-m2.5",
       "official": true,
@@ -41321,7 +41305,7 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "MiniMax's M2-series model for coding, agentic workflows, and professional productivity.",
       "name": "minimax-m2.7",
       "official": true,
@@ -41355,13 +41339,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "MiniMax M3: Coding & Agentic Frontier. 1M context window. Native Multimodality.",
       "name": "minimax-m3",
       "official": true,
       "owner": null,
       "path": "/library/minimax-m3",
-      "pulls": 292100,
+      "pulls": 292900,
       "sizes": [],
       "source_url": "https://ollama.com/library/minimax-m3",
       "tag_count": 1,
@@ -43005,7 +42989,7 @@
         "tools"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "A general-purpose multimodal mixture-of-experts model for production-grade tasks and enterprise workloads.",
       "name": "mistral-large-3",
       "official": true,
@@ -43045,7 +43029,7 @@
       "official": true,
       "owner": null,
       "path": "/library/mistral-medium-3.5",
-      "pulls": 200400,
+      "pulls": 204000,
       "sizes": [
         "128b"
       ],
@@ -45413,7 +45397,7 @@
       "official": true,
       "owner": null,
       "path": "/library/nemotron",
-      "pulls": 597500,
+      "pulls": 597600,
       "sizes": [
         "70b"
       ],
@@ -45640,7 +45624,7 @@
       "official": true,
       "owner": null,
       "path": "/library/nemotron-3-nano",
-      "pulls": 597900,
+      "pulls": 599200,
       "sizes": [
         "4b",
         "30b"
@@ -45873,13 +45857,13 @@
         "thinking"
       ],
       "cloud": true,
-      "cloud_only": true,
+      "cloud_only": false,
       "description": "NVIDIA Nemotron 3 Ultra is built for high-throughput reasoning and long-running agent workflows.",
       "name": "nemotron-3-ultra",
       "official": true,
       "owner": null,
       "path": "/library/nemotron-3-ultra",
-      "pulls": 28200,
+      "pulls": 28300,
       "sizes": [],
       "source_url": "https://ollama.com/library/nemotron-3-ultra",
       "tag_count": 1,
@@ -45970,7 +45954,7 @@
       "official": true,
       "owner": null,
       "path": "/library/nemotron-mini",
-      "pulls": 689300,
+      "pulls": 689400,
       "sizes": [
         "4b"
       ],
@@ -46887,7 +46871,7 @@
       "official": true,
       "owner": null,
       "path": "/library/nexusraven",
-      "pulls": 871700,
+      "pulls": 871800,
       "sizes": [
         "13b"
       ],
@@ -47294,9 +47278,7 @@
       "owner": null,
       "path": "/library/nomic-embed-text",
       "pulls": 79400000,
-      "sizes": [
-        "137m"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/nomic-embed-text",
       "tag_count": 3,
       "tags": [
@@ -47351,10 +47333,8 @@
       "official": true,
       "owner": null,
       "path": "/library/nomic-embed-text-v2-moe",
-      "pulls": 547000,
-      "sizes": [
-        "475m"
-      ],
+      "pulls": 549700,
+      "sizes": [],
       "source_url": "https://ollama.com/library/nomic-embed-text-v2-moe",
       "tag_count": 1,
       "tags": [
@@ -47386,10 +47366,8 @@
       "official": true,
       "owner": null,
       "path": "/library/north-mini-code-1.0",
-      "pulls": 29200,
-      "sizes": [
-        "30b"
-      ],
+      "pulls": 29300,
+      "sizes": [],
       "source_url": "https://ollama.com/library/north-mini-code-1.0",
       "tag_count": 7,
       "tags": [
@@ -47726,7 +47704,7 @@
       "official": true,
       "owner": null,
       "path": "/library/notux",
-      "pulls": 523700,
+      "pulls": 523799,
       "sizes": [
         "8x7b"
       ],
@@ -49156,7 +49134,7 @@
       "official": true,
       "owner": null,
       "path": "/library/nous-hermes2-mixtral",
-      "pulls": 575600,
+      "pulls": 575700,
       "sizes": [
         "8x7b"
       ],
@@ -51066,9 +51044,7 @@
       "owner": null,
       "path": "/library/openhermes",
       "pulls": 1100000,
-      "sizes": [
-        "7b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/openhermes",
       "tag_count": 35,
       "tags": [
@@ -53157,7 +53133,7 @@
       "official": true,
       "owner": null,
       "path": "/library/orca2",
-      "pulls": 908300,
+      "pulls": 908400,
       "sizes": [
         "7b",
         "13b"
@@ -53566,10 +53542,7 @@
       "updated_title": "Nov 22, 2023 10:13 PM UTC"
     },
     {
-      "capabilities": [
-        "tools",
-        "thinking"
-      ],
+      "capabilities": [],
       "cloud": false,
       "cloud_only": false,
       "description": "A self-improving family of open-source models for agentic coding",
@@ -53577,7 +53550,7 @@
       "official": true,
       "owner": null,
       "path": "/library/ornith",
-      "pulls": 282400,
+      "pulls": 283500,
       "sizes": [
         "9b",
         "35b"
@@ -54885,7 +54858,7 @@
       "official": true,
       "owner": null,
       "path": "/library/phi3.5",
-      "pulls": 989300,
+      "pulls": 989500,
       "sizes": [
         "3.8b"
       ],
@@ -55343,9 +55316,7 @@
       "updated_title": "May 1, 2025 3:53 AM UTC"
     },
     {
-      "capabilities": [
-        "thinking"
-      ],
+      "capabilities": [],
       "cloud": false,
       "cloud_only": false,
       "description": "Phi 4 reasoning and reasoning plus are 14-billion parameter open-weight reasoning models that rival much larger models on complex reasoning tasks.",
@@ -55481,7 +55452,7 @@
       "official": true,
       "owner": null,
       "path": "/library/phind-codellama",
-      "pulls": 940900,
+      "pulls": 941100,
       "sizes": [
         "34b"
       ],
@@ -64125,7 +64096,7 @@
       "official": true,
       "owner": null,
       "path": "/library/qwen2.5-coder",
-      "pulls": 18700000,
+      "pulls": 18800000,
       "sizes": [
         "0.5b",
         "1.5b",
@@ -67627,9 +67598,7 @@
       "owner": null,
       "path": "/library/qwen3-coder-next",
       "pulls": 1800000,
-      "sizes": [
-        "80b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/library/qwen3-coder-next",
       "tag_count": 3,
       "tags": [
@@ -69995,7 +69964,7 @@
       "official": true,
       "owner": null,
       "path": "/library/r1-1776",
-      "pulls": 411600,
+      "pulls": 411700,
       "sizes": [
         "70b",
         "671b"
@@ -70124,7 +70093,7 @@
       "official": true,
       "owner": null,
       "path": "/library/reader-lm",
-      "pulls": 899200,
+      "pulls": 899400,
       "sizes": [
         "0.5b",
         "1.5b"
@@ -70541,7 +70510,7 @@
       "official": true,
       "owner": null,
       "path": "/library/reflection",
-      "pulls": 601800,
+      "pulls": 601900,
       "sizes": [
         "70b"
       ],
@@ -70767,7 +70736,7 @@
       "official": true,
       "owner": null,
       "path": "/library/rnj-1",
-      "pulls": 487800,
+      "pulls": 487900,
       "sizes": [
         "8b"
       ],
@@ -70847,7 +70816,7 @@
       "official": true,
       "owner": null,
       "path": "/library/sailor2",
-      "pulls": 400500,
+      "pulls": 400600,
       "sizes": [
         "1b",
         "8b",
@@ -71025,7 +70994,7 @@
       "official": true,
       "owner": null,
       "path": "/library/samantha-mistral",
-      "pulls": 969200,
+      "pulls": 969500,
       "sizes": [
         "7b"
       ],
@@ -71633,7 +71602,7 @@
       "official": true,
       "owner": null,
       "path": "/library/shieldgemma",
-      "pulls": 897700,
+      "pulls": 897900,
       "sizes": [
         "2b",
         "9b",
@@ -74305,7 +74274,7 @@
       "official": true,
       "owner": null,
       "path": "/library/snowflake-arctic-embed2",
-      "pulls": 426600,
+      "pulls": 426700,
       "sizes": [
         "568m"
       ],
@@ -74361,7 +74330,7 @@
       "official": true,
       "owner": null,
       "path": "/library/solar",
-      "pulls": 938600,
+      "pulls": 938800,
       "sizes": [
         "10.7b"
       ],
@@ -75598,7 +75567,7 @@
       "official": true,
       "owner": null,
       "path": "/library/stable-beluga",
-      "pulls": 905800,
+      "pulls": 906000,
       "sizes": [
         "7b",
         "13b",
@@ -79962,7 +79931,7 @@
       "official": true,
       "owner": null,
       "path": "/library/starling-lm",
-      "pulls": 943700,
+      "pulls": 943900,
       "sizes": [
         "7b"
       ],
@@ -80414,7 +80383,7 @@
       "official": true,
       "owner": null,
       "path": "/library/tinydolphin",
-      "pulls": 706900,
+      "pulls": 707000,
       "sizes": [
         "1.1b"
       ],
@@ -81282,7 +81251,7 @@
       "official": true,
       "owner": null,
       "path": "/library/tulu3",
-      "pulls": 373100,
+      "pulls": 373200,
       "sizes": [
         "8b",
         "70b"
@@ -82765,7 +82734,7 @@
       "official": true,
       "owner": null,
       "path": "/library/wizard-math",
-      "pulls": 983900,
+      "pulls": 984200,
       "sizes": [
         "7b",
         "13b",
@@ -83555,7 +83524,7 @@
       "official": true,
       "owner": null,
       "path": "/library/wizard-vicuna",
-      "pulls": 503800,
+      "pulls": 503900,
       "sizes": [
         "13b"
       ],
@@ -85213,10 +85182,8 @@
       "official": true,
       "owner": null,
       "path": "/library/wizardlm",
-      "pulls": 864800,
-      "sizes": [
-        "7b"
-      ],
+      "pulls": 865000,
+      "sizes": [],
       "source_url": "https://ollama.com/library/wizardlm",
       "tag_count": 73,
       "tags": [
@@ -86630,7 +86597,7 @@
       "official": true,
       "owner": null,
       "path": "/library/xwinlm",
-      "pulls": 948200,
+      "pulls": 948500,
       "sizes": [
         "7b",
         "13b"
@@ -87611,7 +87578,7 @@
       "official": true,
       "owner": null,
       "path": "/library/yarn-llama2",
-      "pulls": 933900,
+      "pulls": 934200,
       "sizes": [
         "7b",
         "13b"
@@ -88436,7 +88403,7 @@
       "official": true,
       "owner": null,
       "path": "/library/yarn-mistral",
-      "pulls": 876100,
+      "pulls": 876200,
       "sizes": [
         "7b"
       ],
@@ -92759,7 +92726,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/baronllm-abliterated",
-      "pulls": 9352,
+      "pulls": 9354,
       "sizes": [
         "8b"
       ],
@@ -93020,10 +92987,7 @@
       "updated_title": "Jun 26, 2026 3:15 PM UTC"
     },
     {
-      "capabilities": [
-        "tools",
-        "thinking"
-      ],
+      "capabilities": [],
       "cloud": false,
       "cloud_only": false,
       "description": "DeepHermes 3 Preview is the latest version of our flagship Hermes series of LLMs by Nous Research, and one of the first models in the world to unify Reasoning (long chains of thought that improve answer accuracy) and normal LLM response modes into one mod",
@@ -93031,7 +92995,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deephermes3-abliterated",
-      "pulls": 4529,
+      "pulls": 4530,
       "sizes": [
         "8b"
       ],
@@ -93347,7 +93311,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepseek-r1-abliterated",
-      "pulls": 711000,
+      "pulls": 711100,
       "sizes": [
         "1.5b",
         "7b",
@@ -94181,9 +94145,7 @@
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepseek-v3",
       "pulls": 7189,
-      "sizes": [
-        "671b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/deepseek-v3",
       "tag_count": 2,
       "tags": [
@@ -94446,10 +94408,8 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 300,
-      "sizes": [
-        "284b"
-      ],
+      "pulls": 305,
+      "sizes": [],
       "source_url": "https://ollama.com/frob/deepseek-v4-flash",
       "tag_count": 2,
       "tags": [
@@ -94680,7 +94640,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/devstral-2-abliterated",
-      "pulls": 573,
+      "pulls": 576,
       "sizes": [
         "123b"
       ],
@@ -94856,7 +94816,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-abliterated",
-      "pulls": 46000,
+      "pulls": 46100,
       "sizes": [
         "8b"
       ],
@@ -94936,7 +94896,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-r1-abliterated",
-      "pulls": 8375,
+      "pulls": 8376,
       "sizes": [
         "24b"
       ],
@@ -95383,7 +95343,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/falcon3-abliterated",
-      "pulls": 1880,
+      "pulls": 1881,
       "sizes": [
         "1b",
         "3b",
@@ -95885,9 +95845,7 @@
       "updated_title": "Mar 1, 2025 12:55 PM UTC"
     },
     {
-      "capabilities": [
-        "thinking"
-      ],
+      "capabilities": [],
       "cloud": false,
       "cloud_only": false,
       "description": "Foundation-Sec-8B-abliterated is an uncensored version fine-tuned based on fdtn-ai/Foundation-Sec-8B. Foundation-Sec-8B is an open-weight, 8-billion-parameter foundational language model designed specifically for cybersecurity applications.",
@@ -95980,7 +95938,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gemma-4-abliterated",
-      "pulls": 711800,
+      "pulls": 717200,
       "sizes": [
         "e2b",
         "e4b",
@@ -96656,9 +96614,7 @@
       "owner": "huihui_ai",
       "path": "/huihui_ai/gemma3n-abliterated",
       "pulls": 20900,
-      "sizes": [
-        "4b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/gemma3n-abliterated",
       "tag_count": 2,
       "tags": [
@@ -96761,10 +96717,8 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/glm-4.7-abliterated",
-      "pulls": 849,
-      "sizes": [
-        "358b"
-      ],
+      "pulls": 850,
+      "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/glm-4.7-abliterated",
       "tag_count": 1,
       "tags": [
@@ -96796,10 +96750,8 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/glm-4.7-flash-abliterated",
-      "pulls": 204300,
-      "sizes": [
-        "30b"
-      ],
+      "pulls": 206700,
+      "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/glm-4.7-flash-abliterated",
       "tag_count": 5,
       "tags": [
@@ -97042,7 +96994,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1582,
+      "pulls": 1588,
       "sizes": [
         "753b"
       ],
@@ -97220,7 +97172,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gpt-oss-abliterated",
-      "pulls": 274400,
+      "pulls": 276800,
       "sizes": [
         "20b",
         "120b"
@@ -97435,7 +97387,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.1-dense-abliterated",
-      "pulls": 1424,
+      "pulls": 1425,
       "sizes": [
         "2b",
         "8b"
@@ -97746,7 +97698,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.2-vision-abliterated",
-      "pulls": 7039,
+      "pulls": 7042,
       "sizes": [
         "2b"
       ],
@@ -97828,7 +97780,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite4.1-abliterated",
-      "pulls": 5044,
+      "pulls": 5049,
       "sizes": [
         "3b",
         "8b",
@@ -97996,7 +97948,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
-      "pulls": 3378,
+      "pulls": 3380,
       "sizes": [
         "3b"
       ],
@@ -99049,9 +99001,7 @@
       "owner": "frob",
       "path": "/frob/hy-mt1.5",
       "pulls": 45,
-      "sizes": [
-        "2b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/hy-mt1.5",
       "tag_count": 3,
       "tags": [
@@ -99424,9 +99374,7 @@
       "owner": "frob",
       "path": "/frob/hy3",
       "pulls": 1,
-      "sizes": [
-        "299b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/hy3",
       "tag_count": 4,
       "tags": [
@@ -99491,7 +99439,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/internlm3-abliterated",
-      "pulls": 1157,
+      "pulls": 1158,
       "sizes": [
         "8b"
       ],
@@ -99574,9 +99522,7 @@
       "owner": "frob",
       "path": "/frob/iquest-coder",
       "pulls": 385,
-      "sizes": [
-        "40b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/iquest-coder",
       "tag_count": 3,
       "tags": [
@@ -99775,9 +99721,7 @@
       "owner": "frob",
       "path": "/frob/KaLM-Embedding-Gemma3-12B-2511",
       "pulls": 193,
-      "sizes": [
-        "12b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/KaLM-Embedding-Gemma3-12B-2511",
       "tag_count": 1,
       "tags": [
@@ -99958,7 +99902,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/kimi-k2-abliterated",
-      "pulls": 825,
+      "pulls": 829,
       "sizes": [
         "1026b"
       ],
@@ -100139,9 +100083,7 @@
       "owner": "frob",
       "path": "/frob/kimi-k2.5-prism-reap",
       "pulls": 158,
-      "sizes": [
-        "519b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/kimi-k2.5-prism-reap",
       "tag_count": 3,
       "tags": [
@@ -100815,9 +100757,7 @@
       "owner": "frob",
       "path": "/frob/llama3.2-vision",
       "pulls": 74,
-      "sizes": [
-        "10b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/llama3.2-vision",
       "tag_count": 2,
       "tags": [
@@ -101073,9 +101013,7 @@
       "owner": "frob",
       "path": "/frob/locooperator",
       "pulls": 614,
-      "sizes": [
-        "4b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/locooperator",
       "tag_count": 4,
       "tags": [
@@ -101837,7 +101775,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2-flash",
-      "pulls": 349,
+      "pulls": 350,
       "sizes": [
         "309b"
       ],
@@ -102663,7 +102601,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/mistral-small-abliterated",
-      "pulls": 17300,
+      "pulls": 17400,
       "sizes": [
         "24b"
       ],
@@ -102804,9 +102742,7 @@
       "owner": "frob",
       "path": "/frob/mixtao",
       "pulls": 1,
-      "sizes": [
-        "13b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/mixtao",
       "tag_count": 3,
       "tags": [
@@ -102863,9 +102799,7 @@
       "owner": "frob",
       "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "pulls": 696,
-      "sizes": [
-        "8b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "tag_count": 1,
       "tags": [
@@ -103083,9 +103017,7 @@
       "owner": "frob",
       "path": "/frob/NireeskshanAI_Niri",
       "pulls": 1,
-      "sizes": [
-        "7b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/NireeskshanAI_Niri",
       "tag_count": 3,
       "tags": [
@@ -103140,10 +103072,8 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/nuextract-2.0",
-      "pulls": 562,
-      "sizes": [
-        "8b"
-      ],
+      "pulls": 563,
+      "sizes": [],
       "source_url": "https://ollama.com/frob/nuextract-2.0",
       "tag_count": 4,
       "tags": [
@@ -103574,9 +103504,7 @@
       "owner": "huihui_ai",
       "path": "/huihui_ai/perplexity-ai-r1",
       "pulls": 543,
-      "sizes": [
-        "671b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/perplexity-ai-r1",
       "tag_count": 2,
       "tags": [
@@ -103839,7 +103767,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/phi4-mini-abliterated",
-      "pulls": 6850,
+      "pulls": 6853,
       "sizes": [
         "3.8b"
       ],
@@ -104311,7 +104239,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-abliterate",
-      "pulls": 69700,
+      "pulls": 69800,
       "sizes": [
         "0.5b",
         "1.5b",
@@ -105711,7 +105639,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-abliterated",
-      "pulls": 217700,
+      "pulls": 217800,
       "sizes": [
         "0.6b",
         "1.7b",
@@ -106829,10 +106757,8 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3404,
-      "sizes": [
-        "80b"
-      ],
+      "pulls": 3405,
+      "sizes": [],
       "source_url": "https://ollama.com/frob/qwen3-coder-next",
       "tag_count": 7,
       "tags": [
@@ -106935,10 +106861,8 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-coder-next-abliterated",
-      "pulls": 7302,
-      "sizes": [
-        "80b"
-      ],
+      "pulls": 7303,
+      "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/qwen3-coder-next-abliterated",
       "tag_count": 4,
       "tags": [
@@ -107150,7 +107074,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-vl-abliterated",
-      "pulls": 99100,
+      "pulls": 99200,
       "sizes": [
         "2b",
         "4b",
@@ -107826,7 +107750,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.5",
-      "pulls": 1551,
+      "pulls": 1552,
       "sizes": [
         "122b",
         "397b"
@@ -107983,7 +107907,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3.5-abliterated",
-      "pulls": 436700,
+      "pulls": 439200,
       "sizes": [
         "0.8b",
         "2b",
@@ -108821,9 +108745,7 @@
       "owner": "frob",
       "path": "/frob/qwen3.6",
       "pulls": 79,
-      "sizes": [
-        "36b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/qwen3.6",
       "tag_count": 1,
       "tags": [
@@ -108856,7 +108778,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3.6-abliterated",
-      "pulls": 250100,
+      "pulls": 252600,
       "sizes": [
         "27b",
         "35b"
@@ -109166,7 +109088,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwenlong-l1.5-abliterated",
-      "pulls": 2559,
+      "pulls": 2560,
       "sizes": [
         "30b"
       ],
@@ -109181,7 +109103,7 @@
           "name": "latest",
           "size_bytes": 19000000000,
           "size_text": "19GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -109193,7 +109115,7 @@
           "name": "30b",
           "size_bytes": 19000000000,
           "size_text": "19GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -109205,7 +109127,7 @@
           "name": "30b-a3b",
           "size_bytes": 19000000000,
           "size_text": "19GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -109217,7 +109139,7 @@
           "name": "30b-a3b-q5_K",
           "size_bytes": 22000000000,
           "size_text": "22GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -109229,7 +109151,7 @@
           "name": "30b-a3b-q4_K_M",
           "size_bytes": 19000000000,
           "size_text": "19GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -109899,9 +109821,7 @@
       "owner": "huihui_ai",
       "path": "/huihui_ai/seed-coder-abliterate",
       "pulls": 3144,
-      "sizes": [
-        "8b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/seed-coder-abliterate",
       "tag_count": 5,
       "tags": [
@@ -110283,9 +110203,7 @@
       "owner": "maternion",
       "path": "/maternion/sweep-next-edit-1.5B",
       "pulls": 372,
-      "sizes": [
-        "1b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/maternion/sweep-next-edit-1.5B",
       "tag_count": 1,
       "tags": [
@@ -110539,7 +110457,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/tongyi-deepresearch-abliterated",
-      "pulls": 3067,
+      "pulls": 3068,
       "sizes": [
         "30b"
       ],
@@ -110832,10 +110750,8 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 1542,
-      "sizes": [
-        "3b"
-      ],
+      "pulls": 1556,
+      "sizes": [],
       "source_url": "https://ollama.com/frob/unlimited-ocr",
       "tag_count": 2,
       "tags": [
@@ -110959,9 +110875,7 @@
       "owner": "frob",
       "path": "/frob/whyhow-ai_PatientSeek",
       "pulls": 8,
-      "sizes": [
-        "8b"
-      ],
+      "sizes": [],
       "source_url": "https://ollama.com/frob/whyhow-ai_PatientSeek",
       "tag_count": 2,
       "tags": [
