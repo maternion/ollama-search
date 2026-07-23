@@ -62,7 +62,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3404,
+      "pulls": 3405,
       "sizes": [],
       "source_url": "https://ollama.com/frob/qwen3-coder-next",
       "tag_count": 7,
@@ -79,7 +79,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1582,
+      "pulls": 1588,
       "sizes": [
         "753b"
       ],
@@ -88,6 +88,25 @@
       "tags": [],
       "updated": "yesterday",
       "updated_title": "Jul 21, 2026 7:45 PM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "unlimited-ocr",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/unlimited-ocr",
+      "pulls": 1556,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/unlimited-ocr",
+      "tag_count": 2,
+      "tags": [],
+      "updated": "3 weeks ago",
+      "updated_title": "Jun 30, 2026 11:39 PM UTC"
     },
     {
       "capabilities": [
@@ -102,7 +121,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.5",
-      "pulls": 1551,
+      "pulls": 1552,
       "sizes": [
         "122b",
         "397b"
@@ -112,25 +131,6 @@
       "tags": [],
       "updated": "3 weeks ago",
       "updated_title": "Jun 26, 2026 3:19 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "unlimited-ocr",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/unlimited-ocr",
-      "pulls": 1542,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/unlimited-ocr",
-      "tag_count": 2,
-      "tags": [],
-      "updated": "3 weeks ago",
-      "updated_title": "Jun 30, 2026 11:39 PM UTC"
     },
     {
       "capabilities": [
@@ -341,7 +341,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/nuextract-2.0",
-      "pulls": 562,
+      "pulls": 563,
       "sizes": [],
       "source_url": "https://ollama.com/frob/nuextract-2.0",
       "tag_count": 4,
@@ -402,7 +402,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2-flash",
-      "pulls": 349,
+      "pulls": 350,
       "sizes": [
         "309b"
       ],
@@ -447,7 +447,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 300,
+      "pulls": 305,
       "sizes": [],
       "source_url": "https://ollama.com/frob/deepseek-v4-flash",
       "tag_count": 2,
@@ -705,8 +705,8 @@
     "/frob/qwen3.5-instruct",
     "/frob/qwen3-coder-next",
     "/frob/glm-5.2",
-    "/frob/qwen3.5",
     "/frob/unlimited-ocr",
+    "/frob/qwen3.5",
     "/frob/ministral-3",
     "/frob/minimax-m2.1",
     "/frob/minimax-m2.7",
