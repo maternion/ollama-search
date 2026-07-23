@@ -573,8 +573,10 @@ def _classify_template(model_path: str) -> str:
 
 
 def render_card(
-    m: dict, tags: list[dict] | None = None, ranks: dict | None = None,
-    profile_ranks: dict | None = None
+    m: dict,
+    tags: list[dict] | None = None,
+    ranks: dict | None = None,
+    profile_ranks: dict | None = None,
 ) -> str:
     name = esc(m["name"])
     name_raw = m["name"]
@@ -688,12 +690,13 @@ def build_index(models: list[dict], ranks: dict) -> None:
     oldest_order = sorted(
         models,
         key=lambda m: (
-            (profile_ranks if not m.get("official", True) else ranks).get(
-                m["path"] if not m.get("official", True) else m["name"], {}
-            ).get("newest_rank", 9999) == 9999,
-            -(profile_ranks if not m.get("official", True) else ranks).get(
-                m["path"] if not m.get("official", True) else m["name"], {}
-            ).get("newest_rank", 9999),
+            (profile_ranks if not m.get("official", True) else ranks)
+            .get(m["path"] if not m.get("official", True) else m["name"], {})
+            .get("newest_rank", 9999)
+            == 9999,
+            -(profile_ranks if not m.get("official", True) else ranks)
+            .get(m["path"] if not m.get("official", True) else m["name"], {})
+            .get("newest_rank", 9999),
         ),
     )
     for rank, m in enumerate(oldest_order):
@@ -705,9 +708,9 @@ def build_index(models: list[dict], ranks: dict) -> None:
     sorted_models = sorted(
         models,
         key=lambda m: (
-            (profile_ranks if not m.get("official", True) else ranks).get(
-                m["path"] if not m.get("official", True) else m["name"], {}
-            ).get("popular_rank", 9999)
+            (profile_ranks if not m.get("official", True) else ranks)
+            .get(m["path"] if not m.get("official", True) else m["name"], {})
+            .get("popular_rank", 9999)
         ),
     )
     cards = "\n".join(
@@ -1990,12 +1993,23 @@ def _get_models_by_path():
 _BLOB_BODY_CACHE: dict[str, str] = {}
 
 
-def build_blob_page(blob: dict) -> None:
+def build_blob_page(blob: dict, target_blob_url: str = "") -> None:
     tag_full = blob.get("tag_full") or ""
     blob_url = blob.get("blob_url") or ""
     blob_type = blob.get("blob_type") or ""
     digest = blob.get("digest") or ""
     size = blob.get("size") or ""
+
+    # Blob data is stored once per digest under the canonical blob_url where it
+    # was first scraped (e.g. /library/lfm2.5:latest/blobs/<digest>). When two
+    # tags share a digest (alias tags, e.g. :8b and :latest), the tag page's
+    # file links point to each tag's own path (e.g. /library/lfm2.5:8b/blobs/…)
+    # but build_blob_page would otherwise only ever emit a page under the
+    # canonical blob_url. Passing target_blob_url overrides the on-disk path /
+    # back-link so a blob page is also built at the alias tag's path. Without
+    # this, alias tags 404 on their blob pages.
+    if target_blob_url:
+        blob_url = target_blob_url
 
     # Derive the on-disk path from blob_url, which is always the full path with
     # the colon-separated tag (e.g. /library/gpt-oss:120b/blobs/<digest>).
@@ -2724,7 +2738,14 @@ function applyFilters() {
     } else if (sort === 'popular' || sort === 'newest' || sort === 'oldest') {
       var ra = parseFloat(a.getAttribute(attr) || '9999');
       var rb = parseFloat(b.getAttribute(attr) || '9999');
-      if (ra !== 9999 || rb !== 9999) {
+      // Official models always sort before non-official (profile) models,
+      // since the two groups have separate rank spaces (library /library?sort=popular
+      // vs profile page ordering) and otherwise interleave.
+      var aOff = a.getAttribute('data-official') !== 'false';
+      var bOff = b.getAttribute('data-official') !== 'false';
+      if (aOff !== bOff) {
+        cmp = aOff ? -1 : 1;
+      } else if (ra !== 9999 || rb !== 9999) {
         cmp = ra - rb;
       } else if (sort === 'popular') {
         var pa = parseFloat(a.getAttribute('data-pulls') || '0');
@@ -3765,18 +3786,69 @@ def main() -> int:
         tags = load_tags(m["path"], m)
         build_detail(m, tags)
         build_tags_page(m, tags)
+        # Build per-tag pages. Two cases produce blob pages:
+        #  1. This tag has its own scraped tag page (tp) -> build blobs at this
+        #     tag's path from its own file list.
+        #  2. This tag shares a digest with a sibling tag (alias tags, e.g.
+        #     :8b and :latest) but has no scraped tag page of its own. In that
+        #     case reuse a sibling tag's file list, rewriting each blob URL to
+        #     point at the current tag's path, so its blob pages exist too.
+        #     Without this the alias tag's blob links 404 (the canonical blob
+        #     data is stored once per digest under whichever tag was scraped
+        #     first).
+        tag_page_data: dict[str, dict | None] = {}
         for t in tags:
-            tp = load_tag_page(m["path"], t["name"])
+            tag_page_data[t["name"]] = load_tag_page(m["path"], t["name"])
+
+        for t in tags:
+            tp = tag_page_data[t["name"]]
             build_tag_page(m, t, tp)
             tag_pages_built += 1
-            if tp:
-                for f in tp.get("files", []):
+
+            files = None
+            src_tag = t["name"]
+            if tp and (tp.get("files") or tp.get("blobs")):
+                files = tp.get("files") or tp.get("blobs") or []
+            elif t.get("digest"):
+                # No tag page for this tag — try an alias sibling (same digest)
+                # that does have a tag page, and reuse its file list.
+                dig = t["digest"]
+                for sib in tags:
+                    if sib.get("name") == t["name"]:
+                        continue
+                    if sib.get("digest") != dig:
+                        continue
+                    sib_tp = tag_page_data.get(sib["name"])
+                    if sib_tp and (sib_tp.get("files") or sib_tp.get("blobs")):
+                        files = sib_tp.get("files") or sib_tp.get("blobs") or []
+                        src_tag = sib["name"]
+                        break
+
+            if files:
+                # Current tag's path prefix, e.g. /library/lfm2.5:8b
+                cur_prefix = (m["path"].strip("/") + ":" + t["name"]).rstrip("/")
+                for f in files:
                     blob_url = f.get("blob_url") or f.get("url") or ""
-                    if blob_url:
-                        bp = load_blob_page(blob_url)
-                        if bp:
-                            build_blob_page(bp)
-                            blob_pages_built += 1
+                    if not blob_url:
+                        continue
+                    # If the file came from a sibling (alias) tag, rewrite the
+                    # blob URL's tag segment to the current tag so the page is
+                    # built at the current tag's path.
+                    if src_tag != t["name"] and "/blobs/" in blob_url:
+                        digest_seg = (
+                            blob_url.rstrip("/")
+                            .rsplit("/blobs/", 1)[-1]
+                            .split("?", 1)[0]
+                        )
+                        blob_url = "/" + cur_prefix + "/blobs/" + digest_seg
+                    bp = load_blob_page(blob_url)
+                    if bp:
+                        # Build at the current tag's blob path (target_blob_url)
+                        # so alias tags that share a digest with another tag
+                        # also get their own blob pages instead of only the
+                        # canonical tag's copy (which would 404 otherwise).
+                        build_blob_page(bp, target_blob_url=blob_url)
+                        blob_pages_built += 1
         if i % 50 == 0:
             print(f"  {i}/{len(_all_models)}")
     print(
