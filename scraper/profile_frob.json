@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 1705,
+      "pulls": 1739,
       "sizes": [],
       "source_url": "https://ollama.com/frob/unlimited-ocr",
       "tag_count": 2,
@@ -98,7 +98,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1610,
+      "pulls": 1613,
       "sizes": [
         "753b"
       ],
@@ -181,6 +181,29 @@
     },
     {
       "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "davidau-qwen3.6-uncensored",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/davidau-qwen3.6-uncensored",
+      "pulls": 825,
+      "sizes": [
+        "40b"
+      ],
+      "source_url": "https://ollama.com/frob/davidau-qwen3.6-uncensored",
+      "tag_count": 3,
+      "tags": [],
+      "updated": "3 weeks ago",
+      "updated_title": "Jun 26, 2026 3:15 PM UTC"
+    },
+    {
+      "capabilities": [
         "tools",
         "thinking"
       ],
@@ -200,29 +223,6 @@
       "tags": [],
       "updated": "3 weeks ago",
       "updated_title": "Jun 26, 2026 3:23 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision",
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "davidau-qwen3.6-uncensored",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/davidau-qwen3.6-uncensored",
-      "pulls": 824,
-      "sizes": [
-        "40b"
-      ],
-      "source_url": "https://ollama.com/frob/davidau-qwen3.6-uncensored",
-      "tag_count": 3,
-      "tags": [],
-      "updated": "3 weeks ago",
-      "updated_title": "Jun 26, 2026 3:15 PM UTC"
     },
     {
       "capabilities": [
@@ -623,7 +623,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/hy3",
-      "pulls": 2,
+      "pulls": 4,
       "sizes": [],
       "source_url": "https://ollama.com/frob/hy3",
       "tag_count": 4,
@@ -709,8 +709,8 @@
     "/frob/qwen3.5",
     "/frob/ministral-3",
     "/frob/minimax-m2.1",
-    "/frob/minimax-m2.7",
     "/frob/davidau-qwen3.6-uncensored",
+    "/frob/minimax-m2.7",
     "/frob/glm-5.1",
     "/frob/glm-4.7",
     "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
