@@ -22,7 +22,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gemma-4-abliterated",
-      "pulls": 728000,
+      "pulls": 728300,
       "sizes": [
         "e2b",
         "e4b",
@@ -76,7 +76,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3.5-abliterated",
-      "pulls": 443000,
+      "pulls": 443100,
       "sizes": [
         "0.8b",
         "2b",
@@ -112,7 +112,7 @@
       "source_url": "https://ollama.com/huihui_ai/gpt-oss-abliterated",
       "tag_count": 16,
       "tags": [],
-      "updated": "9 months ago",
+      "updated": "10 months ago",
       "updated_title": "Sep 27, 2025 9:58 PM UTC"
     },
     {
@@ -603,7 +603,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/baronllm-abliterated",
-      "pulls": 9419,
+      "pulls": 9421,
       "sizes": [
         "8b"
       ],
@@ -622,7 +622,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-r1-abliterated",
-      "pulls": 8423,
+      "pulls": 8429,
       "sizes": [
         "24b"
       ],
@@ -662,7 +662,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-coder-next-abliterated",
-      "pulls": 7368,
+      "pulls": 7369,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/qwen3-coder-next-abliterated",
       "tag_count": 4,
@@ -741,7 +741,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/magistral-abliterated",
-      "pulls": 6797,
+      "pulls": 6801,
       "sizes": [
         "24b"
       ],
@@ -804,7 +804,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite4.1-abliterated",
-      "pulls": 5085,
+      "pulls": 5086,
       "sizes": [
         "3b",
         "8b",
@@ -926,7 +926,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
-      "pulls": 3409,
+      "pulls": 3410,
       "sizes": [
         "3b"
       ],
@@ -1124,6 +1124,29 @@
     },
     {
       "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Huihui4-8B-A4B is a lightweight MoE (Mixture of Experts) conversational model optimized from Google's gemma-4-26B-A4B-it architecture",
+      "name": "huihui-4",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/huihui-4",
+      "pulls": 2684,
+      "sizes": [
+        "8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/huihui-4",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "3 months ago",
+      "updated_title": "Apr 25, 2026 5:43 AM UTC"
+    },
+    {
+      "capabilities": [
         "tools"
       ],
       "cloud": false,
@@ -1143,29 +1166,6 @@
       "tags": [],
       "updated": "1 year ago",
       "updated_title": "Mar 4, 2025 5:35 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision",
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Huihui4-8B-A4B is a lightweight MoE (Mixture of Experts) conversational model optimized from Google's gemma-4-26B-A4B-it architecture",
-      "name": "huihui-4",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/huihui-4",
-      "pulls": 2677,
-      "sizes": [
-        "8b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/huihui-4",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "3 months ago",
-      "updated_title": "Apr 25, 2026 5:43 AM UTC"
     },
     {
       "capabilities": [],
@@ -2291,8 +2291,8 @@
     "/huihui_ai/nemotron-abliterated",
     "/huihui_ai/qwenlong-abliterated",
     "/huihui_ai/aya-expanse-abliterated",
-    "/huihui_ai/granite3.2-abliterated",
     "/huihui_ai/huihui-4",
+    "/huihui_ai/granite3.2-abliterated",
     "/huihui_ai/arcee-blitz-abliterated",
     "/huihui_ai/qwenlong-l1.5-abliterated",
     "/huihui_ai/acereason-nemotron-abliterated",
