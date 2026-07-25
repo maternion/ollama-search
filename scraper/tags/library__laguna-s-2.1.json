@@ -15,6 +15,30 @@
       "usage_level": ""
     },
     {
+      "context": "1M",
+      "digest": "85623901a2bb",
+      "format": "mlx",
+      "input_type": "Text",
+      "name": "mxfp8",
+      "size_bytes": 136000000000,
+      "size_text": "136GB",
+      "updated": "59 minutes ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "1M",
+      "digest": "6a25a6e6e44c",
+      "format": "mlx",
+      "input_type": "Text",
+      "name": "nvfp4",
+      "size_bytes": 67000000000,
+      "size_text": "67GB",
+      "updated": "59 minutes ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
       "context": "256K",
       "digest": "3718865a988d",
       "format": "gguf",
@@ -47,6 +71,18 @@
       "size_bytes": 235000000000,
       "size_text": "235GB",
       "updated": "2 days ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "1M",
+      "digest": "f9fa40073739",
+      "format": "mlx",
+      "input_type": "Text",
+      "name": "mlx-bf16",
+      "size_bytes": 235000000000,
+      "size_text": "235GB",
+      "updated": "59 minutes ago",
       "usage_active_slots": 0,
       "usage_level": ""
     }
