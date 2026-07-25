@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 1845,
+      "pulls": 1859,
       "sizes": [],
       "source_url": "https://ollama.com/frob/unlimited-ocr",
       "tag_count": 2,
@@ -98,7 +98,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1627,
+      "pulls": 1629,
       "sizes": [
         "753b"
       ],
@@ -425,7 +425,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.5",
-      "pulls": 333,
+      "pulls": 334,
       "sizes": [
         "309b"
       ],
@@ -596,6 +596,23 @@
       "updated_title": "Jun 26, 2026 3:17 PM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "hy3",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/hy3",
+      "pulls": 8,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/hy3",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "4 days ago",
+      "updated_title": "Jul 21, 2026 6:58 PM UTC"
+    },
+    {
       "capabilities": [
         "thinking"
       ],
@@ -613,23 +630,6 @@
       "tags": [],
       "updated": "7 months ago",
       "updated_title": "Dec 26, 2025 2:39 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "hy3",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/hy3",
-      "pulls": 7,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/hy3",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "3 days ago",
-      "updated_title": "Jul 21, 2026 6:58 PM UTC"
     },
     {
       "capabilities": [],
@@ -729,8 +729,8 @@
     "/frob/llama3.2-vision",
     "/frob/hy-mt1.5",
     "/frob/trinity",
-    "/frob/whyhow-ai_PatientSeek",
     "/frob/hy3",
+    "/frob/whyhow-ai_PatientSeek",
     "/frob/mixtao",
     "/frob/NireeskshanAI_Niri"
   ],
