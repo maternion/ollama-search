@@ -9,20 +9,20 @@
   "files": [
     {
       "arch": "",
-      "blob_url": "/library/laguna-xs.2:nvfp4/blobs/f42d36014db8",
+      "blob_url": "/library/laguna-xs.2:nvfp4/blobs/771ee842225d",
       "content_preview": "{\n\"architectures\": [\n\"LagunaForCausalLM\"\n],\n\"auto_map\": {\n\"AutoConfig\": \"configuration_laguna.Laguna",
       "parameters": "",
       "quantization": "",
-      "size": "3.7kB",
+      "size": "3.4kB",
       "type": "json"
     },
     {
       "arch": "",
-      "blob_url": "/library/laguna-xs.2:nvfp4/blobs/010529242088",
-      "content_preview": "{\n\"bos_token_id\": 2,\n\"do_sample\": true,\n\"eos_token_id\": [\n2,\n24\n],\n\"max_new_tokens\": 2048,\n\"pad_toke",
+      "blob_url": "/library/laguna-xs.2:nvfp4/blobs/47c2fe6c02e5",
+      "content_preview": "{\n\"bos_token_id\": 2,\n\"do_sample\": true,\n\"eos_token_id\": [\n2,\n24\n],\n\"max_new_tokens\": 4096,\n\"pad_toke",
       "parameters": "",
       "quantization": "",
-      "size": "168B",
+      "size": "328B",
       "type": "json"
     },
     {
@@ -45,7 +45,7 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/laguna-xs.2:nvfp4/blobs/ce5c24f821c9",
+      "blob_url": "/library/laguna-xs.2:nvfp4/blobs/7458ce192bcd",
       "content_preview": "{\n\"added_tokens_decoder\": {\n\"0\": {\n\"content\": \"〈|UNK|〉\",\n\"lstrip\": false,\n\"normalized\": false,\n\"",
       "parameters": "",
       "quantization": "",
@@ -54,7 +54,7 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/laguna-xs.2:nvfp4/blobs/bd9df84b6904",
+      "blob_url": "/library/laguna-xs.2:nvfp4/blobs/be9def2b354d",
       "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
       "parameters": "",
       "quantization": "",
@@ -63,10 +63,9 @@
     }
   ],
   "full_path": "/library/laguna-xs.2:nvfp4",
-  "manifest_digest": "f6daa0fecaaa",
-  "manifest_size": "22GB",
-  "manifest_updated": "2 months ago",
+  "manifest_digest": "5bc4c3edeb0c",
+  "manifest_size": "19GB",
+  "manifest_updated": "55 minutes ago",
   "path": "/library/laguna-xs.2",
-  "scraped_at": "2026-07-13T21:25:30.655046+00:00",
   "tag_name": "nvfp4"
 }
