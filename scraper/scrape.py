@@ -1889,7 +1889,8 @@ def fetch_profile_page(client: Client, username: str) -> dict | None:
     # Links
     for lm in re.finditer(
         r'<a href="//([^"]+)" target="_blank" class="hover:underline" data-url="([^"]+)">\s*(.*?)\s*</a>',
-        html, re.DOTALL,
+        html,
+        re.DOTALL,
     ):
         href = lm.group(1)
         label = strip_tags(lm.group(3)).strip()
@@ -1912,9 +1913,7 @@ def fetch_profile_page(client: Client, username: str) -> dict | None:
         profile["newest_order"] = [
             c.path for c in newest_cards if c.path.startswith(f"/{username}/")
         ]
-        log.info(
-            "profile %s newest: %d models", username, len(profile["newest_order"])
-        )
+        log.info("profile %s newest: %d models", username, len(profile["newest_order"]))
 
     log.info(
         "profile %s: bio=%r, %d links, %d models",
@@ -1924,6 +1923,7 @@ def fetch_profile_page(client: Client, username: str) -> dict | None:
         len(profile["models"]),
     )
     return profile
+
 
 def save_profile_page(username: str, data: dict) -> None:
     fp = DATA / f"profile_{username}.json"
@@ -2148,6 +2148,11 @@ def git_checkpoint(label: str = "") -> None:
         return
     worktree = os.environ.get("GIT_CHECKPOINT_WORKTREE", "")
     if not worktree or not os.path.isdir(worktree):
+        return
+    # Sanity check: refuse to operate on dangerous paths (e.g. "/" or "/home").
+    worktree_abs = os.path.abspath(worktree)
+    if worktree_abs in ("/", os.path.expanduser("~")) or len(worktree_abs) <= 3:
+        log.error("refusing to use dangerous worktree path: %r", worktree_abs)
         return
     _GIT_CHECKPOINT_COUNT += 1
     tag = f"[{_GIT_CHECKPOINT_COUNT}] " if label else ""

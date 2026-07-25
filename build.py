@@ -139,6 +139,207 @@ def esc(s: str) -> str:
     return html.escape(str(s), quote=True)
 
 
+# --- Readme HTML sanitizer ------------------------------------------------- #
+# Allowlist-based sanitizer for scraped readme HTML. Strips <script>, on*
+# event handlers, javascript: URLs, and any tags/attributes not in the
+# allowlist. This is defense-in-depth: ollama.com likely sanitizes
+# server-side when rendering markdown, but community models (frob,
+# huihui_ai, maternion profiles) could potentially inject XSS if
+# ollama.com's own sanitization is ever bypassed.
+
+_README_ALLOWED_TAGS = {
+    "a",
+    "b",
+    "blockquote",
+    "br",
+    "code",
+    "col",
+    "colgroup",
+    "dd",
+    "del",
+    "details",
+    "div",
+    "dl",
+    "dt",
+    "em",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "hr",
+    "i",
+    "img",
+    "ins",
+    "kbd",
+    "li",
+    "mark",
+    "ol",
+    "p",
+    "pre",
+    "q",
+    "s",
+    "small",
+    "span",
+    "strong",
+    "sub",
+    "summary",
+    "sup",
+    "table",
+    "tbody",
+    "td",
+    "tfoot",
+    "th",
+    "thead",
+    "tr",
+    "ul",
+    "var",
+}
+
+_README_ALLOWED_ATTRS = {
+    "a": {"href", "rel", "title"},
+    "img": {"src", "alt", "width", "height"},
+    "td": {"align", "colspan", "rowspan"},
+    "th": {"align", "colspan", "rowspan"},
+    "tr": {"align"},
+    "table": {"align"},
+    "col": {"align", "span"},
+    "colgroup": {"align", "span"},
+    "span": {"class"},
+    "div": {"class"},
+    "code": {"class"},
+    "details": {"open"},
+}
+
+_README_ALLOWED_PROTOCOLS = {"http", "https", "mailto", "ftp", "data"}
+
+# Tags that should be dropped entirely (tag + content removed)
+_README_DROP_TAGS = {
+    "script",
+    "style",
+    "iframe",
+    "object",
+    "embed",
+    "form",
+    "input",
+    "meta",
+    "link",
+}
+
+_VOID_TAGS = {"br", "hr", "img", "col", "input", "meta", "link", "embed", "hr"}
+
+_TAG_RE = re.compile(
+    r"</?(\w+)((?:\s+[^>]*)?)(/?)>|&[a-zA-Z#0-9]+;|([^<]+)",
+    re.DOTALL,
+)
+_ATTR_RE = re.compile(r'(\w[\w-]*)\s*=\s*(["\'])(.*?)\2|(\w[\w-]*)(?=\s|$|/|>)')
+
+
+def _sanitize_url(url_val: str) -> str:
+    u = url_val.strip()
+    low = u.lower()
+    if low.startswith(("http://", "https://", "mailto:", "ftp://", "data:", "/", "#")):
+        return u
+    if low.startswith("javascript:") or low.startswith("vbscript:"):
+        return ""
+    return u
+
+
+def _esc_text(s: str) -> str:
+    """Escape literal < and > in text content while preserving existing HTML
+    entities (e.g. &amp;, &#34;) that were already in the scraped HTML."""
+    return s.replace("<", "&lt;").replace(">", "&gt;")
+
+
+def _esc_attr(s: str) -> str:
+    """Escape quotes in attribute values while preserving existing HTML
+    entities. Unlike html.escape, does not re-escape & in existing entities."""
+    return s.replace('"', "&quot;").replace("'", "&#x27;")
+
+
+def sanitize_readme_html(html_str: str) -> str:
+    if not html_str:
+        return ""
+    out: list[str] = []
+    i = 0
+    n = len(html_str)
+
+    while i < n:
+        if html_str[i] == "<":
+            m = _TAG_RE.match(html_str, i)
+            if not m:
+                out.append("&lt;")
+                i += 1
+                continue
+
+            if m.group(4) is not None or m.group(0).startswith("&"):
+                out.append(m.group(0))
+                i = m.end()
+                continue
+
+            tag_name = m.group(1).lower()
+            raw_attrs = m.group(2) or ""
+            self_closing = m.group(3) == "/"
+            is_closing = m.group(0).startswith("</")
+
+            if tag_name in _README_DROP_TAGS:
+                if not is_closing and not self_closing and tag_name not in _VOID_TAGS:
+                    end_tag = f"</{tag_name}"
+                    end_idx = html_str.lower().find(end_tag, m.end())
+                    if end_idx != -1:
+                        close_idx = html_str.find(">", end_idx)
+                        i = close_idx + 1 if close_idx != -1 else m.end()
+                    else:
+                        i = m.end()
+                else:
+                    i = m.end()
+                continue
+
+            if tag_name not in _README_ALLOWED_TAGS:
+                i = m.end()
+                continue
+
+            if is_closing:
+                out.append(f"</{tag_name}>")
+                i = m.end()
+                continue
+
+            allowed_attrs = _README_ALLOWED_ATTRS.get(tag_name, set())
+            clean_attrs: list[str] = []
+            for am in _ATTR_RE.finditer(raw_attrs):
+                attr_name = (am.group(1) or am.group(4)).lower()
+                attr_val = am.group(3) if am.group(3) is not None else ""
+
+                if not attr_name or attr_name.startswith("on"):
+                    continue
+                if attr_name not in allowed_attrs:
+                    continue
+
+                if attr_name in ("href", "src"):
+                    attr_val = _sanitize_url(attr_val)
+                    if not attr_val:
+                        continue
+
+                clean_attrs.append(f'{attr_name}="{_esc_attr(attr_val)}"')
+
+            attr_str = (" " + " ".join(clean_attrs)) if clean_attrs else ""
+            if tag_name in _VOID_TAGS or self_closing:
+                out.append(f"<{tag_name}{attr_str} />")
+            else:
+                out.append(f"<{tag_name}{attr_str}>")
+            i = m.end()
+        else:
+            end = html_str.find("<", i)
+            if end == -1:
+                out.append(_esc_text(html_str[i:]))
+                break
+            out.append(_esc_text(html_str[i:end]))
+            i = end
+
+    return "".join(out)
+
+
 def slugify(path: str) -> str:
     return path.strip("/").replace("/", "__")
 
@@ -1342,7 +1543,7 @@ def _readme_section(page_data: dict) -> str:
             r"\1\2https://ollama.com/assets/",
             readme,
         )
-        body = readme
+        body = sanitize_readme_html(readme)
     # Class string mirrors ollama.com's <div id="display"> exactly (the long
     # Tailwind prose-* variant chain), with dark: variants appended since
     # ollama.com itself has no dark mode. The corresponding prose-* and
@@ -3765,13 +3966,11 @@ def main() -> int:
     build_pricing_page()
 
     # Load profile models and add them to the build list
-    import json as _json
-
     _all_models = list(models)
     for _username in ["maternion", "frob", "huihui_ai"]:
         _pf = HERE / "scraper" / f"profile_{_username}.json"
         if _pf.exists():
-            _pdata = _json.loads(_pf.read_text())
+            _pdata = json.loads(_pf.read_text())
             _existing_paths = {m["path"] for m in _all_models}
             for _m in _pdata.get("models", []):
                 if isinstance(_m, dict) and _m["path"] not in _existing_paths:
