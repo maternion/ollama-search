@@ -61,6 +61,7 @@ jobs:
         env:
           GIT_CHECKPOINT: "1"
           GIT_CHECKPOINT_WORKTREE: "/tmp/scraped-data"
+          PYTHONUNBUFFERED: "1"
         run: python3 scraper/scrape.py --smart --skip-search --max-runtime 3000 -v
 
       - name: Checkpoint + build + self-check
