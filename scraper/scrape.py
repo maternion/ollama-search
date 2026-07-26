@@ -2368,6 +2368,16 @@ _TIER_BTN_RE = re.compile(
     r'<a href="([^"]+)"[^>]*class="block w-full[^"]*rounded-full[^"]*"[^>]*>\s*(.*?)\s*</a>',
     re.DOTALL,
 )
+# Paused/disabled button: a <div> (not <a>) with cursor-not-allowed class
+_TIER_PAUSED_RE = re.compile(
+    r'<div class="block w-full[^"]*cursor-not-allowed[^"]*"[^>]*>\s*(.*?)\s*</div>',
+    re.DOTALL,
+)
+# Notice text below a paused button: <p class="text-xs text-neutral-500 ...">
+_TIER_NOTICE_RE = re.compile(
+    r'<p class="text-xs text-neutral-500[^"]*">\s*(.*?)\s*</p>',
+    re.DOTALL,
+)
 _FEAT_RE = re.compile(r"<span>(.*?)</span>", re.DOTALL)
 
 
@@ -2389,10 +2399,22 @@ def _parse_pricing_card(card_html: str) -> dict:
 
     button_url = ""
     button_label = ""
+    button_paused = False
+    notice = ""
     m = _TIER_BTN_RE.search(card_html)
     if m:
         button_url = m.group(1)
         button_label = _strip_tags(m.group(2))
+    else:
+        # Check for a paused/disabled button (e.g. "New sign-ups paused")
+        pm = _TIER_PAUSED_RE.search(card_html)
+        if pm:
+            button_paused = True
+            button_label = _strip_tags(pm.group(1))
+        # Notice text below a paused button (may contain inline HTML/links)
+        nm = _TIER_NOTICE_RE.search(card_html)
+        if nm:
+            notice = nm.group(1).strip()
 
     features = [
         fe for fe in (_strip_tags(x) for x in _FEAT_RE.findall(card_html)) if fe
@@ -2403,6 +2425,8 @@ def _parse_pricing_card(card_html: str) -> dict:
         "description": desc,
         "button_url": button_url,
         "button_label": button_label,
+        "button_paused": button_paused,
+        "notice": notice,
         "features": features,
     }
 
@@ -2430,7 +2454,7 @@ def _parse_pricing_faq(html_text: str) -> list:
         end = group_heads[i + 1].start() if i + 1 < len(group_heads) else len(section)
         chunk = section[start:end]
         items = []
-        for li in re.finditer(r"<li>(.*?)</li>", chunk, re.DOTALL):
+        for li in re.finditer(r"<li(?:\s[^>]*)?>(.*?)</li>", chunk, re.DOTALL):
             li_html = li.group(1)
             qm = re.search(r"<h4[^>]*>(.*?)</h4>", li_html, re.DOTALL)
             if not qm:
