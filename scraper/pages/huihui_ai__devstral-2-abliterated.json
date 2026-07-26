@@ -6,14 +6,9 @@
       "name": "Claude Code"
     },
     {
-      "command": "ollama launch codex-app --model huihui_ai/devstral-2-abliterated",
-      "icon_url": "/public/codex-app.png",
-      "name": "Codex App"
-    },
-    {
-      "command": "ollama launch openclaw --model huihui_ai/devstral-2-abliterated",
-      "icon_url": "/public/openclaw.png",
-      "name": "OpenClaw"
+      "command": "ollama launch opencode --model huihui_ai/devstral-2-abliterated",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
     },
     {
       "command": "ollama launch hermes --model huihui_ai/devstral-2-abliterated",
@@ -21,14 +16,9 @@
       "name": "Hermes Agent"
     },
     {
-      "command": "ollama launch codex --model huihui_ai/devstral-2-abliterated",
-      "icon_url": "/public/openai.png",
-      "name": "Codex"
-    },
-    {
-      "command": "ollama launch opencode --model huihui_ai/devstral-2-abliterated",
-      "icon_url": "/public/opencode.png",
-      "name": "OpenCode"
+      "command": "ollama launch openclaw --model huihui_ai/devstral-2-abliterated",
+      "icon_url": "/public/openclaw.svg",
+      "name": "OpenClaw"
     }
   ],
   "cloud_context": "",
