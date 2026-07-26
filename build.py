@@ -373,7 +373,7 @@ def format_count(n: int) -> str:
 
 def load_models() -> list[dict]:
     data = json.loads((SCRAPER / "models.json").read_text())
-    return data["models"]
+    return [m for m in data["models"] if m["path"] not in IGNORELIST]
 
 
 def load_ranks() -> dict:
@@ -471,10 +471,22 @@ def load_blob_page(blob_url: str) -> dict | None:
     return result
 
 
+def _tag_url(model_path: str, tag_name: str) -> str:
+    """Build the local URL for a tag page, matching ollama.com's scheme:
+    /library/model:tag (colon directly after the model name, no / before it).
+    """
+    return url(esc(model_path) + ":" + esc(tag_name) + "/")
+
+
 def _blob_href(blob_url: str) -> str:
-    """Return local blob page URL if blob data exists, else external ollama.com URL."""
+    """Return local blob page URL if blob data exists, else external ollama.com URL.
+
+    blob_url already uses the colon-attached form (e.g.
+    /library/model:tag/blobs/<digest>), so it maps directly to the on-disk
+    directory structure (library/model:tag/blobs/<digest>/index.html).
+    """
     if blob_url and load_blob_page(blob_url):
-        return url(blob_url.replace(":", "/:", 1) + "/")
+        return url(blob_url + "/")
     return "https://ollama.com" + blob_url
 
 
@@ -715,6 +727,21 @@ def _template_blob_content(model_path: str) -> str | None:
     return None
 
 
+def _namespaced_name(m: dict) -> str:
+    """Return the display name with namespace for /x models.
+
+    /x/* models are official but carry the "x" namespace (Ollama's
+    experimental image models), so their titles should be "x/<name>"
+    rather than just "<name>". Library and user models use their own
+    conventions (library: just name; user: owner/name via the namespace
+    link, with the <title> already using the full path).
+    """
+    path = m["path"].strip("/")
+    if path.startswith("x/"):
+        return f"x/{m['name']}"
+    return m["name"]
+
+
 def _has_moe(model_path: str, tags: list[dict] | None = None) -> bool:
     """Check if any tag's model blob metadata has expert_count."""
     slug = model_path.strip("/").replace("/", "__")
@@ -783,7 +810,13 @@ def render_card(
     name_raw = m["name"]
     owner = m.get("owner") or ""
     official = m.get("official", True)
-    display_name = f"{owner}/{name}" if owner and not official else name
+    # /x/* models are official (Ollama's experimental image models) but carry
+    # the "x" namespace — display them as "x/model" like user models.
+    is_x = m["path"].strip("/").startswith("x/")
+    if is_x:
+        display_name = f"x/{name}"
+    else:
+        display_name = f"{owner}/{name}" if owner and not official else name
     desc = esc(m["description"])
     caps = capability_spans(m["capabilities"], m["cloud"])
     sizes = size_spans(m["sizes"])
@@ -819,6 +852,7 @@ def render_card(
         f'data-mlx="{"true" if any((t.get("format") == "mlx") for t in (m.get("tags") or [])) else "false"}" '
         f'data-moe="{"true" if _has_moe(m["path"], m.get("tags")) else "false"}" '
         f'data-mtp="{"true" if any("-mtp" in (t.get("name", "").lower()) for t in (m.get("tags") or [])) else "false"}" '
+        f'data-image="{"true" if "image" in (m.get("capabilities") or []) else "false"}" '
         f'data-template-type="{_classify_template(m["path"])}"'
     )
 
@@ -1010,6 +1044,10 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 <input type="checkbox" id="more-mtp" class="more-filter peer sr-only" data-more="mtp">
                 <label for="more-mtp" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">MTP</label>
               </div>
+              <div class="relative inline-block">
+                <input type="checkbox" id="more-image" class="more-filter peer sr-only" data-more="image">
+                <label for="more-image" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">Image</label>
+              </div>
             </div>
             <!-- Row 2: Architecture (All / Dense / MoE) -->
             <div>
@@ -1166,8 +1204,13 @@ def _detail_tag_rows(
     model_path: str,
     latest_digest: str = "",
     show_mlx_badge: bool = False,
+    link_tags: bool = True,
 ) -> str:
-    """Render tag rows (mobile + desktop) for the detail page Models table."""
+    """Render tag rows (mobile + desktop) for the detail page Models table.
+
+    link_tags=False renders tag names as plain text (no hyperlink), matching
+    ollama.com's /x model pages where tags are not clickable.
+    """
     rows = []
     model_name = model_path.strip("/").split("/")[-1]
     for t in tags_subset:
@@ -1178,7 +1221,7 @@ def _detail_tag_rows(
         ctx = esc(t.get("context") or "") or "—"
         inp = esc(t.get("input_type") or "") or "—"
         updated = esc(t.get("updated") or "") or "—"
-        tag_link = url(esc(model_path) + "/:" + esc(t["name"]) + "/")
+        tag_link = _tag_url(model_path, t["name"])
         raw_digest = t.get("digest") or ""
         show_latest = (
             bool(latest_digest)
@@ -1219,18 +1262,28 @@ def _detail_tag_rows(
         usage_text = ""
         if (usage_level or active_slots > 0) and usage_level:
             usage_text = f"{usage_level.capitalize()} Usage · "
+        tag_name_cell_mobile = (
+            f'<a href="{tag_link}" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">{full_tag_esc}</a>'
+            if link_tags
+            else f'<p class="block text-sm font-medium text-neutral-800 dark:text-neutral-200">{full_tag_esc}</p>'
+        )
+        tag_name_cell_desktop = (
+            f'<a href="{tag_link}" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">{full_tag_esc}</a>'
+            if link_tags
+            else f'<span class="block text-sm font-medium text-neutral-800 dark:text-neutral-200">{full_tag_esc}</span>'
+        )
         rows.append(
-            f'      <a href="{tag_link}" class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">\n'
+            f'      <{'a href="' + tag_link + '"' if link_tags else "div"} class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">\n'
             f'        <span class="flex items-center">\n'
-            f'          <p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">{full_tag_esc}</p>\n'
+            f"          {tag_name_cell_mobile}\n"
             f"          {latest_badge}\n"
             f"          {mlx_badge}\n"
             f"        </span>\n"
             f'        <p class="flex text-neutral-500 dark:text-neutral-400">{usage_text}{inline_text}{ctx} context window · {inp} · {updated}</p>\n'
-            f"      </a>\n"
+            f"      </{('a' if link_tags else 'div')}>\n"
             f'      <div class="hidden group px-4 py-3 sm:grid sm:grid-cols-12 text-[13px]">\n'
             f'        <span class="col-span-6 flex items-center">\n'
-            f'          <a href="{tag_link}" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">{full_tag_esc}</a>\n'
+            f"          {tag_name_cell_desktop}\n"
             f"          {latest_badge}\n"
             f"          {mlx_badge}\n"
             f'          <input class="command hidden" value="{full_tag_esc}" />\n'
@@ -1334,12 +1387,17 @@ def _detail_models_section(m: dict, tags: list[dict]) -> str:
     main = _main_tags(m, tags)
     main_gguf = [t for t in main if t["format"] == "gguf"]
     main_mlx = [t for t in main if t["format"] == "mlx"]
-    rows_all = _detail_tag_rows(main, m["path"], latest_digest, show_mlx_badge=True)
+    # /x model pages don't link tags (matching ollama.com — tags are plain text
+    # there, not clickable hyperlinks). Library and user models do link them.
+    link_tags = not m["path"].strip("/").startswith("x/")
+    rows_all = _detail_tag_rows(
+        main, m["path"], latest_digest, show_mlx_badge=True, link_tags=link_tags
+    )
     rows_gguf = _detail_tag_rows(
-        main_gguf, m["path"], latest_digest, show_mlx_badge=False
+        main_gguf, m["path"], latest_digest, show_mlx_badge=False, link_tags=link_tags
     )
     rows_mlx = _detail_tag_rows(
-        main_mlx, m["path"], latest_digest, show_mlx_badge=False
+        main_mlx, m["path"], latest_digest, show_mlx_badge=False, link_tags=link_tags
     )
 
     view_all = f'<a href="{url(esc(m["path"]) + "/tags/")}" class="text-sm text-neutral-500 dark:text-neutral-400 cursor-pointer underline focus:outline-none">View all {len(tags)} &#8594;</a>'
@@ -1603,8 +1661,11 @@ def _header_section(m: dict) -> str:
     sizes = size_spans(m["sizes"])
 
     # For user models, prepend the namespace link + "/" separator.
+    # /x/* models are official but also use the "x" namespace (Ollama's
+    # experimental image models on ollama.com/x), so show it there too.
     namespace_html = ""
-    if not m.get("official") and "/" in m["path"].strip("/"):
+    is_x = m["path"].strip("/").startswith("x/")
+    if (not m.get("official") and "/" in m["path"].strip("/")) or is_x:
         namespace = m["path"].strip("/").split("/")[0]
         namespace_esc = esc(namespace)
         namespace_link = url("/" + namespace_esc)
@@ -1716,8 +1777,13 @@ def build_detail(m: dict, tags: list[dict]) -> None:
     cloud_metrics = _cloud_metrics_section(page_data) if page_data else ""
     apps_section = _applications_section(page_data) if page_data else ""
 
-    # Title: official models use just name, user models use owner/name
-    title = name if m.get("official") else path.strip("/")
+    # Title: official /library models use just the name; user models and /x/*
+    # experimental models (official but namespaced) use the full path.
+    title = (
+        name
+        if (m.get("official") and not path.strip("/").startswith("x/"))
+        else path.strip("/")
+    )
 
     page = f"""<!DOCTYPE html>
 <html lang="en" class="">
@@ -1753,12 +1819,16 @@ def build_detail(m: dict, tags: list[dict]) -> None:
 
 
 def _tags_tag_row(
-    t: dict, model_path: str, latest_digest: str = "", show_mlx_badge: bool = False
+    t: dict,
+    model_path: str,
+    latest_digest: str = "",
+    show_mlx_badge: bool = False,
+    link_tags: bool = True,
 ) -> str:
     model_name = model_path.strip("/").split("/")[-1]
     full_tag_name = f"{model_name}:{t['name']}"
     full_tag_esc = esc(full_tag_name)
-    tag_link = url(esc(model_path) + "/:" + esc(t["name"]) + "/")
+    tag_link = _tag_url(model_path, t["name"])
     size = esc(t.get("size_text") or "") or "—"
     ctx = esc(t.get("context") or "") or "—"
     inp = esc(t.get("input_type") or "") or "—"
@@ -1801,12 +1871,28 @@ def _tags_tag_row(
     if is_cloud and usage_level:
         usage_text = f"{usage_level.capitalize()} Usage"
     usage_sep = f"{usage_text} • " if usage_text else ""
+    # /x models don't have per-tag detail pages, so render tag names as plain
+    # text (no hyperlink) on the tags page too.
+    if link_tags:
+        mobile_open = (
+            f'<a href="{tag_link}" class="md:hidden flex flex-col space-y-[6px] group">'
+        )
+        mobile_close = "</a>"
+        name_mobile = f'<span class="group-hover:underline">{full_tag_esc}</span>'
+        name_desktop = (
+            f'<a href="{tag_link}" class="group-hover:underline">{full_tag_esc}</a>'
+        )
+    else:
+        mobile_open = '<div class="md:hidden flex flex-col space-y-[6px] group">'
+        mobile_close = "</div>"
+        name_mobile = f"<span>{full_tag_esc}</span>"
+        name_desktop = f"<span>{full_tag_esc}</span>"
     return f"""<div class="group px-4 py-3">
-  <a href="{tag_link}" class="md:hidden flex flex-col space-y-[6px] group">
+  {mobile_open}
     <div class="flex items-center font-medium">
       <div class="flex items-center justify-between w-full">
         <div>
-          <span class="group-hover:underline">{full_tag_esc}</span>
+          {name_mobile}
           {latest_badge}
           {mlx_badge}
         </div>
@@ -1819,11 +1905,11 @@ def _tags_tag_row(
       </span>
       <div class="flex sm:hidden">{inp} input • {updated}</div>
     </div>
-  </a>
+  {mobile_close}
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
       <span class="flex items-center font-medium col-span-6 group text-sm">
-        <a href="{tag_link}" class="group-hover:underline">{full_tag_esc}</a>
+        {name_desktop}
         {latest_badge}
         {mlx_badge}
         <input class="command hidden" value="{full_tag_esc}" />
@@ -1885,14 +1971,20 @@ def build_tags_page(m: dict, tags: list[dict]) -> None:
             latest_digest = t.get("digest") or ""
             break
 
+    # /x models don't have per-tag detail pages, so render tags as plain text
+    # on the tags page too (no hyperlinks to non-existent tag pages).
+    link_tags = not path.strip("/").startswith("x/")
     rows_all = "\n".join(
-        _tags_tag_row(t, path, latest_digest, show_mlx_badge=True) for t in tags
+        _tags_tag_row(t, path, latest_digest, show_mlx_badge=True, link_tags=link_tags)
+        for t in tags
     )
     rows_gguf = "\n".join(
-        _tags_tag_row(t, path, latest_digest, show_mlx_badge=False) for t in gguf_tags
+        _tags_tag_row(t, path, latest_digest, show_mlx_badge=False, link_tags=link_tags)
+        for t in gguf_tags
     )
     rows_mlx = "\n".join(
-        _tags_tag_row(t, path, latest_digest, show_mlx_badge=False) for t in mlx_tags
+        _tags_tag_row(t, path, latest_digest, show_mlx_badge=False, link_tags=link_tags)
+        for t in mlx_tags
     )
 
     table_all = _tags_table_block(rows_all, len(tags), "all", True)
@@ -1908,7 +2000,7 @@ def build_tags_page(m: dict, tags: list[dict]) -> None:
     page = f"""<!DOCTYPE html>
 <html lang="en" class="">
 <head>
-{head_html(f"{name} Tags", f"Tags for {name}. {desc}")}
+{head_html(f"{_namespaced_name(m)} Tags", f"Tags for {_namespaced_name(m)}. {desc}")}
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 {nav_html()}
@@ -1957,8 +2049,11 @@ def _tag_header_section(m: dict, tag_name: str) -> str:
     sizes = size_spans(m["sizes"])
 
     # For user models, prepend the namespace link + "/" separator.
+    # /x/* models are official but also use the "x" namespace (Ollama's
+    # experimental image models on ollama.com/x), so show it there too.
     namespace_html = ""
-    if not m.get("official") and "/" in m["path"].strip("/"):
+    is_x = m["path"].strip("/").startswith("x/")
+    if (not m.get("official") and "/" in m["path"].strip("/")) or is_x:
         namespace = m["path"].strip("/").split("/")[0]
         namespace_esc = esc(namespace)
         namespace_link = url("/" + namespace_esc)
@@ -2008,8 +2103,9 @@ def build_tag_page(m: dict, tag: dict, tp: dict | None) -> None:
     path = m["path"]
     model_name = path.strip("/").split("/")[-1]
     full_name = f"{m['name']}:{tag_name}"
-    # Output dir: public/library/gemma4/:latest/
-    tag_dir = PUBLIC / path.strip("/") / f":{tag_name}"
+    # Output dir: public/library/gemma4:latest/  (colon attached to model name,
+    # matching ollama.com's URL scheme — no / before the colon).
+    tag_dir = PUBLIC / (path.strip("/") + f":{tag_name}")
     tag_dir.mkdir(parents=True, exist_ok=True)
 
     header = _tag_header_section(m, tag_name)
@@ -2057,7 +2153,7 @@ def build_tag_page(m: dict, tag: dict, tp: dict | None) -> None:
     page = f"""<!DOCTYPE html>
 <html lang="en" class="">
 <head>
-{head_html(f"{model_name}:{tag_name}", f"{model_name}:{tag_name} — {desc}")}
+{head_html(f"{_namespaced_name(m)}:{tag_name}", f"{_namespaced_name(m)}:{tag_name} — {desc}")}
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 {nav_html()}
@@ -2231,7 +2327,9 @@ def build_blob_page(blob: dict, target_blob_url: str = "") -> None:
     if not tag_full or "/" not in tag_full:
         tag_full = tag_part
 
-    blob_dir = PUBLIC / model_path / f":{tag_name}" / "blobs" / (digest_part or digest)
+    blob_dir = (
+        PUBLIC / (model_path + f":{tag_name}") / "blobs" / (digest_part or digest)
+    )
     blob_dir.mkdir(parents=True, exist_ok=True)
 
     # Load model data for the header
@@ -2248,8 +2346,13 @@ def build_blob_page(blob: dict, target_blob_url: str = "") -> None:
     header = _tag_header_section(m, tag_name_from_blob) if m else ""
 
     model_name = model_path.strip("/").split("/")[-1]
+    # /x models carry the "x" namespace in their display title.
+    if model_path.strip("/").startswith("x/"):
+        display_model_name = f"x/{model_name}"
+    else:
+        display_model_name = model_name
     model_link = url(esc(model_path))
-    tag_page_url = url(esc(model_path) + "/:" + esc(tag_name) + "/")
+    tag_page_url = _tag_url(model_path, tag_name)
     tag_full_esc = esc(tag_full)
     blob_type_esc = esc(blob_type)
     digest_esc = esc(digest_part or digest)
@@ -2266,7 +2369,7 @@ def build_blob_page(blob: dict, target_blob_url: str = "") -> None:
     page = f"""<!DOCTYPE html>
 <html lang="en" class="">
 <head>
-{head_html(f"{model_name}:{tag_name} — {blob_type}", f"{model_name}:{tag_name} blob {blob_type}")}
+{head_html(f"{display_model_name}:{tag_name} — {blob_type}", f"{display_model_name}:{tag_name} blob {blob_type}")}
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 {nav_html()}
@@ -2364,7 +2467,7 @@ def copy_assets() -> None:
             print(f"  WARN: could not download social/{icon}.svg: {e}", file=sys.stderr)
 
     # Profile images (download from profile data if available)
-    for _uname in ["maternion", "frob", "huihui_ai"]:
+    for _uname in ["maternion", "frob", "huihui_ai", "x"]:
         _pf = HERE / "scraper" / f"profile_{_uname}.json"
         if not _pf.exists():
             continue
@@ -2876,10 +2979,12 @@ function applyFilters() {
   var moreAudio = document.getElementById('more-audio');
   var moreMlx = document.getElementById('more-mlx');
   var moreMtp = document.getElementById('more-mtp');
+  var moreImage = document.getElementById('more-image');
   var moeRadio = document.querySelector('input[name="moe-filter"]:checked');
   var moreAudioOn = moreAudio && moreAudio.checked;
   var moreMlxOn = moreMlx && moreMlx.checked;
   var moreMtpOn = moreMtp && moreMtp.checked;
+  var moreImageOn = moreImage && moreImage.checked;
   var moeVal = moeRadio ? moeRadio.value : 'all';
   var tplRadio = document.querySelector('input[name="tpl-filter"]:checked');
   var tplVal = tplRadio ? tplRadio.value : 'all';
@@ -2905,13 +3010,15 @@ function applyFilters() {
     var isMlx = card.getAttribute('data-mlx') === 'true';
     var isMoe = card.getAttribute('data-moe') === 'true';
     var isMtp = card.getAttribute('data-mtp') === 'true';
+    var isImage = card.getAttribute('data-image') === 'true';
     var cardTpl = card.getAttribute('data-template-type') || 'base';
     var matchMoreAudio = !moreAudioOn || isAudio;
     var matchMoreMlx = !moreMlxOn || isMlx;
     var matchMoreMtp = !moreMtpOn || isMtp;
+    var matchMoreImage = !moreImageOn || isImage;
     var matchMoe = moeVal === 'all' || (moeVal === 'moe' && isMoe) || (moeVal === 'dense' && !isMoe);
     var matchTpl = tplVal === 'all' || cardTpl === tplVal;
-    var show = matchText && matchCaps && matchCloud && matchSize && matchMoreAudio && matchMoreMlx && matchMoreMtp && matchMoe && matchTpl;
+    var show = matchText && matchCaps && matchCloud && matchSize && matchMoreAudio && matchMoreMlx && matchMoreMtp && matchMoreImage && matchMoe && matchTpl;
     if (show && !q && !isOfficial && !window.IS_PROFILE_PAGE) show = false;
     card.style.display = show ? '' : 'none';
     if (show) visible++;
@@ -2986,7 +3093,8 @@ function applyFilters() {
     var ma = document.getElementById('more-audio');
     var ml = document.getElementById('more-mlx');
     var mt = document.getElementById('more-mtp');
-    if ((ma && ma.checked) || (ml && ml.checked) || (mt && mt.checked)) moreActive = true;
+    var mi = document.getElementById('more-image');
+    if ((ma && ma.checked) || (ml && ml.checked) || (mt && mt.checked) || (mi && mi.checked)) moreActive = true;
     var mr = document.querySelector('input[name="moe-filter"]:checked');
     if (mr && mr.value !== 'all') moreActive = true;
     var tr = document.querySelector('input[name="tpl-filter"]:checked');
@@ -3268,7 +3376,13 @@ if (document.readyState === 'loading') {
 # --------------------------------------------------------------------------- #
 
 
-PROFILE_BLOCKLIST = {
+# Models to exclude from the build entirely. Each entry is a model path
+# (as stored in models.json, e.g. "/x/canary" or "/frob/mixtao"). This is a
+# single unified ignore list used by load_models(), the profile-page builder,
+# and the main detail/tag build loop. Add "username/model" or "x/model" paths
+# here to suppress a model from every page (search, profile, detail, tags).
+IGNORELIST = {
+    "/x/canary",  # ollama.com/x canary/test model — not a real model
     "/frob/whyhow-ai_PatientSeek",
     "/frob/mixtao",
     "/frob/NireeskshanAI_Niri",
@@ -3302,11 +3416,11 @@ def build_profile_page(username: str) -> None:
     profile_models = []
     for m in model_paths:
         if isinstance(m, dict):
-            if m.get("path") in PROFILE_BLOCKLIST:
+            if m.get("path") in IGNORELIST:
                 continue
             profile_models.append(m)
         elif isinstance(m, str) and m in models_by_path:
-            if m not in PROFILE_BLOCKLIST:
+            if m not in IGNORELIST:
                 profile_models.append(models_by_path[m])
 
     # Build model cards (reuse render_card)
@@ -3478,6 +3592,145 @@ def build_profile_page(username: str) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "index.html").write_text(page)
     print(f"  profile {username}: {len(profile_models)} models")
+
+
+def build_x_page() -> None:
+    """Build the /x page mirroring ollama.com/x — Ollama's experimental models.
+
+    Layout matches ollama.com/x: a namespace header (avatar + name "x" +
+    "Experimental Ollama models"), a sort dropdown (Popular / Newest), and the
+    list of /x model cards. The canary model is excluded via IGNORELIST.
+    """
+    all_models = load_models()
+    x_models = [m for m in all_models if m["path"].strip("/").startswith("x/")]
+
+    # Read bio/avatar from the scraped profile_x.json (saved by the scraper
+    # alongside the /x model cards). Falls back to defaults if absent.
+    bio = "Experimental Ollama models"
+    profile_x = HERE / "scraper" / "profile_x.json"
+    if profile_x.exists():
+        try:
+            _px = json.loads(profile_x.read_text())
+            if _px.get("bio"):
+                bio = _px["bio"]
+        except Exception:
+            pass
+    bio_esc = esc(bio)
+
+    global_ranks = load_ranks()
+    # Local ranks for the /x page ordering (by pulls for popular, by
+    # updated_title for newest), so the sort dropdown works here too.
+    x_ranks: dict[str, dict] = {}
+
+    from datetime import datetime as _dt
+
+    def _parse_updated(s: str) -> _dt:
+        try:
+            return _dt.strptime(s, "%b %d, %Y %I:%M %p UTC")
+        except Exception:
+            return _dt.min
+
+    popular_order = sorted(x_models, key=lambda m: m.get("pulls", 0), reverse=True)
+    for rank, m in enumerate(popular_order):
+        x_ranks.setdefault(m["path"], {})["popular_rank"] = rank
+    newest_order = sorted(
+        x_models,
+        key=lambda m: _parse_updated(m.get("updated_title") or ""),
+        reverse=True,
+    )
+    for rank, m in enumerate(newest_order):
+        x_ranks.setdefault(m["path"], {})["newest_rank"] = rank
+        x_ranks.setdefault(m["path"], {})["updated_rank"] = rank
+    for rank, m in enumerate(reversed(newest_order)):
+        x_ranks.setdefault(m["path"], {})["oldest_rank"] = rank
+
+    sorted_models = sorted(
+        x_models,
+        key=lambda m: x_ranks.get(m["path"], {}).get("popular_rank", 9999),
+    )
+    cards_html = ""
+    for m in sorted_models:
+        tags = load_tags(m["path"], m)
+        cards_html += render_card(m, tags, global_ranks, x_ranks)
+
+    if not cards_html:
+        cards_html = '<p class="text-neutral-500 dark:text-neutral-400 py-8">No models found.</p>'
+
+    sort_options = [("popular", "Popular"), ("newest", "Newest")]
+    opt_html = "\n".join(
+        f'        <option value="{v}">{l}</option>' for v, l in sort_options
+    )
+
+    page = f"""<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+{head_html("x", bio)}
+    <script>window.IS_PROFILE_PAGE = true;</script>
+</head>
+<body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
+{nav_html("")}
+
+<main class="mx-auto flex w-full max-w-2xl flex-col px-6 py-5 md:py-12 lg:px-8">
+  <div class="grid grid-cols-4 gap-4 md:gap-0">
+    <div class="col-span-1">
+      <div class="flex w-20 flex-col items-center md:w-28">
+        <div class="group relative h-20 w-20 overflow-hidden rounded-full md:h-28 md:w-28">
+          <img src="{url("/assets/x-profile.png")}" alt="profile" class="absolute inset-0 h-full w-full border border-neutral-300 object-cover rounded-full" />
+        </div>
+      </div>
+    </div>
+    <div class="col-span-3">
+      <div class="flex flex-grow flex-col">
+        <div class="flex flex-row items-center justify-between">
+          <span class="text-[28px] font-medium tracking-tight">x</span>
+        </div>
+        <div class="space-y-1">
+          <div class="my-2">
+            <h2 class="break-words sm:max-w-lg">
+              <span>{bio_esc}</span>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input type="hidden" id="sort-value" name="o" value="popular">
+
+  <div id="searchresults" class="w-full space-y-2 mt-8">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <div class="sm:hidden relative">
+        <select id="mobile-sort-select" class="absolute inset-0 w-6 px-3 py-1 opacity-0 appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600">
+{opt_html}
+        </select>
+        <div class="w-6 px-3.5 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex items-center justify-center pointer-events-none">
+          <span class="text-neutral-900 dark:text-neutral-100 text-xs font-medium">&#x21C5;</span>
+        </div>
+      </div>
+      <div class="hidden sm:block ml-auto">
+        <select id="desktop-sort-select" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600 min-w-[120px] text-sm px-3 py-1.5">
+{opt_html}
+        </select>
+      </div>
+    </div>
+
+    <ul role="list" id="card-list" class="grid grid-cols-1 gap-y-3">
+{cards_html}
+    </ul>
+    <p id="no-results" class="hidden py-12 text-center text-neutral-400 dark:text-neutral-600">No models found.</p>
+  </div>
+</main>
+
+{footer_html()}
+{theme_script()}
+<script src="{url("/assets/app.js")}"></script>
+</body>
+</html>"""
+
+    out_dir = PUBLIC / "x"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / "index.html").write_text(page)
+    print(f"  /x page: {len(x_models)} models")
 
 
 # --------------------------------------------------------------------------- #
@@ -3960,6 +4213,10 @@ def main() -> int:
     build_profile_page("frob")
     build_profile_page("huihui_ai")
 
+    # /x page (Ollama's experimental image models)
+    print("building /x page ...")
+    build_x_page()
+
     # static standalone pages (/download + /pricing)
     print("building download + pricing pages ...")
     build_download_page()
@@ -3974,7 +4231,7 @@ def main() -> int:
             _existing_paths = {m["path"] for m in _all_models}
             for _m in _pdata.get("models", []):
                 if isinstance(_m, dict) and _m["path"] not in _existing_paths:
-                    if _m["path"] not in PROFILE_BLOCKLIST:
+                    if _m["path"] not in IGNORELIST:
                         _all_models.append(_m)
 
     # model detail + tags + per-tag pages
@@ -3998,6 +4255,16 @@ def main() -> int:
         tag_page_data: dict[str, dict | None] = {}
         for t in tags:
             tag_page_data[t["name"]] = load_tag_page(m["path"], t["name"])
+
+        # /x model pages don't have per-tag detail pages (ollama.com's /x
+        # models render tags as plain text — they're not clickable links and
+        # have no tag pages). Skip building tag pages and blob pages for them;
+        # only the model detail page and the /tags listing page are built.
+        is_x_model = m["path"].strip("/").startswith("x/")
+        if is_x_model:
+            if i % 50 == 0:
+                print(f"  {i}/{len(_all_models)}")
+            continue
 
         for t in tags:
             tp = tag_page_data[t["name"]]

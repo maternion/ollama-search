@@ -338,7 +338,7 @@ class BlobPage:
 # ollama.com removed x-test-* attributes; we now match by the li class.
 _CARD_OPEN_RE = re.compile(
     r'<li\s+class="flex items-baseline border-b[^"]*">\s*'
-    r'<a\s+href="(/(?:library|maternion|frob|huihui_ai)/[^"]+)"',
+    r'<a\s+href="(/(?:library|x|maternion|frob|huihui_ai)/[^"]+)"',
     re.IGNORECASE,
 )
 
@@ -528,8 +528,11 @@ def parse_card(card_html: str, source_url: str) -> Model | None:
             updated_title = pm.group(1)
 
     # --- official vs user ---
+    # /library/* and /x/* (Ollama's experimental models) are both "official":
+    # they appear on ollama.com's own pages and should show on the search page
+    # unconditionally (without a query), unlike community profile models.
     parts = path.strip("/").split("/")
-    official = parts[0] == "library"
+    official = parts[0] in ("library", "x")
     owner = None if official else parts[0]
     real_name = parts[1] if official and len(parts) > 1 else name
 
@@ -760,6 +763,25 @@ def crawl_official(client: Client) -> tuple[dict[str, Model], dict[str, list[str
     orders["newest"] = lib_orders.get("newest", [])
 
     return found, orders
+
+
+def crawl_x_page(client: Client) -> list[Model]:
+    """Crawl ollama.com/x — Ollama's experimental image-generation models.
+
+    The page uses the same model-card markup as /library and /search, so
+    parse_cards() handles it once `/x` is in the card-open regex. Returns
+    the parsed models (typically 2-3 image models). These are treated as
+    official (official=True) so they appear on the search page unconditionally.
+    """
+    log.info("crawling %s/x", BASE)
+    html = client.get(f"{BASE}/x")
+    if html is None:
+        log.error("failed to fetch %s/x", BASE)
+        return []
+    cards = parse_cards(html, f"{BASE}/x")
+    log.info("  /x: %d cards", len(cards))
+    time.sleep(DELAY)
+    return cards
 
 
 # Search terms to enumerate user (and extra official) models.
@@ -2578,6 +2600,34 @@ def main(argv: list[str] | None = None) -> int:
         log.info("=== crawling official catalog ===")
         models, sort_orders = crawl_official(client)
         log.info("official models: %d", len(models))
+
+        # Crawl ollama.com/x — Ollama's experimental image models.
+        # These are official models (official=True) so they show on the search
+        # page unconditionally. Append to both sort orders so they get rank
+        # entries in sort_ranks.json (otherwise all would be 9999).
+        x_cards = crawl_x_page(client)
+        for m in x_cards:
+            if m.path not in models:
+                models[m.path] = m
+        if x_cards:
+            for sort_name in ("popular", "newest"):
+                existing = set(sort_orders.get(sort_name, []))
+                for m in x_cards:
+                    if m.path not in existing:
+                        sort_orders.setdefault(sort_name, []).append(m.path)
+            # Re-save sort data so the /x models get ranks.
+            save_sort_data(sort_orders, models)
+            save_models(models.values())
+            log.info("added %d /x models (total %d)", len(x_cards), len(models))
+
+        # Fetch the /x profile page to capture its avatar + bio, so build.py
+        # can download the avatar and render the /x page header. The /x model
+        # cards are already added above as official models — this fetch only
+        # saves profile_x.json (avatar/bio), it does NOT re-add models.
+        x_profile = fetch_profile_page(client, "x")
+        if x_profile:
+            save_profile_page("x", x_profile)
+            log.info("saved /x profile (avatar: %s)", x_profile.get("avatar", ""))
 
         # Load previous model data for smart comparison
         prev_models = {}
