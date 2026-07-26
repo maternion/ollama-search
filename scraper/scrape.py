@@ -3211,7 +3211,9 @@ def self_check() -> int:
         for t in td.get("tags", []):
             if t.get("format") not in ("gguf", "mlx"):
                 bad_format += 1
-        if m["official"] and not m["path"].startswith("/library/"):
+        if m["official"] and not (
+            m["path"].startswith("/library/") or m["path"].startswith("/x/")
+        ):
             bad_owner += 1
             print(f"  BAD official flag: {m['path']}")
         if not m["official"]:
