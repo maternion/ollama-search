@@ -1262,16 +1262,12 @@ def _detail_tag_rows(
         usage_text = ""
         if (usage_level or active_slots > 0) and usage_level:
             usage_text = f"{usage_level.capitalize()} Usage · "
-        tag_name_cell_mobile = (
-            f'<a href="{tag_link}" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">{full_tag_esc}</a>'
-            if link_tags
-            else f'<p class="block text-sm font-medium text-neutral-800 dark:text-neutral-200">{full_tag_esc}</p>'
-        )
-        tag_name_cell_desktop = (
-            f'<a href="{tag_link}" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">{full_tag_esc}</a>'
-            if link_tags
-            else f'<span class="block text-sm font-medium text-neutral-800 dark:text-neutral-200">{full_tag_esc}</span>'
-        )
+        if link_tags:
+            tag_name_cell_mobile = f'<p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">{full_tag_esc}</p>'
+            tag_name_cell_desktop = f'<a href="{tag_link}" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">{full_tag_esc}</a>'
+        else:
+            tag_name_cell_mobile = f'<p class="block text-sm font-medium text-neutral-800 dark:text-neutral-200">{full_tag_esc}</p>'
+            tag_name_cell_desktop = f'<span class="block text-sm font-medium text-neutral-800 dark:text-neutral-200">{full_tag_esc}</span>'
         rows.append(
             f'      <{'a href="' + tag_link + '"' if link_tags else "div"} class="sm:hidden flex flex-col space-y-[6px] group text-[13px] px-4 py-3">\n'
             f'        <span class="flex items-center">\n'
