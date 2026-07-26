@@ -1,43 +1,42 @@
 {
-  "path": "/library/gpt-oss-safeguard",
   "name": "gpt-oss-safeguard",
-  "scraped_at": "2026-07-14T02:01:38.003992+00:00",
+  "path": "/library/gpt-oss-safeguard",
   "tags": [
     {
+      "context": "128K",
+      "digest": "f2e795d0099c",
+      "format": "gguf",
+      "input_type": "Text",
       "name": "latest",
       "size_bytes": 14000000000,
       "size_text": "14GB",
-      "context": "128K",
-      "input_type": "Text",
-      "digest": "f2e795d0099c",
-      "updated": "8 months ago",
-      "format": "gguf",
-      "usage_level": "",
-      "usage_active_slots": 0
+      "updated": "9 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
     },
     {
+      "context": "128K",
+      "digest": "f2e795d0099c",
+      "format": "gguf",
+      "input_type": "Text",
       "name": "20b",
       "size_bytes": 14000000000,
       "size_text": "14GB",
-      "context": "128K",
-      "input_type": "Text",
-      "digest": "f2e795d0099c",
-      "updated": "8 months ago",
-      "format": "gguf",
-      "usage_level": "",
-      "usage_active_slots": 0
+      "updated": "9 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
     },
     {
+      "context": "128K",
+      "digest": "45be44f7918a",
+      "format": "gguf",
+      "input_type": "Text",
       "name": "120b",
       "size_bytes": 65000000000,
       "size_text": "65GB",
-      "context": "128K",
-      "input_type": "Text",
-      "digest": "45be44f7918a",
-      "updated": "8 months ago",
-      "format": "gguf",
-      "usage_level": "",
-      "usage_active_slots": 0
+      "updated": "9 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
     }
   ]
 }
