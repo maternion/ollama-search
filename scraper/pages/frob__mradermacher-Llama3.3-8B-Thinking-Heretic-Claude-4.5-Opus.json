@@ -6,14 +6,9 @@
       "name": "Claude Code"
     },
     {
-      "command": "ollama launch codex-app --model frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus:q8_0",
-      "icon_url": "/public/codex-app.png",
-      "name": "Codex App"
-    },
-    {
-      "command": "ollama launch openclaw --model frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus:q8_0",
-      "icon_url": "/public/openclaw.png",
-      "name": "OpenClaw"
+      "command": "ollama launch opencode --model frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus:q8_0",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
     },
     {
       "command": "ollama launch hermes --model frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus:q8_0",
@@ -21,14 +16,9 @@
       "name": "Hermes Agent"
     },
     {
-      "command": "ollama launch codex --model frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus:q8_0",
-      "icon_url": "/public/openai.png",
-      "name": "Codex"
-    },
-    {
-      "command": "ollama launch opencode --model frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus:q8_0",
-      "icon_url": "/public/opencode.png",
-      "name": "OpenCode"
+      "command": "ollama launch openclaw --model frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus:q8_0",
+      "icon_url": "/public/openclaw.svg",
+      "name": "OpenClaw"
     }
   ],
   "cloud_context": "",
