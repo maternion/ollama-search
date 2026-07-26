@@ -1,0 +1,76 @@
+{
+  "avatar": "/public/assets/46b53d06-4240-443a-adc7-43ede47b3401/c20e72a4-972b-4938-97c4-7c6519553091.png",
+  "bio": "Experimental Ollama models",
+  "links": [],
+  "models": [
+    {
+      "capabilities": [
+        "image"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "The FLUX.2 [klein] model family is Black Forest Labs’ fastest image-generation models to date.",
+      "name": "flux2-klein",
+      "official": true,
+      "owner": null,
+      "path": "/x/flux2-klein",
+      "pulls": 196400,
+      "sizes": [
+        "4b",
+        "9b"
+      ],
+      "source_url": "https://ollama.com/x/flux2-klein",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "6 months ago",
+      "updated_title": "Jan 20, 2026 10:16 PM UTC"
+    },
+    {
+      "capabilities": [
+        "image"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Z-Image is a powerful and highly efficient image generation model.",
+      "name": "z-image-turbo",
+      "official": true,
+      "owner": null,
+      "path": "/x/z-image-turbo",
+      "pulls": 174700,
+      "sizes": [],
+      "source_url": "https://ollama.com/x/z-image-turbo",
+      "tag_count": 3,
+      "tags": [],
+      "updated": "6 months ago",
+      "updated_title": "Jan 15, 2026 1:36 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "canary",
+      "official": true,
+      "owner": null,
+      "path": "/x/canary",
+      "pulls": 12,
+      "sizes": [],
+      "source_url": "https://ollama.com/x/canary",
+      "tag_count": 1,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Jul 10, 2026 11:02 PM UTC"
+    }
+  ],
+  "newest_order": [
+    "/x/canary",
+    "/x/flux2-klein",
+    "/x/z-image-turbo"
+  ],
+  "popular_order": [
+    "/x/flux2-klein",
+    "/x/z-image-turbo",
+    "/x/canary"
+  ],
+  "username": "x"
+}
