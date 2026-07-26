@@ -6,6 +6,8 @@
       "description": "Get started with Ollama",
       "button_url": "/download",
       "button_label": "Download",
+      "button_paused": false,
+      "notice": "",
       "features": [
         "Automate coding, document analysis, and other tasks with open models",
         "Keep your data private",
@@ -22,6 +24,8 @@
       "description": "Solve harder tasks, faster",
       "button_url": "/upgrade?plan=pro",
       "button_label": "Get Pro",
+      "button_paused": false,
+      "notice": "",
       "features": [
         "Access larger, more powerful cloud models",
         "Run 3 cloud models at a time",
@@ -34,7 +38,9 @@
       "price": "$100 / mo",
       "description": "For your most demanding work",
       "button_url": "",
-      "button_label": "",
+      "button_label": "New sign-ups paused",
+      "button_paused": true,
+      "notice": "New Max subscriptions are temporarily paused while we add capacity. <a href=\"/pricing#max-paused\" class=\"underline\">Learn more</a>",
       "features": [
         "Run 10 cloud models at a time",
         "5x more usage than Pro"
@@ -46,6 +52,8 @@
       "description": "Power your team's work with Ollama",
       "button_url": "https://ollama.typeform.com/to/FFV2AVPu",
       "button_label": "Contact us",
+      "button_paused": false,
+      "notice": "",
       "features": [
         "Shared usage across your team",
         "Centralized billing and administration",
@@ -59,7 +67,12 @@
   "faq": [
     {
       "group": "Plans",
-      "items": []
+      "items": [
+        {
+          "q": "Why are new Max subscriptions paused?",
+          "a": "<p class=\"text-sm\">Ollama's cloud has more than doubled in token volume every month, and with even larger open models like kimi-k3 coming soon, demand is growing faster than we can add capacity. Max subscribers run some of the heaviest workloads, so new Max subscriptions are paused while we add more capacity to protect the experience of existing subscribers.</p>\n            <p class=\"text-sm mt-2\">Existing Max subscribers keep their plan, limits, and pricing. Pro and Free remain open, and Pro subscribers can add extra usage to go beyond their plan's included limits.</p>"
+        }
+      ]
     },
     {
       "group": "Models",
