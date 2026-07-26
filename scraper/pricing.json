@@ -6,6 +6,8 @@
       "description": "Get started with Ollama",
       "button_url": "/download",
       "button_label": "Download",
+      "button_paused": false,
+      "notice": "",
       "features": [
         "Automate coding, document analysis, and other tasks with open models",
         "Keep your data private",
@@ -22,6 +24,8 @@
       "description": "Solve harder tasks, faster",
       "button_url": "/upgrade?plan=pro",
       "button_label": "Get Pro",
+      "button_paused": false,
+      "notice": "",
       "features": [
         "Access larger, more powerful cloud models",
         "Run 3 cloud models at a time",
@@ -33,8 +37,10 @@
       "name": "Max",
       "price": "$100 / mo",
       "description": "For your most demanding work",
-      "button_url": "/upgrade?plan=max",
-      "button_label": "Get Max",
+      "button_url": "",
+      "button_label": "New sign-ups paused",
+      "button_paused": true,
+      "notice": "New Max subscriptions are temporarily paused while we add capacity. <a href=\"/pricing#max-paused\" class=\"underline\">Learn more</a>",
       "features": [
         "Run 10 cloud models at a time",
         "5x more usage than Pro"
@@ -46,6 +52,8 @@
       "description": "Power your team's work with Ollama",
       "button_url": "https://ollama.typeform.com/to/FFV2AVPu",
       "button_label": "Contact us",
+      "button_paused": false,
+      "notice": "",
       "features": [
         "Shared usage across your team",
         "Centralized billing and administration",
@@ -57,6 +65,15 @@
     }
   ],
   "faq": [
+    {
+      "group": "Plans",
+      "items": [
+        {
+          "q": "Why are new Max subscriptions paused?",
+          "a": "<p class=\"text-sm\">Ollama's cloud has more than doubled in token volume every month, and with even larger open models like kimi-k3 coming soon, demand is growing faster than we can add capacity. Max subscribers run some of the heaviest workloads, so new Max subscriptions are paused while we add more capacity to protect the experience of existing subscribers.</p>\n            <p class=\"text-sm mt-2\">Existing Max subscribers keep their plan, limits, and pricing. Pro and Free remain open, and Pro subscribers can add extra usage to go beyond their plan's included limits.</p>"
+        }
+      ]
+    },
     {
       "group": "Models",
       "items": [
@@ -112,6 +129,15 @@
         {
           "q": "How many cloud models can I run at once?",
           "a": "<p class=\"text-sm\">Concurrency limits ensure dedicated capacity for workflows that need multiple models running simultaneously:</p>\n            <div class=\"mt-6 overflow-x-auto rounded-lg overflow-hidden max-w-xs\">\n              <table class=\"w-full text-sm border-separate border-spacing-0\">\n                <thead>\n                  <tr>\n                    <th class=\"border-t border-l border-r border-b border-neutral-200 px-3 py-2 text-left font-semibold rounded-tl-lg\">Plan</th>\n                    <th class=\"border-t border-r border-b border-neutral-200 px-3 py-2 text-left font-semibold rounded-tr-lg\">Concurrent models</th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr>\n                    <td class=\"border-l border-r border-b border-neutral-200 px-3 py-2\">Free</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2\">1</td>\n                  </tr>\n                  <tr>\n                    <td class=\"border-l border-r border-b border-neutral-200 px-3 py-2\">Pro</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2\">3</td>\n                  </tr>\n                  <tr>\n                    <td class=\"border-l border-r border-b border-neutral-200 px-3 py-2 rounded-bl-lg\">Max</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2 rounded-br-lg\">10</td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n            <p class=\"text-sm mt-6\">Requests beyond your plan's concurrency limit are queued and processed as soon as a slot is available. Queued requests are held up to a fixed limit - if the queue is full, the request will be rejected until one of your concurrency slots opens.</p>"
+        }
+      ]
+    },
+    {
+      "group": "Accounts",
+      "items": [
+        {
+          "q": "Can I have multiple Ollama accounts?",
+          "a": "<p class=\"text-sm\">No. Ollama is one account per person.</p>"
         }
       ]
     },
