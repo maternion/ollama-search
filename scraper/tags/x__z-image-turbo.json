@@ -1,0 +1,42 @@
+{
+  "name": "z-image-turbo",
+  "path": "/x/z-image-turbo",
+  "tags": [
+    {
+      "context": "-",
+      "digest": "77b78ce4e883",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "latest",
+      "size_bytes": 13000000000,
+      "size_text": "13GB",
+      "updated": "6 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "-",
+      "digest": "77b78ce4e883",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "fp8",
+      "size_bytes": 13000000000,
+      "size_text": "13GB",
+      "updated": "6 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "-",
+      "digest": "a9a017f804f2",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "bf16",
+      "size_bytes": 33000000000,
+      "size_text": "33GB",
+      "updated": "6 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    }
+  ]
+}
