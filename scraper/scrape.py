@@ -3001,6 +3001,15 @@ def main(argv: list[str] | None = None) -> int:
                             continue
                         except Exception:
                             pass
+                    # Model not in previous catalog but page already exists
+                    # (e.g. profile models added after initial scrape) — skip
+                    # unless the page file is missing or corrupt.
+                    if pm is None and pf.exists():
+                        try:
+                            json.loads(pf.read_text())
+                            continue
+                        except Exception:
+                            pass
                 elif pf.exists():
                     continue
                 log.info("  [%d/%d] %s", i, total, m.path)
