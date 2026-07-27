@@ -9,11 +9,11 @@
   "files": [
     {
       "arch": "laguna",
-      "blob_url": "/library/laguna-s-2.1:latest/blobs/7da520c5f44b",
+      "blob_url": "/library/laguna-s-2.1:latest/blobs/948255a146c0",
       "content_preview": "arch  laguna",
       "parameters": "118B",
-      "quantization": "Q4_K_M",
-      "size": "75GB",
+      "quantization": "Q8_0",
+      "size": "96GB",
       "type": "model"
     },
     {
@@ -36,8 +36,8 @@
     }
   ],
   "full_path": "/library/laguna-s-2.1:latest",
-  "manifest_digest": "3718865a988d",
-  "manifest_size": "75GB",
+  "manifest_digest": "1adabf138c90",
+  "manifest_size": "96GB",
   "manifest_updated": "2 hours ago",
   "path": "/library/laguna-s-2.1",
   "tag_name": "latest"
