@@ -1,0 +1,37 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model kimi-k3:cloud",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch opencode --model kimi-k3:cloud",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    },
+    {
+      "command": "ollama launch hermes --model kimi-k3:cloud",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch openclaw --model kimi-k3:cloud",
+      "icon_url": "/public/openclaw.svg",
+      "name": "OpenClaw"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "kimi-k3",
+  "path": "/library/kimi-k3",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/kimi-k3/c63dc3d9-5214-4b0c-a56b-643fcba3319d\" width=\"240\"/></p>\n\n<blockquote>\n<p>Currently Kimi K3 requires a Pro or Max subscription, and <strong>consumes extra usage credits</strong>. We’re quickly working on adding capacity to expand access.</p>\n</blockquote>\n\n<p>Kimi K3 is an open-weight, native multimodal agentic model and our most capable model to date. It is a 2.8T-parameter model built on Kimi Delta Attention (KDA) and Attention Residuals (AttnRes), with native vision capabilities and a 1-million-token context window. It is the world’s first open 3T-class model, designed for frontier intelligence across long-horizon coding, knowledge work, and reasoning.</p>\n\n<h3>Key Features</h3>\n\n<ul>\n<li><strong>New Architecture</strong>: Kimi K3 is built on Kimi Delta Attention (KDA) and Attention Residuals (AttnRes), and scales up MoE sparsity with a Stable LatentMoE framework that activates 16 out of 896 experts — yielding an approximate 2.5× improvement in overall scaling efficiency over Kimi K2.</li>\n<li><strong>Long-Horizon Coding</strong>: Operating with minimal human oversight, Kimi K3 sustains long engineering sessions, navigates massive repositories, and orchestrates terminal tools — from GPU kernel optimization and compiler development to vision-in-the-loop game dev, CAD, and even chip design.</li>\n<li><strong>Agentic Knowledge Work</strong>: Kimi K3 advances end-to-end knowledge work, producing deep research with interactive visualizations, widgets and dashboards, and motion design and video editing, powered by its native multimodal architecture.</li>\n<li><strong>Native Multimodality &amp; Long Context</strong>: Kimi K3 understands text, images, and video within the same model, and supports a 1-million-token context window.</li>\n<li><strong>Open Frontier Weights</strong>: We release the full Kimi K3 model weights under the Kimi K3 License, making frontier intelligence openly available for research, deployment, and further innovation.</li>\n</ul>\n\n        \n      "
+}
