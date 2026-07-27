@@ -1734,43 +1734,39 @@ def _cloud_metrics_section(page_data: dict) -> str:
 
     # --- Cost layout (new) ---
     if has_cost:
-        return f"""<div x-test-model-metrics class="!mt-8 sm:overflow-hidden sm:rounded-lg sm:border sm:border-neutral-200 sm:bg-white dark:sm:border-neutral-800 dark:sm:bg-neutral-900">
-  <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-0">
-    <div class="min-w-0 px-4 sm:min-h-24 sm:py-3 md:px-5 md:py-4">
-      <div class="flex items-center justify-between gap-2">
-        <span class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Cost</span>
-        <span class="text-xs text-neutral-400 dark:text-neutral-500">/1M tokens</span>
+        return f"""<div x-test-model-metrics class="!mt-8 grid grid-cols-3 overflow-hidden rounded-lg border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+  <div x-test-model-cost x-test-model-metric="usage" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4 border-r">
+    <div class="flex items-center justify-between gap-2">
+      <span class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Cost</span>
+      <span class="text-xs text-neutral-400 dark:text-neutral-500">/1M tokens</span>
+    </div>
+    <div class="mt-3 grid grid-cols-3 gap-1">
+      <div class="flex min-w-0 flex-col gap-1 text-left">
+        <div class="shrink-0 truncate text-xl font-medium leading-none text-black tabular-nums dark:text-neutral-100">{cost_input}</div>
+        <div class="truncate text-xs leading-tight text-neutral-700 dark:text-neutral-300">input</div>
       </div>
-      <div class="mt-3 grid grid-cols-3 gap-1">
-        <div class="flex min-w-0 flex-col gap-1 text-left">
-          <div class="shrink-0 truncate text-xl font-medium leading-none text-black tabular-nums dark:text-neutral-100">{cost_input}</div>
-          <div class="truncate text-xs leading-tight text-neutral-700 dark:text-neutral-300">input</div>
-        </div>
-        <div class="flex min-w-0 flex-col gap-1 text-left">
-          <div class="shrink-0 truncate text-xl font-medium leading-none text-black tabular-nums dark:text-neutral-100">{cost_cached}</div>
-          <div class="truncate text-xs leading-tight text-neutral-700 dark:text-neutral-300">cached</div>
-        </div>
-        <div class="flex min-w-0 flex-col gap-1 text-left">
-          <div class="shrink-0 truncate text-xl font-medium leading-none text-black tabular-nums dark:text-neutral-100">{cost_output}</div>
-          <div class="truncate text-xs leading-tight text-neutral-700 dark:text-neutral-300">output</div>
-        </div>
+      <div class="flex min-w-0 flex-col gap-1 text-left">
+        <div class="shrink-0 truncate text-xl font-medium leading-none text-black tabular-nums dark:text-neutral-100">{cost_cached}</div>
+        <div class="truncate text-xs leading-tight text-neutral-700 dark:text-neutral-300">cached</div>
+      </div>
+      <div class="flex min-w-0 flex-col gap-1 text-left">
+        <div class="shrink-0 truncate text-xl font-medium leading-none text-black tabular-nums dark:text-neutral-100">{cost_output}</div>
+        <div class="truncate text-xs leading-tight text-neutral-700 dark:text-neutral-300">output</div>
       </div>
     </div>
-    <div class="grid grid-cols-2 overflow-hidden rounded-lg border border-neutral-200 bg-white sm:contents dark:border-neutral-800 dark:bg-neutral-900">
-      <div class="min-h-24 min-w-0 border-neutral-200 px-4 py-3 sm:border-l md:px-5 md:py-4 dark:border-neutral-800">
-        <div class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Context</div>
-        <div class="mt-3 flex min-w-0 flex-col gap-1">
-          <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">{ctx}</span>
-          <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm">{ctx_unit}</span>
-        </div>
-      </div>
-      <div class="min-h-24 min-w-0 border-neutral-200 px-4 py-3 border-l sm:border-l md:px-5 md:py-4 dark:border-neutral-800">
-        <div class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Size</div>
-        <div class="mt-3 flex min-w-0 flex-col gap-1">
-          <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">{size}</span>
-          <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm">{size_unit}</span>
-        </div>
-      </div>
+  </div>
+  <div x-test-model-metric="context" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4 border-r">
+    <div class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Context</div>
+    <div class="mt-3 flex min-w-0 flex-col gap-1">
+      <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">{ctx}</span>
+      <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm">{ctx_unit}</span>
+    </div>
+  </div>
+  <div x-test-model-metric="size" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4">
+    <div class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Size</div>
+    <div class="mt-3 flex min-w-0 flex-col gap-1">
+      <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">{size}</span>
+      <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm">{size_unit}</span>
     </div>
   </div>
 </div>"""
