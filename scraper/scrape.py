@@ -279,6 +279,9 @@ class ModelPage:
     cloud_context_unit: str = ""  # e.g. "tokens"
     cloud_size: str = ""  # e.g. "1.04T"
     cloud_size_unit: str = ""  # e.g. "parameters"
+    cloud_cost_input: str = ""  # e.g. "$3.00" — per 1M tokens
+    cloud_cost_cached: str = ""  # e.g. "$0.30"
+    cloud_cost_output: str = ""  # e.g. "$15.00"
     applications: list[AppEntry] = field(default_factory=list)
 
 
@@ -296,8 +299,11 @@ class TagPage:
     cloud_usage_active_slots: int = 0  # 0-4
     cloud_context: str = ""  # e.g. "256K"
     cloud_context_unit: str = ""  # e.g. "tokens"
-    cloud_size: str = ""  # e.g. "1.04T"
+    cloud_size: str = ""  # e.g. "2.81T"
     cloud_size_unit: str = ""  # e.g. "parameters"
+    cloud_cost_input: str = ""  # e.g. "$3.00" — per 1M tokens
+    cloud_cost_cached: str = ""  # e.g. "$0.30"
+    cloud_cost_output: str = ""  # e.g. "$15.00"
     applications: list[AppEntry] = field(default_factory=list)
 
 
@@ -678,18 +684,25 @@ def parse_tags_page(html: str) -> list[Tag]:
 
         seen.add(tag_name)
 
-        # Usage tier for cloud tags
-        usage_active = len(re.findall(r"x-test-model-tag-usage-slot-active", row))
+        # Usage tier for cloud tags. ollama.com removed the
+        # x-test-model-tag-usage-slot-active markers; active bars are now
+        # `bg-neutral-800` and inactive are `bg-neutral-200` inside the
+        # col-span-2 cost cell.
+        usage_active = len(
+            re.findall(r"block h-1 w-4 rounded-full bg-neutral-800", row)
+        )
         usage_level = ""
         if usage_active > 0 or "usage-slot" in row:
-            # Try mobile text
+            # Try mobile text (handles "Extra High", "High", "Medium", etc.)
             usage_text_m = re.search(
-                r"(Low|Medium|High|Max)\s+Usage", row, re.IGNORECASE
+                r"(Extra High|Low|Medium|High|Max)\s+Usage",
+                row,
+                re.IGNORECASE,
             )
             if usage_text_m:
                 usage_level = usage_text_m.group(1).lower()
             elif usage_active > 0:
-                levels = {1: "low", 2: "medium", 3: "high", 4: "max"}
+                levels = {1: "low", 2: "medium", 3: "high", 4: "extra high"}
                 usage_level = levels.get(usage_active, "")
 
         tags.append(
@@ -1070,15 +1083,17 @@ def _parse_applications(html: str) -> list[AppEntry]:
 
 def _parse_cloud_metrics(
     html: str,
-) -> tuple[str, int, str, str, str, str]:
-    """Extract cloud metrics (usage/context/size) from a model or tag page.
+) -> tuple[str, int, str, str, str, str, str, str, str]:
+    """Extract cloud metrics (usage/cost/context/size) from a model or tag page.
 
     Returns (cloud_usage_level, cloud_usage_active_slots, cloud_context,
-    cloud_context_unit, cloud_size, cloud_size_unit).
+    cloud_context_unit, cloud_size, cloud_size_unit,
+    cloud_cost_input, cloud_cost_cached, cloud_cost_output).
 
-    These metrics are present on tag pages (/library/model:tag) for cloud
-    tags, identified by `x-test-model-metric="usage|context|size"` markers.
-    They are absent on base model pages, so this returns empty defaults there.
+    ollama.com removed the `x-test-model-metric` attributes, so we now parse by
+    label text ("Usage", "Cost", "Context", "Size") inside the metric container.
+    Newer cloud-only models (e.g. kimi-k3) show a "Cost /1M tokens" section with
+    input/cached/output prices instead of the Usage bars.
     """
     cloud_usage_level = ""
     cloud_usage_active_slots = 0
@@ -1086,53 +1101,75 @@ def _parse_cloud_metrics(
     cloud_context_unit = ""
     cloud_size = ""
     cloud_size_unit = ""
+    cloud_cost_input = ""
+    cloud_cost_cached = ""
+    cloud_cost_output = ""
 
-    # Usage metric
-    usage_m = re.search(
-        r'x-test-model-metric="usage".*?(?=x-test-model-metric="context"|$)',
-        html,
-        re.DOTALL,
+    # Each metric block has a label: <div class="text-[13px] font-medium
+    # text-neutral-500">Usage|Cost|Context|Size</div> (or a <span> for Cost).
+    # Split the metrics container into per-label sections.
+    label_re = re.compile(
+        r"<(?:div|span)\b[^>]*text-\[13px\] font-medium text-neutral-500[^>]*>"
+        r"\s*(Usage|Cost|Context|Size)\s*</(?:div|span)>",
+        re.IGNORECASE,
     )
-    if usage_m:
-        usage_section = usage_m.group(0)
-        active_count = len(re.findall(r"x-test-model-cost-slot-active", usage_section))
-        cloud_usage_active_slots = active_count
-        # Level text: <span class="...">high</span> or <span class="...">low</span>
-        level_m = re.search(r"break-words[^>]*>\s*(\w+)\s*</span>", usage_section)
-        if level_m:
-            cloud_usage_level = level_m.group(1).strip().lower()
+    labels = list(label_re.finditer(html))
+    for i, lm in enumerate(labels):
+        label = lm.group(1).strip().lower()
+        start = lm.end()
+        end = labels[i + 1].start() if i + 1 < len(labels) else len(html)
+        section = html[start:end]
 
-    # Context metric
-    ctx_m = re.search(
-        r'x-test-model-metric="context".*?(?=x-test-model-metric="size"|$)',
-        html,
-        re.DOTALL,
-    )
-    if ctx_m:
-        ctx_section = ctx_m.group(0)
-        val_m = re.search(
-            r"text-xl font-medium leading-none[^>]*>\s*([^<]+)</span>", ctx_section
-        )
-        if val_m:
-            cloud_context = val_m.group(1).strip()
-        unit_m = re.search(r"break-words[^>]*>\s*([^<]+)</span>", ctx_section)
-        if unit_m:
-            cloud_context_unit = unit_m.group(1).strip()
+        if label == "usage":
+            # Count active bars: <span class="block h-1.5 w-5 rounded-full
+            # bg-neutral-900"> (active) vs bg-neutral-200 (inactive)
+            active_count = len(re.findall(r"bg-neutral-900\b", section))
+            cloud_usage_active_slots = min(active_count, 4)
+            level_m = re.search(r"break-words[^>]*>\s*(\w+)\s*</span>", section)
+            if level_m:
+                cloud_usage_level = level_m.group(1).strip().lower()
 
-    # Size metric
-    size_m = re.search(
-        r'x-test-model-metric="size".*?(?=</div>\s*</div>|$)', html, re.DOTALL
-    )
-    if size_m:
-        size_section = size_m.group(0)
-        val_m = re.search(
-            r"text-xl font-medium leading-none[^>]*>\s*([^<]+)</span>", size_section
-        )
-        if val_m:
-            cloud_size = val_m.group(1).strip()
-        unit_m = re.search(r"break-words[^>]*>\s*([^<]+)</span>", size_section)
-        if unit_m:
-            cloud_size_unit = unit_m.group(1).strip()
+        elif label == "cost":
+            # Cost /1M tokens: three <div> blocks with $value + label
+            # (input/cached/output). Values are in elements with class
+            # "text-xl font-medium leading-none ... tabular-nums".
+            cost_blocks = re.findall(
+                r"text-xl font-medium leading-none[^>]*>\s*(\$[\d.]+)\s*</(?:div|span)>",
+                section,
+            )
+            cost_labels = re.findall(
+                r"(input|cached|output)\s*</div>",
+                section,
+                re.IGNORECASE,
+            )
+            cost_map: dict[str, str] = {}
+            for val, lbl in zip(cost_blocks, cost_labels):
+                cost_map[lbl.strip().lower()] = val.strip()
+            cloud_cost_input = cost_map.get("input", "")
+            cloud_cost_cached = cost_map.get("cached", "")
+            cloud_cost_output = cost_map.get("output", "")
+
+        elif label == "context":
+            val_m = re.search(
+                r"text-xl font-medium leading-none[^>]*>\s*([^<]+)</span>",
+                section,
+            )
+            if val_m:
+                cloud_context = val_m.group(1).strip()
+            unit_m = re.search(r"break-words[^>]*>\s*([^<]+)</span>", section)
+            if unit_m:
+                cloud_context_unit = unit_m.group(1).strip()
+
+        elif label == "size":
+            val_m = re.search(
+                r"text-xl font-medium leading-none[^>]*>\s*([^<]+)</span>",
+                section,
+            )
+            if val_m:
+                cloud_size = val_m.group(1).strip()
+            unit_m = re.search(r"break-words[^>]*>\s*([^<]+)</span>", section)
+            if unit_m:
+                cloud_size_unit = unit_m.group(1).strip()
 
     return (
         cloud_usage_level,
@@ -1141,6 +1178,9 @@ def _parse_cloud_metrics(
         cloud_context_unit,
         cloud_size,
         cloud_size_unit,
+        cloud_cost_input,
+        cloud_cost_cached,
+        cloud_cost_output,
     )
 
 
@@ -1168,6 +1208,9 @@ def parse_model_page(html: str) -> ModelPage | None:
         cloud_context_unit,
         cloud_size,
         cloud_size_unit,
+        cloud_cost_input,
+        cloud_cost_cached,
+        cloud_cost_output,
     ) = _parse_cloud_metrics(html)
 
     return ModelPage(
@@ -1182,6 +1225,9 @@ def parse_model_page(html: str) -> ModelPage | None:
         cloud_context_unit=cloud_context_unit,
         cloud_size=cloud_size,
         cloud_size_unit=cloud_size_unit,
+        cloud_cost_input=cloud_cost_input,
+        cloud_cost_cached=cloud_cost_cached,
+        cloud_cost_output=cloud_cost_output,
         applications=_parse_applications(html),
     )
 
@@ -1213,6 +1259,9 @@ def parse_tag_page(html: str, full_path: str) -> TagPage | None:
         cloud_context_unit,
         cloud_size,
         cloud_size_unit,
+        cloud_cost_input,
+        cloud_cost_cached,
+        cloud_cost_output,
     ) = _parse_cloud_metrics(html)
 
     return TagPage(
@@ -1229,6 +1278,9 @@ def parse_tag_page(html: str, full_path: str) -> TagPage | None:
         cloud_context_unit=cloud_context_unit,
         cloud_size=cloud_size,
         cloud_size_unit=cloud_size_unit,
+        cloud_cost_input=cloud_cost_input,
+        cloud_cost_cached=cloud_cost_cached,
+        cloud_cost_output=cloud_cost_output,
         applications=_parse_applications(html),
     )
 
@@ -1259,6 +1311,9 @@ def save_model_page(model: Model, page: ModelPage) -> None:
         "cloud_context_unit": page.cloud_context_unit,
         "cloud_size": page.cloud_size,
         "cloud_size_unit": page.cloud_size_unit,
+        "cloud_cost_input": page.cloud_cost_input,
+        "cloud_cost_cached": page.cloud_cost_cached,
+        "cloud_cost_output": page.cloud_cost_output,
         "applications": [asdict(a) for a in page.applications],
     }
     fp = PAGES_DIR / f"{slug}.json"
@@ -1293,6 +1348,9 @@ def save_tag_page(model: Model, tag_name: str, page: TagPage) -> None:
         "cloud_context_unit": page.cloud_context_unit,
         "cloud_size": page.cloud_size,
         "cloud_size_unit": page.cloud_size_unit,
+        "cloud_cost_input": page.cloud_cost_input,
+        "cloud_cost_cached": page.cloud_cost_cached,
+        "cloud_cost_output": page.cloud_cost_output,
         "applications": [asdict(a) for a in page.applications],
     }
     fp = TAG_PAGES_DIR / f"{slug}__{tag_name}.json"
