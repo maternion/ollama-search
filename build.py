@@ -1262,7 +1262,9 @@ def _detail_tag_rows(
         inline_text = f"{size_inline} · " if size_inline else ""
         usage_text = ""
         if (usage_level or active_slots > 0) and usage_level:
-            usage_text = f"{usage_level.capitalize()} Usage · "
+            usage_text = (
+                f"{' '.join(w.capitalize() for w in usage_level.split())} Usage · "
+            )
         if link_tags:
             tag_name_cell_mobile = f'<p class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">{full_tag_esc}</p>'
             tag_name_cell_desktop = f'<a href="{tag_link}" class="block group-hover:underline text-sm font-medium text-neutral-800 dark:text-neutral-200">{full_tag_esc}</a>'
@@ -1706,10 +1708,15 @@ def _header_section(m: dict) -> str:
 
 
 def _cloud_metrics_section(page_data: dict) -> str:
-    """Render the cloud metrics (Usage/Context/Size) section for cloud models.
+    """Render the cloud metrics section for cloud models.
 
-    Returns empty string if page_data has no cloud metrics (no usage_level and
-    no context).
+    Two layouts depending on data:
+    - Cost layout (newer cloud-only models like kimi-k3): Cost /1M tokens with
+      input/cached/output prices, plus Context and Size in a 2-col sub-grid.
+    - Usage layout (older cloud models): Usage bars + level, Context, Size in
+      a 3-col grid.
+
+    Returns empty string if page_data has no cloud metrics.
     """
     usage_level = (page_data.get("cloud_usage_level") or "").strip()
     active_slots = int(page_data.get("cloud_usage_active_slots") or 0)
@@ -1717,8 +1724,58 @@ def _cloud_metrics_section(page_data: dict) -> str:
     ctx_unit = esc(page_data.get("cloud_context_unit") or "")
     size = esc(page_data.get("cloud_size") or "")
     size_unit = esc(page_data.get("cloud_size_unit") or "")
-    if not usage_level and not ctx:
+    cost_input = esc(page_data.get("cloud_cost_input") or "")
+    cost_cached = esc(page_data.get("cloud_cost_cached") or "")
+    cost_output = esc(page_data.get("cloud_cost_output") or "")
+    has_cost = bool(cost_input or cost_cached or cost_output)
+    has_usage = bool(usage_level or active_slots > 0)
+    if not has_cost and not has_usage and not ctx:
         return ""
+
+    # --- Cost layout (new) ---
+    if has_cost:
+        return f"""<div x-test-model-metrics class="!mt-8 sm:overflow-hidden sm:rounded-lg sm:border sm:border-neutral-200 sm:bg-white dark:sm:border-neutral-800 dark:sm:bg-neutral-900">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-0">
+    <div class="min-w-0 px-4 sm:min-h-24 sm:py-3 md:px-5 md:py-4">
+      <div class="flex items-center justify-between gap-2">
+        <span class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Cost</span>
+        <span class="text-xs text-neutral-400 dark:text-neutral-500">/1M tokens</span>
+      </div>
+      <div class="mt-3 grid grid-cols-3 gap-1">
+        <div class="flex min-w-0 flex-col gap-1 text-left">
+          <div class="shrink-0 truncate text-xl font-medium leading-none text-black tabular-nums dark:text-neutral-100">{cost_input}</div>
+          <div class="truncate text-xs leading-tight text-neutral-700 dark:text-neutral-300">input</div>
+        </div>
+        <div class="flex min-w-0 flex-col gap-1 text-left">
+          <div class="shrink-0 truncate text-xl font-medium leading-none text-black tabular-nums dark:text-neutral-100">{cost_cached}</div>
+          <div class="truncate text-xs leading-tight text-neutral-700 dark:text-neutral-300">cached</div>
+        </div>
+        <div class="flex min-w-0 flex-col gap-1 text-left">
+          <div class="shrink-0 truncate text-xl font-medium leading-none text-black tabular-nums dark:text-neutral-100">{cost_output}</div>
+          <div class="truncate text-xs leading-tight text-neutral-700 dark:text-neutral-300">output</div>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 overflow-hidden rounded-lg border border-neutral-200 bg-white sm:contents dark:border-neutral-800 dark:bg-neutral-900">
+      <div class="min-h-24 min-w-0 border-neutral-200 px-4 py-3 sm:border-l md:px-5 md:py-4 dark:border-neutral-800">
+        <div class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Context</div>
+        <div class="mt-3 flex min-w-0 flex-col gap-1">
+          <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">{ctx}</span>
+          <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm">{ctx_unit}</span>
+        </div>
+      </div>
+      <div class="min-h-24 min-w-0 border-neutral-200 px-4 py-3 border-l sm:border-l md:px-5 md:py-4 dark:border-neutral-800">
+        <div class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Size</div>
+        <div class="mt-3 flex min-w-0 flex-col gap-1">
+          <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">{size}</span>
+          <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm">{size_unit}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"""
+
+    # --- Usage layout (old) ---
     active_bars = "".join(
         '<span x-test-model-cost-slot-active class="block h-1.5 w-5 rounded-full bg-neutral-900 dark:bg-neutral-100"></span>'
         for _ in range(active_slots)
@@ -1729,7 +1786,7 @@ def _cloud_metrics_section(page_data: dict) -> str:
     )
     return f"""<div x-test-model-metrics class="!mt-8 grid grid-cols-3 overflow-hidden rounded-lg border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
   <div x-test-model-cost x-test-model-metric="usage" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4 border-r">
-    <div class="text-[13px] font-medium text-neutral-500">Usage</div>
+    <div class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Usage</div>
     <div class="mt-3 flex min-w-0 flex-col gap-1">
       <div x-test-model-cost-value x-test-model-cost-level class="flex h-5 items-center gap-1">
         {active_bars}{inactive_bars}
@@ -1738,14 +1795,14 @@ def _cloud_metrics_section(page_data: dict) -> str:
     </div>
   </div>
   <div x-test-model-metric="context" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4 border-r">
-    <div class="text-[13px] font-medium text-neutral-500">Context</div>
+    <div class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Context</div>
     <div class="mt-3 flex min-w-0 flex-col gap-1">
       <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">{ctx}</span>
       <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm">{ctx_unit}</span>
     </div>
   </div>
   <div x-test-model-metric="size" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4">
-    <div class="text-[13px] font-medium text-neutral-500">Size</div>
+    <div class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Size</div>
     <div class="mt-3 flex min-w-0 flex-col gap-1">
       <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">{size}</span>
       <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm">{size_unit}</span>
@@ -1866,7 +1923,7 @@ def _tags_tag_row(
     size_sep = f"{size_inline} • " if size_inline else ""
     usage_text = ""
     if is_cloud and usage_level:
-        usage_text = f"{usage_level.capitalize()} Usage"
+        usage_text = f"{' '.join(w.capitalize() for w in usage_level.split())} Usage"
     usage_sep = f"{usage_text} • " if usage_text else ""
     # /x models don't have per-tag detail pages, so render tag names as plain
     # text (no hyperlink) on the tags page too.

@@ -18388,137 +18388,6 @@
     },
     {
       "capabilities": [
-        "image"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "The FLUX.2 [klein] model family is Black Forest Labs’ fastest image-generation models to date.",
-      "name": "flux2-klein",
-      "official": true,
-      "owner": null,
-      "path": "/x/flux2-klein",
-      "pulls": 196400,
-      "sizes": [
-        "4b",
-        "9b"
-      ],
-      "source_url": "https://ollama.com/x/flux2-klein",
-      "tag_count": 9,
-      "tags": [
-        {
-          "context": "-",
-          "digest": "50a0c0ab15ac",
-          "format": "gguf",
-          "input_type": "Text",
-          "name": "latest",
-          "size_bytes": 5700000000,
-          "size_text": "5.7GB",
-          "updated": "6 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        },
-        {
-          "context": "-",
-          "digest": "50a0c0ab15ac",
-          "format": "gguf",
-          "input_type": "Text",
-          "name": "4b",
-          "size_bytes": 5700000000,
-          "size_text": "5.7GB",
-          "updated": "6 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        },
-        {
-          "context": "-",
-          "digest": "91f22bc541d8",
-          "format": "gguf",
-          "input_type": "Text",
-          "name": "9b",
-          "size_bytes": 12000000000,
-          "size_text": "12GB",
-          "updated": "6 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        },
-        {
-          "context": "-",
-          "digest": "50a0c0ab15ac",
-          "format": "gguf",
-          "input_type": "Text",
-          "name": "4b-fp4",
-          "size_bytes": 5700000000,
-          "size_text": "5.7GB",
-          "updated": "6 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        },
-        {
-          "context": "-",
-          "digest": "d968d763271a",
-          "format": "gguf",
-          "input_type": "Text",
-          "name": "4b-fp8",
-          "size_bytes": 9500000000,
-          "size_text": "9.5GB",
-          "updated": "6 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        },
-        {
-          "context": "-",
-          "digest": "34332042377f",
-          "format": "gguf",
-          "input_type": "Text",
-          "name": "4b-bf16",
-          "size_bytes": 16000000000,
-          "size_text": "16GB",
-          "updated": "6 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        },
-        {
-          "context": "-",
-          "digest": "91f22bc541d8",
-          "format": "gguf",
-          "input_type": "Text",
-          "name": "9b-fp4",
-          "size_bytes": 12000000000,
-          "size_text": "12GB",
-          "updated": "6 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        },
-        {
-          "context": "-",
-          "digest": "5525d07b06a0",
-          "format": "gguf",
-          "input_type": "Text",
-          "name": "9b-fp8",
-          "size_bytes": 20000000000,
-          "size_text": "20GB",
-          "updated": "6 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        },
-        {
-          "context": "-",
-          "digest": "4c16567cccf5",
-          "format": "gguf",
-          "input_type": "Text",
-          "name": "9b-bf16",
-          "size_bytes": 35000000000,
-          "size_text": "35GB",
-          "updated": "6 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        }
-      ],
-      "updated": "6 months ago",
-      "updated_title": "Jan 20, 2026 10:16 PM UTC"
-    },
-    {
-      "capabilities": [
         "tools"
       ],
       "cloud": false,
@@ -30074,6 +29943,41 @@
       ],
       "updated": "1 month ago",
       "updated_title": "Jun 13, 2026 12:26 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision",
+        "tools",
+        "thinking",
+        "cloud"
+      ],
+      "cloud": true,
+      "cloud_only": true,
+      "description": "Kimi K3 is an open-weight, native multimodal agentic model and our most capable model to date.",
+      "name": "kimi-k3",
+      "official": true,
+      "owner": null,
+      "path": "/library/kimi-k3",
+      "pulls": 3052,
+      "sizes": [],
+      "source_url": "https://ollama.com/library/kimi-k3",
+      "tag_count": 1,
+      "tags": [
+        {
+          "context": "1M",
+          "digest": "a399e41d21c0",
+          "format": "gguf",
+          "input_type": "Text, Image",
+          "name": "cloud",
+          "size_bytes": null,
+          "size_text": "",
+          "updated": "7 hours ago",
+          "usage_active_slots": 4,
+          "usage_level": "extra high"
+        }
+      ],
+      "updated": "7 hours ago",
+      "updated_title": ""
     },
     {
       "capabilities": [
@@ -92090,62 +91994,6 @@
       "updated_title": "Sep 11, 2024 4:47 PM UTC"
     },
     {
-      "capabilities": [
-        "image"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Z-Image is a powerful and highly efficient image generation model.",
-      "name": "z-image-turbo",
-      "official": true,
-      "owner": null,
-      "path": "/x/z-image-turbo",
-      "pulls": 174700,
-      "sizes": [],
-      "source_url": "https://ollama.com/x/z-image-turbo",
-      "tag_count": 3,
-      "tags": [
-        {
-          "context": "-",
-          "digest": "77b78ce4e883",
-          "format": "gguf",
-          "input_type": "Text",
-          "name": "latest",
-          "size_bytes": 13000000000,
-          "size_text": "13GB",
-          "updated": "6 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        },
-        {
-          "context": "-",
-          "digest": "77b78ce4e883",
-          "format": "gguf",
-          "input_type": "Text",
-          "name": "fp8",
-          "size_bytes": 13000000000,
-          "size_text": "13GB",
-          "updated": "6 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        },
-        {
-          "context": "-",
-          "digest": "a9a017f804f2",
-          "format": "gguf",
-          "input_type": "Text",
-          "name": "bf16",
-          "size_bytes": 33000000000,
-          "size_text": "33GB",
-          "updated": "6 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        }
-      ],
-      "updated": "6 months ago",
-      "updated_title": "Jan 15, 2026 1:36 AM UTC"
-    },
-    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -92683,6 +92531,160 @@
     },
     {
       "capabilities": [
+        "vision",
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Best OCR model. LightOnOCR-2-1B is our flagship OCR model, refined with RLVR training for maximum accuracy. We recommend this variant for most OCR tasks.",
+      "name": "LightOnOCR-2",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/LightOnOCR-2",
+      "pulls": 11500,
+      "sizes": [
+        "1b"
+      ],
+      "source_url": "https://ollama.com/maternion/LightOnOCR-2",
+      "tag_count": 2,
+      "tags": [
+        {
+          "context": "16K",
+          "digest": "ee7d83c4eb67",
+          "format": "gguf",
+          "input_type": "Text, Image",
+          "name": "latest",
+          "size_bytes": 1500000000,
+          "size_text": "1.5GB",
+          "updated": "5 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "16K",
+          "digest": "ee7d83c4eb67",
+          "format": "gguf",
+          "input_type": "Text, Image",
+          "name": "1b",
+          "size_bytes": 1500000000,
+          "size_text": "1.5GB",
+          "updated": "5 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        }
+      ],
+      "updated": "5 months ago",
+      "updated_title": "Jan 26, 2026 9:57 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "It is the first reasoning OCR VLM. It is specifically trained to convert documents into clean Markdown files, well suited for RAG applications.",
+      "name": "NuMarkdown-Thinking",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/NuMarkdown-Thinking",
+      "pulls": 678,
+      "sizes": [
+        "8b"
+      ],
+      "source_url": "https://ollama.com/maternion/NuMarkdown-Thinking",
+      "tag_count": 2,
+      "tags": [
+        {
+          "context": "125K",
+          "digest": "1d3ed3a38e3e",
+          "format": "gguf",
+          "input_type": "Text, Image",
+          "name": "latest",
+          "size_bytes": 6000000000,
+          "size_text": "6.0GB",
+          "updated": "5 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "125K",
+          "digest": "1d3ed3a38e3e",
+          "format": "gguf",
+          "input_type": "Text, Image",
+          "name": "8b",
+          "size_bytes": 6000000000,
+          "size_text": "6.0GB",
+          "updated": "5 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        }
+      ],
+      "updated": "5 months ago",
+      "updated_title": "Feb 1, 2026 12:55 PM UTC"
+    },
+    {
+      "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Qianfan-OCR is a 4B VL model that replaces multi-step OCR pipelines with a single system, enabling direct image-to-Markdown conversion and advanced document understanding.",
+      "name": "Qianfan-OCR",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/Qianfan-OCR",
+      "pulls": 1918,
+      "sizes": [
+        "4b"
+      ],
+      "source_url": "https://ollama.com/maternion/Qianfan-OCR",
+      "tag_count": 3,
+      "tags": [
+        {
+          "context": "32K",
+          "digest": "55fb8527e2fb",
+          "format": "gguf",
+          "input_type": "Text, Image",
+          "name": "4b",
+          "size_bytes": 5300000000,
+          "size_text": "5.3GB",
+          "updated": "3 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "32K",
+          "digest": "65e2fd2d0254",
+          "format": "gguf",
+          "input_type": "Text, Image",
+          "name": "4b-q4_K_M",
+          "size_bytes": 3400000000,
+          "size_text": "3.4GB",
+          "updated": "3 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "32K",
+          "digest": "55fb8527e2fb",
+          "format": "gguf",
+          "input_type": "Text, Image",
+          "name": "4b-q8_0",
+          "size_bytes": 5300000000,
+          "size_text": "5.3GB",
+          "updated": "3 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        }
+      ],
+      "updated": "3 months ago",
+      "updated_title": "Mar 22, 2026 7:44 AM UTC"
+    },
+    {
+      "capabilities": [
         "tools",
         "thinking"
       ],
@@ -93198,53 +93200,6 @@
       ],
       "cloud": false,
       "cloud_only": false,
-      "description": "Best OCR model. LightOnOCR-2-1B is our flagship OCR model, refined with RLVR training for maximum accuracy. We recommend this variant for most OCR tasks.",
-      "name": "LightOnOCR-2",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/LightOnOCR-2",
-      "pulls": 11500,
-      "sizes": [
-        "1b"
-      ],
-      "source_url": "https://ollama.com/maternion/LightOnOCR-2",
-      "tag_count": 2,
-      "tags": [
-        {
-          "context": "16K",
-          "digest": "ee7d83c4eb67",
-          "format": "gguf",
-          "input_type": "Text, Image",
-          "name": "latest",
-          "size_bytes": 1500000000,
-          "size_text": "1.5GB",
-          "updated": "5 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        },
-        {
-          "context": "16K",
-          "digest": "ee7d83c4eb67",
-          "format": "gguf",
-          "input_type": "Text, Image",
-          "name": "1b",
-          "size_bytes": 1500000000,
-          "size_text": "1.5GB",
-          "updated": "5 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        }
-      ],
-      "updated": "5 months ago",
-      "updated_title": "Jan 26, 2026 9:57 AM UTC"
-    },
-    {
-      "capabilities": [
-        "vision",
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
       "description": "MAI-UI is a family of large-scale GUI foundation agents (2B,8B) built for real-world, interactive human-computer control across desktop and mobile Uls. (Template supports tools)",
       "name": "mai-ui",
       "official": false,
@@ -93418,113 +93373,6 @@
     },
     {
       "capabilities": [
-        "vision",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "It is the first reasoning OCR VLM. It is specifically trained to convert documents into clean Markdown files, well suited for RAG applications.",
-      "name": "NuMarkdown-Thinking",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/NuMarkdown-Thinking",
-      "pulls": 678,
-      "sizes": [
-        "8b"
-      ],
-      "source_url": "https://ollama.com/maternion/NuMarkdown-Thinking",
-      "tag_count": 2,
-      "tags": [
-        {
-          "context": "125K",
-          "digest": "1d3ed3a38e3e",
-          "format": "gguf",
-          "input_type": "Text, Image",
-          "name": "latest",
-          "size_bytes": 6000000000,
-          "size_text": "6.0GB",
-          "updated": "5 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        },
-        {
-          "context": "125K",
-          "digest": "1d3ed3a38e3e",
-          "format": "gguf",
-          "input_type": "Text, Image",
-          "name": "8b",
-          "size_bytes": 6000000000,
-          "size_text": "6.0GB",
-          "updated": "5 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        }
-      ],
-      "updated": "5 months ago",
-      "updated_title": "Feb 1, 2026 12:55 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision",
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Qianfan-OCR is a 4B VL model that replaces multi-step OCR pipelines with a single system, enabling direct image-to-Markdown conversion and advanced document understanding.",
-      "name": "Qianfan-OCR",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/Qianfan-OCR",
-      "pulls": 1918,
-      "sizes": [
-        "4b"
-      ],
-      "source_url": "https://ollama.com/maternion/Qianfan-OCR",
-      "tag_count": 3,
-      "tags": [
-        {
-          "context": "32K",
-          "digest": "55fb8527e2fb",
-          "format": "gguf",
-          "input_type": "Text, Image",
-          "name": "4b",
-          "size_bytes": 5300000000,
-          "size_text": "5.3GB",
-          "updated": "3 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        },
-        {
-          "context": "32K",
-          "digest": "65e2fd2d0254",
-          "format": "gguf",
-          "input_type": "Text, Image",
-          "name": "4b-q4_K_M",
-          "size_bytes": 3400000000,
-          "size_text": "3.4GB",
-          "updated": "3 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        },
-        {
-          "context": "32K",
-          "digest": "55fb8527e2fb",
-          "format": "gguf",
-          "input_type": "Text, Image",
-          "name": "4b-q8_0",
-          "size_bytes": 5300000000,
-          "size_text": "5.3GB",
-          "updated": "3 months ago",
-          "usage_active_slots": 0,
-          "usage_level": ""
-        }
-      ],
-      "updated": "3 months ago",
-      "updated_title": "Mar 22, 2026 7:44 AM UTC"
-    },
-    {
-      "capabilities": [
         "tools"
       ],
       "cloud": false,
@@ -93614,6 +93462,193 @@
       ],
       "updated": "5 months ago",
       "updated_title": "Jan 24, 2026 10:15 AM UTC"
+    },
+    {
+      "capabilities": [
+        "image"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "The FLUX.2 [klein] model family is Black Forest Labs’ fastest image-generation models to date.",
+      "name": "flux2-klein",
+      "official": true,
+      "owner": null,
+      "path": "/x/flux2-klein",
+      "pulls": 196400,
+      "sizes": [
+        "4b",
+        "9b"
+      ],
+      "source_url": "https://ollama.com/x/flux2-klein",
+      "tag_count": 9,
+      "tags": [
+        {
+          "context": "-",
+          "digest": "50a0c0ab15ac",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "latest",
+          "size_bytes": 5700000000,
+          "size_text": "5.7GB",
+          "updated": "6 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "50a0c0ab15ac",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "4b",
+          "size_bytes": 5700000000,
+          "size_text": "5.7GB",
+          "updated": "6 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "91f22bc541d8",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "9b",
+          "size_bytes": 12000000000,
+          "size_text": "12GB",
+          "updated": "6 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "50a0c0ab15ac",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "4b-fp4",
+          "size_bytes": 5700000000,
+          "size_text": "5.7GB",
+          "updated": "6 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "d968d763271a",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "4b-fp8",
+          "size_bytes": 9500000000,
+          "size_text": "9.5GB",
+          "updated": "6 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "34332042377f",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "4b-bf16",
+          "size_bytes": 16000000000,
+          "size_text": "16GB",
+          "updated": "6 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "91f22bc541d8",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "9b-fp4",
+          "size_bytes": 12000000000,
+          "size_text": "12GB",
+          "updated": "6 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "5525d07b06a0",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "9b-fp8",
+          "size_bytes": 20000000000,
+          "size_text": "20GB",
+          "updated": "6 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "4c16567cccf5",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "9b-bf16",
+          "size_bytes": 35000000000,
+          "size_text": "35GB",
+          "updated": "6 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        }
+      ],
+      "updated": "6 months ago",
+      "updated_title": "Jan 20, 2026 10:16 PM UTC"
+    },
+    {
+      "capabilities": [
+        "image"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Z-Image is a powerful and highly efficient image generation model.",
+      "name": "z-image-turbo",
+      "official": true,
+      "owner": null,
+      "path": "/x/z-image-turbo",
+      "pulls": 174700,
+      "sizes": [],
+      "source_url": "https://ollama.com/x/z-image-turbo",
+      "tag_count": 3,
+      "tags": [
+        {
+          "context": "-",
+          "digest": "77b78ce4e883",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "latest",
+          "size_bytes": 13000000000,
+          "size_text": "13GB",
+          "updated": "6 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "77b78ce4e883",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "fp8",
+          "size_bytes": 13000000000,
+          "size_text": "13GB",
+          "updated": "6 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "a9a017f804f2",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "bf16",
+          "size_bytes": 33000000000,
+          "size_text": "33GB",
+          "updated": "6 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        }
+      ],
+      "updated": "6 months ago",
+      "updated_title": "Jan 15, 2026 1:36 AM UTC"
     }
   ]
 }
