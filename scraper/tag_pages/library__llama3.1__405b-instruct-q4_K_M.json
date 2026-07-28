@@ -2,6 +2,9 @@
   "applications": [],
   "cloud_context": "",
   "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
   "cloud_size": "",
   "cloud_size_unit": "",
   "cloud_usage_active_slots": 0,
@@ -27,21 +30,21 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/llama3.1:405b-instruct-q4_K_M/blobs/948af2743fc7",
-      "content_preview": "{{- if or .System .Tools }}<|start_header_id|>system<|end_header_id|>\n{{- if .System }}\n{{ .System }",
-      "parameters": "",
-      "quantization": "",
-      "size": "1.5kB",
-      "type": "template"
-    },
-    {
-      "arch": "",
       "blob_url": "/library/llama3.1:405b-instruct-q4_K_M/blobs/56bb8bd477a5",
       "content_preview": "{\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",\n        \"<|eot_id|>\"",
       "parameters": "",
       "quantization": "",
       "size": "96B",
       "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/llama3.1:405b-instruct-q4_K_M/blobs/948af2743fc7",
+      "content_preview": "{{- if or .System .Tools }}<|start_header_id|>system<|end_header_id|>\n{{- if .System }}\n{{ .System }",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "template"
     }
   ],
   "full_path": "/library/llama3.1:405b-instruct-q4_K_M",
@@ -49,6 +52,5 @@
   "manifest_size": "243GB",
   "manifest_updated": "1 year ago",
   "path": "/library/llama3.1",
-  "scraped_at": "2026-07-13T19:34:58.702661+00:00",
   "tag_name": "405b-instruct-q4_K_M"
 }
