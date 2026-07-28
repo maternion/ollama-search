@@ -2,6 +2,9 @@
   "applications": [],
   "cloud_context": "",
   "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
   "cloud_size": "",
   "cloud_size_unit": "",
   "cloud_usage_active_slots": 0,
@@ -18,21 +21,21 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/gemma3:1b-it-qat/blobs/5be6630b666f",
-      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if or (eq .Rol",
-      "parameters": "",
-      "quantization": "",
-      "size": "359B",
-      "type": "template"
-    },
-    {
-      "arch": "",
       "blob_url": "/library/gemma3:1b-it-qat/blobs/3116c5225075",
       "content_preview": "{\n    \"stop\": [\n        \"<end_of_turn>\"\n    ],\n    \"temperature\": 1,\n    \"top_k\": 64,\n    \"top_p\": 0",
       "parameters": "",
       "quantization": "",
       "size": "77B",
       "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma3:1b-it-qat/blobs/5be6630b666f",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if or (eq .Rol",
+      "parameters": "",
+      "quantization": "",
+      "size": "359B",
+      "type": "template"
     }
   ],
   "full_path": "/library/gemma3:1b-it-qat",
@@ -40,6 +43,5 @@
   "manifest_size": "1.0GB",
   "manifest_updated": "1 year ago",
   "path": "/library/gemma3",
-  "scraped_at": "2026-07-13T19:36:54.337642+00:00",
   "tag_name": "1b-it-qat"
 }
