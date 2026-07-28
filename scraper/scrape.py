@@ -2995,76 +2995,20 @@ def main(argv: list[str] | None = None) -> int:
                         pm
                         and pf.exists()
                         and pm.get("updated_title") == m.updated_title
+                        and m.path not in tags_changed
                     ):
-                        try:
-                            cached_page = json.loads(pf.read_text())
-                            if "cloud_cost_input" in cached_page:
-                                continue
-                            # Old cached page missing cost fields. Only
-                            # re-scrape cloud models (which have cost data).
-                            # Non-cloud models get patched in-place.
-                            if not m.cloud and "cloud" not in m.capabilities:
-                                cached_page["cloud_cost_input"] = ""
-                                cached_page["cloud_cost_cached"] = ""
-                                cached_page["cloud_cost_output"] = ""
-                                _atomic_write(
-                                    pf,
-                                    json.dumps(
-                                        cached_page,
-                                        indent=2,
-                                        sort_keys=True,
-                                        ensure_ascii=False,
-                                    ),
-                                )
-                                continue
-                        except Exception:
-                            pass
+                        continue
                     # Model not in previous catalog but page already exists
                     # (e.g. profile models added after initial scrape) — skip
-                    # unless the page file is missing, corrupt, or stale
-                    # (missing cost fields from old scraper version).
+                    # unless the page file is missing or corrupt.
                     if pm is None and pf.exists():
                         try:
-                            cached_page = json.loads(pf.read_text())
-                            if "cloud_cost_input" in cached_page:
-                                continue
-                            if not m.cloud and "cloud" not in m.capabilities:
-                                cached_page["cloud_cost_input"] = ""
-                                cached_page["cloud_cost_cached"] = ""
-                                cached_page["cloud_cost_output"] = ""
-                                _atomic_write(
-                                    pf,
-                                    json.dumps(
-                                        cached_page,
-                                        indent=2,
-                                        sort_keys=True,
-                                        ensure_ascii=False,
-                                    ),
-                                )
-                                continue
+                            json.loads(pf.read_text())
+                            continue
                         except Exception:
                             pass
                 elif pf.exists():
-                    try:
-                        cached_page = json.loads(pf.read_text())
-                        if "cloud_cost_input" in cached_page:
-                            continue
-                        if not m.cloud and "cloud" not in m.capabilities:
-                            cached_page["cloud_cost_input"] = ""
-                            cached_page["cloud_cost_cached"] = ""
-                            cached_page["cloud_cost_output"] = ""
-                            _atomic_write(
-                                pf,
-                                json.dumps(
-                                    cached_page,
-                                    indent=2,
-                                    sort_keys=True,
-                                    ensure_ascii=False,
-                                ),
-                            )
-                            continue
-                    except Exception:
-                        pass
+                    continue
                 log.info("  [%d/%d] %s", i, total, m.path)
                 page = fetch_model_page(client, m)
                 if page:
@@ -3153,12 +3097,7 @@ def main(argv: list[str] | None = None) -> int:
                             and pm.get("updated_title") == m.updated_title
                             and m.path not in tags_changed
                         ):
-                            try:
-                                existing_tp = json.loads(tf.read_text())
-                                if "cloud_cost_input" in existing_tp:
-                                    continue
-                            except Exception:
-                                pass
+                            continue
                     # Smart mode: tier 2 — skip if this tag's manifest digest
                     # is unchanged. This is the per-tag gate that applies to
                     # ALL models, including those in `tags_changed`. A
@@ -3171,40 +3110,12 @@ def main(argv: list[str] | None = None) -> int:
                         try:
                             existing_tp = json.loads(tf.read_text())
                             cached_digest = existing_tp.get("manifest_digest", "")
-                            if (
-                                cached_digest
-                                and cached_digest == t.digest
-                                and "cloud_cost_input" in existing_tp
-                            ):
-                                continue
-                            # Old cached file missing cloud_cost_input:
-                            # only re-scrape for cloud models (which actually
-                            # have cost/usage data). For non-cloud models, just
-                            # patch the field in-place and skip the fetch.
                             if cached_digest and cached_digest == t.digest:
-                                if not m.cloud and "cloud" not in m.capabilities:
-                                    existing_tp["cloud_cost_input"] = ""
-                                    existing_tp["cloud_cost_cached"] = ""
-                                    existing_tp["cloud_cost_output"] = ""
-                                    _atomic_write(
-                                        tf,
-                                        json.dumps(
-                                            existing_tp,
-                                            indent=2,
-                                            sort_keys=True,
-                                            ensure_ascii=False,
-                                        ),
-                                    )
-                                    continue
+                                continue
                         except Exception:
                             pass
                     if tf.exists() and not args.smart:
-                        try:
-                            existing_tp = json.loads(tf.read_text())
-                            if "cloud_cost_input" in existing_tp:
-                                continue
-                        except Exception:
-                            pass
+                        continue  # already cached
                     log.info("  [%d/%d] %s:%s", i, len(fetch_models_tp), m.path, t.name)
                     tp = fetch_tag_page(client, m, t.name)
                     if tp:
