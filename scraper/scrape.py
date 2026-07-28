@@ -2998,11 +2998,24 @@ def main(argv: list[str] | None = None) -> int:
                     ):
                         try:
                             cached_page = json.loads(pf.read_text())
-                            # Schema check: re-scrape if the cached page is
-                            # missing fields the current scraper version
-                            # produces (e.g. cloud_cost_input was added when
-                            # ollama.com removed x-test-model-metric attrs).
                             if "cloud_cost_input" in cached_page:
+                                continue
+                            # Old cached page missing cost fields. Only
+                            # re-scrape cloud models (which have cost data).
+                            # Non-cloud models get patched in-place.
+                            if not m.cloud and "cloud" not in m.capabilities:
+                                cached_page["cloud_cost_input"] = ""
+                                cached_page["cloud_cost_cached"] = ""
+                                cached_page["cloud_cost_output"] = ""
+                                _atomic_write(
+                                    pf,
+                                    json.dumps(
+                                        cached_page,
+                                        indent=2,
+                                        sort_keys=True,
+                                        ensure_ascii=False,
+                                    ),
+                                )
                                 continue
                         except Exception:
                             pass
@@ -3015,12 +3028,40 @@ def main(argv: list[str] | None = None) -> int:
                             cached_page = json.loads(pf.read_text())
                             if "cloud_cost_input" in cached_page:
                                 continue
+                            if not m.cloud and "cloud" not in m.capabilities:
+                                cached_page["cloud_cost_input"] = ""
+                                cached_page["cloud_cost_cached"] = ""
+                                cached_page["cloud_cost_output"] = ""
+                                _atomic_write(
+                                    pf,
+                                    json.dumps(
+                                        cached_page,
+                                        indent=2,
+                                        sort_keys=True,
+                                        ensure_ascii=False,
+                                    ),
+                                )
+                                continue
                         except Exception:
                             pass
                 elif pf.exists():
                     try:
                         cached_page = json.loads(pf.read_text())
                         if "cloud_cost_input" in cached_page:
+                            continue
+                        if not m.cloud and "cloud" not in m.capabilities:
+                            cached_page["cloud_cost_input"] = ""
+                            cached_page["cloud_cost_cached"] = ""
+                            cached_page["cloud_cost_output"] = ""
+                            _atomic_write(
+                                pf,
+                                json.dumps(
+                                    cached_page,
+                                    indent=2,
+                                    sort_keys=True,
+                                    ensure_ascii=False,
+                                ),
+                            )
                             continue
                     except Exception:
                         pass
@@ -3136,6 +3177,25 @@ def main(argv: list[str] | None = None) -> int:
                                 and "cloud_cost_input" in existing_tp
                             ):
                                 continue
+                            # Old cached file missing cloud_cost_input:
+                            # only re-scrape for cloud models (which actually
+                            # have cost/usage data). For non-cloud models, just
+                            # patch the field in-place and skip the fetch.
+                            if cached_digest and cached_digest == t.digest:
+                                if not m.cloud and "cloud" not in m.capabilities:
+                                    existing_tp["cloud_cost_input"] = ""
+                                    existing_tp["cloud_cost_cached"] = ""
+                                    existing_tp["cloud_cost_output"] = ""
+                                    _atomic_write(
+                                        tf,
+                                        json.dumps(
+                                            existing_tp,
+                                            indent=2,
+                                            sort_keys=True,
+                                            ensure_ascii=False,
+                                        ),
+                                    )
+                                    continue
                         except Exception:
                             pass
                     if tf.exists() and not args.smart:
