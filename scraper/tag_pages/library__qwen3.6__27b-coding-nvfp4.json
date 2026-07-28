@@ -2,11 +2,23 @@
   "applications": [],
   "cloud_context": "",
   "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
   "cloud_size": "",
   "cloud_size_unit": "",
   "cloud_usage_active_slots": 0,
   "cloud_usage_level": "",
   "files": [
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.6:27b-coding-nvfp4/blobs/69db4eb7196b",
+      "content_preview": "{\n\"architectures\": [\n\"Qwen3_5ForConditionalGeneration\"\n],\n\"image_token_id\": 248056,\n\"language_model_",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.3kB",
+      "type": "json"
+    },
     {
       "arch": "",
       "blob_url": "/library/qwen3.6:27b-coding-nvfp4/blobs/2d4464e2ead0",
@@ -87,22 +99,12 @@
       "quantization": "",
       "size": "94B",
       "type": "params"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/qwen3.6:27b-coding-nvfp4/blobs/69db4eb7196b",
-      "content_preview": "{\n\"architectures\": [\n\"Qwen3_5ForConditionalGeneration\"\n],\n\"image_token_id\": 248056,\n\"language_model_",
-      "parameters": "",
-      "quantization": "",
-      "size": "4.3kB",
-      "type": "json"
     }
   ],
   "full_path": "/library/qwen3.6:27b-coding-nvfp4",
   "manifest_digest": "42a2d9de99b0",
   "manifest_size": "20GB",
-  "manifest_updated": "2 months ago",
+  "manifest_updated": "3 months ago",
   "path": "/library/qwen3.6",
-  "scraped_at": "2026-07-13T19:32:54.648279+00:00",
   "tag_name": "27b-coding-nvfp4"
 }
