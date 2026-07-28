@@ -2,6 +2,9 @@
   "applications": [],
   "cloud_context": "",
   "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
   "cloud_size": "",
   "cloud_size_unit": "",
   "cloud_usage_active_slots": 0,
@@ -15,15 +18,6 @@
       "quantization": "F16",
       "size": "47GB",
       "type": "model"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/devstral:24b-small-2505-fp16/blobs/ea9ec42474e0",
-      "content_preview": "{{- $lastUserIndex := -1 }}\n{{- range $index, $_ := .Messages }}\n{{- if eq .Role \"user\" }}{{ $lastUs",
-      "parameters": "",
-      "quantization": "",
-      "size": "823B",
-      "type": "template"
     },
     {
       "arch": "",
@@ -42,6 +36,15 @@
       "quantization": "",
       "size": "5.7kB",
       "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/devstral:24b-small-2505-fp16/blobs/ea9ec42474e0",
+      "content_preview": "{{- $lastUserIndex := -1 }}\n{{- range $index, $_ := .Messages }}\n{{- if eq .Role \"user\" }}{{ $lastUs",
+      "parameters": "",
+      "quantization": "",
+      "size": "823B",
+      "type": "template"
     }
   ],
   "full_path": "/library/devstral:24b-small-2505-fp16",
@@ -49,6 +52,5 @@
   "manifest_size": "47GB",
   "manifest_updated": "1 year ago",
   "path": "/library/devstral",
-  "scraped_at": "2026-07-13T20:54:19.081500+00:00",
   "tag_name": "24b-small-2505-fp16"
 }
