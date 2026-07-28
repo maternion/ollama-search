@@ -2995,35 +2995,20 @@ def main(argv: list[str] | None = None) -> int:
                         pm
                         and pf.exists()
                         and pm.get("updated_title") == m.updated_title
+                        and m.path not in tags_changed
                     ):
-                        try:
-                            cached_page = json.loads(pf.read_text())
-                            # Schema check: re-scrape if the cached page is
-                            # missing fields the current scraper version
-                            # produces (e.g. cloud_cost_input was added when
-                            # ollama.com removed x-test-model-metric attrs).
-                            if "cloud_cost_input" in cached_page:
-                                continue
-                        except Exception:
-                            pass
+                        continue
                     # Model not in previous catalog but page already exists
                     # (e.g. profile models added after initial scrape) — skip
-                    # unless the page file is missing, corrupt, or stale
-                    # (missing cost fields from old scraper version).
+                    # unless the page file is missing or corrupt.
                     if pm is None and pf.exists():
                         try:
-                            cached_page = json.loads(pf.read_text())
-                            if "cloud_cost_input" in cached_page:
-                                continue
+                            json.loads(pf.read_text())
+                            continue
                         except Exception:
                             pass
                 elif pf.exists():
-                    try:
-                        cached_page = json.loads(pf.read_text())
-                        if "cloud_cost_input" in cached_page:
-                            continue
-                    except Exception:
-                        pass
+                    continue
                 log.info("  [%d/%d] %s", i, total, m.path)
                 page = fetch_model_page(client, m)
                 if page:
@@ -3112,12 +3097,7 @@ def main(argv: list[str] | None = None) -> int:
                             and pm.get("updated_title") == m.updated_title
                             and m.path not in tags_changed
                         ):
-                            try:
-                                existing_tp = json.loads(tf.read_text())
-                                if "cloud_cost_input" in existing_tp:
-                                    continue
-                            except Exception:
-                                pass
+                            continue
                     # Smart mode: tier 2 — skip if this tag's manifest digest
                     # is unchanged. This is the per-tag gate that applies to
                     # ALL models, including those in `tags_changed`. A
@@ -3130,21 +3110,12 @@ def main(argv: list[str] | None = None) -> int:
                         try:
                             existing_tp = json.loads(tf.read_text())
                             cached_digest = existing_tp.get("manifest_digest", "")
-                            if (
-                                cached_digest
-                                and cached_digest == t.digest
-                                and "cloud_cost_input" in existing_tp
-                            ):
+                            if cached_digest and cached_digest == t.digest:
                                 continue
                         except Exception:
                             pass
                     if tf.exists() and not args.smart:
-                        try:
-                            existing_tp = json.loads(tf.read_text())
-                            if "cloud_cost_input" in existing_tp:
-                                continue
-                        except Exception:
-                            pass
+                        continue  # already cached
                     log.info("  [%d/%d] %s:%s", i, len(fetch_models_tp), m.path, t.name)
                     tp = fetch_tag_page(client, m, t.name)
                     if tp:
