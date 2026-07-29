@@ -62,7 +62,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3430,
+      "pulls": 3432,
       "sizes": [],
       "source_url": "https://ollama.com/frob/qwen3-coder-next",
       "tag_count": 7,
@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 2304,
+      "pulls": 2339,
       "sizes": [],
       "source_url": "https://ollama.com/frob/unlimited-ocr",
       "tag_count": 2,
@@ -98,7 +98,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1660,
+      "pulls": 1666,
       "sizes": [
         "753b"
       ],
@@ -121,7 +121,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.5",
-      "pulls": 1570,
+      "pulls": 1571,
       "sizes": [
         "122b",
         "397b"
@@ -373,6 +373,26 @@
     },
     {
       "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "deepseek-v4-flash",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/deepseek-v4-flash",
+      "pulls": 388,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/deepseek-v4-flash",
+      "tag_count": 2,
+      "tags": [],
+      "updated": "3 weeks ago",
+      "updated_title": "Jul 1, 2026 10:58 PM UTC"
+    },
+    {
+      "capabilities": [
         "tools"
       ],
       "cloud": false,
@@ -389,26 +409,6 @@
       "tags": [],
       "updated": "6 months ago",
       "updated_title": "Jan 4, 2026 8:30 AM UTC"
-    },
-    {
-      "capabilities": [
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "deepseek-v4-flash",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/deepseek-v4-flash",
-      "pulls": 378,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/deepseek-v4-flash",
-      "tag_count": 2,
-      "tags": [],
-      "updated": "3 weeks ago",
-      "updated_title": "Jul 1, 2026 10:58 PM UTC"
     },
     {
       "capabilities": [
@@ -718,8 +718,8 @@
     "/frob/kimi-k2.5",
     "/frob/nuextract-2.0",
     "/frob/glm-5",
-    "/frob/iquest-coder",
     "/frob/deepseek-v4-flash",
+    "/frob/iquest-coder",
     "/frob/mimo-v2-flash",
     "/frob/mimo-v2.5",
     "/frob/qwen-agentworld",
