@@ -22,7 +22,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gemma-4-abliterated",
-      "pulls": 763100,
+      "pulls": 768300,
       "sizes": [
         "e2b",
         "e4b",
@@ -48,7 +48,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepseek-r1-abliterated",
-      "pulls": 713000,
+      "pulls": 713100,
       "sizes": [
         "1.5b",
         "7b",
@@ -76,7 +76,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3.5-abliterated",
-      "pulls": 456900,
+      "pulls": 459300,
       "sizes": [
         "0.8b",
         "2b",
@@ -104,7 +104,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gpt-oss-abliterated",
-      "pulls": 290600,
+      "pulls": 293000,
       "sizes": [
         "20b",
         "120b"
@@ -128,7 +128,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3.6-abliterated",
-      "pulls": 268000,
+      "pulls": 270400,
       "sizes": [
         "27b",
         "35b"
@@ -146,12 +146,32 @@
       ],
       "cloud": false,
       "cloud_only": false,
+      "description": "As the strongest model in the 30B class, GLM-4.7-Flash offers a new option for lightweight deployment that balances performance and efficiency.",
+      "name": "glm-4.7-flash-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/glm-4.7-flash-abliterated",
+      "pulls": 222700,
+      "sizes": [],
+      "source_url": "https://ollama.com/huihui_ai/glm-4.7-flash-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "6 months ago",
+      "updated_title": "Jan 25, 2026 10:22 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
       "description": "Qwen3 is the latest generation of large language models in Qwen series, offering a comprehensive suite of dense and mixture-of-experts (MoE) models.",
       "name": "qwen3-abliterated",
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-abliterated",
-      "pulls": 220600,
+      "pulls": 220700,
       "sizes": [
         "0.6b",
         "1.7b",
@@ -168,26 +188,6 @@
       "tags": [],
       "updated": "11 months ago",
       "updated_title": "Aug 7, 2025 7:46 PM UTC"
-    },
-    {
-      "capabilities": [
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "As the strongest model in the 30B class, GLM-4.7-Flash offers a new option for lightweight deployment that balances performance and efficiency.",
-      "name": "glm-4.7-flash-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/glm-4.7-flash-abliterated",
-      "pulls": 220300,
-      "sizes": [],
-      "source_url": "https://ollama.com/huihui_ai/glm-4.7-flash-abliterated",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "6 months ago",
-      "updated_title": "Jan 25, 2026 10:22 AM UTC"
     },
     {
       "capabilities": [
@@ -300,7 +300,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-abliterated",
-      "pulls": 46700,
+      "pulls": 46800,
       "sizes": [
         "8b"
       ],
@@ -540,7 +540,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-vl-abliterated",
-      "pulls": 13400,
+      "pulls": 13500,
       "sizes": [
         "3b",
         "7b",
@@ -622,7 +622,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-r1-abliterated",
-      "pulls": 8549,
+      "pulls": 8551,
       "sizes": [
         "24b"
       ],
@@ -662,7 +662,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-coder-next-abliterated",
-      "pulls": 7469,
+      "pulls": 7471,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/qwen3-coder-next-abliterated",
       "tag_count": 4,
@@ -720,7 +720,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/phi4-mini-abliterated",
-      "pulls": 6901,
+      "pulls": 6902,
       "sizes": [
         "3.8b"
       ],
@@ -804,7 +804,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite4.1-abliterated",
-      "pulls": 5207,
+      "pulls": 5208,
       "sizes": [
         "3b",
         "8b",
@@ -825,7 +825,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deephermes3-abliterated",
-      "pulls": 4575,
+      "pulls": 4577,
       "sizes": [
         "8b"
       ],
@@ -886,7 +886,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/lfm2.5-abliterated",
-      "pulls": 3773,
+      "pulls": 3778,
       "sizes": [
         "1.2b"
       ],
@@ -967,7 +967,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/jan-nano-abliterated",
-      "pulls": 3235,
+      "pulls": 3237,
       "sizes": [
         "4b"
       ],
@@ -1027,7 +1027,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/tongyi-deepresearch-abliterated",
-      "pulls": 3114,
+      "pulls": 3115,
       "sizes": [
         "30b"
       ],
@@ -1135,7 +1135,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/huihui-4",
-      "pulls": 2751,
+      "pulls": 2754,
       "sizes": [
         "8b"
       ],
@@ -1176,7 +1176,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/arcee-blitz-abliterated",
-      "pulls": 2648,
+      "pulls": 2650,
       "sizes": [
         "24b"
       ],
@@ -1261,7 +1261,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepseek-r1-Fusion",
-      "pulls": 2516,
+      "pulls": 2517,
       "sizes": [
         "32b"
       ],
@@ -1320,7 +1320,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/fara-abliterated",
-      "pulls": 2440,
+      "pulls": 2441,
       "sizes": [
         "7b"
       ],
@@ -1362,7 +1362,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/orchestrator-abliterated",
-      "pulls": 1986,
+      "pulls": 1987,
       "sizes": [
         "8b"
       ],
@@ -1445,7 +1445,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/llama3.3-abliterated-ft",
-      "pulls": 1831,
+      "pulls": 1833,
       "sizes": [
         "70b"
       ],
@@ -1525,7 +1525,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.1-dense-abliterated",
-      "pulls": 1443,
+      "pulls": 1444,
       "sizes": [
         "2b",
         "8b"
@@ -1815,7 +1815,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3-Coder",
-      "pulls": 799,
+      "pulls": 800,
       "sizes": [
         "480b"
       ],
@@ -1959,7 +1959,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/huihui3.5",
-      "pulls": 401,
+      "pulls": 402,
       "sizes": [
         "67b"
       ],
@@ -1999,7 +1999,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepseek-r1",
-      "pulls": 311,
+      "pulls": 313,
       "sizes": [
         "671b"
       ],
@@ -2245,8 +2245,8 @@
     "/huihui_ai/qwen3.5-abliterated",
     "/huihui_ai/gpt-oss-abliterated",
     "/huihui_ai/Qwen3.6-abliterated",
-    "/huihui_ai/qwen3-abliterated",
     "/huihui_ai/glm-4.7-flash-abliterated",
+    "/huihui_ai/qwen3-abliterated",
     "/huihui_ai/qwen3-vl-abliterated",
     "/huihui_ai/gemma3-abliterated",
     "/huihui_ai/qwq-abliterated",
