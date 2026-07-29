@@ -1,69 +1,5 @@
 {
-  "tiers": [
-    {
-      "name": "Free",
-      "price": "$0",
-      "description": "Get started with Ollama",
-      "button_url": "/download",
-      "button_label": "Download",
-      "button_paused": false,
-      "notice": "",
-      "features": [
-        "Automate coding, document analysis, and other tasks with open models",
-        "Keep your data private",
-        "Run models on your hardware",
-        "Access cloud models",
-        "CLI, API, and desktop apps",
-        "40,000+ community integrations",
-        "Unlimited public models"
-      ]
-    },
-    {
-      "name": "Pro",
-      "price": "$20 / mo",
-      "description": "Solve harder tasks, faster",
-      "button_url": "/upgrade?plan=pro",
-      "button_label": "Get Pro",
-      "button_paused": false,
-      "notice": "",
-      "features": [
-        "Access larger, more powerful cloud models",
-        "Run 3 cloud models at a time",
-        "50x more cloud usage than Free",
-        "Upload and share private models"
-      ]
-    },
-    {
-      "name": "Max",
-      "price": "$100 / mo",
-      "description": "For your most demanding work",
-      "button_url": "",
-      "button_label": "New sign-ups paused",
-      "button_paused": true,
-      "notice": "New Max subscriptions are temporarily paused while we add capacity. <a href=\"/pricing#max-paused\" class=\"underline\">Learn more</a>",
-      "features": [
-        "Run 10 cloud models at a time",
-        "5x more usage than Pro"
-      ]
-    },
-    {
-      "name": "Team",
-      "price": "",
-      "description": "Power your team's work with Ollama",
-      "button_url": "https://ollama.typeform.com/to/FFV2AVPu",
-      "button_label": "Contact us",
-      "button_paused": false,
-      "notice": "",
-      "features": [
-        "Shared usage across your team",
-        "Centralized billing and administration",
-        "Single sign-on (SSO)",
-        "Model access controls",
-        "MDM installer for Windows and macOS",
-        "Priority support and dedicated Slack channel"
-      ]
-    }
-  ],
+  "tiers": [],
   "faq": [
     {
       "group": "Plans",
@@ -71,6 +7,23 @@
         {
           "q": "Why are new Max subscriptions paused?",
           "a": "<p class=\"text-sm\">Ollama's cloud has more than doubled in token volume every month, and with even larger open models like kimi-k3 coming soon, demand is growing faster than we can add capacity. Max subscribers run some of the heaviest workloads, so new Max subscriptions are paused while we add more capacity to protect the experience of existing subscribers.</p>\n            <p class=\"text-sm mt-2\">Existing Max subscribers keep their plan, limits, and pricing. Pro and Free remain open, and Pro subscribers can add extra usage to go beyond their plan's included limits.</p>"
+        }
+      ]
+    },
+    {
+      "group": "Team",
+      "items": [
+        {
+          "q": "Who is the Team plan for?",
+          "a": "<p class=\"text-sm\">The Team plan is for groups that want shared billing for seats and model usage.</p>"
+        },
+        {
+          "q": "How does Team billing work?",
+          "a": "<p class=\"text-sm\">Teams start at five seats. Each seat costs $25 per month, so the minimum seat charge is $125 per month. Each additional seat adds $25 per month.</p>\n            <p class=\"text-sm mt-2\">Each seat includes usage. Usage beyond that draws from a shared team balance billed as you go. You can add a set amount to the balance and turn off automatic usage billing.</p>"
+        },
+        {
+          "q": "Does joining a team change my personal account?",
+          "a": "<p class=\"text-sm\">Ollama creates a separate team account for you when you join. You can switch between your team and personal accounts with the same login.</p>"
         }
       ]
     },
@@ -104,7 +57,7 @@
         },
         {
           "q": "How is usage measured?",
-          "a": "<p class=\"text-sm\">Usage reflects actual utilization of Ollama's cloud infrastructure - primarily GPU time, which depends on model size and request duration. Shorter requests and prompts that share cached context use less.</p>\n            <p class=\"text-sm mt-2\">This is different from fixed token or request-based plans. Ollama doesn't cap you at a set number of tokens. As hardware and model architectures get more efficient, you'll get more out of your plan over time.</p>"
+          "a": "<p class=\"text-sm\">Individual plans have usage limits based on the model and the number of input, cached input, and output tokens processed. They don't cap you at a fixed number of tokens because different models use different amounts of compute.</p>\n            <p class=\"text-sm mt-2\">For teams, each member's usage draws from the usage included with their seat first. Once it's used, further usage draws from the team's shared extra usage balance at the model's token rate.</p>"
         },
         {
           "q": "How much usage does each model use?",
@@ -112,7 +65,7 @@
         },
         {
           "q": "How does extra usage work?",
-          "a": "<p class=\"text-sm\">Pro and Max users can add extra usage balance. Ollama uses your included plan limits first, then draws from your extra usage balance when you go over those limits.</p>"
+          "a": "<p class=\"text-sm\">Pro and Max users can add extra usage balance. Ollama uses included plan limits first, then draws from the extra usage balance. Team usage draws from one balance shared by the organization.</p>"
         },
         {
           "q": "How much more usage does Pro include?",
