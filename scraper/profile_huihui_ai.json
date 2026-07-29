@@ -22,7 +22,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gemma-4-abliterated",
-      "pulls": 768300,
+      "pulls": 768900,
       "sizes": [
         "e2b",
         "e4b",
@@ -48,7 +48,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepseek-r1-abliterated",
-      "pulls": 713100,
+      "pulls": 713200,
       "sizes": [
         "1.5b",
         "7b",
@@ -76,7 +76,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3.5-abliterated",
-      "pulls": 459300,
+      "pulls": 459500,
       "sizes": [
         "0.8b",
         "2b",
@@ -104,7 +104,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gpt-oss-abliterated",
-      "pulls": 293000,
+      "pulls": 293100,
       "sizes": [
         "20b",
         "120b"
@@ -128,7 +128,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3.6-abliterated",
-      "pulls": 270400,
+      "pulls": 270500,
       "sizes": [
         "27b",
         "35b"
@@ -171,7 +171,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-abliterated",
-      "pulls": 220700,
+      "pulls": 220800,
       "sizes": [
         "0.6b",
         "1.7b",
@@ -273,7 +273,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-abliterate",
-      "pulls": 71500,
+      "pulls": 71600,
       "sizes": [
         "0.5b",
         "1.5b",
@@ -407,7 +407,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-coder-abliterate",
-      "pulls": 30900,
+      "pulls": 31000,
       "sizes": [
         "0.5b",
         "1.5b",
@@ -603,7 +603,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/baronllm-abliterated",
-      "pulls": 9578,
+      "pulls": 9579,
       "sizes": [
         "8b"
       ],
@@ -622,7 +622,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-r1-abliterated",
-      "pulls": 8551,
+      "pulls": 8553,
       "sizes": [
         "24b"
       ],
@@ -662,7 +662,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-coder-next-abliterated",
-      "pulls": 7471,
+      "pulls": 7472,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/qwen3-coder-next-abliterated",
       "tag_count": 4,
@@ -699,7 +699,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.2-vision-abliterated",
-      "pulls": 7099,
+      "pulls": 7102,
       "sizes": [
         "2b"
       ],
@@ -720,7 +720,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/phi4-mini-abliterated",
-      "pulls": 6902,
+      "pulls": 6903,
       "sizes": [
         "3.8b"
       ],
@@ -783,7 +783,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-next-abliterated",
-      "pulls": 5334,
+      "pulls": 5337,
       "sizes": [
         "80b"
       ],
@@ -804,7 +804,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite4.1-abliterated",
-      "pulls": 5208,
+      "pulls": 5214,
       "sizes": [
         "3b",
         "8b",
@@ -825,7 +825,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deephermes3-abliterated",
-      "pulls": 4577,
+      "pulls": 4578,
       "sizes": [
         "8b"
       ],
@@ -834,6 +834,27 @@
       "tags": [],
       "updated": "1 year ago",
       "updated_title": "Feb 19, 2025 2:36 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "This is an uncensored version of mistralai/Devstral-Small-2505 created with abliteration",
+      "name": "devstral-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/devstral-abliterated",
+      "pulls": 4035,
+      "sizes": [
+        "24b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/devstral-abliterated",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "May 28, 2025 10:57 AM UTC"
     },
     {
       "capabilities": [],
@@ -860,33 +881,12 @@
       ],
       "cloud": false,
       "cloud_only": false,
-      "description": "This is an uncensored version of mistralai/Devstral-Small-2505 created with abliteration",
-      "name": "devstral-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/devstral-abliterated",
-      "pulls": 4034,
-      "sizes": [
-        "24b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/devstral-abliterated",
-      "tag_count": 6,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "May 28, 2025 10:57 AM UTC"
-    },
-    {
-      "capabilities": [
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
       "description": "LFM2.5 is a new family of hybrid models designed for on-device deployment.",
       "name": "lfm2.5-abliterated",
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/lfm2.5-abliterated",
-      "pulls": 3778,
+      "pulls": 3779,
       "sizes": [
         "1.2b"
       ],
@@ -905,7 +905,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/foundation-sec-abliterated",
-      "pulls": 3565,
+      "pulls": 3568,
       "sizes": [
         "8b"
       ],
@@ -945,7 +945,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/phi4-reasoning-abliterated",
-      "pulls": 3324,
+      "pulls": 3325,
       "sizes": [
         "3.8b"
       ],
@@ -1027,7 +1027,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/tongyi-deepresearch-abliterated",
-      "pulls": 3115,
+      "pulls": 3116,
       "sizes": [
         "30b"
       ],
@@ -1135,7 +1135,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/huihui-4",
-      "pulls": 2754,
+      "pulls": 2757,
       "sizes": [
         "8b"
       ],
@@ -1362,7 +1362,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/orchestrator-abliterated",
-      "pulls": 1987,
+      "pulls": 1988,
       "sizes": [
         "8b"
       ],
@@ -1445,7 +1445,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/llama3.3-abliterated-ft",
-      "pulls": 1833,
+      "pulls": 1834,
       "sizes": [
         "70b"
       ],
@@ -1525,7 +1525,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.1-dense-abliterated",
-      "pulls": 1444,
+      "pulls": 1445,
       "sizes": [
         "2b",
         "8b"
@@ -1666,7 +1666,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/huihui-moe",
-      "pulls": 1102,
+      "pulls": 1104,
       "sizes": [
         "1.2b",
         "23b"
@@ -1720,6 +1720,29 @@
       "updated_title": "Apr 3, 2025 8:51 AM UTC"
     },
     {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "MicroThinker is an experimental research model focused on advancing AI reasoning capabilities.",
+      "name": "microthinker",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/microthinker",
+      "pulls": 890,
+      "sizes": [
+        "1b",
+        "3b",
+        "8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/microthinker",
+      "tag_count": 12,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jan 25, 2025 3:13 PM UTC"
+    },
+    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -1738,29 +1761,6 @@
       "tags": [],
       "updated": "1 year ago",
       "updated_title": "Nov 28, 2024 2:11 AM UTC"
-    },
-    {
-      "capabilities": [
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "MicroThinker is an experimental research model focused on advancing AI reasoning capabilities.",
-      "name": "microthinker",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/microthinker",
-      "pulls": 889,
-      "sizes": [
-        "1b",
-        "3b",
-        "8b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/microthinker",
-      "tag_count": 12,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "Jan 25, 2025 3:13 PM UTC"
     },
     {
       "capabilities": [
@@ -1793,7 +1793,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/kimi-k2-abliterated",
-      "pulls": 845,
+      "pulls": 851,
       "sizes": [
         "1026b"
       ],
@@ -1815,7 +1815,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3-Coder",
-      "pulls": 800,
+      "pulls": 801,
       "sizes": [
         "480b"
       ],
@@ -1837,7 +1837,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/glm4.6-abliterated",
-      "pulls": 628,
+      "pulls": 629,
       "sizes": [
         "357b"
       ],
@@ -1858,7 +1858,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/devstral-2-abliterated",
-      "pulls": 582,
+      "pulls": 583,
       "sizes": [
         "123b"
       ],
@@ -1999,7 +1999,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepseek-r1",
-      "pulls": 313,
+      "pulls": 314,
       "sizes": [
         "671b"
       ],
@@ -2277,8 +2277,8 @@
     "/huihui_ai/qwen3-next-abliterated",
     "/huihui_ai/granite4.1-abliterated",
     "/huihui_ai/deephermes3-abliterated",
-    "/huihui_ai/deepseek-v3-abliterated",
     "/huihui_ai/devstral-abliterated",
+    "/huihui_ai/deepseek-v3-abliterated",
     "/huihui_ai/lfm2.5-abliterated",
     "/huihui_ai/foundation-sec-abliterated",
     "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
@@ -2320,8 +2320,8 @@
     "/huihui_ai/huihui-moe",
     "/huihui_ai/nemotron-v1-abliterated",
     "/huihui_ai/openhands-lm-abliterated",
-    "/huihui_ai/tulu3-abliterate",
     "/huihui_ai/microthinker",
+    "/huihui_ai/tulu3-abliterate",
     "/huihui_ai/glm-4.7-abliterated",
     "/huihui_ai/kimi-k2-abliterated",
     "/huihui_ai/Qwen3-Coder",
