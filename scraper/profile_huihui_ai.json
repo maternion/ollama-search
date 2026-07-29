@@ -22,7 +22,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gemma-4-abliterated",
-      "pulls": 769900,
+      "pulls": 770100,
       "sizes": [
         "e2b",
         "e4b",
@@ -76,7 +76,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3.5-abliterated",
-      "pulls": 459800,
+      "pulls": 459900,
       "sizes": [
         "0.8b",
         "2b",
@@ -171,7 +171,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-abliterated",
-      "pulls": 220900,
+      "pulls": 221000,
       "sizes": [
         "0.6b",
         "1.7b",
@@ -603,7 +603,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/baronllm-abliterated",
-      "pulls": 9584,
+      "pulls": 9588,
       "sizes": [
         "8b"
       ],
@@ -622,7 +622,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-r1-abliterated",
-      "pulls": 8570,
+      "pulls": 8573,
       "sizes": [
         "24b"
       ],
@@ -641,7 +641,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/hunyuan-mt-abliterated",
-      "pulls": 8473,
+      "pulls": 8475,
       "sizes": [
         "7b"
       ],
@@ -662,7 +662,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-coder-next-abliterated",
-      "pulls": 7478,
+      "pulls": 7479,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/qwen3-coder-next-abliterated",
       "tag_count": 4,
@@ -804,7 +804,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite4.1-abliterated",
-      "pulls": 5240,
+      "pulls": 5241,
       "sizes": [
         "3b",
         "8b",
@@ -886,7 +886,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/lfm2.5-abliterated",
-      "pulls": 3781,
+      "pulls": 3782,
       "sizes": [
         "1.2b"
       ],
@@ -1007,7 +1007,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/seed-coder-abliterate",
-      "pulls": 3162,
+      "pulls": 3164,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/seed-coder-abliterate",
       "tag_count": 5,
@@ -1069,7 +1069,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/nemotron-abliterated",
-      "pulls": 3013,
+      "pulls": 3014,
       "sizes": [
         "70b"
       ],
@@ -1111,7 +1111,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/aya-expanse-abliterated",
-      "pulls": 2895,
+      "pulls": 2896,
       "sizes": [
         "8b",
         "32b"
@@ -1280,7 +1280,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/tess-r1-abliterated",
-      "pulls": 2494,
+      "pulls": 2495,
       "sizes": [
         "70b"
       ],
@@ -1644,7 +1644,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/perplexity-ai-r1-abliterated",
-      "pulls": 1133,
+      "pulls": 1134,
       "sizes": [
         "70b"
       ],
@@ -1720,6 +1720,26 @@
       "updated_title": "Apr 3, 2025 8:51 AM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Tülu 3 is a leading instruction following model family, offering fully open-source data, code, and recipes by the The Allen Institute for AI.",
+      "name": "tulu3-abliterate",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/tulu3-abliterate",
+      "pulls": 890,
+      "sizes": [
+        "8b",
+        "70b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/tulu3-abliterate",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Nov 28, 2024 2:11 AM UTC"
+    },
+    {
       "capabilities": [
         "tools"
       ],
@@ -1741,26 +1761,6 @@
       "tags": [],
       "updated": "1 year ago",
       "updated_title": "Jan 25, 2025 3:13 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Tülu 3 is a leading instruction following model family, offering fully open-source data, code, and recipes by the The Allen Institute for AI.",
-      "name": "tulu3-abliterate",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/tulu3-abliterate",
-      "pulls": 889,
-      "sizes": [
-        "8b",
-        "70b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/tulu3-abliterate",
-      "tag_count": 9,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "Nov 28, 2024 2:11 AM UTC"
     },
     {
       "capabilities": [
@@ -2320,8 +2320,8 @@
     "/huihui_ai/huihui-moe",
     "/huihui_ai/nemotron-v1-abliterated",
     "/huihui_ai/openhands-lm-abliterated",
-    "/huihui_ai/microthinker",
     "/huihui_ai/tulu3-abliterate",
+    "/huihui_ai/microthinker",
     "/huihui_ai/glm-4.7-abliterated",
     "/huihui_ai/kimi-k2-abliterated",
     "/huihui_ai/Qwen3-Coder",
