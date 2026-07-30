@@ -1,5 +1,82 @@
 {
-  "tiers": [],
+  "tiers": [
+    {
+      "name": "Free",
+      "price": "$0",
+      "description": "Get started with Ollama",
+      "button_url": "/download",
+      "button_label": "Download",
+      "button_paused": false,
+      "notice": "",
+      "features": [
+        "Automate coding, document analysis, and other tasks with open models",
+        "Keep your data private",
+        "Run models on your hardware",
+        "Access cloud models",
+        "CLI, API, and desktop apps",
+        "40,000+ community integrations",
+        "Unlimited public models"
+      ]
+    },
+    {
+      "name": "Pro",
+      "price": "$20 / mo",
+      "description": "Solve harder tasks, faster",
+      "button_url": "/upgrade?plan=pro",
+      "button_label": "Get Pro",
+      "button_paused": false,
+      "notice": "",
+      "features": [
+        "Access larger, more powerful cloud models",
+        "Run 3 cloud models at a time",
+        "50x more cloud usage than Free",
+        "Upload and share private models"
+      ]
+    },
+    {
+      "name": "Max",
+      "price": "$100 / mo",
+      "description": "For your most demanding work",
+      "button_url": "",
+      "button_label": "New sign-ups paused",
+      "button_paused": true,
+      "notice": "New Max subscriptions are temporarily paused while we add capacity. <a href=\"/pricing#max-paused\" class=\"underline\">Learn more</a>",
+      "features": [
+        "Run 10 cloud models at a time",
+        "5x more usage than Pro"
+      ]
+    },
+    {
+      "name": "Team",
+      "price": "$25 / seat / mo",
+      "description": "Bring open models to your whole team.",
+      "button_url": "",
+      "button_label": "Coming soon",
+      "button_paused": true,
+      "notice": "",
+      "features": [
+        "Access to powerful open models in the US and Europe",
+        "High performance, up to 2x more than model gateways",
+        "Zero data retention and logging",
+        "Shared billing and administration",
+        "Priority support"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "price": "Custom",
+      "description": "Custom terms and support for larger organizations.",
+      "button_url": "https://ollama.typeform.com/to/FFV2AVPu",
+      "button_label": "Contact us",
+      "button_paused": false,
+      "notice": "",
+      "features": [
+        "Volume pricing and custom terms",
+        "Security and procurement support",
+        "Deployment planning with Ollama"
+      ]
+    }
+  ],
   "faq": [
     {
       "group": "Plans",
