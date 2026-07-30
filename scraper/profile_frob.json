@@ -62,7 +62,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3432,
+      "pulls": 3434,
       "sizes": [],
       "source_url": "https://ollama.com/frob/qwen3-coder-next",
       "tag_count": 7,
@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 2482,
+      "pulls": 2525,
       "sizes": [],
       "source_url": "https://ollama.com/frob/unlimited-ocr",
       "tag_count": 2,
@@ -98,7 +98,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1680,
+      "pulls": 1681,
       "sizes": [
         "753b"
       ],
@@ -145,7 +145,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1064,
+      "pulls": 1065,
       "sizes": [
         "3b",
         "8b",
@@ -192,7 +192,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/davidau-qwen3.6-uncensored",
-      "pulls": 864,
+      "pulls": 878,
       "sizes": [
         "40b"
       ],
@@ -320,7 +320,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kimi-k2.5",
-      "pulls": 616,
+      "pulls": 617,
       "sizes": [
         "1030b"
       ],
@@ -341,7 +341,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/nuextract-2.0",
-      "pulls": 614,
+      "pulls": 615,
       "sizes": [],
       "source_url": "https://ollama.com/frob/nuextract-2.0",
       "tag_count": 4,
@@ -361,7 +361,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5",
-      "pulls": 492,
+      "pulls": 494,
       "sizes": [
         "744b"
       ],
@@ -383,7 +383,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 401,
+      "pulls": 406,
       "sizes": [],
       "source_url": "https://ollama.com/frob/deepseek-v4-flash",
       "tag_count": 2,
@@ -488,7 +488,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/KaLM-Embedding-Gemma3-12B-2511",
-      "pulls": 196,
+      "pulls": 199,
       "sizes": [],
       "source_url": "https://ollama.com/frob/KaLM-Embedding-Gemma3-12B-2511",
       "tag_count": 1,
@@ -667,6 +667,26 @@
     },
     {
       "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "nex-n2-mini",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/nex-n2-mini",
+      "pulls": 0,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/nex-n2-mini",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "2 hours ago",
+      "updated_title": "Jul 30, 2026 8:40 AM UTC"
+    },
+    {
+      "capabilities": [
         "vision",
         "tools",
         "thinking"
@@ -681,13 +701,14 @@
       "pulls": 0,
       "sizes": [],
       "source_url": "https://ollama.com/frob/nex-n2-pro",
-      "tag_count": 4,
+      "tag_count": 9,
       "tags": [],
-      "updated": "15 minutes ago",
-      "updated_title": "Jul 30, 2026 6:15 AM UTC"
+      "updated": "3 hours ago",
+      "updated_title": "Jul 30, 2026 7:46 AM UTC"
     }
   ],
   "newest_order": [
+    "/frob/nex-n2-mini",
     "/frob/nex-n2-pro",
     "/frob/hy3",
     "/frob/deepseek-v4-flash",
@@ -755,6 +776,7 @@
     "/frob/whyhow-ai_PatientSeek",
     "/frob/mixtao",
     "/frob/NireeskshanAI_Niri",
+    "/frob/nex-n2-mini",
     "/frob/nex-n2-pro"
   ],
   "username": "frob"
