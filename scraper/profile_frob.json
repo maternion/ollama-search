@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 2447,
+      "pulls": 2482,
       "sizes": [],
       "source_url": "https://ollama.com/frob/unlimited-ocr",
       "tag_count": 2,
@@ -98,7 +98,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1676,
+      "pulls": 1680,
       "sizes": [
         "753b"
       ],
@@ -192,7 +192,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/davidau-qwen3.6-uncensored",
-      "pulls": 862,
+      "pulls": 864,
       "sizes": [
         "40b"
       ],
@@ -214,7 +214,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/minimax-m2.7",
-      "pulls": 833,
+      "pulls": 834,
       "sizes": [
         "230b"
       ],
@@ -258,7 +258,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-4.7",
-      "pulls": 760,
+      "pulls": 761,
       "sizes": [
         "358b"
       ],
@@ -341,7 +341,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/nuextract-2.0",
-      "pulls": 612,
+      "pulls": 614,
       "sizes": [],
       "source_url": "https://ollama.com/frob/nuextract-2.0",
       "tag_count": 4,
@@ -383,7 +383,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 400,
+      "pulls": 401,
       "sizes": [],
       "source_url": "https://ollama.com/frob/deepseek-v4-flash",
       "tag_count": 2,
@@ -604,7 +604,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/hy3",
-      "pulls": 17,
+      "pulls": 18,
       "sizes": [],
       "source_url": "https://ollama.com/frob/hy3",
       "tag_count": 4,
@@ -664,9 +664,31 @@
       "tags": [],
       "updated": "8 months ago",
       "updated_title": "Nov 23, 2025 7:27 PM UTC"
+    },
+    {
+      "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "nex-n2-pro",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/nex-n2-pro",
+      "pulls": 0,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/nex-n2-pro",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "15 minutes ago",
+      "updated_title": "Jul 30, 2026 6:15 AM UTC"
     }
   ],
   "newest_order": [
+    "/frob/nex-n2-pro",
     "/frob/hy3",
     "/frob/deepseek-v4-flash",
     "/frob/unlimited-ocr",
@@ -732,7 +754,8 @@
     "/frob/hy3",
     "/frob/whyhow-ai_PatientSeek",
     "/frob/mixtao",
-    "/frob/NireeskshanAI_Niri"
+    "/frob/NireeskshanAI_Niri",
+    "/frob/nex-n2-pro"
   ],
   "username": "frob"
 }
