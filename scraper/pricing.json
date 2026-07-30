@@ -3,7 +3,10 @@
     {
       "name": "Free",
       "price": "$0",
+      "price_subtext": "",
       "description": "Get started with Ollama",
+      "image_url": "/public/Ollama_reading_free.png",
+      "badge": "",
       "button_url": "/download",
       "button_label": "Download",
       "button_paused": false,
@@ -16,12 +19,16 @@
         "CLI, API, and desktop apps",
         "40,000+ community integrations",
         "Unlimited public models"
-      ]
+      ],
+      "features_subtitle": ""
     },
     {
       "name": "Pro",
       "price": "$20 / mo",
+      "price_subtext": "or $200/yr billed <a href=\"/upgrade?plan=pro&amp;interval=year\" class=\"underline\">annually</a>",
       "description": "Solve harder tasks, faster",
+      "image_url": "/public/Ollama_reading.png",
+      "badge": "",
       "button_url": "/upgrade?plan=pro",
       "button_label": "Get Pro",
       "button_paused": false,
@@ -31,12 +38,16 @@
         "Run 3 cloud models at a time",
         "50x more cloud usage than Free",
         "Upload and share private models"
-      ]
+      ],
+      "features_subtitle": "Everything in Free, plus:"
     },
     {
       "name": "Max",
       "price": "$100 / mo",
+      "price_subtext": "",
       "description": "For your most demanding work",
+      "image_url": "/public/Ollama_reading_smart.png",
+      "badge": "",
       "button_url": "",
       "button_label": "New sign-ups paused",
       "button_paused": true,
@@ -44,12 +55,16 @@
       "features": [
         "Run 10 cloud models at a time",
         "5x more usage than Pro"
-      ]
+      ],
+      "features_subtitle": "Everything in Pro, plus:"
     },
     {
       "name": "Team",
       "price": "$25 / seat / mo",
+      "price_subtext": "5-seat minimum, usage included",
       "description": "Bring open models to your whole team.",
+      "image_url": "/public/Ollama_concurrency.png",
+      "badge": "Introductory pricing",
       "button_url": "",
       "button_label": "Coming soon",
       "button_paused": true,
@@ -60,12 +75,16 @@
         "Zero data retention and logging",
         "Shared billing and administration",
         "Priority support"
-      ]
+      ],
+      "features_subtitle": "What's included:"
     },
     {
       "name": "Enterprise",
       "price": "Custom",
+      "price_subtext": "Talk with our team about your needs",
       "description": "Custom terms and support for larger organizations.",
+      "image_url": "/public/ollama-business.png",
+      "badge": "",
       "button_url": "https://ollama.typeform.com/to/FFV2AVPu",
       "button_label": "Contact us",
       "button_paused": false,
@@ -74,7 +93,8 @@
         "Volume pricing and custom terms",
         "Security and procurement support",
         "Deployment planning with Ollama"
-      ]
+      ],
+      "features_subtitle": "Everything in Team, plus:"
     }
   ],
   "faq": [

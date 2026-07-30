@@ -4051,7 +4051,11 @@ def _pricing_linkify(html_frag: str) -> str:
 
 
 def build_pricing_page() -> None:
-    """Build the /pricing page from scraper/pricing.json."""
+    """Build the /pricing page from scraper/pricing.json.
+
+    Replicates ollama.com/pricing: tabbed layout (Individuals / Team & Enterprise),
+    tier cards with images, badges, price subtext, paused buttons, and FAQ.
+    """
     data_path = SCRAPER / "pricing.json"
     if not data_path.exists():
         print("  pricing: no data, skipping")
@@ -4063,13 +4067,9 @@ def build_pricing_page() -> None:
         print("  pricing: no tiers, skipping")
         return
 
-    # Tier cards. Free/Pro/Max share a 2-col layout; Team is full-width.
-    cards_html = []
-    for tier in tiers:
+    def _build_card(tier: dict, is_teams: bool) -> str:
         name = esc(tier.get("name", ""))
         price_raw = tier.get("price", "")
-        # ollama.com puts "<span>/ mo</span>" inside the price div; we scraped the
-        # text only, so "/ mo" becomes " / mo". Normalize "$20 / mo" -> "$20" + "/ mo".
         price_main = price_raw
         price_suffix = ""
         m = re.match(r"^(.*?)(?:\s*/\s*mo)?$", price_raw)
@@ -4077,18 +4077,22 @@ def build_pricing_page() -> None:
             price_main = m.group(1).strip()
             if "/ mo" in price_raw or "/mo" in price_raw:
                 price_suffix = " / mo"
-        if price_main:
-            suffix_span = (
-                f'<span class="text-base font-normal">{esc(price_suffix)}</span>'
-                if price_suffix
-                else ""
-            )
-            price_html = (
-                '<div class="text-2xl font-semibold font-rounded text-neutral-900 dark:text-neutral-100">'
-                f"{esc(price_main)}{suffix_span}</div>"
-            )
-        else:
-            price_html = '<div class="text-2xl font-semibold font-rounded text-neutral-600 dark:text-neutral-400">—</div>'
+        suffix_span = (
+            f'<span class="text-base font-normal">{esc(price_suffix)}</span>'
+            if price_suffix
+            else ""
+        )
+        price_html = (
+            f'<div class="text-2xl font-semibold font-rounded text-neutral-900 dark:text-neutral-100">{esc(price_main)}{suffix_span}</div>'
+            if price_main
+            else '<div class="text-2xl font-semibold font-rounded text-neutral-600 dark:text-neutral-400">—</div>'
+        )
+
+        price_subtext_raw = tier.get("price_subtext", "")
+        price_subtext_html = ""
+        if price_subtext_raw:
+            subtext = sanitize_readme_html(_pricing_linkify(price_subtext_raw))
+            price_subtext_html = f'<p class="text-xs text-neutral-600 dark:text-neutral-400">{subtext}</p>'
 
         desc = esc(tier.get("description", ""))
         desc_html = (
@@ -4096,9 +4100,22 @@ def build_pricing_page() -> None:
             if desc
             else ""
         )
+
+        image_url = tier.get("image_url", "")
+        img_html = ""
+        if image_url:
+            img_cls = "h-20" if is_teams else "h-16"
+            img_src = esc(_absolutize(image_url))
+            img_html = (
+                f'<img src="{img_src}" alt="Ollama" class="{img_cls} self-start mb-4">'
+            )
+
+        badge = esc(tier.get("badge", ""))
+        badge_html = ""
+        if badge:
+            badge_html = f'<span class="inline-flex items-center whitespace-nowrap rounded-full border border-neutral-200 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-900 px-2.5 py-1 text-xs font-medium text-neutral-600 dark:text-neutral-400">{badge}</span>'
+
         btn_url_raw = tier.get("button_url", "")
-        # The Free tier's "/download" button links to our internal download page;
-        # other relative ollama.com paths (e.g. /upgrade?plan=pro) stay external.
         if btn_url_raw == "/download":
             btn_url = esc(url("/download"))
         else:
@@ -4106,7 +4123,7 @@ def build_pricing_page() -> None:
         btn_label = esc(tier.get("button_label", ""))
         button_paused = tier.get("button_paused", False)
         notice_raw = tier.get("notice", "")
-        # Team uses a dark filled button; Free uses outline; Pro/Max use dark.
+
         if button_paused:
             btn_cls = (
                 "block w-full text-center border border-neutral-200 dark:border-neutral-800 "
@@ -4121,8 +4138,6 @@ def build_pricing_page() -> None:
             if notice_raw:
                 notice_html = sanitize_readme_html(_pricing_linkify(notice_raw))
                 btn_html += f'\n      <p class="text-xs text-neutral-500 dark:text-neutral-500 mb-6">{notice_html}</p>'
-            else:
-                btn_html += ""
         elif tier.get("name") == "Free":
             btn_cls = (
                 "block w-full text-center border border-neutral-300 dark:border-neutral-700 "
@@ -4154,28 +4169,51 @@ def build_pricing_page() -> None:
             f"        </li>"
             for f in features
         )
+        feats_subtitle = esc(tier.get("features_subtitle", ""))
+        feats_subtitle_html = (
+            f'<div class="text-sm font-medium mb-3 text-neutral-900 dark:text-neutral-100">{feats_subtitle}</div>'
+            if feats_subtitle
+            else ""
+        )
         feats_html = (
             f'<ul class="flex-1 space-y-3">\n{feat_items}\n      </ul>'
             if feat_items
             else ""
         )
 
-        # All tiers use the same 2-col card layout.
-        card = f"""    <div class="md:col-span-2 flex flex-col border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8">
-      <h2 class="text-3xl font-medium mb-2 text-neutral-900 dark:text-neutral-100">{name}</h2>
+        name_html = f'<h2 class="text-3xl font-medium mb-2 text-neutral-900 dark:text-neutral-100">{name}</h2>'
+        if badge_html:
+            name_html = f'<div class="flex items-center gap-3 mb-2"><h2 class="text-3xl font-medium text-neutral-900 dark:text-neutral-100">{name}</h2>{badge_html}</div>'
+
+        price_block = f'<div class="mb-3 min-h-[3rem]">{price_html}\n        {price_subtext_html}</div>'
+        if is_teams:
+            price_block = f'<div class="mb-5 min-h-[3rem]">{price_html}\n        {price_subtext_html}</div>'
+
+        card_cls = (
+            "md:col-span-2 flex flex-col border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8"
+            if not is_teams
+            else "flex flex-col border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8"
+        )
+        return f"""    <div class="{card_cls}">
+      {img_html}
+      {name_html}
       {desc_html}
-      <div class="mb-3 min-h-[3rem]">
-        {price_html}
-      </div>
+      {price_block}
       {btn_html}
+      {feats_subtitle_html}
       {feats_html}
     </div>"""
-        cards_html.append(card)
 
-    cards_section = "\n".join(cards_html)
+    # Split tiers into individuals (Free/Pro/Max) and teams (Team/Enterprise).
+    individuals = [t for t in tiers if t.get("name") in ("Free", "Pro", "Max")]
+    teams = [t for t in tiers if t.get("name") in ("Team", "Enterprise")]
+
+    individuals_cards = "\n".join(_build_card(t, False) for t in individuals)
+    teams_cards = "\n".join(_build_card(t, True) for t in teams)
 
     # FAQ groups.
     faq_groups = []
+    faq_groups_teams = []
     for grp in faq:
         gname = esc(grp.get("group", ""))
         items = grp.get("items", [])
@@ -4186,43 +4224,127 @@ def build_pricing_page() -> None:
             a_html = _pricing_linkify(a_raw) if a_raw else ""
             item_html.append(
                 f"""        <li>
-          <h4 class="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">{q}</h4>
-          <div class="text-sm text-neutral-700 dark:text-neutral-300">{a_html}</div>
-        </li>"""
+           <h4 class="text-base font-semibold mb-1 text-neutral-900 dark:text-neutral-100">{q}</h4>
+           <div class="text-sm text-neutral-700 dark:text-neutral-300">{a_html}</div>
+         </li>"""
             )
         items_block = "\n".join(item_html)
-        faq_groups.append(
-            f"""    <div>
+        block = f"""    <div>
       <h3 class="text-xl font-semibold font-rounded mb-4 text-neutral-900 dark:text-neutral-100">{gname}</h3>
       <ul class="space-y-5">
 {items_block}
       </ul>
     </div>"""
-        )
+        faq_groups.append(block)
+        # Team FAQ group goes in the teams section
+        if gname == "Team":
+            faq_groups_teams.append(block)
     faq_html = "\n".join(faq_groups)
+    faq_teams_html = "\n".join(faq_groups_teams)
+
+    # Tab switcher JS (inline, matches ollama.com)
+    tab_js = """  <script>
+    (function () {
+      var buttons = Array.from(document.querySelectorAll("[data-pricing-tab]"));
+      var panels = {
+        individuals: document.getElementById("pricing-individuals"),
+        teams: document.getElementById("pricing-teams"),
+      };
+      var teamsFAQ = document.getElementById("pricing-teams-faq");
+      var faqMain = document.getElementById("pricing-faq");
+      var activeClasses = ["border-neutral-800", "bg-neutral-800", "text-white"];
+      var inactiveClasses = ["border-transparent", "text-neutral-700", "dark:text-neutral-300", "hover:bg-white", "dark:hover:bg-neutral-900"];
+
+      function selectPricingTab(name, updateHash) {
+        buttons.forEach(function (button) {
+          var active = button.dataset.pricingTab === name;
+          button.setAttribute("aria-selected", active ? "true" : "false");
+          button.tabIndex = active ? 0 : -1;
+          activeClasses.forEach(function (className) {
+            button.classList.toggle(className, active);
+          });
+          inactiveClasses.forEach(function (className) {
+            button.classList.toggle(className, !active);
+          });
+        });
+        Object.keys(panels).forEach(function (panelName) {
+          panels[panelName].hidden = panelName !== name;
+        });
+        if (teamsFAQ) teamsFAQ.hidden = name !== "teams";
+        if (faqMain) faqMain.hidden = name === "teams";
+        if (updateHash) {
+          history.replaceState(null, "", name === "teams" ? "#teams" : "#individuals");
+        }
+      }
+
+      buttons.forEach(function (button, index) {
+        button.addEventListener("click", function () {
+          selectPricingTab(button.dataset.pricingTab, true);
+        });
+        button.addEventListener("keydown", function (event) {
+          var nextIndex = index;
+          if (event.key === "ArrowRight") nextIndex = (index + 1) % buttons.length;
+          if (event.key === "ArrowLeft") nextIndex = (index - 1 + buttons.length) % buttons.length;
+          if (event.key === "Home") nextIndex = 0;
+          if (event.key === "End") nextIndex = buttons.length - 1;
+          if (nextIndex === index) return;
+          event.preventDefault();
+          buttons[nextIndex].focus();
+          selectPricingTab(buttons[nextIndex].dataset.pricingTab, true);
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        selectPricingTab(window.location.hash === "#teams" ? "teams" : "individuals", false);
+      });
+    })();
+  </script>"""
 
     page = f"""<!DOCTYPE html>
 <html lang="en" class="">
 <head>
-{head_html("Pricing", "Ollama pricing plans — Free, Pro, Max, and Team.")}
+{head_html("Pricing", "Ollama pricing plans — Free, Pro, Max, Team, and Enterprise.")}
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 {nav_html("")}
 <main class="mx-auto flex w-full max-w-6xl flex-col px-6 py-12 md:py-20">
-  <section class="text-center mb-12">
+  <section class="text-center mb-8">
     <h1 class="text-4xl md:text-5xl font-semibold font-rounded tracking-tight mb-4 text-neutral-900 dark:text-neutral-100">Pricing</h1>
   </section>
 
-  <section class="grid grid-cols-1 md:grid-cols-6 gap-4 mb-12">
-{cards_section}
+  <div class="mb-10 flex justify-center" role="tablist" aria-label="Pricing for">
+    <div class="inline-flex gap-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 p-1">
+      <button type="button" id="pricing-individuals-tab" role="tab" aria-selected="true" aria-controls="pricing-individuals" data-pricing-tab="individuals" class="rounded-full border border-neutral-800 bg-neutral-800 px-5 py-2 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2">Individuals</button>
+      <button type="button" id="pricing-teams-tab" role="tab" aria-selected="false" aria-controls="pricing-teams" data-pricing-tab="teams" tabindex="-1" class="rounded-full border border-transparent px-5 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:bg-white dark:hover:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2">Team &amp; Enterprise</button>
+    </div>
+  </div>
+
+  <section id="pricing-individuals" role="tabpanel" aria-labelledby="pricing-individuals-tab" tabindex="0" class="mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
+{individuals_cards}
+    </div>
   </section>
 
-  <section class="flex flex-col w-full max-w-xl mx-auto mt-8">
+  <section id="pricing-teams" role="tabpanel" aria-labelledby="pricing-teams-tab" tabindex="0" class="mb-12" hidden>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+{teams_cards}
+    </div>
+  </section>
+
+{tab_js}
+
+  <section id="pricing-faq" class="flex flex-col w-full max-w-xl mx-auto mt-8">
     <h2 class="text-2xl font-semibold font-rounded mb-6 text-neutral-900 dark:text-neutral-100">Frequently asked questions</h2>
     <div class="space-y-10">
 {faq_html}
     </div>
   </section>
+
+  <div id="pricing-teams-faq" hidden>
+    <div class="space-y-10">
+{faq_teams_html}
+    </div>
+  </div>
 </main>
 {footer_html()}
 {theme_script()}
