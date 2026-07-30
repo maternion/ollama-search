@@ -22,7 +22,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gemma-4-abliterated",
-      "pulls": 770700,
+      "pulls": 771200,
       "sizes": [
         "e2b",
         "e4b",
@@ -76,7 +76,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3.5-abliterated",
-      "pulls": 460000,
+      "pulls": 460100,
       "sizes": [
         "0.8b",
         "2b",
@@ -128,7 +128,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3.6-abliterated",
-      "pulls": 270700,
+      "pulls": 270800,
       "sizes": [
         "27b",
         "35b"
@@ -171,7 +171,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-abliterated",
-      "pulls": 221000,
+      "pulls": 221100,
       "sizes": [
         "0.6b",
         "1.7b",
@@ -202,7 +202,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-vl-abliterated",
-      "pulls": 101000,
+      "pulls": 101100,
       "sizes": [
         "2b",
         "4b",
@@ -300,7 +300,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-abliterated",
-      "pulls": 46800,
+      "pulls": 46900,
       "sizes": [
         "8b"
       ],
@@ -407,7 +407,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-coder-abliterate",
-      "pulls": 31000,
+      "pulls": 31100,
       "sizes": [
         "0.5b",
         "1.5b",
@@ -603,7 +603,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/baronllm-abliterated",
-      "pulls": 9599,
+      "pulls": 9603,
       "sizes": [
         "8b"
       ],
@@ -622,7 +622,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-r1-abliterated",
-      "pulls": 8578,
+      "pulls": 8580,
       "sizes": [
         "24b"
       ],
@@ -641,7 +641,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/hunyuan-mt-abliterated",
-      "pulls": 8476,
+      "pulls": 8477,
       "sizes": [
         "7b"
       ],
@@ -662,7 +662,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-coder-next-abliterated",
-      "pulls": 7482,
+      "pulls": 7485,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/qwen3-coder-next-abliterated",
       "tag_count": 4,
@@ -699,7 +699,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.2-vision-abliterated",
-      "pulls": 7110,
+      "pulls": 7111,
       "sizes": [
         "2b"
       ],
@@ -741,7 +741,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/magistral-abliterated",
-      "pulls": 6824,
+      "pulls": 6825,
       "sizes": [
         "24b"
       ],
@@ -804,7 +804,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite4.1-abliterated",
-      "pulls": 5245,
+      "pulls": 5249,
       "sizes": [
         "3b",
         "8b",
@@ -836,6 +836,25 @@
       "updated_title": "Feb 19, 2025 2:36 AM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "A strong Mixture-of-Experts (MoE) language model with 671B total parameters with 37B activated for each token.",
+      "name": "deepseek-v3-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/deepseek-v3-abliterated",
+      "pulls": 4035,
+      "sizes": [
+        "671b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/deepseek-v3-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Apr 5, 2025 9:37 PM UTC"
+    },
+    {
       "capabilities": [
         "tools"
       ],
@@ -857,25 +876,6 @@
       "updated_title": "May 28, 2025 10:57 AM UTC"
     },
     {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "A strong Mixture-of-Experts (MoE) language model with 671B total parameters with 37B activated for each token.",
-      "name": "deepseek-v3-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/deepseek-v3-abliterated",
-      "pulls": 4034,
-      "sizes": [
-        "671b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/deepseek-v3-abliterated",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "Apr 5, 2025 9:37 PM UTC"
-    },
-    {
       "capabilities": [
         "tools"
       ],
@@ -886,7 +886,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/lfm2.5-abliterated",
-      "pulls": 3782,
+      "pulls": 3793,
       "sizes": [
         "1.2b"
       ],
@@ -905,7 +905,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/foundation-sec-abliterated",
-      "pulls": 3571,
+      "pulls": 3572,
       "sizes": [
         "8b"
       ],
@@ -926,7 +926,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
-      "pulls": 3493,
+      "pulls": 3494,
       "sizes": [
         "3b"
       ],
@@ -988,7 +988,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/homunculus-abliterated",
-      "pulls": 3221,
+      "pulls": 3222,
       "sizes": [
         "12b"
       ],
@@ -1815,7 +1815,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3-Coder",
-      "pulls": 801,
+      "pulls": 804,
       "sizes": [
         "480b"
       ],
@@ -2277,8 +2277,8 @@
     "/huihui_ai/qwen3-next-abliterated",
     "/huihui_ai/granite4.1-abliterated",
     "/huihui_ai/deephermes3-abliterated",
-    "/huihui_ai/devstral-abliterated",
     "/huihui_ai/deepseek-v3-abliterated",
+    "/huihui_ai/devstral-abliterated",
     "/huihui_ai/lfm2.5-abliterated",
     "/huihui_ai/foundation-sec-abliterated",
     "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
