@@ -4160,24 +4160,8 @@ def build_pricing_page() -> None:
             else ""
         )
 
-        # Layout: Team spans full width (col-span-6 / md:col-span-6); others span 2.
-        is_team = tier.get("name") == "Team"
-        if is_team:
-            card = f"""    <div class="md:col-span-6 flex flex-col gap-8 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 md:flex-row md:items-start">
-      <div class="flex flex-col md:w-1/3">
-        <div class="flex items-center gap-3 mb-2">
-          <h2 class="text-3xl font-medium text-neutral-900 dark:text-neutral-100">{name}</h2>
-          <span class="inline-flex items-center whitespace-nowrap rounded-full border border-neutral-200 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-900 px-2.5 py-1 text-xs font-medium text-neutral-600 dark:text-neutral-400">Coming soon</span>
-        </div>
-        {desc_html}
-        {btn_html}
-      </div>
-      <div class="flex-1 border-t border-neutral-200 dark:border-neutral-800 pt-6 md:border-l md:border-t-0 md:pl-8 md:pt-0">
-        {feats_html}
-      </div>
-    </div>"""
-        else:
-            card = f"""    <div class="md:col-span-2 flex flex-col border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8">
+        # All tiers use the same 2-col card layout.
+        card = f"""    <div class="md:col-span-2 flex flex-col border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8">
       <h2 class="text-3xl font-medium mb-2 text-neutral-900 dark:text-neutral-100">{name}</h2>
       {desc_html}
       <div class="mb-3 min-h-[3rem]">
