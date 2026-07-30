@@ -2528,23 +2528,34 @@ def _parse_pricing_faq(html_text: str) -> list:
 
 
 def scrape_pricing_page(client: Client) -> dict:
-    """Fetch /pricing and parse the four tier cards + FAQ groups."""
+    """Fetch /pricing and parse the tier cards + FAQ groups.
+
+    ollama.com now has two tab sections: pricing-individuals (Free/Pro/Max)
+    and pricing-teams (Team/Enterprise). Each has a grid of tier cards.
+    """
     html_text = client.get(f"{BASE}/pricing")
     if not html_text:
         log.warning("pricing page: no html")
         return {"tiers": [], "faq": []}
 
-    # Isolate the tier card grid section.
-    grid_start = html_text.find('<section class="grid grid-cols-1 md:grid-cols-6')
     tiers = []
-    if grid_start >= 0:
-        grid_end = html_text.find("</section>", grid_start)
-        grid = html_text[grid_start:grid_end]
-        # Each card is a top-level <div class="md:col-span-..."> within the grid.
-        # Split on the card divs by finding each card opening.
+    # Parse both the individuals and teams sections.
+    for sec_id in ("pricing-individuals", "pricing-teams"):
+        sec_start = html_text.find(f'id="{sec_id}"')
+        if sec_start < 0:
+            continue
+        # Back up to the <section tag
+        sec_start = html_text.rfind("<section", 0, sec_start)
+        sec_end = html_text.find("</section>", sec_start)
+        grid = html_text[sec_start:sec_end]
+        # Each card is a top-level <div> with rounded-3xl inside the grid.
+        # Individuals: md:col-span-2, Teams: flex flex-col.
         card_starts = [
             mm.start()
-            for mm in re.finditer(r'<div class="md:col-span-(?:2|6)[^"]*"\s*>', grid)
+            for mm in re.finditer(
+                r'<div class="(?:md:col-span-(?:2|6)|flex flex-col) [^"]*rounded-3xl',
+                grid,
+            )
         ]
         for i, cs in enumerate(card_starts):
             ce = card_starts[i + 1] if i + 1 < len(card_starts) else len(grid)
