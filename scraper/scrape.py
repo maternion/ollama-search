@@ -2411,16 +2411,24 @@ def scrape_download_page(client: Client) -> dict:
 
 
 # Pricing card: the tier name (h2), description (p), price block, button, features (ul>li>span).
-_TIER_RE = re.compile(
-    r'<div class="md:col-span-(?:2|6)[^"]*"\s*>.*?</div>\s*</div>\s*</div>',
-    re.DOTALL,
-)
 _PRICE_RE = re.compile(
     r'<div class="text-2xl font-semibold font-rounded">(.*?)</div>', re.DOTALL
 )
 _TIER_NAME_RE = re.compile(r"<h2[^>]*>(.*?)</h2>", re.DOTALL)
 _TIER_DESC_RE = re.compile(
     r'<p class="(?:text-black )?mb-(?:4|6)">(.*?)</p>', re.DOTALL
+)
+_TIER_IMG_RE = re.compile(
+    r'<img\s+src="([^"]+)"[^>]*class="[^"]*self-start[^"]*"', re.DOTALL
+)
+# Price subtext: <p class="text-xs text-neutral-600"> below the price block
+_TIER_PRICESUB_RE = re.compile(
+    r'<p class="text-xs text-neutral-600[^"]*">\s*(.*?)\s*</p>', re.DOTALL
+)
+# Badge: <span class="... rounded-full ... text-xs font-medium ...">Introductory pricing</span>
+_TIER_BADGE_RE = re.compile(
+    r'<span class="inline-flex[^"]*rounded-full[^"]*text-xs[^"]*">(.*?)</span>',
+    re.DOTALL,
 )
 _TIER_BTN_RE = re.compile(
     r'<a href="([^"]+)"[^>]*class="block w-full[^"]*rounded-full[^"]*"[^>]*>\s*(.*?)\s*</a>',
@@ -2437,6 +2445,10 @@ _TIER_NOTICE_RE = re.compile(
     re.DOTALL,
 )
 _FEAT_RE = re.compile(r"<span>(.*?)</span>", re.DOTALL)
+# Features subtitle: "Everything in Free, plus:" / "What's included:" / "Coming soon:"
+_FEAT_SUBTITLE_RE = re.compile(
+    r'<div class="text-sm font-medium[^"]*">(.*?)</div>', re.DOTALL
+)
 
 
 def _parse_pricing_card(card_html: str) -> dict:
@@ -2450,10 +2462,25 @@ def _parse_pricing_card(card_html: str) -> dict:
     if m:
         desc = _strip_tags(m.group(1))
 
+    image_url = ""
+    m = _TIER_IMG_RE.search(card_html)
+    if m:
+        image_url = m.group(1).strip()
+
     price = ""
     m = _PRICE_RE.search(card_html)
     if m:
         price = _strip_tags(m.group(1))
+
+    price_subtext = ""
+    m = _TIER_PRICESUB_RE.search(card_html)
+    if m:
+        price_subtext = m.group(1).strip()
+
+    badge = ""
+    m = _TIER_BADGE_RE.search(card_html)
+    if m:
+        badge = _strip_tags(m.group(1))
 
     button_url = ""
     button_label = ""
@@ -2477,15 +2504,24 @@ def _parse_pricing_card(card_html: str) -> dict:
     features = [
         fe for fe in (_strip_tags(x) for x in _FEAT_RE.findall(card_html)) if fe
     ]
+    features_subtitle = ""
+    m = _FEAT_SUBTITLE_RE.search(card_html)
+    if m:
+        features_subtitle = _strip_tags(m.group(1))
+
     return {
         "name": name,
         "price": price,
+        "price_subtext": price_subtext,
         "description": desc,
+        "image_url": image_url,
+        "badge": badge,
         "button_url": button_url,
         "button_label": button_label,
         "button_paused": button_paused,
         "notice": notice,
         "features": features,
+        "features_subtitle": features_subtitle,
     }
 
 
