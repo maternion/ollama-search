@@ -617,6 +617,18 @@ def theme_script_head() -> str:
 </script>"""
 
 
+def pricing_tab_script_head() -> str:
+    """Inline script for <head> on the pricing page — sets html.tab-* class from
+    location.hash BEFORE the body parses, so CSS can show the correct panel
+    immediately (no FOUC). Mirrors the dark-mode theme script pattern."""
+    return """<script>
+(function() {
+  var h = window.location.hash;
+  document.documentElement.classList.add(h === '#teams' ? 'tab-teams' : 'tab-individuals');
+})();
+</script>"""
+
+
 def theme_script() -> str:
     """Toggle handler — placed at end of body."""
     return r"""<script>
@@ -2728,7 +2740,27 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 .dark select option { background-color: #0a0a0a; color: #e5e5e5; }
 .dark .dark\:text-gray-600 { color: #a3a3a3; }
 .dark .dark\:hover\:bg-white\/5:hover { background-color: rgba(255,255,255,0.05); }
-.dark .dark\:focus\:bg-white\/5:focus { background-color: rgba(255,255,255,0.05); }
+ .dark .dark\:focus\:bg-white\/5:focus { background-color: rgba(255,255,255,0.05); }
+
+/* Pricing tier images: invert in dark mode (they're black line art on white) */
+.dark img.pricing-tier-img { filter: invert(1); }
+/* Pricing price block: fixed min height (min-h-[3rem] not in vendored tailwind) */
+.min-h-\[3rem\] { min-height: 3rem; }
+/* Pricing: mb-5 not in vendored tailwind.css (teams card price block gap) */
+.mb-5 { margin-bottom: 1.25rem; }
+/* Pricing tabs: hide panels based on html.tab-* class set by head script (FOUC fix).
+   When neither class is present (JS disabled), both panels show — graceful fallback. */
+html:not(.tab-teams):not(.tab-individuals) #pricing-individuals,
+html:not(.tab-teams):not(.tab-individuals) #pricing-teams { display: block; }
+html.tab-individuals #pricing-individuals { display: block; }
+html.tab-individuals #pricing-teams { display: none; }
+html.tab-teams #pricing-individuals { display: none; }
+html.tab-teams #pricing-teams { display: block; }
+/* When tab-teams is set, show teams FAQ and hide main FAQ; vice versa for tab-individuals.
+   Default (no class): show main FAQ, hide teams FAQ (matches individuals default). */
+html.tab-teams #pricing-faq { display: none; }
+html.tab-teams #pricing-teams-faq { display: block; }
+html:not(.tab-teams) #pricing-teams-faq { display: none; }
 
 /* Force-hide native select arrow (appearance-none not enough on some browsers) */
 #cloud-filter {
@@ -4070,29 +4102,30 @@ def build_pricing_page() -> None:
     def _build_card(tier: dict, is_teams: bool) -> str:
         name = esc(tier.get("name", ""))
         price_raw = tier.get("price", "")
-        price_main = price_raw
-        price_suffix = ""
-        m = re.match(r"^(.*?)(?:\s*/\s*mo)?$", price_raw)
-        if m:
-            price_main = m.group(1).strip()
-            if "/ mo" in price_raw or "/mo" in price_raw:
-                price_suffix = " / mo"
-        suffix_span = (
-            f'<span class="text-base font-normal">{esc(price_suffix)}</span>'
-            if price_suffix
-            else ""
-        )
-        price_html = (
-            f'<div class="text-2xl font-semibold font-rounded text-neutral-900 dark:text-neutral-100">{esc(price_main)}{suffix_span}</div>'
-            if price_main
-            else '<div class="text-2xl font-semibold font-rounded text-neutral-600 dark:text-neutral-400">—</div>'
-        )
+        # Wrap the suffix (everything after the first space following a $price)
+        # in a smaller span. e.g. "$25 / seat / mo" -> "$25" + " / seat / mo"
+        price_html = ""
+        if price_raw:
+            suffix_m = re.match(r"^(\$\d+(?:\.\d+)?)(.*)$", price_raw)
+            if suffix_m:
+                price_main = suffix_m.group(1)
+                price_suffix = suffix_m.group(2).strip()
+                suffix_span = (
+                    f' <span class="text-base font-normal">{esc(price_suffix)}</span>'
+                    if price_suffix
+                    else ""
+                )
+                price_html = f'<div class="text-2xl font-semibold font-rounded text-neutral-900 dark:text-neutral-100">{esc(price_main)}{suffix_span}</div>'
+            else:
+                price_html = f'<div class="text-2xl font-semibold font-rounded text-neutral-900 dark:text-neutral-100">{esc(price_raw)}</div>'
+        else:
+            price_html = '<div class="text-2xl font-semibold font-rounded text-neutral-600 dark:text-neutral-400">—</div>'
 
         price_subtext_raw = tier.get("price_subtext", "")
         price_subtext_html = ""
         if price_subtext_raw:
             subtext = sanitize_readme_html(_pricing_linkify(price_subtext_raw))
-            price_subtext_html = f'<p class="text-xs text-neutral-600 dark:text-neutral-400">{subtext}</p>'
+            price_subtext_html = f'<p class="text-xs text-neutral-600 dark:text-neutral-400 m-0">{subtext}</p>'
 
         desc = esc(tier.get("description", ""))
         desc_html = (
@@ -4104,7 +4137,7 @@ def build_pricing_page() -> None:
         image_url = tier.get("image_url", "")
         img_html = ""
         if image_url:
-            img_cls = "h-20" if is_teams else "h-16"
+            img_cls = "h-20 pricing-tier-img" if is_teams else "h-16 pricing-tier-img"
             img_src = esc(_absolutize(image_url))
             img_html = (
                 f'<img src="{img_src}" alt="Ollama" class="{img_cls} self-start mb-4">'
@@ -4125,10 +4158,11 @@ def build_pricing_page() -> None:
         notice_raw = tier.get("notice", "")
 
         if button_paused:
+            btn_mb = "mb-2" if notice_raw else "mb-6"
             btn_cls = (
-                "block w-full text-center border border-neutral-200 dark:border-neutral-800 "
-                "bg-neutral-100 dark:bg-neutral-900 text-neutral-500 dark:text-neutral-500 "
-                "font-medium py-2 px-6 rounded-full mb-2 cursor-not-allowed"
+                f"block w-full text-center border border-neutral-200 dark:border-neutral-800 "
+                f"bg-neutral-100 dark:bg-neutral-900 text-neutral-500 dark:text-neutral-500 "
+                f"font-medium py-2 px-6 rounded-full {btn_mb} cursor-not-allowed"
             )
             btn_html = (
                 f'<div class="{btn_cls}" aria-disabled="true">{btn_label}</div>'
@@ -4138,7 +4172,7 @@ def build_pricing_page() -> None:
             if notice_raw:
                 notice_html = sanitize_readme_html(_pricing_linkify(notice_raw))
                 btn_html += f'\n      <p class="text-xs text-neutral-500 dark:text-neutral-500 mb-6">{notice_html}</p>'
-        elif tier.get("name") == "Free":
+        elif tier.get("name") in ("Free", "Enterprise"):
             btn_cls = (
                 "block w-full text-center border border-neutral-300 dark:border-neutral-700 "
                 "hover:bg-neutral-50 dark:hover:bg-neutral-900 text-black dark:text-neutral-100 "
@@ -4176,10 +4210,20 @@ def build_pricing_page() -> None:
             else ""
         )
         feats_html = (
-            f'<ul class="flex-1 space-y-3">\n{feat_items}\n      </ul>'
-            if feat_items
-            else ""
+            f'<ul class="space-y-3">\n{feat_items}\n      </ul>' if feat_items else ""
         )
+
+        # Coming soon features (Team card: plain text items, no check icons)
+        cs_features = tier.get("coming_soon_features", [])
+        if cs_features:
+            cs_items = "\n".join(
+                f'        <li class="text-sm text-neutral-600 dark:text-neutral-400">{esc(f)}</li>'
+                for f in cs_features
+            )
+            feats_html += (
+                f'\n      <div class="text-sm font-medium mt-6 mb-3 text-neutral-900 dark:text-neutral-100">Coming soon:</div>\n'
+                f'      <ul class="space-y-3">\n{cs_items}\n      </ul>'
+            )
 
         name_html = f'<h2 class="text-3xl font-medium mb-2 text-neutral-900 dark:text-neutral-100">{name}</h2>'
         if badge_html:
@@ -4272,6 +4316,10 @@ def build_pricing_page() -> None:
         });
         if (teamsFAQ) teamsFAQ.hidden = name !== "teams";
         if (faqMain) faqMain.hidden = name === "teams";
+        // Sync html.tab-* class so CSS visibility rules stay in sync on click
+        var htmlEl = document.documentElement;
+        htmlEl.classList.toggle("tab-teams", name === "teams");
+        htmlEl.classList.toggle("tab-individuals", name !== "teams");
         if (updateHash) {
           history.replaceState(null, "", name === "teams" ? "#teams" : "#individuals");
         }
@@ -4294,9 +4342,8 @@ def build_pricing_page() -> None:
         });
       });
 
-      document.addEventListener("DOMContentLoaded", function () {
-        selectPricingTab(window.location.hash === "#teams" ? "teams" : "individuals", false);
-      });
+      // Run immediately (before paint) to avoid FOUC
+      selectPricingTab(window.location.hash === "#teams" ? "teams" : "individuals", false);
     })();
   </script>"""
 
@@ -4304,6 +4351,7 @@ def build_pricing_page() -> None:
 <html lang="en" class="">
 <head>
 {head_html("Pricing", "Ollama pricing plans — Free, Pro, Max, Team, and Enterprise.")}
+    {pricing_tab_script_head()}
 </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 {nav_html("")}
@@ -4314,8 +4362,8 @@ def build_pricing_page() -> None:
 
   <div class="mb-10 flex justify-center" role="tablist" aria-label="Pricing for">
     <div class="inline-flex gap-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 p-1">
-      <button type="button" id="pricing-individuals-tab" role="tab" aria-selected="true" aria-controls="pricing-individuals" data-pricing-tab="individuals" class="rounded-full border border-neutral-800 bg-neutral-800 px-5 py-2 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2">Individuals</button>
-      <button type="button" id="pricing-teams-tab" role="tab" aria-selected="false" aria-controls="pricing-teams" data-pricing-tab="teams" tabindex="-1" class="rounded-full border border-transparent px-5 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:bg-white dark:hover:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2">Team &amp; Enterprise</button>
+      <button type="button" id="pricing-individuals-tab" role="tab" aria-selected="true" aria-controls="pricing-individuals" data-pricing-tab="individuals" class="rounded-full border border-neutral-800 bg-neutral-800 px-5 py-2 text-sm font-medium text-white focus:outline-none">Individuals</button>
+      <button type="button" id="pricing-teams-tab" role="tab" aria-selected="false" aria-controls="pricing-teams" data-pricing-tab="teams" tabindex="-1" class="rounded-full border border-transparent px-5 py-2 text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:bg-white dark:hover:bg-neutral-900 focus:outline-none">Team &amp; Enterprise</button>
     </div>
   </div>
 

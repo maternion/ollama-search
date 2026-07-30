@@ -2509,6 +2509,17 @@ def _parse_pricing_card(card_html: str) -> dict:
     if m:
         features_subtitle = _strip_tags(m.group(1))
 
+    # Coming soon features (Team card): second <ul> with plain text items
+    coming_soon = []
+    ul_blocks = re.findall(r'<ul class="space-y-3">(.*?)</ul>', card_html, re.DOTALL)
+    if len(ul_blocks) >= 2:
+        for li_m in re.finditer(
+            r'<li class="text-sm text-neutral-600[^"]*">(.*?)</li>',
+            ul_blocks[1],
+            re.DOTALL,
+        ):
+            coming_soon.append(_strip_tags(li_m.group(1)))
+
     return {
         "name": name,
         "price": price,
@@ -2522,6 +2533,7 @@ def _parse_pricing_card(card_html: str) -> dict:
         "notice": notice,
         "features": features,
         "features_subtitle": features_subtitle,
+        "coming_soon_features": coming_soon,
     }
 
 
