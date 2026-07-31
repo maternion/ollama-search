@@ -1869,10 +1869,15 @@ def build_detail(m: dict, tags: list[dict]) -> None:
     slug_dir = PUBLIC / path.strip("/")
     slug_dir.mkdir(parents=True, exist_ok=True)
 
-    full_name = m["name"]
+    # Use just the model name for /library/ models; include namespace for /x/ and profile models
+    path = m["path"]
+    if path.startswith("/library/"):
+        full_name = m["name"]
+    else:
+        full_name = path.strip("/")
     # For cloud-only models, use the :cloud tag in CLI commands
     if m.get("cloud_only"):
-        full_name = f"{m['name']}:cloud"
+        full_name = f"{full_name}:cloud"
     header = _header_section(m)
     usage = _usage_section(full_name)
     models_section = _detail_models_section(m, tags)
@@ -2216,7 +2221,11 @@ def build_tag_page(m: dict, tag: dict, tp: dict | None) -> None:
     desc = m["description"]
     path = m["path"]
     model_name = path.strip("/").split("/")[-1]
-    full_name = f"{m['name']}:{tag_name}"
+    # Use just the model name for /library/ models; include namespace for /x/ and profile models
+    if path.startswith("/library/"):
+        full_name = f"{m['name']}:{tag_name}"
+    else:
+        full_name = f"{path.strip('/')}:{tag_name}"
     # Output dir: public/library/gemma4:latest/  (colon attached to model name,
     # matching ollama.com's URL scheme — no / before the colon).
     tag_dir = PUBLIC / (path.strip("/") + f":{tag_name}")
