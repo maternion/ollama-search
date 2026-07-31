@@ -2142,6 +2142,26 @@ def save_new_models(models: dict[str, Model]) -> None:
             pass
     current_paths = {m.path for m in models.values()}
     new_paths = sorted(current_paths - prev_paths)
+    if not new_paths:
+        # Fallback: no new models this run (e.g. a model was scraped before
+        # the badge feature shipped, so it's already in the previous
+        # models.json and the diff is empty). Badge the most recently added
+        # model instead, determined by the newest sort order (rank 0).
+        sort_orders_file = DATA / "sort_orders.json"
+        if sort_orders_file.exists():
+            try:
+                sort_data = json.loads(sort_orders_file.read_text())
+                newest_order = sort_data.get("newest", [])
+                if newest_order:
+                    newest_path = newest_order[0]
+                    if newest_path in current_paths:
+                        new_paths = [newest_path]
+                        log.info(
+                            "no new models this run; falling back to newest model: %s",
+                            newest_path,
+                        )
+            except Exception:
+                pass
     out = {"count": len(new_paths), "paths": new_paths}
     _atomic_write(fp, json.dumps(out, indent=2, sort_keys=True, ensure_ascii=False))
     if new_paths:
