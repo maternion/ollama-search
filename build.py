@@ -803,12 +803,12 @@ def _has_moe(model_path: str, tags: list[dict] | None = None) -> bool:
 
 
 def _classify_template(model_path: str) -> str:
-    """Classify template type: go, jinja, renderer, or base.
+    """Classify template type: base, renderer, or jinja.
 
-    - go: has a template blob with real Go template content
+    - base: has a template blob with real Go template content
     - renderer: no template blob, or template is trivial ({{ .Prompt }})
     - jinja: no template blob but has a system blob (embedded Jinja)
-    - base: no template, no system (embed/text/code models)
+    - base (no template/system): embed/text/code models
     """
     slug = model_path.strip("/").replace("/", "__")
     tp_file = TAG_PAGES_DIR / f"{slug}__latest.json"
@@ -820,7 +820,7 @@ def _classify_template(model_path: str) -> str:
         content = _template_blob_content(model_path)
         if content is not None and len(content.strip()) <= 20:
             return "renderer"
-        return "go"
+        return "base"
     if "system" in types:
         return "jinja"
     # No template, no system — check arch for renderer
@@ -1123,8 +1123,8 @@ def build_index(models: list[dict], ranks: dict) -> None:
                   <label for="tpl-all" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">All</label>
                 </div>
                 <div class="relative inline-block">
-                  <input type="radio" name="tpl-filter" value="go" id="tpl-go" class="tpl-radio peer sr-only">
-                  <label for="tpl-go" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">Go Template</label>
+                  <input type="radio" name="tpl-filter" value="base" id="tpl-base" class="tpl-radio peer sr-only">
+                  <label for="tpl-base" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">Base Template</label>
                 </div>
                 <div class="relative inline-block">
                   <input type="radio" name="tpl-filter" value="renderer" id="tpl-renderer" class="tpl-radio peer sr-only">
@@ -3035,6 +3035,83 @@ function getSizeMax() {
   return el ? parseInt(el.value) : 500;
 }
 
+function filtersToParams() {
+  var p = new URLSearchParams();
+  var q = getQuery();
+  if (q) p.set('q', q);
+  getSelectedCaps().forEach(function(c) { p.append('c', c); });
+  var o = getSort();
+  if (o && o !== 'popular') p.set('o', o);
+  var cloud = getCloudFilter();
+  if (cloud && cloud !== 'all') p.set('cloud', cloud);
+  var smin = getSizeMin(), smax = getSizeMax();
+  if (smin !== 0) p.set('smin', String(smin));
+  if (smax !== 500) p.set('smax', String(smax));
+  var ma = document.getElementById('more-audio');
+  if (ma && ma.checked) p.set('audio', '1');
+  var ml = document.getElementById('more-mlx');
+  if (ml && ml.checked) p.set('mlx', '1');
+  var mt = document.getElementById('more-mtp');
+  if (mt && mt.checked) p.set('mtp', '1');
+  var mi = document.getElementById('more-image');
+  if (mi && mi.checked) p.set('image', '1');
+  var moe = document.querySelector('input[name="moe-filter"]:checked');
+  if (moe && moe.value !== 'all') p.set('moe', moe.value);
+  var tpl = document.querySelector('input[name="tpl-filter"]:checked');
+  if (tpl && tpl.value !== 'all') p.set('tpl', tpl.value);
+  return p;
+}
+
+function syncUrlToFilters() {
+  if (!document.getElementById('card-list')) return;
+  var p = filtersToParams();
+  var qs = p.toString();
+  var url = location.pathname + (qs ? '?' + qs : '') + location.hash;
+  history.replaceState(null, '', url);
+}
+
+function applyUrlToFilters() {
+  var p = new URLSearchParams(location.search);
+  var q = p.get('q') || '';
+  var formInput = document.getElementById('form-input');
+  var navInput = document.getElementById('navbar-input');
+  if (formInput) formInput.value = q;
+  if (navInput) navInput.value = q;
+  var caps = p.getAll('c');
+  document.querySelectorAll('.cap-filter').forEach(function(cb) {
+    cb.checked = caps.indexOf(cb.getAttribute('data-cap')) !== -1;
+  });
+  var o = p.get('o') || 'popular';
+  var ds = document.getElementById('desktop-sort-select');
+  var ms = document.getElementById('mobile-sort-select');
+  if (ds) ds.value = o;
+  if (ms) ms.value = o;
+  var cloud = p.get('cloud') || 'all';
+  var cf = document.getElementById('cloud-filter');
+  if (cf) cf.value = cloud;
+  var smin = parseInt(p.get('smin'), 10);
+  var smax = parseInt(p.get('smax'), 10);
+  var sizeMin = document.getElementById('size-min');
+  var sizeMax = document.getElementById('size-max');
+  if (sizeMin && !isNaN(smin)) sizeMin.value = Math.max(0, Math.min(500, smin));
+  if (sizeMax && !isNaN(smax)) sizeMax.value = Math.max(0, Math.min(500, smax));
+  // Update the dual-handle slider visuals to match the restored values.
+  // updateSizeVisuals() is visuals-only (no applyFilters) to avoid a double
+  // applyFilters on init; applyFilters() runs right after applyUrlToFilters.
+  updateSizeVisuals();
+  function setMore(id, on) { var el = document.getElementById(id); if (el) el.checked = !!on; }
+  setMore('more-audio', p.get('audio') === '1');
+  setMore('more-mlx', p.get('mlx') === '1');
+  setMore('more-mtp', p.get('mtp') === '1');
+  setMore('more-image', p.get('image') === '1');
+  var moe = p.get('moe') || 'all';
+  var moeR = document.querySelector('input[name="moe-filter"][value="' + moe + '"]');
+  if (moeR) moeR.checked = true;
+  var tpl = p.get('tpl') || 'all';
+  var tplR = document.querySelector('input[name="tpl-filter"][value="' + tpl + '"]');
+  if (tplR) tplR.checked = true;
+}
+
 // Piecewise mapping between slider position (0-100%) and size value (0-500 billions)
 // Breakpoints: 0%->0, 20%->6, 40%->12, 60%->32, 80%->128, 100%->500
 var SIZE_BP = [
@@ -3101,6 +3178,40 @@ function matchSizeRange(cardSizesAttr) {
     if (bs[i] >= minB && bs[i] <= maxB) return true;
   }
   return false;
+}
+
+// Update the dual-handle size slider visuals (fill, handles, tooltips, button
+// label) from the current size-min/size-max input values. Visuals only — does
+// NOT call applyFilters, so it's safe to call from applyUrlToFilters before the
+// initial applyFilters() runs.
+function updateSizeVisuals() {
+  var sizeMin = document.getElementById('size-min');
+  var sizeMax = document.getElementById('size-max');
+  if (!sizeMin || !sizeMax) return;
+  var mn = parseInt(sizeMin.value);
+  var mx = parseInt(sizeMax.value);
+  if (mn > mx) { var tmp = mn; mn = mx; mx = tmp; sizeMin.value = mn; sizeMax.value = mx; }
+  var pmin = valToPct(mn);
+  var pmax = valToPct(mx);
+  var sizeFill = document.getElementById('size-slider-fill');
+  var sizeHandleMin = document.getElementById('size-handle-min');
+  var sizeHandleMax = document.getElementById('size-handle-max');
+  var sizeMinTip = document.getElementById('size-min-tooltip');
+  var sizeMaxTip = document.getElementById('size-max-tooltip');
+  var sizeBtnLabel = document.getElementById('size-filter-btn');
+  if (sizeFill) { sizeFill.style.left = pmin + '%'; sizeFill.style.width = (pmax - pmin) + '%'; }
+  if (sizeHandleMin) sizeHandleMin.style.left = pmin + '%';
+  if (sizeHandleMax) sizeHandleMax.style.left = pmax + '%';
+  function sizeLabel(v) {
+    if (v === 0) return '<1b';
+    if (v >= 500) return '>500b';
+    return v + 'b';
+  }
+  if (sizeMinTip) sizeMinTip.textContent = sizeLabel(mn);
+  if (sizeMaxTip) sizeMaxTip.textContent = sizeLabel(mx);
+  if (sizeBtnLabel) {
+    sizeBtnLabel.textContent = (mn === 0 && mx === 500) ? 'Size' : 'Size: ' + sizeLabel(mn) + ' - ' + sizeLabel(mx);
+  }
 }
 
 function applyFilters() {
@@ -3237,6 +3348,7 @@ function applyFilters() {
     moreBtnEl.classList.toggle('bg-neutral-100', moreActive);
     moreBtnEl.classList.toggle('dark:bg-neutral-800', moreActive);
   }
+  syncUrlToFilters();
 }
 
 // --- Usage section: tab switching + copy ---
@@ -3399,22 +3511,7 @@ function initApp() {
     }
 
     function updateSizeUI() {
-      var mn = parseInt(sizeMin.value);
-      var mx = parseInt(sizeMax.value);
-      if (mn > mx) { var tmp = mn; mn = mx; mx = tmp; sizeMin.value = mn; sizeMax.value = mx; }
-      var pmin = valToPct(mn);
-      var pmax = valToPct(mx);
-      sizeFill.style.left = pmin + '%';
-      sizeFill.style.width = (pmax - pmin) + '%';
-      sizeHandleMin.style.left = pmin + '%';
-      sizeHandleMax.style.left = pmax + '%';
-      sizeMinTip.textContent = sizeLabel(mn);
-      sizeMaxTip.textContent = sizeLabel(mx);
-      if (mn === 0 && mx === 500) {
-        sizeBtnLabel.textContent = 'Size';
-      } else {
-        sizeBtnLabel.textContent = 'Size: ' + sizeLabel(mn) + ' - ' + sizeLabel(mx);
-      }
+      updateSizeVisuals();
       applyFilters();
     }
 
@@ -3481,13 +3578,9 @@ function initApp() {
       updateSizeUI();
     });
 
-    // read ?q= from URL query string
-    var params = new URLSearchParams(location.search);
-    var q = params.get('q');
-    if (q) {
-      if (formInput) formInput.value = q;
-      if (navInput) navInput.value = q;
-    }
+    // Restore all filter state from the URL (query, capabilities, sort,
+    // cloud, size, more/audio/mlx/mtp/image, moe, template), then apply.
+    applyUrlToFilters();
     applyFilters();
   }
 
