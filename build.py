@@ -36,6 +36,11 @@ TAG_PAGES_DIR = SCRAPER / "tag_pages"
 # Set via: python3 build.py --base /ollama-search
 BASE = ""
 
+# Set of model paths that are new this scrape run (from scraper/new_models.json).
+# Populated in main() and used by render_card() and _header_section() to show
+# a "NEW" badge. Empty when new_models.json doesn't exist (first run).
+_NEW_MODELS: set[str] = set()
+
 
 def url(path: str) -> str:
     """Prefix a site-internal path with BASE. Ensures leading /."""
@@ -374,6 +379,23 @@ def format_count(n: int) -> str:
 def load_models() -> list[dict]:
     data = json.loads((SCRAPER / "models.json").read_text())
     return [m for m in data["models"] if m["path"] not in IGNORELIST]
+
+
+def load_new_model_paths() -> set[str]:
+    """Load the set of model paths that are new this scrape run.
+
+    Written by the scraper's save_new_models() — a diff of current vs
+    previous models.json. Used to render a "NEW" badge on model cards
+    and detail pages.
+    """
+    fp = SCRAPER / "new_models.json"
+    if fp.exists():
+        try:
+            data = json.loads(fp.read_text())
+            return set(data.get("paths", []))
+        except Exception:
+            pass
+    return set()
 
 
 def load_ranks() -> dict:
@@ -877,16 +899,28 @@ def render_card(
             'dark:bg-white dark:text-neutral-900 sm:text-[13px]">MLX</span>'
         )
 
+    # NEW badge for models that are new this scrape run
+    new_badge = ""
+    if m["path"] in _NEW_MODELS:
+        new_badge = (
+            '<span class="ml-2 inline-flex items-center rounded-full '
+            "bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium "
+            'text-blue-600 dark:text-blue-400 sm:text-[13px]">NEW</span>'
+        )
+
     return f"""  <li x-test-model {data_attrs} class="flex items-baseline border-b border-neutral-200 dark:border-neutral-800 py-6">
   <a href="{href}" class="group w-full">
     <div class="flex flex-col mb-1" title="{esc(display_name)}">
-      <h2 class="truncate text-xl font-medium underline-offset-2 group-hover:underline md:text-2xl dark:text-neutral-100">
-        <span x-test-search-response-title>{esc(display_name)}</span>
-      </h2>
+      <div class="flex items-center min-w-0">
+        <h2 class="truncate text-xl font-medium underline-offset-2 group-hover:underline md:text-2xl dark:text-neutral-100">
+          <span x-test-search-response-title>{esc(display_name)}</span>
+        </h2>
+        {new_badge}
+      </div>
       <p class="max-w-lg break-words text-neutral-800 dark:text-neutral-300 text-md">{desc}</p>
     </div>
     <div class="flex flex-col">
-      <div class="flex flex-wrap space-x-2">
+      <div class="flex flex-wrap items-center space-x-2">
         {caps}
         {fmt_chip}
         {sizes}
@@ -1671,6 +1705,14 @@ def _header_section(m: dict) -> str:
     caps = capability_spans(m["capabilities"], m["cloud"])
     sizes = size_spans(m["sizes"])
 
+    new_badge = ""
+    if m["path"] in _NEW_MODELS:
+        new_badge = (
+            '<span class="ml-2 inline-flex items-center rounded-full '
+            "bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium "
+            'text-blue-600 dark:text-blue-400">NEW</span>'
+        )
+
     # For user models, prepend the namespace link + "/" separator.
     # /x/* models are official but also use the "x" namespace (Ollama's
     # experimental image models on ollama.com/x), so show it there too.
@@ -1693,6 +1735,7 @@ def _header_section(m: dict) -> str:
             <a x-test-model-name href="{model_link}" title="{name}" class="underline-offset-[5px] hover:underline">{name}</a>
            </span>
          </div>
+        {new_badge}
        </div>
      </div>
      <div class="flex flex-col space-y-2">
@@ -1711,7 +1754,7 @@ def _header_section(m: dict) -> str:
         </p>
       </div>
       <h2 class="break-words text-neutral-800 dark:text-neutral-300">{desc}</h2>
-      <div class="flex flex-wrap gap-2">
+      <div class="flex flex-wrap items-center gap-2">
         {caps}
         {sizes}
       </div>
@@ -2110,6 +2153,14 @@ def _tag_header_section(m: dict, tag_name: str) -> str:
     caps = capability_spans(m["capabilities"], m["cloud"])
     sizes = size_spans(m["sizes"])
 
+    new_badge = ""
+    if m["path"] in _NEW_MODELS:
+        new_badge = (
+            '<span class="ml-2 inline-flex items-center rounded-full '
+            "bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium "
+            'text-blue-600 dark:text-blue-400">NEW</span>'
+        )
+
     # For user models, prepend the namespace link + "/" separator.
     # /x/* models are official but also use the "x" namespace (Ollama's
     # experimental image models on ollama.com/x), so show it there too.
@@ -2132,6 +2183,7 @@ def _tag_header_section(m: dict, tag_name: str) -> str:
             <a x-test-model-name href="{model_link}" title="{name}" class="underline-offset-[5px] hover:underline">{name}</a>:{esc(tag_name)}
            </span>
          </div>
+        {new_badge}
        </div>
      </div>
     <div class="flex flex-col space-y-2">
@@ -2150,7 +2202,7 @@ def _tag_header_section(m: dict, tag_name: str) -> str:
         </p>
       </div>
       <h2 class="break-words text-neutral-800 dark:text-neutral-300">{desc}</h2>
-      <div class="flex flex-wrap gap-2">
+      <div class="flex flex-wrap items-center gap-2">
         {caps}
         {sizes}
       </div>
@@ -4413,6 +4465,10 @@ def main() -> int:
         BASE = sys.argv[idx + 1].rstrip("/") if idx + 1 < len(sys.argv) else ""
     models = load_models()
     print(f"loaded {len(models)} models from scraper/models.json")
+    global _NEW_MODELS
+    _NEW_MODELS = load_new_model_paths()
+    if _NEW_MODELS:
+        print(f"  {len(_NEW_MODELS)} new models this run")
 
     # ensure public dir exists
     PUBLIC.mkdir(parents=True, exist_ok=True)
