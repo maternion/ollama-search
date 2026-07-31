@@ -62,7 +62,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3439,
+      "pulls": 3443,
       "sizes": [],
       "source_url": "https://ollama.com/frob/qwen3-coder-next",
       "tag_count": 7,
@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 2629,
+      "pulls": 2650,
       "sizes": [],
       "source_url": "https://ollama.com/frob/unlimited-ocr",
       "tag_count": 2,
@@ -98,7 +98,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1697,
+      "pulls": 1699,
       "sizes": [
         "753b"
       ],
@@ -192,7 +192,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/davidau-qwen3.6-uncensored",
-      "pulls": 878,
+      "pulls": 879,
       "sizes": [
         "40b"
       ],
@@ -214,7 +214,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/minimax-m2.7",
-      "pulls": 836,
+      "pulls": 837,
       "sizes": [
         "230b"
       ],
@@ -236,7 +236,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.1",
-      "pulls": 826,
+      "pulls": 827,
       "sizes": [
         "744b"
       ],
@@ -383,7 +383,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 426,
+      "pulls": 427,
       "sizes": [],
       "source_url": "https://ollama.com/frob/deepseek-v4-flash",
       "tag_count": 2,
@@ -445,7 +445,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.5",
-      "pulls": 345,
+      "pulls": 346,
       "sizes": [
         "309b"
       ],
@@ -632,6 +632,26 @@
       "updated_title": "Dec 26, 2025 2:39 PM UTC"
     },
     {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "nex-n2-mini",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/nex-n2-mini",
+      "pulls": 2,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/nex-n2-mini",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "yesterday",
+      "updated_title": "Jul 30, 2026 8:40 AM UTC"
+    },
+    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -664,26 +684,6 @@
       "tags": [],
       "updated": "8 months ago",
       "updated_title": "Nov 23, 2025 7:27 PM UTC"
-    },
-    {
-      "capabilities": [
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "nex-n2-mini",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/nex-n2-mini",
-      "pulls": 0,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/nex-n2-mini",
-      "tag_count": 9,
-      "tags": [],
-      "updated": "yesterday",
-      "updated_title": "Jul 30, 2026 8:40 AM UTC"
     },
     {
       "capabilities": [
@@ -774,9 +774,9 @@
     "/frob/trinity",
     "/frob/hy3",
     "/frob/whyhow-ai_PatientSeek",
+    "/frob/nex-n2-mini",
     "/frob/mixtao",
     "/frob/NireeskshanAI_Niri",
-    "/frob/nex-n2-mini",
     "/frob/nex-n2-pro"
   ],
   "username": "frob"
