@@ -2123,6 +2123,31 @@ def save_models(models: Iterable[Model]) -> None:
     log.debug("saved %s", fp)
 
 
+def save_new_models(models: dict[str, Model]) -> None:
+    """Compute which models are new vs the previous models.json and persist the list.
+
+    Reads the current models.json (before it's overwritten), diffs the paths,
+    and writes new_models.json with the set of paths that are new this run.
+    On the next run, those models are no longer "new" (they're in the
+    previous models.json), so the badge rotates to whatever is newly fetched.
+    """
+    fp = DATA / "new_models.json"
+    models_fp = DATA / "models.json"
+    prev_paths: set[str] = set()
+    if models_fp.exists():
+        try:
+            prev_data = json.loads(models_fp.read_text())
+            prev_paths = {pm["path"] for pm in prev_data.get("models", [])}
+        except Exception:
+            pass
+    current_paths = {m.path for m in models.values()}
+    new_paths = sorted(current_paths - prev_paths)
+    out = {"count": len(new_paths), "paths": new_paths}
+    _atomic_write(fp, json.dumps(out, indent=2, sort_keys=True, ensure_ascii=False))
+    if new_paths:
+        log.info("new models this run (%d): %s", len(new_paths), ", ".join(new_paths))
+
+
 def save_sort_data(sort_orders: dict, models: dict) -> None:
     """Save sort_orders.json and sort_ranks.json for build.py."""
     _atomic_write(
@@ -3305,6 +3330,10 @@ def main(argv: list[str] | None = None) -> int:
 
         # Infer capabilities from system prompts + GGUF chat_template metadata
         infer_capabilities(models)
+
+        # Compute new-model diff (must run BEFORE save_models overwrites
+        # models.json, since it reads the previous version).
+        save_new_models(models)
 
         save_models(models.values())
 
