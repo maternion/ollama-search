@@ -84,6 +84,27 @@
       "updated_title": "Mar 22, 2026 7:44 AM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "HY-MT2 1.8B, 7B, and 30B-A3B (MoE) multilingual translation models designed for complex real-world scenarios, it supports translation among 33 languages and effectively follows translation instructions.",
+      "name": "hy-mt2",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/hy-mt2",
+      "pulls": 1971,
+      "sizes": [
+        "1.8b",
+        "7b",
+        "30b"
+      ],
+      "source_url": "https://ollama.com/maternion/hy-mt2",
+      "tag_count": 7,
+      "tags": [],
+      "updated": "2 months ago",
+      "updated_title": "May 28, 2026 7:30 PM UTC"
+    },
+    {
       "capabilities": [
         "tools"
       ],
@@ -105,27 +126,6 @@
       "updated_title": "Mar 12, 2026 4:09 PM UTC"
     },
     {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "HY-MT2 1.8B, 7B, and 30B-A3B (MoE) multilingual translation models designed for complex real-world scenarios, it supports translation among 33 languages and effectively follows translation instructions.",
-      "name": "hy-mt2",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/hy-mt2",
-      "pulls": 1968,
-      "sizes": [
-        "1.8b",
-        "7b",
-        "30b"
-      ],
-      "source_url": "https://ollama.com/maternion/hy-mt2",
-      "tag_count": 7,
-      "tags": [],
-      "updated": "2 months ago",
-      "updated_title": "May 28, 2026 7:30 PM UTC"
-    },
-    {
       "capabilities": [
         "tools",
         "thinking"
@@ -137,7 +137,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2.5",
-      "pulls": 1527,
+      "pulls": 1528,
       "sizes": [
         "350m",
         "8b"
@@ -159,7 +159,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/strand-rust-coder",
-      "pulls": 1202,
+      "pulls": 1203,
       "sizes": [
         "14b"
       ],
@@ -318,8 +318,8 @@
     "/maternion/LightOnOCR-2",
     "/maternion/fara",
     "/maternion/Qianfan-OCR",
-    "/maternion/lfm2",
     "/maternion/hy-mt2",
+    "/maternion/lfm2",
     "/maternion/lfm2.5",
     "/maternion/strand-rust-coder",
     "/maternion/mai-ui",
