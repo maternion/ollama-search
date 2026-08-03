@@ -62,7 +62,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3457,
+      "pulls": 3459,
       "sizes": [],
       "source_url": "https://ollama.com/frob/qwen3-coder-next",
       "tag_count": 7,
@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 2831,
+      "pulls": 2857,
       "sizes": [],
       "source_url": "https://ollama.com/frob/unlimited-ocr",
       "tag_count": 2,
@@ -98,7 +98,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1710,
+      "pulls": 1711,
       "sizes": [
         "753b"
       ],
@@ -299,7 +299,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 647,
+      "pulls": 648,
       "sizes": [],
       "source_url": "https://ollama.com/frob/locooperator",
       "tag_count": 4,
@@ -383,13 +383,13 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 463,
+      "pulls": 470,
       "sizes": [],
       "source_url": "https://ollama.com/frob/deepseek-v4-flash",
-      "tag_count": 2,
+      "tag_count": 9,
       "tags": [],
-      "updated": "1 month ago",
-      "updated_title": "Jul 1, 2026 10:58 PM UTC"
+      "updated": "7 minutes ago",
+      "updated_title": "Aug 3, 2026 7:23 AM UTC"
     },
     {
       "capabilities": [
@@ -467,7 +467,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen-agentworld",
-      "pulls": 240,
+      "pulls": 242,
       "sizes": [
         "35b"
       ],
@@ -575,6 +575,23 @@
       "updated_title": "Jan 4, 2026 9:00 AM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "hy3",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/hy3",
+      "pulls": 35,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/hy3",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "1 week ago",
+      "updated_title": "Jul 21, 2026 6:58 PM UTC"
+    },
+    {
       "capabilities": [
         "tools"
       ],
@@ -594,23 +611,6 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Jun 26, 2026 3:17 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "hy3",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/hy3",
-      "pulls": 34,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/hy3",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "1 week ago",
-      "updated_title": "Jul 21, 2026 6:58 PM UTC"
     },
     {
       "capabilities": [
@@ -703,7 +703,7 @@
       "source_url": "https://ollama.com/frob/nex-n2-pro",
       "tag_count": 9,
       "tags": [],
-      "updated": "3 days ago",
+      "updated": "4 days ago",
       "updated_title": "Jul 30, 2026 7:46 AM UTC"
     }
   ],
@@ -771,8 +771,8 @@
     "/frob/qwen3.6",
     "/frob/llama3.2-vision",
     "/frob/hy-mt1.5",
-    "/frob/trinity",
     "/frob/hy3",
+    "/frob/trinity",
     "/frob/whyhow-ai_PatientSeek",
     "/frob/nex-n2-mini",
     "/frob/mixtao",
