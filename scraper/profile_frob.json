@@ -37,7 +37,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.5-instruct",
-      "pulls": 13800,
+      "pulls": 13900,
       "sizes": [
         "4b",
         "9b",
@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 2998,
+      "pulls": 3012,
       "sizes": [],
       "source_url": "https://ollama.com/frob/unlimited-ocr",
       "tag_count": 2,
@@ -121,7 +121,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.5",
-      "pulls": 1579,
+      "pulls": 1580,
       "sizes": [
         "122b",
         "397b"
@@ -280,7 +280,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "pulls": 745,
+      "pulls": 746,
       "sizes": [],
       "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "tag_count": 1,
@@ -299,7 +299,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 648,
+      "pulls": 649,
       "sizes": [],
       "source_url": "https://ollama.com/frob/locooperator",
       "tag_count": 4,
@@ -350,6 +350,23 @@
       "updated_title": "Feb 12, 2026 3:06 AM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "deepseek-v4-flash-0731",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/deepseek-v4-flash-0731",
+      "pulls": 510,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/deepseek-v4-flash-0731",
+      "tag_count": 15,
+      "tags": [],
+      "updated": "6 hours ago",
+      "updated_title": "Aug 3, 2026 11:41 AM UTC"
+    },
+    {
       "capabilities": [
         "tools",
         "thinking"
@@ -383,12 +400,12 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 477,
+      "pulls": 480,
       "sizes": [],
       "source_url": "https://ollama.com/frob/deepseek-v4-flash",
       "tag_count": 15,
       "tags": [],
-      "updated": "6 hours ago",
+      "updated": "9 hours ago",
       "updated_title": "Aug 3, 2026 8:37 AM UTC"
     },
     {
@@ -445,7 +462,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.5",
-      "pulls": 351,
+      "pulls": 352,
       "sizes": [
         "309b"
       ],
@@ -454,23 +471,6 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Jun 27, 2026 11:41 AM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "deepseek-v4-flash-0731",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/deepseek-v4-flash-0731",
-      "pulls": 320,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/deepseek-v4-flash-0731",
-      "tag_count": 15,
-      "tags": [],
-      "updated": "3 hours ago",
-      "updated_title": "Aug 3, 2026 11:41 AM UTC"
     },
     {
       "capabilities": [
@@ -778,12 +778,12 @@
     "/frob/locooperator",
     "/frob/kimi-k2.5",
     "/frob/nuextract-2.0",
+    "/frob/deepseek-v4-flash-0731",
     "/frob/glm-5",
     "/frob/deepseek-v4-flash",
     "/frob/iquest-coder",
     "/frob/mimo-v2-flash",
     "/frob/mimo-v2.5",
-    "/frob/deepseek-v4-flash-0731",
     "/frob/qwen-agentworld",
     "/frob/KaLM-Embedding-Gemma3-12B-2511",
     "/frob/kimi-k2.5-prism-reap",
