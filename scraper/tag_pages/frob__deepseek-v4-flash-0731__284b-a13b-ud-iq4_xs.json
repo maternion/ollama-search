@@ -1,0 +1,56 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "deepseek4",
+      "blob_url": "/frob/deepseek-v4-flash-0731:284b-a13b-ud-iq4_xs/blobs/8478a6569e83",
+      "content_preview": "arch  deepseek4",
+      "parameters": "284B",
+      "quantization": "IQ4_XS",
+      "size": "137GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/deepseek-v4-flash-0731:284b-a13b-ud-iq4_xs/blobs/75357d685f23",
+      "content_preview": "You are a helpful assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "28B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/deepseek-v4-flash-0731:284b-a13b-ud-iq4_xs/blobs/a406579cd136",
+      "content_preview": "MIT License\nCopyright (c) [year] [fullname]\nPermission is hereby granted, free of charge, to any per",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/deepseek-v4-flash-0731:284b-a13b-ud-iq4_xs/blobs/02897ca0d6a3",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/frob/deepseek-v4-flash-0731:284b-a13b-ud-iq4_xs",
+  "manifest_digest": "b8a948666e7f",
+  "manifest_size": "137GB",
+  "manifest_updated": "3 hours ago",
+  "path": "/frob/deepseek-v4-flash-0731",
+  "tag_name": "284b-a13b-ud-iq4_xs"
+}
