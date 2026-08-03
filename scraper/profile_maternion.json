@@ -61,6 +61,27 @@
       "updated_title": "Dec 3, 2025 10:08 AM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "HY-MT2 1.8B, 7B, and 30B-A3B (MoE) multilingual translation models designed for complex real-world scenarios, it supports translation among 33 languages and effectively follows translation instructions.",
+      "name": "hy-mt2",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/hy-mt2",
+      "pulls": 2061,
+      "sizes": [
+        "1.8b",
+        "7b",
+        "30b"
+      ],
+      "source_url": "https://ollama.com/maternion/hy-mt2",
+      "tag_count": 7,
+      "tags": [],
+      "updated": "2 months ago",
+      "updated_title": "May 28, 2026 7:30 PM UTC"
+    },
+    {
       "capabilities": [
         "vision",
         "tools",
@@ -82,27 +103,6 @@
       "tags": [],
       "updated": "4 months ago",
       "updated_title": "Mar 22, 2026 7:44 AM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "HY-MT2 1.8B, 7B, and 30B-A3B (MoE) multilingual translation models designed for complex real-world scenarios, it supports translation among 33 languages and effectively follows translation instructions.",
-      "name": "hy-mt2",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/hy-mt2",
-      "pulls": 2059,
-      "sizes": [
-        "1.8b",
-        "7b",
-        "30b"
-      ],
-      "source_url": "https://ollama.com/maternion/hy-mt2",
-      "tag_count": 7,
-      "tags": [],
-      "updated": "2 months ago",
-      "updated_title": "May 28, 2026 7:30 PM UTC"
     },
     {
       "capabilities": [
@@ -317,8 +317,8 @@
   "popular_order": [
     "/maternion/LightOnOCR-2",
     "/maternion/fara",
-    "/maternion/Qianfan-OCR",
     "/maternion/hy-mt2",
+    "/maternion/Qianfan-OCR",
     "/maternion/lfm2",
     "/maternion/lfm2.5",
     "/maternion/strand-rust-coder",
