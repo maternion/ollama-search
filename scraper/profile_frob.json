@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 2857,
+      "pulls": 2973,
       "sizes": [],
       "source_url": "https://ollama.com/frob/unlimited-ocr",
       "tag_count": 2,
@@ -280,7 +280,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "pulls": 744,
+      "pulls": 745,
       "sizes": [],
       "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "tag_count": 1,
@@ -339,7 +339,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kimi-k2.5",
-      "pulls": 623,
+      "pulls": 624,
       "sizes": [
         "1030b"
       ],
@@ -383,13 +383,13 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 470,
+      "pulls": 475,
       "sizes": [],
       "source_url": "https://ollama.com/frob/deepseek-v4-flash",
-      "tag_count": 9,
+      "tag_count": 15,
       "tags": [],
-      "updated": "7 minutes ago",
-      "updated_title": "Aug 3, 2026 7:23 AM UTC"
+      "updated": "3 hours ago",
+      "updated_title": "Aug 3, 2026 8:37 AM UTC"
     },
     {
       "capabilities": [
@@ -613,6 +613,23 @@
       "updated_title": "Jun 26, 2026 3:17 PM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "deepseek-v4-flash-0731",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/deepseek-v4-flash-0731",
+      "pulls": 15,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/deepseek-v4-flash-0731",
+      "tag_count": 14,
+      "tags": [],
+      "updated": "3 hours ago",
+      "updated_title": "Aug 3, 2026 8:42 AM UTC"
+    },
+    {
       "capabilities": [
         "thinking"
       ],
@@ -648,7 +665,7 @@
       "source_url": "https://ollama.com/frob/nex-n2-mini",
       "tag_count": 9,
       "tags": [],
-      "updated": "3 days ago",
+      "updated": "4 days ago",
       "updated_title": "Jul 30, 2026 8:40 AM UTC"
     },
     {
@@ -708,6 +725,7 @@
     }
   ],
   "newest_order": [
+    "/frob/deepseek-v4-flash-0731",
     "/frob/nex-n2-mini",
     "/frob/nex-n2-pro",
     "/frob/hy3",
@@ -773,6 +791,7 @@
     "/frob/hy-mt1.5",
     "/frob/hy3",
     "/frob/trinity",
+    "/frob/deepseek-v4-flash-0731",
     "/frob/whyhow-ai_PatientSeek",
     "/frob/nex-n2-mini",
     "/frob/mixtao",
