@@ -1,0 +1,19 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "kat-coder-v2.5-dev",
+  "path": "/frob/kat-coder-v2.5-dev",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://huggingface.co/Kwaipilot/KAT-Coder-V2.5-Dev\" rel=\"nofollow\">https://huggingface.co/Kwaipilot/KAT-Coder-V2.5-Dev</a>.</p>\n\n<h1>Chat/thinking</h1>\n\n<pre><code>$ ollama run frob/kat-coder-v2.5-dev\n&gt;&gt;&gt; hello\nThinking...\nI&#39;m starting with the greeting &#34;hello&#34;. The user wrote in lowercase, but I&#39;ll \nrespond naturally and warmly. It&#39;s important to match their tone while staying \nfriendly. A simple response like &#39;Hello! How can I assist you today?&#39; feels \nright—it’s polite and open-ended, inviting them to share what they need help with\n...done thinking.\n\nHello! 👋 How can I assist you today? Feel free to ask me anything — whether it&#39;s \na question, a task, or just a chat. 😊\n\n&gt;&gt;&gt; /clear\nCleared session context\n&gt;&gt;&gt; /set nothink\nSet &#39;nothink&#39; mode.\n&gt;&gt;&gt; hello\nHello! How can I help you today? If you have any questions or need assistance \nwith a task, feel free to let me know.\n</code></pre>\n\n<h1>Tools</h1>\n\n<pre><code>$ ollama launch opencode \\\n    --model frob/kat-coder-v2.5-dev \\\n    -- \\\n    run &#39;create a file called README with the contents &#34;hello world&#34;&#39;\n\n&gt; build · frob/kat-coder-v2.5-dev:latest\n\n← Write README\nWrote file successfully.\n\nCreated `/tank/ai/models/hf.co/Kwaipilot/README` with the content `hello world`.\n\n$ cat README \nhello world\n</code></pre>\n\n        \n      "
+}

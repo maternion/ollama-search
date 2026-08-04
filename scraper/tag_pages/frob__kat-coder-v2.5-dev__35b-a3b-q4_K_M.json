@@ -1,0 +1,47 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen35moe",
+      "blob_url": "/frob/kat-coder-v2.5-dev:35b-a3b-q4_K_M/blobs/01205f96729c",
+      "content_preview": "arch  qwen35moe",
+      "parameters": "34.7B",
+      "quantization": "Q4_K_M",
+      "size": "21GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/kat-coder-v2.5-dev:35b-a3b-q4_K_M/blobs/b3fc37157980",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "10kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/kat-coder-v2.5-dev:35b-a3b-q4_K_M/blobs/67144af261ba",
+      "content_preview": "{\n    \"presence_penalty\": 1.5,\n    \"temperature\": 1,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "54B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/frob/kat-coder-v2.5-dev:35b-a3b-q4_K_M",
+  "manifest_digest": "55317d06d744",
+  "manifest_size": "21GB",
+  "manifest_updated": "2 hours ago",
+  "path": "/frob/kat-coder-v2.5-dev",
+  "tag_name": "35b-a3b-q4_K_M"
+}
