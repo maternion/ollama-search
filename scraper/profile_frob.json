@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 3103,
+      "pulls": 3105,
       "sizes": [],
       "source_url": "https://ollama.com/frob/unlimited-ocr",
       "tag_count": 2,
@@ -105,7 +105,7 @@
       "source_url": "https://ollama.com/frob/glm-5.2",
       "tag_count": 7,
       "tags": [],
-      "updated": "1 week ago",
+      "updated": "2 weeks ago",
       "updated_title": "Jul 21, 2026 7:45 PM UTC"
     },
     {
@@ -121,7 +121,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.5",
-      "pulls": 1589,
+      "pulls": 1590,
       "sizes": [
         "122b",
         "397b"
@@ -236,7 +236,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.1",
-      "pulls": 827,
+      "pulls": 828,
       "sizes": [
         "744b"
       ],
@@ -269,6 +269,23 @@
       "updated_title": "Jun 26, 2026 3:24 PM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "deepseek-v4-flash-0731",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/deepseek-v4-flash-0731",
+      "pulls": 760,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/deepseek-v4-flash-0731",
+      "tag_count": 15,
+      "tags": [],
+      "updated": "yesterday",
+      "updated_title": "Aug 3, 2026 11:41 AM UTC"
+    },
+    {
       "capabilities": [
         "tools",
         "thinking"
@@ -287,23 +304,6 @@
       "tags": [],
       "updated": "4 months ago",
       "updated_title": "Mar 14, 2026 12:46 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "deepseek-v4-flash-0731",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/deepseek-v4-flash-0731",
-      "pulls": 743,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/deepseek-v4-flash-0731",
-      "tag_count": 15,
-      "tags": [],
-      "updated": "yesterday",
-      "updated_title": "Aug 3, 2026 11:41 AM UTC"
     },
     {
       "capabilities": [
@@ -378,7 +378,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 503,
+      "pulls": 506,
       "sizes": [],
       "source_url": "https://ollama.com/frob/deepseek-v4-flash",
       "tag_count": 15,
@@ -439,7 +439,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2-flash",
-      "pulls": 369,
+      "pulls": 370,
       "sizes": [
         "309b"
       ],
@@ -579,6 +579,23 @@
       "cloud": false,
       "cloud_only": false,
       "description": "",
+      "name": "kat-coder-v2.5-dev",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/kat-coder-v2.5-dev",
+      "pulls": 48,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/kat-coder-v2.5-dev",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "19 hours ago",
+      "updated_title": "Aug 4, 2026 1:01 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
       "name": "hy-mt1.5",
       "official": false,
       "owner": "frob",
@@ -596,23 +613,6 @@
       "cloud": false,
       "cloud_only": false,
       "description": "",
-      "name": "kat-coder-v2.5-dev",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 43,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/kat-coder-v2.5-dev",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "17 hours ago",
-      "updated_title": "Aug 4, 2026 1:01 AM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
       "name": "hy3",
       "official": false,
       "owner": "frob",
@@ -622,7 +622,7 @@
       "source_url": "https://ollama.com/frob/hy3",
       "tag_count": 4,
       "tags": [],
-      "updated": "1 week ago",
+      "updated": "2 weeks ago",
       "updated_title": "Jul 21, 2026 6:58 PM UTC"
     },
     {
@@ -792,8 +792,8 @@
     "/frob/minimax-m2.7",
     "/frob/glm-5.1",
     "/frob/glm-4.7",
-    "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
     "/frob/deepseek-v4-flash-0731",
+    "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
     "/frob/locooperator",
     "/frob/kimi-k2.5",
     "/frob/nuextract-2.0",
@@ -807,8 +807,8 @@
     "/frob/kimi-k2.5-prism-reap",
     "/frob/qwen3.6",
     "/frob/llama3.2-vision",
-    "/frob/hy-mt1.5",
     "/frob/kat-coder-v2.5-dev",
+    "/frob/hy-mt1.5",
     "/frob/hy3",
     "/frob/trinity",
     "/frob/whyhow-ai_PatientSeek",
