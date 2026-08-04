@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 3068,
+      "pulls": 3090,
       "sizes": [],
       "source_url": "https://ollama.com/frob/unlimited-ocr",
       "tag_count": 2,
@@ -98,7 +98,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1722,
+      "pulls": 1726,
       "sizes": [
         "753b"
       ],
@@ -121,7 +121,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.5",
-      "pulls": 1581,
+      "pulls": 1586,
       "sizes": [
         "122b",
         "397b"
@@ -145,7 +145,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1070,
+      "pulls": 1071,
       "sizes": [
         "3b",
         "8b",
@@ -192,7 +192,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/davidau-qwen3.6-uncensored",
-      "pulls": 899,
+      "pulls": 900,
       "sizes": [
         "40b"
       ],
@@ -297,12 +297,12 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash-0731",
-      "pulls": 673,
+      "pulls": 711,
       "sizes": [],
       "source_url": "https://ollama.com/frob/deepseek-v4-flash-0731",
       "tag_count": 15,
       "tags": [],
-      "updated": "23 hours ago",
+      "updated": "yesterday",
       "updated_title": "Aug 3, 2026 11:41 AM UTC"
     },
     {
@@ -316,7 +316,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 651,
+      "pulls": 653,
       "sizes": [],
       "source_url": "https://ollama.com/frob/locooperator",
       "tag_count": 4,
@@ -337,7 +337,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kimi-k2.5",
-      "pulls": 632,
+      "pulls": 633,
       "sizes": [
         "1030b"
       ],
@@ -378,7 +378,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 498,
+      "pulls": 502,
       "sizes": [],
       "source_url": "https://ollama.com/frob/deepseek-v4-flash",
       "tag_count": 15,
@@ -439,7 +439,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2-flash",
-      "pulls": 367,
+      "pulls": 368,
       "sizes": [
         "309b"
       ],
@@ -462,7 +462,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.5",
-      "pulls": 354,
+      "pulls": 355,
       "sizes": [
         "309b"
       ],
@@ -638,12 +638,12 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 14,
+      "pulls": 29,
       "sizes": [],
       "source_url": "https://ollama.com/frob/kat-coder-v2.5-dev",
       "tag_count": 4,
       "tags": [],
-      "updated": "10 hours ago",
+      "updated": "13 hours ago",
       "updated_title": "Aug 4, 2026 1:01 AM UTC"
     },
     {
@@ -690,6 +690,23 @@
       "cloud": false,
       "cloud_only": false,
       "description": "",
+      "name": "NireeskshanAI_Niri",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/NireeskshanAI_Niri",
+      "pulls": 2,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/NireeskshanAI_Niri",
+      "tag_count": 3,
+      "tags": [],
+      "updated": "8 months ago",
+      "updated_title": "Nov 23, 2025 7:27 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
       "name": "mixtao",
       "official": false,
       "owner": "frob",
@@ -701,23 +718,6 @@
       "tags": [],
       "updated": "6 months ago",
       "updated_title": "Jan 31, 2026 11:52 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "NireeskshanAI_Niri",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/NireeskshanAI_Niri",
-      "pulls": 1,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/NireeskshanAI_Niri",
-      "tag_count": 3,
-      "tags": [],
-      "updated": "8 months ago",
-      "updated_title": "Nov 23, 2025 7:27 PM UTC"
     },
     {
       "capabilities": [
@@ -813,8 +813,8 @@
     "/frob/kat-coder-v2.5-dev",
     "/frob/whyhow-ai_PatientSeek",
     "/frob/nex-n2-mini",
-    "/frob/mixtao",
     "/frob/NireeskshanAI_Niri",
+    "/frob/mixtao",
     "/frob/nex-n2-pro"
   ],
   "username": "frob"
