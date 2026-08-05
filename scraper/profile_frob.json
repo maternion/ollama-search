@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 3117,
+      "pulls": 3124,
       "sizes": [],
       "source_url": "https://ollama.com/frob/unlimited-ocr",
       "tag_count": 2,
@@ -98,7 +98,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1729,
+      "pulls": 1730,
       "sizes": [
         "753b"
       ],
@@ -121,7 +121,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.5",
-      "pulls": 1591,
+      "pulls": 1592,
       "sizes": [
         "122b",
         "397b"
@@ -192,7 +192,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/davidau-qwen3.6-uncensored",
-      "pulls": 901,
+      "pulls": 903,
       "sizes": [
         "40b"
       ],
@@ -225,6 +225,23 @@
       "updated_title": "Jun 26, 2026 3:23 PM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "deepseek-v4-flash-0731",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/deepseek-v4-flash-0731",
+      "pulls": 832,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/deepseek-v4-flash-0731",
+      "tag_count": 15,
+      "tags": [],
+      "updated": "yesterday",
+      "updated_title": "Aug 3, 2026 11:41 AM UTC"
+    },
+    {
       "capabilities": [
         "tools",
         "thinking"
@@ -245,23 +262,6 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Jun 26, 2026 3:24 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "deepseek-v4-flash-0731",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/deepseek-v4-flash-0731",
-      "pulls": 811,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/deepseek-v4-flash-0731",
-      "tag_count": 15,
-      "tags": [],
-      "updated": "yesterday",
-      "updated_title": "Aug 3, 2026 11:41 AM UTC"
     },
     {
       "capabilities": [
@@ -358,7 +358,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/nuextract-2.0",
-      "pulls": 630,
+      "pulls": 633,
       "sizes": [],
       "source_url": "https://ollama.com/frob/nuextract-2.0",
       "tag_count": 4,
@@ -378,7 +378,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 508,
+      "pulls": 515,
       "sizes": [],
       "source_url": "https://ollama.com/frob/deepseek-v4-flash",
       "tag_count": 15,
@@ -556,6 +556,23 @@
       "updated_title": "May 20, 2026 9:57 PM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "kat-coder-v2.5-dev",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/kat-coder-v2.5-dev",
+      "pulls": 78,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/kat-coder-v2.5-dev",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "yesterday",
+      "updated_title": "Aug 4, 2026 1:01 AM UTC"
+    },
+    {
       "capabilities": [
         "vision"
       ],
@@ -573,23 +590,6 @@
       "tags": [],
       "updated": "1 year ago",
       "updated_title": "Feb 20, 2025 2:54 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "kat-coder-v2.5-dev",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 69,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/kat-coder-v2.5-dev",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "yesterday",
-      "updated_title": "Aug 4, 2026 1:01 AM UTC"
     },
     {
       "capabilities": [],
@@ -790,8 +790,8 @@
     "/frob/minimax-m2.1",
     "/frob/davidau-qwen3.6-uncensored",
     "/frob/minimax-m2.7",
-    "/frob/glm-5.1",
     "/frob/deepseek-v4-flash-0731",
+    "/frob/glm-5.1",
     "/frob/glm-4.7",
     "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
     "/frob/locooperator",
@@ -806,8 +806,8 @@
     "/frob/KaLM-Embedding-Gemma3-12B-2511",
     "/frob/kimi-k2.5-prism-reap",
     "/frob/qwen3.6",
-    "/frob/llama3.2-vision",
     "/frob/kat-coder-v2.5-dev",
+    "/frob/llama3.2-vision",
     "/frob/hy-mt1.5",
     "/frob/hy3",
     "/frob/trinity",
