@@ -22,7 +22,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gemma-4-abliterated",
-      "pulls": 842900,
+      "pulls": 843100,
       "sizes": [
         "e2b",
         "e4b",
@@ -76,7 +76,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3.5-abliterated",
-      "pulls": 488500,
+      "pulls": 488600,
       "sizes": [
         "0.8b",
         "2b",
@@ -171,7 +171,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-abliterated",
-      "pulls": 225600,
+      "pulls": 225700,
       "sizes": [
         "0.6b",
         "1.7b",
@@ -407,7 +407,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-coder-abliterate",
-      "pulls": 32299,
+      "pulls": 32400,
       "sizes": [
         "0.5b",
         "1.5b",
@@ -603,7 +603,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/baronllm-abliterated",
-      "pulls": 9703,
+      "pulls": 9704,
       "sizes": [
         "8b"
       ],
@@ -622,7 +622,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-r1-abliterated",
-      "pulls": 8772,
+      "pulls": 8774,
       "sizes": [
         "24b"
       ],
@@ -720,7 +720,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/phi4-mini-abliterated",
-      "pulls": 7041,
+      "pulls": 7043,
       "sizes": [
         "3.8b"
       ],
@@ -782,7 +782,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite4.1-abliterated",
-      "pulls": 5450,
+      "pulls": 5459,
       "sizes": [
         "3b",
         "8b",
@@ -806,7 +806,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-next-abliterated",
-      "pulls": 5379,
+      "pulls": 5380,
       "sizes": [
         "80b"
       ],
@@ -825,7 +825,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deephermes3-abliterated",
-      "pulls": 4676,
+      "pulls": 4677,
       "sizes": [
         "8b"
       ],
@@ -886,7 +886,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/lfm2.5-abliterated",
-      "pulls": 3841,
+      "pulls": 3844,
       "sizes": [
         "1.2b"
       ],
@@ -967,7 +967,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/jan-nano-abliterated",
-      "pulls": 3276,
+      "pulls": 3277,
       "sizes": [
         "4b"
       ],
@@ -1209,6 +1209,26 @@
       "updated_title": "Dec 25, 2025 11:58 AM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "This is an uncensored version of nvidia/AceReason-Nemotron created with abliteration Edit",
+      "name": "acereason-nemotron-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/acereason-nemotron-abliterated",
+      "pulls": 2579,
+      "sizes": [
+        "7b",
+        "14b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/acereason-nemotron-abliterated",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "May 27, 2025 8:07 PM UTC"
+    },
+    {
       "capabilities": [
         "tools",
         "thinking"
@@ -1231,26 +1251,6 @@
       "tags": [],
       "updated": "8 months ago",
       "updated_title": "Nov 23, 2025 11:06 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "This is an uncensored version of nvidia/AceReason-Nemotron created with abliteration Edit",
-      "name": "acereason-nemotron-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/acereason-nemotron-abliterated",
-      "pulls": 2575,
-      "sizes": [
-        "7b",
-        "14b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/acereason-nemotron-abliterated",
-      "tag_count": 9,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "May 27, 2025 8:07 PM UTC"
     },
     {
       "capabilities": [],
@@ -1445,7 +1445,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/llama3.3-abliterated-ft",
-      "pulls": 1843,
+      "pulls": 1844,
       "sizes": [
         "70b"
       ],
@@ -2107,7 +2107,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/megrez-abliterated",
-      "pulls": 208,
+      "pulls": 209,
       "sizes": [
         "7b"
       ],
@@ -2295,8 +2295,8 @@
     "/huihui_ai/granite3.2-abliterated",
     "/huihui_ai/arcee-blitz-abliterated",
     "/huihui_ai/qwenlong-l1.5-abliterated",
-    "/huihui_ai/mirothinker1-abliterated",
     "/huihui_ai/acereason-nemotron-abliterated",
+    "/huihui_ai/mirothinker1-abliterated",
     "/huihui_ai/deepseek-r1-Fusion",
     "/huihui_ai/tess-r1-abliterated",
     "/huihui_ai/deepseekr1-qwq-skyt1-fusion",
