@@ -62,7 +62,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3495,
+      "pulls": 3497,
       "sizes": [],
       "source_url": "https://ollama.com/frob/qwen3-coder-next",
       "tag_count": 7,
@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 3283,
+      "pulls": 3288,
       "sizes": [],
       "source_url": "https://ollama.com/frob/unlimited-ocr",
       "tag_count": 2,
@@ -141,7 +141,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash-0731",
-      "pulls": 1441,
+      "pulls": 1447,
       "sizes": [],
       "source_url": "https://ollama.com/frob/deepseek-v4-flash-0731",
       "tag_count": 15,
@@ -209,7 +209,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/davidau-qwen3.6-uncensored",
-      "pulls": 911,
+      "pulls": 912,
       "sizes": [
         "40b"
       ],
@@ -304,6 +304,23 @@
       "tags": [],
       "updated": "4 months ago",
       "updated_title": "Mar 14, 2026 12:46 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "kat-coder-v2.5-dev",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/kat-coder-v2.5-dev",
+      "pulls": 741,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/kat-coder-v2.5-dev",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "3 days ago",
+      "updated_title": "Aug 4, 2026 1:01 AM UTC"
     },
     {
       "capabilities": [
@@ -535,23 +552,6 @@
       "updated_title": "Mar 5, 2026 3:25 AM UTC"
     },
     {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "kat-coder-v2.5-dev",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 139,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/kat-coder-v2.5-dev",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "3 days ago",
-      "updated_title": "Aug 4, 2026 1:01 AM UTC"
-    },
-    {
       "capabilities": [
         "vision",
         "tools",
@@ -617,7 +617,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/hy3",
-      "pulls": 38,
+      "pulls": 39,
       "sizes": [],
       "source_url": "https://ollama.com/frob/hy3",
       "tag_count": 4,
@@ -794,6 +794,7 @@
     "/frob/glm-5.1",
     "/frob/glm-4.7",
     "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
+    "/frob/kat-coder-v2.5-dev",
     "/frob/locooperator",
     "/frob/nuextract-2.0",
     "/frob/kimi-k2.5",
@@ -805,7 +806,6 @@
     "/frob/qwen-agentworld",
     "/frob/KaLM-Embedding-Gemma3-12B-2511",
     "/frob/kimi-k2.5-prism-reap",
-    "/frob/kat-coder-v2.5-dev",
     "/frob/qwen3.6",
     "/frob/llama3.2-vision",
     "/frob/hy-mt1.5",
