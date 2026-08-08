@@ -22,7 +22,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gemma-4-abliterated",
-      "pulls": 851500,
+      "pulls": 851700,
       "sizes": [
         "e2b",
         "e4b",
@@ -603,7 +603,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/baronllm-abliterated",
-      "pulls": 9711,
+      "pulls": 9714,
       "sizes": [
         "8b"
       ],
@@ -622,7 +622,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-r1-abliterated",
-      "pulls": 8796,
+      "pulls": 8797,
       "sizes": [
         "24b"
       ],
@@ -641,7 +641,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/hunyuan-mt-abliterated",
-      "pulls": 8563,
+      "pulls": 8564,
       "sizes": [
         "7b"
       ],
@@ -662,7 +662,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-coder-next-abliterated",
-      "pulls": 7704,
+      "pulls": 7710,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/qwen3-coder-next-abliterated",
       "tag_count": 4,
@@ -699,7 +699,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.2-vision-abliterated",
-      "pulls": 7186,
+      "pulls": 7190,
       "sizes": [
         "2b"
       ],
@@ -782,7 +782,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite4.1-abliterated",
-      "pulls": 5480,
+      "pulls": 5484,
       "sizes": [
         "3b",
         "8b",
@@ -806,7 +806,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-next-abliterated",
-      "pulls": 5390,
+      "pulls": 5405,
       "sizes": [
         "80b"
       ],
@@ -825,7 +825,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deephermes3-abliterated",
-      "pulls": 4691,
+      "pulls": 4693,
       "sizes": [
         "8b"
       ],
@@ -886,7 +886,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/lfm2.5-abliterated",
-      "pulls": 3855,
+      "pulls": 3856,
       "sizes": [
         "1.2b"
       ],
@@ -1007,7 +1007,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/seed-coder-abliterate",
-      "pulls": 3187,
+      "pulls": 3189,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/seed-coder-abliterate",
       "tag_count": 5,
@@ -1069,7 +1069,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/nemotron-abliterated",
-      "pulls": 3046,
+      "pulls": 3050,
       "sizes": [
         "70b"
       ],
@@ -1111,7 +1111,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/aya-expanse-abliterated",
-      "pulls": 2943,
+      "pulls": 2945,
       "sizes": [
         "8b",
         "32b"
@@ -1176,7 +1176,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/arcee-blitz-abliterated",
-      "pulls": 2675,
+      "pulls": 2677,
       "sizes": [
         "24b"
       ],
@@ -1240,7 +1240,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/mirothinker1-abliterated",
-      "pulls": 2578,
+      "pulls": 2582,
       "sizes": [
         "8b",
         "30b",
@@ -1280,7 +1280,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/tess-r1-abliterated",
-      "pulls": 2504,
+      "pulls": 2508,
       "sizes": [
         "70b"
       ],
@@ -1373,6 +1373,25 @@
       "updated_title": "Nov 30, 2025 4:43 PM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "A fine-tuned version of Deepseek-R1-Distilled-Qwen-1.5B that surpasses the performance of OpenAI’s o1-preview with just 1.5B parameters on popular math evaluations.",
+      "name": "deepscaler-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/deepscaler-abliterated",
+      "pulls": 1960,
+      "sizes": [
+        "1.5b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/deepscaler-abliterated",
+      "tag_count": 3,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Feb 14, 2025 4:32 AM UTC"
+    },
+    {
       "capabilities": [
         "tools"
       ],
@@ -1392,25 +1411,6 @@
       "tags": [],
       "updated": "1 year ago",
       "updated_title": "Nov 27, 2024 4:32 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "A fine-tuned version of Deepseek-R1-Distilled-Qwen-1.5B that surpasses the performance of OpenAI’s o1-preview with just 1.5B parameters on popular math evaluations.",
-      "name": "deepscaler-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/deepscaler-abliterated",
-      "pulls": 1959,
-      "sizes": [
-        "1.5b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/deepscaler-abliterated",
-      "tag_count": 3,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "Feb 14, 2025 4:32 AM UTC"
     },
     {
       "capabilities": [],
@@ -1644,7 +1644,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/perplexity-ai-r1-abliterated",
-      "pulls": 1155,
+      "pulls": 1159,
       "sizes": [
         "70b"
       ],
@@ -1728,7 +1728,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/tulu3-abliterate",
-      "pulls": 899,
+      "pulls": 903,
       "sizes": [
         "8b",
         "70b"
@@ -1793,7 +1793,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/kimi-k2-abliterated",
-      "pulls": 858,
+      "pulls": 859,
       "sizes": [
         "1026b"
       ],
@@ -1858,7 +1858,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/devstral-2-abliterated",
-      "pulls": 605,
+      "pulls": 615,
       "sizes": [
         "123b"
       ],
@@ -2303,8 +2303,8 @@
     "/huihui_ai/fara-abliterated",
     "/huihui_ai/exaone-deep-abliterated",
     "/huihui_ai/orchestrator-abliterated",
-    "/huihui_ai/skywork-o1-abliterated",
     "/huihui_ai/deepscaler-abliterated",
+    "/huihui_ai/skywork-o1-abliterated",
     "/huihui_ai/falcon3-abliterated",
     "/huihui_ai/llama3.3-abliterated-ft",
     "/huihui_ai/tinyr1-abliterated",
