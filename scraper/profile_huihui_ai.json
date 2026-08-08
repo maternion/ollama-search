@@ -22,7 +22,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gemma-4-abliterated",
-      "pulls": 852300,
+      "pulls": 852600,
       "sizes": [
         "e2b",
         "e4b",
@@ -171,7 +171,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-abliterated",
-      "pulls": 226500,
+      "pulls": 226600,
       "sizes": [
         "0.6b",
         "1.7b",
@@ -252,7 +252,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-abliterate",
-      "pulls": 74400,
+      "pulls": 74500,
       "sizes": [
         "0.5b",
         "1.5b",
@@ -622,7 +622,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-r1-abliterated",
-      "pulls": 8801,
+      "pulls": 8802,
       "sizes": [
         "24b"
       ],
@@ -662,13 +662,35 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-coder-next-abliterated",
-      "pulls": 7713,
+      "pulls": 7714,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/qwen3-coder-next-abliterated",
       "tag_count": 4,
       "tags": [],
       "updated": "6 months ago",
       "updated_title": "Feb 8, 2026 12:41 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision",
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "A compact and efficient vision-language model, specifically designed for visual document understanding, enabling automated content extraction from tables, charts, infographics, plots, diagrams, and more.",
+      "name": "granite3.2-vision-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/granite3.2-vision-abliterated",
+      "pulls": 7197,
+      "sizes": [
+        "2b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/granite3.2-vision-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Mar 5, 2025 8:15 AM UTC"
     },
     {
       "capabilities": [],
@@ -689,28 +711,6 @@
     },
     {
       "capabilities": [
-        "vision",
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "A compact and efficient vision-language model, specifically designed for visual document understanding, enabling automated content extraction from tables, charts, infographics, plots, diagrams, and more.",
-      "name": "granite3.2-vision-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/granite3.2-vision-abliterated",
-      "pulls": 7194,
-      "sizes": [
-        "2b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/granite3.2-vision-abliterated",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "Mar 5, 2025 8:15 AM UTC"
-    },
-    {
-      "capabilities": [
         "tools"
       ],
       "cloud": false,
@@ -720,7 +720,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/phi4-mini-abliterated",
-      "pulls": 7059,
+      "pulls": 7060,
       "sizes": [
         "3.8b"
       ],
@@ -782,7 +782,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite4.1-abliterated",
-      "pulls": 5487,
+      "pulls": 5489,
       "sizes": [
         "3b",
         "8b",
@@ -825,7 +825,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deephermes3-abliterated",
-      "pulls": 4695,
+      "pulls": 4696,
       "sizes": [
         "8b"
       ],
@@ -865,7 +865,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepseek-v3-abliterated",
-      "pulls": 4049,
+      "pulls": 4050,
       "sizes": [
         "671b"
       ],
@@ -886,7 +886,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/lfm2.5-abliterated",
-      "pulls": 3858,
+      "pulls": 3861,
       "sizes": [
         "1.2b"
       ],
@@ -905,7 +905,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/foundation-sec-abliterated",
-      "pulls": 3626,
+      "pulls": 3627,
       "sizes": [
         "8b"
       ],
@@ -926,7 +926,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
-      "pulls": 3586,
+      "pulls": 3588,
       "sizes": [
         "3b"
       ],
@@ -945,7 +945,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/phi4-reasoning-abliterated",
-      "pulls": 3354,
+      "pulls": 3355,
       "sizes": [
         "3.8b"
       ],
@@ -1135,7 +1135,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/huihui-4",
-      "pulls": 2835,
+      "pulls": 2836,
       "sizes": [
         "8b"
       ],
@@ -1320,7 +1320,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/fara-abliterated",
-      "pulls": 2449,
+      "pulls": 2450,
       "sizes": [
         "7b"
       ],
@@ -1339,7 +1339,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/exaone-deep-abliterated",
-      "pulls": 2117,
+      "pulls": 2118,
       "sizes": [
         "2.4b",
         "7.8b"
@@ -1666,7 +1666,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/huihui-moe",
-      "pulls": 1111,
+      "pulls": 1112,
       "sizes": [
         "1.2b",
         "23b"
@@ -1688,7 +1688,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/nemotron-v1-abliterated",
-      "pulls": 1080,
+      "pulls": 1081,
       "sizes": [
         "8b"
       ],
@@ -1858,7 +1858,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/devstral-2-abliterated",
-      "pulls": 620,
+      "pulls": 621,
       "sizes": [
         "123b"
       ],
@@ -2269,8 +2269,8 @@
     "/huihui_ai/dolphin3-r1-abliterated",
     "/huihui_ai/hunyuan-mt-abliterated",
     "/huihui_ai/qwen3-coder-next-abliterated",
-    "/huihui_ai/deepseek-v3",
     "/huihui_ai/granite3.2-vision-abliterated",
+    "/huihui_ai/deepseek-v3",
     "/huihui_ai/phi4-mini-abliterated",
     "/huihui_ai/magistral-abliterated",
     "/huihui_ai/openthinker-abliterated",
