@@ -3817,6 +3817,19 @@ body.graph-hidden #graph-show-toggle.detail-show-toggle {
 body.graph-hidden #graph-panel.detail-graph {
   display: none !important;
 }
+/* Mobile (detail page): smaller buttons, hide slider, give graph more space */
+@media (max-width: 1079.98px) {
+  #graph-panel.detail-graph { margin-top: 1rem; }
+  #graph-panel.detail-graph #graph-hide-toggle,
+  #graph-panel.detail-graph #graph-mode,
+  #graph-show-toggle.detail-show-toggle {
+    font-size: 11px;
+    padding: 0.125rem 0.375rem;
+  }
+  #graph-panel.detail-graph #graph-range-container { display: none; }
+  #graph-panel.detail-graph #graph-svg { aspect-ratio: 560 / 400; }
+  #graph-panel.detail-graph .mb-3 { margin-bottom: 0.5rem; }
+}
 """
 
 APP_JS = r"""// ollama-search frontend logic.
