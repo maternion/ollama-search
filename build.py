@@ -3158,6 +3158,11 @@ def copy_assets() -> None:
 
 
 EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
+
+/* Theme toggle: show moon in light mode, sun in dark mode */
+.dark .dark\:hidden { display: none !important; }
+.dark .dark\:block { display: block !important; }
+
    The vendored tailwind.css from ollama.com doesn't include dark: variants,
    so we add all dark: class definitions we use here.
    Color mapping: Tailwind shade inversion (50→950, 100→900, 200→800, …, 950→50)
