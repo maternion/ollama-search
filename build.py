@@ -847,15 +847,15 @@ def _first_tag_page(model_path: str):
     return None, None
 
 
-def _classify_template(model_path: str, capabilities: list[str] | None = None) -> str:
+def _classify_template(model_path: str, capabilities: list[str] | None = None, updated_title: str = "") -> str:
     """Classify template type: base (Go template), renderer, or jinja.
 
     - base: has a template blob with real Go template content (non-trivial)
     - renderer: has a template blob that is trivial ({{ .Prompt }}), OR
-      no template blob but ollama.com shows capability badges (tools/thinking/
-      vision) — the architecture uses ollama's built-in renderer
-    - jinja: no template blob and no capability badges — community/HF import
-      using a Jinja-based template system
+      no template blob but ollama.com shows tools/thinking badges — the
+      architecture uses ollama's built-in renderer
+    - jinja: no template blob and no tools/thinking badges — community/HF
+      import or vision-only model using a Jinja-based template system
     """
     tag_name, tp = _first_tag_page(model_path)
     if tp is None:
@@ -869,12 +869,14 @@ def _classify_template(model_path: str, capabilities: list[str] | None = None) -
     if "system" in types:
         return "jinja"
     # No template blob and no system blob. Distinguish using ollama.com badges:
-    # - Has capability badges (tools/thinking/vision/etc) → renderer/parser
-    #   (ollama's built-in renderer handles the template for this architecture)
-    # - No badges at all → jinja (community/HF import with Jinja template)
+    # - Has tools/thinking badges → renderer/parser (ollama's built-in renderer
+    #   handles the template for this architecture, and the badges confirm it)
+    # - No tools/thinking badges, but model is recent (after ornith, ~Jun 2026)
+    #   → jinja (community/HF import or vision-only model using Jinja templates)
+    # - Old models without template blobs → base (predate the template system)
     # - Embedding models → base (no chat template)
-    non_embedding_caps = [c for c in (capabilities or []) if c != "embedding"]
-    if non_embedding_caps:
+    chat_caps = [c for c in (capabilities or []) if c in ("tools", "thinking")]
+    if chat_caps:
         return "renderer"
     if capabilities and "embedding" in capabilities:
         return "base"
@@ -884,6 +886,15 @@ def _classify_template(model_path: str, capabilities: list[str] | None = None) -
             arch = md.get("value", "")
             break
     if arch in EMBEDDING_ARCHS:
+        return "base"
+    # Jinja templates started appearing around June 2026 (ornith was first).
+    # Older models without template blobs predate the template system → base.
+    from datetime import datetime as _dt
+    try:
+        model_date = _dt.strptime(updated_title, "%b %d, %Y %I:%M %p UTC")
+    except Exception:
+        model_date = _dt.min
+    if model_date < _dt(2026, 6, 1):
         return "base"
     return "jinja"
 
@@ -959,7 +970,7 @@ def render_card(
         f'data-moe="{"true" if _has_moe(m["path"], m.get("tags")) else "false"}" '
         f'data-mtp="{"true" if any("-mtp" in (t.get("name", "").lower()) for t in (m.get("tags") or [])) else "false"}" '
         f'data-image="{"true" if "image" in (m.get("capabilities") or []) else "false"}" '
-        f'data-template-type="{_classify_template(m["path"], m.get("capabilities") or [])}"'
+        f'data-template-type="{_classify_template(m["path"], m.get("capabilities") or [], m.get("updated_title") or "")}"'
     )
 
     # MLX pill for models that have MLX variants (black bg, white text, same size as other pills)
