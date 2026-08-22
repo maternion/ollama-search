@@ -725,6 +725,12 @@ def size_spans(sizes: list[str]) -> str:
     return "\n        ".join(parts) if parts else ""
 
 
+EMBEDDING_ARCHS = {
+    "bert",
+    "nomic-bert",
+    "nomic_bert",
+}
+
 RENDERER_ARCHS = {
     "gemma4",
     "olmo3",
@@ -840,13 +846,13 @@ def _first_tag_page(model_path: str):
     return None, None
 
 
-def _classify_template(model_path: str) -> str:
-    """Classify template type: base, renderer, or jinja.
+def _classify_template(model_path: str, capabilities: list[str] | None = None) -> str:
+    """Classify template type: base (Go template), renderer, or jinja.
 
-    - base: has a template blob with real Go template content
-    - renderer: no template blob, or template is trivial ({{ .Prompt }})
-    - jinja: no template blob but has a system blob (embedded Jinja)
-    - base (no template/system): embed/text/code models
+    - base: has a template blob with real Go template content (non-trivial)
+    - renderer: has a template blob that is trivial ({{ .Prompt }})
+    - jinja: no template blob at all (with or without a system blob) —
+      ollama uses its built-in Jinja renderer for the architecture
     """
     tag_name, tp = _first_tag_page(model_path)
     if tp is None:
@@ -859,16 +865,18 @@ def _classify_template(model_path: str) -> str:
         return "base"
     if "system" in types:
         return "jinja"
-    # No template, no system — check arch for renderer
+    # No template blob and no system blob. Distinguish:
+    # - Embedding models: no chat template at all → base (Go template)
+    # - Chat models: ollama uses its built-in Jinja renderer → jinja
+    if capabilities and "embedding" in capabilities:
+        return "base"
     arch = ""
     for md in _model_blob_metadata(model_path):
         if md.get("key") == "general.architecture":
             arch = md.get("value", "")
             break
-    if arch in RENDERER_ARCHS:
-        return "renderer"
-    # No template blob and no system blob: the model uses ollama's built-in
-    # Jinja renderer for its architecture, so classify as jinja.
+    if arch in EMBEDDING_ARCHS:
+        return "base"
     return "jinja"
 
 
@@ -943,7 +951,7 @@ def render_card(
         f'data-moe="{"true" if _has_moe(m["path"], m.get("tags")) else "false"}" '
         f'data-mtp="{"true" if any("-mtp" in (t.get("name", "").lower()) for t in (m.get("tags") or [])) else "false"}" '
         f'data-image="{"true" if "image" in (m.get("capabilities") or []) else "false"}" '
-        f'data-template-type="{_classify_template(m["path"])}"'
+        f'data-template-type="{_classify_template(m["path"], m.get("capabilities") or [])}"'
     )
 
     # MLX pill for models that have MLX variants (black bg, white text, same size as other pills)
@@ -1246,7 +1254,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 </div>
                 <div class="relative inline-block">
                   <input type="radio" name="tpl-filter" value="base" id="tpl-base" class="tpl-radio peer sr-only">
-                  <label for="tpl-base" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">Base Template</label>
+                  <label for="tpl-base" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">Go Template</label>
                 </div>
                 <div class="relative inline-block">
                   <input type="radio" name="tpl-filter" value="renderer" id="tpl-renderer" class="tpl-radio peer sr-only">
