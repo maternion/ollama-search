@@ -31,6 +31,7 @@ import os
 import random
 import re
 import signal
+import struct
 import subprocess
 import sys
 import time
@@ -1620,11 +1621,379 @@ def parse_blob_page(html: str, blob_url: str) -> BlobPage | None:
     )
 
 
-def fetch_blob_page(client: Client, blob_url: str) -> BlobPage | None:
+# --------------------------------------------------------------------------- #
+# HuggingFace GGUF fallback (for frob models when ollama.com blob pages fail)
+# --------------------------------------------------------------------------- #
+
+# GGUF value types
+_GGUF_TYPE_UINT8 = 0
+_GGUF_TYPE_INT8 = 1
+_GGUF_TYPE_UINT16 = 2
+_GGUF_TYPE_INT16 = 3
+_GGUF_TYPE_UINT32 = 4
+_GGUF_TYPE_INT32 = 5
+_GGUF_TYPE_FLOAT32 = 6
+_GGUF_TYPE_BOOL = 7
+_GGUF_TYPE_STRING = 8
+_GGUF_TYPE_ARRAY = 9
+_GGUF_TYPE_UINT64 = 10
+_GGUF_TYPE_INT64 = 11
+_GGUF_TYPE_FLOAT64 = 12
+
+_HF_IMPORT_RE = re.compile(
+    r"Imported from\s*<a\s[^>]*href=\"https?://huggingface\.co/([^\"'<\s]+)\"",
+    re.IGNORECASE,
+)
+_HF_BROAD_RE = re.compile(r"huggingface\.co/([^\"'<\s]+)")
+
+
+def _extract_hf_repo(model_path: str) -> str | None:
+    """Extract the HuggingFace repo (owner/name) from the model's cached page JSON.
+
+    The readme usually contains "Imported from <a href="https://huggingface.co/{repo}">".
+    Falls back to a broader pattern for readmes without the "Imported from" prefix.
+    Returns the repo path (e.g. "unsloth/GLM-5.2-GGUF") or None.
+    """
+    slug = slugify(model_path)
+    page_file = PAGES_DIR / f"{slug}.json"
+    if not page_file.exists():
+        return None
+    try:
+        page_data = json.loads(page_file.read_text())
+    except Exception:
+        return None
+    readme_html = page_data.get("readme_html", "")
+    if not readme_html:
+        return None
+    m = _HF_IMPORT_RE.search(readme_html)
+    if m:
+        repo = m.group(1)
+    else:
+        # Broad fallback: any huggingface.co/{repo} reference in the HTML
+        m = _HF_BROAD_RE.search(readme_html)
+        if not m:
+            return None
+        repo = m.group(1)
+    # Clean: strip trailing path segments, query strings, fragments
+    repo = repo.split("?")[0].split("#")[0].split("/blob/")[0].rstrip("/")
+    # Must be owner/repo (at least one slash)
+    if "/" not in repo:
+        return None
+    return repo
+
+
+def _hf_list_gguf_files(hf_repo: str) -> list[dict]:
+    """List files in a HuggingFace repo's main branch via the tree API.
+
+    Searches the repo root, then recurses one level into subdirectories
+    (many GGUF repos organize shards by quantization, e.g. Q8_0/, BF16/).
+    Returns a list of {path, size} dicts for files ending in .gguf.
+    """
+    session = requests.Session()
+    session.headers.update({"User-Agent": UA})
+    gguf_files: list[dict] = []
+
+    def _list_dir(subdir: str) -> list[dict]:
+        path_prefix = f"/{subdir}" if subdir else ""
+        api_url = f"https://huggingface.co/api/models/{hf_repo}/tree/main{path_prefix}"
+        try:
+            r = session.get(api_url, timeout=30)
+        except requests.RequestException:
+            return []
+        if r.status_code != 200:
+            return []
+        try:
+            entries = r.json()
+        except Exception:
+            return []
+        if not isinstance(entries, list):
+            return []
+        return entries
+
+    # 1. Search root level
+    root_entries = _list_dir("")
+    for entry in root_entries:
+        if entry.get("type") != "file":
+            continue
+        fpath = entry.get("path", "")
+        if fpath.lower().endswith(".gguf"):
+            gguf_files.append({"path": fpath, "size": entry.get("size", 0)})
+
+    # 2. If no .gguf in root, recurse into subdirectories one level deep
+    if not gguf_files:
+        for entry in root_entries:
+            if entry.get("type") != "directory":
+                continue
+            subdir = entry.get("path", "")
+            if not subdir:
+                continue
+            sub_entries = _list_dir(subdir)
+            for sub_entry in sub_entries:
+                if sub_entry.get("type") != "file":
+                    continue
+                fpath = sub_entry.get("path", "")
+                if fpath.lower().endswith(".gguf"):
+                    gguf_files.append({"path": fpath, "size": sub_entry.get("size", 0)})
+            if gguf_files:
+                break
+
+    session.close()
+    # Sort by name for deterministic ordering (first shard is usually the
+    # alphabetically first .gguf file, e.g. "model-00001-of-00017.gguf").
+    gguf_files.sort(key=lambda f: f["path"])
+    return gguf_files
+
+
+def _parse_gguf_header(data: bytes) -> tuple[str, list[MetadataEntry]] | None:
+    """Parse the GGUF binary header from a byte buffer.
+
+    Returns (architecture, metadata_entries) or None if the buffer is too
+    small or the magic is wrong. Only the metadata KV pairs are parsed;
+    tensor info and tensor data are skipped.
+    """
+    if len(data) < 20:
+        return None
+    offset = 0
+    try:
+        (magic,) = struct.unpack_from("<I", data, offset)
+        offset += 4
+        if magic != 0x46554747:  # "GGUF"
+            return None
+        (version,) = struct.unpack_from("<I", data, offset)
+        offset += 4
+        # tensor_count (uint64) — skipped, we only need metadata
+        (tensor_count,) = struct.unpack_from("<Q", data, offset)
+        offset += 8
+        (kv_count,) = struct.unpack_from("<Q", data, offset)
+        offset += 8
+    except struct.error:
+        return None
+
+    def read_string(off: int) -> tuple[str, int] | None:
+        try:
+            (length,) = struct.unpack_from("<Q", data, off)
+            off += 8
+        except struct.error:
+            return None
+        if off + length > len(data):
+            return None
+        try:
+            s = data[off : off + length].decode("utf-8")
+        except UnicodeDecodeError:
+            return None
+        return s, off + int(length)
+
+    def read_value(off: int, vtype: int) -> tuple[str | None, int] | None:
+        """Read a GGUF value. Returns (string_repr, new_offset) or None."""
+        try:
+            if vtype == _GGUF_TYPE_UINT8:
+                (v,) = struct.unpack_from("<B", data, off)
+                return str(v), off + 1
+            elif vtype == _GGUF_TYPE_INT8:
+                (v,) = struct.unpack_from("<b", data, off)
+                return str(v), off + 1
+            elif vtype == _GGUF_TYPE_UINT16:
+                (v,) = struct.unpack_from("<H", data, off)
+                return str(v), off + 2
+            elif vtype == _GGUF_TYPE_INT16:
+                (v,) = struct.unpack_from("<h", data, off)
+                return str(v), off + 2
+            elif vtype == _GGUF_TYPE_UINT32:
+                (v,) = struct.unpack_from("<I", data, off)
+                return str(v), off + 4
+            elif vtype == _GGUF_TYPE_INT32:
+                (v,) = struct.unpack_from("<i", data, off)
+                return str(v), off + 4
+            elif vtype == _GGUF_TYPE_FLOAT32:
+                (v,) = struct.unpack_from("<f", data, off)
+                return repr(v), off + 4
+            elif vtype == _GGUF_TYPE_BOOL:
+                (v,) = struct.unpack_from("<B", data, off)
+                return str(bool(v)).lower(), off + 1
+            elif vtype == _GGUF_TYPE_STRING:
+                result = read_string(off)
+                if result is None:
+                    return None
+                return result
+            elif vtype == _GGUF_TYPE_ARRAY:
+                (elem_type,) = struct.unpack_from("<I", data, off)
+                off += 4
+                (count,) = struct.unpack_from("<Q", data, off)
+                off += 8
+                # Skip array elements — represent as a count summary
+                for _ in range(count):
+                    if elem_type == _GGUF_TYPE_STRING:
+                        sr = read_string(off)
+                        if sr is None:
+                            return None
+                        off = sr[1]
+                    else:
+                        sizes = {
+                            _GGUF_TYPE_UINT8: 1,
+                            _GGUF_TYPE_INT8: 1,
+                            _GGUF_TYPE_UINT16: 2,
+                            _GGUF_TYPE_INT16: 2,
+                            _GGUF_TYPE_UINT32: 4,
+                            _GGUF_TYPE_INT32: 4,
+                            _GGUF_TYPE_FLOAT32: 4,
+                            _GGUF_TYPE_BOOL: 1,
+                            _GGUF_TYPE_UINT64: 8,
+                            _GGUF_TYPE_INT64: 8,
+                            _GGUF_TYPE_FLOAT64: 8,
+                        }
+                        sz = sizes.get(elem_type)
+                        if sz is None:
+                            return None
+                        off += sz
+                        if off > len(data):
+                            return None
+                return f"[{count} items]", off
+            elif vtype == _GGUF_TYPE_UINT64:
+                (v,) = struct.unpack_from("<Q", data, off)
+                return str(v), off + 8
+            elif vtype == _GGUF_TYPE_INT64:
+                (v,) = struct.unpack_from("<q", data, off)
+                return str(v), off + 8
+            elif vtype == _GGUF_TYPE_FLOAT64:
+                (v,) = struct.unpack_from("<d", data, off)
+                return repr(v), off + 8
+            else:
+                return None
+        except struct.error:
+            return None
+
+    arch = ""
+    metadata: list[MetadataEntry] = []
+    for _ in range(kv_count):
+        if offset >= len(data):
+            break
+        key_result = read_string(offset)
+        if key_result is None:
+            break
+        key, offset = key_result
+        if offset + 4 > len(data):
+            break
+        (vtype,) = struct.unpack_from("<I", data, offset)
+        offset += 4
+        value_result = read_value(offset, vtype)
+        if value_result is None:
+            break
+        value, offset = value_result
+        if key:
+            metadata.append(MetadataEntry(key=key, value=value or ""))
+            if key == "general.architecture":
+                arch = value or ""
+
+    return arch, metadata
+
+
+def fetch_hf_gguf_blob(
+    blob_url: str,
+    model_path: str,
+) -> BlobPage | None:
+    """Fetch GGUF metadata from HuggingFace as a fallback when ollama.com's
+    blob page is unavailable (500 error, timeout, etc).
+
+    Only used for frob models (path contains "/frob/"). Extracts the HF repo
+    from the model's cached page readme, lists .gguf files via the HF API,
+    downloads the first ~500KB of the first shard, parses the GGUF header, and
+    returns a BlobPage with metadata.
+    """
+    if "/frob/" not in model_path:
+        return None
+
+    hf_repo = _extract_hf_repo(model_path)
+    if not hf_repo:
+        log.warning("HF fallback: no HF repo found for %s", model_path)
+        return None
+
+    gguf_files = _hf_list_gguf_files(hf_repo)
+    if not gguf_files:
+        log.warning("HF fallback: no .gguf files in %s for %s", hf_repo, model_path)
+        return None
+
+    first_file = gguf_files[0]["path"]
+    download_url = f"https://huggingface.co/{hf_repo}/resolve/main/{first_file}"
+
+    # Fetch the first ~500KB with a Range request
+    session = requests.Session()
+    session.headers.update(
+        {
+            "User-Agent": UA,
+            "Range": "bytes=0-524287",
+        }
+    )
+    try:
+        r = session.get(download_url, timeout=60, stream=True)
+        if r.status_code not in (200, 206):
+            log.warning(
+                "HF fallback: %s -> %s for %s",
+                download_url,
+                r.status_code,
+                model_path,
+            )
+            session.close()
+            return None
+        # Read up to 512KB
+        chunk = b""
+        for block in r.iter_content(chunk_size=65536):
+            chunk += block
+            if len(chunk) >= 524288:
+                break
+        chunk = chunk[:524288]
+    except requests.RequestException as e:
+        log.warning("HF fallback: error fetching %s: %s", download_url, e)
+        session.close()
+        return None
+    session.close()
+
+    if len(chunk) < 20:
+        log.warning("HF fallback: too little data from %s", download_url)
+        return None
+
+    result = _parse_gguf_header(chunk)
+    if result is None:
+        log.warning("HF fallback: GGUF parse failed for %s", download_url)
+        return None
+
+    arch, metadata = result
+
+    # Extract digest from blob_url for the BlobPage
+    digest = blob_url.rstrip("/").rsplit("/blobs/", 1)[-1].split("?", 1)[0]
+
+    log.info(
+        "HF fallback: parsed %s -> arch=%s, %d metadata entries",
+        download_url,
+        arch,
+        len(metadata),
+    )
+
+    return BlobPage(
+        blob_url=blob_url,
+        tag_full="",
+        blob_type="model",
+        digest=digest,
+        size="",
+        metadata=metadata,
+        content="",
+        tensors=[],
+        tensor_groups=[],
+    )
+
+
+def fetch_blob_page(
+    client: Client, blob_url: str, model_path: str = ""
+) -> BlobPage | None:
     url = BASE + blob_url
     html = client.get(url)
     if html is None:
         log.error("blob page fetch failed: %s", url)
+        # HF GGUF fallback for frob models
+        if model_path and "/frob/" in model_path:
+            log.info("attempting HF GGUF fallback for %s", model_path)
+            bp = fetch_hf_gguf_blob(blob_url, model_path)
+            if bp:
+                return bp
         return None
     return parse_blob_page(html, blob_url)
 
@@ -2112,12 +2481,22 @@ def infer_capabilities(models: dict[str, Model]) -> None:
             # rather than in GGUF metadata, so metadata-only checks miss them.
             if bd.get("blob_type") == "template":
                 tc = (bd.get("content") or "").lower()
-                if (".tools" in tc or "tool_call" in tc or "tool_use" in tc
-                        or "isa tool" in tc or ".toolcalls" in tc):
+                if (
+                    ".tools" in tc
+                    or "tool_call" in tc
+                    or "tool_use" in tc
+                    or "isa tool" in tc
+                    or ".toolcalls" in tc
+                ):
                     if "tools" not in caps:
                         caps.append("tools")
-                if ("isa think" in tc or ".think" in tc or "think>" in tc
-                        or "thinking_mode" in tc or "enable_thinking" in tc):
+                if (
+                    "isa think" in tc
+                    or ".think" in tc
+                    or "think>" in tc
+                    or "thinking_mode" in tc
+                    or "enable_thinking" in tc
+                ):
                     if "thinking" not in caps:
                         caps.append("thinking")
         # Check model description for capability signals. Some models mention
@@ -2125,10 +2504,11 @@ def infer_capabilities(models: dict[str, Model]) -> None:
         if not caps or "tools" not in caps or "thinking" not in caps:
             desc = (m.description or "").lower()
             if "tools" not in caps and (
-                    "agentic" in desc
-                    or "function calling" in desc
-                    or "tool use" in desc
-                    or "tool calling" in desc):
+                "agentic" in desc
+                or "function calling" in desc
+                or "tool use" in desc
+                or "tool calling" in desc
+            ):
                 caps.append("tools")
             if "thinking" not in caps and "thinking" in desc:
                 caps.append("thinking")
@@ -2146,38 +2526,41 @@ def infer_capabilities(models: dict[str, Model]) -> None:
                     # Check for heading tags containing capability keywords.
                     # Readmes use <h1>tools</h1>, <h1>chat/thinking</h1> etc.
                     import re as _re
+
                     rh_headings = _re.findall(
                         r"<h[1-6][^>]*>(.*?)</h[1-6]>", rh, _re.DOTALL
                     )
                     heading_text = " ".join(strip_tags(h) for h in rh_headings)
-                    if ("tools" not in caps and (
-                            "# tools" in rh_text
-                            or "## tools" in rh_text
-                            or "tools" in heading_text.split()
-                            or ".tools" in rh_text
-                            or "tool_call" in rh_text
-                            or "agentic" in rh_text
-                            or "function calling" in rh_text
-                            or "tool use" in rh_text
-                            or "tool calling" in rh_text
-                            or "tool calling" in heading_text
-                            or "tools" in heading_text
-                            or "tool enabled" in rh_text
-                            or "tool approvals" in rh_text)):
+                    if "tools" not in caps and (
+                        "# tools" in rh_text
+                        or "## tools" in rh_text
+                        or "tools" in heading_text.split()
+                        or ".tools" in rh_text
+                        or "tool_call" in rh_text
+                        or "agentic" in rh_text
+                        or "function calling" in rh_text
+                        or "tool use" in rh_text
+                        or "tool calling" in rh_text
+                        or "tool calling" in heading_text
+                        or "tools" in heading_text
+                        or "tool enabled" in rh_text
+                        or "tool approvals" in rh_text
+                    ):
                         caps.append("tools")
-                    if ("thinking" not in caps and (
-                            "# thinking" in rh_text
-                            or "## thinking" in rh_text
-                            or "# chat/thinking" in rh_text
-                            or "chat/thinking" in heading_text
-                            or "thinking" in heading_text.split()
-                            or "think step by step" in rh_text
-                            or "/set nothink" in rh_text
-                            or "thinking_mode" in rh_text
-                            or "enable_thinking" in rh_text
-                            or "thinking..." in rh_text
-                            or "--think=false" in rh_text
-                            or "...done thinking" in rh_text)):
+                    if "thinking" not in caps and (
+                        "# thinking" in rh_text
+                        or "## thinking" in rh_text
+                        or "# chat/thinking" in rh_text
+                        or "chat/thinking" in heading_text
+                        or "thinking" in heading_text.split()
+                        or "think step by step" in rh_text
+                        or "/set nothink" in rh_text
+                        or "thinking_mode" in rh_text
+                        or "enable_thinking" in rh_text
+                        or "thinking..." in rh_text
+                        or "--think=false" in rh_text
+                        or "...done thinking" in rh_text
+                    ):
                         caps.append("thinking")
                 except Exception:
                     pass
@@ -3380,7 +3763,7 @@ def main(argv: list[str] | None = None) -> int:
                             m.path,
                             t.name,
                         )
-                        bp = fetch_blob_page(client, blob_url)
+                        bp = fetch_blob_page(client, blob_url, m.path)
                         if bp:
                             save_blob_page(blob_url, bp)
                             total_blobs += 1

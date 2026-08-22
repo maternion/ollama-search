@@ -4377,7 +4377,7 @@ function applyFilters() {
     var matchMoe = moeVal === 'all' || (moeVal === 'moe' && isMoe) || (moeVal === 'dense' && !isMoe);
     var matchTpl = tplVal === 'all' || cardTpl === tplVal;
     var show = matchText && matchCaps && matchCloud && matchSize && matchContext && matchMoreAudio && matchMoreMlx && matchMoreMtp && matchMoreImage && matchMoe && matchTpl;
-    if (show && !q && !isOfficial && !window.IS_PROFILE_PAGE) show = false;
+    // Non-official models are visible on the main page (no search required)
     card.style.display = show ? '' : 'none';
     if (show) visible++;
   });
