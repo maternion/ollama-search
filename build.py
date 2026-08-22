@@ -603,15 +603,15 @@ def nav_html(active: str = "") -> str:
     </div>
     <div class="hidden lg:flex xl:flex-1 items-center space-x-2 justify-end ml-6 xl:ml-0">
       <button id="theme-toggle" class="flex cursor-pointer items-center rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 text-lg px-3 py-1.5 text-black dark:text-neutral-200 whitespace-nowrap" title="Toggle dark mode">
-        <span class="dark:hidden">{SVG_MOON}</span>
-        <span class="hidden dark:block">{SVG_SUN}</span>
+        <span class="dark:hidden">{SVG_SUN}</span>
+        <span class="hidden dark:block">{SVG_MOON}</span>
       </button>
       <a class="flex cursor-pointer items-center rounded-full bg-neutral-800 dark:bg-neutral-100 text-lg px-4 py-1.5 text-white dark:text-neutral-900 hover:bg-black dark:hover:bg-white whitespace-nowrap focus:bg-black dark:focus:bg-white" href="{url("/download")}">Download</a>
     </div>
     <div class="lg:hidden flex items-center">
       <button id="theme-toggle-mobile" class="flex items-center rounded-full bg-black/5 dark:bg-white/10 px-3 py-1.5 mr-2 text-black dark:text-neutral-200">
-        <span class="dark:hidden">{SVG_MOON}</span>
-        <span class="hidden dark:block">{SVG_SUN}</span>
+        <span class="dark:hidden">{SVG_SUN}</span>
+        <span class="hidden dark:block">{SVG_MOON}</span>
       </button>
     </div>
   </nav>
@@ -3800,6 +3800,15 @@ body.filters-hidden #graph-panel.detail-graph {
   top: auto !important;
   left: auto !important;
   margin-top: 2rem;
+  /* Restore border/padding for desktop (mobile media query removes them) */
+  border: 1px solid #e5e5e5 !important;
+  padding: 1.25rem !important;
+  border-radius: 1rem !important;
+  background: #ffffff !important;
+}
+.dark #graph-panel.detail-graph {
+  border-color: #262626 !important;
+  background: #0a0a0a !important;
 }
 #graph-panel.detail-graph { display: none; }
 #graph-panel.detail-graph.graph-ready { display: block; }
