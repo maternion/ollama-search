@@ -239,10 +239,29 @@ def compute_hybrid_kv(hparams: dict, context: int, kv_bpe: float = 2.0) -> dict:
     else:
         kv_list_tiled = kv_list
 
+    # Check if this hybrid arch uses MLA-style compressed attention.
+    # When kv_lora_rank is present, MLA layers store only a compressed K
+    # latent (kv_lora_rank + decoupled rope dim), not full K+V.
+    kv_lora_rank = hparams.get("attention.kv_lora_rank")
+    has_mla = kv_lora_rank is not None
+    _DEFAULT_N_ROT = 64
+    mla_stored_k_width = 0
+    if has_mla:
+        mla_stored_k_width = _to_int(kv_lora_rank, 0) + _DEFAULT_N_ROT
+
+    # Leading dense layers (before MLA layers) use standard K+V.
+    leading_dense = _to_int(hparams.get("leading_dense_block_count"), 0)
+    if leading_dense < 0:
+        leading_dense = 0
+
     attn_bytes = 0
-    per_token_bytes = head_dim * kv_bpe + head_dim_v * kv_bpe
+    per_token_bytes = head_dim * kv_bpe + head_dim_v * kv_bpe  # standard K+V
     for il in range(n_layers):
         if not is_attn[il]:
+            continue
+        if has_mla and il >= leading_dense:
+            # MLA layer: only compressed K, 1 kv head (MQA)
+            attn_bytes += context * 1 * mla_stored_k_width * kv_bpe
             continue
         if has_kv_array:
             n_kv = (
