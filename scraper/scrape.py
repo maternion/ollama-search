@@ -2039,36 +2039,41 @@ def save_scrape_manifest(models_count: int) -> None:
 
 
 def infer_capabilities(models: dict[str, Model]) -> None:
-    """Infer missing capabilities from system prompts and GGUF chat_template metadata.
+    """Infer missing capabilities from system prompts, GGUF chat_template metadata,
+    jinja template blobs, and readme content.
 
     For models where ollama.com doesn't show capability badges, we check:
     1. GGUF metadata: tokenizer.chat_template.tool_use or tokenizer.chat_templates
     2. System prompt: mentions "tools" or "Think step by step"
+    3. Jinja template blob (blob_type="template"): .Tools / .Think references
+    4. Readme headings: # Tools, # Thinking, etc.
     """
     blobs_dir = HERE / "blobs"
-    if not blobs_dir.exists():
+    pages_dir = HERE / "pages"
+    if not blobs_dir.exists() and not pages_dir.exists():
         return
 
     # Build a map: model_path -> list of blob files
     model_blobs: dict[str, list[dict]] = {}
-    for bf in blobs_dir.iterdir():
-        if not bf.suffix == ".json":
-            continue
-        try:
-            bd = json.loads(bf.read_text())
-        except Exception:
-            continue
-        url = bd.get("blob_url", "")
-        if not url:
-            continue
-        # Extract model path from blob URL: /library/ornith:9b/blobs/xxx -> /library/ornith
-        parts = url.strip("/").split("/")
-        if len(parts) < 3:
-            continue
-        if parts[0] in ("library", "maternion", "frob", "huihui_ai"):
-            model_name = parts[1].split(":")[0]  # strip :tag
-            model_path = "/" + parts[0] + "/" + model_name
-            model_blobs.setdefault(model_path, []).append(bd)
+    if blobs_dir.exists():
+        for bf in blobs_dir.iterdir():
+            if not bf.suffix == ".json":
+                continue
+            try:
+                bd = json.loads(bf.read_text())
+            except Exception:
+                continue
+            url = bd.get("blob_url", "")
+            if not url:
+                continue
+            # Extract model path from blob URL: /library/ornith:9b/blobs/xxx -> /library/ornith
+            parts = url.strip("/").split("/")
+            if len(parts) < 3:
+                continue
+            if parts[0] in ("library", "maternion", "frob", "huihui_ai"):
+                model_name = parts[1].split(":")[0]  # strip :tag
+                model_path = "/" + parts[0] + "/" + model_name
+                model_blobs.setdefault(model_path, []).append(bd)
 
     inferred = 0
     for path, m in models.items():
@@ -2100,6 +2105,48 @@ def infer_capabilities(models: dict[str, Model]) -> None:
                 ):
                     if "thinking" not in caps:
                         caps.append("thinking")
+            # Check jinja chat template (template blob) for tool/think signals.
+            # Many models embed the template in a separate blob_type="template"
+            # rather than in GGUF metadata, so metadata-only checks miss them.
+            if bd.get("blob_type") == "template":
+                tc = (bd.get("content") or "").lower()
+                if (".tools" in tc or "tool_call" in tc or "tool_use" in tc
+                        or "isa tool" in tc or ".toolcalls" in tc):
+                    if "tools" not in caps:
+                        caps.append("tools")
+                if ("isa think" in tc or ".think" in tc or "think>" in tc
+                        or "thinking_mode" in tc or "enable_thinking" in tc):
+                    if "thinking" not in caps:
+                        caps.append("thinking")
+        # Check readme content for capability signals. Some models have no
+        # template blob, no system prompt, and no chat_template in GGUF metadata
+        # (e.g. imported HF models), but their readme mentions tools/thinking.
+        if not caps or "tools" not in caps or "thinking" not in caps:
+            page_file = pages_dir / (slugify(path) + ".json")
+            if page_file.exists():
+                try:
+                    pdata = json.loads(page_file.read_text())
+                    rh = (pdata.get("readme_html") or "").lower()
+                    # Strip HTML tags for cleaner matching
+                    rh_text = strip_tags(rh)
+                    if ("tools" not in caps and (
+                            "# tools" in rh_text
+                            or "## tools" in rh_text
+                            or ".tools" in rh_text
+                            or "tool_call" in rh_text)):
+                        caps.append("tools")
+                    if ("thinking" not in caps and (
+                            "# thinking" in rh_text
+                            or "## thinking" in rh_text
+                            or "# chat/thinking" in rh_text
+                            or "think step by step" in rh_text
+                            or "/set nothink" in rh_text
+                            or "thinking_mode" in rh_text
+                            or "enable_thinking" in rh_text)):
+                        caps.append("thinking")
+                except Exception:
+                    pass
+
         if caps:
             m.capabilities = caps
             inferred += 1
