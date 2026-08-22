@@ -4908,8 +4908,9 @@ var graphOverrideEntry = null;
 function getModelEntry(key) {
   if (graphOverrideEntry) return graphOverrideEntry;
   if (!graphData) return null;
-  // In total memory mode on detail pages, use by_path_all (all quants, no dedup).
-  if (graphTotalMemory && graphData.by_path_all && graphData.by_path_all[key]) return graphData.by_path_all[key];
+  // In total memory mode on detail pages (graphModelOverrideList is set),
+  // use by_path_all (all quants, no dedup). Index page uses deduped entries.
+  if (graphTotalMemory && graphModelOverrideList && graphData.by_path_all && graphData.by_path_all[key]) return graphData.by_path_all[key];
   // Prefer the per-path entry (not merged across namespaces) so that a
   // community model like /frob/ds-flash doesn't pollute the graph for the
   // library /library/ds-flash. Fall back to the legacy name-keyed dict.
