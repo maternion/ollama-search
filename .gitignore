@@ -32,3 +32,13 @@ Thumbs.db
 
 # Local ideas doc (not for repo)
 IDEAS.md
+
+# Cloudflare worker (deploy target, not part of the static site)
+cloudflare/
+
+# Semantic-search files (kept off main; separate branch)
+scraper/embeddings.json
+scraper/generate_embeddings.py
+
+# Editor
+.vscode/

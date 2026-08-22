@@ -2,7 +2,7 @@
 """Simple dev server for ollama-search.
 
 Usage: python3 serve.py [port]
-  Defaults to port 8000.
+  Defaults to port 8001 (avoids opencode2 background service which probes 8000).
 Serves ~/ollama-search/public/ at http://localhost:{PORT}/
 """
 
@@ -10,7 +10,7 @@ import http.server
 import sys
 from pathlib import Path
 
-PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
+PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8001
 DIRECTORY = Path(__file__).resolve().parent / "public"
 
 

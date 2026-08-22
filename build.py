@@ -41,6 +41,27 @@ BASE = ""
 # a "NEW" badge. Empty when new_models.json doesn't exist (first run).
 _NEW_MODELS: set[str] = set()
 
+# Context-length ticks (in tokens) at which KV-cache memory is sampled for the
+# graph panel. The per-tag curve uses every tick strictly below the tag's
+# context limit, plus a final endpoint at the limit itself.
+# Extended past 256K so long-context models (e.g. llama4 10M) get real data
+# points — not just a single straight segment — across the log region.
+GRAPH_TICKS = [
+    0,
+    4096,
+    8192,
+    16384,
+    32768,
+    65536,
+    131072,
+    262144,
+    524288,
+    1048576,
+    2097152,
+    4194304,
+    8388608,
+]
+
 
 def url(path: str) -> str:
     """Prefix a site-internal path with BASE. Ensures leading /."""
@@ -217,8 +238,6 @@ _README_ALLOWED_ATTRS = {
     "details": {"open"},
 }
 
-_README_ALLOWED_PROTOCOLS = {"http", "https", "mailto", "ftp", "data"}
-
 # Tags that should be dropped entirely (tag + content removed)
 _README_DROP_TAGS = {
     "script",
@@ -232,7 +251,7 @@ _README_DROP_TAGS = {
     "link",
 }
 
-_VOID_TAGS = {"br", "hr", "img", "col", "input", "meta", "link", "embed", "hr"}
+_VOID_TAGS = {"br", "hr", "img", "col", "input", "meta", "link", "embed"}
 
 _TAG_RE = re.compile(
     r"</?(\w+)((?:\s+[^>]*)?)(/?)>|&[a-zA-Z#0-9]+;|([^<]+)",
@@ -517,7 +536,7 @@ def _blob_href(blob_url: str) -> str:
 # --------------------------------------------------------------------------- #
 
 
-def head_html(title: str, description: str, extra_css: bool = False) -> str:
+def head_html(title: str, description: str) -> str:
     desc = esc(description)
     return f"""    <title>{esc(title)}</title>
     <meta charset="utf-8" />
@@ -834,6 +853,23 @@ def _classify_template(model_path: str) -> str:
     return "base"
 
 
+def parse_context_to_tokens(s: str) -> int:
+    """Parse a context string like '256K', '1M', '512', '10M', '-' into token count."""
+    if not s or s == "-":
+        return 0
+    s = s.strip().upper()
+    m = re.match(r"^(\d+(?:\.\d+)?)\s*([KM])?$", s)
+    if not m:
+        return 0
+    num = float(m.group(1))
+    unit = m.group(2)
+    if unit == "K":
+        return int(num * 1024)
+    if unit == "M":
+        return int(num * 1048576)
+    return int(num)
+
+
 def render_card(
     m: dict,
     tags: list[dict] | None = None,
@@ -877,6 +913,7 @@ def render_card(
         f'data-tag-count="{tag_count}" '
         f'data-sizes-count="{len(m["sizes"])}" '
         f'data-sizes="{" ".join(m.get("sizes", []))}" '
+        f'data-context="{max((parse_context_to_tokens(t.get("context", "-")) for t in m.get("tags", [])), default=0)}" '
         f'data-name="{esc(name_raw).lower()}" '
         f'data-path="{esc(m["path"].strip("/").lower())}" '
         f'data-cloud="{str(m.get("cloud", False)).lower()}" '
@@ -1000,88 +1037,158 @@ def build_index(models: list[dict], ranks: dict) -> None:
         for m in sorted_models
     )
 
-    # Capability filter chips (Embedding/Vision/Tools/Thinking — no Cloud, it's a dropdown)
+    # Capability filter chips (Embedding/Vision/Tools/Thinking only).
+    # Image/MLX/MTP/Audio live exclusively inside the More dropdown.
     chip_labels = ["Embedding", "Vision", "Tools", "Thinking"]
     chip_values = ["embedding", "vision", "tools", "thinking"]
+    chip_ids = ["cap-embedding", "cap-vision", "cap-tools", "cap-thinking"]
+    chip_classes = ["cap-filter", "cap-filter", "cap-filter", "cap-filter"]
+    chip_data_attrs = [
+        'data-cap="embedding"',
+        'data-cap="vision"',
+        'data-cap="tools"',
+        'data-cap="thinking"',
+    ]
     chips = []
-    for label, val in zip(chip_labels, chip_values):
+    for label, val, cid, cls, dattr in zip(
+        chip_labels, chip_values, chip_ids, chip_classes, chip_data_attrs
+    ):
         chips.append(
-            f"""      <div class="relative inline-block mr-1.5 mb-1.5">
-        <input type="checkbox" name="c" value="{val}" id="cap-{val}" class="peer sr-only cap-filter" data-cap="{val}">
-        <label for="cap-{val}" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 focus:outline-none focus:ring-0 focus:ring-transparent min-md:hover:bg-neutral-100 dark:min-md:hover:bg-neutral-800 select-none">{label}</label>
-      </div>"""
+            f"""        <div class="relative inline-block">
+          <input type="checkbox" name="c" value="{val}" id="{cid}" class="peer sr-only {cls}" {dattr}>
+          <label for="{cid}" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 focus:outline-none focus:ring-0 focus:ring-transparent min-md:hover:bg-neutral-100 dark:min-md:hover:bg-neutral-800 select-none">{label}</label>
+        </div>"""
         )
     chips_html = "\n".join(chips)
 
-    # Size dropdown: pill-shaped button that opens a dual-handle slider panel
-    # (like HuggingFace's parameter filter). Tick marks: <1B, 6B, 12B, 32B, 128B, >500B
-    size_dropdown = """      <div class="relative inline-block mr-1.5 mb-1.5">
-        <button id="size-filter-btn" type="button" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center select-none hover:bg-neutral-50 dark:hover:bg-neutral-900">
+    # Size dropdown: popup button in narrow mode, inline panel in wide mode (CSS controls)
+    size_dropdown = """        <div class="relative inline-block">
+         <button id="size-filter-btn" type="button" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center select-none hover:bg-neutral-50 dark:hover:bg-neutral-900">
           Size
         </button>
-        <div id="size-filter-panel" class="hidden absolute z-50 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-3xl pl-4 pr-3 py-2 shadow-lg md:left-0 md:translate-x-0" style="width: calc(100vw - 1rem); max-width: 420px;">
-          <!-- Slider + Reset side by side -->
-          <div class="flex items-end gap-4">
-            <!-- Slider area (flex-1) -->
-            <div class="relative flex-1" id="size-slider-container" style="height: 42px;">
-              <!-- Tick labels (top row) -->
-              <div class="relative" style="height: 20px;">
-                <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 0%; transform: translateX(-25%);" data-tick="0">&lt;1b</button>
-                <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 20%;" data-tick="6">6b</button>
-                <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 40%;" data-tick="12">12b</button>
-                <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 60%;" data-tick="32">32b</button>
-                <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 80%;" data-tick="128">128b</button>
-                <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 100%; transform: translateX(-75%);" data-tick="500">&gt;500b</button>
-              </div>
-              <!-- Track + handles (centered vertically) -->
-              <div class="relative" style="height: 22px;">
-                <!-- Background track -->
-                <div class="absolute left-0 right-0 rounded-full border bg-transparent border-neutral-300 dark:border-neutral-700" id="size-slider-track" style="top: 50%; transform: translateY(-50%); height: 6px;"></div>
-                <!-- Filled portion -->
-                <div id="size-slider-fill" class="absolute rounded-full bg-neutral-400 dark:bg-neutral-500" style="top: 50%; transform: translateY(-50%); height: 6px; left: 0%; width: 100%;"></div>
-                <!-- Tick marks (same height as track) -->
-                <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 10%;"></div>
-                <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 20%;"></div>
-                <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 30%;"></div>
-                <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 40%;"></div>
-                <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 50%;"></div>
-                <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 60%;"></div>
-                <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 70%;"></div>
-                <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 80%;"></div>
-                <div class="absolute" style="top: 50%; transform: translateY(-50%); height: 6px; width: 1px; background: #d4d4d4; left: 90%;"></div>
-                <!-- Min handle -->
-                <button type="button" id="size-handle-min" class="absolute z-10 cursor-pointer touch-none" style="top: 50%; left: 0%; transform: translate(-50%, -50%); width: 16px; height: 16px;">
-                  <div class="rounded-full bg-neutral-500 dark:bg-neutral-400" style="width: 10px; height: 10px; margin: 3px;"></div>
-                  <span id="size-min-tooltip" class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded border px-1 py-0.5 text-xs bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-white dark:border-neutral-700 hidden">&lt; 1b</span>
-                </button>
-                <!-- Max handle -->
-                <button type="button" id="size-handle-max" class="absolute z-10 cursor-pointer touch-none" style="top: 50%; left: 100%; transform: translate(-50%, -50%); width: 16px; height: 16px;">
-                  <div class="rounded-full bg-neutral-500 dark:bg-neutral-400" style="width: 10px; height: 10px; margin: 3px;"></div>
-                  <span id="size-max-tooltip" class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded border px-1 py-0.5 text-xs bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-white dark:border-neutral-700 hidden">&gt; 500b</span>
-                </button>
-              </div>
-              <!-- Hidden range inputs for value storage -->
-              <input type="range" id="size-min" min="0" max="500" value="0" step="1" class="sr-only">
-              <input type="range" id="size-max" min="0" max="500" value="500" step="1" class="sr-only">
-            </div>
-            <!-- Reset pill to the right of the slider -->
-            <a id="size-filter-reset" class="text-sm text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200 cursor-pointer rounded-full px-3 py-1 bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors shrink-0">Reset</a>
-          </div>
-        </div>
-      </div>"""
+          <div id="size-filter-panel" class="hidden absolute z-50 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-3xl pl-4 pr-3 py-2 shadow-lg md:left-0 md:translate-x-0" style="width: calc(100vw - 1rem); max-width: 420px;">
+           <!-- Slider + Reset side by side -->
+           <div class="flex items-center gap-3">
+             <!-- Slider area (flex-1) -->
+             <div class="relative flex-1" id="size-slider-container" style="height: 42px;">
+               <!-- Tick labels (top row) -->
+               <div class="relative" style="height: 20px;">
+                 <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 0%; transform: translateX(-25%);" data-tick="0">&lt;1b</button>
+                 <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 20%;" data-tick="6">6b</button>
+                 <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 40%;" data-tick="12">12b</button>
+                 <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 60%;" data-tick="32">32b</button>
+                 <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 80%;" data-tick="128">128b</button>
+                 <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 100%; transform: translateX(-75%);" data-tick="500">&gt;500b</button>
+               </div>
+               <!-- Pill track + handles -->
+               <div class="relative" style="height: 22px;">
+                 <!-- Background pill -->
+                 <div class="absolute left-0 right-0 rounded-full bg-neutral-200" id="size-slider-track" style="top: 50%; transform: translateY(-50%); height: 6px; background-color: #e5e5e5;"></div>
+                 <!-- Filled portion -->
+                 <div id="size-slider-fill" class="absolute rounded-full bg-cyan-500 dark:bg-cyan-950" style="top: 50%; transform: translateY(-50%); height: 6px; left: 0%; width: 100%;"></div>
+                 <!-- Dots inside pill at breakpoint positions -->
+                 <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 20%;"></div>
+                 <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 40%;"></div>
+                 <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 60%;"></div>
+                 <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 80%;"></div>
+                 <!-- Min handle -->
+                 <button type="button" id="size-handle-min" class="absolute z-10 cursor-pointer touch-none" style="top: 50%; left: 0%; transform: translate(-50%, -50%); width: 10px; height: 10px;">
+                   <div class="rounded-full bg-cyan-500 dark:bg-cyan-950" style="width: 10px; height: 10px;"></div>
+                   <span id="size-min-tooltip" class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded border px-1 py-0.5 text-xs bg-neutral-100 text-neutral-900 dark:bg-cyan-950 dark:text-white dark:border-cyan-800 hidden">&lt; 1b</span>
+                 </button>
+                 <!-- Max handle -->
+                 <button type="button" id="size-handle-max" class="absolute z-10 cursor-pointer touch-none" style="top: 50%; left: 100%; transform: translate(-50%, -50%); width: 10px; height: 10px;">
+                   <div class="rounded-full bg-cyan-500 dark:bg-cyan-950" style="width: 10px; height: 10px;"></div>
+                   <span id="size-max-tooltip" class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded border px-1 py-0.5 text-xs bg-neutral-100 text-neutral-900 dark:bg-cyan-950 dark:text-white dark:border-cyan-800 hidden">&gt; 500b</span>
+                 </button>
+               </div>
+               <!-- Hidden range inputs for value storage -->
+               <input type="range" id="size-min" min="0" max="500" value="0" step="1" class="sr-only">
+               <input type="range" id="size-max" min="0" max="500" value="500" step="1" class="sr-only">
+             </div>
+             <!-- Reset pill to the right of the slider -->
+             <a id="size-filter-reset" class="text-sm text-red-500 dark:text-red-400 hover:text-white hover:bg-red-500 dark:hover:bg-red-950 dark:hover:text-red-200 cursor-pointer rounded-full px-3 py-1 bg-transparent transition-colors shrink-0">Reset</a>
+           </div>
+         </div>
+       </div>"""
 
-    # More dropdown: Audio / MLX / MTP / Architecture / Template filters
-    more_dropdown = """      <div class="relative inline-block mr-1.5 mb-1.5">
-        <button id="more-filter-btn" type="button" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center select-none hover:bg-neutral-50 dark:hover:bg-neutral-900">
+    # Context dropdown: popup button in narrow mode, inline panel in wide mode (CSS controls)
+    context_dropdown = """        <div class="relative inline-block">
+          <button id="context-filter-btn" type="button" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center select-none hover:bg-neutral-50 dark:hover:bg-neutral-900">
+           Context
+         </button>
+          <div id="context-filter-panel" class="hidden absolute z-50 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-3xl pl-4 pr-3 py-2 shadow-lg md:left-0 md:translate-x-0" style="width: calc(100vw - 1rem); max-width: 420px;">
+            <!-- Slider + Reset side by side -->
+            <div class="flex items-center gap-3">
+              <!-- Slider area (flex-1) -->
+              <div class="relative flex-1" id="context-slider-container" style="height: 42px;">
+                <!-- Tick labels (top row) — positioned by log2 value -->
+                <div class="relative" style="height: 20px;">
+                  <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 0%; transform: translateX(-25%);" data-ctx-tick="0">0</button>
+                  <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 11.11%;" data-ctx-tick="4096">4K</button>
+                  <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 22.22%;" data-ctx-tick="8192">8K</button>
+                  <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 33.33%;" data-ctx-tick="16384">16K</button>
+                  <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 44.44%;" data-ctx-tick="32768">32K</button>
+                  <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 55.56%;" data-ctx-tick="65536">64K</button>
+                  <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 66.67%;" data-ctx-tick="131072">128K</button>
+                  <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 77.78%;" data-ctx-tick="262144">256K</button>
+                  <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 88.89%;" data-ctx-tick="524288">512K</button>
+                  <button type="button" class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 100%; transform: translateX(-75%);" data-ctx-tick="1048576">&gt;1M</button>
+                </div>
+                <!-- Pill track + handles -->
+                <div class="relative" style="height: 22px;">
+                  <!-- Background pill -->
+                  <div class="absolute left-0 right-0 rounded-full bg-neutral-200" id="context-slider-track" style="top: 50%; transform: translateY(-50%); height: 6px; background-color: #e5e5e5;"></div>
+                  <!-- Filled portion -->
+                  <div id="context-slider-fill" class="absolute rounded-full bg-cyan-500 dark:bg-cyan-950" style="top: 50%; transform: translateY(-50%); height: 6px; left: 0%; width: 100%;"></div>
+                  <!-- Dots inside pill at breakpoint positions -->
+                  <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 11.11%;"></div>
+                  <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 22.22%;"></div>
+                  <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 33.33%;"></div>
+                  <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 44.44%;"></div>
+                  <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 55.56%;"></div>
+                  <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 66.67%;"></div>
+                  <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 77.78%;"></div>
+                  <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 88.89%;"></div>
+                  <!-- Min handle -->
+                  <button type="button" id="context-handle-min" class="absolute z-10 cursor-pointer touch-none" style="top: 50%; left: 0%; transform: translate(-50%, -50%); width: 10px; height: 10px;">
+                    <div class="rounded-full bg-cyan-500 dark:bg-cyan-950" style="width: 10px; height: 10px;"></div>
+                    <span id="context-min-tooltip" class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded border px-1 py-0.5 text-xs bg-neutral-100 text-neutral-900 dark:bg-cyan-950 dark:text-white dark:border-cyan-800 hidden">0</span>
+                  </button>
+                  <!-- Max handle -->
+                  <button type="button" id="context-handle-max" class="absolute z-10 cursor-pointer touch-none" style="top: 50%; left: 100%; transform: translate(-50%, -50%); width: 10px; height: 10px;">
+                    <div class="rounded-full bg-cyan-500 dark:bg-cyan-950" style="width: 10px; height: 10px;"></div>
+                    <span id="context-max-tooltip" class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded border px-1 py-0.5 text-xs bg-neutral-100 text-neutral-900 dark:bg-cyan-950 dark:text-white dark:border-cyan-800 hidden">&gt; 1M</span>
+                  </button>
+                </div>
+                <!-- Hidden range inputs for value storage -->
+                <input type="range" id="context-min" min="0" max="1048576" value="0" step="1" class="sr-only">
+                <input type="range" id="context-max" min="0" max="1048576" value="1048576" step="1" class="sr-only">
+              </div>
+              <!-- Reset pill to the right of the slider -->
+              <a id="context-filter-reset" class="text-sm text-red-500 dark:text-red-400 hover:text-white hover:bg-red-500 dark:hover:bg-red-950 dark:hover:text-red-200 cursor-pointer rounded-full px-3 py-1 bg-transparent transition-colors shrink-0">Reset</a>
+            </div>
+          </div>
+        </div>"""
+
+    # More dropdown: popup button in narrow mode. In wide mode, JS moves
+    # #more-pills into the Filters row, #arch-content into #arch-section,
+    # and #tpl-content into #tpl-section. CSS hides the More button in wide mode.
+    more_dropdown = """        <div class="relative inline-block">
+         <button id="more-filter-btn" type="button" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center select-none hover:bg-neutral-50 dark:hover:bg-neutral-900">
           More
         </button>
         <div id="more-filter-panel" class="hidden absolute z-50 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-3xl shadow-lg md:left-0 md:translate-x-0" style="width: max-content; max-width: calc(100vw - 1rem);">
-          <div class="flex flex-col p-4" style="gap: 12px;">
-            <!-- Row 1: Audio + MLX + MTP left-aligned -->
-            <div class="flex gap-1.5">
+          <div class="flex flex-col p-4" style="gap: 12px;" id="more-content">
+            <!-- Row 1: Audio + Image + MLX + MTP left-aligned -->
+            <div class="flex gap-1.5" id="more-pills">
               <div class="relative inline-block">
                 <input type="checkbox" id="more-audio" class="more-filter peer sr-only" data-more="audio">
                 <label for="more-audio" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">Audio</label>
+              </div>
+              <div class="relative inline-block">
+                <input type="checkbox" id="more-image" class="more-filter peer sr-only" data-more="image">
+                <label for="more-image" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">Image</label>
               </div>
               <div class="relative inline-block">
                 <input type="checkbox" id="more-mlx" class="more-filter peer sr-only" data-more="mlx">
@@ -1091,13 +1198,9 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 <input type="checkbox" id="more-mtp" class="more-filter peer sr-only" data-more="mtp">
                 <label for="more-mtp" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">MTP</label>
               </div>
-              <div class="relative inline-block">
-                <input type="checkbox" id="more-image" class="more-filter peer sr-only" data-more="image">
-                <label for="more-image" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">Image</label>
-              </div>
             </div>
             <!-- Row 2: Architecture (All / Dense / MoE) -->
-            <div>
+            <div id="arch-content">
               <div class="text-xs text-neutral-500 dark:text-neutral-400 mb-1.5">Architecture</div>
               <div class="flex flex-wrap gap-1.5">
                 <div class="relative inline-block">
@@ -1115,7 +1218,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
               </div>
             </div>
             <!-- Row 3: Template (at bottom) -->
-            <div>
+            <div id="tpl-content">
               <div class="text-xs text-neutral-500 dark:text-neutral-400 mb-1.5">Template</div>
               <div class="flex flex-wrap gap-1.5">
                 <div class="relative inline-block">
@@ -1140,12 +1243,17 @@ def build_index(models: list[dict], ranks: dict) -> None:
         </div>
       </div>"""
 
-    # Cloud dropdown: All models / Cloud only / Local only
-    cloud_dropdown = """      <select id="cloud-filter" class="mr-1.5 mb-1.5 px-3 py-1 text-sm font-medium rounded-full cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 focus:outline-none focus:ring-0 appearance-none">
-        <option value="all">All models</option>
-        <option value="cloud">Cloud only</option>
-        <option value="local">Local only</option>
-      </select>"""
+    # Architecture and Template are now inside more_dropdown (same as main branch).
+    # These empty variables keep the template working.
+    arch_html = ""
+    template_html = ""
+
+    # Cloud dropdown: All models / Cloud only / Local only (compact, same as original)
+    cloud_dropdown = """        <select id="cloud-filter" class="px-3 py-1 text-sm font-medium rounded-full cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 focus:outline-none focus:ring-0 appearance-none">
+          <option value="all">All models</option>
+          <option value="cloud">Cloud only</option>
+          <option value="local">Local only</option>
+        </select>"""
 
     # Sort options
     sort_options = [
@@ -1161,59 +1269,356 @@ def build_index(models: list[dict], ranks: dict) -> None:
         f'        <option value="{v}">{l}</option>' for v, l in sort_options
     )
 
+    # --- Graph panel data: KV cache memory curves for ALL models ---
+    # Computed at build time by memcalc from scraped blob metadata. The result
+    # is written to public/assets/graph-data.json and referenced by the page
+    # via window.GRAPH_DATA_URL. Any unexpected failure degrades to an empty
+    # graph so the build never breaks.
+    graph = {"ticks": GRAPH_TICKS, "models": {}, "by_path": {}}
+    try:
+        from memcalc.parse import extract_hparams as _extract_hparams
+        from memcalc.dispatch import compute_memory_at_context as _compute_mem
+
+        _blobs_dir = HERE / "scraper" / "blobs"
+        # Per-digest hparams cache so duplicate digests (e.g. "latest") are
+        # parsed at most once.  Sentinel: missing file -> None, parse error
+        # -> None; a successful parse -> the hparams dict.
+        _hp_cache: dict[str, dict | None] = {}
+
+        def _resolve_blob_digest(model_path: str, tag_name: str) -> str | None:
+            """Resolve a (model_path, tag_name) to a blob digest via the tag page."""
+            mp = model_path.strip("/").replace("/", "__")
+            tp = TAG_PAGES_DIR / f"{mp}__{tag_name}.json"
+            if not tp.exists():
+                return None
+            try:
+                tp_data = json.loads(tp.read_text())
+            except Exception:
+                return None
+            for f in tp_data.get("files", []):
+                if f.get("type") == "model" and f.get("blob_url"):
+                    return f["blob_url"].rsplit("/", 1)[-1]
+            return None
+
+        def _get_hparams(digest: str) -> dict | None:
+            """Return cached hparams for a digest, parsing the blob on first use."""
+            if digest in _hp_cache:
+                return _hp_cache[digest]
+            bp = _blobs_dir / f"{digest}.json"
+            hp: dict | None = None
+            if bp.exists():
+                try:
+                    hp = _extract_hparams(json.loads(bp.read_text()))
+                except Exception:
+                    hp = None
+            _hp_cache[digest] = hp
+            return hp
+
+        def _kv_gib(hp: dict, ctx: int) -> float | None:
+            """kv_gib at a context, or None if the family is "none"/error."""
+            try:
+                r = _compute_mem(hp, ctx, 2.0)
+            except Exception:
+                return None
+            if r.get("family") == "none":
+                return None
+            return round(r["kv_bytes"] / 1073741824, 4)
+
+        _stats_tags = 0
+        _stats_skipped = 0
+        for m in models:
+            if m.get("cloud_only"):
+                continue
+            model_key = m["name"].lower()
+            model_path = m.get("path", "")
+            sizes_list = m.get("sizes") or []
+            tags_out: dict[str, dict] = {}
+            # Dedupe within a model by curve values: quantization doesn't
+            # change KV-cache geometry, so identical v arrays are one curve.
+            seen: dict[tuple, str] = {}
+            max_c = 0
+            for tag in m.get("tags", []):
+                tname = tag.get("name", "")
+                if tname == "cloud" or tname.endswith("-cloud"):
+                    _stats_skipped += 1
+                    continue
+                c = parse_context_to_tokens(tag.get("context", "-"))
+                if c <= 0:
+                    _stats_skipped += 1
+                    continue
+                digest = _resolve_blob_digest(model_path, tname)
+                if not digest:
+                    _stats_skipped += 1
+                    continue
+                hp = _get_hparams(digest)
+                if not hp:
+                    _stats_skipped += 1
+                    continue
+                # Build the value array: kv_gib at every tick strictly < c,
+                # then a final endpoint at ctx=c.
+                v: list[float] = []
+                ok = True
+                for t in GRAPH_TICKS:
+                    if t >= c:
+                        break
+                    # Tick 0: compute at ctx=0; on error fall back to ctx=1.
+                    if t == 0:
+                        g = _kv_gib(hp, 0)
+                        if g is None:
+                            g = _kv_gib(hp, 1)
+                    else:
+                        g = _kv_gib(hp, t)
+                    if g is None:
+                        ok = False
+                        break
+                    v.append(g)
+                if ok:
+                    # Final endpoint at ctx=c.
+                    g = _kv_gib(hp, c)
+                    if g is None:
+                        ok = False
+                    else:
+                        v.append(g)
+                if not ok:
+                    _stats_skipped += 1
+                    continue
+                v_tuple = tuple(v)
+                if v_tuple in seen:
+                    # Same curve already kept under another tag name.
+                    # Prefer: non-"latest", a plain size name, shorter name.
+                    kept = seen[v_tuple]
+
+                    def _rank(nm: str) -> tuple:
+                        return (
+                            nm == "latest",
+                            nm not in sizes_list and not nm[0].isdigit(),
+                            len(nm),
+                        )
+
+                    if _rank(tname) < _rank(kept):
+                        del tags_out[kept]
+                        tags_out[tname] = {"c": c, "v": v}
+                        seen[v_tuple] = tname
+                    continue
+                seen[v_tuple] = tname
+                tags_out[tname] = {"c": c, "v": v}
+                _stats_tags += 1
+                if c > max_c:
+                    max_c = c
+            if tags_out:
+                sorted_tags = dict(
+                    sorted(tags_out.items(), key=lambda kv: (kv[1]["c"], kv[0]))
+                )
+                # Merge: multiple models can share the same name (e.g. /library/lfm2
+                # with 24b tags and /maternion/lfm2 with 8b tags). Union their tags
+                # into one graph entry rather than overwriting.
+                if model_key in graph["models"]:
+                    existing = graph["models"][model_key]
+                    existing_seen = {
+                        tuple(t["v"]): tn for tn, t in existing["tags"].items()
+                    }
+                    for tn, td in sorted_tags.items():
+                        vt = tuple(td["v"])
+                        if vt in existing_seen:
+                            # Dedupe by curve; prefer shorter/non-latest name.
+                            kept = existing_seen[vt]
+
+                            def _rank2(nm: str) -> tuple:
+                                return (
+                                    nm == "latest",
+                                    nm[0].isdigit() is False,
+                                    len(nm),
+                                )
+
+                            if _rank2(tn) < _rank2(kept):
+                                existing["tags"].pop(kept, None)
+                                existing["tags"][tn] = td
+                                existing_seen[vt] = tn
+                            continue
+                        existing["tags"][tn] = td
+                        existing_seen[vt] = tn
+                    existing["tags"] = dict(
+                        sorted(
+                            existing["tags"].items(), key=lambda kv: (kv[1]["c"], kv[0])
+                        )
+                    )
+                    existing["ctx"] = max(existing["ctx"], max_c)
+                else:
+                    graph["models"][model_key] = {"ctx": max_c, "tags": sorted_tags}
+                # Path-keyed entry: NOT merged — each model path keeps exactly
+                # its own tags.  Used by detail pages so /maternion/lfm2 shows
+                # only its own 8b tags, not the 24b curve from /library/lfm2.
+                # NOTE: must copy sorted_tags — the name-merge below mutates the
+                # dict stored in graph["models"][model_key] in-place, and that
+                # same object is the sorted_tags reference for the first model
+                # with a given name.
+                path_key = (m.get("path") or "").strip("/").lower()
+                if path_key:
+                    graph["by_path"][path_key] = {
+                        "ctx": max_c,
+                        "tags": dict(sorted_tags),
+                    }
+        # Sort models dict by key for deterministic output.
+        graph["models"] = dict(sorted(graph["models"].items()))
+        graph["by_path"] = dict(sorted(graph["by_path"].items()))
+        print(
+            f"graph-data: {len(graph['models'])} models, "
+            f"{_stats_tags} tags included, {_stats_skipped} tags skipped"
+        )
+    except Exception:
+        graph = {"ticks": GRAPH_TICKS, "models": {}, "by_path": {}}
+
+    # Write the graph data JSON (compact) to public/assets/graph-data.json.
+    (PUBLIC / "assets").mkdir(parents=True, exist_ok=True)
+    (PUBLIC / "assets" / "graph-data.json").write_text(
+        json.dumps(graph, separators=(",", ":"))
+    )
+
     page = f"""<!DOCTYPE html>
 <html lang="en" class="">
 <head>
 {head_html("Ollama", "Search for models on Ollama.")}
     <script>var q = new URLSearchParams(window.location.search).get('q'); if (q) {{ document.title = q + ' \u00b7 Ollama'; }}</script>
-</head>
+    <script>document.documentElement.classList.add('js-init')</script>
+  </head>
 <body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
 {nav_html("models")}
 
-<main class="mx-auto flex w-full max-w-2xl flex-col px-6 py-5 md:py-12 lg:px-8">
+<main class="w-full px-6 py-5 md:py-12 lg:px-8">
   <input type="hidden" id="sort-value" name="o" value="popular">
 
-  <!-- Mobile search bar (shown only below md, where the navbar search is hidden) -->
-  <div class="flex md:hidden justify-between space-x-2 items-center">
-    <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-700 items-center rounded-full">
-      <span class="pl-4 text-neutral-400">{SVG_SEARCH}</span>
-      <input id="form-input" name="q" type="search" value="" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-base sm:text-sm w-full placeholder:text-neutral-400 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autofocus autocomplete="off">
-    </div>
-    <div class="sm:hidden block relative">
-      <select id="mobile-sort-select" class="absolute inset-0 w-6 px-3 py-1 opacity-0 appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600">
-{opt_html}
-      </select>
-      <div class="w-6 px-3.5 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex items-center justify-center pointer-events-none">
-        <span class="text-neutral-900 dark:text-neutral-100 text-xs font-medium">&#x21C5;</span>
+  <div id="page-wrapper" class="mx-auto">
+    <!-- Mobile search bar (shown only below md, where the navbar search is hidden) -->
+    <div class="flex md:hidden justify-between space-x-2 items-center mb-2">
+      <div class="relative flex w-full appearance-none bg-black/5 dark:bg-white/5 border border-neutral-100 dark:border-neutral-700 items-center rounded-full">
+        <span class="pl-4 text-neutral-400">{SVG_SEARCH}</span>
+        <input id="form-input" name="q" type="search" value="" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-base sm:text-sm w-full placeholder:text-neutral-400 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autofocus autocomplete="off">
       </div>
-    </div>
-  </div>
-
-  <div id="searchresults" class="w-full space-y-2">
-    <div class="flex justify-between items-start gap-2 mt-2">
-      <fieldset class="flex flex-wrap items-center gap-1.5">
-{chips_html}
-{cloud_dropdown}
-{size_dropdown}
-{more_dropdown}
-       </fieldset>
-      <div class="hidden sm:block shrink-0 mt-1.5">
-        <select id="desktop-sort-select" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600 min-w-[120px] text-sm px-3 py-1.5">
+      <div class="sm:hidden block relative">
+        <select id="mobile-sort-select" class="absolute inset-0 w-6 px-3 py-1 opacity-0 appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600">
 {opt_html}
         </select>
+        <div class="w-6 px-3.5 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex items-center justify-center pointer-events-none">
+          <span class="text-neutral-900 dark:text-neutral-100 text-xs font-medium">&#x21C5;</span>
+        </div>
       </div>
     </div>
+
+    <!-- Narrow mode: top row with filters + sort (horizontal) -->
+    <!-- Wide mode: sidebar in flow (left), results centered (right), sort absolute -->
+    <div id="top-row">
+      <div id="filter-container">
+        <div class="filter-section" id="caps-section">
+          <div class="filter-label text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Filters</div>
+          <div class="flex flex-wrap items-center gap-1.5" id="caps-row">
+{chips_html}
+{cloud_dropdown}
+          </div>
+        </div>
+        <div class="filter-section" id="size-section">
+          <div class="filter-label text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Size</div>
+{size_dropdown}
+        </div>
+        <div class="filter-section" id="context-section">
+          <div class="filter-label text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Context</div>
+{context_dropdown}
+        </div>
+        <div class="filter-section" id="more-section">
+          <div class="filter-label text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">More</div>
+{more_dropdown}
+        </div>
+        <div class="filter-section" id="arch-section" style="display:none">
+          <div class="filter-label text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Architecture</div>
+          <div id="arch-target"></div>
+        </div>
+        <div class="filter-section" id="tpl-section" style="display:none">
+          <div class="filter-label text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Template</div>
+          <div id="tpl-target"></div>
+        </div>
+      </div>
+      <!-- Sort dropdown (narrow mode: inline with pills; wide mode: JS moves to results-area) -->
+      <div id="sort-container">
+        <div class="hidden sm:block shrink-0">
+          <select id="desktop-sort-select" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600 min-w-[120px] text-sm px-3 py-1.5">
+{opt_html}
+          </select>
+        </div>
+      </div>
     </div>
 
-    <ul role="list" id="card-list" class="grid grid-cols-1">
+    <!-- Results area: in wide mode this is a flex item that centers the model list -->
+    <div id="results-area">
+      <div id="searchresults" class="w-full space-y-2">
+        <ul role="list" id="card-list" class="grid grid-cols-1">
 {cards}
-    </ul>
-    <p id="no-results" class="hidden py-12 text-center text-neutral-400 dark:text-neutral-600">No models found.</p>
+        </ul>
+        <p id="no-results" class="hidden py-12 text-center text-neutral-400 dark:text-neutral-600">No models found.</p>
+      </div>
+    </div>
+
+    <!-- Graph panel: KV cache memory vs context length -->
+    <div id="graph-panel">
+      <div class="flex items-center justify-between mb-3">
+        <div id="graph-subtitle" class="text-sm font-semibold text-neutral-700 dark:text-neutral-300">Models in view</div>
+        <div class="flex items-center gap-1.5">
+          <button type="button" id="graph-filters-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide filters</button>
+          <span class="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 text-xs px-2 py-1">Context vs Memory</span>
+        </div>
+      </div>
+      <svg id="graph-svg" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid meet" class="w-full"></svg>
+      <div id="graph-range-container" class="relative" style="height: 42px;">
+        <div class="relative" style="height: 20px;">
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 0%; transform: translateX(-25%);">0</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 7.692%;">4K</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 15.385%;">8K</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 23.077%;">16K</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 30.769%;">32K</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 38.462%;">64K</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 46.154%;">128K</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 53.846%;">256K</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 61.538%;">512K</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 69.231%;">1M</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 76.923%;">2M</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 84.615%;">4M</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 92.308%;">8M</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 100%; transform: translateX(-75%);">Full</span>
+        </div>
+        <div class="relative" style="height: 22px;">
+          <div class="absolute left-0 right-0 rounded-full" id="graph-range-track" style="top: 50%; transform: translateY(-50%); height: 6px; background-color: #e5e5e5;"></div>
+          <div id="graph-range-fill" class="absolute rounded-full bg-cyan-500 dark:bg-cyan-950" style="top: 50%; transform: translateY(-50%); height: 6px; left: 0%; width: 100%;"></div>
+          <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 7.692%;"></div>
+          <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 15.385%;"></div>
+          <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 23.077%;"></div>
+          <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 30.769%;"></div>
+          <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 38.462%;"></div>
+          <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 46.154%;"></div>
+          <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 53.846%;"></div>
+          <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 61.538%;"></div>
+          <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 69.231%;"></div>
+          <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 76.923%;"></div>
+          <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 84.615%;"></div>
+          <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 92.308%;"></div>
+          <button type="button" id="graph-range-handle" class="absolute z-10 cursor-pointer touch-none" style="top: 50%; left: 100%; transform: translate(-50%, -50%); width: 10px; height: 10px;">
+            <div class="rounded-full bg-cyan-500 dark:bg-cyan-950" style="width: 10px; height: 10px;"></div>
+          </button>
+        </div>
+      </div>
+      <div id="graph-legend-row" class="flex items-center justify-between mt-2">
+        <div id="graph-legend" class="flex flex-wrap gap-x-3 gap-y-1 text-xs"></div>
+        <div id="graph-toggles" class="flex gap-1 shrink-0 ml-2">
+          <button type="button" id="graph-logy" class="rounded border border-neutral-200 dark:border-neutral-800 px-1.5 py-0.5 text-[11px] text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800">Log Y</button>
+          <button type="button" id="graph-all" class="rounded border border-neutral-200 dark:border-neutral-800 px-1.5 py-0.5 text-[11px] text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800">All</button>
+          <button type="button" id="graph-none" class="rounded border border-neutral-200 dark:border-neutral-800 px-1.5 py-0.5 text-[11px] text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800">None</button>
+        </div>
+      </div>
+      <div id="graph-tooltip" class="hidden fixed pointer-events-none z-50 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 px-2.5 py-1.5 text-xs shadow-lg"></div>
+    </div>
   </div>
 </main>
 
 {footer_html()}
 {theme_script()}
+<script>window.GRAPH_DATA_URL = "{url("/assets/graph-data.json")}";</script>
 <script src="{url("/assets/app.js")}"></script>
 </body>
 </html>"""
@@ -1795,7 +2200,7 @@ def _cloud_metrics_section(page_data: dict) -> str:
       <span class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Cost</span>
       <span class="text-xs text-neutral-400 dark:text-neutral-500">/1M tokens</span>
     </div>
-    <div class="mt-3 grid grid-cols-3 gap-1">
+    <div class="mt-3 grid grid-cols-1 md:grid-cols-3 gap-1">
       <div class="flex min-w-0 flex-col gap-1 text-left">
         <div class="shrink-0 truncate text-xl font-medium leading-none text-black tabular-nums dark:text-neutral-100">{cost_input}</div>
         <div class="truncate text-xs leading-tight text-neutral-700 dark:text-neutral-300">input</div>
@@ -1810,14 +2215,14 @@ def _cloud_metrics_section(page_data: dict) -> str:
       </div>
     </div>
   </div>
-  <div x-test-model-metric="context" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4 border-r">
+  <div x-test-model-metric="context" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4 border-r flex flex-col justify-center">
     <div class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Context</div>
     <div class="mt-3 flex min-w-0 flex-col gap-1">
       <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">{ctx}</span>
       <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm">{ctx_unit}</span>
     </div>
   </div>
-  <div x-test-model-metric="size" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4">
+  <div x-test-model-metric="size" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4 flex flex-col justify-center">
     <div class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Size</div>
     <div class="mt-3 flex min-w-0 flex-col gap-1">
       <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">{size}</span>
@@ -1887,6 +2292,8 @@ def build_detail(m: dict, tags: list[dict]) -> None:
     cloud_metrics = _cloud_metrics_section(page_data) if page_data else ""
     apps_section = _applications_section(page_data) if page_data else ""
 
+    graph_key = m["path"].strip("/").lower()
+
     # Title: official /library models use just the name; user models and /x/*
     # experimental models (official but namespaced) use the full path.
     title = (
@@ -1912,10 +2319,63 @@ def build_detail(m: dict, tags: list[dict]) -> None:
     {models_section}
   </div>
   {readme_section}
+  <div id="graph-panel" class="detail-graph">
+    <div class="flex items-center justify-between mb-3">
+      <div id="graph-subtitle" class="text-sm font-semibold text-neutral-700 dark:text-neutral-300">&nbsp;</div>
+    </div>
+    <svg id="graph-svg" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid meet" class="w-full"></svg>
+    <div id="graph-range-container" class="relative" style="height: 42px;">
+      <div class="relative" style="height: 20px;">
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 0%; transform: translateX(-25%);">0</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 7.692%;">4K</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 15.385%;">8K</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 23.077%;">16K</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 30.769%;">32K</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 38.462%;">64K</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 46.154%;">128K</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 53.846%;">256K</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 61.538%;">512K</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 69.231%;">1M</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 76.923%;">2M</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 84.615%;">4M</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 92.308%;">8M</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 100%; transform: translateX(-75%);">Full</span>
+      </div>
+      <div class="relative" style="height: 22px;">
+        <div class="absolute left-0 right-0 rounded-full" id="graph-range-track" style="top: 50%; transform: translateY(-50%); height: 6px; background-color: #e5e5e5;"></div>
+        <div id="graph-range-fill" class="absolute rounded-full bg-cyan-500 dark:bg-cyan-950" style="top: 50%; transform: translateY(-50%); height: 6px; left: 0%; width: 100%;"></div>
+        <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 7.692%;"></div>
+        <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 15.385%;"></div>
+        <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 23.077%;"></div>
+        <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 30.769%;"></div>
+        <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 38.462%;"></div>
+        <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 46.154%;"></div>
+        <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 53.846%;"></div>
+        <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 61.538%;"></div>
+        <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 69.231%;"></div>
+        <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 76.923%;"></div>
+        <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 84.615%;"></div>
+        <div class="absolute rounded-full slider-dot" style="top: 50%; transform: translate(-50%, -50%); width: 4px; height: 4px; left: 92.308%;"></div>
+        <button type="button" id="graph-range-handle" class="absolute z-10 cursor-pointer touch-none" style="top: 50%; left: 100%; transform: translate(-50%, -50%); width: 10px; height: 10px;">
+          <div class="rounded-full bg-cyan-500 dark:bg-cyan-950" style="width: 10px; height: 10px;"></div>
+        </button>
+      </div>
+    </div>
+    <div id="graph-legend-row" class="flex items-center justify-between mt-2">
+      <div id="graph-legend" class="flex flex-wrap gap-x-3 gap-y-1 text-xs"></div>
+      <div id="graph-toggles" class="flex gap-1 shrink-0 ml-2">
+        <button type="button" id="graph-logy" class="rounded border border-neutral-200 dark:border-neutral-800 px-1.5 py-0.5 text-[11px] text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800">Log Y</button>
+        <button type="button" id="graph-all" class="rounded border border-neutral-200 dark:border-neutral-800 px-1.5 py-0.5 text-[11px] text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800">All</button>
+        <button type="button" id="graph-none" class="rounded border border-neutral-200 dark:border-neutral-800 px-1.5 py-0.5 text-[11px] text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800">None</button>
+      </div>
+    </div>
+    <div id="graph-tooltip" class="hidden fixed pointer-events-none z-50 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 px-2.5 py-1.5 text-xs shadow-lg"></div>
+  </div>
 </main>
 
 {footer_html()}
 {theme_script()}
+<script>window.GRAPH_DATA_URL = "{url("/assets/graph-data.json")}"; window.GRAPH_MODEL = {json.dumps(graph_key)}; window.GRAPH_MODEL_TITLE = {json.dumps(title)};</script>
 <script src="{url("/assets/app.js")}"></script>
 </body>
 </html>"""
@@ -2678,29 +3138,23 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 .dark .dark\:text-neutral-900 { color: #171717; }
 .dark .dark\:border-neutral-700 { border-color: #404040 !important; }
 .dark .dark\:border-neutral-800 { border-color: #262626 !important; }
-.dark .dark\:hover\:text-neutral-200:hover { color: #e5e5e5; }
 .dark .dark\:placeholder\:text-neutral-500::placeholder { color: #737373; }
 .dark .dark\:focus\:bg-white:focus { background-color: #ffffff; }
 
 /* --- Dark: colored badge classes (Tailwind shade inversion) --- */
 /* Capability badges: indigo-50 bg → indigo-950, indigo-600 text → indigo-400 */
 .dark .dark\:bg-indigo-950\/50 { background-color: rgba(30, 27, 75, 0.5); }
-.dark .dark\:bg-indigo-950 { background-color: #1e1b4b; }
 .dark .dark\:text-indigo-400 { color: #818cf8; }
 /* Cloud badge: cyan-50 bg → cyan-950, cyan-500 text → cyan-400 */
 .dark .dark\:bg-cyan-950\/50 { background-color: rgba(8, 51, 68, 0.5); }
 .dark .dark\:bg-cyan-950 { background-color: #083344; }
 .dark .dark\:text-cyan-400 { color: #22d3ee; }
-.dark .dark\:text-cyan-500 { color: #06b6d4; }
 .dark .dark\:border-cyan-800 { border-color: #155e75; }
 /* Size badges: blue-50 bg → blue-950, blue-600 text → blue-400 */
 .dark .dark\:bg-blue-950\/50 { background-color: rgba(23, 37, 84, 0.5); }
-.dark .dark\:bg-blue-950 { background-color: #172554; }
 .dark .dark\:text-blue-400 { color: #60a5fa; }
-.dark .dark\:border-blue-800 { border-color: #1e40af; }
 /* Tabs: blue-500 border stays blue-500, blue-600 text → blue-400 */
 .dark .dark\:border-blue-500 { border-color: #3b82f6; }
-.dark .dark\:border-blue-600 { border-color: #2563eb; }
 /* Focus state */
 .dark .dark\:focus\:border-blue-600:focus { border-color: #2563eb; }
 /* --- Usage section dark mode --- */
@@ -2718,7 +3172,6 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
    the vendored light-mode rule (which sets border-color: rgb(229 229 229/...)). */
 .dark .dark\:divide-neutral-800 > :not([hidden]) ~ :not([hidden]) { border-color: #262626 !important; }
 .dark .divide-neutral-200 > :not([hidden]) ~ :not([hidden]) { border-color: #262626 !important; }
-.dark .divide-gray-200 > :not([hidden]) ~ :not([hidden]) { border-color: #262626 !important; }
 
 /* --- Readme / prose ---
    The vendored tailwind.css includes the `.prose` base styles and most
@@ -2793,8 +3246,7 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 .dark .text-green-700 { color: #4ade80; }
 
 /* --- pill active state (purple) for peer-checked and JS-toggled buttons --- */
-.dark .peer:checked ~ label { background-color: #1e1b4b !important; border-color: #6366f1 !important; }
-.dark .dark\:bg-neutral-800 { background-color: #1e1b4b !important; border-color: #6366f1 !important; }
+.dark .peer:checked ~ label { background-color: #1e1b4b !important; border-color: #1e1b4b !important; }
 
 /* --- search preview dropdown --- */
 #searchpreview { max-height: 24rem; overflow-y: auto; }
@@ -2807,6 +3259,20 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 .dark img.pricing-tier-img { filter: invert(1); }
 /* Pricing price block: fixed min height (min-h-[3rem] not in vendored tailwind) */
 .min-h-\[3rem\] { min-height: 3rem; }
+/* ml-auto not in vendored tailwind.css */
+.ml-auto { margin-left: auto; }
+/* Reset button hover bg colors (Tailwind red-50 light, red-950 dark) */
+.hover\:bg-red-50:hover { background-color: #fef2f2; }
+.hover\:text-white:hover { color: #fff; }
+.hover\:bg-red-500:hover { background-color: #ef4444; }
+.dark .dark\:text-red-400 { color: #f87171; }
+.dark .dark\:hover\:bg-red-950:hover { background-color: #450a0a; }
+.dark .dark\:hover\:text-red-200:hover { color: #fecaca; }
+/* Reset button click feedback (active state) */
+#size-filter-reset:active,
+#context-filter-reset:active { background-color: #fca5a5 !important; color: #991b1b !important; }
+.dark #size-filter-reset:active,
+.dark #context-filter-reset:active { background-color: #7f1d1d !important; color: #fecaca !important; }
 /* Pricing: mb-5 not in vendored tailwind.css (teams card price block gap) */
 .mb-5 { margin-bottom: 1.25rem; }
 /* Pricing tabs: hide panels based on html.tab-* class set by head script (FOUC fix).
@@ -2836,13 +3302,27 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
 
 /* --- Size slider: neutral classes missing from vendored tailwind.css --- */
 /* Light mode only — do NOT override any dark: classes */
-.bg-neutral-300 { background-color: #d4d4d4; }
-.bg-neutral-400 { background-color: #a3a3a3; }
-.bg-neutral-500 { background-color: #737373; }
-.hover\:bg-neutral-300:hover { background-color: #d4d4d4; }
+.bg-cyan-500 { background-color: #cffafe; }
 .hover\:bg-neutral-100:hover { background-color: #f5f5f5; }
+/* Dark mode slider colors */
+/* Slider track: dark mode grey (override the purple !important on dark:bg-neutral-800) */
+.dark #size-slider-track,
+.dark #context-slider-track,
+.dark #graph-range-track { background-color: #262626 !important; }
+/* Slider dots: inactive (subtle grey on track) */
+.slider-dot { background-color: #d4d4d4; }
+.dark .slider-dot { background-color: #404040; }
+/* Slider dots: active (inside fill — cyan tint) */
+.slider-dot.active { background-color: #06b6d4; }
+.dark .slider-dot.active { background-color: #22d3ee; }
 /* gap-1.5 missing from vendored tailwind.css */
 .gap-1\.5 { gap: 0.375rem; }
+/* md:grid-cols-3 missing from vendored tailwind.css */
+@media (min-width: 768px) {
+  .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+}
+/* peer-checked:bg-neutral-800 missing from vendored tailwind.css */
+.peer-checked\:bg-neutral-800 { --tw-bg-opacity: 1; background-color: rgb(38 38 38 / var(--tw-bg-opacity)) !important; }
 
 /* --- Responsive dropdown panel positioning --- */
 /* Mobile (<768px): position: fixed relative to viewport so the panel is always
@@ -2853,7 +3333,8 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
    aligns it under the button; inline width/max-width apply for natural sizing. */
 @media (max-width: 767px) {
   #size-filter-panel,
-  #more-filter-panel {
+  #more-filter-panel,
+  #context-filter-panel {
     position: fixed !important;
     left: 0.5rem !important;
     right: 0.5rem !important;
@@ -2864,6 +3345,9 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
        the viewport top so it is never off-screen before JS runs. */
     top: var(--panel-top, 4rem);
   }
+  /* Mobile: hide reset buttons so slider takes full panel width */
+  #size-filter-reset,
+  #context-filter-reset { display: none !important; }
 }
 @media (min-width: 768px) {
   .md\:left-0 { left: 0 !important; }
@@ -2871,9 +3355,333 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
   /* On desktop, clear any viewport-relative top that JS set while in mobile view,
      so the inline `top: calc(100% + 6px)` (relative to the button wrapper) applies. */
   #size-filter-panel,
-  #more-filter-panel {
+  #more-filter-panel,
+  #context-filter-panel {
     top: calc(100% + 6px) !important;
   }
+}
+
+/* === Responsive sidebar / horizontal layout switching === */
+
+/* FOUC fix: hide page content until JS initialization completes (layoutFilters + applyFilters) */
+.js-init #page-wrapper { visibility: hidden; }
+
+/* Default (narrow): horizontal pills on top, model list at max-w-2xl */
+#page-wrapper { max-width: 42rem; } /* max-w-2xl = 672px */
+#top-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+#filter-container {
+  position: static;
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 0.5rem;
+  column-gap: 0.375rem;
+}
+#results-area {
+  position: relative;
+  transition: margin-left 0.35s ease;
+}
+#sort-container {
+  position: static;
+  flex-shrink: 0;
+}
+/* Narrow: caps section takes full width (forces Size/More to next row) */
+.filter-section { display: block; }
+#caps-section { width: 100%; }
+#size-section, #context-section, #more-section { display: inline-block; }
+.filter-label { display: none; }
+#arch-section, #tpl-section { display: none !important; }
+
+/* Wide (>= 1200px): sidebar in flow (left), results centered (right) */
+@media (min-width: 1200px) {
+  #page-wrapper {
+    max-width: calc(420px + 2.5rem + 36rem); /* sidebar + gap + model list */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2.5rem; /* 40px gap between sidebar and results */
+  }
+
+  /* Sidebar: sticky so it follows scroll, fixed width, vertical stack.
+     top: 57px keeps it below the sticky navbar (lg:static so only matters < 1024px,
+     but the sidebar only shows >= 1200px so navbar is static there — top: 0 is safe). */
+  #top-row {
+    display: block;
+    margin-bottom: 0;
+    flex-shrink: 0;
+    width: 420px;
+    padding-top: 1rem;
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+    overflow-y: auto;
+    align-self: flex-start;
+  }
+  #filter-container {
+    position: static;
+    display: block;
+    flex: none;
+    width: auto;
+    flex-wrap: nowrap;
+    row-gap: 0;
+  }
+  /* Wide: sections stack vertically */
+  .filter-section { display: block; margin-bottom: 2rem; }
+  .filter-label { display: block; }
+  /* Override narrow-mode sizing */
+  #caps-section { width: auto; }
+  #size-section { display: block; }
+  #context-section { display: block; }
+
+  /* Hide inner Architecture/Template labels in wide mode (section labels are enough) */
+  #arch-content > div:first-child,
+  #tpl-content > div:first-child { display: none; }
+
+  /* Hide popup buttons, show panels inline */
+  #size-filter-btn { display: none; }
+  #context-filter-btn { display: none; }
+  #more-filter-btn { display: none; }
+  #more-section { display: none !important; }
+
+  /* Size panel: inline, full width */
+  #size-filter-panel {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: 1px solid #e5e5e5;
+    border-radius: 1rem;
+    margin-top: 0;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  /* Make the size wrapper full-width block */
+  #size-section > .relative.inline-block {
+    display: block !important;
+    width: 100% !important;
+  }
+  /* Context panel: inline, full width */
+  #context-filter-panel {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: 1px solid #e5e5e5;
+    border-radius: 1rem;
+    margin-top: 0;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  /* Make the context wrapper full-width block */
+  #context-section > .relative.inline-block {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* arch-section and tpl-section shown by JS */
+  #arch-section, #tpl-section { display: none; }
+  #arch-section.active, #tpl-section.active { display: block !important; }
+
+  /* Results area: flex-1, centers model list within remaining space */
+  #results-area {
+    position: relative;
+    flex: 1 1 0%;
+    min-width: 0;
+    max-width: 36rem; /* max-w-xl = 576px */
+    margin: 0 auto;
+    padding-top: 1rem;
+  }
+
+  /* Sort dropdown: absolute, top-right of results area */
+  #sort-container {
+    position: absolute;
+    top: 1rem;
+    right: 0;
+  }
+  #searchresults { margin-top: 0; }
+}
+
+/* Tier 3 (>= 1500px): model list independently centered, sidebar attached on left */
+@media (min-width: 1500px) {
+  #page-wrapper {
+    max-width: none;
+    display: block;
+    position: relative;
+  }
+  /* Sidebar: absolute, attached to left of centered model list */
+  #top-row {
+    position: absolute;
+    right: calc(50% + 18rem + 2.5rem); /* 50% + half-model-list + gap */
+    width: 420px;
+    top: 0;
+    padding-top: 1rem;
+    margin-bottom: 0;
+  }
+  /* Results: independently centered in viewport */
+  #results-area {
+    position: relative;
+    max-width: 36rem;
+    margin-left: calc(50% - 18rem);
+    margin-right: 0;
+    padding-top: 1rem;
+  }
+  /* Sort: absolute, top-right of results area */
+  #sort-container {
+    position: absolute;
+    top: 1rem;
+    right: 0;
+  }
+}
+
+/* Tier 2b (1080px–1199.98px): graph panel on right, model list anchored left.
+   Applies exactly when the >=1200 sidebar is absent but viewport is wide enough
+   for a graph. Must come AFTER the 1200-tier block so it wins the cascade for the
+   properties it sets (the 1200-tier does not match in this range, but ordering
+   keeps intent explicit). */
+@media (min-width: 1080px) and (max-width: 1199.98px) {
+  #page-wrapper { max-width: none; margin: 0; }   /* list goes full width, not centered 42rem */
+  #top-row { max-width: 41rem; }                  /* pills row never runs under the fixed graph */
+  #results-area { max-width: 36rem; margin-left: 2rem; margin-right: 0; }  /* list anchored left */
+  #graph-panel {
+    visibility: visible; opacity: 1; pointer-events: auto;
+    left: calc(2rem + 36rem + 2.5rem);            /* right of the left-anchored list */
+    right: 2rem;
+    width: auto;
+    max-width: none;
+  }
+}
+
+/* --- Graph panel: KV cache memory vs context length --- */
+#graph-svg { width: 100%; flex: 1 1 0; min-height: 0; display: block; }
+#graph-panel {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease, left 0.35s ease, right 0.35s ease, width 0.35s ease;
+  /* shared chrome so both tiers share look: */
+  padding: 1.25rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 1rem;
+  background: #ffffff;
+  z-index: 30;
+  top: 5rem;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 6rem);
+  overflow: hidden;
+}
+.dark #graph-panel { border-color: #262626; background: #0a0a0a; }
+#graph-legend-row { flex: 0 1 auto; overflow-y: auto; min-height: 0; max-height: 35%; }
+/* Filters show/hide toggle lives in the graph header; only meaningful where
+   the sidebar exists (>= 1500px tier) */
+#graph-filters-toggle { display: none; }
+@media (min-width: 1500px) {
+  #graph-filters-toggle { display: inline-flex; align-items: center; }
+}
+/* Tier 3 (>= 1500px): graph fixed to viewport, right of centered results */
+@media (min-width: 1500px) {
+  #graph-panel {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    right: 2rem;
+    width: clamp(320px, calc(50vw - 18rem - 2.5rem - 2rem), 560px);
+  }
+  /* Scrolled past the (offscreen) filter sidebar — or filters manually hidden
+     via the graph-panel toggle: graph widens to fill the right side, junction
+     at screen center, 4rem gap between list and graph, and 4rem right margin
+     (same as the gap). <main> has lg:px-8 (2rem) padding that shifts the
+     in-flow list right; we subtract it from margin-left. */
+  body.filters-offscreen, body.filters-hidden { --graph-w: min(800px, calc(50vw - 6rem)); }
+  body.filters-offscreen #results-area, body.filters-hidden #results-area {
+    width: 36rem;
+    /* list right edge at 50vw - 2rem, minus 2rem main padding */
+    margin-left: max(0rem, calc(50vw - 36rem - 2rem - 2rem));
+    margin-right: 0;
+  }
+  body.filters-offscreen #graph-panel, body.filters-hidden #graph-panel {
+    /* panel left edge at 50vw + 2rem, right edge at 4rem from viewport right */
+    width: var(--graph-w);
+    right: 4rem;
+  }
+  /* Manual filters toggle: sidebar hidden on demand, expanded graph layout */
+  body.filters-hidden #top-row { display: none; }
+}
+
+/* Graph SVG styling */
+#graph-svg .graph-line { fill: none; stroke-width: 2; }
+#graph-svg .graph-axis { stroke: #d4d4d4; stroke-width: 1; }
+.dark #graph-svg .graph-axis { stroke: #404040; }
+#graph-svg .graph-grid { stroke: #e5e5e5; stroke-width: 0.5; }
+.dark #graph-svg .graph-grid { stroke: #262626; }
+#graph-svg .graph-label { font-size: 11px; fill: #737373; }
+.dark #graph-svg .graph-label { fill: #a3a3a3; }
+#graph-svg .graph-dot { stroke: #fff; stroke-width: 1.5; cursor: pointer; transition: r 0.15s; }
+.dark #graph-svg .graph-dot { stroke: #0a0a0a; }
+#graph-svg .graph-dot:hover { r: 3.5; }
+#graph-legend .legend-item { display: inline-flex; align-items: center; gap: 0.25rem; white-space: nowrap; }
+#graph-legend .legend-swatch { display: inline-block; width: 9px; height: 9px; border-radius: 2.5px; flex: 0 0 auto; }
+#graph-legend { min-width: 0; flex: 1 1 auto; }
+#graph-toggles { flex: 0 0 auto; }
+#graph-legend .legend-model { display: inline-flex; align-items: center; gap: 0.3rem; flex-wrap: wrap; }
+#graph-legend .legend-model b { font-weight: 600; }
+#graph-legend button.legend-item, #graph-legend button.legend-model {
+  cursor: pointer; user-select: none; font: inherit; color: inherit;
+  background: none; border: 0; padding: 0; text-align: left;
+}
+#graph-legend .legend-item[data-key]:hover, #graph-legend .legend-model[data-key]:hover { opacity: 0.7; }
+#graph-legend .legend-off { opacity: 0.35; }
+#graph-legend .legend-off:hover { opacity: 0.5; }
+#graph-legend .legend-more { color: #737373; font-style: italic; }
+.dark #graph-legend .legend-more { color: #a3a3a3; }
+#graph-legend .legend-focus { cursor: pointer; }
+#graph-legend .legend-focused { text-decoration: underline; text-underline-offset: 2px; }
+
+/* --- Detail-page graph panel (model detail pages) ---
+   The index #graph-panel is position:fixed and hidden by default, shown via
+   media queries and body class toggles. On detail pages the panel lives in
+   normal document flow inside the 52rem <main> column. These overrides
+   neutralise every fixed/hidden/media/toggle rule that would otherwise apply,
+   and keep the panel hidden until JS confirms graph data exists (graph-ready)
+   so embedding/image-gen models show nothing instead of an empty box. */
+#graph-panel.detail-graph,
+body.filters-offscreen #graph-panel.detail-graph,
+body.filters-hidden #graph-panel.detail-graph {
+  position: static !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  width: auto !important;
+  right: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+  overflow-y: visible !important;
+  top: auto !important;
+  left: auto !important;
+  margin-top: 2rem;
+}
+#graph-panel.detail-graph { display: none; }
+#graph-panel.detail-graph.graph-ready { display: block; }
+#graph-panel.detail-graph #graph-svg {
+  flex: none;
+  aspect-ratio: 560 / 360;
+  height: auto;
+}
+#graph-panel.detail-graph #graph-legend-row {
+  flex: 0 0 auto;
+  max-height: none;
+  overflow: visible;
 }
 """
 
@@ -3044,6 +3852,15 @@ function getSizeMax() {
   return el ? parseInt(el.value) : 500;
 }
 
+function getContextMin() {
+  var el = document.getElementById('context-min');
+  return el ? parseInt(el.value) : 0;
+}
+function getContextMax() {
+  var el = document.getElementById('context-max');
+  return el ? parseInt(el.value) : 1048576;
+}
+
 function filtersToParams() {
   var p = new URLSearchParams();
   var q = getQuery();
@@ -3056,6 +3873,9 @@ function filtersToParams() {
   var smin = getSizeMin(), smax = getSizeMax();
   if (smin !== 0) p.set('smin', String(smin));
   if (smax !== 500) p.set('smax', String(smax));
+  var cmin = getContextMin(), cmax = getContextMax();
+  if (cmin !== 0) p.set('cmin', String(cmin));
+  if (cmax !== 1048576) p.set('cmax', String(cmax));
   var ma = document.getElementById('more-audio');
   if (ma && ma.checked) p.set('audio', '1');
   var ml = document.getElementById('more-mlx');
@@ -3108,6 +3928,13 @@ function applyUrlToFilters() {
   // updateSizeVisuals() is visuals-only (no applyFilters) to avoid a double
   // applyFilters on init; applyFilters() runs right after applyUrlToFilters.
   updateSizeVisuals();
+  var cmin = parseInt(p.get('cmin'), 10);
+  var cmax = parseInt(p.get('cmax'), 10);
+  var ctxMin = document.getElementById('context-min');
+  var ctxMax = document.getElementById('context-max');
+  if (ctxMin && !isNaN(cmin)) ctxMin.value = Math.max(0, Math.min(1048576, cmin));
+  if (ctxMax && !isNaN(cmax)) ctxMax.value = Math.max(0, Math.min(1048576, cmax));
+  updateContextVisuals();
   function setMore(id, on) { var el = document.getElementById(id); if (el) el.checked = !!on; }
   setMore('more-audio', p.get('audio') === '1');
   setMore('more-mlx', p.get('mlx') === '1');
@@ -3152,6 +3979,43 @@ function pctToVal(pct) {
   return pct <= 0 ? 0 : 500;
 }
 
+// Piecewise mapping between slider position (0-100%) and context value (0-1048576 tokens)
+// Breakpoints: log2-positioned — each doubling step gets equal slider width.
+// Steps: 4K, 8K, 16K, 32K, 64K, 128K, 256K, 512K, 1M = 9 doublings.
+// 0% maps to 0 (the "<4K" region), then 9 equal segments of 100/9 ≈ 11.11% each.
+var CONTEXT_BP = [
+  {pct: 0,       val: 0},
+  {pct: 11.111,  val: 4096},
+  {pct: 22.222,  val: 8192},
+  {pct: 33.333,  val: 16384},
+  {pct: 44.444,  val: 32768},
+  {pct: 55.556,  val: 65536},
+  {pct: 66.667,  val: 131072},
+  {pct: 77.778,  val: 262144},
+  {pct: 88.889,  val: 524288},
+  {pct: 100,     val: 1048576}
+];
+function ctxValToPct(v) {
+  v = Math.max(0, Math.min(1048576, v));
+  for (var i = 0; i < CONTEXT_BP.length - 1; i++) {
+    var a = CONTEXT_BP[i], b = CONTEXT_BP[i + 1];
+    if (v >= a.val && v <= b.val) {
+      return a.pct + (v - a.val) / (b.val - a.val) * (b.pct - a.pct);
+    }
+  }
+  return v <= 0 ? 0 : 100;
+}
+function ctxPctToVal(pct) {
+  pct = Math.max(0, Math.min(100, pct));
+  for (var i = 0; i < CONTEXT_BP.length - 1; i++) {
+    var a = CONTEXT_BP[i], b = CONTEXT_BP[i + 1];
+    if (pct >= a.pct && pct <= b.pct) {
+      return Math.round(a.val + (pct - a.pct) / (b.pct - a.pct) * (b.val - a.val));
+    }
+  }
+  return pct <= 0 ? 0 : 1048576;
+}
+
 function sizeToBillions(s) {
   if (!s) return null;
   s = s.toLowerCase();
@@ -3189,6 +4053,15 @@ function matchSizeRange(cardSizesAttr) {
   return false;
 }
 
+function matchContextRange(cardCtxAttr) {
+  var cmin = getContextMin();
+  var cmax = getContextMax();
+  if (cmin === 0 && cmax === 1048576) return true; // no filter
+  var maxCtx = parseInt(cardCtxAttr || '0', 10);
+  if (maxCtx === 0) return true; // models with no context data pass all filters
+  return maxCtx >= cmin && maxCtx <= cmax;
+}
+
 // Update the dual-handle size slider visuals (fill, handles, tooltips, button
 // label) from the current size-min/size-max input values. Visuals only — does
 // NOT call applyFilters, so it's safe to call from applyUrlToFilters before the
@@ -3220,6 +4093,54 @@ function updateSizeVisuals() {
   if (sizeMaxTip) sizeMaxTip.textContent = sizeLabel(mx);
   if (sizeBtnLabel) {
     sizeBtnLabel.textContent = (mn === 0 && mx === 500) ? 'Size' : 'Size: ' + sizeLabel(mn) + ' - ' + sizeLabel(mx);
+  }
+  // Toggle active class on dots within the fill range
+  var sizeContainer = document.getElementById('size-slider-container');
+  if (sizeContainer) {
+    sizeContainer.querySelectorAll('.slider-dot').forEach(function(dot) {
+      var dotPct = parseFloat(dot.style.left);
+      dot.classList.toggle('active', dotPct >= pmin && dotPct <= pmax);
+    });
+  }
+}
+
+function updateContextVisuals() {
+  var ctxMin = document.getElementById('context-min');
+  var ctxMax = document.getElementById('context-max');
+  if (!ctxMin || !ctxMax) return;
+  var mn = parseInt(ctxMin.value);
+  var mx = parseInt(ctxMax.value);
+  if (mn > mx) { var tmp = mn; mn = mx; mx = tmp; ctxMin.value = mn; ctxMax.value = mx; }
+  var pmin = ctxValToPct(mn);
+  var pmax = ctxValToPct(mx);
+  var ctxFill = document.getElementById('context-slider-fill');
+  var ctxHandleMin = document.getElementById('context-handle-min');
+  var ctxHandleMax = document.getElementById('context-handle-max');
+  var ctxMinTip = document.getElementById('context-min-tooltip');
+  var ctxMaxTip = document.getElementById('context-max-tooltip');
+  var ctxBtnLabel = document.getElementById('context-filter-btn');
+  if (ctxFill) { ctxFill.style.left = pmin + '%'; ctxFill.style.width = (pmax - pmin) + '%'; }
+  if (ctxHandleMin) ctxHandleMin.style.left = pmin + '%';
+  if (ctxHandleMax) ctxHandleMax.style.left = pmax + '%';
+  function ctxLabel(v) {
+    if (v === 0) return '0';
+    if (v >= 1048576) return '>1M';
+    if (v >= 1024 * 1024) return (v / (1024 * 1024)) + 'M';
+    if (v >= 1024) return Math.round(v / 1024) + 'K';
+    return String(v);
+  }
+  if (ctxMinTip) ctxMinTip.textContent = ctxLabel(mn);
+  if (ctxMaxTip) ctxMaxTip.textContent = ctxLabel(mx);
+  if (ctxBtnLabel) {
+    ctxBtnLabel.textContent = (mn === 0 && mx === 1048576) ? 'Context' : 'Context: ' + ctxLabel(mn) + ' - ' + ctxLabel(mx);
+  }
+  // Toggle active class on dots within the fill range
+  var ctxContainer = document.getElementById('context-slider-container');
+  if (ctxContainer) {
+    ctxContainer.querySelectorAll('.slider-dot').forEach(function(dot) {
+      var dotPct = parseFloat(dot.style.left);
+      dot.classList.toggle('active', dotPct >= pmin && dotPct <= pmax);
+    });
   }
 }
 
@@ -3253,8 +4174,10 @@ function applyFilters() {
     var isCloud = card.getAttribute('data-cloud') === 'true';
     var isCloudOnly = card.getAttribute('data-cloud-only') === 'true';
     var cardSizes = card.getAttribute('data-sizes') || '';
+    var cardContext = card.getAttribute('data-context') || '0';
     var isOfficial = card.getAttribute('data-official') !== 'false';
     var matchSize = matchSizeRange(cardSizes);
+    var matchContext = matchContextRange(cardContext);
     var cardPath = (card.getAttribute('data-path') || '').toLowerCase();
     var matchText = !q || title.indexOf(q) !== -1 || desc.indexOf(q) !== -1 || cardPath.indexOf(q) !== -1;
     var matchCaps = caps.length === 0 || caps.every(function(c) { return cardCaps.indexOf(c) !== -1; });
@@ -3273,7 +4196,7 @@ function applyFilters() {
     var matchMoreImage = !moreImageOn || isImage;
     var matchMoe = moeVal === 'all' || (moeVal === 'moe' && isMoe) || (moeVal === 'dense' && !isMoe);
     var matchTpl = tplVal === 'all' || cardTpl === tplVal;
-    var show = matchText && matchCaps && matchCloud && matchSize && matchMoreAudio && matchMoreMlx && matchMoreMtp && matchMoreImage && matchMoe && matchTpl;
+    var show = matchText && matchCaps && matchCloud && matchSize && matchContext && matchMoreAudio && matchMoreMlx && matchMoreMtp && matchMoreImage && matchMoe && matchTpl;
     if (show && !q && !isOfficial && !window.IS_PROFILE_PAGE) show = false;
     card.style.display = show ? '' : 'none';
     if (show) visible++;
@@ -3341,6 +4264,14 @@ function applyFilters() {
     var sizeActive = !(sMin === 0 && sMax === 500);
     sizeBtnEl.classList.toggle('bg-neutral-100', sizeActive);
     sizeBtnEl.classList.toggle('dark:bg-neutral-800', sizeActive);
+  }
+  var ctxBtnEl = document.getElementById('context-filter-btn');
+  if (ctxBtnEl) {
+    var cMin = getContextMin();
+    var cMax = getContextMax();
+    var ctxActive = !(cMin === 0 && cMax === 1048576);
+    ctxBtnEl.classList.toggle('bg-neutral-100', ctxActive);
+    ctxBtnEl.classList.toggle('dark:bg-neutral-800', ctxActive);
   }
   var moreBtnEl = document.getElementById('more-filter-btn');
   if (moreBtnEl) {
@@ -3419,6 +4350,61 @@ function syncSort(source, target) {
   }
 }
 
+// Move filter elements between narrow-mode (More popup) and wide-mode (sidebar sections)
+// based on viewport width. appendChild preserves IDs and event listeners.
+function layoutFilters() {
+  var wide = window.innerWidth >= 1200;
+  var topRow = document.getElementById('top-row');
+  var resultsArea = document.getElementById('results-area');
+  var sortContainer = document.getElementById('sort-container');
+  var capsRow = document.getElementById('caps-row');
+  var morePills = document.getElementById('more-pills');
+  var archContent = document.getElementById('arch-content');
+  var tplContent = document.getElementById('tpl-content');
+  var moreContent = document.getElementById('more-content');
+  var archTarget = document.getElementById('arch-target');
+  var tplTarget = document.getElementById('tpl-target');
+  var archSection = document.getElementById('arch-section');
+  var tplSection = document.getElementById('tpl-section');
+  var moreSection = document.getElementById('more-section');
+
+  if (wide) {
+    // Move sort to results-area (absolute positioning at top-right)
+    if (sortContainer && resultsArea && sortContainer.parentElement !== resultsArea)
+      resultsArea.insertBefore(sortContainer, resultsArea.firstChild);
+    // Move more pills into caps row (after cloud dropdown)
+    if (morePills && capsRow && morePills.parentElement !== capsRow)
+      capsRow.appendChild(morePills);
+    // Move arch-content into its own section
+    if (archContent && archTarget && archContent.parentElement !== archTarget)
+      archTarget.appendChild(archContent);
+    if (archSection) archSection.classList.add('active');
+    // Move tpl-content into its own section
+    if (tplContent && tplTarget && tplContent.parentElement !== tplTarget)
+      tplTarget.appendChild(tplContent);
+    if (tplSection) tplSection.classList.add('active');
+    // Hide More section
+    if (moreSection) moreSection.style.display = 'none';
+  } else {
+    // Move sort back to top-row (inline with pills)
+    if (sortContainer && topRow && sortContainer.parentElement !== topRow)
+      topRow.appendChild(sortContainer);
+    // Move more-pills back into More popup (first child of more-content)
+    if (morePills && moreContent && morePills.parentElement !== moreContent)
+      moreContent.insertBefore(morePills, moreContent.firstChild);
+    // Move arch-content back into More popup
+    if (archContent && moreContent && archContent.parentElement !== moreContent)
+      moreContent.appendChild(archContent);
+    // Move tpl-content back into More popup
+    if (tplContent && moreContent && tplContent.parentElement !== moreContent)
+      moreContent.appendChild(tplContent);
+    // Hide arch/tpl sections, show More section
+    if (archSection) archSection.classList.remove('active');
+    if (tplSection) tplSection.classList.remove('active');
+    if (moreSection) moreSection.style.display = '';
+  }
+}
+
 function initApp() {
   var desktopSort = document.getElementById('desktop-sort-select');
   var mobileSort = document.getElementById('mobile-sort-select');
@@ -3426,6 +4412,10 @@ function initApp() {
     syncSort(desktopSort, mobileSort);
     syncSort(mobileSort, desktopSort);
   }
+
+  // Layout filters for narrow/wide mode (moves elements between containers)
+  layoutFilters();
+  window.addEventListener('resize', layoutFilters);
 
   if (document.getElementById('card-list')) {
     var formInput = document.getElementById('form-input');
@@ -3444,6 +4434,8 @@ function initApp() {
 
     var sizeBtn = document.getElementById('size-filter-btn');
     var sizePanel = document.getElementById('size-filter-panel');
+    var contextBtn = document.getElementById('context-filter-btn');
+    var contextPanel = document.getElementById('context-filter-panel');
     var moreBtn = document.getElementById('more-filter-btn');
     var morePanel = document.getElementById('more-filter-panel');
 
@@ -3468,6 +4460,7 @@ function initApp() {
         sizePanel.classList.toggle('hidden');
         if (!sizePanel.classList.contains('hidden')) {
           if (morePanel) morePanel.classList.add('hidden');
+          if (contextPanel) contextPanel.classList.add('hidden');
           placePanel(sizePanel, sizeBtn);
         }
       });
@@ -3478,12 +4471,30 @@ function initApp() {
       });
     }
 
+    if (contextBtn && contextPanel) {
+      contextBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        contextPanel.classList.toggle('hidden');
+        if (!contextPanel.classList.contains('hidden')) {
+          if (sizePanel) sizePanel.classList.add('hidden');
+          if (morePanel) morePanel.classList.add('hidden');
+          placePanel(contextPanel, contextBtn);
+        }
+      });
+      document.addEventListener('click', function(e) {
+        if (!contextPanel.contains(e.target) && e.target !== contextBtn) {
+          contextPanel.classList.add('hidden');
+        }
+      });
+    }
+
     if (moreBtn && morePanel) {
       moreBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         morePanel.classList.toggle('hidden');
         if (!morePanel.classList.contains('hidden')) {
           if (sizePanel) sizePanel.classList.add('hidden');
+          if (contextPanel) contextPanel.classList.add('hidden');
           placePanel(morePanel, moreBtn);
         }
       });
@@ -3497,6 +4508,7 @@ function initApp() {
     // Re-place any open panel when the viewport size/orientation changes.
     window.addEventListener('resize', function() {
       if (sizePanel && !sizePanel.classList.contains('hidden')) placePanel(sizePanel, sizeBtn);
+      if (contextPanel && !contextPanel.classList.contains('hidden')) placePanel(contextPanel, contextBtn);
       if (morePanel && !morePanel.classList.contains('hidden')) placePanel(morePanel, moreBtn);
     });
     document.querySelectorAll('.more-filter').forEach(function(cb) { cb.addEventListener('change', applyFilters); });
@@ -3587,10 +4599,88 @@ function initApp() {
       updateSizeUI();
     });
 
+    // Context dual-handle slider
+    var contextMin = document.getElementById('context-min');
+    var contextMax = document.getElementById('context-max');
+    var contextFill = document.getElementById('context-slider-fill');
+    var contextHandleMin = document.getElementById('context-handle-min');
+    var contextHandleMax = document.getElementById('context-handle-max');
+    var contextMinTip = document.getElementById('context-min-tooltip');
+    var contextMaxTip = document.getElementById('context-max-tooltip');
+    var contextBtnLabel = document.getElementById('context-filter-btn');
+
+    function updateContextUI() {
+      updateContextVisuals();
+      applyFilters();
+    }
+
+    var draggingContext = null;
+    function onContextDrag(e) {
+      if (!draggingContext) return;
+      e.preventDefault();
+      var track = document.getElementById('context-slider-track');
+      if (!track) return;
+      var rect = track.getBoundingClientRect();
+      var x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      var pct = Math.max(0, Math.min(1, x / rect.width)) * 100;
+      var val = ctxPctToVal(pct);
+      if (draggingContext === 'min') {
+        val = Math.min(val, parseInt(contextMax.value));
+        contextMin.value = val;
+      } else {
+        val = Math.max(val, parseInt(contextMin.value));
+        contextMax.value = val;
+      }
+      updateContextUI();
+    }
+
+    if (contextHandleMin) {
+      contextHandleMin.addEventListener('mousedown', function(e) { draggingContext = 'min'; e.preventDefault(); });
+      contextHandleMin.addEventListener('touchstart', function(e) { draggingContext = 'min'; e.preventDefault(); });
+    }
+    if (contextHandleMax) {
+      contextHandleMax.addEventListener('mousedown', function(e) { draggingContext = 'max'; e.preventDefault(); });
+      contextHandleMax.addEventListener('touchstart', function(e) { draggingContext = 'max'; e.preventDefault(); });
+    }
+    document.addEventListener('mousemove', onContextDrag);
+    document.addEventListener('mouseup', function() { draggingContext = null; });
+    document.addEventListener('touchmove', onContextDrag);
+    document.addEventListener('touchend', function() { draggingContext = null; });
+
+    // Context tick buttons jump the min handle
+    document.querySelectorAll('[data-ctx-tick]').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var v = parseInt(btn.getAttribute('data-ctx-tick'));
+        if (v === 0) { contextMin.value = 0; }
+        else if (v >= 1048576) { contextMax.value = 1048576; }
+        else { contextMin.value = v; }
+        updateContextUI();
+      });
+    });
+
+    // Context tooltips on hover
+    if (contextHandleMin) {
+      contextHandleMin.addEventListener('mouseenter', function() { contextMinTip.classList.remove('hidden'); });
+      contextHandleMin.addEventListener('mouseleave', function() { contextMinTip.classList.add('hidden'); });
+    }
+    if (contextHandleMax) {
+      contextHandleMax.addEventListener('mouseenter', function() { contextMaxTip.classList.remove('hidden'); });
+      contextHandleMax.addEventListener('mouseleave', function() { contextMaxTip.classList.add('hidden'); });
+    }
+
+    var contextReset = document.getElementById('context-filter-reset');
+    if (contextReset) contextReset.addEventListener('click', function() {
+      contextMin.value = 0;
+      contextMax.value = 1048576;
+      updateContextUI();
+    });
+
     // Restore all filter state from the URL (query, capabilities, sort,
     // cloud, size, more/audio/mlx/mtp/image, moe, template), then apply.
     applyUrlToFilters();
     applyFilters();
+    document.documentElement.classList.remove('js-init');
   }
 
   // --- Navbar search preview dropdown (non-search pages only) ---
@@ -3598,6 +4688,885 @@ function initApp() {
     initNavSuggest();
   }
   initFmtFilters();
+  initGraph();
+}
+
+// --- Graph panel: KV cache memory vs context length ---
+var GRAPH_PALETTE = [
+  '#a8506f', '#31d96f', '#42a3fd', '#f5a071', '#518200', '#fc82f4', '#7552db', '#b77b2b', '#ff5c83', '#1479b0', '#3aced6', '#c851c2', '#b6aaff', '#bebf2c', '#18a07e', '#e74f04', '#9577c7', '#d080b6', '#85ad5b', '#c474fa', '#34a40e', '#cc243f', '#1c69e3', '#994cab', '#b74d00', '#df8072', '#f696b5', '#8d6d00', '#7673fd', '#1996c4', '#d35986', '#bf2a82', '#69c1fd', '#08b6af', '#6568b6', '#ecaa16', '#8dca81', '#bb9b3c', '#9095e8', '#e58219', '#00bc7c', '#8e8f2d', '#eb63c5', '#118659', '#4c87e9', '#9e64ee', '#c76b5e', '#8bcf27'
+];
+// Light-mode palette: darker variants with adequate contrast on white.
+var GRAPH_PALETTE_LIGHT = [
+  '#904961', '#1cb658', '#0089ed', '#ec6f0b', '#c86edc', '#00755b', '#6647c0', '#94873b', '#38abb1', '#db4b6e', '#815c0e', '#ac43a6', '#298c05', '#32669a', '#857bbf', '#b12c00', '#cf7f7f', '#9980fe', '#008495', '#a65f47', '#499972', '#e662a8', '#4d68dc', '#a82572', '#679dd4', '#ae6e9a', '#75528e', '#c58d0e', '#8ea434', '#61803f', '#c26e17', '#825eba', '#2f751f', '#b34b72', '#ab87c7', '#8e35a1', '#a761d6', '#f3606a', '#cd6153', '#5e71b0', '#195cc7', '#7474ef', '#c83847', '#c952a8', '#3991b7', '#699632', '#955e91', '#924d36'
+];
+function graphPalette() {
+  return document.documentElement.classList.contains('dark') ? GRAPH_PALETTE : GRAPH_PALETTE_LIGHT;
+}
+var GRAPH_CTX_TICKS = [0, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576, 2097152, 4194304, 8388608];
+var GRAPH_MAX_MODELS = 10;
+var GRAPH_MAX_CURVES = 40;
+var GRAPH_RENDER_TIMER = null;
+
+function fmtGiB(v) {
+  if (v < 0.01) return '0';
+  if (v < 1) return v.toFixed(2);
+  if (v < 10) return v.toFixed(2);
+  return v.toFixed(1);
+}
+
+function ctxLabel(v) {
+  if (v <= 0) return '0';
+  if (v >= 1024*1024) {
+    var m = v / 1048576;
+    return (m === Math.floor(m) ? String(m) : m.toFixed(1)) + 'M';
+  }
+  if (v >= 1024) return Math.round(v/1024) + 'K';
+  return String(v);
+}
+
+function graphTagOrder(tagsObj) {
+  var names = Object.keys(tagsObj);
+  function parseSize(name) {
+    var m = name.match(/^(\d+(?:\.\d+)?)([bmk])$/i);
+    if (!m) return null;
+    var n = parseFloat(m[1]);
+    var unit = m[2].toLowerCase();
+    if (unit === 'b') return n * 1e9;
+    if (unit === 'm') return n * 1e6;
+    return n * 1e3;  // 'k'
+  }
+  // Separate parsable and unparsable, sort each, then interleave unparsable in the middle.
+  var parsed = [], unparsed = [];
+  for (var i = 0; i < names.length; i++) {
+    var sz = parseSize(names[i]);
+    if (sz !== null) parsed.push({name: names[i], size: sz});
+    else unparsed.push(names[i]);
+  }
+  parsed.sort(function(x, y) {
+    if (x.size !== y.size) return x.size - y.size;
+    return x.name < y.name ? -1 : (x.name > y.name ? 1 : 0);
+  });
+  unparsed.sort();
+  var parsedNames = parsed.map(function(p) { return p.name; });
+  // Unparsable tags go in the middle
+  var mid = Math.floor(parsedNames.length / 2);
+  var result = parsedNames.slice(0, mid).concat(unparsed).concat(parsedNames.slice(mid));
+  return result;
+}
+
+var graphData = null;
+var graphPanel = null;
+var graphSvg = null;
+var graphLegend = null;
+var graphTooltip = null;
+var graphObserver = null;
+var visibleModels = [];
+var disabledGraphCurves = {};
+var graphHoverKey = null;
+var graphFocusModel = null;
+var graphNormalSubtitle = '';
+var graphLogY = false;
+var graphCtxCap = 0;  // 0 = no cap (show full range); set by the context slider
+var graphModelOverrideList = null;
+var graphOverrideEntry = null;
+
+function getModelEntry(name) {
+  if (graphOverrideEntry) return graphOverrideEntry;
+  var models = (graphData && graphData.models) ? graphData.models : {};
+  return models[name];
+}
+
+function scheduleGraphRender() {
+  if (GRAPH_RENDER_TIMER) clearTimeout(GRAPH_RENDER_TIMER);
+  GRAPH_RENDER_TIMER = setTimeout(function() {
+    GRAPH_RENDER_TIMER = null;
+    renderGraph();
+  }, 150);
+}
+
+function applyHoverDim() {
+  if (!graphSvg) return;
+  var els = graphSvg.querySelectorAll('[data-model]');
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    var m = el.getAttribute('data-model');
+    var t = el.getAttribute('data-tag');
+    var key = m + '|' + t;
+    var dim = false;
+    if (graphHoverKey) {
+      dim = (key !== graphHoverKey);
+    } else if (graphFocusModel) {
+      dim = (m !== graphFocusModel);
+    }
+    el.style.opacity = dim ? '0.12' : '';
+  }
+}
+
+function getVisibleModelsInOrder() {
+  if (graphModelOverrideList) return graphModelOverrideList;
+  var cardList = document.getElementById('card-list');
+  if (!cardList) return [];
+  var cards = cardList.querySelectorAll('li[x-test-model]');
+  var result = [];
+  var seen = {};
+  for (var i = 0; i < cards.length; i++) {
+    var card = cards[i];
+    if (card.style.display === 'none') continue;
+    var name = card.getAttribute('data-name');
+    if (!name) continue;
+    if (seen[name]) continue;            // dedupe: skip cards sharing a data-name
+    if (visibleModels.indexOf(name) !== -1) {
+      seen[name] = true;
+      result.push(name);
+    }
+  }
+  return result;
+}
+
+function renderGraph() {
+  if (!graphData || !graphSvg) return;
+  var ticks = graphData.ticks || GRAPH_CTX_TICKS;
+  var models = graphData.models || {};
+  var palette = graphPalette();
+
+  var visInOrder = getVisibleModelsInOrder();
+
+  // Filter to models present in data with >= 1 tag
+  var shownModels = [];
+  for (var i = 0; i < visInOrder.length; i++) {
+    var name = visInOrder[i];
+    var m = getModelEntry(name);
+    if (!m || !m.tags) continue;
+    var tagNames = Object.keys(m.tags);
+    if (tagNames.length === 0) continue;
+    shownModels.push(name);
+    if (shownModels.length >= GRAPH_MAX_MODELS) break;
+  }
+  if (graphFocusModel && shownModels.indexOf(graphFocusModel) === -1) {
+    graphFocusModel = null;
+  }
+
+  var totalInViewWithData = 0;
+  for (var i = 0; i < visInOrder.length; i++) {
+    var m = getModelEntry(visInOrder[i]);
+    if (m && m.tags && Object.keys(m.tags).length > 0) totalInViewWithData++;
+  }
+
+  // Build curves: [model, tagName, points] where points = [{ctx, gib}]
+  var curves = [];
+  var droppedModels = 0;
+  for (var mi = 0; mi < shownModels.length; mi++) {
+    var name = shownModels[mi];
+    var m = getModelEntry(name);
+    var tagNames = Object.keys(m.tags).sort();
+    var modelCurves = [];
+    for (var tj = 0; tj < tagNames.length; tj++) {
+      var tagName = tagNames[tj];
+      var tag = m.tags[tagName];
+      if (!tag || !tag.v || tag.v.length === 0) continue;
+      var c = tag.c;
+      var pts = [];
+      for (var ti = 0; ti < ticks.length; ti++) {
+        if (ticks[ti] < c) {
+          if (ti < tag.v.length) pts.push({ctx: ticks[ti], gib: tag.v[ti]});
+        }
+      }
+      // Endpoint at ctx = c (only if within cap)
+      if (tag.v.length > 0 && (!graphCtxCap || c <= graphCtxCap)) {
+        pts.push({ctx: c, gib: tag.v[tag.v.length - 1]});
+      }
+      // Apply context cap: drop points beyond the slider's selected max
+      if (graphCtxCap) {
+        var capped = [];
+        for (var pi = 0; pi < pts.length; pi++) {
+          if (pts[pi].ctx <= graphCtxCap) capped.push(pts[pi]);
+        }
+        pts = capped;
+      }
+      if (pts.length > 0) modelCurves.push([name, tagName, pts]);
+    }
+    // Check if adding this model's curves would exceed GRAPH_MAX_CURVES
+    if (curves.length + modelCurves.length > GRAPH_MAX_CURVES) {
+      // Drop entire trailing models where possible
+      droppedModels = shownModels.length - mi;
+      break;
+    }
+    curves = curves.concat(modelCurves);
+  }
+  // Hard cap on curves (safety)
+  if (curves.length > GRAPH_MAX_CURVES) {
+    curves = curves.slice(0, GRAPH_MAX_CURVES);
+  }
+
+  // Assign a distinct palette color to each curve sequentially.
+  // Glasbey greedy ordering => consecutive entries are maximally distant,
+  // so adjacent curves in this flattened list get well-separated colors.
+  var curveColorMap = {};
+  for (var ci_c = 0; ci_c < curves.length; ci_c++) {
+    curveColorMap[curves[ci_c][0] + '|' + curves[ci_c][1]] = palette[ci_c % palette.length];
+  }
+
+  // Curves actually drawn/scaled: exclude legend-disabled ones. The legend,
+  // caps, and color indices keep using the full `curves` list so toggling
+  // never re-colors other curves and disabled entries stay visible (dimmed)
+  // in the legend for re-enabling.
+  var activeCurves = [];
+  for (var ac = 0; ac < curves.length; ac++) {
+    if (!disabledGraphCurves[curves[ac][0] + '|' + curves[ac][1]]) {
+      activeCurves.push(curves[ac]);
+    }
+  }
+
+  var W = graphSvg.clientWidth || 560;
+  var H = graphSvg.clientHeight || 360;
+  if (W < 100) W = 560;
+  if (H < 100) H = 360;
+  graphSvg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+  var padL = 56, padR = 16, padT = 16, padB = 44;
+  var plotW = W - padL - padR;
+  var plotH = H - padT - padB;
+
+  // X scale: max ctx across drawable (non-disabled) curves
+  var maxCtx = 0;
+  for (var i = 0; i < activeCurves.length; i++) {
+    var pts = activeCurves[i][2];
+    for (var k = 0; k < pts.length; k++) {
+      if (pts[k].ctx > maxCtx) maxCtx = pts[k].ctx;
+    }
+  }
+  if (maxCtx <= 0) maxCtx = ticks[ticks.length - 1]; // degenerate/empty fallback
+
+  // Y scale: the axis max IS the highest data point (no headroom/rounding),
+  // so the peak curve's endpoint lands exactly on the top-right corner of the
+  // plot and the top label reads its true value.
+  var maxGiB = 0;
+  for (var i = 0; i < activeCurves.length; i++) {
+    var pts = activeCurves[i][2];
+    for (var k = 0; k < pts.length; k++) {
+      if (pts[k].gib > maxGiB) maxGiB = pts[k].gib;
+    }
+  }
+  if (maxGiB <= 0) maxGiB = 1;
+
+  // Y axis: linear (default) or log (toggle). Log mode starts at 0.01 GiB so
+  // every curve — from 2 GiB models to 960 GiB behemoths — gets visible
+  // vertical resolution. Each power-of-2 step gets equal pixel height.
+  var YLOG_MIN = 0.01;
+  var yLogMin, yLogMax;
+  if (graphLogY) {
+    yLogMin = YLOG_MIN;
+    yLogMax = maxGiB;
+    if (yLogMax <= yLogMin) yLogMax = yLogMin * 2;
+  }
+  function yPx(gib) {
+    if (graphLogY) {
+      if (gib <= 0) gib = yLogMin;
+      var lMin = Math.log(yLogMin), lMax = Math.log(yLogMax);
+      var lG = Math.log(gib < yLogMin ? yLogMin : gib);
+      return padT + plotH - ((lG - lMin) / (lMax - lMin)) * plotH;
+    }
+    return padT + plotH - (gib / maxGiB) * plotH;
+  }
+
+  // Hybrid x scale: linear for ctx 0..XBREAK (small contexts stay readable),
+  // then log-spaced — each doubling past XBREAK occupies the same pixel width
+  // as the linear 16K→32K segment (the last linear segment). Pure linear when
+  // every curve ends <= XBREAK.
+  var XBREAK = 32768;
+  var hasXBreak = maxCtx > XBREAK;
+  var xLoW = 0, xSegW = 0;
+  if (hasXBreak) {
+    // Solve: xLoW + log2(maxCtx/XBREAK) * (xLoW/2) = plotW
+    // (the log segment width per doubling = half the linear region, matching
+    // the 32K→64K segment which spans the second half of 0..64K)
+    var nSeg = Math.log(maxCtx / XBREAK) / Math.LN2;
+    xLoW = plotW / (1 + 0.5 * nSeg);
+    xSegW = xLoW / 2;
+  }
+  function xPx(ctx) {
+    if (!hasXBreak) return padL + (ctx / maxCtx) * plotW;
+    if (ctx <= XBREAK) return padL + (ctx / XBREAK) * xLoW;
+    return padL + xLoW + (Math.log(ctx / XBREAK) / Math.LN2) * xSegW;
+  }
+
+  var svgContent = '';
+
+  if (curves.length === 0) {
+    // Empty state: show centered message, clear legend
+    svgContent += '<text class="graph-label" x="' + (W / 2) + '" y="' + (H / 2) + '" text-anchor="middle">Scroll to bring models into view</text>';
+    if (graphLegend) graphLegend.innerHTML = '';
+    var sub = document.getElementById('graph-subtitle');
+    if (sub) sub.textContent = 'Models in view';
+  } else {
+    // Y-axis gridlines + labels
+    if (graphLogY) {
+      // Log: place a gridline at each power of 2 from YLOG_MIN to maxGiB
+      var pwr = Math.floor(Math.log(yLogMin) / Math.LN2);
+      var endPwr = Math.ceil(Math.log(yLogMax) / Math.LN2);
+      for (var pw = pwr; pw <= endPwr; pw++) {
+        var val = Math.pow(2, pw);
+        if (val < yLogMin * 0.99) continue;
+        if (val > yLogMax * 1.01) continue;
+        var y = yPx(val);
+        svgContent += '<line class="graph-grid" x1="' + padL + '" y1="' + y.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + y.toFixed(1) + '"/>';
+        svgContent += '<text class="graph-label" x="' + (padL - 8) + '" y="' + (y + 3).toFixed(1) + '" text-anchor="end">' + fmtGiB(val) + '</text>';
+      }
+    } else {
+      // Linear: 5 evenly-spaced steps
+      var ySteps = 5;
+      for (var i = 0; i <= ySteps; i++) {
+        var val = (maxGiB / ySteps) * i;
+        var y = yPx(val);
+        svgContent += '<line class="graph-grid" x1="' + padL + '" y1="' + y.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + y.toFixed(1) + '"/>';
+        svgContent += '<text class="graph-label" x="' + (padL - 8) + '" y="' + (y + 3).toFixed(1) + '" text-anchor="end">' + fmtGiB(val) + '</text>';
+      }
+    }
+    // Y axis title
+    svgContent += '<text class="graph-label" x="' + (padL - 42) + '" y="' + (padT + plotH/2) + '" text-anchor="middle" transform="rotate(-90 ' + (padL - 42) + ' ' + (padT + plotH/2) + ')">' + (graphLogY ? 'GiB (log)' : 'GiB') + '</text>';
+
+    // X-axis labels at context ticks (skip tick 0). Gridlines are drawn for
+    // every candidate; text labels are greedily pruned so that close labels
+    // (small ticks crammed on the left of a linear axis) don't collide.
+    // Past the fixed tick list, generate power-of-2 log candidates up to
+    // maxCtx so long runs (e.g. llama4 10M) don't render as a bare diagonal
+    // with a lone '>1M'-style endpoint and no intermediate reference lines.
+    var MIN_LABEL_GAP = 20;
+    var longTicks = ticks.slice();
+    if (maxCtx > ticks[ticks.length - 1]) {
+      var t2 = ticks[ticks.length - 1];
+      while (t2 * 2 <= maxCtx) {
+        t2 = t2 * 2;
+        longTicks.push(t2);
+      }
+    }
+    var xCandidates = [];
+    for (var i = 0; i < longTicks.length; i++) {
+      var tick = longTicks[i];
+      if (tick === 0) continue;
+      if (tick > maxCtx) continue;
+      var cx = xPx(tick);
+      xCandidates.push({ x: cx, label: ctxLabel(tick) });
+    }
+    // Endpoint gridline + label when a model's context extends past the last tick
+    if (maxCtx > longTicks[longTicks.length - 1]) {
+      xCandidates.push({ x: xPx(maxCtx), label: ctxLabel(maxCtx) });
+    }
+    // Also add a gridline + label at each visible curve's own endpoint when it
+    // falls between standard ticks (e.g. 125K, 327K) so the model's true max
+    // context is labelled on the axis, not just implied by where the line stops.
+    var tickSet = {};
+    for (var ti_s = 0; ti_s < longTicks.length; ti_s++) tickSet[longTicks[ti_s]] = true;
+    for (var ec = 0; ec < activeCurves.length; ec++) {
+      var ecName = activeCurves[ec][0];
+      var ecTag = activeCurves[ec][1];
+      var ecEntry = getModelEntry(ecName);
+      if (!ecEntry || !ecEntry.tags || !ecEntry.tags[ecTag]) continue;
+      var ecCtx = ecEntry.tags[ecTag].c;
+      if (ecCtx <= 0 || tickSet[ecCtx]) continue;
+      tickSet[ecCtx] = true;
+      xCandidates.push({ x: xPx(ecCtx), label: ctxLabel(ecCtx) });
+    }
+    // Draw ALL gridlines for every candidate (text pruning happens below)
+    for (var ci = 0; ci < xCandidates.length; ci++) {
+      var gx = xCandidates[ci].x;
+      svgContent += '<line class="graph-grid" x1="' + gx.toFixed(1) + '" y1="' + padT + '" x2="' + gx.toFixed(1) + '" y2="' + (padT + plotH) + '"/>';
+    }
+    // Greedily select which labels to draw so they stay >= MIN_LABEL_GAP apart.
+    // Always keep the first; keep a later one only if it clears the gap; always
+    // keep the last — if it collides with the previously kept one, drop that
+    // previously kept one so the endpoint/max label always shows.
+    var kept = [];
+    for (var ki = 0; ki < xCandidates.length; ki++) {
+      var cand = xCandidates[ki];
+      var isLast = (ki === xCandidates.length - 1);
+      if (kept.length === 0) {
+        kept.push(ki);
+      } else {
+        var lastKept = kept[kept.length - 1];
+        var gap = cand.x - xCandidates[lastKept].x;
+        if (gap >= MIN_LABEL_GAP) {
+          kept.push(ki);
+        } else if (isLast) {
+          // Drop the previously kept one and keep the last instead
+          kept[kept.length - 1] = ki;
+        }
+      }
+    }
+    for (var li = 0; li < kept.length; li++) {
+      var kc = xCandidates[kept[li]];
+      svgContent += '<text class="graph-label" x="' + kc.x.toFixed(1) + '" y="' + (H - padB + 18) + '" text-anchor="middle">' + kc.label + '</text>';
+    }
+    // X axis title
+    svgContent += '<text class="graph-label" x="' + (padL + plotW/2) + '" y="' + (H - 6) + '" text-anchor="middle">Context length</text>';
+
+    // Axes
+    svgContent += '<line class="graph-axis" x1="' + padL + '" y1="' + padT + '" x2="' + padL + '" y2="' + (padT + plotH) + '"/>';
+    svgContent += '<line class="graph-axis" x1="' + padL + '" y1="' + (padT + plotH) + '" x2="' + (W - padR) + '" y2="' + (padT + plotH) + '"/>';
+    if (activeCurves.length === 0) {
+      svgContent += '<text class="graph-label" x="' + (W / 2) + '" y="' + (H / 2) + '" text-anchor="middle">All curves hidden — click a legend entry to re-enable</text>';
+    }
+
+    // Curves
+    for (var ci = 0; ci < activeCurves.length; ci++) {
+      var modelName = activeCurves[ci][0];
+      var tagName = activeCurves[ci][1];
+      var pts = activeCurves[ci][2];
+      var color = curveColorMap[modelName + '|' + tagName] || palette[0];
+
+      // Build the polyline path — in log-Y mode skip the gib=0 origin point
+      // (ctx=0 maps to the bottom-left corner in log space, creating a spurious
+      // dive-and-rise artifact). The curve starts at its first real tick.
+      var pathD = '';
+      var firstPt = true;
+      for (var k = 0; k < pts.length; k++) {
+        if (graphLogY && pts[k].gib <= 0) continue;
+        var px = xPx(pts[k].ctx);
+        var py = yPx(pts[k].gib);
+        pathD += (firstPt ? 'M' : 'L') + px.toFixed(1) + ' ' + py.toFixed(1) + ' ';
+        firstPt = false;
+      }
+      svgContent += '<path class="graph-line" d="' + pathD + '" stroke="' + color + '" data-model="' + escHtml(modelName) + '" data-tag="' + escHtml(tagName) + '"/>';
+
+      // Dots at every point (skip gib=0 origin in log mode too)
+      for (var k = 0; k < pts.length; k++) {
+        if (graphLogY && pts[k].gib <= 0) continue;
+        var dx = xPx(pts[k].ctx);
+        var dy = yPx(pts[k].gib);
+        svgContent += '<circle class="graph-dot" cx="' + dx.toFixed(1) + '" cy="' + dy.toFixed(1) + '" r="2.5" fill="' + color + '" data-model="' + escHtml(modelName) + '" data-tag="' + escHtml(tagName) + '" data-ctx="' + pts[k].ctx + '" data-gib="' + pts[k].gib.toFixed(3) + '"/>';
+      }
+    }
+
+    // Legend: grouped per model
+    if (graphLegend) {
+      var curveCountByModel = {};
+      for (var cc = 0; cc < curves.length; cc++) {
+        var ccName = curves[cc][0];
+        curveCountByModel[ccName] = (curveCountByModel[ccName] || 0) + 1;
+      }
+      var legendHtml = '';
+      for (var mi3 = 0; mi3 < shownModels.length; mi3++) {
+        var modelName = shownModels[mi3];
+        // Check if this model has any curves in the final set
+        if (!curveCountByModel[modelName]) {
+          droppedModels = shownModels.length - mi3;
+          break;
+        }
+        var mTags = getModelEntry(modelName).tags;
+        var tagOrder = graphTagOrder(mTags);
+        if (curveCountByModel[modelName] === 1) {
+          // Single-curve model: swatch + model name, no redundant tag chip
+          var singleTag = null;
+          for (var ci4 = 0; ci4 < curves.length; ci4++) {
+            if (curves[ci4][0] === modelName) { singleTag = curves[ci4][1]; break; }
+          }
+          var singleKey = modelName + '|' + singleTag;
+          var singleColor = curveColorMap[singleKey] || palette[0];
+          legendHtml += '<button type="button" class="legend-model' + (disabledGraphCurves[singleKey] ? ' legend-off' : '') + '" data-key="' + escHtml(singleKey) + '" title="Toggle curve"><b>' + escHtml(modelName) + '</b><span class="legend-swatch" style="background:' + singleColor + '"></span></button>';
+          continue;
+        }
+        var tagSpans = '';
+        for (var tj2 = 0; tj2 < tagOrder.length; tj2++) {
+          var tagName = tagOrder[tj2];
+          // Check this tag has a curve
+          var tagHasCurve = false;
+          for (var ci3 = 0; ci3 < curves.length; ci3++) {
+            if (curves[ci3][0] === modelName && curves[ci3][1] === tagName) { tagHasCurve = true; break; }
+          }
+          if (!tagHasCurve) continue;
+          var itemKey = modelName + '|' + tagName;
+          var tagColor = curveColorMap[itemKey] || palette[0];
+          tagSpans += '<button type="button" class="legend-item' + (disabledGraphCurves[itemKey] ? ' legend-off' : '') + '" data-key="' + escHtml(itemKey) + '" title="Toggle curve">' + escHtml(tagName) + '<span class="legend-swatch" style="background:' + tagColor + '"></span></button>';
+        }
+        if (tagSpans) {
+          var focusedClass = (graphFocusModel === modelName) ? ' legend-focused' : '';
+          legendHtml += '<span class="legend-model"><b data-focus-model="' + escHtml(modelName) + '" class="legend-focus' + focusedClass + '">' + escHtml(modelName) + ':</b>' + tagSpans + '</span>';
+        }
+      }
+      if (droppedModels > 0) {
+        legendHtml += '<span class="legend-more">+' + droppedModels + ' more model' + (droppedModels > 1 ? 's' : '') + '</span>';
+      }
+      graphLegend.innerHTML = legendHtml;
+    }
+
+    // Subtitle
+    var sub = document.getElementById('graph-subtitle');
+    if (sub) {
+      if (graphFocusModel) {
+        sub.textContent = 'Focused: ' + graphFocusModel;
+      } else if (graphModelOverrideList) {
+        sub.textContent = (window.GRAPH_MODEL_TITLE || shownModels[0]);
+      } else if (shownModels.length < totalInViewWithData) {
+        sub.textContent = 'Showing ' + shownModels.length + ' of ' + totalInViewWithData + ' models in view';
+      } else {
+        sub.textContent = shownModels.length + ' models in view';
+      }
+      graphNormalSubtitle = sub.textContent;
+    }
+  }
+
+  // Inject SVG content via namespace-safe DOMParser
+  var svgNS = 'http://www.w3.org/2000/svg';
+  var wrapper = '<svg xmlns="' + svgNS + '">' + svgContent + '</svg>';
+  var parser = new DOMParser();
+  var doc = parser.parseFromString(wrapper, 'image/svg+xml');
+  while (graphSvg.firstChild) graphSvg.removeChild(graphSvg.firstChild);
+  var node;
+  while ((node = doc.documentElement.firstChild)) {
+    graphSvg.appendChild(node);
+  }
+
+  // Re-attach tooltip handlers
+  if (graphTooltip) {
+    var dotEls = graphSvg.querySelectorAll('.graph-dot');
+    for (var i = 0; i < dotEls.length; i++) {
+      dotEls[i].addEventListener('mouseenter', function(e) {
+        var modelName = this.getAttribute('data-model');
+        var tagName = this.getAttribute('data-tag');
+        var ctx = parseInt(this.getAttribute('data-ctx'));
+        var gib = parseFloat(this.getAttribute('data-gib'));
+        graphTooltip.innerHTML = '<span class="font-medium text-neutral-800 dark:text-neutral-200">' + escHtml(modelName) + ':' + escHtml(tagName) + '</span> <span class="text-neutral-500 dark:text-neutral-400">@ ' + ctxLabel(ctx) + ' ctx</span><br><span class="text-neutral-700 dark:text-neutral-300">' + fmtGiB(gib) + ' GiB KV cache</span>';
+        graphTooltip.classList.remove('hidden');
+      });
+      dotEls[i].addEventListener('mousemove', function(e) {
+        graphTooltip.style.left = (e.clientX + 12) + 'px';
+        graphTooltip.style.top = (e.clientY - 10) + 'px';
+      });
+      dotEls[i].addEventListener('mouseleave', function(e) {
+        graphTooltip.classList.add('hidden');
+      });
+      dotEls[i].addEventListener('mouseenter', function(e) {
+        graphHoverKey = this.getAttribute('data-model') + '|' + this.getAttribute('data-tag');
+        applyHoverDim();
+      });
+      dotEls[i].addEventListener('mouseleave', function(e) {
+        graphHoverKey = null;
+        applyHoverDim();
+      });
+    }
+  }
+  applyHoverDim();
+}
+
+function initGraph() {
+  graphPanel = document.getElementById('graph-panel');
+  graphSvg = document.getElementById('graph-svg');
+  graphLegend = document.getElementById('graph-legend');
+  graphTooltip = document.getElementById('graph-tooltip');
+  if (!graphPanel || !graphSvg) return;
+
+  var graphModelOverride = window.GRAPH_MODEL;
+  var modelPageMode = (typeof graphModelOverride === 'string' && graphModelOverride.length > 0);
+
+  // Legend toggles: one delegated listener survives every innerHTML rebuild.
+  if (graphLegend) {
+    graphLegend.addEventListener('click', function(e) {
+      // Model focus toggle (clicking the model name header)
+      var focusEl = (e.target && e.target.closest) ? e.target.closest('[data-focus-model]') : null;
+      if (focusEl && graphLegend.contains(focusEl)) {
+        var mname = focusEl.getAttribute('data-focus-model');
+        graphFocusModel = (graphFocusModel === mname) ? null : mname;
+        applyHoverDim();
+        var sub = document.getElementById('graph-subtitle');
+        if (sub) sub.textContent = graphFocusModel ? ('Focused: ' + graphFocusModel) : graphNormalSubtitle;
+        return;
+      }
+      // Curve toggle
+      var el = (e.target && e.target.closest) ? e.target.closest('[data-key]') : null;
+      if (!el || !graphLegend.contains(el)) return;
+      var key = el.getAttribute('data-key');
+      if (disabledGraphCurves[key]) {
+        delete disabledGraphCurves[key];
+      } else {
+        disabledGraphCurves[key] = true;
+      }
+      renderGraph();
+    });
+    graphLegend.addEventListener('mouseover', function(e) {
+      var el = (e.target && e.target.closest) ? e.target.closest('[data-key]') : null;
+      if (!el || !graphLegend.contains(el)) return;
+      graphHoverKey = el.getAttribute('data-key');
+      applyHoverDim();
+    });
+    graphLegend.addEventListener('mouseout', function(e) {
+      var el = (e.target && e.target.closest) ? e.target.closest('[data-key]') : null;
+      if (!el || !graphLegend.contains(el)) return;
+      graphHoverKey = null;
+      applyHoverDim();
+    });
+  }
+
+  // All / None toggle buttons
+  var btnAll = document.getElementById('graph-all');
+  var btnNone = document.getElementById('graph-none');
+  var btnLogY = document.getElementById('graph-logy');
+  if (btnAll) btnAll.addEventListener('click', function() {
+    disabledGraphCurves = {};
+    renderGraph();
+  });
+  if (btnLogY) btnLogY.addEventListener('click', function() {
+    graphLogY = !graphLogY;
+    btnLogY.style.fontWeight = graphLogY ? '700' : '';
+    btnLogY.style.borderColor = graphLogY ? '#3b82f6' : '';
+    btnLogY.style.color = graphLogY ? '#3b82f6' : '';
+    renderGraph();
+  });
+
+  // Context-range slider: custom single-handle slider copied from the filter
+  // panel's style. Drag the handle to cap the visible x-range so cramped
+  // charts can be zoomed into the region the user cares about.
+  var graphRangeHandle = document.getElementById('graph-range-handle');
+  var graphRangeFill = document.getElementById('graph-range-fill');
+  var graphRangeTrack = document.getElementById('graph-range-track');
+
+  // Breakpoints: 13 log2 steps (4K..8M) + Full. Each gets equal slider width.
+  var GRAPH_RANGE_BP = [
+    {pct: 0,       val: 0},
+    {pct: 7.692,   val: 4096},
+    {pct: 15.385,  val: 8192},
+    {pct: 23.077,  val: 16384},
+    {pct: 30.769,  val: 32768},
+    {pct: 38.462,  val: 65536},
+    {pct: 46.154,  val: 131072},
+    {pct: 53.846,  val: 262144},
+    {pct: 61.538,  val: 524288},
+    {pct: 69.231,  val: 1048576},
+    {pct: 76.923,  val: 2097152},
+    {pct: 84.615,  val: 4194304},
+    {pct: 92.308,  val: 8388608},
+    {pct: 100,     val: 0}  // 0 = "Full" (no cap)
+  ];
+  function graphRangeValToPct(v) {
+    for (var i = 0; i < GRAPH_RANGE_BP.length - 1; i++) {
+      var a = GRAPH_RANGE_BP[i], b = GRAPH_RANGE_BP[i + 1];
+      if (v >= a.val && v <= b.val) return a.pct + (v - a.val) / (b.val - a.val) * (a.pct === b.pct ? 1 : (b.pct - a.pct));
+    }
+    return v <= 0 ? 0 : 100;
+  }
+  function graphRangePctToVal(pct) {
+    for (var i = 0; i < GRAPH_RANGE_BP.length - 1; i++) {
+      var a = GRAPH_RANGE_BP[i], b = GRAPH_RANGE_BP[i + 1];
+      if (pct >= a.pct && pct <= b.pct) {
+        if (a.pct === b.pct) return a.val;
+        return Math.round(a.val + (pct - a.pct) / (b.pct - a.pct) * (b.val - a.val));
+      }
+    }
+    return pct <= 0 ? 0 : 0;
+  }
+  function updateGraphRangeUI() {
+    var pct = graphCtxCap === 0 ? 100 : graphRangeValToPct(graphCtxCap);
+    if (graphRangeFill) graphRangeFill.style.width = pct + '%';
+    if (graphRangeHandle) graphRangeHandle.style.left = pct + '%';
+    // Toggle active dots
+    var container = document.getElementById('graph-range-container');
+    if (container) {
+      container.querySelectorAll('.slider-dot').forEach(function(dot) {
+        var dotPct = parseFloat(dot.style.left);
+        dot.classList.toggle('active', dotPct <= pct);
+      });
+    }
+  }
+  if (graphRangeHandle) {
+    var draggingGraphRange = false;
+    function onGraphRangeDrag(e) {
+      if (!draggingGraphRange || !graphRangeTrack) return;
+      e.preventDefault();
+      var rect = graphRangeTrack.getBoundingClientRect();
+      var x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      var pct = Math.max(0, Math.min(1, x / rect.width)) * 100;
+      // Snap to nearest breakpoint
+      var bestIdx = 0, bestDist = Infinity;
+      for (var i = 0; i < GRAPH_RANGE_BP.length; i++) {
+        var d = Math.abs(GRAPH_RANGE_BP[i].pct - pct);
+        if (d < bestDist) { bestDist = d; bestIdx = i; }
+      }
+      graphCtxCap = GRAPH_RANGE_BP[bestIdx].val;
+      updateGraphRangeUI();
+      renderGraph();
+    }
+    graphRangeHandle.addEventListener('mousedown', function(e) { draggingGraphRange = true; e.preventDefault(); });
+    graphRangeHandle.addEventListener('touchstart', function(e) { draggingGraphRange = true; e.preventDefault(); });
+    document.addEventListener('mousemove', onGraphRangeDrag);
+    document.addEventListener('mouseup', function() { draggingGraphRange = false; });
+    document.addEventListener('touchmove', onGraphRangeDrag);
+    document.addEventListener('touchend', function() { draggingGraphRange = false; });
+    // Click on tick labels to jump
+    var rangeContainer = document.getElementById('graph-range-container');
+    if (rangeContainer) {
+      rangeContainer.querySelectorAll('[data-ctx-tick], span').forEach(function(el) {
+        // Tick label clicks handled below via the text spans
+      });
+    }
+    updateGraphRangeUI();
+  }
+  if (btnNone) btnNone.addEventListener('click', function() {
+    // Disable every curve for models currently in view
+    var vis = getVisibleModelsInOrder();
+    for (var vi = 0; vi < vis.length; vi++) {
+      var m = getModelEntry(vis[vi]);
+      if (!m || !m.tags) continue;
+      var tns = Object.keys(m.tags);
+      for (var ti = 0; ti < tns.length; ti++) {
+        disabledGraphCurves[vis[vi] + '|' + tns[ti]] = true;
+      }
+    }
+    renderGraph();
+  });
+
+  // Re-render graph curves when the theme (dark class) changes, so
+  // curve/legend colors stay legible in both light and dark mode.
+  if (typeof MutationObserver !== 'undefined') {
+    var themeObserver = new MutationObserver(function(mutations) {
+      for (var mi = 0; mi < mutations.length; mi++) {
+        if (mutations[mi].attributeName === 'class') {
+          scheduleGraphRender();
+          return;
+        }
+      }
+    });
+    themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  // Re-render when the panel/SVG resizes (full-height flex layout)
+  if (typeof ResizeObserver !== 'undefined' && graphSvg) {
+    var graphResizeObserver = new ResizeObserver(function() {
+      scheduleGraphRender();
+    });
+    graphResizeObserver.observe(graphSvg);
+  }
+
+  // --- Model-page mode: render a single model's tags, no observer/scroll ---
+  if (modelPageMode) {
+    var modelUrl = window.GRAPH_DATA_URL;
+    if (!modelUrl) return; // panel stays display:none via CSS
+    fetch(modelUrl).then(function(r) { return r.json(); }).then(function(data) {
+      graphData = data;
+      if (!graphData || !graphData.models) return; // stays hidden
+      var key = graphModelOverride.toLowerCase();
+      // Prefer path-keyed entry (per-path tags, not merged) for detail pages;
+      // fall back to name-keyed models for older graph-data.json without by_path.
+      var entry = null;
+      if (graphData.by_path && graphData.by_path[key]) {
+        entry = graphData.by_path[key];
+      } else if (graphData.models[key]) {
+        entry = graphData.models[key];
+      }
+      if (!entry || !entry.tags || Object.keys(entry.tags).length === 0) return; // stays hidden
+      graphOverrideEntry = entry;
+      graphModelOverrideList = [key];
+      graphPanel.classList.add('graph-ready');
+      renderGraph();
+    }).catch(function() {
+      // stays hidden — no data, no flash
+    });
+    return;
+  }
+
+  // Scroll-based layout shift: when the filter sidebar has scrolled fully out
+  // of view, relax the results list leftward and widen the graph panel into
+  // the freed space (relevant in the >=1500px tier; no-op otherwise).
+  var filtersOffscreen = false;
+  var layoutTicking = false;
+  function updateFiltersOffscreen() {
+    if (document.body.classList.contains('filters-hidden')) return; // manual toggle owns the layout
+    var topRow = document.getElementById('top-row');
+    if (!topRow) return;
+    var gone = topRow.getBoundingClientRect().bottom <= 0;
+    if (gone !== filtersOffscreen) {
+      filtersOffscreen = gone;
+      document.body.classList.toggle('filters-offscreen', gone);
+    }
+  }
+  // Manual hide/show: hides the sidebar and applies the expanded graph layout
+  // regardless of scroll position.
+  var filtersToggle = document.getElementById('graph-filters-toggle');
+  if (filtersToggle) filtersToggle.addEventListener('click', function() {
+    var hidden = document.body.classList.toggle('filters-hidden');
+    filtersToggle.textContent = hidden ? 'Show filters' : 'Hide filters';
+    if (hidden) {
+      filtersOffscreen = false;
+      document.body.classList.remove('filters-offscreen');
+    } else {
+      updateFiltersOffscreen();
+    }
+  });
+  window.addEventListener('scroll', function() {
+    if (!layoutTicking) {
+      layoutTicking = true;
+      requestAnimationFrame(function() {
+        layoutTicking = false;
+        updateFiltersOffscreen();
+      });
+    }
+  }, { passive: true });
+  window.addEventListener('resize', updateFiltersOffscreen);
+  updateFiltersOffscreen();
+
+  var url = window.GRAPH_DATA_URL;
+  if (!url) {
+    graphPanel.style.display = 'none';
+    return;
+  }
+
+  // Skip the graph-data fetch (<100KB) and observer setup entirely when the
+  // panel can never be visible on this viewport. The graph only renders at
+  // >=1080px (graph tier + >=1500px tiers); mobile/tablet users never see it.
+  // If the viewport is widened later, load lazily on first resize past 1080px.
+  var GRAPH_MIN_VW = 1080;
+  var indexGraphLoaded = false;
+  function maybeLoadIndexGraph() {
+    if (indexGraphLoaded || window.innerWidth < GRAPH_MIN_VW) return;
+    indexGraphLoaded = true;
+    window.removeEventListener('resize', maybeLoadIndexGraph);
+    loadIndexGraphData();
+  }
+  function loadIndexGraphData() {
+  fetch(url).then(function(r) { return r.json(); }).then(function(data) {
+    graphData = data;
+    if (!graphData || !graphData.models || Object.keys(graphData.models).length === 0) {
+      graphPanel.style.display = 'none';
+      return;
+    }
+    // Set up IntersectionObserver over all model cards
+    var cardList = document.getElementById('card-list');
+    if (!cardList) {
+      graphPanel.style.display = 'none';
+      return;
+    }
+    var cards = cardList.querySelectorAll('li[x-test-model]');
+    graphObserver = new IntersectionObserver(function(entries) {
+      var changed = false;
+      for (var i = 0; i < entries.length; i++) {
+        var entry = entries[i];
+        var name = entry.target.getAttribute('data-name');
+        if (!name) continue;
+        var isVis = entry.isIntersecting && entry.target.style.display !== 'none';
+        var idx = visibleModels.indexOf(name);
+        if (isVis && idx === -1) {
+          visibleModels.push(name);
+          changed = true;
+        } else if (!isVis && idx !== -1) {
+          visibleModels.splice(idx, 1);
+          // Reset disabled curves for this model so they re-appear on return
+          var prefix = name + '|';
+          for (var dk in disabledGraphCurves) {
+            if (dk.indexOf(prefix) === 0) delete disabledGraphCurves[dk];
+          }
+          changed = true;
+        }
+      }
+      if (changed) scheduleGraphRender();
+    }, { threshold: 0 });
+    for (var i = 0; i < cards.length; i++) {
+      graphObserver.observe(cards[i]);
+    }
+    // Initial render
+    renderGraph();
+  }).catch(function() {
+    graphPanel.style.display = 'none';
+  });
+  }
+  window.addEventListener('resize', maybeLoadIndexGraph);
+  maybeLoadIndexGraph();
 }
 
 if (document.readyState === 'loading') {
