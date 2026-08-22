@@ -1583,13 +1583,14 @@ def build_index(models: list[dict], ranks: dict) -> None:
       </div>
     </div>
 
-    <!-- Show/hide graph toggle (lives outside the panel so it stays visible when hidden) -->
-    <button type="button" id="graph-hide-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide graph</button>
+    <!-- Show graph button: only visible when graph is hidden -->
+    <button type="button" id="graph-show-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1" style="display:none;">Show graph</button>
     <!-- Graph panel: KV cache memory vs context length -->
     <div id="graph-panel">
       <div class="flex items-center justify-between mb-3">
         <div id="graph-subtitle" class="text-sm font-semibold text-neutral-700 dark:text-neutral-300">Models in view</div>
         <div class="flex items-center gap-1.5">
+          <button type="button" id="graph-hide-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide graph</button>
           <button type="button" id="graph-filters-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide filters</button>
           <span class="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 text-xs px-2 py-1">Context vs Memory</span>
         </div>
@@ -3618,12 +3619,12 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
 @media (min-width: 1500px) {
   #graph-filters-toggle { display: inline-flex; align-items: center; }
 }
-/* Graph hide/show toggle: lives outside the panel so it stays visible when
-   the graph is hidden. Fixed to the top-right, matching the graph panel's
-   header position. Only visible when the graph tier is active (>= 1080px). */
-#graph-hide-toggle { display: none; }
+/* "Show graph" button: fixed top-right, only visible when graph is hidden.
+   The "Hide graph" button lives inside the panel header and shows/hides
+   with the panel itself. */
+#graph-show-toggle { display: none; }
 @media (min-width: 1080px) {
-  #graph-hide-toggle {
+  body.graph-hidden #graph-show-toggle {
     display: inline-flex;
     align-items: center;
     position: fixed;
@@ -3633,14 +3634,8 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
   }
 }
 @media (min-width: 1500px) {
-  #graph-hide-toggle {
+  body.graph-hidden #graph-show-toggle {
     right: 2rem;
-  }
-  /* When filters are hidden/offscreen, graph widens — keep button at the
-     panel's right edge (4rem from viewport right, matching the panel). */
-  body.filters-offscreen #graph-hide-toggle,
-  body.filters-hidden #graph-hide-toggle {
-    right: 4rem;
   }
 }
 /* Tier 3 (>= 1500px): graph fixed to viewport, right of centered results */
@@ -5609,18 +5604,19 @@ function initGraph() {
   // Hide/show the graph panel. When hidden, the filter sidebar re-appears
   // in its normal position.
   var graphHideToggle = document.getElementById('graph-hide-toggle');
+  var graphShowToggle = document.getElementById('graph-show-toggle');
   if (graphHideToggle) graphHideToggle.addEventListener('click', function() {
-    var hidden = document.body.classList.toggle('graph-hidden');
-    graphHideToggle.textContent = hidden ? 'Show graph' : 'Hide graph';
-    if (hidden) {
-      // Restore filters if they were hidden
-      document.body.classList.remove('filters-hidden');
-      document.body.classList.remove('filters-offscreen');
-      filtersOffscreen = false;
-      if (filtersToggle) filtersToggle.textContent = 'Hide filters';
-    } else {
-      updateFiltersOffscreen();
-    }
+    document.body.classList.add('graph-hidden');
+    // Restore filters if they were hidden
+    document.body.classList.remove('filters-hidden');
+    document.body.classList.remove('filters-offscreen');
+    filtersOffscreen = false;
+    if (filtersToggle) filtersToggle.textContent = 'Hide filters';
+    if (typeof scheduleGraphRender === 'function') scheduleGraphRender();
+  });
+  if (graphShowToggle) graphShowToggle.addEventListener('click', function() {
+    document.body.classList.remove('graph-hidden');
+    updateFiltersOffscreen();
     if (typeof scheduleGraphRender === 'function') scheduleGraphRender();
   });
   window.addEventListener('scroll', function() {
