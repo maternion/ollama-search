@@ -1135,7 +1135,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
                <input type="range" id="size-max" min="0" max="500" value="500" step="1" class="sr-only">
              </div>
              <!-- Reset pill to the right of the slider -->
-             <a id="size-filter-reset" class="text-red-500 dark:text-red-400 hover:text-white hover:bg-red-500 dark:hover:bg-red-950 dark:hover:text-red-200 cursor-pointer rounded-full p-1 bg-transparent transition-colors shrink-0" title="Reset"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" class="w-4 h-4"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 10a6 6 0 1 1 1.76 4.24M4 10V5m0 5h5"/></svg></a>
+             <a id="size-filter-reset" class="text-red-500 dark:text-red-400 hover:text-white hover:bg-red-500 dark:hover:bg-red-950 dark:hover:text-red-200 cursor-pointer rounded-full p-1 bg-transparent transition-colors shrink-0" title="Reset"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" class="w-5 h-5"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 10a6 6 0 1 1 1.76 4.24M4 10V5m0 5h5"/></svg></a>
            </div>
          </div>
        </div>"""
@@ -1194,7 +1194,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 <input type="range" id="context-max" min="0" max="1048576" value="1048576" step="1" class="sr-only">
               </div>
               <!-- Reset pill to the right of the slider -->
-              <a id="context-filter-reset" class="text-red-500 dark:text-red-400 hover:text-white hover:bg-red-500 dark:hover:bg-red-950 dark:hover:text-red-200 cursor-pointer rounded-full p-1 bg-transparent transition-colors shrink-0" title="Reset"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" class="w-4 h-4"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 10a6 6 0 1 1 1.76 4.24M4 10V5m0 5h5"/></svg></a>
+              <a id="context-filter-reset" class="text-red-500 dark:text-red-400 hover:text-white hover:bg-red-500 dark:hover:bg-red-950 dark:hover:text-red-200 cursor-pointer rounded-full p-1 bg-transparent transition-colors shrink-0" title="Reset"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" class="w-5 h-5"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 10a6 6 0 1 1 1.76 4.24M4 10V5m0 5h5"/></svg></a>
             </div>
           </div>
         </div>"""
@@ -5931,7 +5931,7 @@ def build_profile_page(username: str) -> None:
         links_html += f"""              <span class="inline-flex gap-x-2 items-center">
                 <div class="inline-flex items-center space-x-1">
                   <div class="inline-flex items-center space-x-1">
-                    <img src="{url("/assets/social/default.svg")}" class="w-4 h-4" alt="default icon" onload="setDisplayIcon(this, '{link_url}'); this.onload=null" />
+                    <img src="{url("/assets/social/default.svg")}" class="w-5 h-5" alt="default icon" onload="setDisplayIcon(this, '{link_url}'); this.onload=null" />
                     <a href="//{link_url}" target="_blank" class="hover:underline text-sm text-neutral-700 dark:text-neutral-300">
                       {label}
                     </a>
