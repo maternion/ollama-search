@@ -5229,7 +5229,12 @@ function renderGraph() {
         graphTooltip.classList.remove('hidden');
       });
       dotEls[i].addEventListener('mousemove', function(e) {
-        graphTooltip.style.left = (e.clientX + 12) + 'px';
+        // Place the popup to the right of the cursor, unless the cursor is in
+        // the right part of the viewport — then flip it to the left so it never
+        // gets clipped by the screen edge.
+        var tipW = 240;  // rough tooltip width
+        var flip = (e.clientX + 12 + tipW) > window.innerWidth - 8;
+        graphTooltip.style.left = (flip ? (e.clientX - 12 - tipW) : (e.clientX + 12)) + 'px';
         graphTooltip.style.top = (e.clientY - 10) + 'px';
       });
       dotEls[i].addEventListener('mouseleave', function(e) {
