@@ -867,7 +867,9 @@ def _classify_template(model_path: str) -> str:
             break
     if arch in RENDERER_ARCHS:
         return "renderer"
-    return "base"
+    # No template blob and no system blob: the model uses ollama's built-in
+    # Jinja renderer for its architecture, so classify as jinja.
+    return "jinja"
 
 
 def parse_context_to_tokens(s: str) -> int:

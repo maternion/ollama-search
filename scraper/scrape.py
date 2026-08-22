@@ -2157,7 +2157,13 @@ def infer_capabilities(models: dict[str, Model]) -> None:
                             or ".tools" in rh_text
                             or "tool_call" in rh_text
                             or "agentic" in rh_text
-                            or "function calling" in rh_text)):
+                            or "function calling" in rh_text
+                            or "tool use" in rh_text
+                            or "tool calling" in rh_text
+                            or "tool calling" in heading_text
+                            or "tools" in heading_text
+                            or "tool enabled" in rh_text
+                            or "tool approvals" in rh_text)):
                         caps.append("tools")
                     if ("thinking" not in caps and (
                             "# thinking" in rh_text
@@ -2168,7 +2174,10 @@ def infer_capabilities(models: dict[str, Model]) -> None:
                             or "think step by step" in rh_text
                             or "/set nothink" in rh_text
                             or "thinking_mode" in rh_text
-                            or "enable_thinking" in rh_text)):
+                            or "enable_thinking" in rh_text
+                            or "thinking..." in rh_text
+                            or "--think=false" in rh_text
+                            or "...done thinking" in rh_text)):
                         caps.append("thinking")
                 except Exception:
                     pass
