@@ -851,9 +851,11 @@ def _classify_template(model_path: str, capabilities: list[str] | None = None) -
     """Classify template type: base (Go template), renderer, or jinja.
 
     - base: has a template blob with real Go template content (non-trivial)
-    - renderer: has a template blob that is trivial ({{ .Prompt }})
-    - jinja: no template blob at all (with or without a system blob) —
-      ollama uses its built-in Jinja renderer for the architecture
+    - renderer: has a template blob that is trivial ({{ .Prompt }}), OR
+      no template blob but ollama.com shows capability badges (tools/thinking/
+      vision) — the architecture uses ollama's built-in renderer
+    - jinja: no template blob and no capability badges — community/HF import
+      using a Jinja-based template system
     """
     tag_name, tp = _first_tag_page(model_path)
     if tp is None:
@@ -866,9 +868,14 @@ def _classify_template(model_path: str, capabilities: list[str] | None = None) -
         return "base"
     if "system" in types:
         return "jinja"
-    # No template blob and no system blob. Distinguish:
-    # - Embedding models: no chat template at all → base (Go template)
-    # - Chat models: ollama uses its built-in Jinja renderer → jinja
+    # No template blob and no system blob. Distinguish using ollama.com badges:
+    # - Has capability badges (tools/thinking/vision/etc) → renderer/parser
+    #   (ollama's built-in renderer handles the template for this architecture)
+    # - No badges at all → jinja (community/HF import with Jinja template)
+    # - Embedding models → base (no chat template)
+    non_embedding_caps = [c for c in (capabilities or []) if c != "embedding"]
+    if non_embedding_caps:
+        return "renderer"
     if capabilities and "embedding" in capabilities:
         return "base"
     arch = ""
