@@ -2120,6 +2120,18 @@ def infer_capabilities(models: dict[str, Model]) -> None:
                         or "thinking_mode" in tc or "enable_thinking" in tc):
                     if "thinking" not in caps:
                         caps.append("thinking")
+        # Check model description for capability signals. Some models mention
+        # "agentic" or "tools" in their card description but not in the readme.
+        if not caps or "tools" not in caps or "thinking" not in caps:
+            desc = (m.description or "").lower()
+            if "tools" not in caps and (
+                    "agentic" in desc
+                    or "function calling" in desc
+                    or "tool use" in desc
+                    or "tool calling" in desc):
+                caps.append("tools")
+            if "thinking" not in caps and "thinking" in desc:
+                caps.append("thinking")
         # Check readme content for capability signals. Some models have no
         # template blob, no system prompt, and no chat_template in GGUF metadata
         # (e.g. imported HF models), but their readme mentions tools/thinking.
@@ -2143,7 +2155,9 @@ def infer_capabilities(models: dict[str, Model]) -> None:
                             or "## tools" in rh_text
                             or "tools" in heading_text.split()
                             or ".tools" in rh_text
-                            or "tool_call" in rh_text)):
+                            or "tool_call" in rh_text
+                            or "agentic" in rh_text
+                            or "function calling" in rh_text)):
                         caps.append("tools")
                     if ("thinking" not in caps and (
                             "# thinking" in rh_text
