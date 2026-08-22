@@ -2129,9 +2129,17 @@ def infer_capabilities(models: dict[str, Model]) -> None:
                     rh = (pdata.get("readme_html") or "").lower()
                     # Strip HTML tags for cleaner matching
                     rh_text = strip_tags(rh)
+                    # Check for heading tags containing capability keywords.
+                    # Readmes use <h1>tools</h1>, <h1>chat/thinking</h1> etc.
+                    import re as _re
+                    rh_headings = _re.findall(
+                        r"<h[1-6][^>]*>(.*?)</h[1-6]>", rh, _re.DOTALL
+                    )
+                    heading_text = " ".join(strip_tags(h) for h in rh_headings)
                     if ("tools" not in caps and (
                             "# tools" in rh_text
                             or "## tools" in rh_text
+                            or "tools" in heading_text.split()
                             or ".tools" in rh_text
                             or "tool_call" in rh_text)):
                         caps.append("tools")
@@ -2139,6 +2147,8 @@ def infer_capabilities(models: dict[str, Model]) -> None:
                             "# thinking" in rh_text
                             or "## thinking" in rh_text
                             or "# chat/thinking" in rh_text
+                            or "chat/thinking" in heading_text
+                            or "thinking" in heading_text.split()
                             or "think step by step" in rh_text
                             or "/set nothink" in rh_text
                             or "thinking_mode" in rh_text
