@@ -4771,10 +4771,31 @@ var graphCtxCap = 0;  // 0 = no cap (show full range); set by the context slider
 var graphModelOverrideList = null;
 var graphOverrideEntry = null;
 
-function getModelEntry(name) {
+function getModelEntry(key) {
   if (graphOverrideEntry) return graphOverrideEntry;
-  var models = (graphData && graphData.models) ? graphData.models : {};
-  return models[name];
+  if (!graphData) return null;
+  // Prefer the per-path entry (not merged across namespaces) so that a
+  // community model like /frob/ds-flash doesn't pollute the graph for the
+  // library /library/ds-flash. Fall back to the legacy name-keyed dict.
+  if (graphData.by_path && graphData.by_path[key]) return graphData.by_path[key];
+  if (graphData.models && graphData.models[key]) return graphData.models[key];
+  return null;
+}
+
+// Map a path key (e.g. "library/ds-flash") back to the short display name
+// (e.g. "ds-flash") using the card list.
+function pathDisplayName(pathKey) {
+  var cardList = document.getElementById('card-list');
+  if (cardList) {
+    var cards = cardList.querySelectorAll('li[x-test-model]');
+    for (var i = 0; i < cards.length; i++) {
+      if ((cards[i].getAttribute('data-path') || '') === pathKey) {
+        return cards[i].getAttribute('data-name') || pathKey;
+      }
+    }
+  }
+  var slash = pathKey.indexOf('/');
+  return slash >= 0 ? pathKey.slice(slash + 1) : pathKey;
 }
 
 function scheduleGraphRender() {
@@ -4813,12 +4834,12 @@ function getVisibleModelsInOrder() {
   for (var i = 0; i < cards.length; i++) {
     var card = cards[i];
     if (card.style.display === 'none') continue;
-    var name = card.getAttribute('data-name');
-    if (!name) continue;
-    if (seen[name]) continue;            // dedupe: skip cards sharing a data-name
-    if (visibleModels.indexOf(name) !== -1) {
-      seen[name] = true;
-      result.push(name);
+    var path = card.getAttribute('data-path');
+    if (!path) continue;
+    if (seen[path]) continue;            // dedupe: skip cards sharing a data-path
+    if (visibleModels.indexOf(path) !== -1) {
+      seen[path] = true;
+      result.push(path);
     }
   }
   return result;
@@ -5162,7 +5183,8 @@ function renderGraph() {
           }
           var singleKey = modelName + '|' + singleTag;
           var singleColor = curveColorMap[singleKey] || palette[0];
-          legendHtml += '<button type="button" class="legend-model' + (disabledGraphCurves[singleKey] ? ' legend-off' : '') + '" data-key="' + escHtml(singleKey) + '" title="Toggle curve"><b>' + escHtml(modelName) + '</b><span class="legend-swatch" style="background:' + singleColor + '"></span></button>';
+          var singleDisp = pathDisplayName(modelName);
+          legendHtml += '<button type="button" class="legend-model' + (disabledGraphCurves[singleKey] ? ' legend-off' : '') + '" data-key="' + escHtml(singleKey) + '" title="Toggle curve"><b>' + escHtml(singleDisp) + '</b><span class="legend-swatch" style="background:' + singleColor + '"></span></button>';
           continue;
         }
         var tagSpans = '';
@@ -5179,8 +5201,9 @@ function renderGraph() {
           tagSpans += '<button type="button" class="legend-item' + (disabledGraphCurves[itemKey] ? ' legend-off' : '') + '" data-key="' + escHtml(itemKey) + '" title="Toggle curve">' + escHtml(tagName) + '<span class="legend-swatch" style="background:' + tagColor + '"></span></button>';
         }
         if (tagSpans) {
+          var multiDisp = pathDisplayName(modelName);
           var focusedClass = (graphFocusModel === modelName) ? ' legend-focused' : '';
-          legendHtml += '<span class="legend-model"><b data-focus-model="' + escHtml(modelName) + '" class="legend-focus' + focusedClass + '">' + escHtml(modelName) + ':</b>' + tagSpans + '</span>';
+          legendHtml += '<span class="legend-model"><b data-focus-model="' + escHtml(modelName) + '" class="legend-focus' + focusedClass + '">' + escHtml(multiDisp) + ':</b>' + tagSpans + '</span>';
         }
       }
       if (droppedModels > 0) {
@@ -5193,7 +5216,7 @@ function renderGraph() {
     var sub = document.getElementById('graph-subtitle');
     if (sub) {
       if (graphFocusModel) {
-        sub.textContent = 'Focused: ' + graphFocusModel;
+        sub.textContent = 'Focused: ' + pathDisplayName(graphFocusModel);
       } else if (graphModelOverrideList) {
         sub.textContent = (window.GRAPH_MODEL_TITLE || shownModels[0]);
       } else if (shownModels.length < totalInViewWithData) {
@@ -5225,7 +5248,7 @@ function renderGraph() {
         var tagName = this.getAttribute('data-tag');
         var ctx = parseInt(this.getAttribute('data-ctx'));
         var gib = parseFloat(this.getAttribute('data-gib'));
-        graphTooltip.innerHTML = '<span class="font-medium text-neutral-800 dark:text-neutral-200">' + escHtml(modelName) + ':' + escHtml(tagName) + '</span> <span class="text-neutral-500 dark:text-neutral-400">@ ' + ctxLabel(ctx) + ' ctx</span><br><span class="text-neutral-700 dark:text-neutral-300">' + fmtGiB(gib) + ' GiB KV cache</span>';
+        graphTooltip.innerHTML = '<span class="font-medium text-neutral-800 dark:text-neutral-200">' + escHtml(pathDisplayName(modelName)) + ':' + escHtml(tagName) + '</span> <span class="text-neutral-500 dark:text-neutral-400">@ ' + ctxLabel(ctx) + ' ctx</span><br><span class="text-neutral-700 dark:text-neutral-300">' + fmtGiB(gib) + ' GiB KV cache</span>';
         graphTooltip.classList.remove('hidden');
       });
       dotEls[i].addEventListener('mousemove', function(e) {
@@ -5543,17 +5566,17 @@ function initGraph() {
       var changed = false;
       for (var i = 0; i < entries.length; i++) {
         var entry = entries[i];
-        var name = entry.target.getAttribute('data-name');
-        if (!name) continue;
+        var pathKey = entry.target.getAttribute('data-path');
+        if (!pathKey) continue;
         var isVis = entry.isIntersecting && entry.target.style.display !== 'none';
-        var idx = visibleModels.indexOf(name);
+        var idx = visibleModels.indexOf(pathKey);
         if (isVis && idx === -1) {
-          visibleModels.push(name);
+          visibleModels.push(pathKey);
           changed = true;
         } else if (!isVis && idx !== -1) {
           visibleModels.splice(idx, 1);
           // Reset disabled curves for this model so they re-appear on return
-          var prefix = name + '|';
+          var prefix = pathKey + '|';
           for (var dk in disabledGraphCurves) {
             if (dk.indexOf(prefix) === 0) delete disabledGraphCurves[dk];
           }
