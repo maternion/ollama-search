@@ -1835,6 +1835,8 @@ def _main_tags(m: dict, tags: list[dict]) -> list[dict]:
     # MLX counterparts that exist (only {size}-mlx on the main page;
     # other MLX quants like mlx-mxfp8, mlx-bf16 are on the /tags page)
     ordered += [f"{s}-mlx" for s in sizes if f"{s}-mlx" in by_name]
+    # MTP counterparts: only the default quant (q4_K_M) per size
+    ordered += [f"{s}-mtp-q4_K_M" for s in sizes if f"{s}-mtp-q4_K_M" in by_name]
     # Generic cloud tag
     if "cloud" in by_name:
         ordered.append("cloud")
