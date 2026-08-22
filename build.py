@@ -1412,6 +1412,13 @@ def build_index(models: list[dict], ranks: dict) -> None:
                     _stats_skipped += 1
                     continue
                 v_tuple = tuple(v)
+                # For by_path_all: keep all GGUF quants but only default
+                # MTP/MLX quants (q4_K_M for MTP, base -mlx for MLX).
+                is_mtp = "-mtp-" in tname.lower()
+                is_mlx_quant = "-mlx-" in tname.lower()  # e.g. 9b-mlx-int4
+                is_mlx_base = tname.lower().endswith("-mlx")  # e.g. 9b-mlx
+                if (is_mtp and "q4_k_m" not in tname.lower()) or is_mlx_quant:
+                    continue  # skip non-default MTP/MLX quants
                 all_tags_out[tname] = {
                     "c": c,
                     "v": v,
