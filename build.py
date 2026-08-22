@@ -5352,18 +5352,29 @@ function initGraph() {
     });
   }
 
-  // All / None toggle buttons
+  // All / None toggle buttons — mutually exclusive active states.
+  // "All" is active by default (all curves visible). "None" active means
+  // all curves disabled. Active style uses bg fill only (no font-weight
+  // change, so button width stays constant).
   var btnAll = document.getElementById('graph-all');
   var btnNone = document.getElementById('graph-none');
   var btnLogY = document.getElementById('graph-logy');
+  function setToggleActive(btn, active) {
+    if (!btn) return;
+    btn.classList.toggle('bg-neutral-100', active);
+    btn.classList.toggle('dark:bg-neutral-800', active);
+  }
+  // "All" starts active
+  setToggleActive(btnAll, true);
   if (btnAll) btnAll.addEventListener('click', function() {
     disabledGraphCurves = {};
+    setToggleActive(btnAll, true);
+    setToggleActive(btnNone, false);
     renderGraph();
   });
   if (btnLogY) btnLogY.addEventListener('click', function() {
     graphLogY = !graphLogY;
-    btnLogY.classList.toggle('bg-neutral-100', graphLogY);
-    btnLogY.classList.toggle('dark:bg-neutral-800', graphLogY);
+    setToggleActive(btnLogY, graphLogY);
     renderGraph();
   });
 
@@ -5465,6 +5476,8 @@ function initGraph() {
         disabledGraphCurves[vis[vi] + '|' + tns[ti]] = true;
       }
     }
+    setToggleActive(btnAll, false);
+    setToggleActive(btnNone, true);
     renderGraph();
   });
 
