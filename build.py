@@ -1921,7 +1921,7 @@ def _detail_models_section(m: dict, tags: list[dict]) -> str:
     tables = "\n".join(blocks)
 
     return f"""<section class="flex flex-1 flex-col">
-  <div class="flex items-center justify-between mb-4">
+  <div class="hidden sm:flex items-center justify-between mb-4">
     <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Models</h2>
     {view_all}
   </div>
@@ -2381,15 +2381,10 @@ def build_detail(m: dict, tags: list[dict]) -> None:
     {models_section}
   </div>
   {readme_section}
-    <!-- Show graph button: only visible when graph is hidden.
-         No inline display:none — that would override the CSS rule
-         body.graph-hidden #graph-show-toggle {{display: inline-flex }}. -->
-    <button type="button" id="graph-show-toggle" class="detail-show-toggle appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Show graph</button>
   <div id="graph-panel" class="detail-graph">
     <div class="flex items-center justify-between mb-3">
       <div id="graph-subtitle" class="text-sm font-semibold text-neutral-700 dark:text-neutral-300">&nbsp;</div>
       <div class="flex items-center gap-1.5">
-        <button type="button" id="graph-hide-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide graph</button>
         <select id="graph-mode" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1 pr-7">
           <option value="kv">KV cache vs Context</option>
           <option value="total">Total memory vs Context</option>
@@ -3804,25 +3799,22 @@ body.filters-hidden #graph-panel.detail-graph {
   max-height: none;
   overflow: visible;
 }
-/* Detail-page hide/show toggle: works at ALL widths (graph is in-flow,
-   not media-gated). The show-toggle is hidden by default via
-   #graph-show-toggle { display: none; } and revealed here. The
-   detail-show-toggle class widens the reveal beyond >=1080px. */
-#graph-show-toggle.detail-show-toggle { display: none; }
-body.graph-hidden #graph-show-toggle.detail-show-toggle {
-  display: inline-flex;
-  align-items: center;
-  margin-top: 2rem;
-}
 body.graph-hidden #graph-panel.detail-graph {
   display: none !important;
 }
-/* Mobile (detail page): smaller buttons, hide slider, give graph more space */
+/* Mobile (detail page): no border, smaller buttons, hide slider, more space */
 @media (max-width: 1079.98px) {
-  #graph-panel.detail-graph { margin-top: 1rem; }
-  #graph-panel.detail-graph #graph-hide-toggle,
+  #graph-panel.detail-graph {
+    margin-top: 1rem;
+    border: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+  .dark #graph-panel.detail-graph { background: transparent !important; }
   #graph-panel.detail-graph #graph-mode,
-  #graph-show-toggle.detail-show-toggle {
+  #graph-panel.detail-graph #graph-logy,
+  #graph-panel.detail-graph #graph-all,
+  #graph-panel.detail-graph #graph-none {
     font-size: 11px;
     padding: 0.125rem 0.375rem;
   }
