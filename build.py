@@ -1135,7 +1135,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
                <input type="range" id="size-max" min="0" max="500" value="500" step="1" class="sr-only">
              </div>
              <!-- Reset pill to the right of the slider -->
-             <a id="size-filter-reset" class="text-red-500 dark:text-red-400 hover:text-white hover:bg-red-500 dark:hover:bg-red-950 dark:hover:text-red-200 cursor-pointer rounded-full p-1 bg-transparent transition-colors shrink-0" title="Reset"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" class="w-5 h-5"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4.5 10a5.5 5.5 0 1 1 1.62 3.86M4.5 10V6.5m0 3.5h3.5"/></svg></a>
+             <a id="size-filter-reset" class="text-red-500 dark:text-red-400 hover:text-white hover:bg-red-500 dark:hover:bg-red-950 dark:hover:text-red-200 cursor-pointer rounded-full p-1 bg-transparent transition-colors shrink-0" title="Reset"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" class="w-5 h-5"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M4 10a6 6 0 0 1 10.24-4.24M16 10a6 6 0 0 1-10.24 4.24M14 4v2.5h-2.5M6 16v-2.5h2.5"/></svg></a>
            </div>
          </div>
        </div>"""
@@ -1194,7 +1194,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 <input type="range" id="context-max" min="0" max="1048576" value="1048576" step="1" class="sr-only">
               </div>
               <!-- Reset pill to the right of the slider -->
-              <a id="context-filter-reset" class="text-red-500 dark:text-red-400 hover:text-white hover:bg-red-500 dark:hover:bg-red-950 dark:hover:text-red-200 cursor-pointer rounded-full p-1 bg-transparent transition-colors shrink-0" title="Reset"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" class="w-5 h-5"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4.5 10a5.5 5.5 0 1 1 1.62 3.86M4.5 10V6.5m0 3.5h3.5"/></svg></a>
+              <a id="context-filter-reset" class="text-red-500 dark:text-red-400 hover:text-white hover:bg-red-500 dark:hover:bg-red-950 dark:hover:text-red-200 cursor-pointer rounded-full p-1 bg-transparent transition-colors shrink-0" title="Reset"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" class="w-5 h-5"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M4 10a6 6 0 0 1 10.24-4.24M16 10a6 6 0 0 1-10.24 4.24M14 4v2.5h-2.5M6 16v-2.5h2.5"/></svg></a>
             </div>
           </div>
         </div>"""
