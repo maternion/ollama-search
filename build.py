@@ -1567,22 +1567,6 @@ def build_index(models: list[dict], ranks: dict) -> None:
       </div>
       <svg id="graph-svg" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid meet" class="w-full"></svg>
       <div id="graph-range-container" class="relative" style="height: 42px;">
-        <div class="relative" style="height: 20px;">
-          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 0%; transform: translateX(-25%);">0</span>
-          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 7.692%;">4K</span>
-          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 15.385%;">8K</span>
-          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 23.077%;">16K</span>
-          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 30.769%;">32K</span>
-          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 38.462%;">64K</span>
-          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 46.154%;">128K</span>
-          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 53.846%;">256K</span>
-          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 61.538%;">512K</span>
-          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 69.231%;">1M</span>
-          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 76.923%;">2M</span>
-          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 84.615%;">4M</span>
-          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 92.308%;">8M</span>
-          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 100%; transform: translateX(-75%);">Full</span>
-        </div>
         <div class="relative" style="height: 22px;">
           <div class="absolute left-0 right-0 rounded-full" id="graph-range-track" style="top: 50%; transform: translateY(-50%); height: 6px; background-color: #e5e5e5;"></div>
           <div id="graph-range-fill" class="absolute rounded-full bg-cyan-500 dark:bg-cyan-950" style="top: 50%; transform: translateY(-50%); height: 6px; left: 0%; width: 100%;"></div>
@@ -1601,6 +1585,22 @@ def build_index(models: list[dict], ranks: dict) -> None:
           <button type="button" id="graph-range-handle" class="absolute z-10 cursor-pointer touch-none" style="top: 50%; left: 100%; transform: translate(-50%, -50%); width: 10px; height: 10px;">
             <div class="rounded-full bg-cyan-500 dark:bg-cyan-950" style="width: 10px; height: 10px;"></div>
           </button>
+        </div>
+        <div class="relative" style="height: 20px;">
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 0%; transform: translateX(-25%);">0</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 7.692%;">4K</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 15.385%;">8K</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 23.077%;">16K</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 30.769%;">32K</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 38.462%;">64K</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 46.154%;">128K</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 53.846%;">256K</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 61.538%;">512K</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 69.231%;">1M</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 76.923%;">2M</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 84.615%;">4M</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 92.308%;">8M</span>
+          <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 100%; transform: translateX(-75%);">Full</span>
         </div>
       </div>
       <div id="graph-legend-row" class="flex items-center justify-between mt-2">
@@ -2325,22 +2325,6 @@ def build_detail(m: dict, tags: list[dict]) -> None:
     </div>
     <svg id="graph-svg" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid meet" class="w-full"></svg>
     <div id="graph-range-container" class="relative" style="height: 42px;">
-      <div class="relative" style="height: 20px;">
-        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 0%; transform: translateX(-25%);">0</span>
-        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 7.692%;">4K</span>
-        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 15.385%;">8K</span>
-        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 23.077%;">16K</span>
-        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 30.769%;">32K</span>
-        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 38.462%;">64K</span>
-        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 46.154%;">128K</span>
-        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 53.846%;">256K</span>
-        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 61.538%;">512K</span>
-        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 69.231%;">1M</span>
-        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 76.923%;">2M</span>
-        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 84.615%;">4M</span>
-        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 92.308%;">8M</span>
-        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 100%; transform: translateX(-75%);">Full</span>
-      </div>
       <div class="relative" style="height: 22px;">
         <div class="absolute left-0 right-0 rounded-full" id="graph-range-track" style="top: 50%; transform: translateY(-50%); height: 6px; background-color: #e5e5e5;"></div>
         <div id="graph-range-fill" class="absolute rounded-full bg-cyan-500 dark:bg-cyan-950" style="top: 50%; transform: translateY(-50%); height: 6px; left: 0%; width: 100%;"></div>
@@ -2359,6 +2343,22 @@ def build_detail(m: dict, tags: list[dict]) -> None:
         <button type="button" id="graph-range-handle" class="absolute z-10 cursor-pointer touch-none" style="top: 50%; left: 100%; transform: translate(-50%, -50%); width: 10px; height: 10px;">
           <div class="rounded-full bg-cyan-500 dark:bg-cyan-950" style="width: 10px; height: 10px;"></div>
         </button>
+      </div>
+      <div class="relative" style="height: 20px;">
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 0%; transform: translateX(-25%);">0</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 7.692%;">4K</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 15.385%;">8K</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 23.077%;">16K</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 30.769%;">32K</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 38.462%;">64K</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 46.154%;">128K</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 53.846%;">256K</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 61.538%;">512K</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 69.231%;">1M</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 76.923%;">2M</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 84.615%;">4M</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400 -translate-x-1/2" style="left: 92.308%;">8M</span>
+        <span class="absolute top-0 select-none whitespace-nowrap px-1 py-0.5 text-xs text-neutral-500 dark:text-neutral-400" style="left: 100%; transform: translateX(-75%);">Full</span>
       </div>
     </div>
     <div id="graph-legend-row" class="flex items-center justify-between mt-2">
