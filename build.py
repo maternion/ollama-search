@@ -1561,6 +1561,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
       <div class="flex items-center justify-between mb-3">
         <div id="graph-subtitle" class="text-sm font-semibold text-neutral-700 dark:text-neutral-300">Models in view</div>
         <div class="flex items-center gap-1.5">
+          <button type="button" id="graph-hide-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide graph</button>
           <button type="button" id="graph-filters-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide filters</button>
           <span class="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 text-xs px-2 py-1">Context vs Memory</span>
         </div>
@@ -1606,9 +1607,9 @@ def build_index(models: list[dict], ranks: dict) -> None:
       <div id="graph-legend-row" class="flex items-center justify-between mt-2">
         <div id="graph-legend" class="flex flex-wrap gap-x-3 gap-y-1 text-xs"></div>
         <div id="graph-toggles" class="flex gap-1 shrink-0 ml-2">
-          <button type="button" id="graph-logy" class="rounded border border-neutral-200 dark:border-neutral-800 px-1.5 py-0.5 text-[11px] text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800">Log Y</button>
-          <button type="button" id="graph-all" class="rounded border border-neutral-200 dark:border-neutral-800 px-1.5 py-0.5 text-[11px] text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800">All</button>
-          <button type="button" id="graph-none" class="rounded border border-neutral-200 dark:border-neutral-800 px-1.5 py-0.5 text-[11px] text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800">None</button>
+          <button type="button" id="graph-logy" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">logY</button>
+          <button type="button" id="graph-all" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">All</button>
+          <button type="button" id="graph-none" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">None</button>
         </div>
       </div>
       <div id="graph-tooltip" class="hidden fixed pointer-events-none z-50 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 px-2.5 py-1.5 text-xs shadow-lg"></div>
@@ -2364,9 +2365,9 @@ def build_detail(m: dict, tags: list[dict]) -> None:
     <div id="graph-legend-row" class="flex items-center justify-between mt-2">
       <div id="graph-legend" class="flex flex-wrap gap-x-3 gap-y-1 text-xs"></div>
       <div id="graph-toggles" class="flex gap-1 shrink-0 ml-2">
-        <button type="button" id="graph-logy" class="rounded border border-neutral-200 dark:border-neutral-800 px-1.5 py-0.5 text-[11px] text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800">Log Y</button>
-        <button type="button" id="graph-all" class="rounded border border-neutral-200 dark:border-neutral-800 px-1.5 py-0.5 text-[11px] text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800">All</button>
-        <button type="button" id="graph-none" class="rounded border border-neutral-200 dark:border-neutral-800 px-1.5 py-0.5 text-[11px] text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800">None</button>
+        <button type="button" id="graph-logy" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">logY</button>
+        <button type="button" id="graph-all" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">All</button>
+        <button type="button" id="graph-none" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">None</button>
       </div>
     </div>
     <div id="graph-tooltip" class="hidden fixed pointer-events-none z-50 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 px-2.5 py-1.5 text-xs shadow-lg"></div>
@@ -3589,6 +3590,11 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
 @media (min-width: 1500px) {
   #graph-filters-toggle { display: inline-flex; align-items: center; }
 }
+/* Graph hide/show toggle: visible whenever the graph is visible (>= 1080px) */
+#graph-hide-toggle { display: none; }
+@media (min-width: 1080px) {
+  #graph-hide-toggle { display: inline-flex; align-items: center; }
+}
 /* Tier 3 (>= 1500px): graph fixed to viewport, right of centered results */
 @media (min-width: 1500px) {
   #graph-panel {
@@ -3617,6 +3623,28 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
   }
   /* Manual filters toggle: sidebar hidden on demand, expanded graph layout */
   body.filters-hidden #top-row { display: none; }
+  /* Manual graph toggle: graph hidden, sidebar shows in its normal position.
+     The sidebar re-appears (undo filters-hidden/filters-offscreen) and the
+     results area returns to its normal centered width. */
+  body.graph-hidden #graph-panel {
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  body.graph-hidden #top-row { display: block !important; }
+  body.graph-hidden #results-area {
+    width: auto;
+    margin-left: calc(50% - 18rem);
+    margin-right: 0;
+  }
+  /* Also apply at the 1080px–1199px tier */
+}
+@media (min-width: 1080px) and (max-width: 1199.98px) {
+  body.graph-hidden #graph-panel {
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
 }
 
 /* Graph SVG styling */
@@ -5334,9 +5362,8 @@ function initGraph() {
   });
   if (btnLogY) btnLogY.addEventListener('click', function() {
     graphLogY = !graphLogY;
-    btnLogY.style.fontWeight = graphLogY ? '700' : '';
-    btnLogY.style.borderColor = graphLogY ? '#3b82f6' : '';
-    btnLogY.style.color = graphLogY ? '#3b82f6' : '';
+    btnLogY.classList.toggle('bg-neutral-100', graphLogY);
+    btnLogY.classList.toggle('dark:bg-neutral-800', graphLogY);
     renderGraph();
   });
 
@@ -5517,6 +5544,23 @@ function initGraph() {
     } else {
       updateFiltersOffscreen();
     }
+  });
+  // Hide/show the graph panel. When hidden, the filter sidebar re-appears
+  // in its normal position.
+  var graphHideToggle = document.getElementById('graph-hide-toggle');
+  if (graphHideToggle) graphHideToggle.addEventListener('click', function() {
+    var hidden = document.body.classList.toggle('graph-hidden');
+    graphHideToggle.textContent = hidden ? 'Show graph' : 'Hide graph';
+    if (hidden) {
+      // Restore filters if they were hidden
+      document.body.classList.remove('filters-hidden');
+      document.body.classList.remove('filters-offscreen');
+      filtersOffscreen = false;
+      if (filtersToggle) filtersToggle.textContent = 'Hide filters';
+    } else {
+      updateFiltersOffscreen();
+    }
+    if (typeof scheduleGraphRender === 'function') scheduleGraphRender();
   });
   window.addEventListener('scroll', function() {
     if (!layoutTicking) {
