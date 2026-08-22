@@ -747,12 +747,10 @@ RENDERER_ARCHS = {
 
 
 def _model_blob_metadata(model_path: str) -> list[dict]:
-    """Load metadata from the model blob of the latest tag page."""
-    slug = model_path.strip("/").replace("/", "__")
-    tp_file = TAG_PAGES_DIR / f"{slug}__latest.json"
-    if not tp_file.exists():
+    """Load metadata from the model blob of the latest (or first available) tag page."""
+    tag_name, tp = _first_tag_page(model_path)
+    if tp is None:
         return []
-    tp = json.loads(tp_file.read_text())
     for f in tp.get("files") or []:
         if f.get("type") == "model":
             digest = f.get("blob_url", "").rsplit("/blobs/", 1)[-1].split("?")[0]
@@ -764,12 +762,10 @@ def _model_blob_metadata(model_path: str) -> list[dict]:
 
 
 def _template_blob_content(model_path: str) -> str | None:
-    """Load the template blob content from the latest tag page, or None if no template row."""
-    slug = model_path.strip("/").replace("/", "__")
-    tp_file = TAG_PAGES_DIR / f"{slug}__latest.json"
-    if not tp_file.exists():
+    """Load the template blob content from the latest (or first available) tag page, or None if no template row."""
+    tag_name, tp = _first_tag_page(model_path)
+    if tp is None:
         return None
-    tp = json.loads(tp_file.read_text())
     for f in tp.get("files") or []:
         if f.get("type") == "template":
             digest = f.get("blob_url", "").rsplit("/blobs/", 1)[-1].split("?")[0]
@@ -821,6 +817,29 @@ def _has_moe(model_path: str, tags: list[dict] | None = None) -> bool:
     return False
 
 
+def _first_tag_page(model_path: str):
+    """Return (tag_name, parsed_tag_page) for the latest tag, or the first
+    available tag if there is no 'latest'. Returns (None, None) if none exist."""
+    slug = model_path.strip("/").replace("/", "__")
+    tp_file = TAG_PAGES_DIR / f"{slug}__latest.json"
+    if tp_file.exists():
+        return "latest", json.loads(tp_file.read_text())
+    # Fall back to the first available tag page (alphabetical for determinism)
+    import glob
+    pattern = str(TAG_PAGES_DIR / f"{slug}__*.json")
+    candidates = sorted(glob.glob(pattern))
+    for cf in candidates:
+        fname = cf.split("__")[-1].replace(".json", "")
+        # Skip cloud tags — they don't have blob structure
+        if fname == "cloud" or fname.endswith("-cloud"):
+            continue
+        try:
+            return fname, json.loads(open(cf).read())
+        except Exception:
+            continue
+    return None, None
+
+
 def _classify_template(model_path: str) -> str:
     """Classify template type: base, renderer, or jinja.
 
@@ -829,11 +848,9 @@ def _classify_template(model_path: str) -> str:
     - jinja: no template blob but has a system blob (embedded Jinja)
     - base (no template/system): embed/text/code models
     """
-    slug = model_path.strip("/").replace("/", "__")
-    tp_file = TAG_PAGES_DIR / f"{slug}__latest.json"
-    if not tp_file.exists():
+    tag_name, tp = _first_tag_page(model_path)
+    if tp is None:
         return "base"
-    tp = json.loads(tp_file.read_text())
     types = {f.get("type") for f in (tp.get("files") or [])}
     if "template" in types:
         content = _template_blob_content(model_path)
@@ -1556,12 +1573,13 @@ def build_index(models: list[dict], ranks: dict) -> None:
       </div>
     </div>
 
+    <!-- Show/hide graph toggle (lives outside the panel so it stays visible when hidden) -->
+    <button type="button" id="graph-hide-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide graph</button>
     <!-- Graph panel: KV cache memory vs context length -->
     <div id="graph-panel">
       <div class="flex items-center justify-between mb-3">
         <div id="graph-subtitle" class="text-sm font-semibold text-neutral-700 dark:text-neutral-300">Models in view</div>
         <div class="flex items-center gap-1.5">
-          <button type="button" id="graph-hide-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide graph</button>
           <button type="button" id="graph-filters-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide filters</button>
           <span class="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 text-xs px-2 py-1">Context vs Memory</span>
         </div>
@@ -3590,10 +3608,30 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
 @media (min-width: 1500px) {
   #graph-filters-toggle { display: inline-flex; align-items: center; }
 }
-/* Graph hide/show toggle: visible whenever the graph is visible (>= 1080px) */
+/* Graph hide/show toggle: lives outside the panel so it stays visible when
+   the graph is hidden. Fixed to the top-right, matching the graph panel's
+   header position. Only visible when the graph tier is active (>= 1080px). */
 #graph-hide-toggle { display: none; }
 @media (min-width: 1080px) {
-  #graph-hide-toggle { display: inline-flex; align-items: center; }
+  #graph-hide-toggle {
+    display: inline-flex;
+    align-items: center;
+    position: fixed;
+    top: 5rem;
+    right: 2rem;
+    z-index: 40;
+  }
+}
+@media (min-width: 1500px) {
+  #graph-hide-toggle {
+    right: 2rem;
+  }
+  /* When filters are hidden/offscreen, graph widens — keep button at the
+     panel's right edge (4rem from viewport right, matching the panel). */
+  body.filters-offscreen #graph-hide-toggle,
+  body.filters-hidden #graph-hide-toggle {
+    right: 4rem;
+  }
 }
 /* Tier 3 (>= 1500px): graph fixed to viewport, right of centered results */
 @media (min-width: 1500px) {

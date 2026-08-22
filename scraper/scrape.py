@@ -2077,10 +2077,12 @@ def infer_capabilities(models: dict[str, Model]) -> None:
 
     inferred = 0
     for path, m in models.items():
-        if m.capabilities:  # already has capabilities from badges
-            continue
+        # Start from existing capabilities (e.g. from ollama.com badges) so
+        # we only ADD missing ones — never replace or remove. This lets a
+        # model that got "thinking" on a previous scrape pick up "tools" when
+        # the inference logic is improved, rather than being skipped.
+        caps: list[str] = list(m.capabilities or [])
         blobs = model_blobs.get(path, [])
-        caps: list[str] = []
         for bd in blobs:
             # Check GGUF metadata for chat_template.tool_use
             for meta in bd.get("metadata", []):
@@ -2158,9 +2160,11 @@ def infer_capabilities(models: dict[str, Model]) -> None:
                     pass
 
         if caps:
-            m.capabilities = caps
-            inferred += 1
-            log.debug("inferred caps for %s: %s", path, caps)
+            added = [c for c in caps if c not in (m.capabilities or [])]
+            if added:
+                m.capabilities = caps
+                inferred += 1
+                log.debug("inferred caps for %s: %s", path, caps)
 
     if inferred:
         log.info("inferred capabilities for %d models", inferred)
