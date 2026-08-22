@@ -832,6 +832,7 @@ def _first_tag_page(model_path: str):
         return "latest", json.loads(tp_file.read_text())
     # Fall back to the first available tag page (alphabetical for determinism)
     import glob
+
     pattern = str(TAG_PAGES_DIR / f"{slug}__*.json")
     candidates = sorted(glob.glob(pattern))
     for cf in candidates:
@@ -1301,7 +1302,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
     # is written to public/assets/graph-data.json and referenced by the page
     # via window.GRAPH_DATA_URL. Any unexpected failure degrades to an empty
     # graph so the build never breaks.
-    graph = {"ticks": GRAPH_TICKS, "models": {}, "by_path": {}}
+    graph = {"ticks": GRAPH_TICKS, "models": {}, "by_path": {}, "by_path_all": {}}
     try:
         from memcalc.parse import extract_hparams as _extract_hparams
         from memcalc.dispatch import compute_memory_at_context as _compute_mem
@@ -1360,6 +1361,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
             model_path = m.get("path", "")
             sizes_list = m.get("sizes") or []
             tags_out: dict[str, dict] = {}
+            all_tags_out: dict[str, dict] = {}
             # Dedupe within a model by curve values: quantization doesn't
             # change KV-cache geometry, so identical v arrays are one curve.
             seen: dict[tuple, str] = {}
@@ -1410,6 +1412,11 @@ def build_index(models: list[dict], ranks: dict) -> None:
                     _stats_skipped += 1
                     continue
                 v_tuple = tuple(v)
+                all_tags_out[tname] = {
+                    "c": c,
+                    "v": v,
+                    "w": round((tag.get("size_bytes") or 0) / 1073741824, 4),
+                }
                 if v_tuple in seen:
                     # Same curve already kept under another tag name.
                     # Prefer: non-"latest", a plain size name, shorter name.
@@ -1424,11 +1431,19 @@ def build_index(models: list[dict], ranks: dict) -> None:
 
                     if _rank(tname) < _rank(kept):
                         del tags_out[kept]
-                        tags_out[tname] = {"c": c, "v": v}
+                        tags_out[tname] = {
+                            "c": c,
+                            "v": v,
+                            "w": round((tag.get("size_bytes") or 0) / 1073741824, 4),
+                        }
                         seen[v_tuple] = tname
                     continue
                 seen[v_tuple] = tname
-                tags_out[tname] = {"c": c, "v": v}
+                tags_out[tname] = {
+                    "c": c,
+                    "v": v,
+                    "w": round((tag.get("size_bytes") or 0) / 1073741824, 4),
+                }
                 _stats_tags += 1
                 if c > max_c:
                     max_c = c
@@ -1485,15 +1500,27 @@ def build_index(models: list[dict], ranks: dict) -> None:
                         "ctx": max_c,
                         "tags": dict(sorted_tags),
                     }
+                    if all_tags_out:
+                        sorted_all_tags = dict(
+                            sorted(
+                                all_tags_out.items(),
+                                key=lambda kv: (kv[1]["c"], kv[0]),
+                            )
+                        )
+                        graph["by_path_all"][path_key] = {
+                            "ctx": max_c,
+                            "tags": sorted_all_tags,
+                        }
         # Sort models dict by key for deterministic output.
         graph["models"] = dict(sorted(graph["models"].items()))
         graph["by_path"] = dict(sorted(graph["by_path"].items()))
+        graph["by_path_all"] = dict(sorted(graph["by_path_all"].items()))
         print(
             f"graph-data: {len(graph['models'])} models, "
             f"{_stats_tags} tags included, {_stats_skipped} tags skipped"
         )
     except Exception:
-        graph = {"ticks": GRAPH_TICKS, "models": {}, "by_path": {}}
+        graph = {"ticks": GRAPH_TICKS, "models": {}, "by_path": {}, "by_path_all": {}}
 
     # Write the graph data JSON (compact) to public/assets/graph-data.json.
     (PUBLIC / "assets").mkdir(parents=True, exist_ok=True)
@@ -1583,8 +1610,10 @@ def build_index(models: list[dict], ranks: dict) -> None:
       </div>
     </div>
 
-    <!-- Show graph button: only visible when graph is hidden -->
-    <button type="button" id="graph-show-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1" style="display:none;">Show graph</button>
+    <!-- Show graph button: only visible when graph is hidden.
+         No inline display:none -- that would override the CSS rule
+         body.graph-hidden #graph-show-toggle (display: inline-flex). -->
+    <button type="button" id="graph-show-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Show graph</button>
     <!-- Graph panel: KV cache memory vs context length -->
     <div id="graph-panel">
       <div class="flex items-center justify-between mb-3">
@@ -1592,7 +1621,10 @@ def build_index(models: list[dict], ranks: dict) -> None:
         <div class="flex items-center gap-1.5">
           <button type="button" id="graph-hide-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide graph</button>
           <button type="button" id="graph-filters-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide filters</button>
-          <span class="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 text-xs px-2 py-1">Context vs Memory</span>
+          <select id="graph-mode" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1 pr-7">
+            <option value="kv">KV cache vs Context</option>
+            <option value="total">Total memory vs Context</option>
+          </select>
         </div>
       </div>
       <svg id="graph-svg" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid meet" class="w-full"></svg>
@@ -2349,9 +2381,20 @@ def build_detail(m: dict, tags: list[dict]) -> None:
     {models_section}
   </div>
   {readme_section}
+    <!-- Show graph button: only visible when graph is hidden.
+         No inline display:none — that would override the CSS rule
+         body.graph-hidden #graph-show-toggle {{display: inline-flex }}. -->
+    <button type="button" id="graph-show-toggle" class="detail-show-toggle appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Show graph</button>
   <div id="graph-panel" class="detail-graph">
     <div class="flex items-center justify-between mb-3">
       <div id="graph-subtitle" class="text-sm font-semibold text-neutral-700 dark:text-neutral-300">&nbsp;</div>
+      <div class="flex items-center gap-1.5">
+        <button type="button" id="graph-hide-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide graph</button>
+        <select id="graph-mode" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1 pr-7">
+          <option value="kv">KV cache vs Context</option>
+          <option value="total">Total memory vs Context</option>
+        </select>
+      </div>
     </div>
     <svg id="graph-svg" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid meet" class="w-full"></svg>
     <div id="graph-range-container" class="relative" style="height: 42px;">
@@ -3593,6 +3636,12 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
 
 /* --- Graph panel: KV cache memory vs context length --- */
 #graph-svg { width: 100%; flex: 1 1 0; min-height: 0; display: block; }
+#graph-mode {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23737373' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.4rem center;
+  background-repeat: no-repeat;
+  background-size: 1rem;
+}
 #graph-panel {
   position: fixed;
   visibility: hidden;
@@ -3754,6 +3803,19 @@ body.filters-hidden #graph-panel.detail-graph {
   flex: 0 0 auto;
   max-height: none;
   overflow: visible;
+}
+/* Detail-page hide/show toggle: works at ALL widths (graph is in-flow,
+   not media-gated). The show-toggle is hidden by default via
+   #graph-show-toggle { display: none; } and revealed here. The
+   detail-show-toggle class widens the reveal beyond >=1080px. */
+#graph-show-toggle.detail-show-toggle { display: none; }
+body.graph-hidden #graph-show-toggle.detail-show-toggle {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 2rem;
+}
+body.graph-hidden #graph-panel.detail-graph {
+  display: none !important;
 }
 """
 
@@ -4839,12 +4901,15 @@ var graphFocusModel = null;
 var graphNormalSubtitle = '';
 var graphLogY = false;
 var graphCtxCap = 0;  // 0 = no cap (show full range); set by the context slider
+var graphTotalMemory = false;  // false = KV cache only; true = weights + KV cache
 var graphModelOverrideList = null;
 var graphOverrideEntry = null;
 
 function getModelEntry(key) {
   if (graphOverrideEntry) return graphOverrideEntry;
   if (!graphData) return null;
+  // In total memory mode on detail pages, use by_path_all (all quants, no dedup).
+  if (graphTotalMemory && graphData.by_path_all && graphData.by_path_all[key]) return graphData.by_path_all[key];
   // Prefer the per-path entry (not merged across namespaces) so that a
   // community model like /frob/ds-flash doesn't pollute the graph for the
   // library /library/ds-flash. Fall back to the legacy name-keyed dict.
@@ -4958,15 +5023,20 @@ function renderGraph() {
       var tag = m.tags[tagName];
       if (!tag || !tag.v || tag.v.length === 0) continue;
       var c = tag.c;
+      var w = tag.w || 0;  // model weight GiB (0 if not available)
       var pts = [];
       for (var ti = 0; ti < ticks.length; ti++) {
         if (ticks[ti] < c) {
-          if (ti < tag.v.length) pts.push({ctx: ticks[ti], gib: tag.v[ti]});
+          if (ti < tag.v.length) {
+            var kv = tag.v[ti];
+            pts.push({ctx: ticks[ti], gib: graphTotalMemory ? (kv + w) : kv, kv: kv, w: w});
+          }
         }
       }
       // Endpoint at ctx = c (only if within cap)
       if (tag.v.length > 0 && (!graphCtxCap || c <= graphCtxCap)) {
-        pts.push({ctx: c, gib: tag.v[tag.v.length - 1]});
+        var kvEnd = tag.v[tag.v.length - 1];
+        pts.push({ctx: c, gib: graphTotalMemory ? (kvEnd + w) : kvEnd, kv: kvEnd, w: w});
       }
       // Apply context cap: drop points beyond the slider's selected max
       if (graphCtxCap) {
@@ -5115,7 +5185,8 @@ function renderGraph() {
       }
     }
     // Y axis title
-    svgContent += '<text class="graph-label" x="' + (padL - 42) + '" y="' + (padT + plotH/2) + '" text-anchor="middle" transform="rotate(-90 ' + (padL - 42) + ' ' + (padT + plotH/2) + ')">' + (graphLogY ? 'GiB (log)' : 'GiB') + '</text>';
+    var yLabel = graphTotalMemory ? (graphLogY ? 'Total GiB (log)' : 'Total GiB') : (graphLogY ? 'GiB (log)' : 'GiB');
+    svgContent += '<text class="graph-label" x="' + (padL - 42) + '" y="' + (padT + plotH/2) + '" text-anchor="middle" transform="rotate(-90 ' + (padL - 42) + ' ' + (padT + plotH/2) + ')">' + yLabel + '</text>';
 
     // X-axis labels at context ticks (skip tick 0). Gridlines are drawn for
     // every candidate; text labels are greedily pruned so that close labels
@@ -5225,7 +5296,7 @@ function renderGraph() {
         if (graphLogY && pts[k].gib <= 0) continue;
         var dx = xPx(pts[k].ctx);
         var dy = yPx(pts[k].gib);
-        svgContent += '<circle class="graph-dot" cx="' + dx.toFixed(1) + '" cy="' + dy.toFixed(1) + '" r="2.5" fill="' + color + '" data-model="' + escHtml(modelName) + '" data-tag="' + escHtml(tagName) + '" data-ctx="' + pts[k].ctx + '" data-gib="' + pts[k].gib.toFixed(3) + '"/>';
+        svgContent += '<circle class="graph-dot" cx="' + dx.toFixed(1) + '" cy="' + dy.toFixed(1) + '" r="2.5" fill="' + color + '" data-model="' + escHtml(modelName) + '" data-tag="' + escHtml(tagName) + '" data-ctx="' + pts[k].ctx + '" data-gib="' + pts[k].gib.toFixed(3) + '" data-w="' + (pts[k].w || 0).toFixed(3) + '"/>';
       }
     }
 
@@ -5319,7 +5390,15 @@ function renderGraph() {
         var tagName = this.getAttribute('data-tag');
         var ctx = parseInt(this.getAttribute('data-ctx'));
         var gib = parseFloat(this.getAttribute('data-gib'));
-        graphTooltip.innerHTML = '<span class="font-medium text-neutral-800 dark:text-neutral-200">' + escHtml(pathDisplayName(modelName)) + ':' + escHtml(tagName) + '</span> <span class="text-neutral-500 dark:text-neutral-400">@ ' + ctxLabel(ctx) + ' ctx</span><br><span class="text-neutral-700 dark:text-neutral-300">' + fmtGiB(gib) + ' GiB KV cache</span>';
+        var tipLine;
+        if (graphTotalMemory && this.getAttribute('data-w')) {
+          var w = parseFloat(this.getAttribute('data-w'));
+          var kv = gib - w;
+          tipLine = '<span class="text-neutral-700 dark:text-neutral-300">' + fmtGiB(gib) + ' GiB total (' + fmtGiB(w) + ' weights + ' + fmtGiB(kv) + ' KV)</span>';
+        } else {
+          tipLine = '<span class="text-neutral-700 dark:text-neutral-300">' + fmtGiB(gib) + ' GiB KV cache</span>';
+        }
+        graphTooltip.innerHTML = '<span class="font-medium text-neutral-800 dark:text-neutral-200">' + escHtml(pathDisplayName(modelName)) + ':' + escHtml(tagName) + '</span> <span class="text-neutral-500 dark:text-neutral-400">@ ' + ctxLabel(ctx) + ' ctx</span><br>' + tipLine;
         graphTooltip.classList.remove('hidden');
       });
       dotEls[i].addEventListener('mousemove', function(e) {
@@ -5418,6 +5497,13 @@ function initGraph() {
   if (btnLogY) btnLogY.addEventListener('click', function() {
     graphLogY = !graphLogY;
     setToggleActive(btnLogY, graphLogY);
+    renderGraph();
+  });
+
+  // Graph mode dropdown: KV cache vs Total memory
+  var graphModeSelect = document.getElementById('graph-mode');
+  if (graphModeSelect) graphModeSelect.addEventListener('change', function() {
+    graphTotalMemory = (this.value === 'total');
     renderGraph();
   });
 
