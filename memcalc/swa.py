@@ -18,6 +18,7 @@ SWA_DEFAULT_PATTERNS = {
     "cohere2": 4,
     "gpt-oss": 2,
     "gptoss": 2,
+    "muse-glimmer": 4,
 }
 
 

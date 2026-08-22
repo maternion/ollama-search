@@ -42,7 +42,7 @@ HYBRID_ARCHS = {
     "plamo2",
 }
 
-SWA_ARCHS = {"gemma2", "gemma3", "gemma3n", "gemma4", "llama4", "mellum", "olmo3"}
+SWA_ARCHS = {"gemma2", "gemma3", "gemma3n", "gemma4", "llama4", "mellum", "olmo3", "muse-glimmer"}
 
 
 def detect_family(hparams: dict) -> str:
@@ -83,6 +83,14 @@ def compute_memory_at_context(hparams: dict, context: int, kv_bpe: float = 2.0) 
     Returns a dict describing KV cache memory at the given context length.
     Default kv_bpe=2.0 (F16) is the llama.cpp default KV cache dtype.
     """
+    # Subtract MTP/NextN layers from block_count. These prediction layers
+    # get their own separate draft KV cache in llama.cpp, not the main
+    # inference KV cache. Using the full block_count overcounts by 1+ layers.
+    n_nextn = hparams.get("nextn_predict_layers", 0) or 0
+    if n_nextn and isinstance(n_nextn, (int, float)) and n_nextn > 0:
+        hparams = dict(hparams)  # don't mutate caller's dict
+        hparams["block_count"] = max(0, hparams.get("block_count", 0) - int(n_nextn))
+
     family = detect_family(hparams)
 
     if family == "none":
