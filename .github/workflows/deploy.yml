@@ -3,8 +3,6 @@ name: Scrape and Deploy
 on:
   schedule:
     - cron: "0 */2 * * *"
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

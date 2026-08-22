@@ -1,0 +1,60 @@
+name: Rebuild (no scrape)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'build.py'
+      - 'memcalc/**'
+      - 'serve.py'
+      - '.github/workflows/rebuild.yml'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "rebuild"
+  cancel-in-progress: true
+
+jobs:
+  rebuild-and-deploy:
+    runs-on: ubuntu-latest
+    environment: github-pages
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Restore scraped data
+        run: |
+          git fetch origin scraped-data 2>/dev/null || true
+          if git rev-parse --verify origin/scraped-data >/dev/null 2>&1; then
+            git checkout origin/scraped-data -- scraper/ 2>/dev/null || true
+            git reset HEAD scraper/ 2>/dev/null || true
+            echo "Restored scraped data from scraped-data branch"
+          else
+            echo "::warning::No scraped-data branch found — build will use whatever scraper/ data exists on main"
+          fi
+
+      - name: Build site
+        run: python3 build.py --base "/${{ github.event.repository.name }}"
+
+      - name: Self-check
+        run: python3 scraper/scrape.py --self-check
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public/
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
