@@ -3099,10 +3099,11 @@ def main(argv: list[str] | None = None) -> int:
                         break
                     slug = slugify(m.path)
                     log.info("  [%d/%d] %s", i, total, m.path)
-                    if not m.tags:
-                        m.tags = fetch_tags(client, m)
-                        save_tags(m, m.tags)
-                        time.sleep(DELAY)
+                    # Always re-fetch the tag list for models in to_fetch,
+                    # even if m.tags was loaded from a stale cache file.
+                    m.tags = fetch_tags(client, m)
+                    save_tags(m, m.tags)
+                    time.sleep(DELAY)
                     tags_changed.add(m.path)
                     if i % 10 == 0:
                         save_models(models.values())
