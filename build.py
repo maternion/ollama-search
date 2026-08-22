@@ -3666,6 +3666,7 @@ body.filters-hidden #graph-panel.detail-graph {
   right: auto !important;
   max-width: none !important;
   max-height: none !important;
+  height: auto !important;
   overflow-y: visible !important;
   top: auto !important;
   left: auto !important;
@@ -4693,11 +4694,11 @@ function initApp() {
 
 // --- Graph panel: KV cache memory vs context length ---
 var GRAPH_PALETTE = [
-  '#a8506f', '#31d96f', '#42a3fd', '#f5a071', '#518200', '#fc82f4', '#7552db', '#b77b2b', '#ff5c83', '#1479b0', '#3aced6', '#c851c2', '#b6aaff', '#bebf2c', '#18a07e', '#e74f04', '#9577c7', '#d080b6', '#85ad5b', '#c474fa', '#34a40e', '#cc243f', '#1c69e3', '#994cab', '#b74d00', '#df8072', '#f696b5', '#8d6d00', '#7673fd', '#1996c4', '#d35986', '#bf2a82', '#69c1fd', '#08b6af', '#6568b6', '#ecaa16', '#8dca81', '#bb9b3c', '#9095e8', '#e58219', '#00bc7c', '#8e8f2d', '#eb63c5', '#118659', '#4c87e9', '#9e64ee', '#c76b5e', '#8bcf27'
+  '#bf6584', '#52f185', '#02a9f7', '#659818', '#fab1f4', '#f7a22a', '#8968f4', '#5be3f9', '#24b6a2', '#e068d9', '#b47828', '#d5d64a', '#fb9798', '#ff5c83', '#e34b00', '#9e91e4', '#8dca81', '#3480fc', '#b0a03e', '#eb7c36', '#af62c1', '#1292c0', '#4dba32', '#69c1fd', '#d080b6', '#8bcf27', '#e493f7', '#d84497', '#797dcd', '#82e6b4', '#109d7b', '#f7c56f', '#df7e80', '#3ed0c9', '#b6aaff', '#c9b959', '#75b169', '#c474fa', '#a1e647', '#31d96f', '#e3406b', '#f45fb0', '#eb98d0', '#8b8c29', '#729fe9', '#b4de8a', '#25afd2', '#92ac1d'
 ];
 // Light-mode palette: darker variants with adequate contrast on white.
 var GRAPH_PALETTE_LIGHT = [
-  '#904961', '#1cb658', '#0089ed', '#ec6f0b', '#c86edc', '#00755b', '#6647c0', '#94873b', '#38abb1', '#db4b6e', '#815c0e', '#ac43a6', '#298c05', '#32669a', '#857bbf', '#b12c00', '#cf7f7f', '#9980fe', '#008495', '#a65f47', '#499972', '#e662a8', '#4d68dc', '#a82572', '#679dd4', '#ae6e9a', '#75528e', '#c58d0e', '#8ea434', '#61803f', '#c26e17', '#825eba', '#2f751f', '#b34b72', '#ab87c7', '#8e35a1', '#a761d6', '#f3606a', '#cd6153', '#5e71b0', '#195cc7', '#7474ef', '#c83847', '#c952a8', '#3991b7', '#699632', '#955e91', '#924d36'
+  '#a05770', '#00d98f', '#e98dfe', '#f8a054', '#0089ed', '#258900', '#79c0f1', '#f86686', '#9e8339', '#a761d6', '#209994', '#666aab', '#db5521', '#78b31f', '#8e93f4', '#afc178', '#ed9cb5', '#d14e96', '#d48970', '#62b28a', '#c287bd', '#a840a3', '#ab5900', '#c1a9ef', '#c53444', '#00ade4', '#b39f1d', '#7474ef', '#017e9a', '#6a7a32', '#66ccba', '#399d57', '#f3751a', '#e56bc2', '#bb6e63', '#a172ac', '#6287c3', '#a9c71f', '#c07af1', '#1e8469', '#7457d1', '#296cd8', '#dab33d', '#7c921a', '#d58d29', '#8b5d96', '#40b1b7', '#c26e17'
 ];
 function graphPalette() {
   return document.documentElement.classList.contains('dark') ? GRAPH_PALETTE : GRAPH_PALETTE_LIGHT;
