@@ -1,0 +1,87 @@
+name: Scrape Model
+
+on:
+  workflow_dispatch:
+    inputs:
+      models:
+        description: "Model path(s) to re-scrape (comma-separated, e.g. /frob/kimi-k3,/library/llama3.1)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "deploy"
+  cancel-in-progress: false
+
+jobs:
+  scrape-model:
+    runs-on: ubuntu-latest
+    environment: github-pages
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Set up git, restore scraped data, create worktree
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git fetch origin scraped-data 2>/dev/null || true
+          if git rev-parse --verify origin/scraped-data >/dev/null 2>&1; then
+            git checkout origin/scraped-data -- scraper/ 2>/dev/null || true
+            git checkout origin/main -- scraper/scrape.py 2>/dev/null || true
+            git reset HEAD scraper/ 2>/dev/null || true
+            echo "Restored scraped data from scraped-data branch"
+            git worktree add /tmp/scraped-data scraped-data 2>/dev/null || true
+          else
+            echo "No scraped-data branch yet, starting fresh"
+            git worktree add --orphan -b scraped-data /tmp/scraped-data 2>/dev/null || true
+            cd /tmp/scraped-data
+            git commit --allow-empty -m "init [skip ci]" 2>/dev/null || true
+            git push origin scraped-data 2>/dev/null || true
+            cd "$GITHUB_WORKSPACE"
+          fi
+
+      # ── Targeted scrape: only the specified model(s) ──
+      - name: Scrape model(s)
+        id: scrape1
+        continue-on-error: true
+        env:
+          GIT_CHECKPOINT: "1"
+          GIT_CHECKPOINT_WORKTREE: "/tmp/scraped-data"
+          PYTHONUNBUFFERED: "1"
+        run: python3 scraper/scrape.py --only-model "${{ inputs.models }}" -v
+
+      - name: Checkpoint + build + self-check
+        id: build1
+        run: |
+          if [ -d /tmp/scraped-data ]; then
+            rm -rf /tmp/scraped-data/scraper
+            mkdir -p /tmp/scraped-data/scraper
+            cp -r scraper/* /tmp/scraped-data/scraper/
+            cd /tmp/scraped-data
+            git add -A scraper/
+            git commit -m "targeted scrape: ${{ inputs.models }} [skip ci]" || true
+            git push origin scraped-data || true
+            cd "$GITHUB_WORKSPACE"
+          fi
+          python3 build.py --base "/${{ github.event.repository.name }}"
+          python3 scraper/scrape.py --self-check
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public/
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

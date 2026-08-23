@@ -3477,6 +3477,15 @@ def main(argv: list[str] | None = None) -> int:
         "whose last update is older than N days. 0 = no filtering. "
         "Profile/community models are always scraped regardless of age.",
     )
+    ap.add_argument(
+        "--only-model",
+        type=str,
+        default="",
+        help="only scrape this model path (e.g. /frob/kimi-k3 or /library/llama3.1). "
+        "Skips catalog crawl, search sweep, and all other models. "
+        "Comma-separated list supported. Forces re-fetch of tags, pages, "
+        "tag pages, and blobs for the specified model(s) only.",
+    )
     args = ap.parse_args(argv)
 
     global _START_TIME, _MAX_RUNTIME
@@ -3509,6 +3518,269 @@ def main(argv: list[str] | None = None) -> int:
 
     client = Client()
     try:
+        # ---- --only-model: targeted re-scrape of specific model(s) ----
+        only_models = (
+            [m.strip().lstrip("/") for m in args.only_model.split(",") if m.strip()]
+            if args.only_model
+            else []
+        )
+
+        if only_models:
+            log.info("=== targeted scrape: %s ===", ", ".join(only_models))
+            # Load existing models.json to preserve all other model data
+            if (DATA / "models.json").exists():
+                try:
+                    prev_data = json.loads((DATA / "models.json").read_text())
+                    models = {}
+                    for pm in prev_data.get("models", []):
+                        models[pm["path"]] = Model(
+                            name=pm.get("name", ""),
+                            path=pm["path"],
+                            description=pm.get("description", ""),
+                            capabilities=pm.get("capabilities", []),
+                            cloud=pm.get("cloud", False),
+                            sizes=pm.get("sizes", []),
+                            pulls=pm.get("pulls", 0),
+                            tag_count=pm.get("tag_count", 0),
+                            updated=pm.get("updated", ""),
+                            updated_title=pm.get("updated_title", ""),
+                            official=pm.get("official", True),
+                            owner=pm.get("owner", ""),
+                            source_url=pm.get("source_url", BASE + pm["path"]),
+                            cloud_only=pm.get("cloud_only", False),
+                        )
+                        # Load cached tags
+                        slug = slugify(pm["path"])
+                        tf = TAGS_DIR / f"{slug}.json"
+                        if tf.exists():
+                            try:
+                                td = json.loads(tf.read_text())
+                                models[pm["path"]].tags = [
+                                    Tag(**t) for t in td.get("tags", [])
+                                ]
+                            except Exception:
+                                pass
+                except Exception as e:
+                    log.warning("failed to load models.json: %s", e)
+                    models = {}
+            else:
+                models = {}
+
+            # Filter to only requested models
+            target_models = {}
+            for mp in only_models:
+                # Normalize: /frob/kimi-k3 -> frob/kimi-k3
+                mp_norm = mp.lstrip("/")
+                if mp_norm in models:
+                    target_models[mp_norm] = models[mp_norm]
+                    log.info("  found in cache: %s", mp_norm)
+                else:
+                    # Create a minimal Model entry — the profile scrape will
+                    # fill in details
+                    is_official = not mp_norm.startswith(
+                        ("frob/", "maternion/", "huihui_ai/", "x/")
+                    )
+                    owner = mp_norm.split("/")[0] if "/" in mp_norm else ""
+                    target_models[mp_norm] = Model(
+                        name=mp_norm.rsplit("/", 1)[-1],
+                        path=mp_norm,
+                        description="",
+                        capabilities=[],
+                        cloud=False,
+                        sizes=[],
+                        pulls=0,
+                        tag_count=0,
+                        updated="",
+                        updated_title="",
+                        official=is_official,
+                        owner=owner if not is_official else "",
+                        source_url=BASE + "/" + mp_norm,
+                    )
+                    log.info("  new model (not in cache): %s", mp_norm)
+
+            models = target_models
+            prev_models = {}
+
+            # Force re-fetch: delete cached tags/tag-pages/blobs for target models
+            for mp in only_models:
+                mp_norm = mp.lstrip("/")
+                slug = slugify(mp_norm)
+                # Delete cached tags
+                tf = TAGS_DIR / f"{slug}.json"
+                if tf.exists():
+                    tf.unlink()
+                    log.info("  deleted cached tags: %s", tf.name)
+                # Delete cached page
+                pf = PAGES_DIR / f"{slug}.json"
+                if pf.exists():
+                    pf.unlink()
+                    log.info("  deleted cached page: %s", pf.name)
+                # Delete cached tag pages
+                if TAG_PAGES_DIR.exists():
+                    for tp in TAG_PAGES_DIR.glob(f"{slug}__*.json"):
+                        tp.unlink()
+                        log.info("  deleted cached tag page: %s", tp.name)
+                # Delete cached blobs (need to find digests from tag pages —
+                # but we just deleted them. Instead, we'll re-fetch blobs
+                # after new tag pages are fetched. The blob cache will be
+                # handled by the CLIP-detection logic or the HF fallback.)
+
+            # Mark all target models as tags_changed to force re-scrape
+            tags_changed = set(only_models)
+            profile_model_paths = set(only_models)
+
+            # Fetch tags for target models
+            if not args.skip_tags:
+                log.info("=== fetching tags for target models ===")
+                for mp in sorted(only_models):
+                    mp_norm = mp.lstrip("/")
+                    if mp_norm not in models:
+                        continue
+                    m = models[mp_norm]
+                    if client.bail_out or _time_up():
+                        break
+                    log.info("  %s", mp_norm)
+                    m.tags = fetch_tags(client, m)
+                    save_tags(m, m.tags)
+                    time.sleep(DELAY)
+
+                # Backup full models.json before we overwrite with just targets
+                full_path = DATA / "models.json.bak-target"
+                if (DATA / "models.json").exists() and not full_path.exists():
+                    import shutil
+
+                    shutil.copy2(DATA / "models.json", full_path)
+                save_models(models.values())
+                git_checkpoint("target tags done")
+
+            # Fetch model pages
+            if not args.skip_pages:
+                log.info("=== fetching model pages ===")
+                PAGES_DIR.mkdir(parents=True, exist_ok=True)
+                for mp in sorted(only_models):
+                    mp_norm = mp.lstrip("/")
+                    if mp_norm not in models:
+                        continue
+                    m = models[mp_norm]
+                    if client.bail_out or _time_up():
+                        break
+                    log.info("  %s", mp_norm)
+                    page = fetch_model_page(client, m)
+                    if page:
+                        save_model_page(m, page)
+                    else:
+                        log.warning("  no page data for %s", mp_norm)
+                    time.sleep(DELAY)
+
+            # Fetch tag pages
+            if not args.skip_tag_pages:
+                log.info("=== fetching tag pages ===")
+                TAG_PAGES_DIR.mkdir(parents=True, exist_ok=True)
+                for mp in sorted(only_models):
+                    mp_norm = mp.lstrip("/")
+                    if mp_norm not in models:
+                        continue
+                    m = models[mp_norm]
+                    if not m.tags:
+                        continue
+                    for t in m.tags:
+                        if client.bail_out or _time_up():
+                            break
+                        slug = slugify(mp_norm)
+                        tf = TAG_PAGES_DIR / f"{slug}__{t.name}.json"
+                        log.info("  %s:%s", mp_norm, t.name)
+                        tp = fetch_tag_page(client, m, t.name)
+                        if tp:
+                            save_tag_page(m, t.name, tp)
+                        time.sleep(DELAY)
+                git_checkpoint("target tag pages done")
+
+            # Fetch blobs
+            if not args.skip_blobs:
+                log.info("=== fetching blob pages ===")
+                BLOBS_DIR.mkdir(parents=True, exist_ok=True)
+                for mp in sorted(only_models):
+                    mp_norm = mp.lstrip("/")
+                    if mp_norm not in models:
+                        continue
+                    m = models[mp_norm]
+                    if not m.tags:
+                        continue
+                    for t in m.tags:
+                        if client.bail_out or _time_up():
+                            break
+                        slug = slugify(mp_norm)
+                        tp_file = TAG_PAGES_DIR / f"{slug}__{t.name}.json"
+                        if not tp_file.exists():
+                            continue
+                        try:
+                            tp_data = json.loads(tp_file.read_text())
+                        except Exception:
+                            continue
+                        for f in tp_data.get("files", []):
+                            blob_url = f.get("blob_url", "")
+                            if not blob_url:
+                                continue
+                            bdigest = (
+                                blob_url.rstrip("/")
+                                .rsplit("/blobs/", 1)[-1]
+                                .split("?", 1)[0]
+                            )
+                            bf = BLOBS_DIR / f"{bdigest}.json"
+                            # Delete existing blob cache to force re-fetch
+                            if bf.exists():
+                                bf.unlink()
+                            log.info(
+                                "  blob: %s:%s (%s)", mp_norm, t.name, bdigest[:12]
+                            )
+                            bp = fetch_blob_page(client, blob_url, mp_norm)
+                            if bp:
+                                save_blob_page(blob_url, bp)
+                            time.sleep(DELAY)
+                git_checkpoint("target blobs done")
+
+            # Infer capabilities
+            infer_capabilities(models)
+            save_models(models.values())
+            git_checkpoint("target scrape complete")
+
+            # Merge target models back into full models.json so we don't
+            # lose all the other models' data.
+            if (DATA / "models.json").exists():
+                try:
+                    target_data = json.loads((DATA / "models.json").read_text())
+                    target_by_path = {
+                        tm["path"]: tm for tm in target_data.get("models", [])
+                    }
+                    # Read the backup of the full models.json we saved earlier
+                    full_path = DATA / "models.json.bak-target"
+                    if full_path.exists():
+                        full_data = json.loads(full_path.read_text())
+                    else:
+                        full_data = {"models": []}
+                    full_models = {pm["path"]: pm for pm in full_data.get("models", [])}
+                    # Overwrite/add target models
+                    for mp in only_models:
+                        mp_norm = mp.lstrip("/")
+                        if mp_norm in target_by_path:
+                            full_models[mp_norm] = target_by_path[mp_norm]
+                    merged = list(full_models.values())
+                    (DATA / "models.json").write_text(
+                        json.dumps({"models": merged}, indent=2)
+                    )
+                    if full_path.exists():
+                        full_path.unlink()
+                    log.info(
+                        "merged %d target models into full models.json (%d total)",
+                        len(only_models),
+                        len(merged),
+                    )
+                except Exception as e:
+                    log.warning("merge back failed: %s", e)
+
+            log.info("=== targeted scrape done, %d models ===", len(models))
+            return 0
+
         # ---- full crawl ----
         # Remove any stale completion marker from a prior run so cycle 2
         # gating in CI reflects THIS run, not a previous one.
