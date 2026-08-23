@@ -3519,8 +3519,13 @@ def main(argv: list[str] | None = None) -> int:
     client = Client()
     try:
         # ---- --only-model: targeted re-scrape of specific model(s) ----
+        # Paths are stored with leading slash (e.g. /frob/kimi-k3)
         only_models = (
-            [m.strip().lstrip("/") for m in args.only_model.split(",") if m.strip()]
+            [
+                "/" + m.strip().lstrip("/")
+                for m in args.only_model.split(",")
+                if m.strip()
+            ]
             if args.only_model
             else []
         )
@@ -3570,17 +3575,21 @@ def main(argv: list[str] | None = None) -> int:
             target_models = {}
             for mp in only_models:
                 # Normalize: /frob/kimi-k3 -> frob/kimi-k3
-                mp_norm = mp.lstrip("/")
+                mp_norm = mp
                 if mp_norm in models:
                     target_models[mp_norm] = models[mp_norm]
                     log.info("  found in cache: %s", mp_norm)
                 else:
                     # Create a minimal Model entry — the profile scrape will
                     # fill in details
-                    is_official = not mp_norm.startswith(
+                    is_official = not mp_norm.lstrip("/").startswith(
                         ("frob/", "maternion/", "huihui_ai/", "x/")
                     )
-                    owner = mp_norm.split("/")[0] if "/" in mp_norm else ""
+                    owner = (
+                        mp_norm.lstrip("/").split("/")[0]
+                        if "/" in mp_norm.lstrip("/")
+                        else ""
+                    )
                     target_models[mp_norm] = Model(
                         name=mp_norm.rsplit("/", 1)[-1],
                         path=mp_norm,
@@ -3594,7 +3603,7 @@ def main(argv: list[str] | None = None) -> int:
                         updated_title="",
                         official=is_official,
                         owner=owner if not is_official else "",
-                        source_url=BASE + "/" + mp_norm,
+                        source_url=BASE + mp_norm,
                     )
                     log.info("  new model (not in cache): %s", mp_norm)
 
@@ -3603,7 +3612,7 @@ def main(argv: list[str] | None = None) -> int:
 
             # Force re-fetch: delete cached tags/tag-pages/blobs for target models
             for mp in only_models:
-                mp_norm = mp.lstrip("/")
+                mp_norm = mp
                 slug = slugify(mp_norm)
                 # Delete cached tags
                 tf = TAGS_DIR / f"{slug}.json"
@@ -3633,7 +3642,7 @@ def main(argv: list[str] | None = None) -> int:
             if not args.skip_tags:
                 log.info("=== fetching tags for target models ===")
                 for mp in sorted(only_models):
-                    mp_norm = mp.lstrip("/")
+                    mp_norm = mp
                     if mp_norm not in models:
                         continue
                     m = models[mp_norm]
@@ -3658,7 +3667,7 @@ def main(argv: list[str] | None = None) -> int:
                 log.info("=== fetching model pages ===")
                 PAGES_DIR.mkdir(parents=True, exist_ok=True)
                 for mp in sorted(only_models):
-                    mp_norm = mp.lstrip("/")
+                    mp_norm = mp
                     if mp_norm not in models:
                         continue
                     m = models[mp_norm]
@@ -3677,7 +3686,7 @@ def main(argv: list[str] | None = None) -> int:
                 log.info("=== fetching tag pages ===")
                 TAG_PAGES_DIR.mkdir(parents=True, exist_ok=True)
                 for mp in sorted(only_models):
-                    mp_norm = mp.lstrip("/")
+                    mp_norm = mp
                     if mp_norm not in models:
                         continue
                     m = models[mp_norm]
@@ -3700,7 +3709,7 @@ def main(argv: list[str] | None = None) -> int:
                 log.info("=== fetching blob pages ===")
                 BLOBS_DIR.mkdir(parents=True, exist_ok=True)
                 for mp in sorted(only_models):
-                    mp_norm = mp.lstrip("/")
+                    mp_norm = mp
                     if mp_norm not in models:
                         continue
                     m = models[mp_norm]
@@ -3761,7 +3770,7 @@ def main(argv: list[str] | None = None) -> int:
                     full_models = {pm["path"]: pm for pm in full_data.get("models", [])}
                     # Overwrite/add target models
                     for mp in only_models:
-                        mp_norm = mp.lstrip("/")
+                        mp_norm = mp
                         if mp_norm in target_by_path:
                             full_models[mp_norm] = target_by_path[mp_norm]
                     merged = list(full_models.values())
