@@ -1366,10 +1366,10 @@ def build_index(models: list[dict], ranks: dict) -> None:
         def _kv_gib(hp: dict, ctx: int) -> float | None:
             """kv_gib at a context, or None if the family is "none"/error.
 
-            Returns only the attention KV cache (attn_bytes) — the part that
-            scales with context. The recurrent state (recr_bytes) is a
-            constant offset that doesn't vary with context, so it's excluded
-            from the per-context curve. At ctx=0 this returns 0.
+            For hybrid models, returns only attn_bytes (the part that scales
+            with context) — the recurrent state is a constant offset that
+            doesn't belong on a per-context curve. For non-hybrid models,
+            kv_bytes == attn_bytes so we use kv_bytes.
             """
             try:
                 r = _compute_mem(hp, ctx, 2.0)
@@ -1377,7 +1377,8 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 return None
             if r.get("family") == "none":
                 return None
-            return round(r["attn_bytes"] / 1073741824, 4)
+            bytes_val = r.get("attn_bytes", r.get("kv_bytes", 0))
+            return round(bytes_val / 1073741824, 4)
 
         _stats_tags = 0
         _stats_skipped = 0
