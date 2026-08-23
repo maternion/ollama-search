@@ -1655,14 +1655,27 @@ def _extract_hf_repo(model_path: str) -> str | None:
     Returns the repo path (e.g. "unsloth/GLM-5.2-GGUF") or None.
     """
     slug = slugify(model_path)
+    readme_html = ""
+    # Try model page first
     page_file = PAGES_DIR / f"{slug}.json"
-    if not page_file.exists():
-        return None
-    try:
-        page_data = json.loads(page_file.read_text())
-    except Exception:
-        return None
-    readme_html = page_data.get("readme_html", "")
+    if page_file.exists():
+        try:
+            readme_html = json.loads(page_file.read_text()).get("readme_html", "")
+        except Exception:
+            pass
+    # Fall back to tag page (also has readme_html, fetched before blobs)
+    if not readme_html:
+        import glob as _glob
+        for tp_file in sorted(_glob.glob(str(TAG_PAGES_DIR / f"{slug}__*.json"))):
+            fname = tp_file.split("__")[-1].replace(".json", "")
+            if fname == "cloud" or fname.endswith("-cloud"):
+                continue
+            try:
+                readme_html = json.loads(open(tp_file).read()).get("readme_html", "")
+                if readme_html:
+                    break
+            except Exception:
+                continue
     if not readme_html:
         return None
     m = _HF_IMPORT_RE.search(readme_html)
