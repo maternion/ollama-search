@@ -1641,10 +1641,10 @@ _GGUF_TYPE_INT64 = 11
 _GGUF_TYPE_FLOAT64 = 12
 
 _HF_IMPORT_RE = re.compile(
-    r"Imported from\s*<a\s[^>]*href=\"https?://huggingface\.co/([^\"'<\s]+)\"",
+    r"Imported from\s*<a\s[^>]*href=\"https?://(?:huggingface\.co|hf\.co)/([^\"'<\s]+)\"",
     re.IGNORECASE,
 )
-_HF_BROAD_RE = re.compile(r"huggingface\.co/([^\"'<\s]+)")
+_HF_BROAD_RE = re.compile(r"(?:huggingface\.co|hf\.co)/([^\"'<\s]+)")
 
 
 def _extract_hf_repo(model_path: str) -> str | None:
@@ -1666,6 +1666,7 @@ def _extract_hf_repo(model_path: str) -> str | None:
     # Fall back to tag page (also has readme_html, fetched before blobs)
     if not readme_html:
         import glob as _glob
+
         for tp_file in sorted(_glob.glob(str(TAG_PAGES_DIR / f"{slug}__*.json"))):
             fname = tp_file.split("__")[-1].replace(".json", "")
             if fname == "cloud" or fname.endswith("-cloud"):
@@ -2018,13 +2019,28 @@ def fetch_hf_gguf_blob(
     )
 
 
+# Track digests that already failed ollama.com + HF fallback in this run.
+# Avoids retrying the same broken blob for every tag variant.
+_FAILED_DIGESTS: set[str] = set()
+
+
 def fetch_blob_page(
     client: Client, blob_url: str, model_path: str = ""
 ) -> BlobPage | None:
+    digest = blob_url.rstrip("/").rsplit("/blobs/", 1)[-1].split("?", 1)[0]
+    # Skip if this digest already failed in this run (same blob, different tag)
+    if digest in _FAILED_DIGESTS:
+        # Still try HF fallback from cache in case a previous tag saved it
+        if model_path and "/frob/" in model_path:
+            bp = fetch_hf_gguf_blob(blob_url, model_path)
+            if bp:
+                return bp
+        return None
     url = BASE + blob_url
     html = client.get(url)
     if html is None:
         log.error("blob page fetch failed: %s", url)
+        _FAILED_DIGESTS.add(digest)
         # HF GGUF fallback for frob models
         if model_path and "/frob/" in model_path:
             log.info("attempting HF GGUF fallback for %s", model_path)
