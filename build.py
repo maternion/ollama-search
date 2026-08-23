@@ -1364,14 +1364,20 @@ def build_index(models: list[dict], ranks: dict) -> None:
             return hp
 
         def _kv_gib(hp: dict, ctx: int) -> float | None:
-            """kv_gib at a context, or None if the family is "none"/error."""
+            """kv_gib at a context, or None if the family is "none"/error.
+
+            Returns only the attention KV cache (attn_bytes) — the part that
+            scales with context. The recurrent state (recr_bytes) is a
+            constant offset that doesn't vary with context, so it's excluded
+            from the per-context curve. At ctx=0 this returns 0.
+            """
             try:
                 r = _compute_mem(hp, ctx, 2.0)
             except Exception:
                 return None
             if r.get("family") == "none":
                 return None
-            return round(r["kv_bytes"] / 1073741824, 4)
+            return round(r["attn_bytes"] / 1073741824, 4)
 
         _stats_tags = 0
         _stats_skipped = 0
