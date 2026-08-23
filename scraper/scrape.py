@@ -72,6 +72,36 @@ def _time_up() -> bool:
     return elapsed >= _MAX_RUNTIME
 
 
+def _model_is_stale(m, max_age_days: int) -> bool:
+    """Return True if an official model's last update is older than max_age_days.
+
+    Parses the updated_title field (e.g. "Nov 19, 2023 1:58 PM UTC").
+    Returns False (not stale) if the date can't be parsed or max_age_days <= 0.
+    """
+    if max_age_days <= 0:
+        return False
+    ut = getattr(m, "updated_title", "") or ""
+    if not ut:
+        return False
+    # Try common formats ollama.com uses
+    for fmt in (
+        "%b %d, %Y %I:%M %p UTC",
+        "%b %d, %Y %I:%M %p",
+        "%Y-%m-%dT%H:%M:%SZ",
+    ):
+        try:
+            from datetime import datetime, timezone, timedelta
+
+            dt = datetime.strptime(ut, fmt)
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            age = datetime.now(timezone.utc) - dt
+            return age.days > max_age_days
+        except ValueError:
+            continue
+    return False
+
+
 # --------------------------------------------------------------------------- #
 # Hard wall-clock timeout via SIGALRM (POSIX, main thread only)
 # ---------------------------------------------------------------------------
@@ -3265,6 +3295,14 @@ def main(argv: list[str] | None = None) -> int:
         help="stop scraping gracefully after N seconds (0 = unlimited). "
         "Useful for CI: scrape in time-bounded bursts, deploy between bursts.",
     )
+    ap.add_argument(
+        "--max-age-days",
+        type=int,
+        default=0,
+        help="skip tag/page/blob scraping for official (library) models "
+        "whose last update is older than N days. 0 = no filtering. "
+        "Profile/community models are always scraped regardless of age.",
+    )
     args = ap.parse_args(argv)
 
     global _START_TIME, _MAX_RUNTIME
@@ -3429,6 +3467,17 @@ def main(argv: list[str] | None = None) -> int:
                 except Exception:
                     pass
         log.info("profile models to fetch: %d", len(profile_model_paths))
+        if args.max_age_days > 0:
+            stale_official = [
+                m
+                for m in models.values()
+                if m.official and _model_is_stale(m, args.max_age_days)
+            ]
+            log.info(
+                "age filter: skipping %d official models older than %d days",
+                len(stale_official),
+                args.max_age_days,
+            )
 
         # Fetch tags for profile models (they were added to models dict above)
         if profile_model_paths and not args.skip_tags:
@@ -3477,6 +3526,9 @@ def main(argv: list[str] | None = None) -> int:
                     if client.bail_out or _time_up():
                         log.warning("STOPPING at smart fast-path tag sweep")
                         break
+                    # Skip stale official models (age filter)
+                    if m.official and _model_is_stale(m, args.max_age_days):
+                        continue
                     slug = slugify(m.path)
                     tf = TAGS_DIR / f"{slug}.json"
                     pm = prev_models.get(m.path)
@@ -3562,6 +3614,9 @@ def main(argv: list[str] | None = None) -> int:
                             _time_up(),
                         )
                         break
+                    # Skip stale official models (age filter)
+                    if m.official and _model_is_stale(m, args.max_age_days):
+                        continue
                     slug = slugify(m.path)
                     tf = TAGS_DIR / f"{slug}.json"
                     if tf.exists():
@@ -3604,7 +3659,8 @@ def main(argv: list[str] | None = None) -> int:
             fetch_models = [
                 m
                 for m in models.values()
-                if m.official or m.path in profile_model_paths
+                if (m.official or m.path in profile_model_paths)
+                and not (m.official and _model_is_stale(m, args.max_age_days))
             ]
             total = len(fetch_models)
             pages_done = 0
@@ -3651,7 +3707,8 @@ def main(argv: list[str] | None = None) -> int:
             fetch_models_tp = [
                 m
                 for m in models.values()
-                if m.official or m.path in profile_model_paths
+                if (m.official or m.path in profile_model_paths)
+                and not (m.official and _model_is_stale(m, args.max_age_days))
             ]
             total_tag_pages = 0
             tag_pages_done = 0
@@ -3760,7 +3817,8 @@ def main(argv: list[str] | None = None) -> int:
             fetch_models_blobs = [
                 m
                 for m in models.values()
-                if m.official or m.path in profile_model_paths
+                if (m.official or m.path in profile_model_paths)
+                and not (m.official and _model_is_stale(m, args.max_age_days))
             ]
             total_blobs = 0
             blobs_done = 0
