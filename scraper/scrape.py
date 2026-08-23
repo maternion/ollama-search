@@ -1760,8 +1760,13 @@ def _hf_list_gguf_files(hf_repo: str) -> list[dict]:
         if entry.get("type") != "file":
             continue
         fpath = entry.get("path", "")
-        if fpath.lower().endswith(".gguf"):
-            gguf_files.append({"path": fpath, "size": entry.get("size", 0)})
+        if not fpath.lower().endswith(".gguf"):
+            continue
+        # Skip multimodal projector files — they are CLIP/vision encoders,
+        # not the main LLM. The LLM shards are in subdirectories.
+        if "mmproj" in fpath.lower():
+            continue
+        gguf_files.append({"path": fpath, "size": entry.get("size", 0)})
 
     # 2. If no .gguf in root, recurse into subdirectories one level deep
     if not gguf_files:
@@ -1931,6 +1936,141 @@ def _parse_gguf_header(data: bytes) -> tuple[str, list[MetadataEntry]] | None:
     return arch, metadata
 
 
+def _hf_fetch_base_model_config(hf_repo: str) -> tuple[str, list[MetadataEntry]] | None:
+    """Fetch architecture metadata from a HuggingFace base model's config.json.
+
+    GGUF repos often have a `base_model:` tag pointing to the original model
+    repo (e.g. moonshotai/Kimi-K3). That repo has a config.json with all the
+    architecture hyperparameters we need for memcalc.
+
+    Returns (arch, metadata_entries) or None if config.json can't be found
+    or doesn't contain the needed fields.
+    """
+    session = requests.Session()
+    session.headers.update({"User-Agent": UA})
+
+    # 1. Get GGUF repo metadata to find base_model tag
+    api_url = f"https://huggingface.co/api/models/{hf_repo}"
+    try:
+        r = session.get(api_url, timeout=30)
+        if r.status_code != 200:
+            session.close()
+            return None
+        repo_meta = r.json()
+    except Exception:
+        session.close()
+        return None
+
+    # Find base_model in tags (e.g. "base_model:moonshotai/Kimi-K3")
+    base_model = None
+    for tag in repo_meta.get("tags", []):
+        if tag.startswith("base_model:"):
+            base_model = tag.split(":", 1)[1]
+            # Skip quantizer ref (base_model:quantized:owner/model)
+            if base_model.startswith("quantized:"):
+                continue
+            break
+    if not base_model:
+        session.close()
+        return None
+
+    # 2. Fetch config.json from the base model repo
+    config_url = f"https://huggingface.co/{base_model}/resolve/main/config.json"
+    try:
+        r = session.get(config_url, timeout=30)
+        if r.status_code != 200:
+            session.close()
+            return None
+        config = r.json()
+    except Exception:
+        session.close()
+        return None
+
+    session.close()
+
+    # The LLM config may be nested under text_config (multimodal models) or
+    # at the top level (text-only models).
+    tc = config.get("text_config", config)
+
+    # Map HF config keys to GGUF metadata keys that memcalc expects
+    arch = tc.get("model_type", config.get("model_type", ""))
+    if not arch:
+        return None
+
+    key_map = {
+        "num_hidden_layers": "block_count",
+        "num_attention_heads": "head_count",
+        "num_key_value_heads": "head_count_kv",
+        "hidden_size": "embedding_length",
+        "intermediate_size": "feed_forward_length",
+        "max_position_embeddings": "context_length",
+        "vocab_size": "vocab_size",
+        "rms_norm_eps": "rms_norm_eps",
+        "rope_theta": "rope_freq_base",
+        "n_routed_experts": "num_experts",
+        "num_experts": "num_experts",
+        "num_experts_per_token": "num_experts_per_tok",
+        "moe_intermediate_size": "expert_feed_forward_length",
+        "first_k_dense_replace": "first_k_dense_replace",
+        "kv_lora_rank": "kv_lora_rank",
+        "q_lora_rank": "q_lora_rank",
+        "qk_nope_head_dim": "qk_nope_head_dim",
+        "qk_rope_head_dim": "qk_rope_head_dim",
+        "v_head_dim": "v_head_dim",
+        "head_dim": "head_dim",
+        "sliding_window": "sliding_window",
+        "attn_res_block_size": "attn_res_block_size",
+        "nextn_predict_layers": "nextn_predict_layers",
+    }
+
+    metadata: list[MetadataEntry] = []
+    metadata.append(MetadataEntry(key="general.architecture", value=arch))
+    metadata.append(MetadataEntry(key="general.file_type", value="0"))
+
+    for hf_key, gguf_key in key_map.items():
+        val = tc.get(hf_key, config.get(hf_key))
+        if val is not None and not isinstance(val, (dict, list)):
+            metadata.append(MetadataEntry(key=f"{arch}.{gguf_key}", value=str(val)))
+
+    # Handle linear_attn_config (hybrid models like kimi_k3)
+    lac = tc.get("linear_attn_config")
+    if isinstance(lac, dict):
+        full_attn = lac.get("full_attn_layers", [])
+        kda_layers = lac.get("kda_layers", [])
+        if full_attn:
+            metadata.append(
+                MetadataEntry(
+                    key=f"{arch}.full_attn_layers",
+                    value=json.dumps(full_attn),
+                )
+            )
+        if kda_layers:
+            metadata.append(
+                MetadataEntry(
+                    key=f"{arch}.kda_layers",
+                    value=json.dumps(kda_layers),
+                )
+            )
+        head_dim = lac.get("head_dim")
+        if head_dim:
+            metadata.append(
+                MetadataEntry(key=f"{arch}.linear_head_dim", value=str(head_dim))
+            )
+
+    # Check if we got the essential fields
+    has_block_count = any(m.key == f"{arch}.block_count" for m in metadata)
+    if not has_block_count:
+        return None
+
+    log.info(
+        "HF config: %s -> arch=%s, %d metadata entries",
+        base_model,
+        arch,
+        len(metadata),
+    )
+    return arch, metadata
+
+
 def fetch_hf_gguf_blob(
     blob_url: str,
     model_path: str,
@@ -1938,10 +2078,15 @@ def fetch_hf_gguf_blob(
     """Fetch GGUF metadata from HuggingFace as a fallback when ollama.com's
     blob page is unavailable (500 error, timeout, etc).
 
-    Only used for frob models (path contains "/frob/"). Extracts the HF repo
-    from the model's cached page readme, lists .gguf files via the HF API,
-    downloads the first ~500KB of the first shard, parses the GGUF header, and
-    returns a BlobPage with metadata.
+    Only used for frob models (path contains "/frob/"). Two strategies:
+
+    1. Fetch the base model's config.json (lightweight ~6KB JSON) and convert
+       HF config keys to GGUF metadata keys. This is the preferred path —
+       it gives complete architecture hyperparameters without downloading
+       large GGUF shards.
+
+    2. If config.json is unavailable, fall back to downloading the first
+       ~500KB of the first GGUF shard and parsing the binary header.
     """
     if "/frob/" not in model_path:
         return None
@@ -1975,6 +2120,28 @@ def fetch_hf_gguf_blob(
         log.warning("HF fallback: no HF repo found for %s", model_path)
         return None
 
+    # Strategy 1: Try config.json from base model
+    result = _hf_fetch_base_model_config(hf_repo)
+    if result is not None:
+        arch, metadata = result
+        log.info(
+            "HF fallback: config.json success for %s -> arch=%s",
+            model_path,
+            arch,
+        )
+        return BlobPage(
+            blob_url=blob_url,
+            tag_full="",
+            blob_type="model",
+            digest=digest,
+            size="",
+            metadata=metadata,
+            content="",
+            tensors=[],
+            tensor_groups=[],
+        )
+
+    # Strategy 2: Fall back to GGUF header parsing
     gguf_files = _hf_list_gguf_files(hf_repo)
     if not gguf_files:
         log.warning("HF fallback: no .gguf files in %s for %s", hf_repo, model_path)
@@ -2025,9 +2192,6 @@ def fetch_hf_gguf_blob(
         return None
 
     arch, metadata = result
-
-    # Extract digest from blob_url for the BlobPage
-    digest = blob_url.rstrip("/").rsplit("/blobs/", 1)[-1].split("?", 1)[0]
 
     log.info(
         "HF fallback: parsed %s -> arch=%s, %d metadata entries",
@@ -3864,9 +4028,36 @@ def main(argv: list[str] | None = None) -> int:
                         if args.smart and bf.exists():
                             cached_digest = tp_data.get("manifest_digest", "")
                             if cached_digest and cached_digest == t.digest:
-                                continue
+                                # Don't skip if cached blob is a CLIP/vision
+                                # encoder — it was fetched by mistake and
+                                # should be re-fetched for the real LLM arch.
+                                is_clip = False
+                                try:
+                                    bd = json.loads(bf.read_text())
+                                    for md in bd.get("metadata", []):
+                                        if (
+                                            md.get("key") == "general.architecture"
+                                            and md.get("value") == "clip"
+                                        ):
+                                            is_clip = True
+                                            break
+                                except Exception:
+                                    pass
+                                if not is_clip:
+                                    continue
                         if bf.exists() and not args.smart:
-                            continue  # already cached
+                            # Don't skip CLIP/vision blobs — re-fetch for real arch
+                            try:
+                                bd = json.loads(bf.read_text())
+                                is_clip = any(
+                                    md.get("key") == "general.architecture"
+                                    and md.get("value") == "clip"
+                                    for md in bd.get("metadata", [])
+                                )
+                                if not is_clip:
+                                    continue  # already cached
+                            except Exception:
+                                continue
                         log.info(
                             "  [%d/%d] blob: %s:%s",
                             i,
