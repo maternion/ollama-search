@@ -3628,10 +3628,12 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
     display: block;
     position: relative;
   }
-  /* Sidebar: absolute, attached to left of centered model list */
+  /* Sidebar: absolute, attached to left of centered model list.
+     Subtract 2rem for <main> lg:px-8 padding so the gap between
+     filters and list matches the gap between list and graph. */
   #top-row {
     position: absolute;
-    right: calc(50% + 18rem + 2.5rem); /* 50% + half-model-list + gap */
+    right: calc(50% + 18rem + 2.5rem + 2rem);
     width: 420px;
     top: 0;
     padding-top: 1rem;
