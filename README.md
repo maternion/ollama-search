@@ -1,6 +1,6 @@
 # ollama-search
 
-An improved static-site mirror of [ollama.com/search](https://ollama.com/search) with dark mode, better sorting, MLX/GGUF separation, and live search suggestions.
+An improved static-site mirror of [ollama.com/search](https://ollama.com/search) with dark mode, KV cache memory graphs, community model support, and live search suggestions.
 
 **Live site**: [maternion.github.io/ollama-search](https://maternion.github.io/ollama-search/) — auto-refreshes every 2 hours when ollama.com adds or updates models.
 
@@ -10,7 +10,8 @@ An improved static-site mirror of [ollama.com/search](https://ollama.com/search)
 scraper/scrape.py     Scrape ollama.com → scraper/*.json + tags/ + pages/ + tag_pages/ + blobs/
 build.py              Build static site from scraped data → public/
 serve.py              Dev server (serves public/ at localhost:8000)
-.github/workflows/    CI: check-only → scrape → build → deploy every 2h
+memcalc/              KV cache memory calculator (per-architecture: standard, MLA, SWA, hybrid)
+.github/workflows/    CI: scheduled scrape, full scrape, targeted model scrape, rebuild
 ```
 
 ## Usage
@@ -37,46 +38,76 @@ python3 serve.py
 python3 build.py --base /ollama-search
 ```
 
+### Targeted model scrape
+
+```bash
+# Re-scrape a single model (force re-fetch tags, pages, blobs)
+python3 scraper/scrape.py --only-model /frob/kimi-k3 -v
+```
+
 ## Features
 
-- 245 models scraped from ollama.com
+- 390+ models scraped from ollama.com (official + community: frob, maternion, huihui_ai, /x experimental)
 - Dark mode with proper Tailwind shade-inverted colors
 - Sorting: Popular, Newest, Oldest, Recently updated, Pulls, Tags, Name
-- Capability chips: Embedding, Vision, Tools, Thinking
-- Cloud filter dropdown: All / Cloud only / Local only
+- Capability chips: Embedding, Vision, Tools, Thinking, Audio
+- Filters: Size (piecewise slider), Cloud, Audio, MLX, MTP, Architecture, Template (Go Template), MoE
+- URL-driven filter state (filters persist in URL)
+- NEW badge for newly scraped models
+- KV cache memory graphs showing VRAM vs context length per model
+- Total memory mode (weights + KV), log-Y axis, context slider
+- Hover any graph line or dot to highlight it and dim the rest
+- Template classification (renderer/jinja/base) from capability badges
+- Capability inference from badges, readme headings, jinja templates, and descriptions
+- Replicated ollama.com/pricing page with tabs, tiers, badges, and cloud metrics
+- HuggingFace config.json fallback for broken blob pages (kimi-k3 etc)
 - MLX/GGUF/All tabs on model detail and tags pages
 - Copy-to-clipboard for pull commands
 - Live search suggestions dropdown on model pages (navbar search)
 - Per-model tag pages with blob detail pages
-- User models show owner/name (e.g. `maternion/lfm2`)
-- Auto-refreshes every 2 hours via GitHub Actions (only deploys on change)
+- User models show owner/name (e.g. `frob/kimi-k3`)
+- Mobile-optimized detail graphs
+- Auto-refreshes every 2 hours via GitHub Actions
 
-## CI workflow
+## memcalc (KV cache memory calculator)
 
-The GitHub Actions workflow (`.github/workflows/deploy.yml`) runs every 2 hours:
+Computes KV cache memory at arbitrary context lengths for different architectures:
 
-1. **Check-only**: Fetches catalog, hashes `name:tag_count:updated_title:path` for every model. If hash matches previous run → exit (no build, no deploy)
-2. **Scrape**: If changed, runs `--smart` mode — skips unchanged models via per-tag-digest comparison. Writes checkpoint to `scraped-data` git branch every 5 models
-3. **Build**: Runs `build.py --base /ollama-search` to generate static HTML
-4. **Deploy**: Pushes to `gh-pages` branch (GitHub Pages serves it). Tags previous gh-pages HEAD as `deploy-pre-*` for rollback (keeps last 10)
-5. **Self-check**: Validates data integrity (non-blocking)
+- **Standard** (MHA/GQA): `n_layers × context × n_kv_heads × (head_dim + v_head_dim) × bytes`
+- **MLA** (Multi-head Latent Attention): compressed KV via `kv_lora_rank` (DeepSeek-style)
+- **SWA** (Sliding Window Attention): Gemma, Llama4, Muse-Glimmer, etc.
+- **Hybrid**: interleaved attention + recurrent layers (Kimi K3, Qwen3.5, Jamba, etc.) — recurrent state computed separately, excluded from per-context KV curve
+- MTP/NextN prediction layers subtracted from block count
+- MoE expert count detection for weight memory
 
-The `--smart` scraper uses:
+## CI workflows
+
+| Workflow | Trigger | Description |
+|----------|---------|-------------|
+| `deploy.yml` | Every 2h + manual | Smart scrape with 6-month age filter → build → deploy |
+| `full-scrape.yml` | Manual only | Full scrape of all models (no age filter) → build → deploy |
+| `scrape-model.yml` | Manual only | Targeted re-scrape of specific model(s) by path → build → deploy |
+| `rebuild.yml` | Push to build.py/memcalc | Build-only (no scrape) → deploy |
+
+### Smart scraping
+
 - Model-level `updated_title` + `tag_count` comparison (tier 1)
 - Per-tag `manifest_digest` comparison (tier 2) — skips unchanged tags within changed models
 - Blobs stored once per digest (`blobs/<digest>.json`) — deduplication across tags
-- Readme stored once per model (in `pages/`), not duplicated per tag page
+- 6-month age filter: skips re-fetching stale official models, cached data preserved for graphs
+- HF fallback: when ollama.com blob pages return 500, fetches `config.json` from the base model's HuggingFace repo
+- Failed digest dedupe: if one tag's blob returns 500, other tags with the same digest skip retries
 
-## Scraper data format
+### Scraped data format
 
 ```
 scraper/
-  models.json              Catalog: 245 models with pulls, tags, sizes, capabilities
+  models.json              Catalog: 390+ models with pulls, tags, sizes, capabilities
   sort_orders.json         Sort order data (popular, newest, etc.)
   sort_ranks.json          Per-model rank for each sort order
   tags/                    Per-model tag listings (one JSON per model)
   pages/                   Per-model page data with readme_html (one per model)
   tag_pages/               Per-tag detail pages (files, manifest_digest, applications)
-  blobs/                   Per-digest blob data (deduped — 6,809 unique digests)
-  .scrape-manifest.json    Run-level timestamp (single file, not per-record)
+  blobs/                   Per-digest blob data (deduped — 7,900+ unique digests)
+  profile_*.json           Profile page data (frob, maternion, huihui_ai, x)
 ```
