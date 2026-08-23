@@ -4046,6 +4046,16 @@ def main(argv: list[str] | None = None) -> int:
                         break
                     # Skip stale official models (age filter)
                     if m.official and _model_is_stale(m, args.max_age_days):
+                        # Still load tags from cache so the model's graph data
+                        # is preserved in models.json for build.py.
+                        slug = slugify(m.path)
+                        tf = TAGS_DIR / f"{slug}.json"
+                        if tf.exists() and not m.tags:
+                            try:
+                                existing = json.loads(tf.read_text())
+                                m.tags = [Tag(**t) for t in existing.get("tags", [])]
+                            except Exception:
+                                pass
                         continue
                     slug = slugify(m.path)
                     tf = TAGS_DIR / f"{slug}.json"
@@ -4134,6 +4144,16 @@ def main(argv: list[str] | None = None) -> int:
                         break
                     # Skip stale official models (age filter)
                     if m.official and _model_is_stale(m, args.max_age_days):
+                        # Still load tags from cache so the model's graph data
+                        # is preserved in models.json for build.py.
+                        slug = slugify(m.path)
+                        tf = TAGS_DIR / f"{slug}.json"
+                        if tf.exists() and not m.tags:
+                            try:
+                                existing = json.loads(tf.read_text())
+                                m.tags = [Tag(**t) for t in existing.get("tags", [])]
+                            except Exception:
+                                pass
                         continue
                     slug = slugify(m.path)
                     tf = TAGS_DIR / f"{slug}.json"
