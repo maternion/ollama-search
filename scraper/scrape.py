@@ -2091,27 +2091,37 @@ def fetch_hf_gguf_blob(
     if "/frob/" not in model_path:
         return None
 
-    # Check cache first — if we already fetched this via HF, reuse it
+    # Check cache first — if we already fetched this via HF, reuse it.
+    # But skip cache if the cached blob is a CLIP/vision encoder — it was
+    # fetched from the wrong GGUF file (mmproj) and should be re-fetched
+    # via the config.json strategy.
     digest = blob_url.rstrip("/").rsplit("/blobs/", 1)[-1].split("?", 1)[0]
     cache_file = BLOBS_DIR / f"{digest}.json"
     if cache_file.exists():
         try:
             cached = json.loads(cache_file.read_text())
-            log.info("HF fallback: using cached blob %s", digest)
-            return BlobPage(
-                blob_url=cached.get("blob_url", blob_url),
-                tag_full=cached.get("tag_full", ""),
-                blob_type=cached.get("blob_type", "model"),
-                digest=cached.get("digest", digest),
-                size=cached.get("size", ""),
-                metadata=[
-                    MetadataEntry(key=m["key"], value=m["value"])
-                    for m in cached.get("metadata", [])
-                ],
-                content=cached.get("content", ""),
-                tensors=[],
-                tensor_groups=[],
+            is_clip = any(
+                m.get("key") == "general.architecture" and m.get("value") == "clip"
+                for m in cached.get("metadata", [])
             )
+            if not is_clip:
+                log.info("HF fallback: using cached blob %s", digest)
+                return BlobPage(
+                    blob_url=cached.get("blob_url", blob_url),
+                    tag_full=cached.get("tag_full", ""),
+                    blob_type=cached.get("blob_type", "model"),
+                    digest=cached.get("digest", digest),
+                    size=cached.get("size", ""),
+                    metadata=[
+                        MetadataEntry(key=m["key"], value=m["value"])
+                        for m in cached.get("metadata", [])
+                    ],
+                    content=cached.get("content", ""),
+                    tensors=[],
+                    tensor_groups=[],
+                )
+            else:
+                log.info("HF fallback: cached blob %s is CLIP, re-fetching", digest)
         except Exception:
             pass  # cache corrupt, re-fetch
 
@@ -4023,7 +4033,20 @@ def main(argv: list[str] | None = None) -> int:
                                 and pm.get("updated_title") == m.updated_title
                                 and m.path not in tags_changed
                             ):
-                                continue
+                                # Don't skip if cached blob is a CLIP/vision
+                                # encoder — needs re-fetch for real LLM arch.
+                                is_clip = False
+                                try:
+                                    bd = json.loads(bf.read_text())
+                                    is_clip = any(
+                                        md.get("key") == "general.architecture"
+                                        and md.get("value") == "clip"
+                                        for md in bd.get("metadata", [])
+                                    )
+                                except Exception:
+                                    pass
+                                if not is_clip:
+                                    continue
                         # Smart mode: tier 2 — skip if tag digest unchanged
                         if args.smart and bf.exists():
                             cached_digest = tp_data.get("manifest_digest", "")
