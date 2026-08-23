@@ -847,7 +847,9 @@ def _first_tag_page(model_path: str):
     return None, None
 
 
-def _classify_template(model_path: str, capabilities: list[str] | None = None, updated_title: str = "") -> str:
+def _classify_template(
+    model_path: str, capabilities: list[str] | None = None, updated_title: str = ""
+) -> str:
     """Classify template type: base (Go template), renderer, or jinja.
 
     - base: has a template blob with real Go template content (non-trivial)
@@ -890,6 +892,7 @@ def _classify_template(model_path: str, capabilities: list[str] | None = None, u
     # Jinja templates started appearing around June 2026 (ornith was first).
     # Older models without template blobs predate the template system → base.
     from datetime import datetime as _dt
+
     try:
         model_date = _dt.strptime(updated_title, "%b %d, %Y %I:%M %p UTC")
     except Exception:
@@ -3768,6 +3771,7 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
 
 /* Graph SVG styling */
 #graph-svg .graph-line { fill: none; stroke-width: 2; }
+#graph-svg .graph-line { cursor: pointer; }
 #graph-svg .graph-axis { stroke: #d4d4d4; stroke-width: 1; }
 .dark #graph-svg .graph-axis { stroke: #404040; }
 #graph-svg .graph-grid { stroke: #e5e5e5; stroke-width: 0.5; }
@@ -4998,12 +5002,18 @@ function applyHoverDim() {
     var t = el.getAttribute('data-tag');
     var key = m + '|' + t;
     var dim = false;
+    var highlight = false;
     if (graphHoverKey) {
       dim = (key !== graphHoverKey);
+      highlight = (key === graphHoverKey);
     } else if (graphFocusModel) {
       dim = (m !== graphFocusModel);
+      highlight = (m === graphFocusModel);
     }
     el.style.opacity = dim ? '0.12' : '';
+    if (el.classList.contains('graph-line')) {
+      el.style.strokeWidth = highlight ? '3.5' : '';
+    }
   }
 }
 
@@ -5465,6 +5475,18 @@ function renderGraph() {
         applyHoverDim();
       });
       dotEls[i].addEventListener('mouseleave', function(e) {
+        graphHoverKey = null;
+        applyHoverDim();
+      });
+    }
+    // Line hover: highlight the line and dim others (same as dots)
+    var lineEls = graphSvg.querySelectorAll('.graph-line');
+    for (var j = 0; j < lineEls.length; j++) {
+      lineEls[j].addEventListener('mouseenter', function(e) {
+        graphHoverKey = this.getAttribute('data-model') + '|' + this.getAttribute('data-tag');
+        applyHoverDim();
+      });
+      lineEls[j].addEventListener('mouseleave', function(e) {
         graphHoverKey = null;
         applyHoverDim();
       });
