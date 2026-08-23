@@ -18,6 +18,7 @@ _ARCH_MAP = {
     "qwen25vl": "qwen2vl",
     "deepseekocr": "deepseek2-ocr",
     "nemotron_h_omni": "nemotron_h_moe",
+    "kimi_linear": "kimi-linear",
 }
 
 _DTYPE_BYTES: dict[str, float] = {

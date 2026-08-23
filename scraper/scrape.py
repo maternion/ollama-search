@@ -1998,27 +1998,30 @@ def _hf_fetch_base_model_config(hf_repo: str) -> tuple[str, list[MetadataEntry]]
         return None
 
     key_map = {
+        # GGUF keys follow llama.cpp convention: arch.attention.* for attention
+        # hyperparams, arch.* for model structure. extract_hparams strips the
+        # arch prefix, and memcalc dispatches on bare keys.
         "num_hidden_layers": "block_count",
-        "num_attention_heads": "head_count",
-        "num_key_value_heads": "head_count_kv",
+        "num_attention_heads": "attention.head_count",
+        "num_key_value_heads": "attention.head_count_kv",
         "hidden_size": "embedding_length",
         "intermediate_size": "feed_forward_length",
         "max_position_embeddings": "context_length",
         "vocab_size": "vocab_size",
         "rms_norm_eps": "rms_norm_eps",
-        "rope_theta": "rope_freq_base",
+        "rope_theta": "attention.rope_freq_base",
         "n_routed_experts": "num_experts",
         "num_experts": "num_experts",
         "num_experts_per_token": "num_experts_per_tok",
         "moe_intermediate_size": "expert_feed_forward_length",
         "first_k_dense_replace": "first_k_dense_replace",
-        "kv_lora_rank": "kv_lora_rank",
-        "q_lora_rank": "q_lora_rank",
-        "qk_nope_head_dim": "qk_nope_head_dim",
-        "qk_rope_head_dim": "qk_rope_head_dim",
-        "v_head_dim": "v_head_dim",
-        "head_dim": "head_dim",
-        "sliding_window": "sliding_window",
+        "kv_lora_rank": "attention.kv_lora_rank",
+        "q_lora_rank": "attention.q_lora_rank",
+        "qk_nope_head_dim": "attention.qk_nope_head_dim",
+        "qk_rope_head_dim": "attention.qk_rope_head_dim",
+        "v_head_dim": "attention.v_head_dim",
+        "head_dim": "attention.key_length",
+        "sliding_window": "attention.sliding_window",
         "attn_res_block_size": "attn_res_block_size",
         "nextn_predict_layers": "nextn_predict_layers",
     }
@@ -2032,16 +2035,29 @@ def _hf_fetch_base_model_config(hf_repo: str) -> tuple[str, list[MetadataEntry]]
         if val is not None and not isinstance(val, (dict, list)):
             metadata.append(MetadataEntry(key=f"{arch}.{gguf_key}", value=str(val)))
 
-    # Handle linear_attn_config (hybrid models like kimi_k3)
+    # Handle linear_attn_config (hybrid models like kimi_k3).
+    # GGUF uses attention.head_count_kv as an array where non-zero = attention
+    # layer, zero = recurrent layer. Convert full_attn_layers/kda_layers to
+    # this format so memcalc can compute the correct layer split.
+    n_layers = int(tc.get("num_hidden_layers", config.get("num_hidden_layers", 0)))
     lac = tc.get("linear_attn_config")
     if isinstance(lac, dict):
         full_attn = lac.get("full_attn_layers", [])
         kda_layers = lac.get("kda_layers", [])
-        if full_attn:
+        if full_attn and n_layers > 0:
+            # Build per-layer head_count_kv array: 1-indexed layers
+            n_kv = int(
+                tc.get("num_key_value_heads", config.get("num_key_value_heads", 0))
+            )
+            kv_arr = [0] * n_layers
+            for idx in full_attn:
+                li = int(idx) - 1  # 1-indexed in config, 0-indexed in GGUF
+                if 0 <= li < n_layers:
+                    kv_arr[li] = n_kv
             metadata.append(
                 MetadataEntry(
-                    key=f"{arch}.full_attn_layers",
-                    value=json.dumps(full_attn),
+                    key=f"{arch}.attention.head_count_kv",
+                    value=json.dumps(kv_arr),
                 )
             )
         if kda_layers:
@@ -2056,6 +2072,26 @@ def _hf_fetch_base_model_config(hf_repo: str) -> tuple[str, list[MetadataEntry]]
             metadata.append(
                 MetadataEntry(key=f"{arch}.linear_head_dim", value=str(head_dim))
             )
+        # Recurrent state dims for KDA/delta-rule linear attention.
+        # State per layer = num_heads × head_dim² (delta rule), plus a small
+        # short-conv cache. GGUF/memcalc expect ssm.* keys.
+        n_heads_lin = int(lac.get("num_heads", 0))
+        conv_k = int(lac.get("short_conv_kernel_size", 0))
+        if n_heads_lin > 0 and head_dim:
+            inner = n_heads_lin * int(head_dim)
+            metadata.append(
+                MetadataEntry(key=f"{arch}.ssm.inner_size", value=str(inner))
+            )
+            metadata.append(
+                MetadataEntry(key=f"{arch}.ssm.state_size", value=str(head_dim))
+            )
+            metadata.append(
+                MetadataEntry(key=f"{arch}.ssm.group_count", value=str(n_heads_lin))
+            )
+            if conv_k > 0:
+                metadata.append(
+                    MetadataEntry(key=f"{arch}.ssm.conv_kernel", value=str(conv_k))
+                )
 
     # Check if we got the essential fields
     has_block_count = any(m.key == f"{arch}.block_count" for m in metadata)
@@ -3773,7 +3809,29 @@ def main(argv: list[str] | None = None) -> int:
                         mp_norm = mp
                         if mp_norm in target_by_path:
                             full_models[mp_norm] = target_by_path[mp_norm]
-                    merged = list(full_models.values())
+                    # Dedupe: remove any entry whose path (after stripping
+                    # leading slash) duplicates another entry that has the
+                    # leading slash. This cleans up stale entries from the
+                    # first bad --only-model run.
+                    seen_norm: dict[str, str] = {}  # norm -> actual path
+                    deduped: list[dict] = []
+                    for m in full_models.values():
+                        norm = m["path"].lstrip("/")
+                        if norm in seen_norm:
+                            keep = seen_norm[norm]
+                            if m["path"].startswith("/") and not keep.startswith("/"):
+                                # Current entry has leading slash, previous didn't — keep current
+                                for i, prev in enumerate(deduped):
+                                    if prev["path"] == keep:
+                                        deduped[i] = m
+                                        break
+                                seen_norm[norm] = m["path"]
+                                continue
+                            else:
+                                continue  # skip duplicate
+                        seen_norm[norm] = m["path"]
+                        deduped.append(m)
+                    merged = deduped
                     (DATA / "models.json").write_text(
                         json.dumps(
                             {"count": len(merged), "models": merged},
