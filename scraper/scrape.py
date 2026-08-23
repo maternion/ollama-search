@@ -1915,6 +1915,30 @@ def fetch_hf_gguf_blob(
     if "/frob/" not in model_path:
         return None
 
+    # Check cache first — if we already fetched this via HF, reuse it
+    digest = blob_url.rstrip("/").rsplit("/blobs/", 1)[-1].split("?", 1)[0]
+    cache_file = BLOBS_DIR / f"{digest}.json"
+    if cache_file.exists():
+        try:
+            cached = json.loads(cache_file.read_text())
+            log.info("HF fallback: using cached blob %s", digest)
+            return BlobPage(
+                blob_url=cached.get("blob_url", blob_url),
+                tag_full=cached.get("tag_full", ""),
+                blob_type=cached.get("blob_type", "model"),
+                digest=cached.get("digest", digest),
+                size=cached.get("size", ""),
+                metadata=[
+                    MetadataEntry(key=m["key"], value=m["value"])
+                    for m in cached.get("metadata", [])
+                ],
+                content=cached.get("content", ""),
+                tensors=[],
+                tensor_groups=[],
+            )
+        except Exception:
+            pass  # cache corrupt, re-fetch
+
     hf_repo = _extract_hf_repo(model_path)
     if not hf_repo:
         log.warning("HF fallback: no HF repo found for %s", model_path)
