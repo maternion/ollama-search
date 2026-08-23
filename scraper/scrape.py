@@ -3775,7 +3775,12 @@ def main(argv: list[str] | None = None) -> int:
                             full_models[mp_norm] = target_by_path[mp_norm]
                     merged = list(full_models.values())
                     (DATA / "models.json").write_text(
-                        json.dumps({"models": merged}, indent=2)
+                        json.dumps(
+                            {"count": len(merged), "models": merged},
+                            indent=2,
+                            sort_keys=True,
+                            ensure_ascii=False,
+                        )
                     )
                     if full_path.exists():
                         full_path.unlink()
@@ -4465,7 +4470,7 @@ def self_check() -> int:
         print("models.json missing", file=sys.stderr)
         return 1
     data = json.loads(models_file.read_text())
-    print(f"models.json: {data['count']} models")
+    print(f"models.json: {data.get('count', len(data.get('models', [])))} models")
     missing_tags = 0
     bad_format = 0
     bad_owner = 0
