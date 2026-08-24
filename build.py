@@ -1393,10 +1393,75 @@ def build_index(models: list[dict], ranks: dict) -> None:
             # For by_path (index page): only main size tags are shown.
             # Models with empty sizes fall back to "latest".
             index_tags = set(sizes_list) if sizes_list else {"latest"}
+            # For by_path_all (total memory mode): only 3 quants per size
+            # — q4_K_M (the main tag), q8_0, and fp16/bf16.
+            import re as _qr
+
+            def _best_quant_tag(all_tag_names, size, pattern):
+                """Find best tag for size+quant. Prefer instruct over base,
+                prefer shorter names."""
+                cands = []
+                for tn in all_tag_names:
+                    if not tn.startswith(size):
+                        continue
+                    tl = tn.lower()
+                    if pattern not in tl:
+                        continue
+                    has_base = "-base-" in tl
+                    cands.append((has_base, len(tn), tn))
+                if cands:
+                    cands.sort()
+                    return cands[0][2]
+                return None
+
+            _all_tag_names = [
+                t.get("name", "")
+                for t in m.get("tags", [])
+                if t.get("format") != "mlx"
+                and "-mlx" not in (t.get("name", "")).lower()
+            ]
+            # Detect MTP variants as pseudo-sizes (e.g. "27b-mtp", "35b-a3b-mtp")
+            # so they get their own 3-quant set in total memory mode.
+            _mtp_sizes: set[str] = set()
+            for tn in _all_tag_names:
+                tl = tn.lower()
+                mt = _qr.match(r"(\S+?)-mtp-", tl)
+                if mt:
+                    _mtp_sizes.add(mt.group(1) + "-mtp")
+            # All size prefixes: regular sizes + MTP variants
+            _all_sizes = list(sizes_list or ["latest"]) + sorted(_mtp_sizes)
+            _allowed_all: set[str] = set()
+            for sz in _all_sizes:
+                is_regular = sz in (sizes_list or [])
+                if is_regular:
+                    # Main size tag is the q4_K_M equivalent — that's all
+                    # we need for q4. Don't also add explicit q4_K_M tag.
+                    _allowed_all.add(sz)
+                else:
+                    # MTP sizes: no "main" tag, use explicit q4_K_M.
+                    q4 = _best_quant_tag(_all_tag_names, sz, "q4_k_m")
+                    if q4:
+                        _allowed_all.add(q4)
+                # q8_0
+                q8 = _best_quant_tag(_all_tag_names, sz, "q8_0")
+                if q8:
+                    _allowed_all.add(q8)
+                # fp16 / bf16
+                fp = _best_quant_tag(_all_tag_names, sz, "fp16")
+                if not fp:
+                    fp = _best_quant_tag(_all_tag_names, sz, "bf16")
+                if fp:
+                    _allowed_all.add(fp)
+
             max_c = 0
             for tag in m.get("tags", []):
                 tname = tag.get("name", "")
                 if tname == "cloud" or tname.endswith("-cloud"):
+                    _stats_skipped += 1
+                    continue
+                # Skip MLX tags — they don't have GGUF blobs, so KV
+                # cache computation doesn't apply.
+                if tag.get("format") == "mlx" or "-mlx" in tname.lower():
                     _stats_skipped += 1
                     continue
                 c = parse_context_to_tokens(tag.get("context", "-"))
@@ -1440,13 +1505,10 @@ def build_index(models: list[dict], ranks: dict) -> None:
                     _stats_skipped += 1
                     continue
                 v_tuple = tuple(v)
-                # For by_path_all: keep all GGUF quants but only default
-                # MTP/MLX quants (q4_K_M for MTP, base -mlx for MLX).
-                is_mtp = "-mtp-" in tname.lower()
-                is_mlx_quant = "-mlx-" in tname.lower()  # e.g. 9b-mlx-int4
-                is_mlx_base = tname.lower().endswith("-mlx")  # e.g. 9b-mlx
-                if (is_mtp and "q4_k_m" not in tname.lower()) or is_mlx_quant:
-                    continue  # skip non-default MTP/MLX quants
+                # For by_path_all (total memory mode): only 3 quants per
+                # size — q4_K_M, q8_0, fp16/bf16.
+                if tname not in _allowed_all:
+                    continue
                 all_tags_out[tname] = {
                     "c": c,
                     "v": v,
@@ -4948,9 +5010,9 @@ var graphOverrideEntry = null;
 function getModelEntry(key) {
   if (graphOverrideEntry) return graphOverrideEntry;
   if (!graphData) return null;
-  // In total memory mode on detail pages (graphModelOverrideList is set),
-  // use by_path_all (all quants, no dedup). Index page uses deduped entries.
-  if (graphTotalMemory && graphModelOverrideList && graphData.by_path_all && graphData.by_path_all[key]) return graphData.by_path_all[key];
+  // In total memory mode, use by_path_all (3 quants per size: q4_K_M,
+  // q8_0, fp16). Index page uses by_path for KV cache mode.
+  if (graphTotalMemory && graphData.by_path_all && graphData.by_path_all[key]) return graphData.by_path_all[key];
   // Prefer the per-path entry (not merged across namespaces) so that a
   // community model like /frob/ds-flash doesn't pollute the graph for the
   // library /library/ds-flash. Fall back to the legacy name-keyed dict.
