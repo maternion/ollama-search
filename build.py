@@ -3833,6 +3833,7 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
 /* Graph SVG styling */
 #graph-svg .graph-line { fill: none; stroke-width: 2; }
 #graph-svg .graph-line { cursor: pointer; }
+/* Line draw + hover transitions set inline by JS after path length is known */
 #graph-svg .graph-axis { stroke: #d4d4d4; stroke-width: 1; }
 .dark #graph-svg .graph-axis { stroke: #404040; }
 #graph-svg .graph-grid { stroke: #e5e5e5; stroke-width: 0.5; }
@@ -3927,6 +3928,35 @@ body.graph-hidden #graph-panel.detail-graph {
   #graph-panel.detail-graph #graph-range-container { display: none; }
   #graph-panel.detail-graph #graph-svg { aspect-ratio: 560 / 400; }
   #graph-panel.detail-graph .mb-3 { margin-bottom: 0.5rem; }
+}
+
+/* --- Page enter animation: staggered fade-in for main content --- */
+main > * {
+  animation: pageEnter 0.35s ease-out backwards;
+}
+main > *:nth-child(1) { animation-delay: 0s; }
+main > *:nth-child(2) { animation-delay: 0.05s; }
+main > *:nth-child(3) { animation-delay: 0.1s; }
+main > *:nth-child(4) { animation-delay: 0.15s; }
+main > *:nth-child(5) { animation-delay: 0.2s; }
+main > *:nth-child(6) { animation-delay: 0.25s; }
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Detail graph panel fade-in --- */
+#graph-panel.detail-graph.graph-ready {
+  animation: graphFadeIn 0.4s ease-out;
+}
+@keyframes graphFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main > *, #graph-panel.detail-graph.graph-ready { animation: none; }
+  #graph-svg .graph-line { transition: none !important; }
 }
 """
 
@@ -5551,6 +5581,18 @@ function renderGraph() {
         graphHoverKey = null;
         applyHoverDim();
       });
+    }
+    // Line draw animation: stroke-dashoffset from full length to 0
+    for (var j = 0; j < lineEls.length; j++) {
+      (function(el) {
+        var len = el.getTotalLength();
+        el.style.strokeDasharray = len;
+        el.style.strokeDashoffset = len;
+        // Force reflow so the initial offset is applied before transitioning
+        el.getBoundingClientRect();
+        el.style.transition = 'stroke-dashoffset 0.6s ease-out, opacity 0.2s ease, stroke-width 0.15s ease';
+        el.style.strokeDashoffset = '0';
+      })(lineEls[j]);
     }
   }
   applyHoverDim();
