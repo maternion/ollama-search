@@ -5048,7 +5048,7 @@ function scheduleGraphRender() {
   GRAPH_RENDER_TIMER = setTimeout(function() {
     GRAPH_RENDER_TIMER = null;
     renderGraph();
-  }, 150);
+  }, 200);
 }
 
 function applyHoverDim() {
@@ -5882,6 +5882,9 @@ function initGraph() {
         var entry = entries[i];
         var pathKey = entry.target.getAttribute('data-path');
         if (!pathKey) continue;
+        // Use a grace zone: only remove a model when it's fully outside
+        // the expanded root margin, not the moment it leaves the viewport.
+        // This prevents all lines from disappearing during fast scrolling.
         var isVis = entry.isIntersecting && entry.target.style.display !== 'none';
         var idx = visibleModels.indexOf(pathKey);
         if (isVis && idx === -1) {
@@ -5898,7 +5901,7 @@ function initGraph() {
         }
       }
       if (changed) scheduleGraphRender();
-    }, { threshold: 0 });
+    }, { threshold: 0, rootMargin: '200px 0px' });
     for (var i = 0; i < cards.length; i++) {
       graphObserver.observe(cards[i]);
     }
