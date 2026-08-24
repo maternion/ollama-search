@@ -589,6 +589,7 @@ def nav_html(active: str = "") -> str:
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="{url("/")}">Models</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="{url("/pricing")}">Pricing</a>
+      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://github.com/maternion/ollama-search" target="_blank" rel="noopener noreferrer">Source</a>
     </div>
     <div class="flex-grow justify-center items-center hidden md:flex">
       <div class="relative w-full" style="max-width: 448px;">
@@ -629,6 +630,7 @@ def footer_html() -> str:
         <a href="https://docs.ollama.com" class="hover:underline">Docs</a>
         <a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a>
         <a href="{url("/pricing")}" class="hover:underline">Pricing</a>
+        <a href="https://github.com/maternion/ollama-search" class="hover:underline" target="_blank" rel="noopener noreferrer">Source</a>
       </div>
     </div>
   </div>
@@ -639,6 +641,7 @@ def footer_html() -> str:
       <li><a href="https://docs.ollama.com" class="hover:underline">Docs</a></li>
       <li><a href="https://github.com/ollama/ollama" class="hover:underline">GitHub</a></li>
       <li><a href="{url("/pricing")}" class="hover:underline">Pricing</a></li>
+      <li><a href="https://github.com/maternion/ollama-search" class="hover:underline" target="_blank" rel="noopener noreferrer">Source</a></li>
     </ul>
     <div class="mt-2 text-center text-xs text-neutral-500 dark:text-neutral-400">&copy; 2026 Ollama · <a href="{url("/maternion/")}" class="hover:underline">Maternion</a></div>
   </div>
