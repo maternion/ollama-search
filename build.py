@@ -3548,7 +3548,7 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
 }
 #results-area {
   position: relative;
-  transition: margin-left 0.4s ease, margin-right 0.4s ease;
+  transition: margin-left 0.3s ease, margin-right 0.3s ease;
 }
 #sort-container {
   position: static;
@@ -3690,7 +3690,7 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
     top: 0;
     padding-top: 1rem;
     margin-bottom: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.3s ease;
   }
   /* Results: independently centered in viewport */
   #results-area {
@@ -3739,7 +3739,7 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.4s ease, visibility 0.4s ease, left 0.4s ease, right 0.4s ease, width 0.4s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease, left 0.3s ease, right 0.3s ease, width 0.3s ease;
   /* shared chrome so both tiers share look: */
   padding: 1.25rem;
   border: 1px solid #e5e5e5;
@@ -3760,6 +3760,8 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
 @media (min-width: 1500px) {
   #graph-filters-toggle { display: inline-flex; align-items: center; }
 }
+/* Hide the filters toggle when graph is enlarged (filters scrolled offscreen) */
+body.filters-offscreen #graph-filters-toggle { display: none; }
 /* "Show graph" button: fixed top-right, only visible when graph is hidden.
    The "Hide graph" button lives inside the panel header and shows/hides
    with the panel itself. */
@@ -5092,7 +5094,7 @@ function scheduleGraphRender() {
   if (GRAPH_RENDER_TIMER) clearTimeout(GRAPH_RENDER_TIMER);
   // Delay render during layout transitions so the CSS panel resize
   // animation runs at 60fps without competing with SVG rebuilding.
-  var delay = (document.body.classList.contains('filters-offscreen') || document.body.classList.contains('filters-hidden')) ? 450 : 200;
+  var delay = (document.body.classList.contains('filters-offscreen') || document.body.classList.contains('filters-hidden')) ? 350 : 200;
   GRAPH_RENDER_TIMER = setTimeout(function() {
     GRAPH_RENDER_TIMER = null;
     renderGraph();
