@@ -3833,7 +3833,6 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
 /* Graph SVG styling */
 #graph-svg .graph-line { fill: none; stroke-width: 2; }
 #graph-svg .graph-line { cursor: pointer; }
-/* Line draw + hover transitions set inline by JS after path length is known */
 #graph-svg .graph-axis { stroke: #d4d4d4; stroke-width: 1; }
 .dark #graph-svg .graph-axis { stroke: #404040; }
 #graph-svg .graph-grid { stroke: #e5e5e5; stroke-width: 0.5; }
@@ -5585,25 +5584,6 @@ function renderGraph() {
         graphHoverKey = null;
         applyHoverDim();
       });
-    }
-    // Line draw animation: stroke-dashoffset from full length to 0
-    for (var j = 0; j < lineEls.length; j++) {
-      (function(el) {
-        var len = el.getTotalLength();
-        if (!len || len < 1) return;  // skip degenerate paths
-        el.style.strokeDasharray = len;
-        el.style.strokeDashoffset = len;
-        el.style.transition = 'stroke-dashoffset 0.6s ease-out, opacity 0.2s ease, stroke-width 0.15s ease';
-        // Animate to 0 on next frame
-        requestAnimationFrame(function() {
-          el.style.strokeDashoffset = '0';
-        });
-        // Clean up dash after animation so it doesn't interfere with hover dim
-        setTimeout(function() {
-          el.style.strokeDasharray = '';
-          el.style.strokeDashoffset = '';
-        }, 700);
-      })(lineEls[j]);
     }
   }
   applyHoverDim();
