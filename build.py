@@ -3690,6 +3690,7 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
     top: 0;
     padding-top: 1rem;
     margin-bottom: 0;
+    transition: opacity 0.4s ease;
   }
   /* Results: independently centered in viewport */
   #results-area {
@@ -3804,6 +3805,11 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
     /* panel left edge at 50vw + 2rem, right edge at 4rem from viewport right */
     width: var(--graph-w);
     right: 4rem;
+  }
+  /* Fade out filters in sync with list shifting left (0.4s transition) */
+  body.filters-offscreen #top-row, body.filters-hidden #top-row {
+    opacity: 0;
+    pointer-events: none;
   }
   /* Manual filters toggle: sidebar hidden on demand, expanded graph layout */
   body.filters-hidden #top-row { display: none; }
