@@ -1064,7 +1064,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
             .get(m["path"] if not m.get("official", True) else m["name"], {})
             .get("newest_rank", 9999)
             == 9999,
-            -(profile_ranks if not m.get("official", True) else ranks)
+            (profile_ranks if not m.get("official", True) else ranks)
             .get(m["path"] if not m.get("official", True) else m["name"], {})
             .get("newest_rank", 9999),
         ),
