@@ -5048,6 +5048,8 @@ var graphCtxCap = 0;  // 0 = no cap (show full range); set by the context slider
 var graphTotalMemory = false;  // false = KV cache only; true = weights + KV cache
 var graphModelOverrideList = null;
 var graphOverrideEntry = null;
+var lastRenderSignature = '';
+var graphDelegationSetup = false;
 
 function getModelEntry(key) {
   if (graphOverrideEntry) return graphOverrideEntry;
@@ -5081,10 +5083,13 @@ function pathDisplayName(pathKey) {
 
 function scheduleGraphRender() {
   if (GRAPH_RENDER_TIMER) clearTimeout(GRAPH_RENDER_TIMER);
+  // Delay render during layout transitions so the CSS panel resize
+  // animation runs at 60fps without competing with SVG rebuilding.
+  var delay = (document.body.classList.contains('filters-offscreen') || document.body.classList.contains('filters-hidden')) ? 450 : 200;
   GRAPH_RENDER_TIMER = setTimeout(function() {
     GRAPH_RENDER_TIMER = null;
     renderGraph();
-  }, 200);
+  }, delay);
 }
 
 function applyHoverDim() {
@@ -5134,6 +5139,12 @@ function getVisibleModelsInOrder() {
 
 function renderGraph() {
   if (!graphData || !graphSvg) return;
+
+  // Skip render if nothing changed since last render
+  var sig = visibleModels.slice().sort().join(',') + '|' + graphTotalMemory + '|' + graphLogY + '|' + graphCtxCap + '|' + Object.keys(disabledGraphCurves).sort().join(',');
+  if (sig === lastRenderSignature && !graphOverrideEntry) return;
+  lastRenderSignature = sig;
+
   var ticks = graphData.ticks || GRAPH_CTX_TICKS;
   var models = graphData.models || {};
   var palette = graphPalette();
@@ -5532,18 +5543,25 @@ function renderGraph() {
     graphSvg.appendChild(node);
   }
 
-  // Re-attach tooltip handlers
-  if (graphTooltip) {
-    var dotEls = graphSvg.querySelectorAll('.graph-dot');
-    for (var i = 0; i < dotEls.length; i++) {
-      dotEls[i].addEventListener('mouseenter', function(e) {
-        var modelName = this.getAttribute('data-model');
-        var tagName = this.getAttribute('data-tag');
-        var ctx = parseInt(this.getAttribute('data-ctx'));
-        var gib = parseFloat(this.getAttribute('data-gib'));
+  // Re-attach tooltip + hover handlers via event delegation (set up once,
+  // not per-render) to avoid hundreds of addEventListener calls.
+  if (!graphDelegationSetup) {
+    graphDelegationSetup = true;
+    // Use mouseover/mouseout (which bubble) instead of mouseenter/mouseleave
+    graphSvg.addEventListener('mouseover', function(e) {
+      var el = e.target.closest ? e.target.closest('[data-model]') : null;
+      if (!el) return;
+      graphHoverKey = el.getAttribute('data-model') + '|' + el.getAttribute('data-tag');
+      applyHoverDim();
+      // Tooltip for dots
+      if (el.classList.contains('graph-dot') && graphTooltip) {
+        var modelName = el.getAttribute('data-model');
+        var tagName = el.getAttribute('data-tag');
+        var ctx = parseInt(el.getAttribute('data-ctx'));
+        var gib = parseFloat(el.getAttribute('data-gib'));
         var tipLine;
-        if (graphTotalMemory && this.getAttribute('data-w')) {
-          var w = parseFloat(this.getAttribute('data-w'));
+        if (graphTotalMemory && el.getAttribute('data-w')) {
+          var w = parseFloat(el.getAttribute('data-w'));
           var kv = gib - w;
           tipLine = '<span class="text-neutral-700 dark:text-neutral-300">' + fmtGiB(gib) + ' GiB total (' + fmtGiB(w) + ' weights + ' + fmtGiB(kv) + ' KV)</span>';
         } else {
@@ -5551,38 +5569,27 @@ function renderGraph() {
         }
         graphTooltip.innerHTML = '<span class="font-medium text-neutral-800 dark:text-neutral-200">' + escHtml(pathDisplayName(modelName)) + ':' + escHtml(tagName) + '</span> <span class="text-neutral-500 dark:text-neutral-400">@ ' + ctxLabel(ctx) + ' ctx</span><br>' + tipLine;
         graphTooltip.classList.remove('hidden');
-      });
-      dotEls[i].addEventListener('mousemove', function(e) {
-        // Place the popup to the right of the cursor, unless the cursor is in
-        // the right part of the viewport — then flip it to the left so it never
-        // gets clipped by the screen edge.
-        var tipW = 240;  // rough tooltip width
+      }
+    });
+    graphSvg.addEventListener('mouseout', function(e) {
+      var el = e.target.closest ? e.target.closest('[data-model]') : null;
+      if (!el) return;
+      var related = e.relatedTarget;
+      // Only clear if leaving to something outside this element
+      if (related && el.contains(related)) return;
+      graphHoverKey = null;
+      applyHoverDim();
+      if (graphTooltip && el.classList.contains('graph-dot')) {
+        graphTooltip.classList.add('hidden');
+      }
+    });
+    if (graphTooltip) {
+      graphSvg.addEventListener('mousemove', function(e) {
+        if (graphTooltip.classList.contains('hidden')) return;
+        var tipW = 240;
         var flip = (e.clientX + 12 + tipW) > window.innerWidth - 8;
         graphTooltip.style.left = (flip ? (e.clientX - 12 - tipW) : (e.clientX + 12)) + 'px';
         graphTooltip.style.top = (e.clientY - 10) + 'px';
-      });
-      dotEls[i].addEventListener('mouseleave', function(e) {
-        graphTooltip.classList.add('hidden');
-      });
-      dotEls[i].addEventListener('mouseenter', function(e) {
-        graphHoverKey = this.getAttribute('data-model') + '|' + this.getAttribute('data-tag');
-        applyHoverDim();
-      });
-      dotEls[i].addEventListener('mouseleave', function(e) {
-        graphHoverKey = null;
-        applyHoverDim();
-      });
-    }
-    // Line hover: highlight the line and dim others (same as dots)
-    var lineEls = graphSvg.querySelectorAll('.graph-line');
-    for (var j = 0; j < lineEls.length; j++) {
-      lineEls[j].addEventListener('mouseenter', function(e) {
-        graphHoverKey = this.getAttribute('data-model') + '|' + this.getAttribute('data-tag');
-        applyHoverDim();
-      });
-      lineEls[j].addEventListener('mouseleave', function(e) {
-        graphHoverKey = null;
-        applyHoverDim();
       });
     }
   }
