@@ -5590,12 +5590,19 @@ function renderGraph() {
     for (var j = 0; j < lineEls.length; j++) {
       (function(el) {
         var len = el.getTotalLength();
+        if (!len || len < 1) return;  // skip degenerate paths
         el.style.strokeDasharray = len;
         el.style.strokeDashoffset = len;
-        // Force reflow so the initial offset is applied before transitioning
-        el.getBoundingClientRect();
         el.style.transition = 'stroke-dashoffset 0.6s ease-out, opacity 0.2s ease, stroke-width 0.15s ease';
-        el.style.strokeDashoffset = '0';
+        // Animate to 0 on next frame
+        requestAnimationFrame(function() {
+          el.style.strokeDashoffset = '0';
+        });
+        // Clean up dash after animation so it doesn't interfere with hover dim
+        setTimeout(function() {
+          el.style.strokeDasharray = '';
+          el.style.strokeDashoffset = '';
+        }, 700);
       })(lineEls[j]);
     }
   }
