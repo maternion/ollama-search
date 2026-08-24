@@ -3548,7 +3548,7 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
 }
 #results-area {
   position: relative;
-  transition: margin-left 0.35s ease;
+  transition: margin-left 0.4s ease, width 0.4s ease, margin-right 0.4s ease;
 }
 #sort-container {
   position: static;
@@ -3738,7 +3738,7 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease, visibility 0.3s ease, left 0.35s ease, right 0.35s ease, width 0.35s ease;
+  transition: opacity 0.4s ease, visibility 0.4s ease, left 0.4s ease, right 0.4s ease, width 0.4s ease;
   /* shared chrome so both tiers share look: */
   padding: 1.25rem;
   border: 1px solid #e5e5e5;
