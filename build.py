@@ -3831,17 +3831,8 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
 }
 
 /* Graph SVG styling */
-#graph-svg .graph-line { fill: none; stroke-width: 2; cursor: pointer; }
-/* Line draw-on animation using pathLength="1" normalization */
-#graph-svg .graph-line {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation: drawLine 0.6s ease-out forwards;
-  transition: opacity 0.15s ease;
-}
-@keyframes drawLine {
-  to { stroke-dashoffset: 0; }
-}
+#graph-svg .graph-line { fill: none; stroke-width: 2; }
+#graph-svg .graph-line { cursor: pointer; }
 #graph-svg .graph-axis { stroke: #d4d4d4; stroke-width: 1; }
 .dark #graph-svg .graph-axis { stroke: #404040; }
 #graph-svg .graph-grid { stroke: #e5e5e5; stroke-width: 0.5; }
@@ -3968,7 +3959,7 @@ main > #graph-panel { animation: none; }
 
 @media (prefers-reduced-motion: reduce) {
   main > *, #graph-panel.detail-graph.graph-ready { animation: none; }
-  #graph-svg .graph-line { animation: none; stroke-dashoffset: 0; transition: none !important; }
+  #graph-svg .graph-line { transition: none !important; }
 }
 """
 
@@ -5449,7 +5440,7 @@ function renderGraph() {
         pathD += (firstPt ? 'M' : 'L') + px.toFixed(1) + ' ' + py.toFixed(1) + ' ';
         firstPt = false;
       }
-      svgContent += '<path class="graph-line" pathLength="1" d="' + pathD + '" stroke="' + color + '" data-model="' + escHtml(modelName) + '" data-tag="' + escHtml(tagName) + '"/>';
+      svgContent += '<path class="graph-line" d="' + pathD + '" stroke="' + color + '" data-model="' + escHtml(modelName) + '" data-tag="' + escHtml(tagName) + '"/>';
 
       // Dots at every point (skip gib=0 origin in log mode too)
       for (var k = 0; k < pts.length; k++) {
