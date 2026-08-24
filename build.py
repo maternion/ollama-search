@@ -3548,7 +3548,7 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
 }
 #results-area {
   position: relative;
-  transition: margin-left 0.4s ease, width 0.4s ease, margin-right 0.4s ease;
+  transition: margin-left 0.4s ease, margin-right 0.4s ease;
 }
 #sort-container {
   position: static;
@@ -3794,8 +3794,9 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
      in-flow list right; we subtract it from margin-left. */
   body.filters-offscreen, body.filters-hidden { --graph-w: min(800px, calc(50vw - 6rem)); }
   body.filters-offscreen #results-area, body.filters-hidden #results-area {
-    width: 36rem;
-    /* list right edge at 50vw - 2rem, minus 2rem main padding */
+    /* list right edge at 50vw - 2rem, minus 2rem main padding.
+       Don't set width — use max-width (already 36rem default) so
+       width doesn't need to transition (auto can't be transitioned). */
     margin-left: max(0rem, calc(50vw - 36rem - 2rem - 2rem));
     margin-right: 0;
   }
