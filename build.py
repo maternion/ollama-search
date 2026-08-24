@@ -5790,10 +5790,13 @@ function initGraph() {
     themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
   }
 
-  // Re-render when the panel/SVG resizes (full-height flex layout)
+  // Re-render when the panel/SVG resizes (full-height flex layout).
+  // Render immediately (no debounce) so the graph tracks the panel
+  // during the 0.35s CSS transition — border and content resize together.
   if (typeof ResizeObserver !== 'undefined' && graphSvg) {
     var graphResizeObserver = new ResizeObserver(function() {
-      scheduleGraphRender();
+      if (GRAPH_RENDER_TIMER) { clearTimeout(GRAPH_RENDER_TIMER); GRAPH_RENDER_TIMER = null; }
+      renderGraph();
     });
     graphResizeObserver.observe(graphSvg);
   }
