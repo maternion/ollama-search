@@ -5832,6 +5832,7 @@ function initGraph() {
   var layoutTicking = false;
   function updateFiltersOffscreen() {
     if (document.body.classList.contains('filters-hidden')) return; // manual toggle owns the layout
+    if (document.body.classList.contains('graph-hidden')) return; // graph hidden, don't shift layout
     var topRow = document.getElementById('top-row');
     if (!topRow) return;
     var gone = topRow.getBoundingClientRect().bottom <= 0;
