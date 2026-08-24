@@ -1390,7 +1390,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
             sizes_list = m.get("sizes") or []
             tags_out: dict[str, dict] = {}
             all_tags_out: dict[str, dict] = {}
-            # For by_path (index page): only main size tags are shown.
+            # For by_path (index page): main size tags + MTP q4_K_M tags.
             # Models with empty sizes fall back to "latest".
             index_tags = set(sizes_list) if sizes_list else {"latest"}
             # For by_path_all (total memory mode): only 3 quants per size
@@ -1452,6 +1452,12 @@ def build_index(models: list[dict], ranks: dict) -> None:
                     fp = _best_quant_tag(_all_tag_names, sz, "bf16")
                 if fp:
                     _allowed_all.add(fp)
+
+            # Add MTP q4_K_M tags to index_tags for KV cache graph.
+            for msz in sorted(_mtp_sizes):
+                q4 = _best_quant_tag(_all_tag_names, msz, "q4_k_m")
+                if q4:
+                    index_tags.add(q4)
 
             max_c = 0
             for tag in m.get("tags", []):
