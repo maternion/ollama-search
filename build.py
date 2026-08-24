@@ -5791,12 +5791,18 @@ function initGraph() {
   }
 
   // Re-render when the panel/SVG resizes (full-height flex layout).
-  // Render immediately (no debounce) so the graph tracks the panel
-  // during the 0.35s CSS transition — border and content resize together.
+  // Use a short debounce so we render shortly after the CSS transition
+  // settles, not on every intermediate frame (which causes the graph
+  // content to lag behind the border during the 0.35s transition).
+  var GRAPH_RESIZE_TIMER = null;
   if (typeof ResizeObserver !== 'undefined' && graphSvg) {
     var graphResizeObserver = new ResizeObserver(function() {
+      if (GRAPH_RESIZE_TIMER) clearTimeout(GRAPH_RESIZE_TIMER);
       if (GRAPH_RENDER_TIMER) { clearTimeout(GRAPH_RENDER_TIMER); GRAPH_RENDER_TIMER = null; }
-      renderGraph();
+      GRAPH_RESIZE_TIMER = setTimeout(function() {
+        GRAPH_RESIZE_TIMER = null;
+        renderGraph();
+      }, 50);
     });
     graphResizeObserver.observe(graphSvg);
   }
