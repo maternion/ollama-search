@@ -1390,9 +1390,9 @@ def build_index(models: list[dict], ranks: dict) -> None:
             sizes_list = m.get("sizes") or []
             tags_out: dict[str, dict] = {}
             all_tags_out: dict[str, dict] = {}
-            # Dedupe within a model by curve values: quantization doesn't
-            # change KV-cache geometry, so identical v arrays are one curve.
-            seen: dict[tuple, str] = {}
+            # For by_path (index page): only main size tags are shown.
+            # Models with empty sizes fall back to "latest".
+            index_tags = set(sizes_list) if sizes_list else {"latest"}
             max_c = 0
             for tag in m.get("tags", []):
                 tname = tag.get("name", "")
@@ -1452,36 +1452,17 @@ def build_index(models: list[dict], ranks: dict) -> None:
                     "v": v,
                     "w": round((tag.get("size_bytes") or 0) / 1073741824, 4),
                 }
-                if v_tuple in seen:
-                    # Same curve already kept under another tag name.
-                    # Prefer: non-"latest", a plain size name, shorter name.
-                    kept = seen[v_tuple]
-
-                    def _rank(nm: str) -> tuple:
-                        return (
-                            nm == "latest",
-                            nm not in sizes_list and not nm[0].isdigit(),
-                            len(nm),
-                        )
-
-                    if _rank(tname) < _rank(kept):
-                        del tags_out[kept]
-                        tags_out[tname] = {
-                            "c": c,
-                            "v": v,
-                            "w": round((tag.get("size_bytes") or 0) / 1073741824, 4),
-                        }
-                        seen[v_tuple] = tname
-                    continue
-                seen[v_tuple] = tname
-                tags_out[tname] = {
-                    "c": c,
-                    "v": v,
-                    "w": round((tag.get("size_bytes") or 0) / 1073741824, 4),
-                }
-                _stats_tags += 1
-                if c > max_c:
-                    max_c = c
+                # For by_path (index page): only keep main size tags
+                # (e.g. "16b", "236b") — no quant variants.
+                if tname in index_tags:
+                    tags_out[tname] = {
+                        "c": c,
+                        "v": v,
+                        "w": round((tag.get("size_bytes") or 0) / 1073741824, 4),
+                    }
+                    _stats_tags += 1
+                    if c > max_c:
+                        max_c = c
             if tags_out:
                 sorted_tags = dict(
                     sorted(tags_out.items(), key=lambda kv: (kv[1]["c"], kv[0]))
