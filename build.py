@@ -3931,6 +3931,8 @@ body.graph-hidden #graph-panel.detail-graph {
 }
 
 /* --- Page enter animation: staggered fade-in for main content --- */
+/* Note: only opacity, no transform — transform on ancestors breaks
+   position:fixed graph panel by creating a new containing block. */
 main > * {
   animation: pageEnter 0.35s ease-out backwards;
 }
@@ -3940,9 +3942,11 @@ main > *:nth-child(3) { animation-delay: 0.1s; }
 main > *:nth-child(4) { animation-delay: 0.15s; }
 main > *:nth-child(5) { animation-delay: 0.2s; }
 main > *:nth-child(6) { animation-delay: 0.25s; }
+/* Don't animate the graph panel — it's position:fixed on index page */
+main > #graph-panel { animation: none; }
 @keyframes pageEnter {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* --- Detail graph panel fade-in --- */
@@ -3950,8 +3954,8 @@ main > *:nth-child(6) { animation-delay: 0.25s; }
   animation: graphFadeIn 0.4s ease-out;
 }
 @keyframes graphFadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
