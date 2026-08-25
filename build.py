@@ -4043,11 +4043,16 @@ function renderNavSuggest(query) {
   html += '<div role="list" id="search-preview-list" class="group">';
 
   var results = [];
+  var tokens = q.split(/\s+/).filter(function(t) { return t.length > 0; });
   for (var i = 0; i < NAV_MODELS.length; i++) {
     var m = NAV_MODELS[i];
-    var name = m.name || '';
-    var desc = m.description || '';
-    if (name.toLowerCase().indexOf(q) !== -1 || desc.toLowerCase().indexOf(q) !== -1) {
+    var name = (m.name || '').toLowerCase();
+    var desc = (m.description || '').toLowerCase();
+    var path = (m.path || '').toLowerCase();
+    var match = tokens.every(function(token) {
+      return name.indexOf(token) !== -1 || desc.indexOf(token) !== -1 || path.indexOf(token) !== -1;
+    });
+    if (match) {
       results.push(m);
     }
   }
@@ -4505,7 +4510,18 @@ function applyFilters() {
     var matchSize = matchSizeRange(cardSizes);
     var matchContext = matchContextRange(cardContext);
     var cardPath = (card.getAttribute('data-path') || '').toLowerCase();
-    var matchText = !q || title.indexOf(q) !== -1 || desc.indexOf(q) !== -1 || cardPath.indexOf(q) !== -1;
+    // Tokenized search: split query on whitespace and match ALL tokens
+    // (each token must appear in title, desc, or path). This matches
+    // ollama.com's search behavior where "ling 3" matches "ling-3.0-tiny".
+    var matchText;
+    if (!q) {
+      matchText = true;
+    } else {
+      var tokens = q.split(/\s+/).filter(function(t) { return t.length > 0; });
+      matchText = tokens.every(function(token) {
+        return title.indexOf(token) !== -1 || desc.indexOf(token) !== -1 || cardPath.indexOf(token) !== -1;
+      });
+    }
     var matchCaps = caps.length === 0 || caps.every(function(c) { return cardCaps.indexOf(c) !== -1; });
     var matchCloud = cloudFilter === 'all'
       || (cloudFilter === 'cloud' && isCloud)
