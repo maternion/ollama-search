@@ -4550,12 +4550,14 @@ function applyFilters() {
     } else if (sort === 'popular' || sort === 'newest' || sort === 'oldest') {
       var ra = parseFloat(a.getAttribute(attr) || '9999');
       var rb = parseFloat(b.getAttribute(attr) || '9999');
-      // Official models always sort before non-official (profile) models,
+      // Official models sort before non-official (profile) models,
       // since the two groups have separate rank spaces (library /library?sort=popular
       // vs profile page ordering) and otherwise interleave.
+      // However, when a search query is active, don't prioritize official
+      // models — show results by relevance (rank) regardless of namespace.
       var aOff = a.getAttribute('data-official') !== 'false';
       var bOff = b.getAttribute('data-official') !== 'false';
-      if (aOff !== bOff) {
+      if (!q && aOff !== bOff) {
         cmp = aOff ? -1 : 1;
       } else if (ra !== 9999 || rb !== 9999) {
         cmp = ra - rb;
