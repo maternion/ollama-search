@@ -4787,13 +4787,23 @@ function initApp() {
   if (document.getElementById('card-list')) {
     var formInput = document.getElementById('form-input');
     var navInput = document.getElementById('navbar-input');
+    // Debounce search input so typing feels smooth (avoid re-filtering
+    // ~200+ cards on every single keystroke)
+    var searchTimer = null;
+    function debouncedFilter() {
+      if (searchTimer) clearTimeout(searchTimer);
+      searchTimer = setTimeout(function() {
+        searchTimer = null;
+        applyFilters();
+      }, 80);
+    }
     if (formInput) formInput.addEventListener('input', function() {
       if (navInput) navInput.value = formInput.value;
-      applyFilters();
+      debouncedFilter();
     });
     if (navInput) navInput.addEventListener('input', function() {
       if (formInput) formInput.value = navInput.value;
-      applyFilters();
+      debouncedFilter();
     });
     document.querySelectorAll('.cap-filter').forEach(function(cb) { cb.addEventListener('change', applyFilters); });
     var cloudFilter = document.getElementById('cloud-filter');
