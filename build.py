@@ -1652,6 +1652,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
         <span class="pl-4 text-neutral-400">{SVG_SEARCH}</span>
         <input id="form-input" name="q" type="search" value="" class="resize-none rounded-full border-0 py-2.5 bg-transparent text-base sm:text-sm w-full placeholder:text-neutral-400 focus:outline-none focus:ring-0 dark:text-neutral-200" placeholder="Search models" autofocus autocomplete="off">
       </div>
+      <div id="searchpreview-mobile" class="hidden absolute left-4 right-4 top-16 z-50"></div>
       <div class="sm:hidden block relative">
         <select id="mobile-sort-select" class="absolute inset-0 w-6 px-3 py-1 opacity-0 appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600">
 {opt_html}
@@ -1939,8 +1940,20 @@ def _main_tags(m: dict, tags: list[dict]) -> list[dict]:
     # MLX counterparts that exist (only {size}-mlx on the main page;
     # other MLX quants like mlx-mxfp8, mlx-bf16 are on the /tags page)
     ordered += [f"{s}-mlx" for s in sizes if f"{s}-mlx" in by_name]
-    # MTP counterparts: only the default quant (q4_K_M) per size
-    ordered += [f"{s}-mtp-q4_K_M" for s in sizes if f"{s}-mtp-q4_K_M" in by_name]
+    # MTP counterparts: only the default quant (q4_K_M) per size.
+    # Some models have sub-variants like {size}-a3b-mtp-q4_K_M or
+    # {size}-coding-mtp-q4_K_M or {size}-a3b-coding-mtp-q4_K_M
+    import re as _re_mtp
+
+    for s in sizes:
+        # Direct: {size}-mtp-q4_K_M
+        if f"{s}-mtp-q4_K_M" in by_name:
+            ordered.append(f"{s}-mtp-q4_K_M")
+        # Sub-variant: {size}-...-mtp-q4_K_M (e.g. 35b-a3b-mtp, 27b-coding-mtp)
+        for n in by_name:
+            if _re_mtp.match(rf"^{re.escape(s)}-[a-z0-9-]+-mtp-q4_K_M$", n):
+                if n not in ordered:
+                    ordered.append(n)
     # Generic cloud tag
     if "cloud" in by_name:
         ordered.append("cloud")
@@ -4017,9 +4030,14 @@ function escHtml(s) {
 
 function renderNavSuggest(query) {
   var sp = document.getElementById('searchpreview');
-  if (!sp) return;
+  var spMobile = document.getElementById('searchpreview-mobile');
+  if (!sp && !spMobile) return;
   var q = query.toLowerCase().trim();
-  if (!q) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
+  if (!q) {
+    if (sp) { sp.classList.add('hidden'); sp.innerHTML = ''; }
+    if (spMobile) { spMobile.classList.add('hidden'); spMobile.innerHTML = ''; }
+    return;
+  }
 
   var html = '<div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl w-full shadow-2xl shadow-black/5 overflow-hidden" id="search-preview-container" tabindex="0">';
   html += '<div role="list" id="search-preview-list" class="group">';
@@ -4055,24 +4073,34 @@ function renderNavSuggest(query) {
   html += '<a tabindex="0" id="view-all-link" href="' + NAV_BASE + '?q=' + encodeURIComponent(query) + '" class="' + (top.length === 0 ? 'hidden' : '') + ' block px-6 py-3 border-t border-neutral-200 dark:border-neutral-800 text-center text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-white/5 focus:bg-neutral-50 dark:focus:bg-white/5 focus:outline-none focus:ring-0 dark:text-neutral-200">View all &#8594;</a>';
   html += '</div>';
 
-  sp.innerHTML = html;
-  sp.classList.remove('hidden');
+  if (sp) { sp.innerHTML = html; sp.classList.remove('hidden'); }
+  if (spMobile) { spMobile.innerHTML = html; spMobile.classList.remove('hidden'); }
 }
 
 var navSuggestTimer = null;
 function initNavSuggest() {
   var input = document.getElementById('navbar-input');
   var sp = document.getElementById('searchpreview');
+  var mobileInput = document.getElementById('form-input');
+  var spMobile = document.getElementById('searchpreview-mobile');
   if (!input || !sp) return;
 
-  input.addEventListener('input', function() {
-    if (navSuggestTimer) clearTimeout(navSuggestTimer);
-    navSuggestTimer = setTimeout(function() {
-      var v = input.value;
-      if (!v.trim()) { sp.classList.add('hidden'); sp.innerHTML = ''; return; }
-      loadNavModels(function() { renderNavSuggest(v); });
-    }, 100);
-  });
+  function attachInput(inp, previewEl) {
+    inp.addEventListener('input', function() {
+      if (navSuggestTimer) clearTimeout(navSuggestTimer);
+      navSuggestTimer = setTimeout(function() {
+        var v = inp.value;
+        if (!v.trim()) {
+          if (previewEl) { previewEl.classList.add('hidden'); previewEl.innerHTML = ''; }
+          return;
+        }
+        loadNavModels(function() { renderNavSuggest(v); });
+      }, 100);
+    });
+  }
+
+  attachInput(input, sp);
+  if (mobileInput) attachInput(mobileInput, spMobile || sp);
 
   sp.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
