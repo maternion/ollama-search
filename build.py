@@ -4521,6 +4521,17 @@ function applyFilters() {
       matchText = tokens.every(function(token) {
         return title.indexOf(token) !== -1 || desc.indexOf(token) !== -1 || cardPath.indexOf(token) !== -1;
       });
+      // Relevance score: name matches rank highest, then path, then desc
+      if (matchText) {
+        var nameScore = 0, pathScore = 0, descScore = 0;
+        for (var ti = 0; ti < tokens.length; ti++) {
+          var tok = tokens[ti];
+          if (title.indexOf(tok) !== -1) nameScore++;
+          if (cardPath.indexOf(tok) !== -1) pathScore++;
+          if (desc.indexOf(tok) !== -1) descScore++;
+        }
+        card.setAttribute('data-search-score', String(nameScore * 3 + pathScore * 2 + descScore));
+      }
     }
     var matchCaps = caps.length === 0 || caps.every(function(c) { return cardCaps.indexOf(c) !== -1; });
     var matchCloud = cloudFilter === 'all'
@@ -4557,7 +4568,15 @@ function applyFilters() {
   };
   var attr = rankAttr[sort] || rankAttr['popular'];
   var descending = (sort === 'pulls' || sort === 'tags');
+  // When searching, sort by relevance score first
+  var activeQ = q;
   cards.sort(function(a, b) {
+    // Search relevance: name/path matches rank higher than desc-only matches
+    if (activeQ) {
+      var sa = parseInt(a.getAttribute('data-search-score') || '0');
+      var sb = parseInt(b.getAttribute('data-search-score') || '0');
+      if (sa !== sb) return sb - sa;
+    }
     var va = a.getAttribute(attr) || '';
     var vb = b.getAttribute(attr) || '';
     var cmp;
