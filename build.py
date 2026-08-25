@@ -401,20 +401,37 @@ def load_models() -> list[dict]:
 
 
 def load_new_model_paths() -> set[str]:
-    """Load the set of model paths that are new this scrape run.
+    """Determine which models get a "NEW" badge.
 
-    Written by the scraper's save_new_models() — a diff of current vs
-    previous models.json. Used to render a "NEW" badge on model cards
-    and detail pages.
+    Uses a persisted file (scraper/new_models.json) that records model paths
+    and their first-seen timestamp. A model keeps the badge until a newer
+    model appears in a subsequent scrape, at which point only the newest
+    models retain the badge.
+
+    The file format: {"models": {"/library/foo": "2026-08-25T14:42:00", ...}}
+    Models with the most recent first-seen timestamps get the badge.
+    If only one new model appeared, it alone gets the badge. If multiple
+    appeared in the same scrape, all of them get it.
     """
     fp = SCRAPER / "new_models.json"
-    if fp.exists():
-        try:
-            data = json.loads(fp.read_text())
-            return set(data.get("paths", []))
-        except Exception:
-            pass
-    return set()
+    if not fp.exists():
+        return set()
+    try:
+        data = json.loads(fp.read_text())
+    except Exception:
+        return set()
+
+    # New format: {"models": {path: timestamp}}
+    if "models" in data:
+        entries = data["models"]
+        if not entries:
+            return set()
+        # Find the latest timestamp(s) — badge only the most recent batch
+        max_ts = max(entries.values())
+        return {p for p, ts in entries.items() if ts == max_ts}
+
+    # Old format fallback: {"paths": [...]} — badge all listed
+    return set(data.get("paths", []))
 
 
 def load_ranks() -> dict:

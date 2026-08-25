@@ -2884,15 +2884,36 @@ def save_models(models: Iterable[Model]) -> None:
 
 
 def save_new_models(models: dict[str, Model]) -> None:
-    """Compute which models are new vs the previous models.json and persist the list.
+    """Track which models are new and when they first appeared.
 
-    Reads the current models.json (before it's overwritten), diffs the paths,
-    and writes new_models.json with the set of paths that are new this run.
-    On the next run, those models are no longer "new" (they're in the
-    previous models.json), so the badge rotates to whatever is newly fetched.
+    Reads the current models.json (before it's overwritten), diffs the paths
+    to find genuinely new models, and records them with a timestamp in
+    new_models.json. Models that are no longer in the catalog are pruned.
+
+    On build, only the most recent batch of new models gets the NEW badge.
+    When a new model appears, it (and any others from the same scrape) get
+    the badge. Previous badge holders lose it once newer models appear.
+
+    Format: {"models": {"/library/foo": "2026-08-25T14:42:00", ...}}
     """
+    from datetime import datetime as _dt
+
     fp = DATA / "new_models.json"
     models_fp = DATA / "models.json"
+
+    # Load existing first-seen timestamps
+    existing: dict[str, str] = {}
+    if fp.exists():
+        try:
+            old = json.loads(fp.read_text())
+            existing = old.get("models", old.get("paths", {}))
+            if isinstance(existing, list):
+                # Migrate old format: list of paths with no timestamps
+                existing = {p: _dt.utcnow().isoformat() for p in existing}
+        except Exception:
+            pass
+
+    # Load previous model paths
     prev_paths: set[str] = set()
     if models_fp.exists():
         try:
@@ -2900,29 +2921,20 @@ def save_new_models(models: dict[str, Model]) -> None:
             prev_paths = {pm["path"] for pm in prev_data.get("models", [])}
         except Exception:
             pass
+
     current_paths = {m.path for m in models.values()}
     new_paths = sorted(current_paths - prev_paths)
-    if not new_paths:
-        # Fallback: no new models this run (e.g. a model was scraped before
-        # the badge feature shipped, so it's already in the previous
-        # models.json and the diff is empty). Badge the most recently added
-        # model instead, determined by the newest sort order (rank 0).
-        sort_orders_file = DATA / "sort_orders.json"
-        if sort_orders_file.exists():
-            try:
-                sort_data = json.loads(sort_orders_file.read_text())
-                newest_order = sort_data.get("newest", [])
-                if newest_order:
-                    newest_path = newest_order[0]
-                    if newest_path in current_paths:
-                        new_paths = [newest_path]
-                        log.info(
-                            "no new models this run; falling back to newest model: %s",
-                            newest_path,
-                        )
-            except Exception:
-                pass
-    out = {"count": len(new_paths), "paths": new_paths}
+    now_iso = _dt.utcnow().isoformat()
+
+    # Add new models with current timestamp
+    for p in new_paths:
+        existing[p] = now_iso
+        log.info("new model this run: %s", p)
+
+    # Prune models no longer in the catalog
+    existing = {p: ts for p, ts in existing.items() if p in current_paths}
+
+    out = {"models": existing}
     _atomic_write(fp, json.dumps(out, indent=2, sort_keys=True, ensure_ascii=False))
     if new_paths:
         log.info("new models this run (%d): %s", len(new_paths), ", ".join(new_paths))
