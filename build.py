@@ -4530,7 +4530,11 @@ function applyFilters() {
           if (cardPath.indexOf(tok) !== -1) pathScore++;
           if (desc.indexOf(tok) !== -1) descScore++;
         }
-        card.setAttribute('data-search-score', String(nameScore * 3 + pathScore * 2 + descScore));
+        // Official models get a small boost so they rank above community
+        // models with the same relevance score (e.g. library/qwen3.5 vs
+        // frob/qwen3.5)
+        var officialBoost = isOfficial ? 100 : 0;
+        card.setAttribute('data-search-score', String(officialBoost + nameScore * 3 + pathScore * 2 + descScore));
       }
     }
     var matchCaps = caps.length === 0 || caps.every(function(c) { return cardCaps.indexOf(c) !== -1; });
