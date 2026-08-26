@@ -6113,15 +6113,21 @@ def build_profile_page(username: str) -> None:
             break
     avatar_src = url(f"/assets/{avatar_file}") if avatar_file else ""
 
-    # Model data: use profile's embedded card data, fall back to models.json
+    # Model data: prefer full models.json entry (has capabilities, tags, etc.),
+    # fall back to profile's embedded card data if not in models.json.
     all_models = load_models()
     models_by_path = {m["path"]: m for m in all_models}
     profile_models = []
     for m in model_paths:
         if isinstance(m, dict):
-            if m.get("path") in IGNORELIST:
+            path = m.get("path", "")
+            if path in IGNORELIST:
                 continue
-            profile_models.append(m)
+            # Prefer the richer models.json entry when available
+            if path in models_by_path:
+                profile_models.append(models_by_path[path])
+            else:
+                profile_models.append(m)
         elif isinstance(m, str) and m in models_by_path:
             if m not in IGNORELIST:
                 profile_models.append(models_by_path[m])
