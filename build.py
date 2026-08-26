@@ -4191,7 +4191,6 @@ function getContextMax() {
 
 function filtersToParams() {
   var p = new URLSearchParams();
-  var flags = [];
   var q = getQuery();
   if (q) p.set('q', q);
   getSelectedCaps().forEach(function(c) { p.append('c', c); });
@@ -4206,26 +4205,24 @@ function filtersToParams() {
   if (cmin !== 0) p.set('cmin', String(cmin));
   if (cmax !== 1048576) p.set('cmax', String(cmax));
   var ma = document.getElementById('more-audio');
-  if (ma && ma.checked) flags.push('audio');
+  if (ma && ma.checked) p.append('f', 'audio');
   var ml = document.getElementById('more-mlx');
-  if (ml && ml.checked) flags.push('mlx');
+  if (ml && ml.checked) p.append('f', 'mlx');
   var mt = document.getElementById('more-mtp');
-  if (mt && mt.checked) flags.push('mtp');
+  if (mt && mt.checked) p.append('f', 'mtp');
   var mi = document.getElementById('more-image');
-  if (mi && mi.checked) flags.push('image');
+  if (mi && mi.checked) p.append('f', 'image');
   var moe = document.querySelector('input[name="moe-filter"]:checked');
   if (moe && moe.value !== 'all') p.set('moe', moe.value);
   var tpl = document.querySelector('input[name="tpl-filter"]:checked');
   if (tpl && tpl.value !== 'all') p.set('tpl', tpl.value);
-  // Build query string: URLSearchParams for valued params, bare flags appended
-  var qs = p.toString();
-  if (flags.length) qs = qs ? qs + '&' + flags.join('&') : flags.join('&');
-  return qs;
+  return p;
 }
 
 function syncUrlToFilters() {
   if (!document.getElementById('card-list')) return;
-  var qs = filtersToParams();
+  var p = filtersToParams();
+  var qs = p.toString();
   var url = location.pathname + (qs ? '?' + qs : '') + location.hash;
   history.replaceState(null, '', url);
 }
@@ -4267,10 +4264,11 @@ function applyUrlToFilters() {
   if (ctxMax && !isNaN(cmax)) ctxMax.value = Math.max(0, Math.min(1048576, cmax));
   updateContextVisuals();
   function setMore(id, on) { var el = document.getElementById(id); if (el) el.checked = !!on; }
-  setMore('more-audio', p.has('audio'));
-  setMore('more-mlx', p.has('mlx'));
-  setMore('more-mtp', p.has('mtp'));
-  setMore('more-image', p.has('image'));
+  var fFlags = p.getAll('f');
+  setMore('more-audio', fFlags.indexOf('audio') !== -1 || p.has('audio'));
+  setMore('more-mlx', fFlags.indexOf('mlx') !== -1 || p.has('mlx'));
+  setMore('more-mtp', fFlags.indexOf('mtp') !== -1 || p.has('mtp'));
+  setMore('more-image', fFlags.indexOf('image') !== -1 || p.has('image'));
   var moe = p.get('moe') || 'all';
   var moeR = document.querySelector('input[name="moe-filter"][value="' + moe + '"]');
   if (moeR) moeR.checked = true;
