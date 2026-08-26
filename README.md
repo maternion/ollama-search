@@ -4,6 +4,10 @@ An improved static-site mirror of [ollama.com/search](https://ollama.com/search)
 
 **Live site**: [maternion.github.io/ollama-search](https://maternion.github.io/ollama-search/) — auto-refreshes every 2 hours when ollama.com adds or updates models.
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fd2be5a6-fcdc-415d-ac9b-669725b320e2" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/025f48fa-b48b-401a-bd56-2eebab915296" />
+
 ## Structure
 
 ```
