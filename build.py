@@ -4194,7 +4194,8 @@ function filtersToParams() {
   var flags = [];
   var q = getQuery();
   if (q) p.set('q', q);
-  getSelectedCaps().forEach(function(c) { p.append('c', c); });
+  // Capability checkboxes are bare flags: ?vision&tools&thinking
+  getSelectedCaps().forEach(function(c) { flags.push(c); });
   var o = getSort();
   if (o && o !== 'popular') p.set('o', o);
   var cloud = getCloudFilter();
@@ -4237,9 +4238,10 @@ function applyUrlToFilters() {
   var navInput = document.getElementById('navbar-input');
   if (formInput) formInput.value = q;
   if (navInput) navInput.value = q;
-  var caps = p.getAll('c');
+  // Capability checkboxes: bare flags (?vision&tools) or legacy ?c=vision&c=tools
   document.querySelectorAll('.cap-filter').forEach(function(cb) {
-    cb.checked = caps.indexOf(cb.getAttribute('data-cap')) !== -1;
+    var cap = cb.getAttribute('data-cap');
+    cb.checked = p.has(cap) || p.getAll('c').indexOf(cap) !== -1;
   });
   var o = p.get('o') || 'popular';
   var ds = document.getElementById('desktop-sort-select');
