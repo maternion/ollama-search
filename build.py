@@ -1064,7 +1064,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
 
     # Augment ranks with sort orders the scraper does not provide.
     # updated_rank: most-recent tag update, descending (newest update = 0)
-    # oldest_rank: model creation, ascending (oldest model = 0)
+    # oldest_rank: model creation, descending newest_rank (oldest model = 0)
     updated_order = sorted(
         models,
         key=lambda m: _parse_updated_title(m.get("updated_title") or ""),
