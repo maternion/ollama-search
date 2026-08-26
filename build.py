@@ -1487,8 +1487,8 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 if tag.get("format") == "mlx" or "-mlx" in tname.lower():
                     _stats_skipped += 1
                     continue
-                c = parse_context_to_tokens(tag.get("context", "-"))
-                if c <= 0:
+                c_ollama = parse_context_to_tokens(tag.get("context", "-"))
+                if c_ollama <= 0:
                     _stats_skipped += 1
                     continue
                 digest = _resolve_blob_digest(model_path, tname)
@@ -1499,6 +1499,14 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 if not hp:
                     _stats_skipped += 1
                     continue
+                # Prefer the GGUF blob's context_length over ollama.com's tag
+                # context — the blob metadata is more authoritative (e.g.
+                # deepseek-v2:236b shows 4K on ollama.com but the GGUF has
+                # 163840 via YaRN rope scaling).
+                c = hp.get("context_length", c_ollama)
+                if not isinstance(c, (int, float)) or c <= 0:
+                    c = c_ollama
+                c = int(c)
                 # Build the value array: kv_gib at every tick strictly < c,
                 # then a final endpoint at ctx=c.
                 v: list[float] = []
