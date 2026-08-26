@@ -1064,7 +1064,11 @@ def build_index(models: list[dict], ranks: dict) -> None:
 
     # Augment ranks with sort orders the scraper does not provide.
     # updated_rank: most-recent tag update, descending (newest update = 0)
-    # oldest_rank: model creation, descending newest_rank (oldest model = 0)
+    # oldest_rank: oldest tag update, ascending (oldest update = 0)
+    # Both use the parsed updated_title timestamp, NOT newest_rank, because
+    # newest_rank is based on ollama.com's /library?sort=newest creation
+    # order — /x/ and some community models are appended to that list and
+    # get meaningless high ranks that don't reflect their real age.
     updated_order = sorted(
         models,
         key=lambda m: _parse_updated_title(m.get("updated_title") or ""),
@@ -1074,25 +1078,16 @@ def build_index(models: list[dict], ranks: dict) -> None:
         r = profile_ranks if not m.get("official", True) else ranks
         key = m["path"] if not m.get("official", True) else m["name"]
         r.setdefault(key, {})["updated_rank"] = rank
+    # Oldest = oldest update timestamp first (ascending datetime)
     oldest_order = sorted(
         models,
-        key=lambda m: (
-            (profile_ranks if not m.get("official", True) else ranks)
-            .get(m["path"] if not m.get("official", True) else m["name"], {})
-            .get("newest_rank", 9999)
-            == 9999,
-            -(
-                (profile_ranks if not m.get("official", True) else ranks)
-                .get(m["path"] if not m.get("official", True) else m["name"], {})
-                .get("newest_rank", 9999)
-            ),
-        ),
+        key=lambda m: _parse_updated_title(m.get("updated_title") or ""),
     )
     for rank, m in enumerate(oldest_order):
         r = profile_ranks if not m.get("official", True) else ranks
         key = m["path"] if not m.get("official", True) else m["name"]
-        nr = r.get(key, {}).get("newest_rank", 9999)
-        r.setdefault(key, {})["oldest_rank"] = 9999 if nr == 9999 else rank
+        has_ts = bool(m.get("updated_title"))
+        r.setdefault(key, {})["oldest_rank"] = 9999 if not has_ts else rank
 
     sorted_models = sorted(
         models,
