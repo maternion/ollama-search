@@ -3830,6 +3830,26 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
   }
 }
 
+/* --- Graph panel base: position, chrome, default hidden --- */
+#graph-panel {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease, left 0.35s ease, right 0.35s ease, width 0.35s ease;
+  /* shared chrome so both tiers share look: */
+  padding: 1.25rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 1rem;
+  background: #ffffff;
+  z-index: 30;
+  top: 5rem;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 6rem);
+  overflow: hidden;
+}
+
 /* Tier 2b (1080px–1199.98px): graph panel on right, model list anchored left.
    Applies exactly when the >=1200 sidebar is absent but viewport is wide enough
    for a graph. Must come AFTER the 1200-tier block so it wins the cascade for the
@@ -3855,24 +3875,6 @@ html:not(.tab-teams) #pricing-teams-faq { display: none; }
   background-position: right 0.4rem center;
   background-repeat: no-repeat;
   background-size: 1rem;
-}
-#graph-panel {
-  position: fixed;
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease, visibility 0.3s ease, left 0.35s ease, right 0.35s ease, width 0.35s ease;
-  /* shared chrome so both tiers share look: */
-  padding: 1.25rem;
-  border: 1px solid #e5e5e5;
-  border-radius: 1rem;
-  background: #ffffff;
-  z-index: 30;
-  top: 5rem;
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 6rem);
-  overflow: hidden;
 }
 .dark #graph-panel { border-color: #262626; background: #0a0a0a; }
 #graph-legend-row { flex: 0 1 auto; overflow-y: auto; min-height: 0; max-height: 35%; }
@@ -3903,6 +3905,19 @@ body.filters-offscreen #graph-filters-toggle { display: none; }
     right: 2rem;
   }
 }
+/* Tier 2c (1200px–1499.98px): graph panel visible alongside sticky sidebar.
+   The sidebar (#top-row) is position:sticky at this tier, so the
+   filters-offscreen IntersectionObserver never fires — make the graph
+   visible by default, same as the 1080–1199px and >=1500px tiers. */
+@media (min-width: 1200px) and (max-width: 1499.98px) {
+  #graph-panel {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    right: 2rem;
+    width: clamp(280px, calc(50vw - 18rem - 2.5rem - 2rem), 480px);
+  }
+}
 /* Tier 3 (>= 1500px): graph fixed to viewport, right of centered results */
 @media (min-width: 1500px) {
   #graph-panel {
@@ -3927,6 +3942,9 @@ body.filters-offscreen #graph-filters-toggle { display: none; }
   }
   body.filters-offscreen #graph-panel, body.filters-hidden #graph-panel {
     /* panel left edge at 50vw + 2rem, right edge at 4rem from viewport right */
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
     width: var(--graph-w);
     right: 4rem;
   }
