@@ -4134,27 +4134,34 @@ function initNavSuggest() {
   attachInput(input, sp);
   if (mobileInput) attachInput(mobileInput, spMobile || sp);
 
-  sp.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      sp.classList.add('hidden');
-      input.focus();
-      e.preventDefault();
-      return;
-    }
-    if (e.key === 'Enter') {
-      var el = document.activeElement;
-      if (el && el.tagName === 'A') { el.click(); e.preventDefault(); return; }
-    }
-    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-      var items = Array.from(sp.querySelectorAll('#search-preview-list a, #view-all-link'));
-      var ci = items.indexOf(document.activeElement);
-      var ni = e.key === 'ArrowDown' ? ci + 1 : ci - 1;
-      if (ni >= items.length) ni = 0;
-      if (ni < 0) ni = items.length - 1;
-      if (items[ni]) items[ni].focus();
-      e.preventDefault();
-    }
-  });
+  // Arrow key / Enter / Escape navigation, applied to whichever preview
+  // container exists (desktop navbar dropdown and/or index-page mobile drop).
+  function attachKeys(previewEl, inputEl) {
+    if (!previewEl) return;
+    previewEl.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        previewEl.classList.add('hidden');
+        inputEl.focus();
+        e.preventDefault();
+        return;
+      }
+      if (e.key === 'Enter') {
+        var el = document.activeElement;
+        if (el && el.tagName === 'A') { el.click(); e.preventDefault(); return; }
+      }
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        var items = Array.from(previewEl.querySelectorAll('#search-preview-list a, #view-all-link'));
+        var ci = items.indexOf(document.activeElement);
+        var ni = e.key === 'ArrowDown' ? ci + 1 : ci - 1;
+        if (ni >= items.length) ni = 0;
+        if (ni < 0) ni = items.length - 1;
+        if (items[ni]) items[ni].focus();
+        e.preventDefault();
+      }
+    });
+  }
+  attachKeys(sp, input);
+  attachKeys(spMobile, mobileInput);
 }
 
 function copyToClipboard(btn) {
@@ -5088,10 +5095,10 @@ function initApp() {
     document.documentElement.classList.remove('js-init');
   }
 
-  // --- Navbar search preview dropdown (non-search pages only) ---
-  if (!document.getElementById('card-list')) {
-    initNavSuggest();
-  }
+  // --- Search preview dropdown (navbar + index-page mobile search bar) ---
+  // Both #navbar-input (desktop) and #form-input (mobile, index page only)
+  // feed renderNavSuggest(); it renders into the active preview container.
+  initNavSuggest();
   initFmtFilters();
   initGraph();
 }
