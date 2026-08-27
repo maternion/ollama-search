@@ -1506,8 +1506,20 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 for t in m.get("tags", [])
                 if t.get("format") == "mlx" or "-mlx" in (t.get("name", "")).lower()
             ]
-            # Add MLX tags to index_tags so they appear in the by_path graph.
+            # For by_path (KV cache mode): only one MLX curve per size, not
+            # all quant variants. Pick the shortest-named MLX tag for each
+            # size prefix (e.g. "125b-mlx" over "125b-a6b-mlx-bf16"). For
+            # models with no sizes, keep only the single shortest MLX tag.
+            _mlx_by_size: dict[str, str] = {}
             for tn in _mlx_tag_names:
+                # Size prefix = everything before the first dash after the
+                # initial size pattern (e.g. "125b" from "125b-a6b-nvfp4").
+                sm = _qr.match(r"^(\d+(?:\.\d+)?[bm])", tn, _qr.IGNORECASE)
+                sz = sm.group(1) if sm else "_nosize"
+                cur = _mlx_by_size.get(sz)
+                if cur is None or len(tn) < len(cur):
+                    _mlx_by_size[sz] = tn
+            for tn in _mlx_by_size.values():
                 index_tags.add(tn)
             # Detect MTP variants as pseudo-sizes (e.g. "27b-mtp", "35b-a3b-mtp")
             # so they get their own 3-quant set in total memory mode.
@@ -1622,9 +1634,9 @@ def build_index(models: list[dict], ranks: dict) -> None:
                     "fmt": fmt_tag,
                 }
                 # For by_path (index page): only keep main size tags
-                # (e.g. "16b", "236b") — no quant variants. MLX main
-                # size tags are also included.
-                if is_mlx or tname in index_tags:
+                # (e.g. "16b", "236b") — no quant variants. For MLX, only
+                # the primary MLX tag per size is in index_tags.
+                if tname in index_tags:
                     tags_out[tname] = {
                         "c": c,
                         "v": v,
@@ -5817,7 +5829,7 @@ function initGraph() {
         graphFocusModel = (graphFocusModel === mname) ? null : mname;
         applyHoverDim();
         var sub = document.getElementById('graph-subtitle');
-        if (sub) sub.textContent = graphFocusModel ? ('Focused: ' + graphFocusModel) : graphNormalSubtitle;
+        if (sub) sub.textContent = graphFocusModel ? ('Focused: ' + pathDisplayName(graphFocusModel)) : graphNormalSubtitle;
         return;
       }
       // Curve toggle
