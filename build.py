@@ -3447,6 +3447,16 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 
 /* --- search preview dropdown --- */
 #searchpreview { max-height: 24rem; overflow-y: auto; }
+/* Mobile preview: viewport-fixed so it never renders off-screen when the page
+   is scrolled, and capped to the visual viewport (dvh accounts for mobile
+   browser chrome) so the "View all" link stays reachable with the soft
+   keyboard open. */
+#searchpreview-mobile {
+  position: fixed !important;
+  top: 4rem;
+  max-height: calc(100dvh - 80px);
+  overflow-y: auto;
+}
 .dark select option { background-color: #0a0a0a; color: #e5e5e5; }
 .dark .dark\:text-gray-600 { color: #a3a3a3; }
 .dark .dark\:hover\:bg-white\/5:hover { background-color: rgba(255,255,255,0.05); }
@@ -4036,7 +4046,14 @@ function escHtml(s) {
 function renderNavSuggest(query) {
   var sp = document.getElementById('searchpreview');
   var spMobile = document.getElementById('searchpreview-mobile');
-  if (!sp && !spMobile) return;
+  // Only render into the active preview (mobile search bar below md, navbar
+  // input on md+) — avoids duplicate element IDs (view-all-link,
+  // search-preview-list) and keyboard nav targeting a hidden container.
+  var isMobile = window.matchMedia('(max-width: 767px)').matches;
+  var active = isMobile ? (spMobile || sp) : (sp || spMobile);
+  var other = (active === spMobile) ? sp : spMobile;
+  if (!active) return;
+  if (other) { other.classList.add('hidden'); other.innerHTML = ''; }
   var q = query.toLowerCase().trim();
   if (!q) {
     if (sp) { sp.classList.add('hidden'); sp.innerHTML = ''; }
@@ -4044,7 +4061,10 @@ function renderNavSuggest(query) {
     return;
   }
 
-  var html = '<div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl w-full shadow-2xl shadow-black/5 overflow-hidden" id="search-preview-container" tabindex="0">';
+  // No overflow-hidden here: the "View all" link uses sticky bottom-0 and
+  // must stick against the outer scrollable preview container, not this
+  // wrapper. rounded-b-2xl on the link preserves the rounded corners instead.
+  var html = '<div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl w-full shadow-2xl shadow-black/5" id="search-preview-container" tabindex="0">';
   html += '<div role="list" id="search-preview-list" class="group">';
 
   var results = [];
@@ -4065,7 +4085,7 @@ function renderNavSuggest(query) {
   var top = results.slice(0, 5);
 
   if (top.length === 0) {
-    html += '<div class="px-6 py-4 text-neutral-800 dark:text-neutral-300 text-sm">No models found.</div>';
+    html += '<div class="px-6 py-4 rounded-b-2xl text-neutral-800 dark:text-neutral-300 text-sm">No models found.</div>';
   } else {
     for (var i = 0; i < top.length; i++) {
       var m = top[i];
@@ -4080,11 +4100,13 @@ function renderNavSuggest(query) {
   }
 
   html += '</div>';
-  html += '<a tabindex="0" id="view-all-link" href="' + NAV_BASE + '?q=' + encodeURIComponent(query) + '" class="' + (top.length === 0 ? 'hidden' : '') + ' block px-6 py-3 border-t border-neutral-200 dark:border-neutral-800 text-center text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-white/5 focus:bg-neutral-50 dark:focus:bg-white/5 focus:outline-none focus:ring-0 dark:text-neutral-200">View all &#8594;</a>';
+  // sticky bottom-0 keeps "View all" visible when the list scrolls (e.g.
+  // mobile with the soft keyboard shrinking the viewport)
+  html += '<a tabindex="0" id="view-all-link" href="' + NAV_BASE + '?q=' + encodeURIComponent(query) + '" class="' + (top.length === 0 ? 'hidden' : '') + ' sticky bottom-0 rounded-b-2xl bg-white dark:bg-neutral-900 block px-6 py-3 border-t border-neutral-200 dark:border-neutral-800 text-center text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-white/5 focus:bg-neutral-50 dark:focus:bg-white/5 focus:outline-none focus:ring-0 dark:text-neutral-200">View all &#8594;</a>';
   html += '</div>';
 
-  if (sp) { sp.innerHTML = html; sp.classList.remove('hidden'); }
-  if (spMobile) { spMobile.innerHTML = html; spMobile.classList.remove('hidden'); }
+  active.innerHTML = html;
+  active.classList.remove('hidden');
 }
 
 var navSuggestTimer = null;
