@@ -1810,8 +1810,10 @@ def build_index(models: list[dict], ranks: dict) -> None:
           <button type="button" id="graph-hide-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide graph</button>
           <button type="button" id="graph-filters-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide filters</button>
           <select id="graph-mode" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1 pr-7">
-            <option value="kv">KV cache vs Context</option>
-            <option value="total">Total memory vs Context</option>
+            <option value="kv-gguf">KV cache — GGUF</option>
+            <option value="kv-mlx">KV cache — MLX</option>
+            <option value="total-gguf">Total memory — GGUF</option>
+            <option value="total-mlx">Total memory — MLX</option>
           </select>
         </div>
       </div>
@@ -1856,11 +1858,6 @@ def build_index(models: list[dict], ranks: dict) -> None:
       <div id="graph-legend-row" class="flex items-center justify-between mt-2">
         <div id="graph-legend" class="flex flex-wrap gap-x-3 gap-y-1 text-xs"></div>
         <div id="graph-toggles" class="flex gap-1 shrink-0 ml-2">
-          <select id="graph-fmt-filter" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">
-            <option value="all">All formats</option>
-            <option value="gguf">GGUF only</option>
-            <option value="mlx">MLX only</option>
-          </select>
           <button type="button" id="graph-logy" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">logY</button>
           <button type="button" id="graph-all" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">All</button>
           <button type="button" id="graph-none" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">None</button>
@@ -2593,8 +2590,10 @@ def build_detail(m: dict, tags: list[dict]) -> None:
       <div id="graph-subtitle" class="text-sm font-semibold text-neutral-700 dark:text-neutral-300">&nbsp;</div>
       <div class="flex items-center gap-1.5">
         <select id="graph-mode" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1 pr-7">
-          <option value="kv">KV cache vs Context</option>
-          <option value="total">Total memory vs Context</option>
+          <option value="kv-gguf">KV cache — GGUF</option>
+          <option value="kv-mlx">KV cache — MLX</option>
+          <option value="total-gguf">Total memory — GGUF</option>
+          <option value="total-mlx">Total memory — MLX</option>
         </select>
       </div>
     </div>
@@ -2639,11 +2638,6 @@ def build_detail(m: dict, tags: list[dict]) -> None:
     <div id="graph-legend-row" class="flex items-center justify-between mt-2">
       <div id="graph-legend" class="flex flex-wrap gap-x-3 gap-y-1 text-xs"></div>
       <div id="graph-toggles" class="flex gap-1 shrink-0 ml-2">
-        <select id="graph-fmt-filter" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">
-          <option value="all">All formats</option>
-          <option value="gguf">GGUF only</option>
-          <option value="mlx">MLX only</option>
-        </select>
         <button type="button" id="graph-logy" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">logY</button>
         <button type="button" id="graph-all" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">All</button>
         <button type="button" id="graph-none" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">None</button>
@@ -5257,7 +5251,7 @@ var graphNormalSubtitle = '';
 var graphLogY = false;
 var graphCtxCap = 0;  // 0 = no cap (show full range); set by the context slider
 var graphTotalMemory = false;  // false = KV cache only; true = weights + KV cache
-var graphFmtFilter = 'all';  // 'all', 'gguf', or 'mlx' — filter graph curves by format
+var graphFmtFilter = 'all';  // 'all', 'gguf', or 'mlx' — derived from graph-mode dropdown
 var graphModelOverrideList = null;
 var graphOverrideEntry = null;
 
@@ -5877,19 +5871,20 @@ function initGraph() {
     renderGraph();
   });
 
-  // Graph mode dropdown: KV cache vs Total memory
+  // Graph mode dropdown: KV cache / Total memory × GGUF / MLX
   var graphModeSelect = document.getElementById('graph-mode');
   if (graphModeSelect) graphModeSelect.addEventListener('change', function() {
-    graphTotalMemory = (this.value === 'total');
+    var v = this.value;
+    graphTotalMemory = v.indexOf('total') === 0;
+    graphFmtFilter = v.indexOf('gguf') >= 0 ? 'gguf' : v.indexOf('mlx') >= 0 ? 'mlx' : 'all';
     renderGraph();
   });
-
-  // Format filter dropdown: All / GGUF / MLX
-  var graphFmtSelect = document.getElementById('graph-fmt-filter');
-  if (graphFmtSelect) graphFmtSelect.addEventListener('change', function() {
-    graphFmtFilter = this.value;
-    renderGraph();
-  });
+  // Sync initial state from the dropdown's default selected option.
+  if (graphModeSelect) {
+    var iv = graphModeSelect.value;
+    graphTotalMemory = iv.indexOf('total') === 0;
+    graphFmtFilter = iv.indexOf('gguf') >= 0 ? 'gguf' : iv.indexOf('mlx') >= 0 ? 'mlx' : 'all';
+  }
 
   // Context-range slider: custom single-handle slider copied from the filter
   // panel's style. Drag the handle to cap the visible x-range so cramped
