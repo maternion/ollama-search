@@ -5198,7 +5198,7 @@ function graphPalette() {
   return document.documentElement.classList.contains('dark') ? GRAPH_PALETTE : GRAPH_PALETTE_LIGHT;
 }
 var GRAPH_CTX_TICKS = [0, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576, 2097152, 4194304, 8388608];
-var GRAPH_MAX_MODELS = 10;
+var GRAPH_MAX_MODELS = 20;
 var GRAPH_MAX_CURVES = 40;
 var GRAPH_RENDER_TIMER = null;
 
