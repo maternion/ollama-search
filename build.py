@@ -2045,7 +2045,7 @@ def _detail_models_section(m: dict, tags: list[dict]) -> str:
     tables = "\n".join(blocks)
 
     return f"""<section class="flex flex-1 flex-col">
-  <div class="hidden sm:flex items-center justify-between mb-4">
+  <div class="flex items-center justify-between mb-4">
     <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-neutral-100">Models</h2>
     {view_all}
   </div>
