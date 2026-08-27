@@ -5381,6 +5381,9 @@ function renderGraph() {
   // Build curves: [model, tagName, points] where points = [{ctx, gib}]
   var curves = [];
   var droppedModels = 0;
+  // Track which models actually have curves after format filtering,
+  // so "dropped" only counts models with real curves that were cut.
+  var modelsWithCurves = [];
   for (var mi = 0; mi < shownModels.length; mi++) {
     var name = shownModels[mi];
     var m = getModelEntry(name);
@@ -5418,10 +5421,22 @@ function renderGraph() {
       }
       if (pts.length > 0) modelCurves.push([name, tagName, pts]);
     }
+    if (modelCurves.length === 0) continue;  // no curves after format filter
+    modelsWithCurves.push(name);
     // Check if adding this model's curves would exceed GRAPH_MAX_CURVES
     if (curves.length + modelCurves.length > GRAPH_MAX_CURVES) {
-      // Drop entire trailing models where possible
-      droppedModels = shownModels.length - mi;
+      droppedModels = modelsWithCurves.length - 1;  // this model is the first dropped
+      // But only count remaining models that actually have curves
+      for (var mi2 = mi + 1; mi2 < shownModels.length; mi2++) {
+        var m2 = getModelEntry(shownModels[mi2]);
+        if (!m2 || !m2.tags) continue;
+        var hasCurves2 = false;
+        for (var tn2 in m2.tags) {
+          if (graphFmtFilter !== 'all' && m2.tags[tn2].fmt && m2.tags[tn2].fmt !== graphFmtFilter) continue;
+          if (m2.tags[tn2].v && m2.tags[tn2].v.length > 0) { hasCurves2 = true; break; }
+        }
+        if (hasCurves2) droppedModels++;
+      }
       break;
     }
     curves = curves.concat(modelCurves);
