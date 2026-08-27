@@ -1472,9 +1472,6 @@ def build_index(models: list[dict], ranks: dict) -> None:
             # Models with empty sizes fall back to "latest".
             # MLX main tags are also included (they have no quant variants).
             index_tags = set(sizes_list) if sizes_list else {"latest"}
-            # Add MLX tags to index_tags so they appear in the by_path graph.
-            for tn in _mlx_tag_names:
-                index_tags.add(tn)
             # For by_path_all (total memory mode): only 3 quants per size
             # — q4_K_M (the main tag), q8_0, and fp16/bf16.
             import re as _qr
@@ -1509,6 +1506,9 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 for t in m.get("tags", [])
                 if t.get("format") == "mlx" or "-mlx" in (t.get("name", "")).lower()
             ]
+            # Add MLX tags to index_tags so they appear in the by_path graph.
+            for tn in _mlx_tag_names:
+                index_tags.add(tn)
             # Detect MTP variants as pseudo-sizes (e.g. "27b-mtp", "35b-a3b-mtp")
             # so they get their own 3-quant set in total memory mode.
             _mtp_sizes: set[str] = set()
