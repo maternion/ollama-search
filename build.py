@@ -5198,8 +5198,8 @@ function graphPalette() {
   return document.documentElement.classList.contains('dark') ? GRAPH_PALETTE : GRAPH_PALETTE_LIGHT;
 }
 var GRAPH_CTX_TICKS = [0, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576, 2097152, 4194304, 8388608];
-var GRAPH_MAX_MODELS = 20;
-var GRAPH_MAX_CURVES = 40;
+var GRAPH_MAX_MODELS = 999;  // No hard model limit — legend scrolls, curves are the real cap
+var GRAPH_MAX_CURVES = 60;
 var GRAPH_RENDER_TIMER = null;
 
 function fmtGiB(v) {
@@ -5367,7 +5367,6 @@ function renderGraph() {
     var tagNames = Object.keys(m.tags);
     if (tagNames.length === 0) continue;
     shownModels.push(name);
-    if (shownModels.length >= GRAPH_MAX_MODELS) break;
   }
   if (graphFocusModel && shownModels.indexOf(graphFocusModel) === -1) {
     graphFocusModel = null;
@@ -5681,11 +5680,9 @@ function renderGraph() {
       var legendHtml = '';
       for (var mi3 = 0; mi3 < shownModels.length; mi3++) {
         var modelName = shownModels[mi3];
-        // Check if this model has any curves in the final set
-        if (!curveCountByModel[modelName]) {
-          droppedModels = shownModels.length - mi3;
-          break;
-        }
+        // Skip models with no curves in the final set (e.g. GGUF-only
+        // model when MLX filter is selected). Don't count them as dropped.
+        if (!curveCountByModel[modelName]) continue;
         var mTags = getModelEntry(modelName).tags;
         var tagOrder = graphTagOrder(mTags);
         if (curveCountByModel[modelName] === 1) {
