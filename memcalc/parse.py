@@ -5,6 +5,7 @@ import re
 
 __all__ = [
     "extract_hparams",
+    "extract_hparams_from_config",
     "map_arch",
     "get_kv_dtype_bytes",
     "weight_bytes_per_param",
@@ -278,3 +279,124 @@ def get_hparam(hparams: dict, key: str, arch: str, default=None):
     if key in hparams:
         return hparams[key]
     return default
+
+
+def extract_hparams_from_config(config: dict) -> dict:
+    """Convert a HuggingFace-style config.json dict to memcalc hparams.
+
+    This is used for MLX models (whose blob pages on ollama.com expose a
+    config.json rather than GGUF metadata) and as a HuggingFace fallback
+    for frob models. The mapping mirrors the ``key_map`` in the scraper's
+    ``_hf_fetch_base_model_config`` but operates directly on the parsed
+    JSON dict rather than constructing GGUF MetadataEntry objects.
+
+    Returns a hparams dict with the same structure as
+    :func:`extract_hparams` — arch prefix already stripped, keys in the
+    ``attention.*``, ``block_count``, etc. format that memcalc dispatch
+    expects.
+    """
+    tc = config.get("text_config", config)
+
+    arch = tc.get("model_type", config.get("model_type", ""))
+    if not arch:
+        return {}
+
+    # Core keys common to most architectures.
+    key_map = {
+        "num_hidden_layers": "block_count",
+        "num_attention_heads": "attention.head_count",
+        "num_key_value_heads": "attention.head_count_kv",
+        "hidden_size": "embedding_length",
+        "intermediate_size": "feed_forward_length",
+        "max_position_embeddings": "context_length",
+        "head_dim": "attention.key_length",
+        "sliding_window": "attention.sliding_window",
+        "kv_lora_rank": "attention.kv_lora_rank",
+        "q_lora_rank": "attention.q_lora_rank",
+        "first_k_dense_replace": "first_k_dense_replace",
+        "nextn_predict_layers": "nextn_predict_layers",
+        "mtp_num_hidden_layers": "nextn_predict_layers",
+        "full_attention_interval": "full_attention_interval",
+        "num_experts": "num_experts",
+        "num_experts_per_tok": "num_experts_per_tok",
+        "moe_intermediate_size": "expert_feed_forward_length",
+    }
+
+    hparams: dict = {
+        "general.architecture": arch,
+        "general.file_type": "0",
+    }
+
+    for hf_key, gguf_key in key_map.items():
+        val = tc.get(hf_key, config.get(hf_key))
+        if val is not None and not isinstance(val, (dict, list)):
+            hparams[gguf_key] = val
+
+    # attention.value_length — some configs provide it separately.
+    v_head_dim = tc.get("v_head_dim")
+    if v_head_dim is not None:
+        hparams["attention.value_length"] = v_head_dim
+
+    # Hybrid: Gated DeltaNet / linear attention recurrent state.
+    # Map the linear_* config keys to ssm.* / linear.* hparams that
+    # hybrid.py's _compute_recurrent_state can consume.
+    linear_num_key_heads = tc.get("linear_num_key_heads")
+    linear_num_value_heads = tc.get("linear_num_value_heads")
+    linear_key_head_dim = tc.get("linear_key_head_dim")
+    linear_value_head_dim = tc.get("linear_value_head_dim")
+    linear_conv_kernel_dim = tc.get("linear_conv_kernel_dim")
+    if linear_num_key_heads and linear_key_head_dim:
+        hparams["linear.num_key_heads"] = linear_num_key_heads
+        hparams["linear.num_value_heads"] = (
+            linear_num_value_heads or linear_num_key_heads
+        )
+        hparams["linear.key_head_dim"] = linear_key_head_dim
+        hparams["linear.value_head_dim"] = linear_value_head_dim or linear_key_head_dim
+        if linear_conv_kernel_dim:
+            hparams["linear.conv_kernel"] = linear_conv_kernel_dim
+
+    # Indexer attention (Qwen4-Exp n-gram embedding attention).
+    indexer_kv_heads = tc.get("indexer_kv_heads")
+    indexer_head_dim = tc.get("indexer_head_dim")
+    indexer_budget = tc.get("indexer_budget")
+    if indexer_kv_heads and indexer_head_dim:
+        hparams["attention.indexer.head_count_kv"] = indexer_kv_heads
+        hparams["attention.indexer.key_length"] = indexer_head_dim
+        if indexer_budget:
+            hparams["attention.indexer.budget"] = indexer_budget
+
+    # linear_attn_config (Kimi-K3 and similar hybrid models).
+    lac = tc.get("linear_attn_config")
+    if isinstance(lac, dict):
+        n_layers = int(tc.get("num_hidden_layers", 0))
+        full_attn = lac.get("full_attn_layers", [])
+        if full_attn and n_layers > 0:
+            n_kv = int(
+                tc.get("num_key_value_heads", config.get("num_key_value_heads", 0))
+            )
+            kv_arr = [0] * n_layers
+            for idx in full_attn:
+                li = int(idx) - 1
+                if 0 <= li < n_layers:
+                    kv_arr[li] = n_kv
+            hparams["attention.head_count_kv"] = kv_arr
+
+        head_dim_lac = lac.get("head_dim")
+        if head_dim_lac:
+            hparams["linear.head_dim"] = head_dim_lac
+
+        n_heads_lin = int(lac.get("num_heads", 0))
+        conv_k = int(lac.get("short_conv_kernel_size", 0))
+        if n_heads_lin > 0 and head_dim_lac:
+            inner = n_heads_lin * int(head_dim_lac)
+            hparams["ssm.inner_size"] = inner
+            hparams["ssm.state_size"] = head_dim_lac
+            hparams["ssm.group_count"] = n_heads_lin
+            if conv_k > 0:
+                hparams["ssm.conv_kernel"] = conv_k
+
+    # Ensure we have block_count — essential for dispatch.
+    if "block_count" not in hparams:
+        return {}
+
+    return hparams

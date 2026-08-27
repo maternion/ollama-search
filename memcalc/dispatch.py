@@ -31,6 +31,8 @@ HYBRID_ARCHS = {
     "qwen35",
     "qwen35moe",
     "qwen3next",
+    "qwen4_exp",
+    "qwen4exp",
     "granitehybrid",
     "nemotron_h",
     "nemotron_h_moe",
@@ -42,7 +44,16 @@ HYBRID_ARCHS = {
     "plamo2",
 }
 
-SWA_ARCHS = {"gemma2", "gemma3", "gemma3n", "gemma4", "llama4", "mellum", "olmo3", "muse-glimmer"}
+SWA_ARCHS = {
+    "gemma2",
+    "gemma3",
+    "gemma3n",
+    "gemma4",
+    "llama4",
+    "mellum",
+    "olmo3",
+    "muse-glimmer",
+}
 
 
 def detect_family(hparams: dict) -> str:
@@ -67,7 +78,10 @@ def detect_family(hparams: dict) -> str:
         return "standard"
     if arch in HYBRID_ARCHS:
         return "hybrid"
-    if any(k.startswith("ssm.") or k.startswith("shortconv.") for k in hparams):
+    if any(
+        k.startswith("ssm.") or k.startswith("shortconv.") or k.startswith("linear.")
+        for k in hparams
+    ):
         return "hybrid"
     has_swa = hparams.get("attention.sliding_window", 0) or hparams.get(
         "attention.chunk_size", 0

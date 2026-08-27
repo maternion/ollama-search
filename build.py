@@ -1343,6 +1343,9 @@ def build_index(models: list[dict], ranks: dict) -> None:
     graph = {"ticks": GRAPH_TICKS, "models": {}, "by_path": {}, "by_path_all": {}}
     try:
         from memcalc.parse import extract_hparams as _extract_hparams
+        from memcalc.parse import (
+            extract_hparams_from_config as _extract_hparams_from_config,
+        )
         from memcalc.dispatch import compute_memory_at_context as _compute_mem
 
         _blobs_dir = HERE / "scraper" / "blobs"
@@ -1352,7 +1355,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
         _hp_cache: dict[str, dict | None] = {}
 
         def _resolve_blob_digest(model_path: str, tag_name: str) -> str | None:
-            """Resolve a (model_path, tag_name) to a blob digest via the tag page."""
+            """Resolve a (model_path, tag_name) to a GGUF blob digest via the tag page."""
             mp = model_path.strip("/").replace("/", "__")
             tp = TAG_PAGES_DIR / f"{mp}__{tag_name}.json"
             if not tp.exists():
@@ -1366,15 +1369,71 @@ def build_index(models: list[dict], ranks: dict) -> None:
                     return f["blob_url"].rsplit("/", 1)[-1]
             return None
 
+        def _resolve_mlx_config_digest(model_path: str, tag_name: str) -> str | None:
+            """Resolve an MLX tag's config.json blob digest.
+
+            MLX tag pages have type="json" files instead of type="model".
+            The config.json is the smallest json blob that contains a
+            ``model_type`` or ``architectures`` key. We try each json blob,
+            load the cached blob page, and check if its content is a config
+            JSON with model architecture info.
+            """
+            mp = model_path.strip("/").replace("/", "__")
+            tp = TAG_PAGES_DIR / f"{mp}__{tag_name}.json"
+            if not tp.exists():
+                return None
+            try:
+                tp_data = json.loads(tp.read_text())
+            except Exception:
+                return None
+            json_files = [
+                f
+                for f in tp_data.get("files", [])
+                if f.get("type") == "json" and f.get("blob_url")
+            ]
+            # Sort by size ascending — config.json is small (a few KB).
+            # Weight files (13MB+) and tokenizer files are large and won't
+            # have model_type.
+            json_files.sort(key=lambda f: f.get("size", ""))
+            for f in json_files:
+                digest = f["blob_url"].rsplit("/", 1)[-1]
+                bp = _blobs_dir / f"{digest}.json"
+                if not bp.exists():
+                    continue
+                try:
+                    blob_data = json.loads(bp.read_text())
+                    content = blob_data.get("content", "")
+                    if not content:
+                        continue
+                    config = json.loads(content)
+                    if "model_type" in config or "architectures" in config:
+                        return digest
+                except Exception:
+                    continue
+            return None
+
         def _get_hparams(digest: str) -> dict | None:
-            """Return cached hparams for a digest, parsing the blob on first use."""
+            """Return cached hparams for a digest, parsing the blob on first use.
+
+            For GGUF blobs (blob_type="model"), uses extract_hparams which
+            parses GGUF metadata. For MLX blobs (blob_type="json"), uses
+            extract_hparams_from_config which converts the config.json.
+            """
             if digest in _hp_cache:
                 return _hp_cache[digest]
             bp = _blobs_dir / f"{digest}.json"
             hp: dict | None = None
             if bp.exists():
                 try:
-                    hp = _extract_hparams(json.loads(bp.read_text()))
+                    blob_data = json.loads(bp.read_text())
+                    blob_type = blob_data.get("blob_type", "model")
+                    if blob_type == "json" and blob_data.get("content"):
+                        # MLX config.json blob
+                        config = json.loads(blob_data["content"])
+                        hp = _extract_hparams_from_config(config)
+                    else:
+                        # GGUF metadata blob
+                        hp = _extract_hparams(blob_data)
                 except Exception:
                     hp = None
             _hp_cache[digest] = hp
@@ -1383,10 +1442,10 @@ def build_index(models: list[dict], ranks: dict) -> None:
         def _kv_gib(hp: dict, ctx: int) -> float | None:
             """kv_gib at a context, or None if the family is "none"/error.
 
-            For hybrid models, returns only attn_bytes (the part that scales
-            with context) — the recurrent state is a constant offset that
-            doesn't belong on a per-context curve. For non-hybrid models,
-            kv_bytes == attn_bytes so we use kv_bytes.
+            For hybrid models, returns only attn_bytes + indexer_bytes (the
+            parts that scale with context) — the recurrent state is a constant
+            offset that doesn't belong on a per-context curve. For non-hybrid
+            models, kv_bytes == attn_bytes so we use kv_bytes.
             """
             try:
                 r = _compute_mem(hp, ctx, 2.0)
@@ -1395,6 +1454,8 @@ def build_index(models: list[dict], ranks: dict) -> None:
             if r.get("family") == "none":
                 return None
             bytes_val = r.get("attn_bytes", r.get("kv_bytes", 0))
+            # Include indexer bytes (scales with context, capped by budget).
+            bytes_val += r.get("indexer_bytes", 0)
             return round(bytes_val / 1073741824, 4)
 
         _stats_tags = 0
@@ -1409,7 +1470,11 @@ def build_index(models: list[dict], ranks: dict) -> None:
             all_tags_out: dict[str, dict] = {}
             # For by_path (index page): main size tags + MTP q4_K_M tags.
             # Models with empty sizes fall back to "latest".
+            # MLX main tags are also included (they have no quant variants).
             index_tags = set(sizes_list) if sizes_list else {"latest"}
+            # Add MLX tags to index_tags so they appear in the by_path graph.
+            for tn in _mlx_tag_names:
+                index_tags.add(tn)
             # For by_path_all (total memory mode): only 3 quants per size
             # — q4_K_M (the main tag), q8_0, and fp16/bf16.
             import re as _qr
@@ -1436,6 +1501,13 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 for t in m.get("tags", [])
                 if t.get("format") != "mlx"
                 and "-mlx" not in (t.get("name", "")).lower()
+            ]
+            # MLX tag names (for index_tags inclusion — MLX main tags go
+            # straight into the graph without quant filtering).
+            _mlx_tag_names = [
+                t.get("name", "")
+                for t in m.get("tags", [])
+                if t.get("format") == "mlx" or "-mlx" in (t.get("name", "")).lower()
             ]
             # Detect MTP variants as pseudo-sizes (e.g. "27b-mtp", "35b-a3b-mtp")
             # so they get their own 3-quant set in total memory mode.
@@ -1482,16 +1554,17 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 if tname == "cloud" or tname.endswith("-cloud"):
                     _stats_skipped += 1
                     continue
-                # Skip MLX tags — they don't have GGUF blobs, so KV
-                # cache computation doesn't apply.
-                if tag.get("format") == "mlx" or "-mlx" in tname.lower():
-                    _stats_skipped += 1
-                    continue
+                is_mlx = tag.get("format") == "mlx" or "-mlx" in tname.lower()
                 c_ollama = parse_context_to_tokens(tag.get("context", "-"))
                 if c_ollama <= 0:
                     _stats_skipped += 1
                     continue
-                digest = _resolve_blob_digest(model_path, tname)
+                # Resolve blob digest: GGUF tags use type="model", MLX tags
+                # use type="json" (config.json).
+                if is_mlx:
+                    digest = _resolve_mlx_config_digest(model_path, tname)
+                else:
+                    digest = _resolve_blob_digest(model_path, tname)
                 if not digest:
                     _stats_skipped += 1
                     continue
@@ -1537,21 +1610,26 @@ def build_index(models: list[dict], ranks: dict) -> None:
                     continue
                 v_tuple = tuple(v)
                 # For by_path_all (total memory mode): only 3 quants per
-                # size — q4_K_M, q8_0, fp16/bf16.
-                if tname not in _allowed_all:
+                # size — q4_K_M, q8_0, fp16/bf16. MLX tags always included
+                # (they have no quant variants).
+                if not is_mlx and tname not in _allowed_all:
                     continue
+                fmt_tag = "mlx" if is_mlx else "gguf"
                 all_tags_out[tname] = {
                     "c": c,
                     "v": v,
                     "w": round((tag.get("size_bytes") or 0) / 1073741824, 4),
+                    "fmt": fmt_tag,
                 }
                 # For by_path (index page): only keep main size tags
-                # (e.g. "16b", "236b") — no quant variants.
-                if tname in index_tags:
+                # (e.g. "16b", "236b") — no quant variants. MLX main
+                # size tags are also included.
+                if is_mlx or tname in index_tags:
                     tags_out[tname] = {
                         "c": c,
                         "v": v,
                         "w": round((tag.get("size_bytes") or 0) / 1073741824, 4),
+                        "fmt": fmt_tag,
                     }
                     _stats_tags += 1
                     if c > max_c:
@@ -1778,6 +1856,11 @@ def build_index(models: list[dict], ranks: dict) -> None:
       <div id="graph-legend-row" class="flex items-center justify-between mt-2">
         <div id="graph-legend" class="flex flex-wrap gap-x-3 gap-y-1 text-xs"></div>
         <div id="graph-toggles" class="flex gap-1 shrink-0 ml-2">
+          <select id="graph-fmt-filter" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">
+            <option value="all">All formats</option>
+            <option value="gguf">GGUF only</option>
+            <option value="mlx">MLX only</option>
+          </select>
           <button type="button" id="graph-logy" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">logY</button>
           <button type="button" id="graph-all" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">All</button>
           <button type="button" id="graph-none" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">None</button>
@@ -2556,6 +2639,11 @@ def build_detail(m: dict, tags: list[dict]) -> None:
     <div id="graph-legend-row" class="flex items-center justify-between mt-2">
       <div id="graph-legend" class="flex flex-wrap gap-x-3 gap-y-1 text-xs"></div>
       <div id="graph-toggles" class="flex gap-1 shrink-0 ml-2">
+        <select id="graph-fmt-filter" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">
+          <option value="all">All formats</option>
+          <option value="gguf">GGUF only</option>
+          <option value="mlx">MLX only</option>
+        </select>
         <button type="button" id="graph-logy" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">logY</button>
         <button type="button" id="graph-all" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">All</button>
         <button type="button" id="graph-none" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">None</button>
@@ -5151,6 +5239,7 @@ var graphNormalSubtitle = '';
 var graphLogY = false;
 var graphCtxCap = 0;  // 0 = no cap (show full range); set by the context slider
 var graphTotalMemory = false;  // false = KV cache only; true = weights + KV cache
+var graphFmtFilter = 'all';  // 'all', 'gguf', or 'mlx' — filter graph curves by format
 var graphModelOverrideList = null;
 var graphOverrideEntry = null;
 
@@ -5278,6 +5367,8 @@ function renderGraph() {
       var tagName = tagNames[tj];
       var tag = m.tags[tagName];
       if (!tag || !tag.v || tag.v.length === 0) continue;
+      // Filter by format (GGUF/MLX) if the user selected one.
+      if (graphFmtFilter !== 'all' && tag.fmt && tag.fmt !== graphFmtFilter) continue;
       var c = tag.c;
       var w = tag.w || 0;  // model weight GiB (0 if not available)
       var pts = [];
@@ -5772,6 +5863,13 @@ function initGraph() {
   var graphModeSelect = document.getElementById('graph-mode');
   if (graphModeSelect) graphModeSelect.addEventListener('change', function() {
     graphTotalMemory = (this.value === 'total');
+    renderGraph();
+  });
+
+  // Format filter dropdown: All / GGUF / MLX
+  var graphFmtSelect = document.getElementById('graph-fmt-filter');
+  if (graphFmtSelect) graphFmtSelect.addEventListener('change', function() {
+    graphFmtFilter = this.value;
     renderGraph();
   });
 

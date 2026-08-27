@@ -150,6 +150,7 @@ def _compute_recurrent_state(
     embedding_length: int,
     ssm: dict,
     shortconv: dict,
+    linear: dict | None = None,
 ) -> tuple[int, str]:
     """Return ``(recr_state_per_layer, recr_state_type)`` for the recurrent state.
 
@@ -165,6 +166,25 @@ def _compute_recurrent_state(
             n_embd_r = (d_conv - 1) * (d_inner + 2 * n_group * d_state)
             n_embd_s = d_state * d_inner
             return (n_embd_r + n_embd_s) * 4, "ssm"
+
+    # Gated DeltaNet / linear attention recurrent state.
+    # State matrix: num_key_heads * key_head_dim * value_head_dim (delta rule).
+    # Conv cache: (conv_kernel - 1) * (num_key_heads * key_dim
+    #             + num_value_heads * value_dim).
+    if linear:
+        n_key_heads = _to_int(linear.get("num_key_heads"), 0)
+        n_value_heads = _to_int(linear.get("num_value_heads"), 0)
+        key_dim = _to_int(linear.get("key_head_dim"), 0)
+        value_dim = _to_int(linear.get("value_head_dim"), 0)
+        conv_kernel = _to_int(linear.get("conv_kernel"), 0)
+        if n_key_heads > 0 and key_dim > 0 and value_dim > 0:
+            state_matrix = n_key_heads * key_dim * value_dim
+            conv_cache = 0
+            if conv_kernel > 1:
+                conv_cache = (conv_kernel - 1) * (
+                    n_key_heads * key_dim + n_value_heads * value_dim
+                )
+            return (state_matrix + conv_cache) * 4, "gated_deltanet"
 
     if shortconv:
         l_cache = _to_int(shortconv.get("l_cache"), 0)
@@ -285,13 +305,36 @@ def compute_hybrid_kv(hparams: dict, context: int, kv_bpe: float = 2.0) -> dict:
         for k, v in hparams.items()
         if isinstance(k, str) and k.startswith("shortconv.")
     }
+    linear = {
+        k.split(".", 1)[1]: v
+        for k, v in hparams.items()
+        if isinstance(k, str) and k.startswith("linear.")
+    }
 
     recr_state_per_layer, recr_state_type = _compute_recurrent_state(
-        n_recr_layers, embedding_length, ssm, shortconv
+        n_recr_layers, embedding_length, ssm, shortconv, linear
     )
     recr_bytes = n_recr_layers * recr_state_per_layer
 
-    kv_bytes = attn_bytes + recr_bytes
+    # Indexer attention (e.g. Qwen4-Exp n-gram embedding attention). This is
+    # a separate KV cache that scales with context, present on ALL layers
+    # (both attention and recurrent). The indexer uses MQA (1 KV head) with
+    # its own head dimension, and has a budget-capped context window.
+    indexer_kv_heads = _to_int(hparams.get("attention.indexer.head_count_kv"), 0)
+    indexer_head_dim = _to_int(hparams.get("attention.indexer.key_length"), 0)
+    indexer_bytes = 0
+    if indexer_kv_heads > 0 and indexer_head_dim > 0:
+        indexer_budget = _to_int(hparams.get("attention.indexer.budget"), 0)
+        if indexer_budget > 0:
+            indexer_ctx = min(context, indexer_budget)
+        else:
+            indexer_ctx = context
+        # K-only cache (no V for the indexer)
+        indexer_bytes = (
+            n_layers * indexer_ctx * indexer_kv_heads * indexer_head_dim * kv_bpe
+        )
+
+    kv_bytes = attn_bytes + recr_bytes + indexer_bytes
 
     if has_kv_array:
         if kv_array_truncated:
@@ -308,11 +351,14 @@ def compute_hybrid_kv(hparams: dict, context: int, kv_bpe: float = 2.0) -> dict:
         f"{head_dim}dim + recr={n_recr_layers}L*{recr_state_per_layer}B "
         f"({recr_state_type})"
     )
+    if indexer_bytes > 0:
+        formula += f" + idx={n_layers}L*{indexer_kv_heads}kv*{indexer_head_dim}dim"
 
     return {
         "kv_bytes": kv_bytes,
         "attn_bytes": attn_bytes,
         "recr_bytes": recr_bytes,
+        "indexer_bytes": indexer_bytes,
         "n_attn_layers": n_attn_layers,
         "n_recr_layers": n_recr_layers,
         "n_ffn_only_layers": n_ffn_only_layers,
