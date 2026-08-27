@@ -3450,10 +3450,15 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 /* Mobile preview: viewport-fixed so it never renders off-screen when the page
    is scrolled, and capped to the visual viewport (dvh accounts for mobile
    browser chrome) so the "View all" link stays reachable with the soft
-   keyboard open. */
+   keyboard open. Note: left/top are set here, not via Tailwind classes,
+   because the vendored tailwind.css (from ollama.com) lacks .left-4/.top-16 —
+   e.g. without left the fixed box over-constrains and lands off-screen. */
 #searchpreview-mobile {
   position: fixed !important;
   top: 4rem;
+  left: 1rem !important;
+  right: 1rem !important;
+  z-index: 50;
   max-height: calc(100dvh - 80px);
   overflow-y: auto;
 }
