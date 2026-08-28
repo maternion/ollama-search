@@ -2,7 +2,7 @@
 """Simple dev server for ollama-search.
 
 Usage: python3 serve.py [port]
-  Defaults to port 8001 (avoids opencode2 background service which probes 8000).
+  Defaults to port 8001.
 Serves ~/ollama-search/public/ at http://localhost:{PORT}/
 """
 

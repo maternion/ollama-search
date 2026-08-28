@@ -200,7 +200,8 @@ def parse_count(text: str) -> int:
     num = float(m.group(1).replace(",", ""))
     suffix = m.group(2).upper()
     mult = {"": 1, "K": 1_000, "M": 1_000_000, "B": 1_000_000_000}[suffix]
-    return int(num * mult)
+    # round() not int(): 4.1*1e6 would truncate to 4099999.
+    return round(num * mult)
 
 
 def parse_size_bytes(text: str) -> int | None:
@@ -225,7 +226,8 @@ def parse_size_bytes(text: str) -> int | None:
         "TB": 1_000_000_000_000,
         "T": 1_000_000_000_000,
     }.get(unit, 1)
-    return int(num * mult)
+    # round() not int(): 8.2*1e9 would truncate to 8199999999.
+    return round(num * mult)
 
 
 def slugify(path: str) -> str:
@@ -2875,6 +2877,15 @@ def save_models(models: Iterable[Model]) -> None:
         "models": [],
     }
     ms = sorted(models, key=lambda m: (not m.official, m.name.lower()))
+    for m in ms:
+        # cloud_only: has cloud badge and no downloadable local tags.
+        # Computed here so every scrape path (full, targeted, checkpoint)
+        # writes a correct flag.
+        if m.cloud and m.tags:
+            m.cloud_only = not any(
+                t.name != "cloud" and not t.name.endswith("-cloud") and t.size_bytes
+                for t in m.tags
+            )
     data["models"] = [asdict(m) for m in ms]
     data["count"] = len(data["models"])
     fp = DATA / "models.json"
@@ -4491,19 +4502,6 @@ def main(argv: list[str] | None = None) -> int:
             infer_capabilities(models)
             save_models(models.values())
             git_checkpoint("blobs done")
-
-        # Compute cloud_only flag: True if model has cloud badge but no
-        # downloadable local tags (all tags are named "cloud" or have no size).
-        for m in models.values():
-            if m.cloud and m.tags:
-                local_tags = [
-                    t
-                    for t in m.tags
-                    if t.name != "cloud"
-                    and not t.name.endswith("-cloud")
-                    and t.size_bytes
-                ]
-                m.cloud_only = len(local_tags) == 0
 
         # Infer parameter sizes for models whose `sizes` list is empty
         # (ollama.com omits size tags when a model has only one size).

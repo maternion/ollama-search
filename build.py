@@ -1391,10 +1391,24 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 for f in tp_data.get("files", [])
                 if f.get("type") == "json" and f.get("blob_url")
             ]
-            # Sort by size ascending — config.json is small (a few KB).
-            # Weight files (13MB+) and tokenizer files are large and won't
-            # have model_type.
-            json_files.sort(key=lambda f: f.get("size", ""))
+
+            # Sort by parsed size ascending — config.json is small; weight
+            # and tokenizer files are large. Sizes are strings ("202B",
+            # "4.7kB"), so parse to bytes (lexicographic order is wrong).
+            def _size_key(f: dict) -> float:
+                raw = str(f.get("size", "")).strip().lower()
+                m = re.match(r"([\d.]+)\s*([kmgtp]?i?b?)", raw)
+                if not m:
+                    return float("inf")
+                unit = m.group(2).rstrip("b") or ""
+                idx = " kmgt".find(unit[:1]) if unit[:1] in "kmgt" else 0
+                base = 1024 if "i" in unit else 1e3
+                try:
+                    return float(m.group(1)) * (base**idx if unit else 1)
+                except ValueError:
+                    return float("inf")
+
+            json_files.sort(key=_size_key)
             for f in json_files:
                 digest = f["blob_url"].rsplit("/", 1)[-1]
                 bp = _blobs_dir / f"{digest}.json"
@@ -1512,10 +1526,18 @@ def build_index(models: list[dict], ranks: dict) -> None:
             # models with no sizes, keep only the single shortest MLX tag.
             _mlx_by_size: dict[str, str] = {}
             for tn in _mlx_tag_names:
-                # Size prefix = everything before the first dash after the
-                # initial size pattern (e.g. "125b" from "125b-a6b-nvfp4").
-                sm = _qr.match(r"^(\d+(?:\.\d+)?[bm])", tn, _qr.IGNORECASE)
-                sz = sm.group(1) if sm else "_nosize"
+                # Size prefix: try the model's sizes list first (covers
+                # letter sizes like "e2b"), else numeric prefix, else "_nosize".
+                sz = None
+                tl = tn.lower()
+                for sz0 in sizes_list:
+                    s0 = sz0.lower()
+                    if tl == s0 or tl.startswith(s0 + "-"):
+                        sz = s0
+                        break
+                if sz is None:
+                    sm2 = _qr.match(r"^(\d+(?:\.\d+)?[bm])", tn, _qr.IGNORECASE)
+                    sz = sm2.group(1) if sm2 else "_nosize"
                 cur = _mlx_by_size.get(sz)
                 if cur is None or len(tn) < len(cur):
                     _mlx_by_size[sz] = tn
@@ -1551,8 +1573,19 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 fp = _best_quant_tag(_all_tag_names, sz, "fp16")
                 if not fp:
                     fp = _best_quant_tag(_all_tag_names, sz, "bf16")
+                if not fp:
+                    fp = _best_quant_tag(_all_tag_names, sz, "f16")
                 if fp:
                     _allowed_all.add(fp)
+
+            # No-sizes models name quants bare ("q4_K_M", "f16"), which
+            # _best_quant_tag's startswith(size) can never match. Add them
+            # directly so their curves aren't dropped from by_path_all.
+            if not sizes_list:
+                for pat in ("q4_k_m", "q8_0", "fp16", "bf16", "f16"):
+                    qt = _best_quant_tag(_all_tag_names, "", pat)
+                    if qt:
+                        _allowed_all.add(qt)
 
             # Add MTP q4_K_M tags to index_tags for KV cache graph.
             for msz in sorted(_mtp_sizes):
@@ -1706,6 +1739,16 @@ def build_index(models: list[dict], ranks: dict) -> None:
                                 key=lambda kv: (kv[1]["c"], kv[0]),
                             )
                         )
+                        # Dedupe identical curves (same v AND w) — digest
+                        # aliasing can produce perfectly overlapping curves.
+                        _seen_all: dict[tuple, str] = {}
+                        for _tn in list(sorted_all_tags.keys()):
+                            _td = sorted_all_tags[_tn]
+                            _k = (tuple(_td["v"]), _td["w"])
+                            if _k in _seen_all:
+                                del sorted_all_tags[_tn]
+                            else:
+                                _seen_all[_k] = _tn
                         graph["by_path_all"][path_key] = {
                             "ctx": max_c,
                             "tags": sorted_all_tags,
@@ -1719,6 +1762,10 @@ def build_index(models: list[dict], ranks: dict) -> None:
             f"{_stats_tags} tags included, {_stats_skipped} tags skipped"
         )
     except Exception:
+        import traceback
+
+        print("graph-data: build failed, writing empty graph:", file=sys.stderr)
+        traceback.print_exc()
         graph = {"ticks": GRAPH_TICKS, "models": {}, "by_path": {}, "by_path_all": {}}
 
     # Write the graph data JSON (compact) to public/assets/graph-data.json.
@@ -5268,7 +5315,18 @@ var graphModelOverrideList = null;
 var graphOverrideEntry = null;
 
 function getModelEntry(key) {
-  if (graphOverrideEntry) return graphOverrideEntry;
+  if (graphOverrideEntry) {
+    // Detail-page mode: in total-memory mode prefer the by_path_all tag
+    // set (3 quants per size + all MLX variants) over the pinned KV-mode
+    // override entry.
+    if (graphTotalMemory && graphData && graphData.by_path_all) {
+      var allEntry = graphData.by_path_all[key];
+      if (allEntry && allEntry.tags && Object.keys(allEntry.tags).length > 0) {
+        return allEntry;
+      }
+    }
+    return graphOverrideEntry;
+  }
   if (!graphData) return null;
   // In total memory mode, use by_path_all (3 quants per size: q4_K_M,
   // q8_0, fp16). Index page uses by_path for KV cache mode.
@@ -5393,6 +5451,7 @@ function renderGraph() {
       var tagName = tagNames[tj];
       var tag = m.tags[tagName];
       if (!tag || !tag.v || tag.v.length === 0) continue;
+      if (!tag.c || !(tag.c > 0)) continue;  // NaN guard for missing ctx
       // Filter by format (GGUF/MLX) if the user selected one.
       if (graphFmtFilter !== 'all' && tag.fmt && tag.fmt !== graphFmtFilter) continue;
       var c = tag.c;
@@ -5425,7 +5484,7 @@ function renderGraph() {
     modelsWithCurves.push(name);
     // Check if adding this model's curves would exceed GRAPH_MAX_CURVES
     if (curves.length + modelCurves.length > GRAPH_MAX_CURVES) {
-      droppedModels = modelsWithCurves.length - 1;  // this model is the first dropped
+      droppedModels = 1;  // this model is the first dropped
       // But only count remaining models that actually have curves
       for (var mi2 = mi + 1; mi2 < shownModels.length; mi2++) {
         var m2 = getModelEntry(shownModels[mi2]);
