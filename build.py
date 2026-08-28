@@ -1869,10 +1869,10 @@ def build_index(models: list[dict], ranks: dict) -> None:
           <button type="button" id="graph-hide-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide graph</button>
           <button type="button" id="graph-filters-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide filters</button>
           <select id="graph-mode" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1 pr-7">
-            <option value="kv-gguf">KV cache — GGUF</option>
-            <option value="kv-mlx">KV cache — MLX</option>
-            <option value="total-gguf">Total memory — GGUF</option>
-            <option value="total-mlx">Total memory — MLX</option>
+            <option value="kv-gguf">KV cache - GGUF</option>
+            <option value="kv-mlx">KV cache - MLX</option>
+            <option value="total-gguf">Total memory - GGUF</option>
+            <option value="total-mlx">Total memory - MLX</option>
           </select>
         </div>
       </div>
@@ -2649,10 +2649,10 @@ def build_detail(m: dict, tags: list[dict]) -> None:
       <div id="graph-subtitle" class="text-sm font-semibold text-neutral-700 dark:text-neutral-300">&nbsp;</div>
       <div class="flex items-center gap-1.5">
         <select id="graph-mode" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1 pr-7">
-          <option value="kv-gguf">KV cache — GGUF</option>
-          <option value="kv-mlx">KV cache — MLX</option>
-          <option value="total-gguf">Total memory — GGUF</option>
-          <option value="total-mlx">Total memory — MLX</option>
+          <option value="kv-gguf">KV cache - GGUF</option>
+          <option value="kv-mlx">KV cache - MLX</option>
+          <option value="total-gguf">Total memory - GGUF</option>
+          <option value="total-mlx">Total memory - MLX</option>
         </select>
       </div>
     </div>
