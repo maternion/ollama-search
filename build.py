@@ -3638,6 +3638,14 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 .dark .dark\:border-blue-500 { border-color: #3b82f6; }
 /* Focus state */
 .dark .dark\:focus\:border-blue-600:focus { border-color: #2563eb; }
+/* --- Pricing block dark mode ---
+   The vendored tailwind.css lacks dark:sm:* compound variants, so at the sm
+   breakpoint the light `sm:bg-white`/`sm:border-neutral-200` classes win in
+   dark mode and the pricing block renders as a white box. Override with
+   higher-specificity selectors. */
+.dark .pricing-block.sm\:bg-white { background-color: #171717; }
+.dark .pricing-block.sm\:border-neutral-200 { border-color: #262626; }
+
 /* --- Usage section dark mode --- */
 .dark section[data-usage-section] .border-neutral-200 { border-color: #262626 !important; }
 .dark .use-tab.text-neutral-900 { color: #fafafa; }
