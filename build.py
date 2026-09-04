@@ -2492,6 +2492,119 @@ def _header_section(m: dict) -> str:
   </div>"""
 
 
+def _cloud_cost_from_tags(model_path: str, tags: list[dict]) -> dict | None:
+    """Find cloud cost data from tag pages when the base model page lacks it.
+
+    Prefers the ':cloud' tag, then falls back to the first cloud tag.
+    Returns a dict with cloud_cost_input/cached/output/context/unit/size/unit,
+    or None if no cloud tag page has cost data.
+    """
+    # Priority: 'cloud' tag first, then any *-cloud tag
+    cloud_tag_names = []
+    for t in tags:
+        name = t.get("name", "")
+        if name == "cloud" or name.endswith("-cloud"):
+            cloud_tag_names.append(name)
+    # Sort: 'cloud' first, then alphabetical
+    cloud_tag_names.sort(key=lambda n: (n != "cloud", n))
+    for tag_name in cloud_tag_names:
+        tp = load_tag_page(model_path, tag_name)
+        if tp and (tp.get("cloud_cost_input") or tp.get("cloud_cost_output")):
+            return {
+                "cloud_cost_input": tp.get("cloud_cost_input", ""),
+                "cloud_cost_cached": tp.get("cloud_cost_cached", ""),
+                "cloud_cost_output": tp.get("cloud_cost_output", ""),
+                "cloud_context": tp.get("cloud_context", ""),
+                "cloud_context_unit": tp.get("cloud_context_unit", ""),
+                "cloud_size": tp.get("cloud_size", ""),
+                "cloud_size_unit": tp.get("cloud_size_unit", ""),
+                "cloud_usage_level": tp.get("cloud_usage_level", ""),
+                "cloud_usage_active_slots": tp.get("cloud_usage_active_slots", 0),
+            }
+    return None
+
+
+def _cloud_cost_range_from_tags(model_path: str, tags: list[dict]) -> dict | None:
+    """Find min/max cost across all cloud tags for models with multiple
+    cloud variants and no primary ':cloud' tag (e.g. gpt-oss).
+
+    Returns a dict with cloud_cost_input/cached/output as min–max strings
+    plus context/size from the first cloud tag, or None if no cost data.
+    """
+    cloud_tag_names = []
+    for t in tags:
+        name = t.get("name", "")
+        if name == "cloud" or name.endswith("-cloud"):
+            cloud_tag_names.append(name)
+    if not cloud_tag_names:
+        return None
+
+    inputs, outputs, cacheds = [], [], []
+    first_tp = None
+    for tag_name in cloud_tag_names:
+        tp = load_tag_page(model_path, tag_name)
+        if tp and (tp.get("cloud_cost_input") or tp.get("cloud_cost_output")):
+            if first_tp is None:
+                first_tp = tp
+            ci = tp.get("cloud_cost_input", "")
+            co = tp.get("cloud_cost_output", "")
+            cc = tp.get("cloud_cost_cached", "")
+            if ci:
+                inputs.append(ci)
+            if co:
+                outputs.append(co)
+            if cc:
+                cacheds.append(cc)
+
+    if not inputs and not outputs:
+        return None
+
+    def _range(vals: list[str]) -> str:
+        if not vals:
+            return ""
+        parsed = []
+        for v in vals:
+            try:
+                parsed.append((float(v.replace("$", "")), v))
+            except ValueError:
+                pass
+        if not parsed:
+            return vals[0]
+        if len(parsed) == 1:
+            return parsed[0][1]
+        min_v = min(parsed, key=lambda x: x[0])
+        max_v = max(parsed, key=lambda x: x[0])
+        if min_v[0] == max_v[0]:
+            return min_v[1]
+        return f"{min_v[1]}–{max_v[1]}"
+
+    return {
+        "cloud_cost_input": _range(inputs),
+        "cloud_cost_cached": _range(cacheds),
+        "cloud_cost_output": _range(outputs),
+        "cloud_context": first_tp.get("cloud_context", "") if first_tp else "",
+        "cloud_context_unit": first_tp.get("cloud_context_unit", "")
+        if first_tp
+        else "",
+        "cloud_size": first_tp.get("cloud_size", "") if first_tp else "",
+        "cloud_size_unit": first_tp.get("cloud_size_unit", "") if first_tp else "",
+        "cloud_usage_level": "",
+        "cloud_usage_active_slots": 0,
+    }
+
+
+def _has_multiple_cloud_variants(tags: list[dict]) -> bool:
+    """True if the model has several cloud tags and no primary ':cloud' tag
+    (e.g. gpt-oss with :20b-cloud + :120b-cloud) — such models should show
+    a price range rather than a single variant's price."""
+    cloud_tags = [
+        t
+        for t in tags
+        if t.get("name") == "cloud" or t.get("name", "").endswith("-cloud")
+    ]
+    return len(cloud_tags) > 1 and not any(t.get("name") == "cloud" for t in cloud_tags)
+
+
 def _cloud_metrics_section(page_data: dict) -> str:
     """Render the cloud metrics section for cloud models.
 
@@ -2517,41 +2630,50 @@ def _cloud_metrics_section(page_data: dict) -> str:
     if not has_cost and not has_usage and not ctx:
         return ""
 
-    # --- Cost layout (new) ---
+    # --- Cost layout (matches official ollama.com pricing-block) ---
+    # Desktop (sm+): 3-col boxed grid [Cost | Context | Size].
+    # Mobile: no outer box — Cost renders plain on the page background at the
+    # top, Context+Size move into their own boxed 2-col grid below.
     if has_cost:
-        return f"""<div x-test-model-metrics class="!mt-8 grid grid-cols-3 overflow-hidden rounded-lg border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
-  <div x-test-model-cost x-test-model-metric="usage" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4 border-r">
-    <div class="flex items-center justify-between gap-2">
-      <span class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Cost</span>
-      <span class="text-xs text-neutral-400 dark:text-neutral-500">/1M tokens</span>
-    </div>
-    <div class="mt-3 grid grid-cols-1 md:grid-cols-3 gap-1">
-      <div class="flex min-w-0 flex-col gap-1 text-left">
-        <div class="shrink-0 truncate text-xl font-medium leading-none text-black tabular-nums dark:text-neutral-100">{cost_input}</div>
-        <div class="truncate text-xs leading-tight text-neutral-700 dark:text-neutral-300">input</div>
+        return f"""<div x-test-model-metrics class="pricing-block !mt-8 sm:overflow-hidden sm:rounded-lg sm:border sm:border-neutral-200 sm:bg-white dark:sm:border-neutral-800 dark:sm:bg-neutral-900">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-0">
+    <div class="min-w-0 px-4 sm:min-h-24 sm:py-3 md:px-5 md:py-4">
+      <div class="flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <span class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Cost</span>
+          <span class="text-xs text-neutral-400 dark:text-neutral-500">/1M tokens</span>
+        </div>
       </div>
-      <div class="flex min-w-0 flex-col gap-1 text-left">
-        <div class="shrink-0 truncate text-xl font-medium leading-none text-black tabular-nums dark:text-neutral-100">{cost_cached}</div>
-        <div class="truncate text-xs leading-tight text-neutral-700 dark:text-neutral-300">cached</div>
-      </div>
-      <div class="flex min-w-0 flex-col gap-1 text-left">
-        <div class="shrink-0 truncate text-xl font-medium leading-none text-black tabular-nums dark:text-neutral-100">{cost_output}</div>
-        <div class="truncate text-xs leading-tight text-neutral-700 dark:text-neutral-300">output</div>
+      <div class="mt-3 grid grid-cols-3 gap-1">
+        <div class="flex min-w-0 flex-col gap-1 text-left">
+          <div class="shrink-0 truncate text-xl font-medium leading-none text-black tabular-nums dark:text-neutral-100">{cost_input}</div>
+          <div class="truncate text-xs leading-tight text-neutral-700 dark:text-neutral-300">input</div>
+        </div>
+        <div class="flex min-w-0 flex-col gap-1 text-left">
+          <div class="shrink-0 truncate text-xl font-medium leading-none text-black tabular-nums dark:text-neutral-100">{cost_cached}</div>
+          <div class="truncate text-xs leading-tight text-neutral-700 dark:text-neutral-300">cached</div>
+        </div>
+        <div class="flex min-w-0 flex-col gap-1 text-left">
+          <div class="shrink-0 truncate text-xl font-medium leading-none text-black tabular-nums dark:text-neutral-100">{cost_output}</div>
+          <div class="truncate text-xs leading-tight text-neutral-700 dark:text-neutral-300">output</div>
+        </div>
       </div>
     </div>
-  </div>
-  <div x-test-model-metric="context" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4 border-r flex flex-col justify-center">
-    <div class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Context</div>
-    <div class="mt-3 flex min-w-0 flex-col gap-1">
-      <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">{ctx}</span>
-      <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm">{ctx_unit}</span>
-    </div>
-  </div>
-  <div x-test-model-metric="size" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 md:px-5 md:py-4 flex flex-col justify-center">
-    <div class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Size</div>
-    <div class="mt-3 flex min-w-0 flex-col gap-1">
-      <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">{size}</span>
-      <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm">{size_unit}</span>
+    <div class="grid grid-cols-2 overflow-hidden rounded-lg border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900 sm:contents">
+      <div x-test-model-metric="context" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 sm:border-l md:px-5 md:py-4">
+        <div class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Context</div>
+        <div class="mt-3 flex min-w-0 flex-col gap-1">
+          <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">{ctx}</span>
+          <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm">{ctx_unit}</span>
+        </div>
+      </div>
+      <div x-test-model-metric="size" class="min-h-24 min-w-0 border-neutral-200 dark:border-neutral-800 px-4 py-3 border-l sm:border-l md:px-5 md:py-4">
+        <div class="text-[13px] font-medium text-neutral-500 dark:text-neutral-400">Size</div>
+        <div class="mt-3 flex min-w-0 flex-col gap-1">
+          <span class="shrink-0 text-xl font-medium leading-none text-black dark:text-neutral-100">{size}</span>
+          <span class="min-w-0 break-words text-[13px] leading-tight text-neutral-700 dark:text-neutral-300 sm:text-sm">{size_unit}</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>"""
@@ -2614,8 +2736,29 @@ def build_detail(m: dict, tags: list[dict]) -> None:
 
     page_data = load_model_page(m["path"])
     readme_section = _readme_section(page_data) if page_data else ""
-    cloud_metrics = _cloud_metrics_section(page_data) if page_data else ""
     apps_section = _applications_section(page_data) if page_data else ""
+
+    # Cloud metrics: build dynamically from whatever data exists.
+    # Prefer base page data; if it lacks pricing, fall back to cloud tag page
+    # data (per-tag prices). Models with several cloud variants and no primary
+    # ':cloud' tag show a price range across variants.
+    cloud_page_data = page_data
+    if cloud_page_data and not (
+        cloud_page_data.get("cloud_cost_input")
+        or cloud_page_data.get("cloud_cost_output")
+    ):
+        if _has_multiple_cloud_variants(tags):
+            tag_cost = _cloud_cost_range_from_tags(m["path"], tags)
+        else:
+            tag_cost = _cloud_cost_from_tags(m["path"], tags)
+        if tag_cost:
+            cloud_page_data = {**(cloud_page_data or {}), **tag_cost}
+    elif not cloud_page_data:
+        if _has_multiple_cloud_variants(tags):
+            cloud_page_data = _cloud_cost_range_from_tags(m["path"], tags)
+        else:
+            cloud_page_data = _cloud_cost_from_tags(m["path"], tags)
+    cloud_metrics = _cloud_metrics_section(cloud_page_data) if cloud_page_data else ""
 
     graph_key = m["path"].strip("/").lower()
 
