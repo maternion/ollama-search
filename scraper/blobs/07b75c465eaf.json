@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/stablelm2:zephyr/blobs/07b75c465eaf",
+  "content": "<|system|>\n{{ .System }}<|endoftext|>\n<|user|>\n{{ .Prompt }}<|endoftext|>\n<|assistant|>",
+  "digest": "07b75c465eaf",
+  "metadata": [],
+  "size": "88B",
+  "tensor_groups": [],
+  "tensors": []
+}

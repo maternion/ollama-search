@@ -1,0 +1,102 @@
+{
+  "name": "laguna-s-2.1",
+  "path": "/library/laguna-s-2.1",
+  "tags": [
+    {
+      "context": "256K",
+      "digest": "1adabf138c90",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "latest",
+      "size_bytes": 96000000000,
+      "size_text": "96GB",
+      "updated": "1 month ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "1M",
+      "digest": "4d872a0116f7",
+      "format": "mlx",
+      "input_type": "Text",
+      "name": "mxfp8",
+      "size_bytes": 136000000000,
+      "size_text": "136GB",
+      "updated": "6 days ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "1M",
+      "digest": "9971870d882b",
+      "format": "mlx",
+      "input_type": "Text",
+      "name": "nvfp4",
+      "size_bytes": 66000000000,
+      "size_text": "66GB",
+      "updated": "1 week ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "1adabf138c90",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "q4_K_M",
+      "size_bytes": 96000000000,
+      "size_text": "96GB",
+      "updated": "1 month ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "fcc6705b7cd8",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "q8_0",
+      "size_bytes": 128000000000,
+      "size_text": "128GB",
+      "updated": "1 month ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "8bad4c600f65",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "f16",
+      "size_bytes": 235000000000,
+      "size_text": "235GB",
+      "updated": "1 month ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "1M",
+      "digest": "cbc809384a7c",
+      "format": "mlx",
+      "input_type": "Text",
+      "name": "dflash-nvfp4",
+      "size_bytes": 68000000000,
+      "size_text": "68GB",
+      "updated": "1 week ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "1M",
+      "digest": "b5f23d44f7ed",
+      "format": "mlx",
+      "input_type": "Text",
+      "name": "mlx-bf16",
+      "size_bytes": 237000000000,
+      "size_text": "237GB",
+      "updated": "2 weeks ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    }
+  ]
+}

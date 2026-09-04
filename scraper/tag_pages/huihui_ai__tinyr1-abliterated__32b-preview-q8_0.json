@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/huihui_ai/tinyr1-abliterated:32b-preview-q8_0/blobs/88019e5f8bcf",
+      "content_preview": "arch  qwen2",
+      "parameters": "32.8B",
+      "quantization": "Q8_0",
+      "size": "35GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/tinyr1-abliterated:32b-preview-q8_0/blobs/c636d4d25652",
+      "content_preview": "{{- if gt (len .Tools) 0 }}\n<|im_start|>system\n{{- if and (gt (len .Messages) 0) (eq (index .Message",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.7kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/tinyr1-abliterated:32b-preview-q8_0/blobs/cffb3b01e1b6",
+      "content_preview": "apache 2.0",
+      "parameters": "",
+      "quantization": "",
+      "size": "10B",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/tinyr1-abliterated:32b-preview-q8_0/blobs/f4d24e9138dd",
+      "content_preview": "{\n    \"stop\": [\n        \"<｜begin▁of▁sentence｜>\",\n        \"<｜end▁of▁sentence｜>\",",
+      "parameters": "",
+      "quantization": "",
+      "size": "148B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/huihui_ai/tinyr1-abliterated:32b-preview-q8_0",
+  "manifest_digest": "3d2fadf6c7f6",
+  "manifest_size": "35GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/tinyr1-abliterated",
+  "tag_name": "32b-preview-q8_0"
+}

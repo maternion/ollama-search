@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/falcon2:latest/blobs/4d48a029ff4a",
+  "content": "\n{{ if .System }}\nSystem:\n{{ .System }}\n{{ end }}\n{{ if .Prompt }}\nUser:\n{{ .Prompt }}\n{{ end }}\n\nFalcon:\n{{ .Response }}",
+  "digest": "4d48a029ff4a",
+  "metadata": [],
+  "size": "122B",
+  "tensor_groups": [],
+  "tensors": []
+}

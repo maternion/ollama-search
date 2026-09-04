@@ -1,0 +1,66 @@
+{
+  "name": "mistral-medium-3.5",
+  "path": "/library/mistral-medium-3.5",
+  "tags": [
+    {
+      "context": "256K",
+      "digest": "0341632adb05",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "latest",
+      "size_bytes": 80000000000,
+      "size_text": "80GB",
+      "updated": "4 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "0341632adb05",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "128b",
+      "size_bytes": 80000000000,
+      "size_text": "80GB",
+      "updated": "4 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "0341632adb05",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "128b-q4_K_M",
+      "size_bytes": 80000000000,
+      "size_text": "80GB",
+      "updated": "4 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "4e309f1ff6ce",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "128b-q8_0",
+      "size_bytes": 138000000000,
+      "size_text": "138GB",
+      "updated": "4 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "03b1ca2260f6",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "128b-bf16",
+      "size_bytes": 255000000000,
+      "size_text": "255GB",
+      "updated": "4 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    }
+  ]
+}

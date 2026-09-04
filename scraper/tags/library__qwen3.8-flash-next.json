@@ -1,0 +1,42 @@
+{
+  "name": "qwen3.8-flash-next",
+  "path": "/library/qwen3.8-flash-next",
+  "tags": [
+    {
+      "context": "256K",
+      "digest": "ae2130e55774",
+      "format": "mlx",
+      "input_type": "Text, Image",
+      "name": "125b-a6b-mlx-bf16",
+      "size_bytes": 360000000000,
+      "size_text": "360GB",
+      "updated": "1 week ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "c7b96ffe21af",
+      "format": "mlx",
+      "input_type": "Text, Image",
+      "name": "125b-a6b-nvfp4",
+      "size_bytes": 105000000000,
+      "size_text": "105GB",
+      "updated": "1 week ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "c7b96ffe21af",
+      "format": "mlx",
+      "input_type": "Text, Image",
+      "name": "125b-mlx",
+      "size_bytes": 105000000000,
+      "size_text": "105GB",
+      "updated": "1 week ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    }
+  ]
+}

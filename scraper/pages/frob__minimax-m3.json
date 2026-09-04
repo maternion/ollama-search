@@ -1,0 +1,19 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "minimax-m3",
+  "path": "/frob/minimax-m3",
+  "readme_html": "\n        \n          <p>Imported from hf.co/bartowski/MiniMax-M3-GGUF.</p>\n\n<p>The model does support thinking despite the client thinking otherwise.</p>\n\n<h1>Chat/thinking</h1>\n\n<pre><code>$ ollama run frob/minimax-m3\n&gt;&gt;&gt; hello\nThinking...\nThe user sent a simple greeting &#34;hello&#34;. I should respond in a friendly, \nconversational manner. Since this is the start of a conversation, I&#39;ll \ngreet them warmly and offer to help with whatever they need.\n...done thinking.\n\nHello! 👋 Welcome! How can I help you today? Feel free to ask me anything \n— whether it&#39;s a question, a task, or just a chat. I&#39;m here for you! 😊\n\n&gt;&gt;&gt; /clear\nCleared session context\n&gt;&gt;&gt; /set nothink\nwarning: model &#34;frob/minimax-m3&#34; does not support thinking output\nSet &#39;nothink&#39; mode.\n&gt;&gt;&gt; hello\nHello! 👋 Welcome! I&#39;m MiniMax-M3, an AI assistant developed by MiniMax. \nHow can I help you today? Whether you have questions, need assistance with \na task, or just want to chat, I&#39;m here for you!\n</code></pre>\n\n<h1>Tools</h1>\n\n<pre><code>$ ollama launch opencode \\\n    --model frob/minimax-m3 \\\n    -- \\\n    run &#39;create a file called README with the contents &#34;hello world&#34;&#39;\n\n&gt; build · frob/minimax-m3:latest\n\n← Write README\nWrote file successfully.\n\nDone.\n</code></pre>\n\n<pre><code>$ cat README\nhello world\n</code></pre>\n\n<h1>Vision</h1>\n\n<pre><code>$ ollama run frob/minimax-m3\n&gt;&gt;&gt; describe this image ./image1.jpg\nAdded image &#39;./image1.jpg&#39;\nThinking...\nThe user wants me to describe this image. Let me look at it carefully.\n\nI can see a small white puppy sitting on what appears to be a stone or \ntiled surface. The puppy has fluffy white fur, dark eyes, and a black nose. \nIt&#39;s wearing a red collar with what looks like a small bell or charm \nhanging from it. The puppy appears to be looking off to the side. The \nbackground is blurred but suggests an outdoor setting.\n...done thinking.\n\nThis is an adorable photo of a small white puppy sitting on a stone or \ntiled surface. Here are the details I can observe:\n\n**The Puppy:**\n- Small in size, appearing to be quite young\n- Has fluffy, soft-looking white fur\n- Dark, expressive eyes\n- A small black nose\n- Floppy ears that frame its face\n- Sitting in a typical puppy pose with front paws visible\n\n**Accessories:**\n- Wearing a red collar around its neck\n- A small golden bell or charm hangs from the collar\n\n**Setting:**\n- The puppy is perched on what appears to be a light-colored stone step or \nledge with visible texture\n- The background is artfully blurred (shallow depth of field), suggesting \nan outdoor location\n- Soft, natural lighting illuminates the puppy, highlighting its white coat\n\n**Composition:**\n- The photo has a professional, portrait-like quality\n- The puppy is gazing off to the side, giving it a curious and \ncontemplative expression\n- The contrast between the bright white fur and the muted background makes \nthe subject stand out beautifully\n\nThe overall mood of the image is sweet, peaceful, and charming—capturing \nthe innocent appeal of a young dog.\n</code></pre>\n\n        \n      "
+}

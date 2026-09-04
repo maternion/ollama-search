@@ -1,0 +1,128 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:e4b-mlx/blobs/7bb76144da67",
+      "content_preview": "{\"architectures\":[\"Gemma4ForConditionalGeneration\"],\"audio_config\":{\"_name_or_path\":\"\",\"architecture",
+      "parameters": "",
+      "quantization": "",
+      "size": "57kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:e4b-mlx/blobs/fb53f4c64e58",
+      "content_preview": "{\n\"bos_token_id\": 2,\n\"do_sample\": true,\n\"eos_token_id\": [\n1,\n106,\n50\n],\n\"pad_token_id\": 0,\n\"temperat",
+      "parameters": "",
+      "quantization": "",
+      "size": "209B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:e4b-mlx/blobs/03323dd1c0e2",
+      "content_preview": "{\"producer\":{\"name\":\"modelopt\",\"version\":\"0.45.0.dev110+g04f58166a\"},\"quantization\":{\"quant_algo\":\"M",
+      "parameters": "",
+      "quantization": "",
+      "size": "34kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:e4b-mlx/blobs/32bdf45d2ad4",
+      "content_preview": "{\n\"audio_ms_per_token\": 40,\n\"audio_seq_length\": 750,\n\"feature_extractor\": {\n\"dither\": 0.0,\n\"feature_",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.7kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:e4b-mlx/blobs/cc8d3a0ce364",
+      "content_preview": "{\n\"version\": \"1.0\",\n\"truncation\": null,\n\"padding\": null,\n\"added_tokens\": [\n{\n\"id\": 0,\n\"content\": \"<p",
+      "parameters": "",
+      "quantization": "",
+      "size": "32MB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:e4b-mlx/blobs/a284d1243b62",
+      "content_preview": "{\n\"audio_token\": \"<|audio|>\",\n\"backend\": \"tokenizers\",\n\"boa_token\": \"<|audio>\",\n\"boi_token\": \"<|imag",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.7kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:e4b-mlx/blobs/13cdf5418e5a",
+      "content_preview": "{\n\"architectures\": [\n\"Gemma4AssistantForCausalLM\"\n],\n\"audio_token_id\": 258881,\n\"backbone_hidden_size",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.3kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:e4b-mlx/blobs/91346e3d8385",
+      "content_preview": "{\n\"bos_token_id\": 2,\n\"do_sample\": true,\n\"eos_token_id\": 1,\n\"pad_token_id\": 0,\n\"temperature\": 1.0,\n\"t",
+      "parameters": "",
+      "quantization": "",
+      "size": "181B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:e4b-mlx/blobs/75a6583c1a41",
+      "content_preview": "{\n\"version\": \"1.0\",\n\"truncation\": null,\n\"padding\": null,\n\"added_tokens\": [\n{\n\"id\": 0,\n\"content\": \"<p",
+      "parameters": "",
+      "quantization": "",
+      "size": "32MB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:e4b-mlx/blobs/089594a3924f",
+      "content_preview": "{\n\"audio_token\": \"<|audio|>\",\n\"backend\": \"tokenizers\",\n\"boa_token\": \"<|audio>\",\n\"boi_token\": \"<|imag",
+      "parameters": "",
+      "quantization": "",
+      "size": "822B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:e4b-mlx/blobs/a59e1ee2d202",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "10kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:e4b-mlx/blobs/56380ca2ab89",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_k\": 64,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "42B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/gemma4:e4b-mlx",
+  "manifest_digest": "5a08735df03c",
+  "manifest_size": "9.5GB",
+  "manifest_updated": "2 hours ago",
+  "path": "/library/gemma4",
+  "tag_name": "e4b-mlx"
+}

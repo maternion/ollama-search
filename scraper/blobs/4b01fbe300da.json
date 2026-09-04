@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/dolphin3:8b-llama3.1-fp16/blobs/4b01fbe300da",
+  "content": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|im_start|>{{ .Role }}\n{{ .Content }}{{ if not $last }}<|im_end|>\n{{ end }}\n{{- if and (ne .Role \"assistant\") $last }}<|im_end|>\n<|im_start|>assistant\n{{ end }}\n{{- end }}",
+  "digest": "4b01fbe300da",
+  "metadata": [],
+  "size": "255B",
+  "tensor_groups": [],
+  "tensors": []
+}

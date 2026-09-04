@@ -1,0 +1,62 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/internlm3-abliterated:8b-instruct-q8_0/blobs/ae976a3767c9",
+      "content_preview": "arch  llama",
+      "parameters": "8.8B",
+      "quantization": "Q8_0",
+      "size": "9.4GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/internlm3-abliterated:8b-instruct-q8_0/blobs/42b03720547d",
+      "content_preview": "The code is licensed under Apache-2.0, while model weights are fully open for academic research and",
+      "parameters": "",
+      "quantization": "",
+      "size": "400B",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/internlm3-abliterated:8b-instruct-q8_0/blobs/903d6619dc0a",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_end|>\",\n        \"<|action_end|>\",\n        \"</s>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "78B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/internlm3-abliterated:8b-instruct-q8_0/blobs/5e620617b5f3",
+      "content_preview": "You are an AI assistant whose name is InternLM (书生·浦语).\n- InternLM (书生·浦语) is a co",
+      "parameters": "",
+      "quantization": "",
+      "size": "386B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/internlm3-abliterated:8b-instruct-q8_0/blobs/64631f1262e4",
+      "content_preview": "{{ if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}{{ if .Prompt }}<|im_start|>user",
+      "parameters": "",
+      "quantization": "",
+      "size": "181B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/internlm3-abliterated:8b-instruct-q8_0",
+  "manifest_digest": "3bc63b85247e",
+  "manifest_size": "9.4GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/internlm3-abliterated",
+  "tag_name": "8b-instruct-q8_0"
+}

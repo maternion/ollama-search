@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/duckdb-nsql:latest/blobs/cc23c3fcb197",
+  "content": "### Instruction:\nYour task is to generate valid duckdb SQL to answer the following question, given a duckdb database schema.\n\n### Input:\n{{ .System }}\n\n### Question:\n{{ .Prompt }}\n\n### Response (use duckdb shorthand if possible):",
+  "digest": "cc23c3fcb197",
+  "metadata": [],
+  "size": "230B",
+  "tensor_groups": [],
+  "tensors": []
+}

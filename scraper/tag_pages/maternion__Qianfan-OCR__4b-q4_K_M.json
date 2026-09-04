@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen3",
+      "blob_url": "/maternion/Qianfan-OCR:4b-q4_K_M/blobs/7b68c7dc3152",
+      "content_preview": "arch  qwen3",
+      "parameters": "4.42B",
+      "quantization": "Q4_K_M",
+      "size": "2.7GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/Qianfan-OCR:4b-q4_K_M/blobs/088301bfac18",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "645MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/Qianfan-OCR:4b-q4_K_M/blobs/9f9a8ab3ffd7",
+      "content_preview": "{{- $lastUserIdx := -1 -}}\n{{- range $idx, $msg := .Messages -}}\n{{- if eq $msg.Role \"user\" }}{{ $la",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.7kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/maternion/Qianfan-OCR:4b-q4_K_M",
+  "manifest_digest": "65e2fd2d0254",
+  "manifest_size": "3.4GB",
+  "manifest_updated": "3 months ago",
+  "path": "/maternion/Qianfan-OCR",
+  "scraped_at": "2026-07-14T15:15:21.103627+00:00",
+  "tag_name": "4b-q4_K_M"
+}

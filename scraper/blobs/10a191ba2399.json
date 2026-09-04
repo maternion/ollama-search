@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/samantha-mistral:latest/blobs/10a191ba2399",
+  "content": "<|im_start|>system\n{{ .System }}<|im_end|>\n<|im_start|>user\n{{ .Prompt }}<|im_end|>\n<|im_start|>assistant\n",
+  "digest": "10a191ba2399",
+  "metadata": [],
+  "size": "107B",
+  "tensor_groups": [],
+  "tensors": []
+}

@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/maternion/hy-mt2:7b-q4_K_M/blobs/ce76812f1438",
+  "content": "<｜hy_begin▁of▁sentence｜>\n{{- if .System }}{{ .System }}<｜hy_place▁holder▁no▁3｜>{{ end }}\n\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n\n{{- if eq .Role \"user\" -}}\n<｜hy_User｜>{{ .Content }}\n{{- end }}\n\n{{- if eq .Role \"assistant\" -}}\n<｜hy_Assistant｜>{{ .Content }}<｜hy_place▁holder▁no▁2｜>\n{{- end }}\n\n{{- if and $last (ne .Role \"assistant\") -}}\n<｜hy_Assistant｜>\n{{- else -}}\n<｜hy_place▁holder▁no▁8｜>\n{{- end }}\n\n{{- end -}}",
+  "digest": "ce76812f1438",
+  "metadata": [],
+  "size": "510B",
+  "tensor_groups": [],
+  "tensors": []
+}

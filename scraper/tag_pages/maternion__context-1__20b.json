@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gpt-oss",
+      "blob_url": "/maternion/context-1:20b/blobs/ae52c71c84f7",
+      "content_preview": "arch  gpt-oss",
+      "parameters": "20.9B",
+      "quantization": "Q4_K_M",
+      "size": "16GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/context-1:20b/blobs/d8ba2f9a17b3",
+      "content_preview": "{\n    \"temperature\": 1\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "18B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/context-1:20b/blobs/fa6710a93d78",
+      "content_preview": "<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.\nKnowledge cutof",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.2kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/maternion/context-1:20b",
+  "manifest_digest": "ca13ad6c97ad",
+  "manifest_size": "16GB",
+  "manifest_updated": "3 months ago",
+  "path": "/maternion/context-1",
+  "scraped_at": "2026-07-14T15:19:00.273095+00:00",
+  "tag_name": "20b"
+}

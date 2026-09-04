@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/deepseek-coder-v2:236b-base-q3_K_L/blobs/fedbed0ae5d1",
+  "content": "{{- if .Suffix }}<|fim_begin|>{{ .Prompt }}<|fim_hole|>{{ .Suffix }}<|fim_end|>\n{{- else }}{{ .Prompt }}\n{{- end }}",
+  "digest": "fedbed0ae5d1",
+  "metadata": [],
+  "size": "115B",
+  "tensor_groups": [],
+  "tensors": []
+}

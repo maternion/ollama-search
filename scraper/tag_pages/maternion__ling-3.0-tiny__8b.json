@@ -1,0 +1,47 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "bailingmoe3",
+      "blob_url": "/maternion/ling-3.0-tiny:8b/blobs/a54cf3f3acff",
+      "content_preview": "arch  bailingmoe3",
+      "parameters": "7.89B",
+      "quantization": "Q4_K_M",
+      "size": "5.3GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/ling-3.0-tiny:8b/blobs/d44117527a50",
+      "content_preview": "{\n    \"stop\": [\n        \"<role>\",\n        \"<|role_end|>\",\n        \"<think>\",\n        \"<role>HUMAN</r",
+      "parameters": "",
+      "quantization": "",
+      "size": "156B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/ling-3.0-tiny:8b/blobs/6669c74be7d4",
+      "content_preview": "{ .Prompt }",
+      "parameters": "",
+      "quantization": "",
+      "size": "11B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/maternion/ling-3.0-tiny:8b",
+  "manifest_digest": "04fe81219dce",
+  "manifest_size": "5.3GB",
+  "manifest_updated": "17 minutes ago",
+  "path": "/maternion/ling-3.0-tiny",
+  "tag_name": "8b"
+}

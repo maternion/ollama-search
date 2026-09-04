@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen3",
+      "blob_url": "/huihui_ai/deepseek-r1-abliterated:8b/blobs/265b245a8b29",
+      "content_preview": "arch  qwen3",
+      "parameters": "8.19B",
+      "quantization": "Q4_K_M",
+      "size": "5.0GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/deepseek-r1-abliterated:8b/blobs/6e4c38e1172f",
+      "content_preview": "MIT License\nCopyright (c) 2023 DeepSeek\nPermission is hereby granted, free of charge, to any person",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/deepseek-r1-abliterated:8b/blobs/ed8474dc73db",
+      "content_preview": "{\n    \"stop\": [\n        \"<｜begin▁of▁sentence｜>\",\n        \"<｜end▁of▁sentence｜>\",",
+      "parameters": "",
+      "quantization": "",
+      "size": "179B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/deepseek-r1-abliterated:8b/blobs/c5ad996bda6e",
+      "content_preview": "{{- if .System }}{{ .System }}{{ end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice",
+      "parameters": "",
+      "quantization": "",
+      "size": "556B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/deepseek-r1-abliterated:8b",
+  "manifest_digest": "5ae823b61e22",
+  "manifest_size": "5.0GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/deepseek-r1-abliterated",
+  "tag_name": "8b"
+}

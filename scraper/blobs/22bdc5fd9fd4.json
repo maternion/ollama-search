@@ -1,0 +1,10 @@
+{
+  "blob_type": "json",
+  "blob_url": "/library/laguna-xs-2.1:mlx-bf16/blobs/22bdc5fd9fd4",
+  "content": "{\n\"attention_bias\": false,\n\"head_dim\": 128,\n\"hidden_act\": \"silu\",\n\"hidden_size\": 2048,\n\"intermediate_size\": 8192,\n\"max_position_embeddings\": 262144,\n\"model_type\": \"laguna\",\n\"num_attention_heads\": 64,\n\"num_hidden_layers\": 5,\n\"num_key_value_heads\": 8,\n\"rms_norm_eps\": 1e-06,\n\"rope_theta\": 500000.0,\n\"sliding_window\": 512,\n\"vocab_size\": 100352,\n\"layer_types\": [\n\"sliding_attention\",\n\"sliding_attention\",\n\"sliding_attention\",\n\"sliding_attention\",\n\"sliding_attention\"\n],\n\"gating\": \"per-head\",\n\"architectures\": [\n\"DFlashLagunaForCausalLM\"\n],\n\"draft_vocab_size\": 100352,\n\"torch_dtype\": \"bfloat16\",\n\"eagle_aux_hidden_state_layer_ids\": [\n2,\n14,\n26,\n34,\n40\n],\n\"dflash_config\": {\n\"block_size\": 16,\n\"mask_token_id\": 12,\n\"num_target_layers\": 40,\n\"target_layer_ids\": [\n1,\n13,\n25,\n33,\n39\n],\n\"causal\": true\n},\n\"num_experts\": 0\n}",
+  "digest": "22bdc5fd9fd4",
+  "metadata": [],
+  "size": "963B",
+  "tensor_groups": [],
+  "tensors": []
+}

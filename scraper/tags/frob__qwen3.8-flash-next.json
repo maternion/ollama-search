@@ -1,0 +1,102 @@
+{
+  "name": "qwen3.8-flash-next",
+  "path": "/frob/qwen3.8-flash-next",
+  "tags": [
+    {
+      "context": "256K",
+      "digest": "7089eecb6960",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "latest",
+      "size_bytes": 112000000000,
+      "size_text": "112GB",
+      "updated": "2 days ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "7089eecb6960",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "125b",
+      "size_bytes": 112000000000,
+      "size_text": "112GB",
+      "updated": "2 days ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "7089eecb6960",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "125b-a6b",
+      "size_bytes": 112000000000,
+      "size_text": "112GB",
+      "updated": "2 days ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "25c2189c92da",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "125b-a6b-ud-q2_K_XL",
+      "size_bytes": 80000000000,
+      "size_text": "80GB",
+      "updated": "2 days ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "7089eecb6960",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "125b-a6b-ud-q4_K_XL",
+      "size_bytes": 112000000000,
+      "size_text": "112GB",
+      "updated": "2 days ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "d24eace1e928",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "125b-a6b-ud-q6_K_XL",
+      "size_bytes": 170000000000,
+      "size_text": "170GB",
+      "updated": "2 days ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "488a7f768c78",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "125b-a6b-q8_0",
+      "size_bytes": 189000000000,
+      "size_text": "189GB",
+      "updated": "2 days ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "a138cc28689a",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "125b-a6b-bf16",
+      "size_bytes": 355000000000,
+      "size_text": "355GB",
+      "updated": "2 days ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    }
+  ]
+}

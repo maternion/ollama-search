@@ -1,0 +1,83 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-nvfp4/blobs/269faf6a0674",
+      "content_preview": "{\n\"architectures\": [\n\"MuseGlimmerForConditionalGeneration\"\n],\n\"auto_map\": {\n\"AutoConfig\": \"configura",
+      "parameters": "",
+      "quantization": "",
+      "size": "125kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-nvfp4/blobs/3ecbd727359f",
+      "content_preview": "{\n\"bos_token_id\": 200000,\n\"do_sample\": false,\n\"eos_token_id\": [\n200001,\n200008\n],\n\"max_length\": 1310",
+      "parameters": "",
+      "quantization": "",
+      "size": "185B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-nvfp4/blobs/8fa7e6bca5a5",
+      "content_preview": "{\n\"producer\": {\n\"name\": \"modelopt\",\n\"version\": \"0.45.0.dev385+ga23390dbb.d20260731\"\n},\n\"quantization",
+      "parameters": "",
+      "quantization": "",
+      "size": "104kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-nvfp4/blobs/7bada0a11ae9",
+      "content_preview": "{\n\"additional_special_tokens\": [\n\"<|begin_of_text|>\",\n\"<|end_of_text|>\",\n\"<|reserved_special_token_2",
+      "parameters": "",
+      "quantization": "",
+      "size": "79kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-nvfp4/blobs/8a25643f212b",
+      "content_preview": "{\n\"version\": \"1.0\",\n\"truncation\": null,\n\"padding\": null,\n\"added_tokens\": [\n{\n\"id\": 200000,\n\"content\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "36MB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-nvfp4/blobs/2c49783174e6",
+      "content_preview": "{\n\"added_tokens_decoder\": {\n\"200000\": {\n\"content\": \"<|begin_of_text|>\",\n\"lstrip\": false,\n\"normalized",
+      "parameters": "",
+      "quantization": "",
+      "size": "483kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-nvfp4/blobs/56380ca2ab89",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_k\": 64,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "42B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/muse-glimmer:30b-nvfp4",
+  "manifest_digest": "6a78d632287f",
+  "manifest_size": "17GB",
+  "manifest_updated": "18 minutes ago",
+  "path": "/library/muse-glimmer",
+  "tag_name": "30b-nvfp4"
+}

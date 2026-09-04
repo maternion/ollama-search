@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/llama-guard3:1b/blobs/c66236bdb6a5",
+  "content": "{{- $lastIndex := (len (slice .Messages 1)) }}\n{{- $last := index .Messages $lastIndex }}\n{{- $role := \"\"}}\n{{- if eq $last.Role \"user\" }}\n{{- $role = \"User\" }}\n{{- else }}\n{{- $role = \"Agent\" }}\n{{- end }}<|start_header_id|>user<|end_header_id|>\n\nTask: Check if there is unsafe content in '{{ $role }}' messages in conversations according our safety policy with the below categories.\n\n<BEGIN UNSAFE CONTENT CATEGORIES>\nS1: Violent Crimes.\nS2: Non-Violent Crimes.\nS3: Sex Crimes.\nS4: Child Exploitation.\nS5: Defamation.\nS6: Specialized Advice.\nS7: Privacy.\nS8: Intellectual Property.\nS9: Indiscriminate Weapons.\nS10: Hate.\nS11: Self-Harm.\nS12: Sexual Content.\nS13: Elections.\n<END UNSAFE CONTENT CATEGORIES>\n\n<BEGIN CONVERSATION>\n\n{{ range .Messages }}\n{{- if eq .Role \"user\" }}User: {{ .Content }}\n\n{{ else }}Agent: {{ .Content }}\n\n{{ end }}\n{{- end }}<END CONVERSATION>\n\nProvide your safety assessment for ONLY THE LAST User message in the above conversation:\n- First line must read 'safe' or 'unsafe'.\n- If unsafe, a second line must include a comma-separated list of violated categories.<|eot_id|><|start_header_id|>assistant<|end_header_id|>",
+  "digest": "c66236bdb6a5",
+  "metadata": [],
+  "size": "1.2kB",
+  "tensor_groups": [],
+  "tensors": []
+}

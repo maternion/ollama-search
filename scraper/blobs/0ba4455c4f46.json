@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/nous-hermes:70b-llama2-q5_1/blobs/0ba4455c4f46",
+  "content": "### Instruction:\n{{ .Prompt }}\n\n{{- if .System }}\n### Input:\n{{ .System }}\n{{- end }}\n\n### Response:",
+  "digest": "0ba4455c4f46",
+  "metadata": [],
+  "size": "101B",
+  "tensor_groups": [],
+  "tensors": []
+}

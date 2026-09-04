@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/aya:8b-23-q5_K_M/blobs/42499e38acdf",
+  "content": "{{ if .System }}<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|>{{ .System }}<|END_OF_TURN_TOKEN|>{{ end }}{{ if .Prompt }}<|START_OF_TURN_TOKEN|><|USER_TOKEN|>{{ .Prompt }}<|END_OF_TURN_TOKEN|>{{ end }}<|START_OF_TURN_TOKEN|><|CHATBOT_TOKEN|>{{ .Response }}<|END_OF_TURN_TOKEN|>",
+  "digest": "42499e38acdf",
+  "metadata": [],
+  "size": "270B",
+  "tensor_groups": [],
+  "tensors": []
+}

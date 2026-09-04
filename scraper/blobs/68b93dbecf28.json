@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/huihui_ai/marco-o1-abliterated:latest/blobs/68b93dbecf28",
+  "content": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|im_start|>{{ .Role }}\n{{ .Content }}{{ if not $last }}<|im_end|>\n{{ end }}\n{{- if and (ne .Role \"assistant\") $last }}<|im_start|>assistant\n{{ end }}\n{{- end }}",
+  "digest": "68b93dbecf28",
+  "metadata": [],
+  "size": "244B",
+  "tensor_groups": [],
+  "tensors": []
+}

@@ -1,0 +1,29 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen3",
+      "blob_url": "/library/qwen3-embedding:8b/blobs/3fcd3febec8b",
+      "content_preview": "arch  qwen3",
+      "parameters": "7.57B",
+      "quantization": "Q4_K_M",
+      "size": "4.7GB",
+      "type": "model"
+    }
+  ],
+  "full_path": "/library/qwen3-embedding:8b",
+  "manifest_digest": "64b933495768",
+  "manifest_size": "4.7GB",
+  "manifest_updated": "10 months ago",
+  "path": "/library/qwen3-embedding",
+  "tag_name": "8b"
+}

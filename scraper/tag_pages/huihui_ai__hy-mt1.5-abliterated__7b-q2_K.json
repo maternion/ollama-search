@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "hunyuan-dense",
+      "blob_url": "/huihui_ai/hy-mt1.5-abliterated:7b-q2_K/blobs/165cd1cad32e",
+      "content_preview": "arch  hunyuan-dense",
+      "parameters": "7.5B",
+      "quantization": "Q2_K",
+      "size": "3.0GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/hy-mt1.5-abliterated:7b-q2_K/blobs/4ceb1d78f4c2",
+      "content_preview": "{{ $has_head := true }}\n{{ if .System }}<|startoftext|>{{ .System }}<|extra_4|>{{ else }}{{ $has_hea",
+      "parameters": "",
+      "quantization": "",
+      "size": "419B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/hy-mt1.5-abliterated:7b-q2_K/blobs/ebbd49dd8772",
+      "content_preview": "TENCENT HY COMMUNITY LICENSE AGREEMENT\nTencent HY-MT1.5 Release Date: December 30, 2025\nTHIS LICENSE",
+      "parameters": "",
+      "quantization": "",
+      "size": "16kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/hy-mt1.5-abliterated:7b-q2_K/blobs/4b98b1f4c59c",
+      "content_preview": "{\n    \"repeat_penalty\": 1\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "21B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/huihui_ai/hy-mt1.5-abliterated:7b-q2_K",
+  "manifest_digest": "0ad28e0ab4fd",
+  "manifest_size": "3.0GB",
+  "manifest_updated": "6 months ago",
+  "path": "/huihui_ai/hy-mt1.5-abliterated",
+  "tag_name": "7b-q2_K"
+}

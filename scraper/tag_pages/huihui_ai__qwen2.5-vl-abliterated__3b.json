@@ -1,0 +1,62 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen25vl",
+      "blob_url": "/huihui_ai/qwen2.5-vl-abliterated:3b/blobs/50a1d4b6eda8",
+      "content_preview": "arch  qwen25vl",
+      "parameters": "3.75B",
+      "quantization": "Q4_K_M",
+      "size": "3.2GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen2.5-vl-abliterated:3b/blobs/75357d685f23",
+      "content_preview": "You are a helpful assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "28B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen2.5-vl-abliterated:3b/blobs/832dd9e00a68",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen2.5-vl-abliterated:3b/blobs/52d2a7aa3a38",
+      "content_preview": "{\n    \"temperature\": 0.0001\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "23B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/qwen2.5-vl-abliterated:3b/blobs/a242d8dfdc8f",
+      "content_preview": "{{- if .System -}}\n<|im_start|>system\n{{ .System }}<|im_end|>\n{{- end -}}\n{{- range $i, $_ := .Messa",
+      "parameters": "",
+      "quantization": "",
+      "size": "487B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/qwen2.5-vl-abliterated:3b",
+  "manifest_digest": "67f505b225fb",
+  "manifest_size": "3.2GB",
+  "manifest_updated": "8 months ago",
+  "path": "/huihui_ai/qwen2.5-vl-abliterated",
+  "tag_name": "3b"
+}

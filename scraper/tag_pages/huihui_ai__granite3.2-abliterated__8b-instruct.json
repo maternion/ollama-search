@@ -1,0 +1,44 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "granite",
+      "blob_url": "/huihui_ai/granite3.2-abliterated:8b-instruct/blobs/ebb719ae7fde",
+      "content_preview": "arch  granite",
+      "parameters": "8.17B",
+      "quantization": "Q4_K_M",
+      "size": "4.9GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/granite3.2-abliterated:8b-instruct/blobs/c1007dd5e083",
+      "content_preview": "{{- /*\n------ MESSAGE PARSING ------\n*/}}\n{{- /*\nDeclare the prompt structure variables to be filled",
+      "parameters": "",
+      "quantization": "",
+      "size": "6.0kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/granite3.2-abliterated:8b-instruct/blobs/2e68075caee4",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/huihui_ai/granite3.2-abliterated:8b-instruct",
+  "manifest_digest": "52c897b14c7e",
+  "manifest_size": "4.9GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/granite3.2-abliterated",
+  "tag_name": "8b-instruct"
+}

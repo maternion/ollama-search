@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "deepseek2",
+      "blob_url": "/huihui_ai/kimi-k2:latest/blobs/1f54e330a036",
+      "content_preview": "arch  deepseek2",
+      "parameters": "1.03T",
+      "quantization": "Q2_K",
+      "size": "373GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/kimi-k2:latest/blobs/25445adecbdc",
+      "content_preview": "{{ if .Tools }}<|im_system|>tool_declare<|im_middle|>{{ .Tools }}<|im_end|>{{ end }}\n{{ range $index",
+      "parameters": "",
+      "quantization": "",
+      "size": "728B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/kimi-k2:latest/blobs/efed41266ca7",
+      "content_preview": "Modified MIT License\nCopyright (c) 2025 Moonshot AI\nPermission is hereby granted, free of charge, to",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/kimi-k2:latest/blobs/8ca96d27c642",
+      "content_preview": "{\n    \"num_gpu\": 1,\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end",
+      "parameters": "",
+      "quantization": "",
+      "size": "132B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/huihui_ai/kimi-k2:latest",
+  "manifest_digest": "f72d14c3db1b",
+  "manifest_size": "373GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/kimi-k2",
+  "tag_name": "latest"
+}

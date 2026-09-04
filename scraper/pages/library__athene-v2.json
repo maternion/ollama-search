@@ -1,0 +1,40 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model athene-v2",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch opencode --model athene-v2",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    },
+    {
+      "command": "ollama launch hermes --model athene-v2",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch openclaw --model athene-v2",
+      "icon_url": "/public/openclaw.svg",
+      "name": "OpenClaw"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "athene-v2",
+  "path": "/library/athene-v2",
+  "readme_html": "\n        \n          <h1>Athene-V2</h1>\n\n<p>Nexusflow’s Athene-V2 chat model, built on Qwen 2.5’s 72B foundation, achieves GPT-4o-level performance across key benchmarks while demonstrating how targeted optimization can enhance specific capabilities beyond traditional scaling approaches.</p>\n\n<h2>Model Features</h2>\n\n<ul>\n<li><strong>72B parameters</strong> fine-tuned from Qwen 2.5</li>\n<li><strong>State-of-the-art chat performance</strong> matching or exceeding GPT-4o</li>\n<li><strong>Superior code completion</strong> (ranking #2 on bigcode-bench-hard)</li>\n<li><strong>Enhanced mathematics capabilities</strong> (MATH benchmark)</li>\n<li><strong>Precise long-form log extraction</strong></li>\n<li><strong>Advanced post-training pipeline</strong> pushing the Pareto frontier</li>\n</ul>\n\n<p><img src=\"https://ollama.com/assets/library/athene-v2/99424f56-1e23-4f31-8dfa-4fc46eb6305f\" width=\"460\"/></p>\n\n<h2>References</h2>\n\n<p><a href=\"https://nexusflow.ai/blogs/athene-v2\" rel=\"nofollow\">Blog post</a></p>\n\n<p><a href=\"https://huggingface.co/Nexusflow/Athene-V2-Chat\" rel=\"nofollow\">HuggingFace</a></p>\n\n        \n      "
+}

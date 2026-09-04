@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/wizardlm2:7b-q2_K/blobs/245f91e42bbb",
+  "content": "{{ if .System }}{{ .System }} {{ end }}{{ if .Prompt }}USER: {{ .Prompt }} {{ end }}ASSISTANT: {{ .Response }}",
+  "digest": "245f91e42bbb",
+  "metadata": [],
+  "size": "110B",
+  "tensor_groups": [],
+  "tensors": []
+}

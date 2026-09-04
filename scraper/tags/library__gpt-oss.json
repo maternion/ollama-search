@@ -1,0 +1,66 @@
+{
+  "name": "gpt-oss",
+  "path": "/library/gpt-oss",
+  "tags": [
+    {
+      "context": "128K",
+      "digest": "17052f91a42e",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "latest",
+      "size_bytes": 14000000000,
+      "size_text": "14GB",
+      "updated": "10 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "128K",
+      "digest": "17052f91a42e",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "20b",
+      "size_bytes": 14000000000,
+      "size_text": "14GB",
+      "updated": "10 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "128K",
+      "digest": "a951a23b46a1",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "120b",
+      "size_bytes": 65000000000,
+      "size_text": "65GB",
+      "updated": "10 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "128K",
+      "digest": "875e8e3a629a",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "20b-cloud",
+      "size_bytes": 20,
+      "size_text": "20b",
+      "updated": "11 months ago",
+      "usage_active_slots": 1,
+      "usage_level": "low"
+    },
+    {
+      "context": "128K",
+      "digest": "569662207105",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "120b-cloud",
+      "size_bytes": 120,
+      "size_text": "120b",
+      "updated": "11 months ago",
+      "usage_active_slots": 2,
+      "usage_level": "medium"
+    }
+  ]
+}

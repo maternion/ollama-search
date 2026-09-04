@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "minimax-m2",
+      "blob_url": "/frob/minimax-m2.7:230b-a10b-q4_K_M/blobs/8ea35a40a541",
+      "content_preview": "arch  minimax-m2",
+      "parameters": "229B",
+      "quantization": "Q4_K_M",
+      "size": "148GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/minimax-m2.7:230b-a10b-q4_K_M/blobs/4c006c39acf1",
+      "content_preview": "NON-COMMERCIAL LICENSE\nNon-commercial use permitted based on MIT-style terms; commercial use require",
+      "parameters": "",
+      "quantization": "",
+      "size": "3.2kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/minimax-m2.7:230b-a10b-q4_K_M/blobs/d3cd8304aca0",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_k\": 40,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "42B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/minimax-m2.7:230b-a10b-q4_K_M/blobs/d9e5da9b4eee",
+      "content_preview": "{{- $lastUserIdx := -1 -}}\n{{- range $idx, $msg := .Messages -}}\n{{- if eq $msg.Role \"user\" }}{{ $la",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.7kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/frob/minimax-m2.7:230b-a10b-q4_K_M",
+  "manifest_digest": "a62d707b2ceb",
+  "manifest_size": "148GB",
+  "manifest_updated": "3 months ago",
+  "path": "/frob/minimax-m2.7",
+  "tag_name": "230b-a10b-q4_K_M"
+}

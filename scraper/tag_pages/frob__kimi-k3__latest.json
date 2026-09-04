@@ -1,0 +1,47 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "kimi-k3",
+      "blob_url": "/frob/kimi-k3:latest/blobs/2e982578e2c1",
+      "content_preview": "arch  kimi-k3",
+      "parameters": "2.78T",
+      "quantization": "Q2_K",
+      "size": "861GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/kimi-k3:latest/blobs/20c797ce19af",
+      "content_preview": "Kimi K3 License\nCopyright (c) 2026 Moonshot AI\nPermission is hereby granted, free of charge, to any",
+      "parameters": "",
+      "quantization": "",
+      "size": "3.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/kimi-k3:latest/blobs/12e88b2a8727",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_p\": 1\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "28B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/frob/kimi-k3:latest",
+  "manifest_digest": "4de81d560272",
+  "manifest_size": "861GB",
+  "manifest_updated": "2 days ago",
+  "path": "/frob/kimi-k3",
+  "tag_name": "latest"
+}

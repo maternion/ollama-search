@@ -1,0 +1,62 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/microthinker:3b-preview-q4_K_M/blobs/a267a0897b89",
+      "content_preview": "arch  llama",
+      "parameters": "3.21B",
+      "quantization": "Q4_K_M",
+      "size": "2.0GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/microthinker:3b-preview-q4_K_M/blobs/fcc5a6bec9da",
+      "content_preview": "LLAMA 3.2 COMMUNITY LICENSE AGREEMENT\nLlama 3.2 Version Release Date: September 25, 2024\n“Agreemen",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.7kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/microthinker:3b-preview-q4_K_M/blobs/a70ff7e570d9",
+      "content_preview": "**Llama 3.2** **Acceptable Use Policy**\nMeta is committed to promoting safe and fair use of its tool",
+      "parameters": "",
+      "quantization": "",
+      "size": "6.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/microthinker:3b-preview-q4_K_M/blobs/56bb8bd477a5",
+      "content_preview": "{\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",\n        \"<|eot_id|>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "96B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/microthinker:3b-preview-q4_K_M/blobs/966de95ca8a6",
+      "content_preview": "<|start_header_id|>system<|end_header_id|>\nCutting Knowledge Date: December 2023\n{{ if .System }}{{",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.4kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/microthinker:3b-preview-q4_K_M",
+  "manifest_digest": "a178bcf7bb3b",
+  "manifest_size": "2.0GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/microthinker",
+  "tag_name": "3b-preview-q4_K_M"
+}

@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/huihui_ai/acereason-nemotron-abliterated:7b-q4_K_M/blobs/153f99e36cc1",
+      "content_preview": "arch  qwen2",
+      "parameters": "7.62B",
+      "quantization": "Q4_K_M",
+      "size": "4.7GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/acereason-nemotron-abliterated:7b-q4_K_M/blobs/869feade9338",
+      "content_preview": "{{- if .Messages }}\n{{- if .System }}<｜System｜>\n{{ .System }}<｜end▁of▁sentence｜>\n{{- end",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.9kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/acereason-nemotron-abliterated:7b-q4_K_M/blobs/2582ede62410",
+      "content_preview": "NVIDIA Open Model License Agreement\nLast Modified: April 28, 2025\nThis NVIDIA Open Model License Agr",
+      "parameters": "",
+      "quantization": "",
+      "size": "9.7kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/acereason-nemotron-abliterated:7b-q4_K_M/blobs/9737e63d712e",
+      "content_preview": "{\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"<｜User｜>\",\n        \"<｜Assistant｜>\",",
+      "parameters": "",
+      "quantization": "",
+      "size": "167B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/huihui_ai/acereason-nemotron-abliterated:7b-q4_K_M",
+  "manifest_digest": "30394bc468bb",
+  "manifest_size": "4.7GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/acereason-nemotron-abliterated",
+  "tag_name": "7b-q4_K_M"
+}

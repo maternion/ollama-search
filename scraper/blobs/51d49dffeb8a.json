@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/frob/hy-mt1.5:latest/blobs/51d49dffeb8a",
+  "content": "<｜hy_begin▁of▁sentence｜>\n{{- if .System }}{{ .System }}<｜hy_place▁holder▁no▁3｜>{{ end }}\n\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n\n{{- if eq .Role \"user\" -}}\n<｜hy_User｜>{{ .Content }}\n{{- end }}\n\n{{- if eq .Role \"assistant\" -}}\n<｜hy_Assistant｜>{{ .Content }}<｜hy_place▁holder▁no▁2｜>\n{{- end }}\n\n{{- if and $last (ne .Role \"assistant\") -}}\n<｜hy_Assistant｜>\n{{- else -}}\n<｜hy_place▁holder▁no▁8｜>\n{{- end }}\n\n{{- end -}}",
+  "digest": "51d49dffeb8a",
+  "metadata": [],
+  "size": "511B",
+  "tensor_groups": [],
+  "tensors": []
+}

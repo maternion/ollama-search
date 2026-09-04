@@ -1,0 +1,19 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "kimi-k3",
+  "path": "/frob/kimi-k3",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://hf.co/unsloth/Kimi-K3-GGUF/\" rel=\"nofollow\">https://hf.co/unsloth/Kimi-K3-GGUF/</a>.</p>\n\n<p>This model is currently text-only.  Vision support <a href=\"https://github.com/unslothai/llama.cpp/pull/70\" rel=\"nofollow\">pending</a>.</p>\n\n<p>Needs ollama 0.32.15+.</p>\n\n<h1>Chat/thinking</h1>\n\n<p>Note that the ollama client claims that the model does not support thinking.  This is incorrect, the ollama capabilities detection is incomplete.</p>\n\n<pre><code>$ ollama run frob/kimi-k3 \n&gt;&gt;&gt; hello\nThinking...\nThe user just said &#34;hello&#34; - a simple greeting. This is an extremely simple\nconversational opener with no complex content to analyze.\n\nLet me think about what the appropriate response format should be. The\nguidelines are clear:\n- Casual conversation should get short responses\n- Greetings shouldn&#39;t be met with long formatted responses\n- I shouldn&#39;t pad responses with unnecessary content\n- &#34;Hello&#34; is a simple greeting that deserves a simple, warm greeting back\n\nI should:\n1. Greet them back warmly\n2. Perhaps offer to help, but keep it brief\n3. Not use bullet points, headers, or any markdown formatting\n4. Keep it conversational and natural\n\nA good response would be something like &#34;Hello! How can I help you today?&#34;\nor something similarly brief and friendly. I shouldn&#39;t over-explain or write\nparagraphs. Just a natural,  warm greeting that opens the door for them to\nshare what they&#39;d like help with.\n\nFormat check: This should be very short - one or two sentences max. No headers,\nno bullets, no lists. Just conversational text.\n...done thinking.\n\nHello! How can I help you today?\n\n&gt;&gt;&gt; /clear\nCleared session context\n&gt;&gt;&gt; /set nothink\nwarning: model &#34;frob/kimi-k3&#34; does not support thinking output\nSet &#39;nothink&#39; mode.\n&gt;&gt;&gt; hello\nHello! Nice to meet you. I&#39;m Kimi, and I&#39;m here to help with whatever you \nneed—whether that&#39;s answering questions, helping with writing, brainstorming \nideas, coding assistance, or just having a conversation.\n\nWhat can I do for you today?\n\n</code></pre>\n\n<h1>Tools</h1>\n\n<pre><code>$ ollama launch opencode \\\n    --model frob/kimi-k3 \\\n    -- \\\n    run &#39;create a file called README with the contents &#34;hello world&#34;&#39;\n\n&gt; build · frob/kimi-k3:latest\n\n← Write README\nWrote file successfully.\n\nCreated `/home/rick/ollama/issues/kimi-k3/README` with contents `hello world`.\n</code></pre>\n\n<pre><code>$ cat README \nhello world\n</code></pre>\n\n        \n      "
+}

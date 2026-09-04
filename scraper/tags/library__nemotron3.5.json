@@ -1,0 +1,138 @@
+{
+  "name": "nemotron3.5",
+  "path": "/library/nemotron3.5",
+  "tags": [
+    {
+      "context": "1M",
+      "digest": "e7a64ff15fb1",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "latest",
+      "size_bytes": 25000000000,
+      "size_text": "25GB",
+      "updated": "7 hours ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "1M",
+      "digest": "e7a64ff15fb1",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "30b",
+      "size_bytes": 25000000000,
+      "size_text": "25GB",
+      "updated": "7 hours ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "1M",
+      "digest": "e7a64ff15fb1",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "30b-a3b",
+      "size_bytes": 25000000000,
+      "size_text": "25GB",
+      "updated": "7 hours ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "8b1474be6e54",
+      "format": "mlx",
+      "input_type": "Text",
+      "name": "30b-a3b-mlx",
+      "size_bytes": 23000000000,
+      "size_text": "23GB",
+      "updated": "8 hours ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "1M",
+      "digest": "e7a64ff15fb1",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "30b-a3b-q4_K_M",
+      "size_bytes": 25000000000,
+      "size_text": "25GB",
+      "updated": "7 hours ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "1M",
+      "digest": "9983b24ee511",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "30b-a3b-q8_0",
+      "size_bytes": 35000000000,
+      "size_text": "35GB",
+      "updated": "7 hours ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "1M",
+      "digest": "721c64cd61ac",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "30b-a3b-bf16",
+      "size_bytes": 66000000000,
+      "size_text": "66GB",
+      "updated": "7 hours ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "7bf11b5991ed",
+      "format": "mlx",
+      "input_type": "Text",
+      "name": "30b-a3b-mlx-bf16",
+      "size_bytes": 66000000000,
+      "size_text": "66GB",
+      "updated": "8 hours ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "906068bad076",
+      "format": "mlx",
+      "input_type": "Text",
+      "name": "30b-a3b-mxfp8",
+      "size_bytes": 34000000000,
+      "size_text": "34GB",
+      "updated": "8 hours ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "8b1474be6e54",
+      "format": "mlx",
+      "input_type": "Text",
+      "name": "30b-a3b-nvfp4",
+      "size_bytes": 23000000000,
+      "size_text": "23GB",
+      "updated": "8 hours ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "8b1474be6e54",
+      "format": "mlx",
+      "input_type": "Text",
+      "name": "30b-mlx",
+      "size_bytes": 23000000000,
+      "size_text": "23GB",
+      "updated": "8 hours ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "glm-5.3",
+  "path": "/frob/glm-5.3",
+  "readme_html": "\n        \n          <p>Imported from <a href=\"https://hf.co/unsloth/GLM-5.3-GGUF\" rel=\"nofollow\">https://hf.co/unsloth/GLM-5.3-GGUF</a>.</p>\n\n<h1>Chat/thinking</h1>\n\n<p>The model template doesn’t have a way to disable thinking.  It supports reasoning levels of <code>low</code>, <code>high</code> and <code>max</code>, with <code>max</code> being the default.</p>\n\n<pre><code>$ ollama run frob/glm-5.3\n&gt;&gt;&gt; hello\nThinking...\nLet me consider how to respond to this greeting thoughtfully.\n\nThe user has started with a simple &#34;hello&#34; - this is likely the beginning \nof a conversation. I should respond in a way that&#39;s both welcoming and \nopen-ended.\n\nFirst, I&#39;ll acknowledge their greeting warmly. Then I should introduce \nmyself briefly to establish context. Since this is an initial interaction, \nI should also express my willingness to help while inviting them to share \nwhat&#39;s on their mind.\n\nI need to make sure my response feels natural and conversational, not \noverly formal or robotic. It would be good to end with an open question \nthat encourages them to continue the dialogue.\n\nThe key is to create a friendly atmosphere where they feel comfortable \nsharing what they need assistance with. This initial exchange sets the tone \nfor our entire conversation, so it&#39;s important to get it right.\n\nLet me craft a response that&#39;s welcoming, informative, and encourages \nfurther conversation.\n...done thinking.\n\nHello! I&#39;m GLM, trained by Z.ai. Nice to meet you, and I hope you&#39;re having \na great day.\n\nDo you have any questions or topics of interest I can help you with? I’m \nhappy to assist you.\n</code></pre>\n\n<h1>Tools</h1>\n\n<pre><code>$ ollama launch opencode \\\n    --model frob/glm-5.3 \\\n    -- \\\n    run &#39;create a file called README with the contents &#34;hello world&#34;&#39;\n\n&gt; build · frob/glm-5.3:latest\n\n← Write README\nWrote file successfully.\n\nCreated `README` with &#34;hello world&#34;.\n</code></pre>\n\n<pre><code>$ cat README\nhello world\n</code></pre>\n\n        \n      "
+}

@@ -1,0 +1,62 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gemma4",
+      "blob_url": "/huihui_ai/gemma-4-abliterated:E4b-qat/blobs/64434f2da081",
+      "content_preview": "arch  gemma4",
+      "parameters": "7.46B",
+      "quantization": "Q4_K_M",
+      "size": "5.3GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/gemma-4-abliterated:E4b-qat/blobs/ed22c2c5277b",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "992MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/gemma-4-abliterated:E4b-qat/blobs/0d542e0c8804",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "10kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/gemma-4-abliterated:E4b-qat/blobs/56380ca2ab89",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_k\": 64,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "42B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/gemma-4-abliterated:E4b-qat/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/gemma-4-abliterated:E4b-qat",
+  "manifest_digest": "dfd76c1ed95c",
+  "manifest_size": "6.3GB",
+  "manifest_updated": "1 month ago",
+  "path": "/huihui_ai/gemma-4-abliterated",
+  "tag_name": "E4b-qat"
+}

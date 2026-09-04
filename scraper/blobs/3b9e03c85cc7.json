@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/huihui_ai/arcee-blitz-abliterated:latest/blobs/3b9e03c85cc7",
+  "content": "{{- /* Define default system message */ -}}\n{{- $default_system_message := \"You are Virtouso Medium 3, a Large Language Model (LLM) created by Arcee AI.\\nYour knowledge base is continuously updated, so you have current information.\\n\\nWhen you're not sure about some information, you say that you don't have the information and don't make up anything.\\nIf the user's question is not clear, ambiguous, or does not provide enough context for you to accurately answer the question, you do not try to answer it right away and you rather ask the user to clarify their request (e.g. \\\"What are some good restaurants around me?\\\" => \\\"Where are you?\\\" or \\\"When is the next flight to Tokyo\\\" => \\\"Where do you travel from?\\\")\" -}}\n\n{{- /* Declare variables at the top level */ -}}\n{{- $system_message := $default_system_message -}}\n{{- $loop_messages := .Messages -}}\n\n{{- /* Override variables if first message is system */ -}}\n{{- if and (len .Messages) (eq (index .Messages 0).Role \"system\") -}}\n{{- $system_message = (index .Messages 0).Content -}}\n{{- $loop_messages = slice .Messages 1 (len .Messages) -}}\n{{- end -}}\n\n{{- /* Output system prompt */ -}}\n{{- printf \"[SYSTEM_PROMPT]%s[/SYSTEM_PROMPT]\" $system_message -}}\n\n{{- /* Iterate over messages */ -}}\n{{- range $loop_messages -}}\n{{- if eq .Role \"user\" -}}\n{{- printf \"[INST]%s[/INST]\" .Content -}}\n{{- else if eq .Role \"system\" -}}\n{{- printf \"[SYSTEM_PROMPT]%s[/SYSTEM_PROMPT]\" .Content -}}\n{{- else if eq .Role \"assistant\" -}}\n{{- .Content -}}\n{{- else -}}\n{{- printf \"Error: Only user, system and assistant roles are supported!\" -}}\n{{- end -}}\n{{- end -}}",
+  "digest": "3b9e03c85cc7",
+  "metadata": [],
+  "size": "1.7kB",
+  "tensor_groups": [],
+  "tensors": []
+}

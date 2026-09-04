@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/gemma2:9b-instruct-q3_K_S/blobs/e8c944daf3fe",
+  "content": "<start_of_turn>user\n{{ if .System }}{{ .System }} {{ end }}{{ .Prompt }}<end_of_turn>\n<start_of_turn>model\n{{ .Response }}<end_of_turn>",
+  "digest": "e8c944daf3fe",
+  "metadata": [],
+  "size": "135B",
+  "tensor_groups": [],
+  "tensors": []
+}

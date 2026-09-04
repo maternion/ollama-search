@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/rnj-1:latest/blobs/d588893e14d0",
+  "content": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\nYou are rnj-1, a foundation model trained by Essential AI.\n{{- if .System }}\n\n{{ .System }}\n{{- end }}\n{{- if .Tools }}\n\n# Tools\n\nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{{- range .Tools }}\n{{ . }}\n{{- end }}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n{{- end }}<|eot_id|>\n{{- range $i, $_ := .Messages }}\n{{- if eq .Role \"system\" }}{{ continue }}{{ end }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if eq .Role \"user\" }}<|start_header_id|>user<|end_header_id|>\n{{ .Content }}<|eot_id|>\n{{- else if eq .Role \"assistant\" }}<|start_header_id|>assistant<|end_header_id|>\n{{ if .Content }}{{ .Content }}{{ end }}\n{{- if .ToolCalls }}\n{{- range .ToolCalls }}\n<tool_call>\n{\"name\": \"{{ .Function.Name }}\", \"arguments\": {{ .Function.Arguments }}}\n</tool_call>\n{{- end }}\n{{- end }}{{ if not $last }}<|eot_id|>{{ end }}\n{{- else if eq .Role \"tool\" }}<|start_header_id|>user<|end_header_id|>\n<tool_response>\n{{ .Content }}\n</tool_response><|eot_id|>\n{{- end }}\n{{- if and (ne .Role \"assistant\") $last }}<|start_header_id|>assistant<|end_header_id|>\n{{ end }}\n{{- end }}",
+  "digest": "d588893e14d0",
+  "metadata": [],
+  "size": "1.4kB",
+  "tensor_groups": [],
+  "tensors": []
+}

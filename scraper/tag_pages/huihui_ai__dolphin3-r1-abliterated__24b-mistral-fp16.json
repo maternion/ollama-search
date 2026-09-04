@@ -1,0 +1,44 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/dolphin3-r1-abliterated:24b-mistral-fp16/blobs/2095d9c30548",
+      "content_preview": "arch  llama",
+      "parameters": "23.6B",
+      "quantization": "F16",
+      "size": "47GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/dolphin3-r1-abliterated:24b-mistral-fp16/blobs/f02dd72bb242",
+      "content_preview": "{\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/dolphin3-r1-abliterated:24b-mistral-fp16/blobs/62fbfd9ed093",
+      "content_preview": "{{ if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}{{ if .Prompt }}<|im_start|>user",
+      "parameters": "",
+      "quantization": "",
+      "size": "182B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/dolphin3-r1-abliterated:24b-mistral-fp16",
+  "manifest_digest": "72bd2498a3fe",
+  "manifest_size": "47GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/dolphin3-r1-abliterated",
+  "tag_name": "24b-mistral-fp16"
+}

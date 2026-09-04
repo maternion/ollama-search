@@ -1,0 +1,114 @@
+{
+  "name": "nemotron-3-nano",
+  "path": "/library/nemotron-3-nano",
+  "tags": [
+    {
+      "context": "1M",
+      "digest": "b725f1117407",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "latest",
+      "size_bytes": 24000000000,
+      "size_text": "24GB",
+      "updated": "8 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "6cc467f05439",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "4b",
+      "size_bytes": 2800000000,
+      "size_text": "2.8GB",
+      "updated": "5 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "1M",
+      "digest": "b725f1117407",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "30b",
+      "size_bytes": 24000000000,
+      "size_text": "24GB",
+      "updated": "8 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "c534497d032c",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "4b-q8_0",
+      "size_bytes": 4200000000,
+      "size_text": "4.2GB",
+      "updated": "5 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "4bc6e34d03fb",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "4b-bf16",
+      "size_bytes": 8000000000,
+      "size_text": "8.0GB",
+      "updated": "5 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "1M",
+      "digest": "b725f1117407",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "30b-a3b-q4_K_M",
+      "size_bytes": 24000000000,
+      "size_text": "24GB",
+      "updated": "8 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "1M",
+      "digest": "a98df31bcc4a",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "30b-a3b-q8_0",
+      "size_bytes": 34000000000,
+      "size_text": "34GB",
+      "updated": "8 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "1M",
+      "digest": "69eb03c51301",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "30b-a3b-fp16",
+      "size_bytes": 63000000000,
+      "size_text": "63GB",
+      "updated": "8 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "1M",
+      "digest": "01d0d069a149",
+      "format": "gguf",
+      "input_type": "Text",
+      "name": "30b-cloud",
+      "size_bytes": 30,
+      "size_text": "30b",
+      "updated": "8 months ago",
+      "usage_active_slots": 1,
+      "usage_level": "low"
+    }
+  ]
+}

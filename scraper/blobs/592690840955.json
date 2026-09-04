@@ -1,0 +1,22 @@
+{
+  "blob_type": "model",
+  "blob_url": "/x/canary:local-v1/blobs/592690840955",
+  "content": "",
+  "digest": "592690840955",
+  "metadata": [
+    {
+      "key": "general.architecture",
+      "value": "canary"
+    }
+  ],
+  "size": "8.4MB",
+  "tensor_groups": [],
+  "tensors": [
+    {
+      "dtype": "F32",
+      "group": "",
+      "name": "canary.weights",
+      "shape": "[2097152]"
+    }
+  ]
+}

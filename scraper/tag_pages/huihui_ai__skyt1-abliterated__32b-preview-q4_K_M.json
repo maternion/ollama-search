@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/huihui_ai/skyt1-abliterated:32b-preview-q4_K_M/blobs/e523f791f90d",
+      "content_preview": "arch  qwen2",
+      "parameters": "32.8B",
+      "quantization": "Q4_K_M",
+      "size": "20GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/skyt1-abliterated:32b-preview-q4_K_M/blobs/50795fcf7f4d",
+      "content_preview": "You are a helpful and harmless assistant. You are Qwen developed by Alibaba. You should think step-b",
+      "parameters": "",
+      "quantization": "",
+      "size": "107B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/skyt1-abliterated:32b-preview-q4_K_M/blobs/b87250e4478f",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/skyt1-abliterated:32b-preview-q4_K_M/blobs/41190096a061",
+      "content_preview": "{{- if or .System .Tools }}<|im_start|>system\n{{- if .System }}\n{{ .System }}\n{{- end }}\n{{- if .Too",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.2kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/skyt1-abliterated:32b-preview-q4_K_M",
+  "manifest_digest": "cef16596dd74",
+  "manifest_size": "20GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/skyt1-abliterated",
+  "tag_name": "32b-preview-q4_K_M"
+}

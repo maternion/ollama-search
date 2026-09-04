@@ -1,0 +1,83 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "",
+      "blob_url": "/library/laguna-s-2.1:mlx-bf16/blobs/8309d2ab0da8",
+      "content_preview": "{\n\"architectures\": [\n\"LagunaForCausalLM\"\n],\n\"auto_map\": {\n\"AutoConfig\": \"configuration_laguna.Laguna",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.6kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/laguna-s-2.1:mlx-bf16/blobs/81ff120c8c67",
+      "content_preview": "{\n\"bos_token_id\": 2,\n\"do_sample\": true,\n\"eos_token_id\": [\n2,\n24\n],\n\"pad_token_id\": 9,\n\"temperature\":",
+      "parameters": "",
+      "quantization": "",
+      "size": "479B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/laguna-s-2.1:mlx-bf16/blobs/70cd3459fde6",
+      "content_preview": "{\n\"bos_token\": \"〈|EOS|〉\",\n\"cls_token\": \"〈|CLS|〉\",\n\"eos_token\": \"〈|EOS|〉\",\n\"mask_token\":",
+      "parameters": "",
+      "quantization": "",
+      "size": "214B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/laguna-s-2.1:mlx-bf16/blobs/809240f7a182",
+      "content_preview": "{\n\"version\": \"1.0\",\n\"truncation\": null,\n\"padding\": null,\n\"added_tokens\": [\n{\n\"id\": 0,\n\"content\": \"�",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.3MB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/laguna-s-2.1:mlx-bf16/blobs/177718c1d4b0",
+      "content_preview": "{\n\"added_tokens_decoder\": {\n\"0\": {\n\"content\": \"〈|UNK|〉\",\n\"lstrip\": false,\n\"normalized\": false,\n\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "17kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/laguna-s-2.1:mlx-bf16/blobs/6195643943c0",
+      "content_preview": "{\n\"attention_bias\": false,\n\"head_dim\": 128,\n\"hidden_act\": \"silu\",\n\"hidden_size\": 3072,\n\"intermediate",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/laguna-s-2.1:mlx-bf16/blobs/8a0c5e232551",
+      "content_preview": "OpenMDW License Agreement, version 1.1 (OpenMDW-1.1)\nBy exercising rights granted to you under this",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.6kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/library/laguna-s-2.1:mlx-bf16",
+  "manifest_digest": "b5f23d44f7ed",
+  "manifest_size": "237GB",
+  "manifest_updated": "2 hours ago",
+  "path": "/library/laguna-s-2.1",
+  "tag_name": "mlx-bf16"
+}

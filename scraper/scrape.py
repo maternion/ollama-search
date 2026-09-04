@@ -2807,14 +2807,11 @@ def infer_capabilities(models: dict[str, Model]) -> None:
                 caps.append("tools")
             if "thinking" not in caps and "thinking" in desc:
                 caps.append("thinking")
-        # Audio: omni/multimodal models often describe audio/speech support
-        # (e.g. nemotron3 "Nemotron 3 Nano Omni ... unifies video, audio,
-        # image, and text understanding"). ollama.com doesn't show an audio
-        # badge, so infer from description keywords. Independent of the
-        # tools/thinking guard above.
-        if "audio" not in caps:
-            desc = (m.description or "").lower()
-            if (
+            # Audio: omni/multimodal models often describe audio/speech support
+            # (e.g. nemotron3 "Nemotron 3 Nano Omni ... unifies video, audio,
+            # image, and text understanding"). ollama.com doesn't show an audio
+            # badge, so infer from description/readme keywords.
+            if "audio" not in caps and (
                 "audio" in desc
                 or "speech" in desc
                 or "transcription" in desc
@@ -2873,25 +2870,7 @@ def infer_capabilities(models: dict[str, Model]) -> None:
                         or "...done thinking" in rh_text
                     ):
                         caps.append("thinking")
-                except Exception:
-                    pass
-
-        # Check readme content for audio signals (independent of the
-        # tools/thinking guard so models with those caps still get audio).
-        if "audio" not in caps:
-            page_file = pages_dir / (slugify(path) + ".json")
-            if page_file.exists():
-                try:
-                    pdata = json.loads(page_file.read_text())
-                    rh = (pdata.get("readme_html") or "").lower()
-                    rh_text = strip_tags(rh)
-                    import re as _re
-
-                    rh_headings = _re.findall(
-                        r"<h[1-6][^>]*>(.*?)</h[1-6]>", rh, _re.DOTALL
-                    )
-                    heading_text = " ".join(strip_tags(h) for h in rh_headings)
-                    if (
+                    if "audio" not in caps and (
                         "audio" in heading_text
                         or "speech" in heading_text
                         or "transcription" in heading_text

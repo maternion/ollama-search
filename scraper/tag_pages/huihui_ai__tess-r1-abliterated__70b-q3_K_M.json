@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/tess-r1-abliterated:70b-q3_K_M/blobs/e7d18bd2e8cf",
+      "content_preview": "arch  llama",
+      "parameters": "70.6B",
+      "quantization": "Q3_K_M",
+      "size": "34GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/tess-r1-abliterated:70b-q3_K_M/blobs/330f7f5f7417",
+      "content_preview": "{{- if .System }}<|start_header_id|>system<|end_header_id|>\n{{ .System }}<|eot_id|>\n{{- end }}\n{{- r",
+      "parameters": "",
+      "quantization": "",
+      "size": "249B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/tess-r1-abliterated:70b-q3_K_M/blobs/1e89cc49c220",
+      "content_preview": "You are Tess-R1, an advanced AI that was created for complex reasoning. Given a user query, you are",
+      "parameters": "",
+      "quantization": "",
+      "size": "431B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/tess-r1-abliterated:70b-q3_K_M/blobs/3b98c9f59b59",
+      "content_preview": "{\n    \"stop\": [\n        \"<|end_of_text|>\",\n        \"<|eot_id|>\"\n    ],\n    \"temperature\": 0.75,",
+      "parameters": "",
+      "quantization": "",
+      "size": "102B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/huihui_ai/tess-r1-abliterated:70b-q3_K_M",
+  "manifest_digest": "dc40204d1026",
+  "manifest_size": "34GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/tess-r1-abliterated",
+  "tag_name": "70b-q3_K_M"
+}

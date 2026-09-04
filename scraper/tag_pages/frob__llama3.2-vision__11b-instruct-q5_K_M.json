@@ -1,0 +1,62 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "mllama",
+      "blob_url": "/frob/llama3.2-vision:11b-instruct-q5_K_M/blobs/5793489acfa6",
+      "content_preview": "arch  mllama",
+      "parameters": "9.78B",
+      "quantization": "Q5_K_M",
+      "size": "7.0GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/llama3.2-vision:11b-instruct-q5_K_M/blobs/ece5e659647a",
+      "content_preview": "arch  mllama",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.9GB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/llama3.2-vision:11b-instruct-q5_K_M/blobs/0b4284c1f870",
+      "content_preview": "LLAMA 3.2 COMMUNITY LICENSE AGREEMENT\nLlama 3.2 Version Release Date: September 25, 2024\n“Agreemen",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.7kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/llama3.2-vision:11b-instruct-q5_K_M/blobs/fefc914e46e6",
+      "content_preview": "{\n    \"temperature\": 0.6,\n    \"top_p\": 0.9\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "32B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/llama3.2-vision:11b-instruct-q5_K_M/blobs/715415638c9c",
+      "content_preview": "{{- range $index, $_ := .Messages }}<|start_header_id|>{{ .Role }}<|end_header_id|>\n{{ .Content }}\n{",
+      "parameters": "",
+      "quantization": "",
+      "size": "269B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/frob/llama3.2-vision:11b-instruct-q5_K_M",
+  "manifest_digest": "f7772131a5b0",
+  "manifest_size": "8.9GB",
+  "manifest_updated": "1 year ago",
+  "path": "/frob/llama3.2-vision",
+  "tag_name": "11b-instruct-q5_K_M"
+}

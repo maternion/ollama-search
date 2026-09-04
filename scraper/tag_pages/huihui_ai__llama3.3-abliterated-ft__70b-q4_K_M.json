@@ -1,0 +1,62 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/llama3.3-abliterated-ft:70b-q4_K_M/blobs/0f9ff4db22d2",
+      "content_preview": "arch  llama",
+      "parameters": "70.6B",
+      "quantization": "Q4_K_M",
+      "size": "43GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/llama3.3-abliterated-ft:70b-q4_K_M/blobs/bc371a43ce90",
+      "content_preview": "LLAMA 3.3 COMMUNITY LICENSE AGREEMENT\nLlama 3.3 Version Release Date: December 6, 2024\n“Agreement�",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.6kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/llama3.3-abliterated-ft:70b-q4_K_M/blobs/53a87df39647",
+      "content_preview": "Llama 3.3 Acceptable Use Policy\nMeta is committed to promoting safe and fair use of its tools and fe",
+      "parameters": "",
+      "quantization": "",
+      "size": "5.6kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/llama3.3-abliterated-ft:70b-q4_K_M/blobs/56bb8bd477a5",
+      "content_preview": "{\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",\n        \"<|eot_id|>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "96B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/llama3.3-abliterated-ft:70b-q4_K_M/blobs/948af2743fc7",
+      "content_preview": "{{- if or .System .Tools }}<|start_header_id|>system<|end_header_id|>\n{{- if .System }}\n{{ .System }",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/llama3.3-abliterated-ft:70b-q4_K_M",
+  "manifest_digest": "3d3a961e874f",
+  "manifest_size": "43GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/llama3.3-abliterated-ft",
+  "tag_name": "70b-q4_K_M"
+}

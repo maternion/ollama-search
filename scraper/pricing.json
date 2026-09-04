@@ -1,131 +1,16 @@
 {
-  "tiers": [
-    {
-      "name": "Free",
-      "price": "$0",
-      "price_subtext": "",
-      "description": "Get started with Ollama",
-      "image_url": "/public/Ollama_reading_free.png",
-      "badge": "",
-      "button_url": "/download",
-      "button_label": "Download",
-      "button_paused": false,
-      "notice": "",
-      "features": [
-        "Automate coding, document analysis, and other tasks with open models",
-        "Keep your data private",
-        "Run models on your hardware",
-        "Access cloud models",
-        "CLI, API, and desktop apps",
-        "40,000+ community integrations",
-        "Unlimited public models"
-      ],
-      "features_subtitle": "",
-      "coming_soon_features": []
-    },
-    {
-      "name": "Pro",
-      "price": "$20 / mo",
-      "price_subtext": "or $200/yr billed <a href=\"/upgrade?plan=pro&amp;interval=year\" class=\"underline\">annually</a>",
-      "description": "Solve harder tasks, faster",
-      "image_url": "/public/Ollama_reading.png",
-      "badge": "",
-      "button_url": "/upgrade?plan=pro",
-      "button_label": "Get Pro",
-      "button_paused": false,
-      "notice": "",
-      "features": [
-        "Access larger, more powerful cloud models",
-        "Run 3 cloud models at a time",
-        "50x more cloud usage than Free",
-        "Upload and share private models"
-      ],
-      "features_subtitle": "Everything in Free, plus:",
-      "coming_soon_features": []
-    },
-    {
-      "name": "Max",
-      "price": "$100 / mo",
-      "price_subtext": "",
-      "description": "For your most demanding work",
-      "image_url": "/public/Ollama_reading_smart.png",
-      "badge": "",
-      "button_url": "",
-      "button_label": "New sign-ups paused",
-      "button_paused": true,
-      "notice": "New Max subscriptions are temporarily paused while we add capacity. <a href=\"/pricing#max-paused\" class=\"underline\">Learn more</a>",
-      "features": [
-        "Run 10 cloud models at a time",
-        "5x more usage than Pro"
-      ],
-      "features_subtitle": "Everything in Pro, plus:",
-      "coming_soon_features": []
-    },
-    {
-      "name": "Team",
-      "price": "$25 / seat / mo",
-      "price_subtext": "5-seat minimum, usage included",
-      "description": "Bring open models to your whole team.",
-      "image_url": "/public/Ollama_concurrency.png",
-      "badge": "Introductory pricing",
-      "button_url": "",
-      "button_label": "Coming soon",
-      "button_paused": true,
-      "notice": "",
-      "features": [
-        "Access to powerful open models in the US and Europe",
-        "High performance, up to 2x more than model gateways",
-        "Zero data retention and logging",
-        "Shared billing and administration",
-        "Priority support"
-      ],
-      "features_subtitle": "What's included:",
-      "coming_soon_features": [
-        "Single sign-on (SSO)",
-        "Model access controls",
-        "MDM installer for Windows and macOS"
-      ]
-    },
-    {
-      "name": "Enterprise",
-      "price": "Custom",
-      "price_subtext": "Talk with our team about your needs",
-      "description": "Custom terms and support for larger organizations.",
-      "image_url": "/public/ollama-business.png",
-      "badge": "",
-      "button_url": "https://ollama.typeform.com/to/FFV2AVPu",
-      "button_label": "Contact us",
-      "button_paused": false,
-      "notice": "",
-      "features": [
-        "Volume pricing and custom terms",
-        "Security and procurement support",
-        "Deployment planning with Ollama"
-      ],
-      "features_subtitle": "Everything in Team, plus:",
-      "coming_soon_features": []
-    }
-  ],
+  "tiers": [],
   "faq": [
-    {
-      "group": "Plans",
-      "items": [
-        {
-          "q": "Why are new Max subscriptions paused?",
-          "a": "<p class=\"text-sm\">Ollama's cloud has more than doubled in token volume every month, and with even larger open models like kimi-k3 coming soon, demand is growing faster than we can add capacity. Max subscribers run some of the heaviest workloads, so new Max subscriptions are paused while we add more capacity to protect the experience of existing subscribers.</p>\n            <p class=\"text-sm mt-2\">Existing Max subscribers keep their plan, limits, and pricing. Pro and Free remain open, and Pro subscribers can add extra usage to go beyond their plan's included limits.</p>"
-        }
-      ]
-    },
     {
       "group": "Team",
       "items": [
         {
           "q": "Who is the Team plan for?",
-          "a": "<p class=\"text-sm\">The Team plan is for groups that want shared billing for seats and model usage.</p>"
+          "a": "<p class=\"text-sm\">The Team plan is for teams that want shared usage, billing, and administration across the whole team.</p>"
         },
         {
           "q": "How does Team billing work?",
-          "a": "<p class=\"text-sm\">Teams start at five seats. Each seat costs $25 per month, so the minimum seat charge is $125 per month. Each additional seat adds $25 per month.</p>\n            <p class=\"text-sm mt-2\">Each seat includes usage. Usage beyond that draws from a shared team balance billed as you go. You can add a set amount to the balance and turn off automatic usage billing.</p>"
+          "a": "<p class=\"text-sm\">Team starts at $500 per month with unlimited users and $1,000 of usage credits included each month, shared across the team.</p>\n            <p class=\"text-sm mt-2\">Usage beyond the included credits draws from a shared team balance billed as you go. You can add a set amount to the balance and turn off automatic usage billing.</p>"
         },
         {
           "q": "Does joining a team change my personal account?",
@@ -142,7 +27,7 @@
         },
         {
           "q": "Do models support tool calling?",
-          "a": "<p class=\"text-sm\">Yes. Cloud models that are trained to support tools are tested for tool calling and with real agent workflows before they go live. If something isn't working, let us know at <a href=\"mailto:hello@ollama.com\" class=\"underline\">hello@ollama.com</a>.</p>"
+          "a": "<p class=\"text-sm\">Yes. Cloud models that are trained to support tools are tested for tool calling and with real agent workflows before they go live. If something isn't working, let us know at <a href=\"mailto:support@ollama.com\" class=\"underline\">support@ollama.com</a>.</p>"
         },
         {
           "q": "What quantization or data format do cloud models use?",
@@ -158,36 +43,36 @@
       "group": "Usage",
       "items": [
         {
-          "q": "What are the usage limits for each plan?",
-          "a": "<p class=\"text-sm\">Running models on your own hardware is always unlimited. Cloud usage varies by plan:</p>\n            <div class=\"mt-6 overflow-x-auto rounded-lg overflow-hidden max-w-lg\">\n              <table class=\"w-full text-sm border-separate border-spacing-0\">\n                <thead>\n                  <tr>\n                    <th class=\"border-t border-l border-r border-b border-neutral-200 px-3 py-2 text-left font-semibold rounded-tl-lg\">Plan</th>\n                    <th class=\"border-t border-r border-b border-neutral-200 px-3 py-2 text-left font-semibold\">Usage</th>\n                    <th class=\"border-t border-r border-b border-neutral-200 px-3 py-2 text-left font-semibold rounded-tr-lg\">Example use cases</th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr>\n                    <td class=\"border-l border-r border-b border-neutral-200 px-3 py-2\">Free</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2\">Light usage</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2\">Chatting with models, evaluating larger models, coding and AI assistants with smaller models</td>\n                  </tr>\n                  <tr>\n                    <td class=\"border-l border-r border-b border-neutral-200 px-3 py-2\">Pro</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2\">Day-to-day work</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2\">Larger models, coding automation, deep research</td>\n                  </tr>\n                  <tr>\n                    <td class=\"border-l border-r border-b border-neutral-200 px-3 py-2 rounded-bl-lg\">Max</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2\">Heavy, sustained usage</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2 rounded-br-lg\">Continuous agent tasks, multiple concurrent agents, large models over extended sessions</td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n            <p class=\"text-sm mt-6\">Each plan has session limits that reset every 5 hours and weekly limits that reset every 7 days.</p>"
+          "q": "How does monthly usage work?",
+          "a": "<p class=\"text-sm\">Pro, Max, and Team plans include a set dollar amount of usage credits each month. Free accounts include a starter amount of usage for a smaller set of starter models. Adding extra credits unlocks all models. Running models on your own hardware is always unlimited.</p>"
+        },
+        {
+          "q": "When does my monthly included usage reset?",
+          "a": "<p class=\"text-sm\">On Pro, Max, and Team plans, included usage resets monthly on the same day of the month your subscription started, including on annual plans. On the Free plan, usage resets monthly from the date you signed up.</p>"
+        },
+        {
+          "q": "Does unused included usage roll over to the next month?",
+          "a": "<p class=\"text-sm\">No. Instead, your included amount refreshes at each monthly reset.</p>"
         },
         {
           "q": "How is usage measured?",
-          "a": "<p class=\"text-sm\">Individual plans have usage limits based on the model and the number of input, cached input, and output tokens processed. They don't cap you at a fixed number of tokens because different models use different amounts of compute.</p>\n            <p class=\"text-sm mt-2\">For teams, each member's usage draws from the usage included with their seat first. Once it's used, further usage draws from the team's shared extra usage balance at the model's token rate.</p>"
-        },
-        {
-          "q": "How much usage does each model use?",
-          "a": "<p class=\"text-sm\">Models consume a different amount of usage based on how difficult they are to run. To view a model's usage level, visit the model's page, where its usage level is displayed from small, light models (level 1), like gpt-oss:20b, to extra heavy models (level 4), like deepseek-v4-pro.</p>"
+          "a": "<p class=\"text-sm\">Usage is measured in tokens at each model's rates. The <a href=\"#model-pricing\" class=\"underline\">model pricing table</a> lists the input, cached input, and output price per million tokens for every cloud model.</p>"
         },
         {
           "q": "How does extra usage work?",
-          "a": "<p class=\"text-sm\">Pro and Max users can add extra usage balance. Ollama uses included plan limits first, then draws from the extra usage balance. Team usage draws from one balance shared by the organization.</p>"
-        },
-        {
-          "q": "How much more usage does Pro include?",
-          "a": "<p class=\"text-sm\">50x more than Free.</p>"
-        },
-        {
-          "q": "How much more usage does Max include?",
-          "a": "<p class=\"text-sm\">5x more than Pro.</p>"
+          "a": "<p class=\"text-sm\">Every plan, including Free, can add extra usage credits. Ollama uses included plan credits first, then draws from the extra usage balance. Team usage draws from one balance shared by the organization.</p>"
         },
         {
           "q": "How do I know when I've hit my limit?",
-          "a": "<p class=\"text-sm\">Check your usage <a href=\"/settings\" class=\"underline\">here</a> anytime. At 90% of your plan's limit, Ollama sends an email reminder. You can turn this off in settings.</p>"
+          "a": "<p class=\"text-sm\">Check your usage <a href=\"/settings\" class=\"underline\">here</a> anytime. On paid plans, Ollama sends an email reminder at 90% of your included monthly usage. You can turn this off in settings.</p>"
         },
         {
-          "q": "How many cloud models can I run at once?",
-          "a": "<p class=\"text-sm\">Concurrency limits ensure dedicated capacity for workflows that need multiple models running simultaneously:</p>\n            <div class=\"mt-6 overflow-x-auto rounded-lg overflow-hidden max-w-xs\">\n              <table class=\"w-full text-sm border-separate border-spacing-0\">\n                <thead>\n                  <tr>\n                    <th class=\"border-t border-l border-r border-b border-neutral-200 px-3 py-2 text-left font-semibold rounded-tl-lg\">Plan</th>\n                    <th class=\"border-t border-r border-b border-neutral-200 px-3 py-2 text-left font-semibold rounded-tr-lg\">Concurrent models</th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr>\n                    <td class=\"border-l border-r border-b border-neutral-200 px-3 py-2\">Free</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2\">1</td>\n                  </tr>\n                  <tr>\n                    <td class=\"border-l border-r border-b border-neutral-200 px-3 py-2\">Pro</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2\">3</td>\n                  </tr>\n                  <tr>\n                    <td class=\"border-l border-r border-b border-neutral-200 px-3 py-2 rounded-bl-lg\">Max</td>\n                    <td class=\"border-r border-b border-neutral-200 px-3 py-2 rounded-br-lg\">10</td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n            <p class=\"text-sm mt-6\">Requests beyond your plan's concurrency limit are queued and processed as soon as a slot is available. Queued requests are held up to a fixed limit - if the queue is full, the request will be rejected until one of your concurrency slots opens.</p>"
+          "q": "How many requests can I run at once?",
+          "a": "<p class=\"text-sm\">Concurrency limits ensure dedicated capacity for workflows that need multiple requests running simultaneously. Free includes 1 concurrent request, Pro 3, and Max and Team 10.</p>\n            <p class=\"text-sm mt-4\">Requests beyond your plan's concurrency limit are queued and processed as soon as a slot is available. Queued requests are held up to a fixed limit - if the queue is full, the request will be rejected until one of your concurrency slots opens.</p>"
+        },
+        {
+          "q": "What happens to my usage if I switch from an existing Pro or Max plan to the new one?",
+          "a": "<p class=\"text-sm\">Your usage is reset: the new plan's full monthly amount is available as soon as you switch, and the session and weekly limits of the old plans no longer apply. Your reset date stays on your subscription's original start date. Switch any time from your <a href=\"/settings/billing\" class=\"underline\">billing settings</a>.</p>"
         }
       ]
     },

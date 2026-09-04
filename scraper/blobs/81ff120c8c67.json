@@ -1,0 +1,10 @@
+{
+  "blob_type": "json",
+  "blob_url": "/library/laguna-s-2.1:mxfp8/blobs/81ff120c8c67",
+  "content": "{\n\"bos_token_id\": 2,\n\"do_sample\": true,\n\"eos_token_id\": [\n2,\n24\n],\n\"pad_token_id\": 9,\n\"temperature\": 1.0,\n\"top_p\": 1.0,\n\"min_p\": 0.0,\n\"top_k\": 20,\n\"tool_call_parser\": \"poolside_v1\",\n\"reasoning_parser\": \"poolside_v1\",\n\"default_chat_template_kwargs\": {\n\"enable_thinking\": true\n},\n\"speculative_config\": {\n\"method\": \"dflash\",\n\"source\": \"huggingface\",\n\"model\": \"poolside/Laguna-S-2.1-DFlash\",\n\"num_speculative_tokens\": 15\n}\n}",
+  "digest": "81ff120c8c67",
+  "metadata": [],
+  "size": "479B",
+  "tensor_groups": [],
+  "tensors": []
+}

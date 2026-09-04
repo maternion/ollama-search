@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/llama2:70b-chat-q5_1/blobs/2e0493f67d0c",
+  "content": "[INST] <<SYS>>{{ .System }}<</SYS>>\n\n{{ .Prompt }} [/INST]",
+  "digest": "2e0493f67d0c",
+  "metadata": [],
+  "size": "59B",
+  "tensor_groups": [],
+  "tensors": []
+}

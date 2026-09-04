@@ -1,0 +1,62 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "deepseek2",
+      "blob_url": "/frob/kimi-k2.5:1t-a30b-ud-iq2_M/blobs/1967ae95768c",
+      "content_preview": "arch  deepseek2",
+      "parameters": "1.03T",
+      "quantization": "IQ2_M",
+      "size": "345GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/kimi-k2.5:1t-a30b-ud-iq2_M/blobs/b8d63539492f",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "954MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/kimi-k2.5:1t-a30b-ud-iq2_M/blobs/47a53828e9f4",
+      "content_preview": "Modified MIT License\nCopyright (c) 2026 Moonshot AI\nPermission is hereby granted, free of charge, to",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/kimi-k2.5:1t-a30b-ud-iq2_M/blobs/02897ca0d6a3",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/kimi-k2.5:1t-a30b-ud-iq2_M/blobs/090321876089",
+      "content_preview": "{{- $lastNonToolAssistantIndex := -1 }}\n{{- range $index, $_ := .Messages }}\n{{- if and (eq .Role \"a",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.6kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/frob/kimi-k2.5:1t-a30b-ud-iq2_M",
+  "manifest_digest": "930914f4276e",
+  "manifest_size": "346GB",
+  "manifest_updated": "4 months ago",
+  "path": "/frob/kimi-k2.5",
+  "tag_name": "1t-a30b-ud-iq2_M"
+}

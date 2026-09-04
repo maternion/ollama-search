@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/zephyr:7b-alpha-q4_K_M/blobs/a96be15318d6",
+  "content": "{{- if .System }}\n<|system|>\n{{ .System }}\n</s>\n{{- end }}\n<|user|>\n{{ .Prompt }}\n</s>\n<|assistant|>",
+  "digest": "a96be15318d6",
+  "metadata": [],
+  "size": "101B",
+  "tensor_groups": [],
+  "tensors": []
+}

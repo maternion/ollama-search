@@ -1,0 +1,62 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/frob/NireeskshanAI_Niri:7b-Q4_K_M/blobs/43f951468d1e",
+      "content_preview": "arch  llama",
+      "parameters": "6.74B",
+      "quantization": "Q4_K_M",
+      "size": "4.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/NireeskshanAI_Niri:7b-Q4_K_M/blobs/8c17c2ebb0ea",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/NireeskshanAI_Niri:7b-Q4_K_M/blobs/7c23fb36d801",
+      "content_preview": "# Llama 2 Acceptable Use Policy\nMeta is committed to promoting safe and fair use of its tools and fe",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.8kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/NireeskshanAI_Niri:7b-Q4_K_M/blobs/fa304d675061",
+      "content_preview": "{\n    \"stop\": [\n        \"[INST]\",\n        \"[/INST]\",\n        \"<<SYS>>\",\n        \"<</SYS>>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "91B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/NireeskshanAI_Niri:7b-Q4_K_M/blobs/2e0493f67d0c",
+      "content_preview": "[INST] <<SYS>>{{ .System }}<</SYS>>\n{{ .Prompt }} [/INST]",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/frob/NireeskshanAI_Niri:7b-Q4_K_M",
+  "manifest_digest": "1e7f823e8cc2",
+  "manifest_size": "4.1GB",
+  "manifest_updated": "7 months ago",
+  "path": "/frob/NireeskshanAI_Niri",
+  "tag_name": "7b-Q4_K_M"
+}

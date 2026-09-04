@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "cohere2",
+      "blob_url": "/huihui_ai/command-r7b-abliterated:7b-12-2024-q4_K_M/blobs/a8a4cc2c651f",
+      "content_preview": "arch  cohere2",
+      "parameters": "8.03B",
+      "quantization": "Q4_K_M",
+      "size": "5.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/command-r7b-abliterated:7b-12-2024-q4_K_M/blobs/945eaa8b1428",
+      "content_preview": "Creative Commons Attribution-NonCommercial 4.0 International Public\nLicense with Acceptable Use Adde",
+      "parameters": "",
+      "quantization": "",
+      "size": "14kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/command-r7b-abliterated:7b-12-2024-q4_K_M/blobs/d8455b5dce0b",
+      "content_preview": "{\n    \"stop\": [\n        \"<|START_OF_TURN_TOKEN|>\",\n        \"<|END_OF_TURN_TOKEN|>\",\n        \"<|END_R",
+      "parameters": "",
+      "quantization": "",
+      "size": "110B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/command-r7b-abliterated:7b-12-2024-q4_K_M/blobs/ef4c349f1f26",
+      "content_preview": "{{- if or .Tools .System }}<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|>\n{{- if .Tools }}# Safety Preamble",
+      "parameters": "",
+      "quantization": "",
+      "size": "3.0kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/command-r7b-abliterated:7b-12-2024-q4_K_M",
+  "manifest_digest": "6b0939d0696e",
+  "manifest_size": "5.1GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/command-r7b-abliterated",
+  "tag_name": "7b-12-2024-q4_K_M"
+}

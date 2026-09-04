@@ -1,0 +1,45 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen3vl",
+      "blob_url": "/maternion/mai-ui:8b-F16/blobs/ba2ed480a2e7",
+      "content_preview": "arch  qwen3vl",
+      "parameters": "8.77B",
+      "quantization": "F16",
+      "size": "18GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/mai-ui:8b-F16/blobs/16e01157efcd",
+      "content_preview": "{\n    \"repeat_penalty\": 1.05,\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_end|>\",\n        \"<",
+      "parameters": "",
+      "quantization": "",
+      "size": "147B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/mai-ui:8b-F16/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/maternion/mai-ui:8b-F16",
+  "manifest_digest": "41198c80fc22",
+  "manifest_size": "18GB",
+  "manifest_updated": "5 months ago",
+  "path": "/maternion/mai-ui",
+  "scraped_at": "2026-07-14T15:18:15.944912+00:00",
+  "tag_name": "8b-F16"
+}

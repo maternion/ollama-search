@@ -1,0 +1,47 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "muse-glimmer",
+      "blob_url": "/library/muse-glimmer:30b-bf16/blobs/8d9cc0bd4acb",
+      "content_preview": "arch  muse-glimmer",
+      "parameters": "27.9B",
+      "quantization": "BF16",
+      "size": "56GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-bf16/blobs/f48b452316f9",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.4GB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-bf16/blobs/56380ca2ab89",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_k\": 64,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "42B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/muse-glimmer:30b-bf16",
+  "manifest_digest": "318fb1b9b816",
+  "manifest_size": "57GB",
+  "manifest_updated": "6 hours ago",
+  "path": "/library/muse-glimmer",
+  "tag_name": "30b-bf16"
+}

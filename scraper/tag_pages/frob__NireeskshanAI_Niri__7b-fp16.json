@@ -1,0 +1,62 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/frob/NireeskshanAI_Niri:7b-fp16/blobs/9aa1ccfab0cc",
+      "content_preview": "arch  llama",
+      "parameters": "6.74B",
+      "quantization": "F16",
+      "size": "13GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/NireeskshanAI_Niri:7b-fp16/blobs/2e0493f67d0c",
+      "content_preview": "[INST] <<SYS>>{{ .System }}<</SYS>>\n{{ .Prompt }} [/INST]",
+      "parameters": "",
+      "quantization": "",
+      "size": "59B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/NireeskshanAI_Niri:7b-fp16/blobs/8c17c2ebb0ea",
+      "content_preview": "LLAMA 2 COMMUNITY LICENSE AGREEMENT\nLlama 2 Version Release Date: July 18, 2023\n\"Agreement\" means th",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/NireeskshanAI_Niri:7b-fp16/blobs/7c23fb36d801",
+      "content_preview": "# Llama 2 Acceptable Use Policy\nMeta is committed to promoting safe and fair use of its tools and fe",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.8kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/NireeskshanAI_Niri:7b-fp16/blobs/fa304d675061",
+      "content_preview": "{\n    \"stop\": [\n        \"[INST]\",\n        \"[/INST]\",\n        \"<<SYS>>\",\n        \"<</SYS>>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "91B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/frob/NireeskshanAI_Niri:7b-fp16",
+  "manifest_digest": "5be2ac26a619",
+  "manifest_size": "13GB",
+  "manifest_updated": "7 months ago",
+  "path": "/frob/NireeskshanAI_Niri",
+  "tag_name": "7b-fp16"
+}

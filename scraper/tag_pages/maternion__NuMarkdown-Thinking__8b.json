@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2vl",
+      "blob_url": "/maternion/NuMarkdown-Thinking:8b/blobs/1212e4e1df30",
+      "content_preview": "arch  qwen2vl",
+      "parameters": "7.62B",
+      "quantization": "Q4_K_M",
+      "size": "4.7GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/NuMarkdown-Thinking:8b/blobs/ce075861da43",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.4GB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/NuMarkdown-Thinking:8b/blobs/ae03851fe7be",
+      "content_preview": "{{- if .System -}}\n<|im_start|>system\n{{ .System }}<|im_end|>\n{{- end -}}\n{{- range $i, $_ := .Messa",
+      "parameters": "",
+      "quantization": "",
+      "size": "623B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/NuMarkdown-Thinking:8b/blobs/52d2a7aa3a38",
+      "content_preview": "{\n    \"temperature\": 0.0001\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "23B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/maternion/NuMarkdown-Thinking:8b",
+  "manifest_digest": "1d3ed3a38e3e",
+  "manifest_size": "6.0GB",
+  "manifest_updated": "5 months ago",
+  "path": "/maternion/NuMarkdown-Thinking",
+  "scraped_at": "2026-07-14T15:18:31.222795+00:00",
+  "tag_name": "8b"
+}

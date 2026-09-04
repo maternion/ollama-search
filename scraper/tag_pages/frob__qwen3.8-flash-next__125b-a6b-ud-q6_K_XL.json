@@ -1,0 +1,56 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen4exp",
+      "blob_url": "/frob/qwen3.8-flash-next:125b-a6b-ud-q6_K_XL/blobs/8c20ed6fa686",
+      "content_preview": "arch  qwen4exp",
+      "parameters": "177B",
+      "quantization": "Q6_K",
+      "size": "169GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/qwen3.8-flash-next:125b-a6b-ud-q6_K_XL/blobs/2e788f8c511d",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "908MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/qwen3.8-flash-next:125b-a6b-ud-q6_K_XL/blobs/465dcafcac7d",
+      "content_preview": "Qwen Community License 1.0\nCopyright (c) 2026 Qwen\nPermission is hereby granted, free of charge, to",
+      "parameters": "",
+      "quantization": "",
+      "size": "3.2kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/qwen3.8-flash-next:125b-a6b-ud-q6_K_XL/blobs/448d29437397",
+      "content_preview": "{\n    \"min_p\": 0,\n    \"presence_penalty\": 0,\n    \"repeat_penalty\": 1,\n    \"temperature\": 1,\n    \"top",
+      "parameters": "",
+      "quantization": "",
+      "size": "92B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/frob/qwen3.8-flash-next:125b-a6b-ud-q6_K_XL",
+  "manifest_digest": "d24eace1e928",
+  "manifest_size": "170GB",
+  "manifest_updated": "3 hours ago",
+  "path": "/frob/qwen3.8-flash-next",
+  "tag_name": "125b-a6b-ud-q6_K_XL"
+}

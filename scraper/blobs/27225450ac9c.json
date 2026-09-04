@@ -1,0 +1,10 @@
+{
+  "blob_type": "json",
+  "blob_url": "/library/qwen3.5:35b-a3b-mxfp8/blobs/27225450ac9c",
+  "content": "{\n\"size\": {\n\"longest_edge\": 16777216,\n\"shortest_edge\": 65536\n},\n\"patch_size\": 16,\n\"temporal_patch_size\": 2,\n\"merge_size\": 2,\n\"image_mean\": [\n0.5,\n0.5,\n0.5\n],\n\"image_std\": [\n0.5,\n0.5,\n0.5\n],\n\"processor_class\": \"Qwen3VLProcessor\",\n\"image_processor_type\": \"Qwen2VLImageProcessorFast\"\n}",
+  "digest": "27225450ac9c",
+  "metadata": [],
+  "size": "390B",
+  "tensor_groups": [],
+  "tensors": []
+}

@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/huihui_ai/foundation-sec-abliterated:latest/blobs/9cfa67fbfcce",
+  "content": "{% if .System %}<|begin_of_text|>system\n{{ .System }}<|end_of_text|>\n{% endif %}<|begin_of_text|>user\n{{ .Prompt }}<|end_of_text|>\n<|begin_of_text|>assistant\n<think>\n{{ .Response }}\n</think>\n\n{{ .Response }}<|end_of_text|>",
+  "digest": "9cfa67fbfcce",
+  "metadata": [],
+  "size": "222B",
+  "tensor_groups": [],
+  "tensors": []
+}

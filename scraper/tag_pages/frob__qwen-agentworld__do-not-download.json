@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/frob/qwen-agentworld:do-not-download/blobs/e9f91f4e2a93",
+      "content_preview": "arch  llama",
+      "parameters": "756",
+      "quantization": "F32",
+      "size": "3.6kB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/qwen-agentworld:do-not-download/blobs/67a7f433f2af",
+      "content_preview": "{{ .Tools }}\n{{ .Thinking }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "30B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/qwen-agentworld:do-not-download/blobs/d7bfd5ac5ea2",
+      "content_preview": "(c) frob",
+      "parameters": "",
+      "quantization": "",
+      "size": "8B",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/qwen-agentworld:do-not-download/blobs/36dcf7198f2f",
+      "content_preview": "{\n    \"stop\": [\n        \"Do not download this model.\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "41B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/frob/qwen-agentworld:do-not-download",
+  "manifest_digest": "be29b18bec66",
+  "manifest_size": "4.2kB",
+  "manifest_updated": "2 weeks ago",
+  "path": "/frob/qwen-agentworld",
+  "tag_name": "do-not-download"
+}

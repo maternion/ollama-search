@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/phi:chat/blobs/774a15e6f1e5",
+  "content": "{{ if .System }}System: {{ .System }}{{ end }}\nUser: {{ .Prompt }}\nAssistant:",
+  "digest": "774a15e6f1e5",
+  "metadata": [],
+  "size": "77B",
+  "tensor_groups": [],
+  "tensors": []
+}

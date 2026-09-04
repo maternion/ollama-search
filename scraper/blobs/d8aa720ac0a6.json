@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/huihui_ai/hunyuan-mt-abliterated:latest/blobs/d8aa720ac0a6",
+  "content": "TEMPLATE \"\"\"{{ $has_head := true }}\n{{ if .System }}<|startoftext|>{{ .System }}<|extra_4|>{{ else }}{{ $has_head = false }}{{ end }}\n{{ range $index, $message := .Messages }}\n{{ if eq $message.Role \"user\" }}\n{{ if and (eq $index 0) $has_head }}{{ $message.Content }}<|extra_0|>{{ else }}<|startoftext|>{{ $message.Content }}<|extra_0|>{{ end }}\n{{ else if eq $message.Role \"assistant\" }}\n{{ $message.Content }}\n{{ end }}\n{{ end }}",
+  "digest": "d8aa720ac0a6",
+  "metadata": [],
+  "size": "431B",
+  "tensor_groups": [],
+  "tensors": []
+}

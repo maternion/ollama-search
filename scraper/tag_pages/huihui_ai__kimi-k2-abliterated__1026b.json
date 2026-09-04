@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "deepseek2",
+      "blob_url": "/huihui_ai/kimi-k2-abliterated:1026b/blobs/33e8a1e4930b",
+      "content_preview": "arch  deepseek2",
+      "parameters": "1.03T",
+      "quantization": "Q3_K_M",
+      "size": "489GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/kimi-k2-abliterated:1026b/blobs/25445adecbdc",
+      "content_preview": "{{ if .Tools }}<|im_system|>tool_declare<|im_middle|>{{ .Tools }}<|im_end|>{{ end }}\n{{ range $index",
+      "parameters": "",
+      "quantization": "",
+      "size": "728B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/kimi-k2-abliterated:1026b/blobs/efed41266ca7",
+      "content_preview": "Modified MIT License\nCopyright (c) 2025 Moonshot AI\nPermission is hereby granted, free of charge, to",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/kimi-k2-abliterated:1026b/blobs/7b9872bd9e39",
+      "content_preview": "{\n    \"num_gpu\": 1,\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"<|im_start|>\",\n        \"<|im_use",
+      "parameters": "",
+      "quantization": "",
+      "size": "156B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/huihui_ai/kimi-k2-abliterated:1026b",
+  "manifest_digest": "b2a26658421c",
+  "manifest_size": "489GB",
+  "manifest_updated": "7 months ago",
+  "path": "/huihui_ai/kimi-k2-abliterated",
+  "tag_name": "1026b"
+}

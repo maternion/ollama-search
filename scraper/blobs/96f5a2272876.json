@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/qwen2.5-coder:3b-base-fp16/blobs/96f5a2272876",
+  "content": "{{- if .Suffix }}<|fim_prefix|>{{ .Prompt }}<|fim_suffix|>{{ .Suffix }}<|fim_middle|>{{ else }}{{ .Prompt }}{{ end }}",
+  "digest": "96f5a2272876",
+  "metadata": [],
+  "size": "117B",
+  "tensor_groups": [],
+  "tensors": []
+}

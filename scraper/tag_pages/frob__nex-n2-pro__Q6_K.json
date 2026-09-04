@@ -1,0 +1,56 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen35moe",
+      "blob_url": "/frob/nex-n2-pro:Q6_K/blobs/fc6bb86cd135",
+      "content_preview": "arch  qwen35moe",
+      "parameters": "396B",
+      "quantization": "Q6_K",
+      "size": "342GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/nex-n2-pro:Q6_K/blobs/ab9cfa2180f6",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "922MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/nex-n2-pro:Q6_K/blobs/0d542e0c8804",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "10kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/nex-n2-pro:Q6_K/blobs/a312cc191067",
+      "content_preview": "{\n    \"temperature\": 0.7,\n    \"top_k\": 40,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "44B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/frob/nex-n2-pro:Q6_K",
+  "manifest_digest": "107f16423157",
+  "manifest_size": "343GB",
+  "manifest_updated": "20 minutes ago",
+  "path": "/frob/nex-n2-pro",
+  "tag_name": "Q6_K"
+}

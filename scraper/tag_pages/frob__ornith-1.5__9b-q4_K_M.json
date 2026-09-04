@@ -1,0 +1,65 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen35",
+      "blob_url": "/frob/ornith-1.5:9b-q4_K_M/blobs/0c797199e5e2",
+      "content_preview": "arch  qwen35",
+      "parameters": "8.95B",
+      "quantization": "Q4_K_M",
+      "size": "5.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/ornith-1.5:9b-q4_K_M/blobs/d65001a94c4b",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "922MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/ornith-1.5:9b-q4_K_M/blobs/5ecec46cc2c2",
+      "content_preview": "MIT License\nCopyright (c) 2026 Ornith Team\nPermission is hereby granted, free of charge, to any pers",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/ornith-1.5:9b-q4_K_M/blobs/1d3e847fdecd",
+      "content_preview": "Copyright 2026 Alibaba Cloud\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may",
+      "parameters": "",
+      "quantization": "",
+      "size": "583B",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/ornith-1.5:9b-q4_K_M/blobs/86eff881e8d2",
+      "content_preview": "{\n    \"min_p\": 0,\n    \"presence_penalty\": 1.5,\n    \"repeat_penalty\": 1,\n    \"temperature\": 1,\n    \"t",
+      "parameters": "",
+      "quantization": "",
+      "size": "94B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/frob/ornith-1.5:9b-q4_K_M",
+  "manifest_digest": "5c95e480c922",
+  "manifest_size": "6.6GB",
+  "manifest_updated": "8 hours ago",
+  "path": "/frob/ornith-1.5",
+  "tag_name": "9b-q4_K_M"
+}

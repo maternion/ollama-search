@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/deepseek-v3:671b-fp16/blobs/c5ce92dfece1",
+  "content": "{{- range $i, $_ := .Messages }}\n{{- if eq .Role \"user\" }}<｜User｜>\n{{- else if eq .Role \"assistant\" }}<｜Assistant｜>\n{{- end }}{{ .Content }}\n{{- if eq (len (slice $.Messages $i)) 1 }}\n{{- if eq .Role \"user\" }}<｜Assistant｜>\n{{- end }}\n{{- else if eq .Role \"assistant\" }}<｜end▁of▁sentence｜><｜begin▁of▁sentence｜>\n{{- end }}\n{{- end }}",
+  "digest": "c5ce92dfece1",
+  "metadata": [],
+  "size": "359B",
+  "tensor_groups": [],
+  "tensors": []
+}

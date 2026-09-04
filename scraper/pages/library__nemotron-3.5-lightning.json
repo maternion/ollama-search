@@ -1,0 +1,40 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model nemotron-3.5-lightning",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch opencode --model nemotron-3.5-lightning",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    },
+    {
+      "command": "ollama launch hermes --model nemotron-3.5-lightning",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch openclaw --model nemotron-3.5-lightning",
+      "icon_url": "/public/openclaw.svg",
+      "name": "OpenClaw"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "nemotron-3.5-lightning",
+  "path": "/library/nemotron-3.5-lightning",
+  "readme_html": "\n        \n          <p>NVIDIA Nemotron 3.5 Lightning is an open 30B mixture-of-experts (MoE) model with 3B active parameters built for the execution layer of always-on agents. It is designed for harnesses like OpenClaw and Hermes Agent—all supported by the NVIDIA NemoClaw open source security and management stack for running always-on AI agents.</p>\n\n<p>Nemotron 3.5 Lightning offers 4x higher throughput and 30% lower task completion time\ncompared to other leading open models of similar size</p>\n\n<h3>Use cases</h3>\n\n<ul>\n<li><strong>Personal agents</strong>: Power long-running personal assistants for everyday tasks, like\nmanaging your email, calendar, projects and bookings. Run these agents locally on\nyour PC to leverage contextualized intel.</li>\n<li><strong>Financial services workflows</strong>: Power special agents for specialized financial\nservices tasks, such as extracting data from documents, checking policy rules,\nmonitoring risk signals, and preparing structured summaries.</li>\n<li><strong>Cybersecurity operations</strong>: Power special agents for specialized security tasks, such\nas enriching alerts, classifying incidents, querying logs, validating controls,\ncorrelating indicators, and preparing structured findings for analysts.</li>\n<li><strong>Telecom</strong>: Power special agents for autonomous networks and proactive customer\ncare, such as triaging network alarms, optimizing network configurations, and\nanswering billing questions.</li>\n<li><strong>Retail</strong>: Power special agents for enriching product catalogs, resolving inventory and\nfulfillment exceptions, assisting product discovery, and answering order, return, or\nloyalty questions</li>\n</ul>\n\n<h3>Benchmarks</h3>\n\n<p><img src=\"/assets/library/nemotron-3.5-lightning/0ee1ef1f-bd8a-4e48-9be7-58eda2a5f21e\" alt=\"image.png\"/></p>\n\n        \n      "
+}

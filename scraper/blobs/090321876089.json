@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/frob/kimi-k2.5:latest/blobs/090321876089",
+  "content": "\n{{- $lastNonToolAssistantIndex := -1 }}\n{{- range $index, $_ := .Messages }}\n{{- if and (eq .Role \"assistant\") (not .ToolCalls) }}{{ $lastNonToolAssistantIndex = $index }}{{ end }}\n{{- end }}\n\n{{- if .Tools -}}\n<|im_system|>tool_declare<|im_middle|>\n{{- .Tools | json -}}\n<|im_end|>\n{{- end -}}\n\n<|im_system|>system<|im_middle|>\n{{- if .System }}\n{{- .System }}\n{{- else -}}\nYou are Kimi, an AI assistant created by Moonshot AI.\n{{- end -}}\n<|im_end|>\n\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1}}\n{{- $role_name := .Role }}{{/* {{- if .Name }}{{ $role_name = .Name }}{{ end }} */}}\n\n{{- if eq .Role \"user\" }}<|im_user|>{{ $role_name }}<|im_middle|>\n{{- .Content -}}\n{{- end }}\n\n{{- if eq .Role \"assistant\" }}<|im_assistant|>{{ $role_name }}<|im_middle|>\n{{- if or (le $i $lastNonToolAssistantIndex) (and $.IsThinkSet (not $.Think)) -}}\n<think></think>\n{{- else -}}\n<think>{{ .Thinking }}</think>\n{{- end }}\n{{- .Content }}\n{{- if .ToolCalls -}}\n<|tool_calls_section_begin|>\n{{- range .ToolCalls -}}\n<|tool_call_begin|>{{ .ID }}<|tool_call_argument_begin|>{{ .Function.Arguments }}<|tool_call_end|>\n{{- end -}}\n<|tool_calls_section_end|>\n{{- end -}}\n{{- end }}\n\n{{- if eq .Role \"tool\" }}<|im_system|>{{ $role_name }}<|im_middle|>{{ `` -}}\n## Return of {{ .ToolCallID }}\n{{ .Content -}}\n{{- end -}}\n\n{{- if or (eq .Role \"user\") (eq .Role \"tool\") (and (not $last) (eq .Role \"assistant\")) -}}\n<|im_end|>\n{{- end }}\n\n{{- if and (ne .Role \"assistant\") $last }}<|im_assistant|>assistant<|im_middle|><think>\n{{- if and $.IsThinkSet (not $.Think) }}</think>{{ end }}\n{{- end }}\n\n{{- end -}}",
+  "digest": "090321876089",
+  "metadata": [],
+  "size": "1.6kB",
+  "tensor_groups": [],
+  "tensors": []
+}

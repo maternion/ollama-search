@@ -1,0 +1,38 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen35",
+      "blob_url": "/library/ornith-1.5:9b/blobs/852922174ee4",
+      "content_preview": "arch  qwen35",
+      "parameters": "8.95B",
+      "quantization": "Q4_K_M",
+      "size": "5.6GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/ornith-1.5:9b/blobs/2635637dd72b",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "922MB",
+      "type": "projector"
+    }
+  ],
+  "full_path": "/library/ornith-1.5:9b",
+  "manifest_digest": "e5df7dcdd8a2",
+  "manifest_size": "6.6GB",
+  "manifest_updated": "2 hours ago",
+  "path": "/library/ornith-1.5",
+  "tag_name": "9b"
+}

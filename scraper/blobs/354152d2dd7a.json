@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/orca-mini:70b-v3-q4_K_M/blobs/354152d2dd7a",
+  "content": "{{- if .System }}\n### System:\n{{ .System }}\n{{- end }}\n\n### User:\n{{ .Prompt }}\n\n### Assistant:",
+  "digest": "354152d2dd7a",
+  "metadata": [],
+  "size": "96B",
+  "tensor_groups": [],
+  "tensors": []
+}

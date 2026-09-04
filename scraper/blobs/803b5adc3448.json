@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/olmo2:13b-1124-instruct-fp16/blobs/803b5adc3448",
+  "content": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|{{ .Role }}|>\n{{ .Content }}{{ if not $last }}\n{{ end }}\n{{- if and (ne .Role \"assistant\") $last }}<|assistant|>\n{{ end }}\n{{- end }}",
+  "digest": "803b5adc3448",
+  "metadata": [],
+  "size": "218B",
+  "tensor_groups": [],
+  "tensors": []
+}

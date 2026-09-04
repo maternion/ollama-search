@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/phind-codellama:latest/blobs/fb9390528638",
+  "content": "{{- if .System }}\n### System Prompt\n{{ .System }}\n{{- end }}\n\n### User Message\n{{ .Prompt }}\n\n### Assistant",
+  "digest": "fb9390528638",
+  "metadata": [],
+  "size": "108B",
+  "tensor_groups": [],
+  "tensors": []
+}

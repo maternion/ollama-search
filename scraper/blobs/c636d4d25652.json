@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/huihui_ai/tinyr1-abliterated:latest/blobs/c636d4d25652",
+  "content": "\n{{- if gt (len .Tools) 0 }}\n<|im_start|>system\n{{- if and (gt (len .Messages) 0) (eq (index .Messages 0).Role \"system\") }}\n{{ (index .Messages 0).Content }}\n{{- else }}\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n{{- end }}\n\n# Tools\n\nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{{- range .Tools }}\n{{ json . }}\n{{- end }}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call><|im_end>\n{{- else }}\n{{- if and (gt (len .Messages) 0) (eq (index .Messages 0).Role \"system\") }}\n<|im_start|>system\n{{ (index .Messages 0).Content }}<|im_end>\n{{- else }}\n<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end>\n{{- end }}\n{{- end }}\n{{- range $index, $message := .Messages }}\n{{- if or (eq $message.Role \"user\") (and (eq $message.Role \"system\") (gt $index 0)) (and (eq $message.Role \"assistant\") (not $message.ToolCalls)) }}\n<|im_start|>{{ $message.Role }}\n{{ $message.Content }}<|im_end>\n{{- end }}\n{{- if and (eq $message.Role \"assistant\") $message.ToolCalls }}\n<|im_start|>assistant\n{{- if $message.Content }}\n{{ $message.Content }}\n{{- end }}\n{{- range $message.ToolCalls }}\n<tool_call>\n{\"name\": {{ .Function.Name }}, \"arguments\": {{ json .Function.Arguments }}}\n</tool_call>\n{{- end }}\n<|im_end>\n{{- end }}\n{{- if eq $message.Role \"tool\" }}\n<|im_start|>user\n<tool_response>\n{{ $message.Content }}\n</tool_response>\n<|im_end>\n{{- end }}\n{{- end }}\n<|im_start|>assistant",
+  "digest": "c636d4d25652",
+  "metadata": [],
+  "size": "1.7kB",
+  "tensor_groups": [],
+  "tensors": []
+}

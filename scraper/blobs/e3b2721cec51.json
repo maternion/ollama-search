@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/nous-hermes2-mixtral:latest/blobs/e3b2721cec51",
+  "content": "{{- range .Messages }}<|im_start|>{{ .Role }}\n{{ .Content }}<|im_end|>\n{{ end }}<|im_start|>assistant",
+  "digest": "e3b2721cec51",
+  "metadata": [],
+  "size": "102B",
+  "tensor_groups": [],
+  "tensors": []
+}

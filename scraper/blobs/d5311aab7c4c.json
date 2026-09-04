@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/falcon:40b-instruct-fp16/blobs/d5311aab7c4c",
+  "content": "{{- if and .First .System }}\n{{ .System }}\n{{- end }}\nUser: {{ .Prompt }}\nAssistant:",
+  "digest": "d5311aab7c4c",
+  "metadata": [],
+  "size": "84B",
+  "tensor_groups": [],
+  "tensors": []
+}

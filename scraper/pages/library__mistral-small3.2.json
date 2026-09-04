@@ -1,0 +1,40 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model mistral-small3.2",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch opencode --model mistral-small3.2",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    },
+    {
+      "command": "ollama launch hermes --model mistral-small3.2",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch openclaw --model mistral-small3.2",
+      "icon_url": "/public/openclaw.svg",
+      "name": "OpenClaw"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "mistral-small3.2",
+  "path": "/library/mistral-small3.2",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/mistral-small3.2/cec4138e-e20c-4d5b-910f-56f8647dbda1\" width=\"140\"/></p>\n\n<p>Mistral-Small-3.2-24B-Instruct-2506 is a minor update of Mistral-Small-3.1-24B-Instruct-2503.</p>\n\n<p>Small-3.2 improves in the following categories:</p>\n\n<ul>\n<li><strong>Instruction following</strong>: Small-3.2 is better at following precise instructions</li>\n<li><strong>Repetition errors</strong>: Small-3.2 produces less infinite generations or repetitive answers</li>\n<li><strong>Function calling</strong>: Small-3.2’s function calling template is more robust (see here and examples)</li>\n</ul>\n\n<p>In all other categories Small-3.2 should match or slightly improve compared to Mistral-Small-3.1-24B-Instruct-2503.</p>\n\n<h2>References</h2>\n\n<p><a href=\"https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      "
+}

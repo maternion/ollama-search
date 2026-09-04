@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/phi3:14b-medium-4k-instruct-q4_K_S/blobs/542b217f179c",
+  "content": "{{ if .System }}<|system|>\n{{ .System }}<|end|>\n{{ end }}{{ if .Prompt }}<|user|>\n{{ .Prompt }}<|end|>\n{{ end }}<|assistant|>\n{{ .Response }}<|end|>",
+  "digest": "542b217f179c",
+  "metadata": [],
+  "size": "148B",
+  "tensor_groups": [],
+  "tensors": []
+}

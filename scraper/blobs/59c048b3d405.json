@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/notus:latest/blobs/59c048b3d405",
+  "content": "<|system|>\n{{ .System }}\n</s>\n<|user|>\n{{ .Prompt }}\n</s>\n<|assistant|>",
+  "digest": "59c048b3d405",
+  "metadata": [],
+  "size": "71B",
+  "tensor_groups": [],
+  "tensors": []
+}

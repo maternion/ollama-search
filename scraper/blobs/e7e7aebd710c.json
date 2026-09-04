@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/glm4:9b-chat-q8_0/blobs/e7e7aebd710c",
+  "content": "[gMASK]<sop>{{ if .System }}<|system|>\n{{ .System }}{{ end }}{{ if .Prompt }}<|user|>\n{{ .Prompt }}{{ end }}<|assistant|>\n{{ .Response }}",
+  "digest": "e7e7aebd710c",
+  "metadata": [],
+  "size": "137B",
+  "tensor_groups": [],
+  "tensors": []
+}

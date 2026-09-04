@@ -1,0 +1,40 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model command-r",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch opencode --model command-r",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    },
+    {
+      "command": "ollama launch hermes --model command-r",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch openclaw --model command-r",
+      "icon_url": "/public/openclaw.svg",
+      "name": "OpenClaw"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "command-r",
+  "path": "/library/command-r",
+  "readme_html": "\n        \n          <p><img src=\"https://github.com/ollama/ollama/assets/251292/0f8ef1fc-f0ba-4e69-b171-36c387aa5349\" width=\"480\"/></p>\n\n<p>Command R is a generative model optimized for long context tasks such as retrieval-augmented generation (RAG) and using external APIs and tools. As a model built for companies to implement at scale, Command R boasts:</p>\n\n<ul>\n<li>Strong accuracy on RAG and Tool Use</li>\n<li>Low latency, and high throughput</li>\n<li>Longer 128k context</li>\n<li>Strong capabilities across 10 key languages</li>\n</ul>\n\n<p>There are currently two versions of Command R:</p>\n\n<ul>\n<li>Original release tagged <strong>v0.1</strong></li>\n<li>August 2024 update tagged <strong>08-2024</strong></li>\n</ul>\n\n<h2>References</h2>\n\n<ul>\n<li><a href=\"https://txt.cohere.com/command-r/\" rel=\"nofollow\">Blog Post</a></li>\n<li><a href=\"https://huggingface.co/CohereForAI/c4ai-command-r-v01\" rel=\"nofollow\">Hugging Face</a></li>\n</ul>\n\n        \n      "
+}

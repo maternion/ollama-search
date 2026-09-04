@@ -1,0 +1,26 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "gemma-embedding",
+      "blob_url": "/frob/KaLM-Embedding-Gemma3-12B-2511:latest/blobs/c610b2d07f2d",
+      "content_preview": "arch  gemma-embedding",
+      "parameters": "11.8B",
+      "quantization": "F16",
+      "size": "24GB",
+      "type": "model"
+    }
+  ],
+  "full_path": "/frob/KaLM-Embedding-Gemma3-12B-2511:latest",
+  "manifest_digest": "d1d3ffdc6887",
+  "manifest_size": "24GB",
+  "manifest_updated": "6 months ago",
+  "path": "/frob/KaLM-Embedding-Gemma3-12B-2511",
+  "tag_name": "latest"
+}

@@ -1,0 +1,19 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "medgemma",
+  "path": "/library/medgemma",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/medgemma/26dc19d7-11f9-420e-904e-d12ccc9c7ea6\" alt=\"MedGemma\"/></p>\n\n<p>MedGemma is a collection of Gemma 3 variants that are trained for performance on medical text and image comprehension. Developers can use MedGemma to accelerate building healthcare-based AI applications. MedGemma is available in 4B and 27B versions.</p>\n\n<p>Both MedGemma multimodal versions utilize a SigLIP image encoder that has been specifically pre-trained on a variety of de-identified medical data, including chest X-rays, dermatology images, ophthalmology images, and histopathology slides. Their LLM components are trained on a diverse set of medical data, including medical text, medical question-answer pairs, FHIR-based electronic health record data (27B multimodal only), radiology images, histopathology patches, ophthalmology images, and dermatology images.</p>\n\n<h3>Reference</h3>\n\n<p><a href=\"https://developers.google.com/health-ai-developer-foundations/medgemma/model-card-v1\" rel=\"nofollow\">Model card</a></p>\n\n        \n      "
+}

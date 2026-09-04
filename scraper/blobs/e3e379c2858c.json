@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/nuextract:latest/blobs/e3e379c2858c",
+  "content": "{{- range .Messages }}\n{{- if eq .Role \"user\" }}<|user|>\n{{ .Content }}<|end|>\n<|assistant|>\n{{- else if eq .Role \"assistant\" }}\n{{ .Content }}<|end|>\n{{- end }}\n{{- end }}",
+  "digest": "e3e379c2858c",
+  "metadata": [],
+  "size": "172B",
+  "tensor_groups": [],
+  "tensors": []
+}

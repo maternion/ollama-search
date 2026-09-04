@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "glm4moelite",
+      "blob_url": "/huihui_ai/glm-4.7-flash-abliterated:bf16/blobs/34599e782a82",
+      "content_preview": "arch  glm4moelite",
+      "parameters": "29.9B",
+      "quantization": "BF16",
+      "size": "60GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/glm-4.7-flash-abliterated:bf16/blobs/b1bca6ec8117",
+      "content_preview": "MIT License\nCopyright (c) [year] [fullname]\nPermission is hereby granted, free of charge, to any per",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.1kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/glm-4.7-flash-abliterated:bf16/blobs/d8ba2f9a17b3",
+      "content_preview": "{\n    \"temperature\": 1\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "18B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/glm-4.7-flash-abliterated:bf16/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/glm-4.7-flash-abliterated:bf16",
+  "manifest_digest": "83c931353ac7",
+  "manifest_size": "60GB",
+  "manifest_updated": "5 months ago",
+  "path": "/huihui_ai/glm-4.7-flash-abliterated",
+  "tag_name": "bf16"
+}

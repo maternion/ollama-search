@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/mathstral:latest/blobs/36ee4ce5634b",
+  "content": "[INST] {{ if .System }}{{ .System }} {{ end }}{{ .Prompt }} [/INST] {{ .Response }}",
+  "digest": "36ee4ce5634b",
+  "metadata": [],
+  "size": "83B",
+  "tensor_groups": [],
+  "tensors": []
+}

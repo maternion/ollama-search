@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/llama3-chatqa:latest/blobs/79500bc18291",
+  "content": "{{ if .System }}System: {{ .System }}\n\n{{ end }}{{ if .Prompt }}User: {{ .Prompt }}\n\n{{ end }}Assistant: <|begin_of_text|>{{ .Response }}\n",
+  "digest": "79500bc18291",
+  "metadata": [],
+  "size": "139B",
+  "tensor_groups": [],
+  "tensors": []
+}

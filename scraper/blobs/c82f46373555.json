@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/deepseek-v3.1:671b-terminus-fp16/blobs/c82f46373555",
+  "content": "{{ .System }}\n{{- if .Tools }}{{ if .System }}\n\n{{ end }}## Tools\nYou have access to the following tools:\n\n{{- range .Tools }}\n\n### {{ .Function.Name }}\nDescription: {{ .Function.Description }}\n\nParameters: {{ .Function.Parameters }}\n{{- end }}\n\nIMPORTANT: ALWAYS adhere to this exact format for tool use:\n<｜tool▁calls▁begin｜><｜tool▁call▁begin｜>tool_call_name<｜tool▁sep｜>tool_call_arguments<｜tool▁call▁end｜>{{ `{{additional_tool_calls}}` }}<｜tool▁calls▁end｜>\n\nWhere:\n- `tool_call_name` must be an exact match to one of the available tools\n- `tool_call_arguments` must be valid JSON that strictly follows the tool's Parameters Schema\n- For multiple tool calls, chain them directly without separators or spaces\n{{- end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1}}\n{{- if eq .Role \"user\" }}<｜User｜>{{ .Content }}\n{{- else if eq .Role \"tool\" }}<｜tool▁output▁begin｜>{{ .Content }}<｜tool▁output▁end｜>\n{{- else if eq .Role \"assistant\" }}<｜Assistant｜>\n{{- if and $.IsThinkSet (and $last .Thinking) -}}\n<think>\n{{ .Thinking }}\n</think>\n{{- end }}\n{{- if .ToolCalls }}<｜tool▁calls▁begin｜>\n{{- range .ToolCalls }}<｜tool▁call▁begin｜>{{ .Function.Name }}<｜tool▁sep｜>{{ .Function.Arguments }}<｜tool▁call▁end｜>{{ end }}<｜tool▁calls▁end｜>\n{{- else if .Content }}{{ .Content }}{{- end }}\n{{- if not $last }}<｜end▁of▁sentence｜>{{ end }}\n{{- end }}\n{{- if and $last (ne .Role \"assistant\") }}<｜Assistant｜>\n{{- if and $.IsThinkSet $.Think (not $.Tools) -}}\n<think>\n{{- else -}}\n</think>\n{{- end }}\n{{- end }}\n{{- end }}",
+  "digest": "c82f46373555",
+  "metadata": [],
+  "size": "1.6kB",
+  "tensor_groups": [],
+  "tensors": []
+}

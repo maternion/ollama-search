@@ -1,0 +1,47 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "muse-glimmer",
+      "blob_url": "/library/muse-glimmer:latest/blobs/71b5c9c9abbc",
+      "content_preview": "arch  muse-glimmer",
+      "parameters": "27.9B",
+      "quantization": "Q4_K_M",
+      "size": "17GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:latest/blobs/f48b452316f9",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.4GB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:latest/blobs/56380ca2ab89",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_k\": 64,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "42B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/muse-glimmer:latest",
+  "manifest_digest": "de878ce33ad8",
+  "manifest_size": "18GB",
+  "manifest_updated": "an hour ago",
+  "path": "/library/muse-glimmer",
+  "tag_name": "latest"
+}

@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/Lucie-abliterated:7b-instruct-q4_K_M/blobs/f9bba35aa325",
+      "content_preview": "arch  llama",
+      "parameters": "6.71B",
+      "quantization": "Q4_K_M",
+      "size": "4.1GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/Lucie-abliterated:7b-instruct-q4_K_M/blobs/d65a76ca7308",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/Lucie-abliterated:7b-instruct-q4_K_M/blobs/516ff662ae8b",
+      "content_preview": "{\n    \"num_ctx\": 32000,\n    \"seed\": 1234,\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|en",
+      "parameters": "",
+      "quantization": "",
+      "size": "175B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/Lucie-abliterated:7b-instruct-q4_K_M/blobs/8ab4849b038c",
+      "content_preview": "{{ if .System }}<|start_header_id|>system<|end_header_id|>\n{{ .System }}<|eot_id|>{{ end }}{{ if .Pr",
+      "parameters": "",
+      "quantization": "",
+      "size": "254B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/Lucie-abliterated:7b-instruct-q4_K_M",
+  "manifest_digest": "56230dc436a3",
+  "manifest_size": "4.1GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/Lucie-abliterated",
+  "tag_name": "7b-instruct-q4_K_M"
+}

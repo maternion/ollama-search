@@ -1,0 +1,62 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "exaone",
+      "blob_url": "/huihui_ai/exaone3.5-abliterated:7.8b-q4_K_M/blobs/44b4d6364049",
+      "content_preview": "arch  exaone",
+      "parameters": "7.82B",
+      "quantization": "Q4_K_M",
+      "size": "4.8GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/exaone3.5-abliterated:7.8b-q4_K_M/blobs/8cd06db3b613",
+      "content_preview": "You are EXAONE model from LG AI Research, a helpful assistant.",
+      "parameters": "",
+      "quantization": "",
+      "size": "62B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/exaone3.5-abliterated:7.8b-q4_K_M/blobs/294fd63925d8",
+      "content_preview": "EXAONE AI Model License Agreement 1.1 - NC\nThis License Agreement (“Agreement”) is entered into",
+      "parameters": "",
+      "quantization": "",
+      "size": "14kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/exaone3.5-abliterated:7.8b-q4_K_M/blobs/a64d9e642d7b",
+      "content_preview": "{\n    \"repeat_penalty\": 1,\n    \"stop\": [\n        \"[|endofturn|]\"\n    ],\n    \"temperature\": 1\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "62B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/exaone3.5-abliterated:7.8b-q4_K_M/blobs/37cddd3bd818",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n{{ if eq .Role \"s",
+      "parameters": "",
+      "quantization": "",
+      "size": "375B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/exaone3.5-abliterated:7.8b-q4_K_M",
+  "manifest_digest": "bc3a7d011e53",
+  "manifest_size": "4.8GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/exaone3.5-abliterated",
+  "tag_name": "7.8b-q4_K_M"
+}

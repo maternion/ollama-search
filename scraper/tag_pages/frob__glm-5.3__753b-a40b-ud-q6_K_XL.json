@@ -1,0 +1,47 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "glm-dsa",
+      "blob_url": "/frob/glm-5.3:753b-a40b-ud-q6_K_XL/blobs/d9fb016d39c0",
+      "content_preview": "arch  glm-dsa",
+      "parameters": "754B",
+      "quantization": "Q6_K",
+      "size": "684GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/glm-5.3:753b-a40b-ud-q6_K_XL/blobs/0849cc613dd8",
+      "content_preview": "GLM-5.3 License\nCopyright (c) 2026 Z.AI\nPermission is hereby granted, free of charge, to any person",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.3kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/glm-5.3:753b-a40b-ud-q6_K_XL/blobs/02897ca0d6a3",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "31B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/frob/glm-5.3:753b-a40b-ud-q6_K_XL",
+  "manifest_digest": "cae5c55d0ff4",
+  "manifest_size": "684GB",
+  "manifest_updated": "12 hours ago",
+  "path": "/frob/glm-5.3",
+  "tag_name": "753b-a40b-ud-q6_K_XL"
+}

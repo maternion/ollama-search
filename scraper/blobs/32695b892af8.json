@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/phi4:14b-q8_0/blobs/32695b892af8",
+  "content": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n<|im_start|>{{ .Role }}<|im_sep|>\n{{ .Content }}{{ if not $last }}<|im_end|>\n{{ end }}\n{{- if and (ne .Role \"assistant\") $last }}<|im_end|>\n<|im_start|>assistant<|im_sep|>\n{{ end }}\n{{- end }}",
+  "digest": "32695b892af8",
+  "metadata": [],
+  "size": "275B",
+  "tensor_groups": [],
+  "tensors": []
+}

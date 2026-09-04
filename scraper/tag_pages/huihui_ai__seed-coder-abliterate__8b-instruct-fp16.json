@@ -1,0 +1,44 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/seed-coder-abliterate:8b-instruct-fp16/blobs/5e9d62d2cbe2",
+      "content_preview": "arch  llama",
+      "parameters": "8.25B",
+      "quantization": "F16",
+      "size": "17GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/seed-coder-abliterate:8b-instruct-fp16/blobs/1053ed6e39b2",
+      "content_preview": "<[begin▁of▁sentence]>system\n{{- if .System }}\n{{ .System }}\n{{- else }}\nYou are a helpful assist",
+      "parameters": "",
+      "quantization": "",
+      "size": "326B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/seed-coder-abliterate:8b-instruct-fp16/blobs/3c0b2e9e9d25",
+      "content_preview": "{\n    \"stop\": [\n        \"<[begin▁of▁sentence]>\",\n        \"<[end▁of▁sentence]>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "85B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/huihui_ai/seed-coder-abliterate:8b-instruct-fp16",
+  "manifest_digest": "53140e99ff51",
+  "manifest_size": "17GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/seed-coder-abliterate",
+  "tag_name": "8b-instruct-fp16"
+}

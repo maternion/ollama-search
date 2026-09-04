@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/llama3-groq-tool-use:70b-q5_K_S/blobs/fb9d435dc2c4",
+  "content": "{{- if .Messages }}\n{{- if or .System .Tools }}<|start_header_id|>system<|end_header_id|>\n\n{{ .System }}\n{{- if .Tools }} You are provided with function signatures within <tools></tools> XML tags. You may call one or more functions to assist with the user query. Don't make assumptions about what values to plug into functions. For each function call return a json object with function name and arguments within <tool_call></tool_call> XML tags as follows:\n<tool_call>\n{\"name\": <function-name>,\"arguments\": <args-dict>}\n</tool_call>\n\nHere are the available tools:\n<tools>\n{{- range .Tools }} {{ .Function }}\n{{- end }} </tools>\n{{- end }}<|eot_id|>\n{{- end }}\n{{- range .Messages }}\n{{- if ne .Role \"system\" }}<|start_header_id|>{{ .Role }}<|end_header_id|>\n{{- if eq .Role \"user\" }}\n\n{{ .Content }}\n{{- else if eq .Role \"assistant\" }}\n{{- if .Content }}\n\n{{ .Content }}\n{{- else if .ToolCalls }}\n\n<tool_call>\n{{ range .ToolCalls }}{\"name\": \"{{ .Function.Name }}\", \"arguments\": {{ .Function.Arguments }}}\n{{- end }}\n</tool_call>\n{{- end }}\n{{- else if eq .Role \"tool\" }}\n\n<tool_response>\n{\"result\": {{ .Content }}}\n</tool_response>\n{{- end }}<|eot_id|>\n{{- end }}\n{{- end }}<|start_header_id|>assistant<|end_header_id|>\n\n{{ else }}\n{{ if .System }}<|start_header_id|>system<|end_header_id|>\n\n{{ .System }}<|eot_id|>{{ end }}{{ if .Prompt }}<|start_header_id|>user<|end_header_id|>\n\n{{ .Prompt }}<|eot_id|>{{ end }}<|start_header_id|>assistant<|end_header_id|>\n\n{{ end }}{{ .Response }}\n{{- if .Response }}<|eot_id|>\n{{- end }}",
+  "digest": "fb9d435dc2c4",
+  "metadata": [],
+  "size": "1.5kB",
+  "tensor_groups": [],
+  "tensors": []
+}

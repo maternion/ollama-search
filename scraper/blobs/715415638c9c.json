@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/llama3.2-vision:11b-instruct-fp16/blobs/715415638c9c",
+  "content": "{{- range $index, $_ := .Messages }}<|start_header_id|>{{ .Role }}<|end_header_id|>\n\n{{ .Content }}\n{{- if gt (len (slice $.Messages $index)) 1 }}<|eot_id|>\n{{- else if ne .Role \"assistant\" }}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n{{ end }}\n{{- end }}",
+  "digest": "715415638c9c",
+  "metadata": [],
+  "size": "269B",
+  "tensor_groups": [],
+  "tensors": []
+}

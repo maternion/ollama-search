@@ -1,0 +1,110 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.8-flash-next:125b-a6b-mlx-bf16/blobs/889658f2508e",
+      "content_preview": "{\n\"architectures\": [\n\"Qwen4ExpForConditionalGeneration\"\n],\n\"image_token_id\": 248056,\n\"language_model",
+      "parameters": "",
+      "quantization": "",
+      "size": "4.7kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.8-flash-next:125b-a6b-mlx-bf16/blobs/e70c136c1b78",
+      "content_preview": "{\n\"bos_token_id\": 248044,\n\"do_sample\": true,\n\"eos_token_id\": [\n248046,\n248044\n],\n\"pad_token_id\": 248",
+      "parameters": "",
+      "quantization": "",
+      "size": "202B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.8-flash-next:125b-a6b-mlx-bf16/blobs/27225450ac9c",
+      "content_preview": "{\n\"size\": {\n\"longest_edge\": 16777216,\n\"shortest_edge\": 65536\n},\n\"patch_size\": 16,\n\"temporal_patch_si",
+      "parameters": "",
+      "quantization": "",
+      "size": "390B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.8-flash-next:125b-a6b-mlx-bf16/blobs/0997f410c57a",
+      "content_preview": "{\n\"version\": \"1.0\",\n\"truncation\": null,\n\"padding\": null,\n\"added_tokens\": [\n{\n\"id\": 248044,\n\"content\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "13MB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.8-flash-next:125b-a6b-mlx-bf16/blobs/b11349aafa7c",
+      "content_preview": "{\n\"add_prefix_space\": false,\n\"added_tokens_decoder\": {\n\"248044\": {\n\"content\": \"<|endoftext|>\",\n\"lstr",
+      "parameters": "",
+      "quantization": "",
+      "size": "18kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.8-flash-next:125b-a6b-mlx-bf16/blobs/7768af27c1fa",
+      "content_preview": "{\n\"size\": {\n\"longest_edge\": 25165824,\n\"shortest_edge\": 4096\n},\n\"patch_size\": 16,\n\"temporal_patch_siz",
+      "parameters": "",
+      "quantization": "",
+      "size": "385B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.8-flash-next:125b-a6b-mlx-bf16/blobs/ce99b4cb2983",
+      "content_preview": "{\n\"!\": 0,\n\"\\\"\": 1,\n\"#\": 2,\n\"$\": 3,\n\"%\": 4,\n\"&\": 5,\n\"'\": 6,\n\"(\": 7,\n\")\": 8,\n\"*\": 9,\n\"+\": 10,\n\",\": 11,",
+      "parameters": "",
+      "quantization": "",
+      "size": "6.7MB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.8-flash-next:125b-a6b-mlx-bf16/blobs/ef498ab97953",
+      "content_preview": "{\n    \"min_p\": 0,\n    \"num_ctx\": 262144,\n    \"presence_penalty\": 0,\n    \"repeat_penalty\": 1,\n    \"te",
+      "parameters": "",
+      "quantization": "",
+      "size": "109B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.8-flash-next:125b-a6b-mlx-bf16/blobs/a0dc42256084",
+      "content_preview": "Qwen Community License 1.0\nCopyright (c) 2026 Qwen\nPermission is hereby granted, free of charge, to",
+      "parameters": "",
+      "quantization": "",
+      "size": "3.2kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.8-flash-next:125b-a6b-mlx-bf16/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/library/qwen3.8-flash-next:125b-a6b-mlx-bf16",
+  "manifest_digest": "ae2130e55774",
+  "manifest_size": "360GB",
+  "manifest_updated": "5 hours ago",
+  "path": "/library/qwen3.8-flash-next",
+  "tag_name": "125b-a6b-mlx-bf16"
+}

@@ -1,4 +1,5 @@
 {
+  "avatar": "/public/assets/63fc5cbb-8a8d-4a1a-a991-1ae0c4ed6e99/27b965ab-5457-4bcf-974d-4c3074bf536b.png",
   "bio": "Trying to help at https://discord.gg/ollama",
   "links": [
     {
@@ -27,14 +28,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/LightOnOCR-2",
-      "pulls": 11500,
+      "pulls": 13300,
       "sizes": [
         "1b"
       ],
       "source_url": "https://ollama.com/maternion/LightOnOCR-2",
       "tag_count": 2,
       "tags": [],
-      "updated": "5 months ago",
+      "updated": "7 months ago",
       "updated_title": "Jan 26, 2026 9:57 AM UTC"
     },
     {
@@ -49,15 +50,36 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/fara",
-      "pulls": 5403,
+      "pulls": 5551,
       "sizes": [
         "7b"
       ],
       "source_url": "https://ollama.com/maternion/fara",
       "tag_count": 4,
       "tags": [],
-      "updated": "7 months ago",
+      "updated": "9 months ago",
       "updated_title": "Dec 3, 2025 10:08 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "HY-MT2 1.8B, 7B, and 30B-A3B (MoE) multilingual translation models designed for complex real-world scenarios, it supports translation among 33 languages and effectively follows translation instructions.",
+      "name": "hy-mt2",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/hy-mt2",
+      "pulls": 3714,
+      "sizes": [
+        "1.8b",
+        "7b",
+        "30b"
+      ],
+      "source_url": "https://ollama.com/maternion/hy-mt2",
+      "tag_count": 7,
+      "tags": [],
+      "updated": "3 months ago",
+      "updated_title": "May 28, 2026 7:30 PM UTC"
     },
     {
       "capabilities": [
@@ -72,14 +94,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 1918,
+      "pulls": 2245,
       "sizes": [
         "4b"
       ],
       "source_url": "https://ollama.com/maternion/Qianfan-OCR",
       "tag_count": 3,
       "tags": [],
-      "updated": "3 months ago",
+      "updated": "5 months ago",
       "updated_title": "Mar 22, 2026 7:44 AM UTC"
     },
     {
@@ -93,36 +115,15 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2",
-      "pulls": 1864,
+      "pulls": 2076,
       "sizes": [
         "8b"
       ],
       "source_url": "https://ollama.com/maternion/lfm2",
       "tag_count": 4,
       "tags": [],
-      "updated": "4 months ago",
+      "updated": "5 months ago",
       "updated_title": "Mar 12, 2026 4:09 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "HY-MT2 1.8B, 7B, and 30B-A3B (MoE) multilingual translation models designed for complex real-world scenarios, it supports translation among 33 languages and effectively follows translation instructions.",
-      "name": "hy-mt2",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/hy-mt2",
-      "pulls": 1497,
-      "sizes": [
-        "1.8b",
-        "7b",
-        "30b"
-      ],
-      "source_url": "https://ollama.com/maternion/hy-mt2",
-      "tag_count": 7,
-      "tags": [],
-      "updated": "1 month ago",
-      "updated_title": "May 28, 2026 7:30 PM UTC"
     },
     {
       "capabilities": [
@@ -136,7 +137,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2.5",
-      "pulls": 1440,
+      "pulls": 1751,
       "sizes": [
         "350m",
         "8b"
@@ -144,7 +145,7 @@
       "source_url": "https://ollama.com/maternion/lfm2.5",
       "tag_count": 15,
       "tags": [],
-      "updated": "2 weeks ago",
+      "updated": "2 months ago",
       "updated_title": "Jun 29, 2026 7:12 PM UTC"
     },
     {
@@ -158,14 +159,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/strand-rust-coder",
-      "pulls": 1035,
+      "pulls": 1267,
       "sizes": [
         "14b"
       ],
       "source_url": "https://ollama.com/maternion/strand-rust-coder",
       "tag_count": 3,
       "tags": [],
-      "updated": "4 months ago",
+      "updated": "6 months ago",
       "updated_title": "Feb 22, 2026 6:27 PM UTC"
     },
     {
@@ -180,7 +181,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 954,
+      "pulls": 1213,
       "sizes": [
         "2b",
         "8b"
@@ -188,7 +189,7 @@
       "source_url": "https://ollama.com/maternion/mai-ui",
       "tag_count": 8,
       "tags": [],
-      "updated": "5 months ago",
+      "updated": "7 months ago",
       "updated_title": "Jan 19, 2026 5:13 AM UTC"
     },
     {
@@ -203,14 +204,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/AgentCPM-Explore",
-      "pulls": 827,
+      "pulls": 871,
       "sizes": [
         "4b"
       ],
       "source_url": "https://ollama.com/maternion/AgentCPM-Explore",
       "tag_count": 1,
       "tags": [],
-      "updated": "5 months ago",
+      "updated": "7 months ago",
       "updated_title": "Jan 16, 2026 7:04 PM UTC"
     },
     {
@@ -225,15 +226,34 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/NuMarkdown-Thinking",
-      "pulls": 678,
+      "pulls": 753,
       "sizes": [
         "8b"
       ],
       "source_url": "https://ollama.com/maternion/NuMarkdown-Thinking",
       "tag_count": 2,
       "tags": [],
-      "updated": "5 months ago",
+      "updated": "7 months ago",
       "updated_title": "Feb 1, 2026 12:55 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Ling-3.0-tiny is a lightweight 7.9B-parameter hybrid reasoning MoE with just 1.3B active parameters per token, offering strong reasoning and agentic capabilities at low inference cost.",
+      "name": "ling-3.0-tiny",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/ling-3.0-tiny",
+      "pulls": 553,
+      "sizes": [
+        "8b"
+      ],
+      "source_url": "https://ollama.com/maternion/ling-3.0-tiny",
+      "tag_count": 10,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Aug 20, 2026 8:18 PM UTC"
     },
     {
       "capabilities": [
@@ -246,14 +266,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/manim-coder",
-      "pulls": 458,
+      "pulls": 541,
       "sizes": [
         "14b"
       ],
       "source_url": "https://ollama.com/maternion/manim-coder",
       "tag_count": 3,
       "tags": [],
-      "updated": "4 months ago",
+      "updated": "6 months ago",
       "updated_title": "Feb 16, 2026 3:13 PM UTC"
     },
     {
@@ -267,12 +287,12 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/sweep-next-edit-1.5B",
-      "pulls": 362,
+      "pulls": 426,
       "sizes": [],
       "source_url": "https://ollama.com/maternion/sweep-next-edit-1.5B",
       "tag_count": 1,
       "tags": [],
-      "updated": "5 months ago",
+      "updated": "7 months ago",
       "updated_title": "Jan 24, 2026 10:15 AM UTC"
     },
     {
@@ -287,16 +307,48 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/context-1",
-      "pulls": 112,
+      "pulls": 126,
       "sizes": [
         "20b"
       ],
       "source_url": "https://ollama.com/maternion/context-1",
       "tag_count": 3,
       "tags": [],
-      "updated": "3 months ago",
+      "updated": "5 months ago",
       "updated_title": "Mar 30, 2026 1:59 PM UTC"
     }
+  ],
+  "newest_order": [
+    "/maternion/ling-3.0-tiny",
+    "/maternion/hy-mt2",
+    "/maternion/lfm2.5",
+    "/maternion/context-1",
+    "/maternion/Qianfan-OCR",
+    "/maternion/lfm2",
+    "/maternion/strand-rust-coder",
+    "/maternion/manim-coder",
+    "/maternion/NuMarkdown-Thinking",
+    "/maternion/LightOnOCR-2",
+    "/maternion/sweep-next-edit-1.5B",
+    "/maternion/mai-ui",
+    "/maternion/AgentCPM-Explore",
+    "/maternion/fara"
+  ],
+  "popular_order": [
+    "/maternion/LightOnOCR-2",
+    "/maternion/fara",
+    "/maternion/hy-mt2",
+    "/maternion/Qianfan-OCR",
+    "/maternion/lfm2",
+    "/maternion/lfm2.5",
+    "/maternion/strand-rust-coder",
+    "/maternion/mai-ui",
+    "/maternion/AgentCPM-Explore",
+    "/maternion/NuMarkdown-Thinking",
+    "/maternion/ling-3.0-tiny",
+    "/maternion/manim-coder",
+    "/maternion/sweep-next-edit-1.5B",
+    "/maternion/context-1"
   ],
   "username": "maternion"
 }

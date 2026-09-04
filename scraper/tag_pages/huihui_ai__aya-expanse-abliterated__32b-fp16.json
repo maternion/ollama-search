@@ -1,0 +1,62 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "command-r",
+      "blob_url": "/huihui_ai/aya-expanse-abliterated:32b-fp16/blobs/4fbf20941e68",
+      "content_preview": "arch  command-r",
+      "parameters": "32.3B",
+      "quantization": "F16",
+      "size": "65GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/aya-expanse-abliterated:32b-fp16/blobs/1389d9c2c1f4",
+      "content_preview": "You are Aya, a brilliant, sophisticated, multilingual AI-assistant trained to assist human users by",
+      "parameters": "",
+      "quantization": "",
+      "size": "263B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/aya-expanse-abliterated:32b-fp16/blobs/945eaa8b1428",
+      "content_preview": "Creative Commons Attribution-NonCommercial 4.0 International Public\nLicense with Acceptable Use Adde",
+      "parameters": "",
+      "quantization": "",
+      "size": "14kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/aya-expanse-abliterated:32b-fp16/blobs/36b9655abe6a",
+      "content_preview": "{\n    \"stop\": [\n        \"<|START_OF_TURN_TOKEN|>\",\n        \"<|END_OF_TURN_TOKEN|>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "81B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/aya-expanse-abliterated:32b-fp16/blobs/922095537bc1",
+      "content_preview": "{{- if or .Tools .System }}<|START_OF_TURN_TOKEN|><|SYSTEM_TOKEN|>\n{{- if .Tools }}# Safety Preamble",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.9kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/aya-expanse-abliterated:32b-fp16",
+  "manifest_digest": "ae05cff2ad79",
+  "manifest_size": "65GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/aya-expanse-abliterated",
+  "tag_name": "32b-fp16"
+}

@@ -1,0 +1,10 @@
+{
+  "blob_type": "json",
+  "blob_url": "/library/muse-glimmer:30b-mlx-bf16-dflash/blobs/5e5793be172b",
+  "content": "{\n\"image_processor_type\": \"MuseGlimmerImageProcessor\",\n\"processor_class\": \"MuseGlimmerProcessor\",\n\"auto_map\": {\n\"AutoImageProcessor\": \"processing_muse_glimmer.MuseGlimmerImageProcessor\",\n\"AutoProcessor\": \"processing_muse_glimmer.MuseGlimmerProcessor\"\n},\n\"patch_size\": 14,\n\"downsample_factor\": 2,\n\"max_image_tokens\": 4096,\n\"image_mean\": 0.5,\n\"image_std\": 0.5\n}",
+  "digest": "5e5793be172b",
+  "metadata": [],
+  "size": "385B",
+  "tensor_groups": [],
+  "tensors": []
+}

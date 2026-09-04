@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/huihui_ai/internlm3-abliterated:latest/blobs/64631f1262e4",
+  "content": "{{ if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}{{ if .Prompt }}<|im_start|>user\n{{ .Prompt }}<|im_end|>\n{{ end }}<|im_start|>assistant\n{{ .Response }}<|im_end|>",
+  "digest": "64631f1262e4",
+  "metadata": [],
+  "size": "181B",
+  "tensor_groups": [],
+  "tensors": []
+}

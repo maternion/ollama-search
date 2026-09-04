@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/huihui_ai/kimi-k2:latest/blobs/25445adecbdc",
+  "content": "{{ if .Tools }}<|im_system|>tool_declare<|im_middle|>{{ .Tools }}<|im_end|>{{ end }}\n{{ range $index, $message := .Messages }}\n{{ if and (eq $index 0) (ne $message.Role \"system\") }}<|im_system|>system<|im_middle|>You are a helpful assistant<|im_end|>{{ end }}\n{{ if eq $message.Role \"system\" }}<|im_system|>system<|im_middle|>{{ else if eq $message.Role \"user\" }}<|im_user|>user<|im_middle|>{{ else if eq $message.Role \"assistant\" }}<|im_assistant|>assistant<|im_middle|>{{ else if eq $message.Role \"tool\" }}<|im_system|>tool<|im_middle|>{{ end }}\n{{ range $message.Images }}<|media_start|>image<|media_content|><|media_pad|><|media_end|>{{ end }}{{ $message.Content }}<|im_end|>\n{{ end }}\n<|im_assistant|>assistant<|im_middle|>",
+  "digest": "25445adecbdc",
+  "metadata": [],
+  "size": "728B",
+  "tensor_groups": [],
+  "tensors": []
+}

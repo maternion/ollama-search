@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/huihui_ai/deephermes3-abliterated:latest/blobs/330f7f5f7417",
+  "content": "{{- if .System }}<|start_header_id|>system<|end_header_id|>\n\n{{ .System }}<|eot_id|>\n{{- end }}\n{{- range .Messages }}<|start_header_id|>{{ .Role }}<|end_header_id|>\n\n{{ .Content }}<|eot_id|>\n{{- end }}<|start_header_id|>assistant<|end_header_id|>\n",
+  "digest": "330f7f5f7417",
+  "metadata": [],
+  "size": "249B",
+  "tensor_groups": [],
+  "tensors": []
+}

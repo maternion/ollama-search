@@ -1,0 +1,40 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model deepseek-v4-pro:cloud",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch opencode --model deepseek-v4-pro:cloud",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    },
+    {
+      "command": "ollama launch hermes --model deepseek-v4-pro:cloud",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch openclaw --model deepseek-v4-pro:cloud",
+      "icon_url": "/public/openclaw.svg",
+      "name": "OpenClaw"
+    }
+  ],
+  "cloud_context": "1M",
+  "cloud_context_unit": "tokens",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "1.65T",
+  "cloud_size_unit": "parameters",
+  "cloud_usage_active_slots": 4,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "deepseek-v4-pro",
+  "path": "/library/deepseek-v4-pro",
+  "readme_html": "\n        \n          <p><img src=\"/assets/library/deepseek-v3/069ccc94-63b0-41e6-b2b3-e8e56068ab1a\" width=\"320\"/></p>\n\n<p><strong>DeepSeek-V4-Pro</strong> is the flagship model in the DeepSeek-V4 series — a Mixture-of-Experts model with 1.6T total parameters and 49B activated, built for frontier-level reasoning across a 1M-token context window.</p>\n\n<p>3 Thinking modes:</p>\n\n<ul>\n<li>No thinking: used for fast, intuitive answers</li>\n<li>Thinking: used for careful logical analysis</li>\n<li>Max thinking: maximum reasoning effort on the hardest problems</li>\n</ul>\n\n<h3>Reference</h3>\n\n<p><a href=\"https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash/blob/main/DeepSeek_V4.pdf\" rel=\"nofollow\">DeepSeek-V4 technical report</a></p>\n\n        \n      "
+}

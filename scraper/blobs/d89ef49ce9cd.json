@@ -1,0 +1,10 @@
+{
+  "blob_type": "json",
+  "blob_url": "/frob/ornith-1.5:9b-mlx/blobs/d89ef49ce9cd",
+  "content": "{\n\"image_processor\": {\n\"do_convert_rgb\": true,\n\"do_normalize\": true,\n\"do_rescale\": true,\n\"do_resize\": true,\n\"image_mean\": [\n0.5,\n0.5,\n0.5\n],\n\"image_processor_type\": \"Qwen2VLImageProcessor\",\n\"image_std\": [\n0.5,\n0.5,\n0.5\n],\n\"merge_size\": 2,\n\"patch_size\": 16,\n\"resample\": 3,\n\"rescale_factor\": 0.00392156862745098,\n\"size\": {\n\"longest_edge\": 16777216,\n\"shortest_edge\": 65536\n},\n\"temporal_patch_size\": 2\n},\n\"processor_class\": \"Qwen3VLProcessor\",\n\"video_processor\": {\n\"do_convert_rgb\": true,\n\"do_normalize\": true,\n\"do_rescale\": true,\n\"do_resize\": true,\n\"do_sample_frames\": true,\n\"fps\": 2,\n\"image_mean\": [\n0.5,\n0.5,\n0.5\n],\n\"image_std\": [\n0.5,\n0.5,\n0.5\n],\n\"max_frames\": 768,\n\"merge_size\": 2,\n\"min_frames\": 4,\n\"patch_size\": 16,\n\"resample\": 3,\n\"rescale_factor\": 0.00392156862745098,\n\"return_metadata\": false,\n\"size\": {\n\"longest_edge\": 25165824,\n\"shortest_edge\": 4096\n},\n\"temporal_patch_size\": 2,\n\"video_processor_type\": \"Qwen3VLVideoProcessor\"\n}\n}",
+  "digest": "d89ef49ce9cd",
+  "metadata": [],
+  "size": "1.2kB",
+  "tensor_groups": [],
+  "tensors": []
+}

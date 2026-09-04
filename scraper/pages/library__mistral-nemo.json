@@ -1,0 +1,40 @@
+{
+  "applications": [
+    {
+      "command": "ollama launch claude --model mistral-nemo",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch opencode --model mistral-nemo",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    },
+    {
+      "command": "ollama launch hermes --model mistral-nemo",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch openclaw --model mistral-nemo",
+      "icon_url": "/public/openclaw.svg",
+      "name": "OpenClaw"
+    }
+  ],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [],
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
+  "name": "mistral-nemo",
+  "path": "/library/mistral-nemo",
+  "readme_html": "\n        \n          <p><img src=\"https://ollama.com/assets/library/mistral-nemo/72045292-694a-4867-88c8-8635c9d97030\" width=\"280\"/></p>\n\n<p>Mistral NeMo is a 12B model built in collaboration with NVIDIA. Mistral NeMo offers a large context window of up to 128k tokens. Its reasoning, world knowledge, and coding accuracy are state-of-the-art in its size category. As it relies on standard architecture, Mistral NeMo is easy to use and a drop-in replacement in any system using Mistral 7B.</p>\n\n<p><img src=\"https://ollama.com/assets/library/mistral-nemo/1adf7b56-30e3-49a0-8a52-bb74c19d8a78\" alt=\"nemo-base-performance.png\"/></p>\n\n<h2>Reference</h2>\n\n<p><a href=\"https://mistral.ai/news/mistral-nemo/\" rel=\"nofollow\">Blog</a></p>\n\n<p><a href=\"https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407\" rel=\"nofollow\">Hugging Face</a></p>\n\n        \n      "
+}

@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/llama-pro:latest/blobs/688a68728634",
+  "content": "<|system|>\n{{ .System }}\n<|user|>\n{{ .Prompt }}\n<|assistant|>",
+  "digest": "688a68728634",
+  "metadata": [],
+  "size": "62B",
+  "tensor_groups": [],
+  "tensors": []
+}

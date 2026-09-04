@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/deepseek-coder-v2:16b-lite-base-q3_K_S/blobs/6187ffbfaf05",
+  "content": "{{- if .Suffix }}<｜fim▁begin｜>{{ .Prompt }}<｜fim▁hole｜>{{ .Suffix }}<｜fim▁end｜>\n{{- else }}{{ .Prompt }}\n{{- end }}",
+  "digest": "6187ffbfaf05",
+  "metadata": [],
+  "size": "133B",
+  "tensor_groups": [],
+  "tensors": []
+}

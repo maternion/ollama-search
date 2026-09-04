@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/frob/mixtao:7bx2-moe-v8.1-q4_K_M/blobs/c5cfb880cfe0",
+      "content_preview": "arch  llama",
+      "parameters": "12.9B",
+      "quantization": "Q4_K_M",
+      "size": "7.8GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/mixtao:7bx2-moe-v8.1-q4_K_M/blobs/64ef00f8fbf7",
+      "content_preview": "{{ .System }}\n### Instruction:\n{{ .Prompt }}\n### Response:",
+      "parameters": "",
+      "quantization": "",
+      "size": "62B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/mixtao:7bx2-moe-v8.1-q4_K_M/blobs/952919d1466e",
+      "content_preview": "You are a helpful AI assistant",
+      "parameters": "",
+      "quantization": "",
+      "size": "30B",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/frob/mixtao:7bx2-moe-v8.1-q4_K_M/blobs/20b7fc613688",
+      "content_preview": "{\n    \"stop\": [\n        \"### Instruction:\",\n        \"### Response:\",\n        \"</s>\"\n    ]\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "63B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/frob/mixtao:7bx2-moe-v8.1-q4_K_M",
+  "manifest_digest": "62cfab6a3523",
+  "manifest_size": "7.8GB",
+  "manifest_updated": "5 months ago",
+  "path": "/frob/mixtao",
+  "tag_name": "7bx2-moe-v8.1-q4_K_M"
+}

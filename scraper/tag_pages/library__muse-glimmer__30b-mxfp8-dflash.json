@@ -1,0 +1,110 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_cost_cached": "",
+  "cloud_cost_input": "",
+  "cloud_cost_output": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-mxfp8-dflash/blobs/0a17e6596d10",
+      "content_preview": "{\n\"architectures\": [\n\"MuseGlimmerForConditionalGeneration\"\n],\n\"bos_token_id\": 200000,\n\"dtype\": \"bflo",
+      "parameters": "",
+      "quantization": "",
+      "size": "3.3kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-mxfp8-dflash/blobs/b0e427c99864",
+      "content_preview": "{\n\"bos_token_id\": 200000,\n\"eos_token_id\": [\n200001,\n200008\n],\n\"pad_token_id\": 200018,\n\"max_length\":",
+      "parameters": "",
+      "quantization": "",
+      "size": "148B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-mxfp8-dflash/blobs/5e5793be172b",
+      "content_preview": "{\n\"image_processor_type\": \"MuseGlimmerImageProcessor\",\n\"processor_class\": \"MuseGlimmerProcessor\",\n\"a",
+      "parameters": "",
+      "quantization": "",
+      "size": "385B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-mxfp8-dflash/blobs/a73d70c5a3cd",
+      "content_preview": "{\n\"processor_class\": \"MuseGlimmerProcessor\",\n\"auto_map\": {\n\"AutoProcessor\": \"processing_muse_glimmer",
+      "parameters": "",
+      "quantization": "",
+      "size": "136B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-mxfp8-dflash/blobs/7bada0a11ae9",
+      "content_preview": "{\n\"additional_special_tokens\": [\n\"<|begin_of_text|>\",\n\"<|end_of_text|>\",\n\"<|reserved_special_token_2",
+      "parameters": "",
+      "quantization": "",
+      "size": "79kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-mxfp8-dflash/blobs/8a25643f212b",
+      "content_preview": "{\n\"version\": \"1.0\",\n\"truncation\": null,\n\"padding\": null,\n\"added_tokens\": [\n{\n\"id\": 200000,\n\"content\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "36MB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-mxfp8-dflash/blobs/2c49783174e6",
+      "content_preview": "{\n\"added_tokens_decoder\": {\n\"200000\": {\n\"content\": \"<|begin_of_text|>\",\n\"lstrip\": false,\n\"normalized",
+      "parameters": "",
+      "quantization": "",
+      "size": "483kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-mxfp8-dflash/blobs/4c68b0e12bed",
+      "content_preview": "{\n\"video_processor_type\": \"MuseGlimmerVideoProcessor\",\n\"processor_class\": \"MuseGlimmerProcessor\",\n\"a",
+      "parameters": "",
+      "quantization": "",
+      "size": "468B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-mxfp8-dflash/blobs/ca6e82e80190",
+      "content_preview": "{\n\"architectures\": [\n\"MuseGlimmerAssistantModel\"\n],\n\"model_type\": \"muse_glimmer_assistant\",\n\"block_s",
+      "parameters": "",
+      "quantization": "",
+      "size": "731B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/muse-glimmer:30b-mxfp8-dflash/blobs/0b6cd7fba9a7",
+      "content_preview": "{\n    \"draft_num_predict\": 15,\n    \"temperature\": 1,\n    \"top_k\": 64,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "65B",
+      "type": "params"
+    }
+  ],
+  "full_path": "/library/muse-glimmer:30b-mxfp8-dflash",
+  "manifest_digest": "14bd0cb8d43f",
+  "manifest_size": "35GB",
+  "manifest_updated": "6 hours ago",
+  "path": "/library/muse-glimmer",
+  "tag_name": "30b-mxfp8-dflash"
+}

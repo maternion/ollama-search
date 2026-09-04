@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/zephyr:141b/blobs/52a83090beeb",
+  "content": "{{ if .System }}<|system|>\n{{ .System }}</s>\n{{ end }}{{ if .Prompt }}<|user|>\n{{ .Prompt }}</s>\n{{ end }}<|assistant|>\n{{ .Response }}</s>",
+  "digest": "52a83090beeb",
+  "metadata": [],
+  "size": "139B",
+  "tensor_groups": [],
+  "tensors": []
+}

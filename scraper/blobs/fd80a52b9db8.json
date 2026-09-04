@@ -1,0 +1,10 @@
+{
+  "blob_type": "template",
+  "blob_url": "/library/nemotron-mini:latest/blobs/fd80a52b9db8",
+  "content": "{{- if (or .Tools .System) }}<extra_id_0>System\n{{ if .System }}{{ .System }}\n\n\n{{ end }}\n{{- if .Tools }}\n{{- range .Tools }}<tool> {{ . }} </tool>{{ end }}\n\n\n{{ end }}\n{{- end }}\n{{- range $i, $m := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n{{- if eq .Role \"user\" }}<extra_id_1>User\n{{ .Content }}\n{{- if $last }}\n<extra_id_1>Assistant\n{{- end }}\n{{ else if eq .Role \"tool\" }}<extra_id_1>Tool\n{{ .Content }}\n{{- if $last }}\n<extra_id_1>Assistant\n{{- end }}\n{{ else if eq .Role \"assistant\" }}<extra_id_1>Assistant\n{{- if .ToolCalls }}\n{{ range .ToolCalls }}<toolcall> {\"name\": \"{{ .Function.Name }}\", \"arguments\": {{ .Function.Arguments }}} </toolcall> {{ end }}\n{{ else }}\n{{ .Content }}\n{{- if not $last }}\n{{ end }}\n{{- end }}\n{{- end }}\n{{- end }}",
+  "digest": "fd80a52b9db8",
+  "metadata": [],
+  "size": "773B",
+  "tensor_groups": [],
+  "tensors": []
+}

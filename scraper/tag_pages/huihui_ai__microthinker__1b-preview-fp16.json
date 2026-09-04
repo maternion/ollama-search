@@ -1,0 +1,62 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/microthinker:1b-preview-fp16/blobs/d9bd20c79754",
+      "content_preview": "arch  llama",
+      "parameters": "1.24B",
+      "quantization": "F16",
+      "size": "2.5GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/microthinker:1b-preview-fp16/blobs/dc2b469f173b",
+      "content_preview": "<|start_header_id|>system<|end_header_id|>\nCutting Knowledge Date: December 2023\n{{ if .System }}You",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.5kB",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/microthinker:1b-preview-fp16/blobs/a70ff7e570d9",
+      "content_preview": "**Llama 3.2** **Acceptable Use Policy**\nMeta is committed to promoting safe and fair use of its tool",
+      "parameters": "",
+      "quantization": "",
+      "size": "6.0kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/microthinker:1b-preview-fp16/blobs/56bb8bd477a5",
+      "content_preview": "{\n    \"stop\": [\n        \"<|start_header_id|>\",\n        \"<|end_header_id|>\",\n        \"<|eot_id|>\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "96B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/microthinker:1b-preview-fp16/blobs/fcc5a6bec9da",
+      "content_preview": "LLAMA 3.2 COMMUNITY LICENSE AGREEMENT\nLlama 3.2 Version Release Date: September 25, 2024\n“Agreemen",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.7kB",
+      "type": "license"
+    }
+  ],
+  "full_path": "/huihui_ai/microthinker:1b-preview-fp16",
+  "manifest_digest": "c6e6e6ee9b45",
+  "manifest_size": "2.5GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/microthinker",
+  "tag_name": "1b-preview-fp16"
+}

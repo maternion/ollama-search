@@ -1,0 +1,119 @@
+{
+  "blob_type": "model",
+  "blob_url": "/frob/kimi-k3:2.8t-UD-Q2_K_XL/blobs/2e982578e2c1",
+  "content": "",
+  "digest": "2e982578e2c1",
+  "metadata": [
+    {
+      "key": "general.architecture",
+      "value": "kimi_linear"
+    },
+    {
+      "key": "general.file_type",
+      "value": "0"
+    },
+    {
+      "key": "kimi_linear.block_count",
+      "value": "93"
+    },
+    {
+      "key": "kimi_linear.attention.head_count",
+      "value": "96"
+    },
+    {
+      "key": "kimi_linear.attention.head_count_kv",
+      "value": "96"
+    },
+    {
+      "key": "kimi_linear.embedding_length",
+      "value": "7168"
+    },
+    {
+      "key": "kimi_linear.feed_forward_length",
+      "value": "33792"
+    },
+    {
+      "key": "kimi_linear.context_length",
+      "value": "1048576"
+    },
+    {
+      "key": "kimi_linear.vocab_size",
+      "value": "163840"
+    },
+    {
+      "key": "kimi_linear.rms_norm_eps",
+      "value": "1e-05"
+    },
+    {
+      "key": "kimi_linear.num_experts",
+      "value": "896"
+    },
+    {
+      "key": "kimi_linear.num_experts_per_tok",
+      "value": "16"
+    },
+    {
+      "key": "kimi_linear.expert_feed_forward_length",
+      "value": "3072"
+    },
+    {
+      "key": "kimi_linear.first_k_dense_replace",
+      "value": "1"
+    },
+    {
+      "key": "kimi_linear.attention.kv_lora_rank",
+      "value": "512"
+    },
+    {
+      "key": "kimi_linear.attention.q_lora_rank",
+      "value": "1536"
+    },
+    {
+      "key": "kimi_linear.attention.qk_nope_head_dim",
+      "value": "128"
+    },
+    {
+      "key": "kimi_linear.attention.qk_rope_head_dim",
+      "value": "64"
+    },
+    {
+      "key": "kimi_linear.attention.v_head_dim",
+      "value": "128"
+    },
+    {
+      "key": "kimi_linear.attn_res_block_size",
+      "value": "12"
+    },
+    {
+      "key": "kimi_linear.attention.head_count_kv",
+      "value": "[0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 0, 0, 0, 96, 96]"
+    },
+    {
+      "key": "kimi_linear.kda_layers",
+      "value": "[1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26, 27, 29, 30, 31, 33, 34, 35, 37, 38, 39, 41, 42, 43, 45, 46, 47, 49, 50, 51, 53, 54, 55, 57, 58, 59, 61, 62, 63, 65, 66, 67, 69, 70, 71, 73, 74, 75, 77, 78, 79, 81, 82, 83, 85, 86, 87, 89, 90, 91]"
+    },
+    {
+      "key": "kimi_linear.linear_head_dim",
+      "value": "128"
+    },
+    {
+      "key": "kimi_linear.ssm.inner_size",
+      "value": "12288"
+    },
+    {
+      "key": "kimi_linear.ssm.state_size",
+      "value": "128"
+    },
+    {
+      "key": "kimi_linear.ssm.group_count",
+      "value": "96"
+    },
+    {
+      "key": "kimi_linear.ssm.conv_kernel",
+      "value": "4"
+    }
+  ],
+  "size": "",
+  "tensor_groups": [],
+  "tensors": []
+}

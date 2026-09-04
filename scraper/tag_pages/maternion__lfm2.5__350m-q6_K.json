@@ -1,0 +1,54 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "lfm2",
+      "blob_url": "/maternion/lfm2.5:350m-q6_K/blobs/3ed48149a87d",
+      "content_preview": "arch  lfm2",
+      "parameters": "354M",
+      "quantization": "Q6_K",
+      "size": "293MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/lfm2.5:350m-q6_K/blobs/5188f2b355da",
+      "content_preview": "LICENSE TEXT\nLFM Open License v1.0\nTERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n1. D",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/lfm2.5:350m-q6_K/blobs/f7301c3862a8",
+      "content_preview": "{\n    \"repeat_penalty\": 1.05,\n    \"stop\": [\n        \"<|startoftext|>\",\n        \"<|im_start|>\",",
+      "parameters": "",
+      "quantization": "",
+      "size": "167B",
+      "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/lfm2.5:350m-q6_K/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/maternion/lfm2.5:350m-q6_K",
+  "manifest_digest": "a140bc46c2c5",
+  "manifest_size": "293MB",
+  "manifest_updated": "2 weeks ago",
+  "path": "/maternion/lfm2.5",
+  "scraped_at": "2026-07-14T15:16:43.853242+00:00",
+  "tag_name": "350m-q6_K"
+}

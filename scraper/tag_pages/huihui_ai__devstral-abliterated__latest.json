@@ -1,0 +1,53 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "llama",
+      "blob_url": "/huihui_ai/devstral-abliterated:latest/blobs/8efa1592d39a",
+      "content_preview": "arch  llama",
+      "parameters": "23.6B",
+      "quantization": "Q4_K_M",
+      "size": "14GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/devstral-abliterated:latest/blobs/5725afc40acd",
+      "content_preview": "You are Devstral, a helpful agentic model trained by Mistral AI and using the OpenHands scaffold. Yo",
+      "parameters": "",
+      "quantization": "",
+      "size": "5.7kB",
+      "type": "system"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/devstral-abliterated:latest/blobs/43070e2d4e53",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/huihui_ai/devstral-abliterated:latest/blobs/6db27cd4e277",
+      "content_preview": "{{- range $index, $_ := .Messages }}\n{{- if eq .Role \"system\" }}[SYSTEM_PROMPT]{{ .Content }}[/SYSTE",
+      "parameters": "",
+      "quantization": "",
+      "size": "695B",
+      "type": "template"
+    }
+  ],
+  "full_path": "/huihui_ai/devstral-abliterated:latest",
+  "manifest_digest": "2b65ec90d87a",
+  "manifest_size": "14GB",
+  "manifest_updated": "1 year ago",
+  "path": "/huihui_ai/devstral-abliterated",
+  "tag_name": "latest"
+}

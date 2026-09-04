@@ -1,0 +1,36 @@
+{
+  "applications": [],
+  "cloud_context": "",
+  "cloud_context_unit": "",
+  "cloud_size": "",
+  "cloud_size_unit": "",
+  "cloud_usage_active_slots": 0,
+  "cloud_usage_level": "",
+  "files": [
+    {
+      "arch": "qwen2",
+      "blob_url": "/maternion/strand-rust-coder:14b-q4_K_M/blobs/6abca8fd0c51",
+      "content_preview": "arch  qwen2",
+      "parameters": "14.8B",
+      "quantization": "Q4_K_M",
+      "size": "9.0GB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/maternion/strand-rust-coder:14b-q4_K_M/blobs/1e65450c3067",
+      "content_preview": "{{- if .Suffix }}<|fim_prefix|>{{ .Prompt }}<|fim_suffix|>{{ .Suffix }}<|fim_middle|>\n{{- else if .M",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.6kB",
+      "type": "template"
+    }
+  ],
+  "full_path": "/maternion/strand-rust-coder:14b-q4_K_M",
+  "manifest_digest": "e96b4ce0f6de",
+  "manifest_size": "9.0GB",
+  "manifest_updated": "4 months ago",
+  "path": "/maternion/strand-rust-coder",
+  "scraped_at": "2026-07-14T15:17:40.372938+00:00",
+  "tag_name": "14b-q4_K_M"
+}
