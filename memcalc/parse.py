@@ -165,11 +165,6 @@ def extract_hparams(blob_dict: dict) -> dict:
         normalized["_tensor_names"] = [
             t.get("name", "") for t in tensors if isinstance(t, dict)
         ]
-        normalized["_tensor_shapes"] = {
-            t.get("name", ""): t.get("shape")
-            for t in tensors
-            if isinstance(t, dict) and t.get("shape")
-        }
 
     return normalized
 

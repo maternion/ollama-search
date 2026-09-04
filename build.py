@@ -604,7 +604,6 @@ def nav_html(active: str = "") -> str:
     </a>
     <div class="hidden lg:flex xl:flex-1 items-center space-x-6 ml-6 mr-6 xl:mr-0 text-lg">
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="{url("/")}">Models</a>
-      <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="{url("/compare/")}">Compare</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://docs.ollama.com">Docs</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="{url("/pricing")}">Pricing</a>
       <a class="hover:underline focus:underline focus:outline-none focus:ring-0" href="https://github.com/maternion/ollama-search" target="_blank" rel="noopener noreferrer">Source</a>
@@ -940,39 +939,6 @@ def parse_context_to_tokens(s: str) -> int:
     return int(num)
 
 
-def _cloud_cost_pill(m: dict, tags: list[dict] | None) -> str:
-    """Render a small cost pill for cloud models on cards.
-
-    Shows '$X /1M' (input price) if cost data is available from tag pages.
-    For models with multiple cloud variants and no :cloud tag, shows a range.
-    Returns empty string for non-cloud models or when no cost data is found.
-    """
-    if not m.get("cloud"):
-        return ""
-    tag_list = tags or []
-    cloud_tags = [
-        t
-        for t in tag_list
-        if t.get("name") == "cloud" or t.get("name", "").endswith("-cloud")
-    ]
-    if len(cloud_tags) > 1 and not any(t.get("name") == "cloud" for t in cloud_tags):
-        cost_data = _cloud_cost_range_from_tags(m["path"], tag_list)
-    else:
-        cost_data = _cloud_cost_from_tags(m["path"], tag_list)
-    if not cost_data:
-        return ""
-    cost_input = cost_data.get("cloud_cost_input", "")
-    if not cost_input:
-        return ""
-    return (
-        '<span class="inline-flex items-center rounded-md '
-        "bg-[#ddf4ff] dark:bg-blue-950/50 px-2 py-0.5 text-xs font-medium "
-        f'text-blue-600 dark:text-blue-400 sm:text-[13px]">{esc(cost_input)}'
-        '<span class="ml-1 text-[10px] font-normal opacity-70">/1M in</span>'
-        "</span>"
-    )
-
-
 def render_card(
     m: dict,
     tags: list[dict] | None = None,
@@ -1064,7 +1030,6 @@ def render_card(
         {caps}
         {fmt_chip}
         {sizes}
-        {_cloud_cost_pill(m, tags)}
       </div>
       <p class="my-1 flex space-x-5 text-[13px] font-medium text-neutral-500 dark:text-neutral-400">
         <span class="flex items-center">
@@ -1350,7 +1315,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
     template_html = ""
 
     # Cloud dropdown: All models / Cloud only / Local only (compact, same as original)
-    cloud_dropdown = """        <select data-dropdown id="cloud-filter" class="px-3 py-1 text-sm font-medium rounded-full cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 focus:outline-none focus:ring-0 appearance-none">
+    cloud_dropdown = """        <select id="cloud-filter" class="px-3 py-1 text-sm font-medium rounded-full cursor-pointer border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-950 focus:outline-none focus:ring-0 appearance-none">
           <option value="all">All models</option>
           <option value="cloud">Cloud only</option>
           <option value="local">Local only</option>
@@ -1382,7 +1347,6 @@ def build_index(models: list[dict], ranks: dict) -> None:
             extract_hparams_from_config as _extract_hparams_from_config,
         )
         from memcalc.dispatch import compute_memory_at_context as _compute_mem
-        from memcalc.dispatch import detect_family as _detect_family
 
         _blobs_dir = HERE / "scraper" / "blobs"
         # Per-digest hparams cache so duplicate digests (e.g. "latest") are
@@ -1445,12 +1409,6 @@ def build_index(models: list[dict], ranks: dict) -> None:
                     return float("inf")
 
             json_files.sort(key=_size_key)
-            # Collect all config candidates, then prefer the one with the
-            # largest num_hidden_layers — some tags ship multiple configs
-            # (e.g. gemma4 has a tiny 4-layer "unified assistant" config
-            # alongside the real 48-layer model config).
-            best_digest = None
-            best_layers = -1
             for f in json_files:
                 digest = f["blob_url"].rsplit("/", 1)[-1]
                 bp = _blobs_dir / f"{digest}.json"
@@ -1462,16 +1420,11 @@ def build_index(models: list[dict], ranks: dict) -> None:
                     if not content:
                         continue
                     config = json.loads(content)
+                    if "model_type" in config or "architectures" in config:
+                        return digest
                 except Exception:
                     continue
-                if "model_type" not in config and "architectures" not in config:
-                    continue
-                tc = config.get("text_config") or config
-                layers = tc.get("num_hidden_layers") or 0
-                if layers > best_layers:
-                    best_layers = layers
-                    best_digest = digest
-            return best_digest
+            return None
 
         def _get_hparams(digest: str) -> dict | None:
             """Return cached hparams for a digest, parsing the blob on first use.
@@ -1521,56 +1474,6 @@ def build_index(models: list[dict], ranks: dict) -> None:
 
         _stats_tags = 0
         _stats_skipped = 0
-
-        def _hpint(v):
-            """Coerce an hparam to int; GGUF metadata values are strings."""
-            if isinstance(v, bool):
-                return None
-            if isinstance(v, (int, float)):
-                return int(v)
-            if isinstance(v, str):
-                try:
-                    return int(float(v))
-                except ValueError:
-                    return None
-            return None
-
-        def _hpval(v):
-            """Scalarize possibly per-layer arrays: uniform -> int, mixed -> 'mixed'."""
-            if isinstance(v, (list, tuple)):
-                vals = {_hpint(x) for x in v}
-                vals.discard(None)
-                if len(vals) == 1:
-                    return vals.pop()
-                return "mixed" if vals else None
-            return _hpint(v)
-
-        def _hp_summary(hp: dict, is_mlx: bool) -> dict:
-            """Compact per-tag architecture summary for the compare page."""
-            out = {
-                "arch": hp.get("general.architecture"),
-                "layers": _hpint(hp.get("block_count")),
-                "hidden": _hpint(hp.get("embedding_length")),
-                "ffn": _hpval(hp.get("feed_forward_length")),
-                "heads": _hpint(hp.get("attention.head_count")),
-                "kvheads": _hpval(hp.get("attention.head_count_kv")),
-                "headdim": _hpval(hp.get("attention.key_length"))
-                or _hpval(hp.get("attention.head_dim")),
-                "headdimv": _hpval(hp.get("attention.value_length")),
-                "swa": _hpval(hp.get("attention.sliding_window"))
-                or _hpval(hp.get("attention.chunk_size")),
-                "rope": _hpint(hp.get("rope.freq_base")),
-                "vocab": _hpint(hp.get("vocab_size")),
-                "experts": _hpint(hp.get("expert_count"))
-                or _hpint(hp.get("num_experts")),
-                "expertstok": _hpint(hp.get("expert_used_count"))
-                or _hpint(hp.get("num_experts_per_tok")),
-                "family": _detect_family(hp),
-            }
-            if not is_mlx:
-                out["quant"] = hp.get("general.file_type")
-            return {k: v for k, v in out.items() if v is not None}
-
         for m in models:
             if m.get("cloud_only"):
                 continue
@@ -1714,7 +1617,6 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 if not hp:
                     _stats_skipped += 1
                     continue
-                hp_out = _hp_summary(hp, is_mlx)
                 # Prefer the GGUF blob's context_length over ollama.com's tag
                 # context — the blob metadata is more authoritative (e.g.
                 # deepseek-v2:236b shows 4K on ollama.com but the GGUF has
@@ -1763,7 +1665,6 @@ def build_index(models: list[dict], ranks: dict) -> None:
                     "v": v,
                     "w": round((tag.get("size_bytes") or 0) / 1073741824, 4),
                     "fmt": fmt_tag,
-                    "hp": hp_out,
                 }
                 # For by_path (index page): only keep main size tags
                 # (e.g. "16b", "236b") — no quant variants. For MLX, only
@@ -1774,7 +1675,6 @@ def build_index(models: list[dict], ranks: dict) -> None:
                         "v": v,
                         "w": round((tag.get("size_bytes") or 0) / 1073741824, 4),
                         "fmt": fmt_tag,
-                        "hp": hp_out,
                     }
                     _stats_tags += 1
                     if c > max_c:
@@ -1896,7 +1796,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
       </div>
       <div id="searchpreview-mobile" class="hidden absolute left-4 right-4 top-16 z-50"></div>
       <div class="sm:hidden block relative">
-        <select data-dropdown id="mobile-sort-select" class="absolute inset-0 w-6 px-3 py-1 opacity-0 appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600">
+        <select id="mobile-sort-select" class="absolute inset-0 w-6 px-3 py-1 opacity-0 appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600">
 {opt_html}
         </select>
         <div class="w-6 px-3.5 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex items-center justify-center pointer-events-none">
@@ -1940,7 +1840,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
       <!-- Sort dropdown (narrow mode: inline with pills; wide mode: JS moves to results-area) -->
       <div id="sort-container">
         <div class="hidden sm:block shrink-0">
-          <select data-dropdown id="desktop-sort-select" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600 min-w-[120px] text-sm px-3 py-1.5">
+          <select id="desktop-sort-select" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600 min-w-[120px] text-sm px-3 py-1.5">
 {opt_html}
           </select>
         </div>
@@ -1968,7 +1868,7 @@ def build_index(models: list[dict], ranks: dict) -> None:
         <div class="flex items-center gap-1.5">
           <button type="button" id="graph-hide-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide graph</button>
           <button type="button" id="graph-filters-toggle" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1">Hide filters</button>
-          <select data-dropdown id="graph-mode" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1 pr-7">
+          <select id="graph-mode" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1 pr-7">
             <option value="kv-gguf">KV cache - GGUF</option>
             <option value="kv-mlx">KV cache - MLX</option>
             <option value="total-gguf">Total memory - GGUF</option>
@@ -2567,7 +2467,6 @@ def _header_section(m: dict) -> str:
          </div>
         {new_badge}
        </div>
-       <button type="button" class="compare-btn ml-auto shrink-0 text-sm text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white border border-neutral-200 dark:border-neutral-800 rounded-full px-3 py-1" data-model="{esc(m["path"].strip("/").lower())}" data-tag="{esc((m.get("tags") or [{}])[0].get("name", "latest"))}" title="Compare this model">Compare ⇄</button>
      </div>
      <div class="flex flex-col space-y-2">
        <div class="flex flex-col space-y-2">
@@ -2693,111 +2592,6 @@ def _cloud_metrics_section(page_data: dict) -> str:
 </div>"""
 
 
-def _cloud_cost_from_tags(model_path: str, tags: list[dict]) -> dict | None:
-    """Find cloud cost data from tag pages when the base model page lacks it.
-
-    Prefers the ':cloud' tag, then falls back to the first cloud tag.
-    Returns a dict with cloud_cost_input/cached/output/context/unit/size/unit,
-    or None if no cloud tag page has cost data.
-    """
-    slug = slugify(model_path)
-    # Priority: 'cloud' tag first, then any *-cloud tag
-    cloud_tag_names = []
-    for t in tags:
-        name = t.get("name", "")
-        if name == "cloud" or name.endswith("-cloud"):
-            cloud_tag_names.append(name)
-    # Sort: 'cloud' first, then alphabetical
-    cloud_tag_names.sort(key=lambda n: (n != "cloud", n))
-    for tag_name in cloud_tag_names:
-        tp = load_tag_page(model_path, tag_name)
-        if tp and (tp.get("cloud_cost_input") or tp.get("cloud_cost_output")):
-            return {
-                "cloud_cost_input": tp.get("cloud_cost_input", ""),
-                "cloud_cost_cached": tp.get("cloud_cost_cached", ""),
-                "cloud_cost_output": tp.get("cloud_cost_output", ""),
-                "cloud_context": tp.get("cloud_context", ""),
-                "cloud_context_unit": tp.get("cloud_context_unit", ""),
-                "cloud_size": tp.get("cloud_size", ""),
-                "cloud_size_unit": tp.get("cloud_size_unit", ""),
-                "cloud_usage_level": tp.get("cloud_usage_level", ""),
-                "cloud_usage_active_slots": tp.get("cloud_usage_active_slots", 0),
-            }
-    return None
-
-
-def _cloud_cost_range_from_tags(model_path: str, tags: list[dict]) -> dict | None:
-    """Find min/max cost across all cloud tags for models with multiple cloud variants.
-
-    Returns a dict with cloud_cost_input (min–max string), cloud_cost_output (min–max),
-    plus context/size from the first cloud tag. Returns None if no cost data.
-    """
-    slug = slugify(model_path)
-    cloud_tag_names = []
-    for t in tags:
-        name = t.get("name", "")
-        if name == "cloud" or name.endswith("-cloud"):
-            cloud_tag_names.append(name)
-    if not cloud_tag_names:
-        return None
-
-    inputs = []
-    outputs = []
-    cacheds = []
-    first_tp = None
-    for tag_name in cloud_tag_names:
-        tp = load_tag_page(model_path, tag_name)
-        if tp and (tp.get("cloud_cost_input") or tp.get("cloud_cost_output")):
-            if first_tp is None:
-                first_tp = tp
-            ci = tp.get("cloud_cost_input", "")
-            co = tp.get("cloud_cost_output", "")
-            cc = tp.get("cloud_cost_cached", "")
-            if ci:
-                inputs.append(ci)
-            if co:
-                outputs.append(co)
-            if cc:
-                cacheds.append(cc)
-
-    if not inputs and not outputs:
-        return None
-
-    def _range(vals: list[str]) -> str:
-        if not vals:
-            return ""
-        # Strip $ and parse floats to find min/max
-        parsed = []
-        for v in vals:
-            try:
-                parsed.append((float(v.replace("$", "")), v))
-            except ValueError:
-                pass
-        if not parsed:
-            return vals[0]
-        if len(parsed) == 1:
-            return parsed[0][1]
-        min_v = min(parsed, key=lambda x: x[0])
-        max_v = max(parsed, key=lambda x: x[0])
-        if min_v[0] == max_v[0]:
-            return min_v[1]
-        return f"{min_v[1]}–{max_v[1]}"
-
-    return {
-        "cloud_cost_input": _range(inputs),
-        "cloud_cost_cached": _range(cacheds),
-        "cloud_cost_output": _range(outputs),
-        "cloud_context": first_tp.get("cloud_context", "") if first_tp else "",
-        "cloud_context_unit": first_tp.get("cloud_context_unit", "")
-        if first_tp
-        else "",
-        "cloud_size": first_tp.get("cloud_size", "") if first_tp else "",
-        "cloud_size_unit": first_tp.get("cloud_size_unit", "") if first_tp else "",
-        "cloud_usage_level": "",
-        "cloud_usage_active_slots": 0,
-    }
-
-
 def build_detail(m: dict, tags: list[dict]) -> None:
     name = m["name"]
     desc = m["description"]
@@ -2820,43 +2614,7 @@ def build_detail(m: dict, tags: list[dict]) -> None:
 
     page_data = load_model_page(m["path"])
     readme_section = _readme_section(page_data) if page_data else ""
-
-    # Cloud metrics: prefer base page data; fall back to cloud tag page
-    cloud_page_data = page_data
-    if cloud_page_data and not (
-        cloud_page_data.get("cloud_cost_input")
-        or cloud_page_data.get("cloud_cost_output")
-    ):
-        # Base page lacks cost data — check cloud tag pages
-        # Use range for models with multiple cloud tags, single for one
-        cloud_tags = [
-            t
-            for t in tags
-            if t.get("name") == "cloud" or t.get("name", "").endswith("-cloud")
-        ]
-        if len(cloud_tags) > 1 and not any(
-            t.get("name") == "cloud" for t in cloud_tags
-        ):
-            # Multiple cloud variants, no primary :cloud tag — show range
-            tag_cost = _cloud_cost_range_from_tags(m["path"], tags)
-        else:
-            tag_cost = _cloud_cost_from_tags(m["path"], tags)
-        if tag_cost:
-            cloud_page_data = {**(cloud_page_data or {}), **tag_cost}
-    elif not cloud_page_data:
-        cloud_tags = [
-            t
-            for t in tags
-            if t.get("name") == "cloud" or t.get("name", "").endswith("-cloud")
-        ]
-        if len(cloud_tags) > 1 and not any(
-            t.get("name") == "cloud" for t in cloud_tags
-        ):
-            cloud_page_data = _cloud_cost_range_from_tags(m["path"], tags)
-        else:
-            cloud_page_data = _cloud_cost_from_tags(m["path"], tags)
-    cloud_metrics = _cloud_metrics_section(cloud_page_data) if cloud_page_data else ""
-
+    cloud_metrics = _cloud_metrics_section(page_data) if page_data else ""
     apps_section = _applications_section(page_data) if page_data else ""
 
     graph_key = m["path"].strip("/").lower()
@@ -2890,7 +2648,7 @@ def build_detail(m: dict, tags: list[dict]) -> None:
     <div class="flex items-center justify-between mb-3">
       <div id="graph-subtitle" class="text-sm font-semibold text-neutral-700 dark:text-neutral-300">&nbsp;</div>
       <div class="flex items-center gap-1.5">
-        <select data-dropdown id="graph-mode" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1 pr-7">
+        <select id="graph-mode" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none text-xs px-2 py-1 pr-7">
           <option value="kv-gguf">KV cache - GGUF</option>
           <option value="kv-mlx">KV cache - MLX</option>
           <option value="total-gguf">Total memory - GGUF</option>
@@ -3048,12 +2806,12 @@ def _tags_tag_row(
         <span class="font-mono">{digest}</span> • {usage_sep}{size_sep}{ctx} context window •
         <span class="hidden sm:inline">{inp} input • {updated}</span>
       </span>
-      <div class="flex sm:hidden">{inp} input • {updated} <span class="md:hidden"><button type="button" class="compare-btn ml-1 text-xs text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white border border-neutral-200 dark:border-neutral-800 rounded-full px-2 py-0.5" data-model="{esc(model_path.strip("/").lower())}" data-tag="{esc(t["name"])}" title="Compare this model">⇄</button></span></div>
+      <div class="flex sm:hidden">{inp} input • {updated}</div>
     </div>
   {mobile_close}
   <div class="hidden md:flex flex-col space-y-[6px]">
     <div class="grid grid-cols-12 items-center">
-      <span class="flex items-center font-medium col-span-5 group text-sm">
+      <span class="flex items-center font-medium col-span-6 group text-sm">
         {name_desktop}
         {latest_badge}
         {mlx_badge}
@@ -3065,7 +2823,6 @@ def _tags_tag_row(
       {size_cell}
       <p class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">{ctx}</p>
       <div class="col-span-2 text-neutral-500 dark:text-neutral-400 text-[13px]">{inp}</div>
-      <div class="col-span-1 flex justify-end"><button type="button" class="compare-btn opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity text-xs text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white border border-neutral-200 dark:border-neutral-800 rounded-full px-2 py-0.5" data-model="{esc(model_path.strip("/").lower())}" data-tag="{esc(t["name"])}" title="Compare this model">⇄</button></div>
     </div>
     <div class="flex text-neutral-500 dark:text-neutral-500 text-xs items-center">
       <span class="font-mono text-[11px]">{digest}</span>&nbsp;·&nbsp;{updated}
@@ -3083,12 +2840,11 @@ def _tags_table_block(rows_html: str, count: int, fmt_id: str, visible: bool) ->
         f'  <div class="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">\n'
         f'    <div class="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">\n'
         f'      <div class="items-center grid bg-neutral-50 dark:bg-neutral-900 px-4 py-3 text-xs grid-cols-12 text-neutral-900 dark:text-neutral-100">\n'
-        f'        <p class="col-span-5 hidden md:block">Name</p>\n'
+        f'        <p class="col-span-6 hidden md:block">Name</p>\n'
         f'        <p class="block col-span-6 md:hidden">{count_label}</p>\n'
         f'        <p class="col-span-2 hidden md:block">Size / Usage</p>\n'
         f'        <p class="col-span-2 hidden md:block">Context</p>\n'
         f'        <p class="col-span-2 hidden md:block">Input</p>\n'
-        f'        <p class="col-span-1 hidden md:block"></p>\n'
         f"      </div>\n"
         f"      {rows_html}\n"
         f"    </div>\n"
@@ -3829,32 +3585,6 @@ EXTRAS_CSS = r"""/* Dark mode overrides for ollama-search.
 
 /* --- pill active state (purple) for peer-checked and JS-toggled buttons --- */
 .dark .peer:checked ~ label { background-color: #1e1b4b !important; border-color: #1e1b4b !important; }
-
-/* --- global scrollbar styling (light + dark) --- */
-* { scrollbar-width: thin; scrollbar-color: #d4d4d4 transparent; }
-.dark * { scrollbar-color: #404040 transparent; }
-*::-webkit-scrollbar { width: 8px; height: 8px; }
-*::-webkit-scrollbar-track { background: transparent; }
-*::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 4px; }
-.dark *::-webkit-scrollbar-thumb { background: #404040; }
-*::-webkit-scrollbar-thumb:hover { background: #a3a3a3; }
-.dark *::-webkit-scrollbar-thumb:hover { background: #525252; }
-
-/* --- universal custom dropdown --- */
-.dd-trigger{display:inline-flex;align-items:center;gap:6px;border:1px solid #e5e5e5;border-radius:8px;padding:4px 10px;font-size:12px;line-height:18px;text-align:left;cursor:pointer;background:#fff;color:#404040;white-space:nowrap;transition:border-color .15s}
-.dd-trigger:hover{border-color:#a3a3a3}
-.dark .dd-trigger{background:#0a0a0a;border-color:#404040;color:#d4d4d4}
-.dark .dd-trigger:hover{border-color:#737373}
-.dd-trigger.dd-open{border-color:#171717}
-.dark .dd-trigger.dd-open{border-color:#e5e5e5}
-.dd-label{font-variant-numeric:tabular-nums}
-.dd-chevron{display:flex;align-items:center;opacity:.6}
-.dd-chevron svg{display:block}
-.dd-popup{position:absolute;z-index:80;width:auto;min-width:100%;max-height:20rem;overflow-y:auto;background:#0a0a0a;border:1px solid #262626;border-radius:10px;padding:4px;box-shadow:0 8px 32px rgba(0,0,0,.3);white-space:nowrap}
-.dd-item{display:block;width:100%;text-align:left;white-space:nowrap;border:0;background:transparent;color:#d4d4d4;font-size:12px;padding:7px 12px;border-radius:6px;cursor:pointer;transition:background .1s}
-.dd-item.dd-active{background:#262626}
-.dd-item.dd-selected{color:#fff;font-weight:600}
-.dd-item:hover{background:#262626}
 
 /* --- search preview dropdown --- */
 #searchpreview { max-height: 24rem; overflow-y: auto; }
@@ -5207,156 +4937,7 @@ function layoutFilters() {
   }
 }
 
-// Universal custom dropdown: replaces all <select data-dropdown> with a
-// custom popup that has a black body and grey hover/active highlight.
-function initUniversalDropdowns() {
-  var selects = document.querySelectorAll('select[data-dropdown]');
-  for (var si = 0; si < selects.length; si++) {
-    initOneDropdown(selects[si]);
-  }
-}
-
-function initOneDropdown(sel) {
-  if (sel.__ddInit) return;
-  sel.__ddInit = true;
-  sel.style.display = 'none';
-
-  var trigger = document.createElement('button');
-  trigger.type = 'button';
-  trigger.className = 'dd-trigger';
-  trigger.setAttribute('aria-haspopup', 'listbox');
-
-  var label = document.createElement('span');
-  label.className = 'dd-label';
-  trigger.appendChild(label);
-  var chevron = document.createElement('span');
-  chevron.className = 'dd-chevron';
-  chevron.innerHTML = '<svg viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg>';
-  trigger.appendChild(chevron);
-
-  sel.parentNode.insertBefore(trigger, sel);
-
-  var popup = document.createElement('div');
-  popup.className = 'dd-popup hidden';
-  popup.setAttribute('role', 'listbox');
-
-  var items = [];
-  var activeIdx = -1;
-
-  function getOptions() {
-    return Array.prototype.slice.call(sel.querySelectorAll('option'));
-  }
-
-  function syncLabel() {
-    var opts = getOptions();
-    for (var i = 0; i < opts.length; i++) {
-      if (opts[i].selected) { label.textContent = opts[i].textContent; return; }
-    }
-    if (opts.length) label.textContent = opts[0].textContent;
-  }
-
-  function buildPopup() {
-    popup.innerHTML = '';
-    items = [];
-    var opts = getOptions();
-    for (var i = 0; i < opts.length; i++) {
-      var item = document.createElement('button');
-      item.type = 'button';
-      item.className = 'dd-item' + (opts[i].selected ? ' dd-selected' : '');
-      item.setAttribute('role', 'option');
-      item.textContent = opts[i].textContent;
-      item.setAttribute('data-idx', i);
-      (function (idx) {
-        item.addEventListener('mouseenter', function () { setActive(idx); });
-        item.addEventListener('click', function (e) { e.stopPropagation(); pick(idx); });
-      })(i);
-      popup.appendChild(item);
-      items.push(item);
-    }
-  }
-
-  function setActive(idx) {
-    activeIdx = idx;
-    for (var i = 0; i < items.length; i++) {
-      if (i === idx) items[i].classList.add('dd-active');
-      else items[i].classList.remove('dd-active');
-    }
-  }
-
-  function pick(idx) {
-    var opts = getOptions();
-    if (idx < 0 || idx >= opts.length) return;
-    opts[idx].selected = true;
-    syncLabel();
-    close();
-    sel.dispatchEvent(new Event('change', { bubbles: true }));
-  }
-
-  function open() {
-    buildPopup();
-    popup.classList.remove('hidden');
-    // position popup: open upward if not enough space below
-    var r = trigger.getBoundingClientRect();
-    var pr = trigger.offsetParent ? trigger.offsetParent.getBoundingClientRect() : { left: 0, top: 0 };
-    var spaceBelow = window.innerHeight - r.bottom;
-    var popupHeight = Math.min(popup.scrollHeight, 320);
-    var goUp = spaceBelow < popupHeight + 16 && r.top > popupHeight + 16;
-    popup.style.left = (r.left - pr.left) + 'px';
-    if (goUp) { popup.style.top = 'auto'; popup.style.bottom = (pr.bottom - r.top) + 'px'; }
-    else { popup.style.bottom = 'auto'; popup.style.top = (r.bottom - pr.top) + 'px'; }
-    popup.style.marginTop = '0';
-    var selIdx = -1;
-    var opts = getOptions();
-    for (var i = 0; i < opts.length; i++) { if (opts[i].selected) selIdx = i; }
-    if (selIdx < 0) selIdx = 0;
-    setActive(selIdx);
-    trigger.classList.add('dd-open');
-    document.addEventListener('click', onDocClick, true);
-    setTimeout(function () {
-      var cur = items[selIdx];
-      if (cur && cur.scrollIntoView) cur.scrollIntoView({ block: 'nearest' });
-    }, 0);
-  }
-
-  function close() {
-    popup.classList.add('hidden');
-    trigger.classList.remove('dd-open');
-    document.removeEventListener('click', onDocClick, true);
-  }
-
-  function onDocClick(e) {
-    if (!popup.contains(e.target) && !trigger.contains(e.target)) close();
-  }
-
-  trigger.addEventListener('click', function (e) {
-    e.stopPropagation();
-    if (popup.classList.contains('hidden')) open();
-    else close();
-  });
-
-  trigger.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (popup.classList.contains('hidden')) open(); }
-    else if (e.key === 'Escape') close();
-  });
-
-  popup.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowDown') { e.preventDefault(); setActive((activeIdx + 1) % items.length); }
-    else if (e.key === 'ArrowUp') { e.preventDefault(); setActive((activeIdx - 1 + items.length) % items.length); }
-    else if (e.key === 'Enter') { e.preventDefault(); pick(activeIdx); }
-    else if (e.key === 'Escape') close();
-  });
-  popup.tabIndex = -1;
-
-  // position popup below trigger
-  sel.parentNode.style.position = sel.parentNode.style.position || 'relative';
-  sel.parentNode.appendChild(popup);
-
-  syncLabel();
-}
-
 function initApp() {
-  initUniversalDropdowns();
-
   var desktopSort = document.getElementById('desktop-sort-select');
   var mobileSort = document.getElementById('mobile-sort-select');
   if (desktopSort && mobileSort) {
@@ -6680,1009 +6261,10 @@ function initGraph() {
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', function() { try { initApp(); } catch(e) { console.error('initApp:', e); } });
+  document.addEventListener('DOMContentLoaded', initApp);
 } else {
-  try { initApp(); } catch(e) { console.error('initApp:', e); }
+  initApp();
 }
-
-// Compare: .compare-btn seed buttons + /compare page (cards, table, graph)
-// ---------------------------------------------------------------------
-(function () {
-  'use strict';
-  if (window.__cmpInit) return;
-  window.__cmpInit = true;
-
-  var SEED_KEY = 'compare-seed';
-  var CMP_MAX = 4;
-  var PAL = ['#0ea5e9', '#f59e0b', '#10b981', '#a855f7', '#ef4444', '#6366f1'];
-  var cmpCatalog = null, cmpByPath = {}, cmpGraph = null, cmpEntries = [], cmpBudget = 16;
-
-  function E(id) { return document.getElementById(id); }
-  function key(p) { return String(p || '').replace(/^\//, '').toLowerCase(); }
-  function shortName(k) { var i = k.indexOf('/'); return i >= 0 ? k.slice(i + 1) : k; }
-  function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
-  function trim1(v) { var s = v.toFixed(1); return s.slice(-2) === '.0' ? String(Math.round(v)) : s; }
-  function fmtCount(n) { n = n || 0; if (n >= 1e9) return trim1(n / 1e9) + 'B'; if (n >= 1e6) return trim1(n / 1e6) + 'M'; if (n >= 1e4) return trim1(n / 1e3) + 'K'; return String(n); }
-  function fmtCtx(n) { if (!n || n <= 0) return '—'; if (n >= 1048576) return trim1(n / 1048576) + 'M'; if (n >= 1024) return trim1(n / 1024) + 'K'; return String(n); }
-  function fmtGiB(g) { if (g == null || isNaN(g)) return '—'; if (g >= 100) return Math.round(g) + ' GB'; if (g >= 10) return g.toFixed(1) + ' GB'; return g.toFixed(2) + ' GB'; }
-  function trunc(s, n) { s = String(s || ''); return s.length > n ? s.slice(0, n - 1) + '…' : s; }
-  function baseUrl() { var b = typeof window.COMPARE_BASE === 'string' ? window.COMPARE_BASE : (typeof NAV_BASE !== 'undefined' && NAV_BASE ? NAV_BASE : '/'); return b; }
-  function fetchJson(u, cb, err) { fetch(u).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(cb).catch(err || function () {}); }
-  function palette() { return (typeof graphPalette === 'function' && graphPalette().length) ? graphPalette() : PAL; }
-
-  // ---- seed: .compare-btn click delegation (capture, all pages) ----
-  function seedGet() { try { var v = JSON.parse(sessionStorage.getItem(SEED_KEY) || '[]'); return Array.isArray(v) ? v.filter(function (s) { return typeof s === 'string'; }) : []; } catch (e) { return []; } }
-  function seedSet(l) { try { sessionStorage.setItem(SEED_KEY, JSON.stringify(l)); } catch (e) {} }
-  function onSeedClick(e) {
-    var btn = e.target && e.target.closest ? e.target.closest('.compare-btn') : null;
-    if (!btn) return;
-    e.preventDefault();
-    e.stopPropagation();
-    var model = key(btn.getAttribute('data-model'));
-    var tag = btn.getAttribute('data-tag') || 'latest';
-    if (!model) return;
-    var k = model + ':' + tag;
-    var list = seedGet();
-    if (list.indexOf(k) === -1) { list.push(k); while (list.length > CMP_MAX) list.shift(); }
-    seedSet(list);
-    window.location.href = baseUrl() + 'compare/?m=' + encodeURIComponent(list.join(','));
-  }
-
-  // ---- CSS ----
-  function injectCss() {
-    if (E('cmp-style')) return;
-    var s = document.createElement('style');
-    s.id = 'cmp-style';
-    s.textContent = [
-      '.cmp *{box-sizing:border-box}',
-      '.cmp{font-variant-numeric:tabular-nums}',
-
-      // cards row (class applied by JS to #compare-cards)
-      '.cmp-cards{display:flex;gap:14px;align-items:stretch}',
-      '.cmp-card{flex:1;min-width:0;border:1px solid #e5e5e5;border-radius:16px;padding:20px;position:relative;background:#fff}',
-      '.dark .cmp-card{border-color:#262626;background:#0a0a0a}',
-      '.cmp-card-bar{position:absolute;top:0;left:0;right:0;height:4px;border-radius:16px 16px 0 0}',
-      '.cmp-card-rm{position:absolute;top:14px;right:16px;background:none;border:0;cursor:pointer;font-size:20px;color:#a3a3a3;padding:0;line-height:1}',
-      '.cmp-card-rm:hover{color:#ef4444}',
-      '.cmp-card-name{font-size:20px;font-weight:700;color:inherit;text-decoration:none;display:block;padding-right:24px;line-height:1.2}',
-      '.cmp-card-name:hover{text-decoration:underline}',
-      '.cmp-card-owner{font-size:13px;color:#737373;margin-top:4px;display:block}',
-      '.cmp-card-stats{display:flex;gap:14px;margin-top:14px;font-size:13px;color:#525252;flex-wrap:wrap}',
-      '.dark .cmp-card-stats{color:#a3a3a3}',
-      '.cmp-card-pills{margin-top:12px;display:flex;gap:6px;flex-wrap:wrap}',
-      '.cmp-tag-select{margin-top:10px;width:100%;appearance:none;border:1px solid #e5e5e5;border-radius:8px;padding:6px 26px 6px 10px;font-size:12px;color:#404040;cursor:pointer;background:#fff url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'12\' viewBox=\'0 0 12 12\'%3E%3Cpath fill=\'%23737373\' d=\'M2.5 4.5L6 8l3.5-3.5\'/%3E%3C/svg%3E") no-repeat right 8px center;font-variant-numeric:tabular-nums}',
-      '.dark .cmp-tag-select{background-color:#0a0a0a;border-color:#404040;color:#d4d4d4}',
-      '.cmp-drop-active{background:#fafafa}',
-      '.dark .cmp-drop-active{background:rgba(255,255,255,.05)}',
-      '.cmp-drop-box .cmp-drop-input:focus{outline:none;box-shadow:none}',
-      '.cmp-drop-box .cmp-drop-list{max-height:24rem;overflow-y:auto}',
-
-      // table
-      '#compare-table{margin-top:32px}',
-      '.cmp-wrap{border:1px solid #e5e5e5;border-radius:14px;overflow:hidden}',
-      '.dark .cmp-wrap{border-color:#262626}',
-      '.cmp-table{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}',
-      '.cmp-table tr.cmp-sec td{background:#f5f5f5;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#737373;padding:7px 18px}',
-      '.dark .cmp-table tr.cmp-sec td{background:#141414}',
-      '.cmp-table th,.cmp-table td{padding:12px 18px;text-align:left;vertical-align:top;word-wrap:break-word}',
-      '.cmp-table tbody tr{border-top:1px solid #f0f0f0}',
-      '.dark .cmp-table tbody tr{border-color:#1f1f1f}',
-      '.cmp-table tbody tr:first-child{border-top:0}',
-      '.cmp-table tbody th{width:130px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#737373;background:#fafafa;border-right:1px solid #f0f0f0}',
-      '.dark .cmp-table tbody th{background:#0a0a0a;border-right-color:#1f1f1f}',
-      '.cmp-table td{color:#404040}',
-      '.dark .cmp-table td{color:#d4d4d4}',
-      '.cmp-table td.cmp-best{background:#f0fdf4}',
-      '.dark .cmp-table td.cmp-best{background:rgba(6,78,59,.18)}',
-      '.cmp-best-val{font-weight:600;display:block}',
-      '.cmp-verdict{font-size:11px;color:#16a34a;display:block;margin-top:3px;font-weight:400}',
-      '.dark .cmp-verdict{color:#4ade80}',
-      '.cmp-tie{font-size:11px;color:#a3a3a3;display:block;margin-top:3px}',
-
-      // pills
-      '.cmp-pill{display:inline-flex;align-items:center;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:500;margin:1px 3px 1px 0;white-space:nowrap}',
-      '.cmp-pill-blue{background:#ddf4ff;color:#0064cc}',
-      '.dark .cmp-pill-blue{background:rgba(23,60,113,.5);color:#66aaff}',
-      '.cmp-pill-indigo{background:#eef2ff;color:#4f46e5}',
-      '.dark .cmp-pill-indigo{background:rgba(30,27,75,.5);color:#818cf8}',
-      '.cmp-pill-neutral{border:1px solid #a3a3a3;color:#525252}',
-      '.dark .cmp-pill-neutral{border-color:#737373;color:#a3a3a3}',
-      '.cmp-pill-cyan{background:#ecfeff;color:#0891b2}',
-      '.dark .cmp-pill-cyan{background:rgba(21,63,74,.5);color:#67e8f9}',
-
-      // empty state
-      '.cmp-empty{padding:64px 32px;text-align:center;font-size:15px;color:#737373;border:1px dashed #d4d4d4;border-radius:16px;line-height:1.8;width:100%}',
-      '.dark .cmp-empty{border-color:#404040;color:#a3a3a3}',
-
-      // graph section
-      '.cmp-graph-sec{margin-top:32px}',
-      '.cmp-graph-card{border:1px solid #e5e5e5;border-radius:14px;padding:20px;overflow:hidden}',
-      '.dark .cmp-graph-card{border-color:#262626}',
-      '.cmp-graph-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:12px}',
-      '.cmp-graph-title{font-size:15px;font-weight:600;color:#404040}',
-      '.dark .cmp-graph-title{color:#d4d4d4}',
-      '.cmp-graph-select{appearance:none;border:1px solid #e5e5e5;border-radius:8px;padding:5px 28px 5px 10px;font-size:12px;background:#fff url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'12\' viewBox=\'0 0 12 12\'%3E%3Cpath fill=\'%23737373\' d=\'M2.5 4.5L6 8l3.5-3.5\'/%3E%3C/svg%3E") no-repeat right 8px center;color:#404040;cursor:pointer}',
-      '.dark .cmp-graph-select{background-color:#0a0a0a;border-color:#404040;color:#d4d4d4}',
-      '.cmp-legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;margin-top:12px;color:#525252}',
-      '.dark .cmp-legend{color:#a3a3a3}',
-      '.cmp-legend span{display:inline-flex;align-items:center;gap:6px}',
-      '.cmp-swatch{display:inline-block;width:16px;height:3px;border-radius:2px}',
-      '.cmp-dim{color:#a3a3a3}',
-
-      // faq
-      '.cmp-faq{margin-top:32px}',
-      '.cmp-faq-title{font-size:18px;font-weight:700;margin:0 0 16px;color:inherit}',
-      '.cmp-faq-item{border:1px solid #e5e5e5;border-radius:12px;padding:16px 18px;margin-bottom:10px}',
-      '.dark .cmp-faq-item{border-color:#262626}',
-      '.cmp-faq-q{font-size:14px;font-weight:600;color:#404040;margin-bottom:4px}',
-      '.dark .cmp-faq-q{color:#d4d4d4}',
-      '.cmp-faq-a{font-size:14px;color:#737373;line-height:1.6}',
-      '.dark .cmp-faq-a{color:#a3a3a3}',
-      '.cmp-faq-a b{color:#404040;font-weight:600}',
-      '.dark .cmp-faq-a b{color:#d4d4d4}',
-      '.cmp-budget-input{border:0;background:transparent;border-bottom:2px solid #a3a3a3;color:inherit;padding:0 1px;text-align:center;width:3ch;font:inherit;outline:none;caret-color:inherit;font-weight:inherit;-webkit-appearance:none;box-shadow:none}',
-      '.cmp-budget-input:focus{outline:none;box-shadow:none;border-bottom-color:#171717}',
-      '.dark .cmp-budget-input:focus{border-bottom-color:#fff}',
-
-      '@media (max-width:700px){.cmp-cards{flex-direction:column}}'
-    ].join('\n');
-    document.head.appendChild(s);
-  }
-
-  // ---- add model: popup with the same UI as the nav search preview ----
-  var cmpDrop = null;
-  function closeDrop() { if (cmpDrop) { if (cmpDrop.wrap.parentNode) cmpDrop.wrap.parentNode.removeChild(cmpDrop.wrap); cmpDrop = null; } }
-
-  function openDrop(anchor) {
-    if (cmpDrop) { closeDrop(); return; }
-    var wrap = document.createElement('div');
-    wrap.className = 'absolute z-50';
-    wrap.style.width = '448px';
-    wrap.innerHTML =
-      '<div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl w-full shadow-2xl shadow-black/5 overflow-hidden cmp-drop-box">' +
-        '<div class="px-6 py-2.5 flex items-center gap-2">' +
-          '<svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" class="text-neutral-500 dark:text-neutral-400 shrink-0"><path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.45 4.39l3.08 3.08a1 1 0 01-1.42 1.42l-3.08-3.08A7 7 0 012 9z" clip-rule="evenodd"/></svg>' +
-            '<input type="text" class="cmp-drop-input border-0 outline-none focus:outline-none focus:ring-0 bg-transparent text-sm w-full placeholder:text-neutral-500 dark:placeholder:text-neutral-500 dark:text-neutral-200" placeholder="Search models" autocomplete="off" />' +
-        '</div>' +
-        '<div class="cmp-drop-list"></div>' +
-      '</div>';
-    document.body.appendChild(wrap);
-    var r = anchor.getBoundingClientRect();
-    var sx = window.pageXOffset || 0, sy = window.pageYOffset || 0;
-    wrap.style.left = Math.max(16, Math.min(r.left + sx, sx + (document.documentElement.clientWidth || 1024) - 464)) + 'px';
-    wrap.style.top = (r.bottom + sy + 8) + 'px';
-    var input = wrap.querySelector('input');
-    var list = wrap.querySelector('.cmp-drop-list');
-    cmpDrop = { wrap: wrap, list: list, input: input, items: [], active: -1 };
-
-    input.addEventListener('input', function () { renderDropList(this.value); });
-    input.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowDown') { e.preventDefault(); moveActive(1); }
-      else if (e.key === 'ArrowUp') { e.preventDefault(); moveActive(-1); }
-      else if (e.key === 'Enter') { e.preventDefault(); if (cmpDrop.active >= 0) pickActive(); }
-      else if (e.key === 'Escape') { closeDrop(); }
-    });
-    list.addEventListener('click', function (e) {
-      var b = e.target.closest ? e.target.closest('[data-cmp-i]') : null;
-      if (b) { cmpDrop.active = parseInt(b.getAttribute('data-cmp-i'), 10); pickActive(); }
-    });
-    renderDropList('');
-    setTimeout(function () { if (cmpDrop) cmpDrop.input.focus(); }, 0);
-  }
-
-  function renderDropList(q) {
-    if (!cmpDrop) return;
-    if (!cmpCatalog) { cmpDrop.list.innerHTML = '<div class="px-6 py-4 text-sm text-neutral-500">Loading...</div>'; return; }
-    q = (q || '').trim().toLowerCase();
-    var chosen = {};
-    cmpEntries.forEach(function (en) { chosen[en.model] = 1; });
-    var tokens = q.split(/\s+/).filter(Boolean);
-    var pool = cmpCatalog.filter(function (m) {
-      if (chosen[key(m.path)]) return false;
-      if (!tokens.length) return true;
-      var hay = ((m.name || '') + ' ' + (m.path || '') + ' ' + (m.owner || '') + ' ' + (m.description || '')).toLowerCase();
-      return tokens.every(function (t) { return hay.indexOf(t) !== -1; });
-    });
-    pool.sort(function (a, b) { return (b.pulls || 0) - (a.pulls || 0); });
-    var top = pool.slice(0, 8);
-    cmpDrop.items = top;
-    cmpDrop.active = top.length ? 0 : -1;
-    if (!top.length) { cmpDrop.list.innerHTML = '<div class="px-6 py-4 text-sm text-neutral-800 dark:text-neutral-300">No models found.</div>'; return; }
-    cmpDrop.list.innerHTML = top.map(function (m, i) {
-      return '<div result>' +
-        '<a tabindex="0" class="flex items-center h-16 px-6 py-4 hover:bg-neutral-50 dark:hover:bg-white/5 focus:ring-0 focus:outline-none focus:bg-neutral-50 dark:focus:bg-white/5 cursor-pointer' + (i === 0 ? ' cmp-drop-active' : '') + '" data-cmp-i="' + i + '">' +
-          '<div class="min-w-0 flex-1">' +
-            '<h2 class="text-sm font-medium truncate dark:text-neutral-100">' + esc(m.name) + '</h2>' +
-            '<p class="text-xs text-gray-600 dark:text-gray-600 truncate">' + esc(m.description) + '</p>' +
-          '</div>' +
-        '</a></div>';
-    }).join('');
-  }
-
-  function moveActive(d) {
-    if (!cmpDrop || !cmpDrop.items.length) return;
-    var n = cmpDrop.items.length;
-    cmpDrop.active = (cmpDrop.active + d + n) % n;
-    var els = cmpDrop.list.querySelectorAll('[data-cmp-i]');
-    for (var i = 0; i < els.length; i++) {
-      if (i === cmpDrop.active) els[i].classList.add('cmp-drop-active');
-      else els[i].classList.remove('cmp-drop-active');
-    }
-    var cur = els[cmpDrop.active];
-    if (cur && cur.scrollIntoView) cur.scrollIntoView({ block: 'nearest' });
-  }
-
-  function pickActive() {
-    if (!cmpDrop || cmpDrop.active < 0) return;
-    var m = cmpDrop.items[cmpDrop.active];
-    if (!m) return;
-    addEntry(key(m.path), 'latest');
-    closeDrop();
-  }
-
-  // ---- state ----
-  function addEntry(model, tag) {
-    var m0 = cmpByPath[model];
-    if (m0) tag = normalizeTag(m0, tag);
-    else tag = tag || 'latest';
-    for (var i = 0; i < cmpEntries.length; i++) {
-      if (cmpEntries[i].model === model) { cmpEntries[i].tag = tag; cmpRefresh(); return; }
-    }
-    if (cmpEntries.length >= CMP_MAX) cmpEntries.shift();
-    cmpEntries.push({ model: model, tag: tag });
-    cmpRefresh();
-  }
-
-  function cmpRefresh() { cmpSyncUrl(); cmpRenderAll(); }
-
-  function cmpSyncUrl() {
-    var list = cmpEntries.map(function (en) { return en.model + ':' + en.tag; });
-    seedSet(list);
-    try { history.replaceState(null, '', location.pathname + (list.length ? '?m=' + encodeURIComponent(list.join(',')) : '')); } catch (e) {}
-  }
-
-  function cmpParseEntries() {
-    var mm = location.search.match(/[?&]m=([^&]*)/);
-    if (!mm) return [];
-    var raw; try { raw = decodeURIComponent(mm[1]); } catch (e) { raw = mm[1]; }
-    var out = [], seen = {};
-    raw.split(',').forEach(function (part) {
-      var i = part.indexOf(':');
-      if (i <= 0) return;
-      var model = key(part.slice(0, i)), tag = part.slice(i + 1);
-      var m = cmpByPath[model];
-      if (!model || !m) return;
-      tag = normalizeTag(m, tag);
-      if (seen[model + ':' + tag]) return;
-      seen[model + ':' + tag] = 1;
-      out.push({ model: model, tag: tag });
-    });
-    return out.slice(0, CMP_MAX);
-  }
-
-  function pickedModels() { return cmpEntries.map(function (en) { return cmpByPath[en.model]; }).filter(Boolean); }
-
-  // ---- tag picking ----
-  var QUANT_RE = /^(q[2-8](?:_[a-z0-9]+)+|f16|f32|fp16|bf16|mxfp\d|nvfp\d|\dbit)$/i;
-  function tagHasQuant(name) { return name.toLowerCase().split('-').some(function (p) { return QUANT_RE.test(p); }); }
-  function tagQuant(name) {
-    var p = name.toLowerCase().split('-').filter(function (x) { return QUANT_RE.test(x); });
-    if (!p.length) return 'Q4_K_M'; // bare size/main tags default to q4_K_M on ollama
-    return p[p.length - 1].toUpperCase();
-  }
-  function defaultTag(m) {
-    var all = (m.tags || []).filter(function (t) { return t && t[0]; });
-    var ts = all.filter(function (t) { return t[0] !== 'cloud' && !/-cloud$/.test(t[0]); });
-    if (!ts.length) ts = all; // cloud-only models
-    var names = ts.map(function (t) { return t[0]; });
-    if (names.indexOf('latest') !== -1) return 'latest';
-    if (!ts.length) return 'latest';
-    // no latest: medium-size tag, prefer the default-q4km variant (bare name or q4_k_m)
-    var sorted = ts.slice().sort(function (a, b) { return (a[1] || 0) - (b[1] || 0); });
-    var mid = sorted[Math.floor(sorted.length / 2)];
-    var sz = mid[1] || 0;
-    var same = ts.filter(function (t) { return (t[1] || 0) === sz; });
-    var q4 = same.filter(function (t) { return !tagHasQuant(t[0]) || t[0].toLowerCase().indexOf('q4_k_m') !== -1; });
-    var pool = q4.length ? q4 : same;
-    var gg = pool.filter(function (t) { return t[3] !== 'm'; });
-    return (gg[0] || pool[0] || mid)[0];
-  }
-  function normalizeTag(m, tag) {
-    var ts = m.tags || [];
-    if (tag && ts.some(function (t) { return t && t[0] === tag; })) return tag;
-    return defaultTag(m);
-  }
-
-  function pill(txt, cls) { return '<span class="cmp-pill ' + cls + '">' + esc(txt) + '</span>'; }
-  function fmtPills(m) { return (m.formats || []).map(function (x) { return pill(String(x).toUpperCase(), x === 'gguf' ? 'cmp-pill-blue' : 'cmp-pill-neutral'); }).join(''); }
-  function capPills(m) {
-    var s = (m.capabilities || []).map(function (c) { return pill(c, 'cmp-pill-indigo'); }).join('');
-    if (m.cloud) s += pill('cloud', 'cmp-pill-cyan');
-    return s;
-  }
-
-  // ---- render: cards ----
-  function cmpRenderCards() {
-    var box = E('compare-cards');
-    if (!box) return;
-    box.className = 'cmp-cards';
-    var models = pickedModels();
-    if (!models.length) { box.innerHTML = '<div class="cmp-empty">No models selected.<br>Use the search bar above to pick models, or the ⇄ Compare button on any model page.</div>'; return; }
-    var pal = palette();
-    var html = [];
-    models.forEach(function (m, i) {
-      var owner = m.official ? 'Ollama' : (m.owner || key(m.path).split('/')[0]);
-      var rm = models.length > 1 ? '<button type="button" class="cmp-card-rm" data-cmp-remove="' + i + '" title="Remove">×</button>' : '';
-      var ts = (m.tags || []).filter(function (t) { return t && t[0] && t[0] !== 'cloud' && !/-cloud$/.test(t[0]); });
-      var tagSel = '';
-      if (ts.length) {
-        var opts = ts.map(function (t) {
-          var lbl = t[0];
-          var extra = [];
-          if (t[1]) extra.push(fmtGiB(t[1] / 1073741824));
-          if (t[2]) extra.push(fmtCtx(t[2]));
-          if (extra.length) lbl += ' · ' + extra.join(' · ');
-          return '<option value="' + esc(t[0]) + '"' + (cmpEntries[i] && t[0] === cmpEntries[i].tag ? ' selected' : '') + '>' + esc(lbl) + '</option>';
-        }).join('');
-        tagSel = '<select data-dropdown class="cmp-tag-select" data-cmp-tag="' + i + '" aria-label="Tag">' + opts + '</select>';
-      }
-      html.push('<div class="cmp-card">' +
-        '<span class="cmp-card-bar" style="background:' + pal[i % pal.length] + '"></span>' +
-        rm +
-        '<a class="cmp-card-name" href="' + esc(baseUrl() + key(m.path)) + '">' + esc(m.name) + '</a>' +
-        '<span class="cmp-card-owner">' + esc(owner) + (m.moe ? ' · MoE' : '') + '</span>' +
-        tagSel +
-        '<div class="cmp-card-stats">' +
-          '<span>' + fmtCount(m.pulls) + ' pulls</span>' +
-          '<span>' + fmtCtx(m.max_ctx) + ' ctx</span>' +
-          '<span>' + (m.tag_count || 0) + ' tags</span>' +
-        '</div>' +
-        '<div class="cmp-card-pills">' + fmtPills(m) + capPills(m) + '</div>' +
-      '</div>');
-    });
-    box.innerHTML = html.join('');
-    // init dropdowns for newly-rendered tag selects only
-    var newSels = box.querySelectorAll('select[data-dropdown]:not([style*="display:none"])');
-    for (var ni = 0; ni < newSels.length; ni++) { if (typeof initOneDropdown === 'function') initOneDropdown(newSels[ni]); }
-  }
-
-  // ---- arch hparams (from graph-data.json per-tag hp, serialized at build) ----
-  function fmtInt(n) { return n == null ? null : Number(n).toLocaleString('en-US'); }
-  function cleanArch(a) { return String(a || '').replace(/(_unified)?_text$/, '').replace(/_/g, '.'); }
-  function fmtRope(n) { if (n == null) return null; if (n >= 1e6) return trim1(n / 1e6) + 'M'; if (n >= 1e3) return trim1(n / 1e3) + 'K'; return String(n); }
-  function mlxQuant(tag) {
-    var mm = /(bf16|fp16|fp32|f32|mxfp8|mxfp4|nvfp4|\dbit)/i.exec(tag || '');
-    return mm ? mm[1].toUpperCase() : null;
-  }
-  function exactFor(src, tag) { return (src && src.tags && src.tags[tag]) ? { name: tag, t: src.tags[tag] } : null; }
-  // exact tag entry across by_path (main tags) then by_path_all (all quants);
-  // aliases like 'latest' or unscanned quants (qat/nvfp4) aren't in graph data,
-  // so fall back by size prefix first (same model family, quant-irrelevant arch),
-  // then by weight size, then any tag of the preferred format.
-  function cmpTagEntry(en) {
-    if (!cmpGraph) return null;
-    var s1 = cmpGraph.by_path ? cmpGraph.by_path[en.model] : null;
-    var s2 = cmpGraph.by_path_all ? cmpGraph.by_path_all[en.model] : null;
-    var ex = exactFor(s1, en.tag) || exactFor(s2, en.tag);
-    if (ex) return ex;
-    var m = cmpByPath[en.model];
-
-    // size-prefix match: same model size, prefer the default-q4km variant
-    var tl = (en.tag || '').toLowerCase();
-    var pfx = null, sizes = (m && m.sizes) || [];
-    for (var i = 0; i < sizes.length; i++) {
-      var sz = String(sizes[i]).toLowerCase();
-      if (tl === sz || tl.indexOf(sz + '-') === 0) { if (!pfx || sz.length > pfx.length) pfx = sz; }
-    }
-    if (!pfx) { var pm = /^(e\d+b|\d+(?:\.\d+)?[bm])/.exec(tl); if (pm) pfx = pm[1]; }
-    if (pfx) {
-      var cands = [];
-      [s1, s2].forEach(function (src) {
-        if (!src || !src.tags) return;
-        for (var n in src.tags) {
-          var t = src.tags[n];
-          var nl = n.toLowerCase();
-          if (nl === pfx || nl.indexOf(pfx + '-') === 0) cands.push({ name: n, t: t });
-        }
-      });
-      if (cands.length) {
-        cands.sort(function (A, B) {
-          var al = A.name.toLowerCase(), bl = B.name.toLowerCase();
-          var ad = al === pfx || al.indexOf('q4_k_m') !== -1 ? 0 : 1;
-          var bd2 = bl === pfx || bl.indexOf('q4_k_m') !== -1 ? 0 : 1;
-          return ad - bd2 || A.name.length - B.name.length;
-        });
-        return cands[0];
-      }
-    }
-
-    // weight-size match (last heuristic: tags whose name carries no size prefix)
-    var trec = m && (m.tags || []).filter(function (t) { return t && t[0] === en.tag; })[0];
-    var want = trec && trec[1] ? trec[1] / 1073741824 : 0;
-    if (want > 0) {
-      var best = null, bd = Infinity;
-      [s2, s1].forEach(function (src) {
-        if (!src || !src.tags) return;
-        for (var n in src.tags) {
-          var t = src.tags[n];
-          var d = Math.abs((t.w || 0) - want);
-          if (d < bd) { bd = d; best = { name: n, t: t }; }
-        }
-      });
-      if (best && bd / want < 0.2) return best;
-    }
-    return curveFor(s1, en.tag, 'gguf') || curveFor(s2, en.tag, 'gguf')
-        || curveFor(s1, en.tag, 'mlx') || curveFor(s2, en.tag, 'mlx');
-  }
-  function cmpHp(en) {
-    var c = cmpTagEntry(en);
-    if (!c) return null;
-    var hp = c.t.hp;
-    if (!hp) return null;
-    if (hp.quant) return hp;
-    // prefer build-time digest-resolved quant from models.json tag record
-    var m = cmpByPath[en.model];
-    var tr = m && (m.tags || []).filter(function (t) { return t && t[0] === en.tag; })[0];
-    if (tr && tr[4]) return Object.assign({}, hp, { quant: tr[4] });
-    var isMlx = (c.t.fmt || 'gguf') === 'mlx';
-    var q = isMlx ? (mlxQuant(c.name) || mlxQuant(en.tag)) : '';
-    if (q) return Object.assign({}, hp, { quant: q });
-    return isMlx ? Object.assign({}, hp, { quant: 'MLX' }) : hp;
-  }
-
-  // ---- render: table ----
-  function cmpRenderTable() {
-    var box = E('compare-table');
-    if (!box) return;
-    var models = pickedModels();
-    if (!models.length) { box.innerHTML = ''; return; }
-    var multi = models.length > 1;
-    var pair = models.length === 2;
-
-    // per-column state aligned by index with models (skip entries missing from catalog)
-    var cols = [];
-    cmpEntries.forEach(function (en) {
-      if (!cmpByPath[en.model]) return;
-      var ce = cmpTagEntry(en);
-      var m = cmpByPath[en.model];
-      var trec = (m.tags || []).filter(function (t) { return t && t[0] === en.tag; })[0];
-      cols.push({
-        en: en,
-        hp: ce && ce.t.hp ? (function () { var h = ce.t.hp; if (h.quant) return h; var q = (ce.t.fmt || 'gguf') === 'mlx' ? mlxQuant(ce.name) : tagQuant(en.tag); return q ? Object.assign({}, h, { quant: q }) : h; })() : null,
-        ce: ce,
-        ctx: ce ? ce.t.c : (m.max_ctx || 0),
-        sizeBytes: trec && trec[1] ? trec[1] : (ce && ce.t.w ? Math.round(ce.t.w * 1073741824) : (m.max_size_bytes || 0)),
-        quant: null
-      });
-    });
-    cols.forEach(function (c) {
-      // prefer hp.quant (from blob metadata), then tag record quant (from build-time digest resolution)
-      if (c.hp && c.hp.quant) { c.quant = String(c.hp.quant).toUpperCase(); return; }
-      var tr = (c.en && c.m && c.m.tags) ? c.m.tags.filter(function (t) { return t && t[0] === c.en.tag; })[0] : null;
-      var tagQuant = tr && tr[4] ? String(tr[4]).toUpperCase() : '';
-      if (tagQuant) { c.quant = tagQuant; return; }
-      var isMlx = c.ce && c.ce.t && (c.ce.t.fmt || 'gguf') === 'mlx';
-      var q = isMlx ? (mlxQuant(c.en.tag) || mlxQuant(c.ce ? c.ce.name : '')) : '';
-      c.quant = q || (isMlx ? 'MLX' : 'Q4_K_M');
-    });
-
-    function bestIdx(fn, better) {
-      var bi = -1, bv = null;
-      models.forEach(function (m, i) { var v = fn(m, i); if (v != null && v > 0 && (bi === -1 || better(v, bv))) { bi = i; bv = v; } });
-      var tied = 0; models.forEach(function (m, i) { if (fn(m, i) === bv) tied++; });
-      return tied > 1 ? -1 : bi;
-    }
-    var iPull = bestIdx(function (m) { return m.pulls || 0; }, function (a, b) { return a > b; });
-    var iCtx = bestIdx(function (m, i) { return cols[i].ctx; }, function (a, b) { return a > b; });
-    var iSize = bestIdx(function (m, i) { return cols[i].sizeBytes; }, function (a, b) { return a < b; });
-
-    function td(inner, best, extra) { return '<td' + (best ? ' class="cmp-best"' : '') + '>' + (best ? '<span class="cmp-best-val">' + inner + '</span>' : inner) + (extra || '') + '</td>'; }
-    function verdict(i, text) {
-      if (!pair) return '';
-      var me = models[i], other = models[1 - i];
-      if (me === other) return '';
-      return '<span class="cmp-verdict">' + esc(me.name) + ':' + esc(cols[i].en.tag) + ' ' + text + ' ' + esc(other.name) + ':' + esc(cols[1 - i].en.tag) + '</span>';
-    }
-    function tieNote(tied) { return tied ? '<span class="cmp-tie">Tied</span>' : ''; }
-    function row(label, cells) { return '<tr><th>' + label + '</th>' + cells.join('') + '</tr>'; }
-    function section(title) { return '<tr class="cmp-sec"><td colspan="' + (models.length + 1) + '">' + title + '</td></tr>'; }
-    function hpRow(label, get) {
-      var vals = cols.map(function (c) { return c.hp ? get(c.hp) : null; });
-      if (vals.every(function (v) { return v == null; })) return null;
-      return row(label, vals.map(function (v) { return td(v == null ? '—' : esc(String(v))); }));
-    }
-
-    var rows = [];
-
-    // ---- overview ----
-    rows.push(section('Overview'));
-    rows.push(row('Downloads', models.map(function (m, i) {
-      var best = multi && i === iPull;
-      var extra = best ? verdict(i, 'has more downloads than') : (pair && iPull === -1 ? tieNote(true) : '');
-      return td(fmtCount(m.pulls), best, extra);
-    })));
-    rows.push(row('Tags', models.map(function (m) { return td(String(m.tag_count || 0)); })));
-    rows.push(row('Updated', models.map(function (m) { return td(esc(m.updated || '—')); })));
-    rows.push(row('Params', models.map(function (m) {
-      var pills = (m.sizes || []).map(function (s) { return pill(s, 'cmp-pill-blue'); }).join('');
-      return td(pills || '—');
-    })));
-
-    // ---- selected tag ----
-    rows.push(section('Selected tag'));
-    rows.push(row('Tag', cols.map(function (c, i) { return td(esc(c.en.tag)); })));
-    rows.push(row('Quant', cols.map(function (c) { return td(esc(c.quant || '—')); })));
-    rows.push(row('Context', cols.map(function (c, i) {
-      var best = multi && i === iCtx;
-      var extra = best ? verdict(i, 'has a larger context than') : (pair && iCtx === -1 ? tieNote(true) : '');
-      return td(fmtCtx(c.ctx), best, extra);
-    })));
-    rows.push(row('Size', cols.map(function (c, i) {
-      var best = multi && i === iSize;
-      var extra = best ? verdict(i, 'is lighter than') : '';
-      return td(c.sizeBytes > 0 ? fmtGiB(c.sizeBytes / 1073741824) : '—', best, extra);
-    })));
-    rows.push(row('KV @full ctx', cols.map(function (c) {
-      var ce = c.ce;
-      if (!ce || !ce.t.v || !ce.t.v.length) return td('—');
-      return td(fmtGiB(ce.t.v[ce.t.v.length - 1]));
-    })));
-
-    // ---- architecture ----
-    rows.push(section('Architecture'));
-    rows.push(row('Name', models.map(function (m, i) {
-      return td(cols[i].hp && cols[i].hp.arch ? esc(cleanArch(cols[i].hp.arch)) : (m.moe ? 'MoE' : 'Dense'));
-    })));
-    var FAMILY_NAMES = { standard: 'Standard (GQA)', swa: 'Sliding window', mla: 'MLA', hybrid: 'Hybrid SSM/linear', none: 'No KV cache' };
-    [
-      ['Attention', function (h) { return FAMILY_NAMES[h.family] || h.family; }],
-      ['Layers', function (h) { return fmtInt(h.layers); }],
-      ['Hidden size', function (h) { return fmtInt(h.hidden); }],
-      ['FFN size', function (h) { return h.ffn === 'mixed' ? h.ffn : fmtInt(h.ffn); }],
-      ['Attention heads', function (h) { return fmtInt(h.heads); }],
-      ['KV heads', function (h) { return h.kvheads === 'mixed' ? 'mixed (per-layer)' : fmtInt(h.kvheads); }],
-      ['Head dim', function (h) { if (h.headdim == null) return null; return h.headdimv != null && h.headdimv !== h.headdim ? h.headdim + ' / ' + h.headdimv : String(h.headdim); }],
-      ['Sliding window', function (h) { return h.swa === 'mixed' ? h.swa : fmtInt(h.swa); }],
-      ['RoPE base', function (h) { return fmtRope(h.rope); }],
-      ['Vocab size', function (h) { return fmtInt(h.vocab); }],
-      ['Experts', function (h) { if (!h.experts) return null; return h.expertstok ? fmtInt(h.experts) + ' · ' + h.expertstok + ' active' : fmtInt(h.experts); }]
-    ].forEach(function (r) { var rr = hpRow(r[0], r[1]); if (rr) rows.push(rr); });
-
-    // ---- details ----
-    rows.push(section('Details'));
-    rows.push(row('Formats', models.map(function (m) { return td(fmtPills(m) || '—'); })));
-    rows.push(row('Capabilities', models.map(function (m) { return td(capPills(m) || '—'); })));
-    rows.push(row('Template', models.map(function (m) { return td(esc(m.template || '—')); })));
-    rows.push(row('Description', models.map(function (m) { return td(esc(trunc(m.description, 140)) || '—'); })));
-
-    box.innerHTML = '<div class="cmp-wrap"><table class="cmp-table"><tbody>' + rows.join('') + '</tbody></table></div>';
-  }
-
-
-  // ---- render: FAQ (computed insights, not table echoes) ----
-  function kvAt(t, x) {
-    var ticks = (cmpGraph && cmpGraph.ticks) || [];
-    var pts = [];
-    for (var i = 0; i < ticks.length && i < (t.v || []).length; i++) pts.push([i === t.v.length - 1 ? t.c : ticks[i], t.v[i]]);
-    if (!pts.length) return 0;
-    if (x <= 0) return pts[0][1];
-    for (var j = 1; j < pts.length; j++) {
-      if (x <= pts[j][0]) {
-        var dx = pts[j][0] - pts[j - 1][0] || 1;
-        return pts[j - 1][1] + (x - pts[j - 1][0]) / dx * (pts[j][1] - pts[j - 1][1]);
-      }
-    }
-    return pts[pts.length - 1][1];
-  }
-  function maxCtxForBudget(t, gb) {
-    if (!t || (t.w || 0) > gb) return 0;
-    var lo = 1, hi = t.c || 1;
-    for (var k = 0; k < 40 && hi - lo > 1; k++) {
-      var mid = Math.floor((lo + hi) / 2);
-      if ((t.w || 0) + kvAt(t, mid) <= gb) lo = mid; else hi = mid;
-    }
-    return lo;
-  }
-
-  function cmpRenderFaq() {
-    var box = E('compare-faq');
-    if (!box) return;
-    if (!cmpEntries.length) { box.innerHTML = ''; return; }
-    var es = [];
-    cmpEntries.forEach(function (en) { if (cmpByPath[en.model]) es.push({ en: en, m: cmpByPath[en.model], ce: cmpTagEntry(en) }); });
-    if (!es.length) { box.innerHTML = ''; return; }
-
-    var items = [];
-    var bn = function (m) { return '<b>' + esc(m.name) + '</b>'; };
-    var bnt = function (e) { return '<b>' + esc(e.m.name) + ':' + esc(e.en.tag) + '</b>'; };
-    function item(q, a) { items.push('<div class="cmp-faq-item"><div class="cmp-faq-q">' + esc(q) + '</div><div class="cmp-faq-a">' + a + '</div></div>'); }
-    function itemHtml(q, a) { items.push('<div class="cmp-faq-item"><div class="cmp-faq-q">' + q + '</div><div class="cmp-faq-a">' + a + '</div></div>'); }
-
-    // embedding / non-generative note (any model count)
-    es.forEach(function (e) {
-      var fam = e.ce && e.ce.t.hp && e.ce.t.hp.family;
-      if ((e.m.capabilities || []).indexOf('embedding') !== -1 || fam === 'none') {
-        var w = e.ce ? e.ce.t.w : 0;
-        item('Is ' + e.m.name + ' a chat model?', 'No. ' + bnt(e) + ' is an embedding model with no KV cache and no text generation. Its memory is just the ' + fmtGiB(w) + ' of weights at any context length.');
-      }
-    });
-
-    // local vs cloud (when they differ)
-    var clouds = es.map(function (e) { return e.m.cloud_only ? 2 : (e.m.cloud ? 1 : 0); });
-    if (new Set(clouds).size > 1) {
-      var bits = es.map(function (e, i) { return bnt(e) + ' is ' + (clouds[i] === 2 ? 'cloud only' : clouds[i] === 1 ? 'cloud + local' : 'local only'); });
-      item('Which models run locally?', bits.join(', ') + '.');
-    }
-
-    if (es.length === 2) {
-      var a = es[0], b = es[1];
-      var ta = a.ce && a.ce.t, tb = b.ce && b.ce.t;
-
-      if (ta && tb && ta.v && ta.v.length && tb.v && tb.v.length && ta.c > 0 && tb.c > 0) {
-        // total memory at full context
-        var totA = (ta.w || 0) + kvAt(ta, ta.c), totB = (tb.w || 0) + kvAt(tb, tb.c);
-        var big = Math.max(totA, totB);
-        if (totA > 0 && totB > 0 && big - Math.min(totA, totB) > big * 0.05) {
-          var win = totA < totB ? [a, ta, totA] : [b, tb, totB];
-          var lose = totA < totB ? [b, tb, totB] : [a, ta, totA];
-          item('Which uses less memory for a long session?',
-            bnt(win[0]) + ' needs ' + fmtGiB(win[2]) + ' in total at its full ' + fmtCtx(win[1].c) + ' context: ' + fmtGiB(win[1].w || 0) + ' of weights plus ' + fmtGiB(win[2] - (win[1].w || 0)) + ' of KV cache. ' + bnt(lose[0]) + ' needs ' + fmtGiB(lose[2]) + '.');
-        }
-
-        // how much context fits in an editable memory budget
-        var xa = maxCtxForBudget(ta, cmpBudget), xb = maxCtxForBudget(tb, cmpBudget);
-        var qHtml = 'How much context fits in <input class="cmp-budget-input focus:outline-none focus:ring-0" type="text" inputmode="numeric" autocomplete="off" value="' + cmpBudget + '" aria-label="memory budget in GB"> GB of memory?';
-        if (xa && xb) {
-          var lo = Math.min(xa, xb), hi = Math.max(xa, xb);
-          if (hi / lo >= 1.25) {
-            var wm = xa > xb ? a : b, lm = xa > xb ? b : a;
-            itemHtml(qHtml, 'In ' + cmpBudget + ' GB, ' + bnt(wm) + ' reaches ' + fmtCtx(hi) + ' tokens of context while ' + bnt(lm) + ' reaches ' + fmtCtx(lo) + '. That is ' + trim1(hi / lo) + 'x more context for the same memory.');
-          } else {
-            itemHtml(qHtml, 'In ' + cmpBudget + ' GB, both get about the same: ' + bnt(a) + ' reaches ' + fmtCtx(xa) + ' and ' + bnt(b) + ' reaches ' + fmtCtx(xb) + '.');
-          }
-        } else if (xa || xb) {
-          var fits = xa ? [a, ta, xa] : [b, tb, xb];
-          var nof = xa ? [b, tb] : [a, ta];
-          itemHtml(qHtml, 'In ' + cmpBudget + ' GB, only ' + bnt(fits[0]) + ' fits: it reaches ' + fmtCtx(fits[2]) + ' tokens. ' + bnt(nof[0]) + ' cannot fit, its weights alone need ' + fmtGiB(nof[1].w || 0) + '.');
-        } else {
-          itemHtml(qHtml, 'Neither fits in ' + cmpBudget + ' GB: ' + bnt(a) + ' weights need ' + fmtGiB(ta.w || 0) + ' and ' + bnt(b) + ' weights need ' + fmtGiB(tb.w || 0) + '. Lower the context or pick a smaller quant.');
-        }
-
-        // KV growth rate per 100K tokens
-        if (ta.c >= 65536 && tb.c >= 65536) {
-          var slope = function (t) { return (kvAt(t, t.c) - kvAt(t, Math.floor(t.c / 2))) / (t.c / 2) * 1e5; };
-          var sA = slope(ta), sB = slope(tb);
-          var shi = Math.max(sA, sB), slo = Math.min(sA, sB);
-          if (shi > 0.01 && slo >= 0 && shi - slo > Math.max(shi, 0.01) * 0.15) {
-            var hm = sA > sB ? a : b, om = sA > sB ? b : a;
-            item('How fast does memory grow with context?',
-              bnt(hm) + ' adds about ' + shi.toFixed(2) + ' GB for every 100K tokens of context. ' + bnt(om) + ' adds about ' + slo.toFixed(2) + ' GB. Long prompts get expensive faster on ' + hm.m.name + '.');
-          }
-        }
-      }
-
-      // attention family consequences
-      var hpa = a.ce && a.ce.t.hp, hpb = b.ce && b.ce.t.hp;
-      var fa = hpa && hpa.family, fb = hpb && hpb.family;
-      function famText(fam, hp) {
-        if (fam === 'standard') return 'uses plain attention, so the KV cache grows linearly with context length.';
-        if (fam === 'swa') return 'uses sliding-window attention: past the ' + (hp.swa ? fmtCtx(hp.swa) + ' token window' : 'window') + ', most layers stop growing the KV cache.';
-        if (fam === 'mla') return 'uses MLA, which compresses the KV cache into a small latent, keeping long-context memory much lower.';
-        if (fam === 'hybrid') return 'uses hybrid attention with recurrent layers: the recurrent state is fixed-size, so memory grows far more slowly than with plain attention.';
-        if (fam === 'none') return 'has no KV cache at all (it is an embedding model).';
-        return null;
-      }
-      if (fa && fb && fa !== fb && famText(fa, hpa) && famText(fb, hpb)) {
-        item('What do the different attention types mean for memory?',
-          bnt(a) + ' ' + famText(fa, hpa) + ' ' + bnt(b) + ' ' + famText(fb, hpb));
-      }
-
-      // MoE insight
-      var ea = hpa && hpa.experts, eb = hpb && hpb.experts;
-      if ((ea && !eb) || (eb && !ea)) {
-        var me = ea ? a : b, hp2 = ea ? hpa : hpb;
-        item('Is ' + me.m.name + ' memory hungry because it is MoE?',
-          bnt(me) + ' keeps all ' + fmtInt(hp2.experts) + ' experts in memory (' + fmtGiB(me.ce.t.w || 0) + ' of weights)' +
-          (hp2.expertstok ? ', but only ' + hp2.expertstok + ' of them run per token, so it responds more like a much smaller dense model.' : '.') );
-      }
-
-      // MLX vs GGUF when a model offers both
-      var dual = es.filter(function (e) { return (e.m.formats || []).length > 1 && cmpGraph && cmpGraph.by_path_all && cmpGraph.by_path_all[e.en.model]; })[0];
-      if (dual) {
-        var srcAll = cmpGraph.by_path_all[dual.en.model];
-        var pfx = dual.en.tag.split('-')[0];
-        var gg = null, mx = null;
-        for (var nn in srcAll.tags) {
-          if (nn.indexOf(pfx) !== 0) continue;
-          var tt = srcAll.tags[nn];
-          if ((tt.fmt || 'gguf') === 'gguf' && !gg) gg = { n: nn, t: tt };
-          if (tt.fmt === 'mlx' && !mx) mx = { n: nn, t: tt };
-        }
-        if (gg && mx) {
-          var c2 = Math.min(gg.t.c, mx.t.c);
-          var tG = (gg.t.w || 0) + kvAt(gg.t, c2), tM = (mx.t.w || 0) + kvAt(mx.t, c2);
-          if (tG > 0 && tM > 0 && Math.abs(tG - tM) / Math.max(tG, tM) > 0.15) {
-            item('MLX or GGUF for ' + dual.m.name + '?',
-              'GGUF (' + esc(gg.n) + ') needs ' + fmtGiB(tG) + ' in total at ' + fmtCtx(c2) + ' context, MLX (' + esc(mx.n) + ') needs ' + fmtGiB(tM) + '. Pick GGUF to save memory, MLX for native quality on Apple silicon.');
-          }
-        }
-      }
-    }
-
-    box.innerHTML = items.length ? '<h3 class="cmp-faq-title">Common questions</h3>' + items.join('') : '';
-  }
-
-
-  // ---- render: graph ----
-  function curveFor(entry, tag, fmt) {
-    if (!entry || !entry.tags) return null;
-    var t = entry.tags[tag];
-    if (t && (t.fmt || 'gguf') === fmt) return { name: tag, t: t };
-    var bestN = null, bestT = null;
-    for (var n in entry.tags) { var tt = entry.tags[n]; if ((tt.fmt || 'gguf') !== fmt) continue; if (!bestT || n.length < bestN.length) { bestT = tt; bestN = n; } }
-    return bestT ? { name: bestN, t: bestT } : null;
-  }
-
-  // ---- graph tooltip (matches main page popup) ----
-  var cmpGraphTip = null;
-  function cmpAttachGraphEvents(svg) {
-    cmpGraphTip = E('compare-graph-tooltip');
-    var dots = svg.querySelectorAll('.cmp-graph-dot');
-    for (var i = 0; i < dots.length; i++) {
-      dots[i].addEventListener('mouseenter', function (e) {
-        if (!cmpGraphTip) return;
-        var label = this.getAttribute('data-label') || '';
-        var ctx = parseInt(this.getAttribute('data-ctx'), 10) || 0;
-        var gib = parseFloat(this.getAttribute('data-gib')) || 0;
-        var color = this.getAttribute('data-color') || '#0ea5e9';
-        var total = (E('compare-graph-mode') || {}).value || 'kv-gguf';
-        var isTotal = total.indexOf('total') === 0;
-        var line;
-        if (isTotal) {
-          // recover weight from the curve endpoint
-          line = '<span class="text-neutral-700 dark:text-neutral-300">' + fmtGiB(gib) + ' total</span>';
-        } else {
-          line = '<span class="text-neutral-700 dark:text-neutral-300">' + fmtGiB(gib) + ' KV cache</span>';
-        }
-        cmpGraphTip.innerHTML = '<span class="font-medium text-neutral-800 dark:text-neutral-200">' + esc(label) + '</span> <span class="text-neutral-500 dark:text-neutral-400">@ ' + fmtCtx(ctx) + ' ctx</span><br>' + line;
-        cmpGraphTip.classList.remove('hidden');
-        // dim other lines
-        var lines = svg.querySelectorAll('.cmp-graph-line');
-        for (var j = 0; j < lines.length; j++) {
-          if (lines[j].getAttribute('data-label') === label) {
-            lines[j].setAttribute('stroke-width', '4');
-            lines[j].style.opacity = '1';
-          } else {
-            lines[j].style.opacity = '0.25';
-          }
-        }
-      });
-      dots[i].addEventListener('mousemove', function (e) {
-        if (!cmpGraphTip) return;
-        var tipW = 240;
-        var flip = (e.clientX + 12 + tipW) > window.innerWidth - 8;
-        cmpGraphTip.style.left = (flip ? (e.clientX - 12 - tipW) : (e.clientX + 12)) + 'px';
-        cmpGraphTip.style.top = (e.clientY - 10) + 'px';
-      });
-      dots[i].addEventListener('mouseleave', function () {
-        if (cmpGraphTip) cmpGraphTip.classList.add('hidden');
-        var lines = svg.querySelectorAll('.cmp-graph-line');
-        for (var j = 0; j < lines.length; j++) { lines[j].setAttribute('stroke-width', '2.5'); lines[j].style.opacity = '1'; }
-      });
-    }
-    // line hover also highlights
-    var lines = svg.querySelectorAll('.cmp-graph-line');
-    for (var k = 0; k < lines.length; k++) {
-      lines[k].addEventListener('mouseenter', function () {
-        var label = this.getAttribute('data-label');
-        for (var j = 0; j < lines.length; j++) {
-          if (lines[j].getAttribute('data-label') === label) { lines[j].setAttribute('stroke-width', '4'); lines[j].style.opacity = '1'; }
-          else { lines[j].style.opacity = '0.25'; }
-        }
-      });
-      lines[k].addEventListener('mouseleave', function () {
-        for (var j = 0; j < lines.length; j++) { lines[j].setAttribute('stroke-width', '2.5'); lines[j].style.opacity = '1'; }
-      });
-    }
-  }
-
-  function cmpRenderGraph() {
-    var sec = E('compare-graph-sec');
-    var svg = E('compare-graph-svg');
-    if (!sec || !svg) return;
-    var g = cmpGraph;
-    if (!g || !cmpEntries.length) { sec.style.display = 'none'; return; }
-    var sel = E('compare-graph-mode');
-    var mode = sel ? sel.value : 'kv-gguf';
-    var fmt = mode.indexOf('mlx') !== -1 ? 'mlx' : 'gguf';
-    var total = mode.indexOf('total') === 0;
-    var ticks = g.ticks || [];
-    if (!ticks.length) { sec.style.display = 'none'; return; }
-    var pal = palette();
-
-    // series: one per selected model:tag, exact tag curve first
-    var series = [], skipped = [];
-    cmpEntries.forEach(function (en, ei) {
-      var s1 = g.by_path ? g.by_path[en.model] : null;
-      var s2 = g.by_path_all ? g.by_path_all[en.model] : null;
-      var curve = exactFor(s1, en.tag) || exactFor(s2, en.tag) || curveFor(s1, en.tag, fmt) || curveFor(s2, en.tag, fmt);
-      if (!curve) { skipped.push(en); return; }
-      var w = curve.t.w || 0;
-      var pts = [];
-      for (var i = 0; i < ticks.length && i < curve.t.v.length; i++) {
-        var x = (i === curve.t.v.length - 1) ? curve.t.c : ticks[i];
-        pts.push({ ctx: x, gib: total ? curve.t.v[i] + w : curve.t.v[i] });
-      }
-      series.push({ label: shortName(en.model) + ':' + en.tag, pts: pts, color: pal[series.length % pal.length] });
-    });
-
-    // sizing copied from the main-page graph: viewBox from actual element size
-    var W = svg.clientWidth || 880;
-    var H = svg.clientHeight || 372;
-    if (W < 100) W = 880;
-    if (H < 100) H = 372;
-    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-    var padL = 56, padR = 16, padT = 16, padB = 44;
-    var plotW = W - padL - padR;
-    var plotH = H - padT - padB;
-
-    var maxCtx = 0, maxGiB = 0;
-    series.forEach(function (s) { s.pts.forEach(function (p) { if (p.ctx > maxCtx) maxCtx = p.ctx; if (p.gib > maxGiB) maxGiB = p.gib; }); });
-    if (!series.length || maxGiB <= 0 || maxCtx <= 0) { sec.style.display = 'none'; return; }
-
-    // hybrid x scale: linear to 32K, then log2 per doubling (same as main page)
-    var XBREAK = 32768;
-    var hasXBreak = maxCtx > XBREAK;
-    var xLoW = 0, xSegW = 0;
-    if (hasXBreak) {
-      var nSeg = Math.log(maxCtx / XBREAK) / Math.LN2;
-      xLoW = plotW / (1 + 0.5 * nSeg);
-      xSegW = xLoW / 2;
-    }
-    function xPx(ctx) {
-      if (!hasXBreak) return padL + (ctx / maxCtx) * plotW;
-      if (ctx <= XBREAK) return padL + (ctx / XBREAK) * xLoW;
-      return padL + xLoW + (Math.log(ctx / XBREAK) / Math.LN2) * xSegW;
-    }
-    function yPx(gib) { return padT + plotH - (gib / maxGiB) * plotH; }
-
-    var dark = document.documentElement.classList.contains('dark');
-    var grid = dark ? '#262626' : '#e5e5e5', lab = dark ? '#a3a3a3' : '#737373', ax = dark ? '#404040' : '#d4d4d4';
-    var out = [];
-
-    // y gridlines + labels (5 steps, axis max = highest data point; unit is in the axis title)
-    var fmtY = function (v) { return v === 0 ? '0' : (v >= 100 ? String(Math.round(v)) : (v >= 10 ? v.toFixed(1) : v.toFixed(2))); };
-    for (var yi = 0; yi <= 5; yi++) {
-      var val = (maxGiB / 5) * yi, yy = yPx(val);
-      out.push('<line x1="' + padL + '" y1="' + yy.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + yy.toFixed(1) + '" stroke="' + grid + '" stroke-width="1"/>');
-      out.push('<text x="' + (padL - 8) + '" y="' + (yy + 3).toFixed(1) + '" text-anchor="end" font-size="10" fill="' + lab + '">' + fmtY(val) + '</text>');
-    }
-    out.push('<text x="' + (padL - 42) + '" y="' + (padT + plotH / 2) + '" text-anchor="middle" font-size="10" fill="' + lab + '" transform="rotate(-90 ' + (padL - 42) + ' ' + (padT + plotH / 2) + ')">' + (total ? 'Total (GiB)' : 'KV (GiB)') + '</text>');
-
-    // x candidates: fixed ticks + curve endpoints + powers of two past the last tick
-    var longTicks = ticks.slice();
-    if (maxCtx > longTicks[longTicks.length - 1]) {
-      var t2 = longTicks[longTicks.length - 1];
-      while (t2 * 2 <= maxCtx) { t2 *= 2; longTicks.push(t2); }
-    }
-    var xCands = [], tickSet = {};
-    longTicks.forEach(function (tk) { tickSet[tk] = 1; if (tk === 0 || tk > maxCtx) return; xCands.push({ x: xPx(tk), label: fmtCtx(tk) }); });
-    series.forEach(function (s) {
-      var c = s.pts.length ? s.pts[s.pts.length - 1].ctx : 0;
-      if (c > 0 && !tickSet[c]) { tickSet[c] = 1; xCands.push({ x: xPx(c), label: fmtCtx(c) }); }
-    });
-    xCands.sort(function (a, b) { return a.x - b.x; });
-    xCands.forEach(function (c2f) {
-      out.push('<line x1="' + c2f.x.toFixed(1) + '" y1="' + padT + '" x2="' + c2f.x.toFixed(1) + '" y2="' + (padT + plotH) + '" stroke="' + grid + '" stroke-width="1" opacity="0.5"/>');
-    });
-    // greedy label pruning so labels never collide (from the main-page graph)
-    var MIN_LABEL_GAP = 20;
-    var kept = [];
-    for (var ki = 0; ki < xCands.length; ki++) {
-      var isLast = ki === xCands.length - 1;
-      if (!kept.length) { kept.push(ki); continue; }
-      var gap = xCands[ki].x - xCands[kept[kept.length - 1]].x;
-      if (gap >= MIN_LABEL_GAP) kept.push(ki);
-      else if (isLast) kept[kept.length - 1] = ki;
-    }
-    kept.forEach(function (k) {
-      out.push('<text x="' + xCands[k].x.toFixed(1) + '" y="' + (H - padB + 18) + '" text-anchor="middle" font-size="10" fill="' + lab + '">' + xCands[k].label + '</text>');
-    });
-    out.push('<text x="' + (padL + plotW / 2) + '" y="' + (H - 6) + '" text-anchor="middle" font-size="10" fill="' + lab + '">Context length</text>');
-
-    // axes
-    out.push('<line x1="' + padL + '" y1="' + padT + '" x2="' + padL + '" y2="' + (padT + plotH) + '" stroke="' + ax + '" stroke-width="1"/>');
-    out.push('<line x1="' + padL + '" y1="' + (padT + plotH) + '" x2="' + (W - padR) + '" y2="' + (padT + plotH) + '" stroke="' + ax + '" stroke-width="1"/>');
-
-    // curves + dots
-    series.forEach(function (s) {
-      var d = '', first = true;
-      s.pts.forEach(function (p) { d += (first ? 'M' : 'L') + xPx(p.ctx).toFixed(1) + ' ' + yPx(p.gib).toFixed(1) + ' '; first = false; });
-      out.push('<path class="cmp-graph-line" d="' + d + '" fill="none" stroke="' + s.color + '" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" data-label="' + esc(s.label) + '" data-color="' + s.color + '"/>');
-      s.pts.forEach(function (p) {
-        out.push('<circle class="cmp-graph-dot" cx="' + xPx(p.ctx).toFixed(1) + '" cy="' + yPx(p.gib).toFixed(1) + '" r="3" fill="' + s.color + '" data-label="' + esc(s.label) + '" data-ctx="' + p.ctx + '" data-gib="' + p.gib.toFixed(3) + '" data-color="' + s.color + '"/>');
-      });
-    });
-
-    svg.innerHTML = out.join('');
-    cmpAttachGraphEvents(svg);
-    var lh = series.map(function (s) { return '<span><span class="cmp-swatch" style="background:' + s.color + '"></span>' + esc(s.label) + '</span>'; });
-    skipped.forEach(function (en) { lh.push('<span class="cmp-dim">' + esc(shortName(en.model) + ':' + en.tag) + ' (no data)</span>'); });
-    E('compare-graph-legend').innerHTML = lh.join('');
-    sec.style.display = '';
-  }
-
-
-  function cmpRenderAll() { cmpRenderCards(); cmpRenderTable(); cmpRenderFaq(); cmpRenderGraph(); }
-
-  // ---- boot ----
-  function boot() {
-    injectCss();
-    document.addEventListener('click', onSeedClick, true);
-
-    var table = E('compare-table');
-    if (!table) return; // not the compare page
-
-    if (E('compare-graph-sec')) E('compare-graph-sec').style.display = 'none';
-    if (E('compare-add-btn')) E('compare-add-btn').addEventListener('click', function (e) { e.stopPropagation(); openDrop(this); });
-
-    document.addEventListener('click', function (e) {
-      if (!e.target.closest) return;
-      var rm = e.target.closest('[data-cmp-remove]');
-      if (rm) {
-        e.stopPropagation();
-        if (cmpEntries.length > 1) { cmpEntries.splice(parseInt(rm.getAttribute('data-cmp-remove'), 10), 1); cmpRefresh(); }
-        return;
-      }
-    });
-
-    // close dropdown on outside click
-    document.addEventListener('click', function (e) {
-      if (!cmpDrop) return;
-      if (cmpDrop.wrap.contains(e.target)) return;
-      if (e.target === E('compare-add-btn')) return;
-      closeDrop();
-    });
-
-    // tag picker on model cards
-    if (E('compare-cards')) E('compare-cards').addEventListener('change', function (e) {
-      var s = e.target && e.target.closest ? e.target.closest('[data-cmp-tag]') : null;
-      if (!s) return;
-      var ti = parseInt(s.getAttribute('data-cmp-tag'), 10);
-      if (cmpEntries[ti]) { cmpEntries[ti].tag = s.value; cmpRefresh(); }
-    });
-
-    // editable memory budget in the FAQ
-    if (E('compare-faq')) E('compare-faq').addEventListener('change', function (e) {
-      var inp = e.target && e.target.closest ? e.target.closest('.cmp-budget-input') : null;
-      if (!inp) return;
-      var v = parseInt(inp.value, 10);
-      if (isNaN(v) || v < 1) { inp.value = String(cmpBudget); return; }
-      cmpBudget = Math.min(v, 512);
-      cmpRenderFaq();
-    });
-
-
-
-    if (E('compare-graph-mode')) E('compare-graph-mode').addEventListener('change', cmpRenderGraph);
-
-    var modelsUrl = typeof window.COMPARE_MODELS_URL === 'string' ? window.COMPARE_MODELS_URL : baseUrl() + 'assets/models.json';
-    fetchJson(modelsUrl, function (data) {
-      cmpCatalog = Array.isArray(data) ? data : [];
-      cmpCatalog.forEach(function (m) { cmpByPath[key(m.path)] = m; });
-      cmpEntries = cmpParseEntries();
-      cmpSyncUrl();
-      cmpRenderAll();
-      var gUrl = typeof window.COMPARE_GRAPH_URL === 'string' ? window.COMPARE_GRAPH_URL : baseUrl() + 'assets/graph-data.json';
-      fetchJson(gUrl, function (gd) { cmpGraph = gd || {}; cmpRenderAll(); }, function () { cmpGraph = null; cmpRenderAll(); });
-    }, function () {
-      table.innerHTML = '<div class="cmp-empty">Failed to load model catalog.</div>';
-      if (E('compare-graph-sec')) E('compare-graph-sec').style.display = 'none';
-    });
-  }
-
-  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', boot); } else { boot(); }
-})();
 """
 
 
@@ -7882,7 +6464,7 @@ def build_profile_page(username: str) -> None:
   <div id="searchresults" class="w-full space-y-2 mt-8">
     <div class="flex flex-wrap items-center justify-between gap-2">
       <div class="sm:hidden relative">
-        <select data-dropdown id="mobile-sort-select" class="absolute inset-0 w-6 px-3 py-1 opacity-0 appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600">
+        <select id="mobile-sort-select" class="absolute inset-0 w-6 px-3 py-1 opacity-0 appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600">
 {opt_html}
         </select>
         <div class="w-6 px-3.5 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex items-center justify-center pointer-events-none">
@@ -7890,7 +6472,7 @@ def build_profile_page(username: str) -> None:
         </div>
       </div>
       <div class="hidden sm:block ml-auto">
-        <select data-dropdown id="desktop-sort-select" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600 min-w-[120px] text-sm px-3 py-1.5">
+        <select id="desktop-sort-select" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600 min-w-[120px] text-sm px-3 py-1.5">
 {opt_html}
         </select>
       </div>
@@ -8021,7 +6603,7 @@ def build_x_page() -> None:
   <div id="searchresults" class="w-full space-y-2 mt-8">
     <div class="flex flex-wrap items-center justify-between gap-2">
       <div class="sm:hidden relative">
-        <select data-dropdown id="mobile-sort-select" class="absolute inset-0 w-6 px-3 py-1 opacity-0 appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600">
+        <select id="mobile-sort-select" class="absolute inset-0 w-6 px-3 py-1 opacity-0 appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600">
 {opt_html}
         </select>
         <div class="w-6 px-3.5 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex items-center justify-center pointer-events-none">
@@ -8029,7 +6611,7 @@ def build_x_page() -> None:
         </div>
       </div>
       <div class="hidden sm:block ml-auto">
-        <select data-dropdown id="desktop-sort-select" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600 min-w-[120px] text-sm px-3 py-1.5">
+        <select id="desktop-sort-select" class="appearance-none cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:ring focus:outline-none focus:ring-blue-300 focus:ring-opacity-75 focus:border-blue-400 dark:focus:border-blue-600 min-w-[120px] text-sm px-3 py-1.5">
 {opt_html}
         </select>
       </div>
@@ -8689,12 +7271,10 @@ def main() -> int:
     print("building /x page ...")
     build_x_page()
 
-    # static standalone pages (/download + /pricing + /compare)
+    # static standalone pages (/download + /pricing)
     print("building download + pricing pages ...")
     build_download_page()
     build_pricing_page()
-    print("building compare page ...")
-    build_compare_page(models)
 
     # Load profile models and add them to the build list
     _all_models = list(models)
@@ -8796,79 +7376,12 @@ def main() -> int:
     )
 
     # write the catalog JSON for client-side use (minimal slice for nav dropdown)
-    _QUANT_NAME_RE = re.compile(
-        r"(nvfp4|mxfp8|mxfp4|bf16|fp16|fp32|f16|f32|int4|int8|q[2-8]_[a-z0-9_]+)$",
-        re.IGNORECASE,
-    )
-
-    def _model_tags_with_quant(m: dict) -> list:
-        tags = m.get("tags") or []
-        dig_quant: dict[str, str] = {}
-        for t in tags:
-            name = (t.get("name") or "").lower()
-            dig = t.get("digest") or ""
-            mm = _QUANT_NAME_RE.search(name)
-            if mm and dig:
-                dig_quant[dig] = mm.group(1).upper()
-        out = []
-        for t in tags:
-            name = t.get("name", "")
-            dig = t.get("digest") or ""
-            fmt = "m" if (t.get("format") == "mlx" or "-mlx" in name.lower()) else "g"
-            quant = ""
-            if dig and dig in dig_quant:
-                quant = dig_quant[dig]
-            elif fmt == "g":
-                quant = "Q4_K_M"
-            out.append(
-                [
-                    name,
-                    t.get("size_bytes") or 0,
-                    parse_context_to_tokens(t.get("context", "-")),
-                    fmt,
-                    quant,
-                ]
-            )
-        return out
-
     nav_models = [
         {
             "name": m["name"],
             "description": m.get("description", ""),
             "path": m.get("path", f"/library/{m['name']}"),
             "pulls": m.get("pulls", 0),
-            "capabilities": m.get("capabilities") or [],
-            "sizes": m.get("sizes") or [],
-            "tag_count": m.get("tag_count", 0),
-            "updated": m.get("updated", ""),
-            "updated_title": m.get("updated_title") or "",
-            "cloud": bool(m.get("cloud")),
-            "cloud_only": bool(m.get("cloud_only")),
-            "official": bool(m.get("official")),
-            "owner": m.get("owner"),
-            "formats": sorted(
-                {t.get("format") for t in (m.get("tags") or []) if t.get("format")}
-            ),
-            "max_ctx": max(
-                (
-                    parse_context_to_tokens(t.get("context", "-"))
-                    for t in (m.get("tags") or [])
-                ),
-                default=0,
-            ),
-            "max_size_bytes": max(
-                (t.get("size_bytes") or 0 for t in (m.get("tags") or [])), default=0
-            ),
-            "moe": _has_moe(m["path"], m.get("tags")),
-            "template": _classify_template(
-                m["path"], m.get("capabilities") or [], m.get("updated_title") or ""
-            ),
-            # Compact per-tag list for the compare page tag picker:
-            # [name, size_bytes, ctx_tokens, fmt('m'=mlx/'g'=gguf), quant].
-            # Quant is resolved by digest: tags sharing a digest with an
-            # explicitly-named quant tag (e.g. 35b-mlx == 35b-a3b-nvfp4)
-            # inherit that quant. Bare GGUF tags default to Q4_K_M.
-            "tags": _model_tags_with_quant(m),
         }
         for m in models
     ]
@@ -8877,61 +7390,6 @@ def main() -> int:
     )
     print("done.")
     return 0
-
-
-# --------------------------------------------------------------------------- #
-# Compare page
-# --------------------------------------------------------------------------- #
-
-
-def build_compare_page(models: list[dict]) -> None:
-    """Build the /compare page shell; app.js fills cards/table/graph."""
-    page = f"""<!DOCTYPE html>
-<html lang="en" class="">
-<head>
-{head_html("Compare models", "Compare Ollama models side by side")}
-</head>
-<body class="antialiased min-h-screen w-full m-0 flex flex-col bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
-{nav_html()}
-
-<main class="cmp mx-auto flex w-full max-w-6xl flex-col px-6 py-10 md:py-14 lg:px-8">
-  <div class="flex items-center justify-between gap-4 mb-2">
-    <h1 class="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">Compare models</h1>
-    <button type="button" id="compare-add-btn" class="flex cursor-pointer items-center rounded-full bg-neutral-800 dark:bg-neutral-100 text-sm px-4 py-1.5 text-white dark:text-neutral-900 hover:bg-black dark:hover:bg-white whitespace-nowrap">+ Add model</button>
-  </div>
-  <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-8 max-w-2xl">Compare Ollama models side by side across downloads, context, formats, capabilities, memory usage and more.</p>
-  <div id="compare-cards"></div>
-  <div id="compare-table"></div>
-  <div id="compare-graph-sec" class="cmp-graph-sec">
-    <div class="cmp-graph-card">
-      <div class="cmp-graph-h">
-        <div class="cmp-graph-title">Memory by context length</div>
-        <select data-dropdown id="compare-graph-mode" class="cmp-graph-select">
-          <option value="kv-gguf">KV cache - GGUF</option>
-          <option value="kv-mlx">KV cache - MLX</option>
-          <option value="total-gguf">Total memory - GGUF</option>
-          <option value="total-mlx">Total memory - MLX</option>
-        </select>
-      </div>
-      <svg id="compare-graph-svg" viewBox="0 0 880 372" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block"></svg>
-      <div id="compare-graph-legend" class="cmp-legend"></div>
-    </div>
-    <div id="compare-graph-tooltip" class="hidden fixed pointer-events-none z-50 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 px-2.5 py-1.5 text-xs shadow-lg"></div>
-  </div>
-  <div id="compare-faq" class="cmp-faq"></div>
-</main>
-
-{footer_html()}
-{theme_script()}
-<script>window.COMPARE_MODELS_URL = "{url("/assets/models.json")}"; window.COMPARE_GRAPH_URL = "{url("/assets/graph-data.json")}"; window.COMPARE_BASE = {json.dumps(url("/"))};</script>
-<script src="{url("/assets/app.js")}"></script>
-</body>
-</html>"""
-
-    out = PUBLIC / "compare"
-    out.mkdir(parents=True, exist_ok=True)
-    (out / "index.html").write_text(page)
-    print(f"  compare page ({len(models)} models)")
 
 
 if __name__ == "__main__":

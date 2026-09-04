@@ -12,7 +12,6 @@ from __future__ import annotations
 SWA_DEFAULT_PATTERNS = {
     "llama4": 4,
     "gemma3": 6,
-    "gemma4": 6,
     "gemma-embedding": 6,
     "gemma3n": 6,
     "gemma2": 2,
@@ -143,63 +142,6 @@ def compute_swa_kv(hparams: dict, context: int, kv_bpe: float = 2.0) -> dict:
     n_kv_heads_list = _as_int_list(n_kv_heads_raw)
     n_kv_heads_scalar = n_kv_heads_list[0] if n_kv_heads_list else head_count
 
-    # When head_count_kv is a truncated array (shorter than n_layers), the
-    # captured values are from the first N layers (typically all SWA in a
-    # 5:1 pattern). For layers beyond the array, derive KV heads from the
-    # K tensor shape: n_kv = k_shape[1] / head_dim_for_that_layer_type.
-    _tensor_names = hparams.get("_tensor_names") or []
-    _k_shapes = {}  # layer index -> [rows, cols]
-    for tn in _tensor_names:
-        # match blk.{i}.attn_k.weight
-        if ".attn_k.weight" in tn or ".attn_k_norm.weight" in tn:
-            pass  # _tensor_names only has names, not shapes; need full tensors
-
-    # Fall back: use the GGUF tensor data if available (passed via _tensor_shapes)
-    _tensor_shapes = hparams.get("_tensor_shapes") or {}
-    k_cache = {}  # il -> (cols_str, has_v)
-    for tname, tshape in _tensor_shapes.items():
-        if tname.endswith(".attn_k.weight"):
-            parts = tname.split(".")
-            for pi, p in enumerate(parts):
-                if p == "blk":
-                    il = int(parts[pi + 1])
-                    k_cache[il] = [tshape, False]
-                    break
-        if tname.endswith(".attn_v.weight"):
-            parts = tname.split(".")
-            for pi, p in enumerate(parts):
-                if p == "blk":
-                    il = int(parts[pi + 1])
-                    if il in k_cache:
-                        k_cache[il][1] = True
-                    break
-
-    def _kv_heads_for_layer(il, is_swa):
-        # If the per-layer array has this index, use it
-        if isinstance(n_kv_heads_raw, (list, tuple)):
-            kvlen = len(n_kv_heads_raw)
-            if il < kvlen:
-                v = int(n_kv_heads_raw[il])
-                if v > 0:
-                    return v
-        # Array truncated or scalar: derive from tensor shape
-        if il in k_cache:
-            cols, has_v = k_cache[il]
-            if isinstance(cols, str):
-                import re as _re
-
-                m = _re.search(r"[\d\.\s,]+\]", cols)
-                if m:
-                    nums = [float(x) for x in m.group(0)[:-1].split(",") if x.strip()]
-                    cols = int(nums[-1]) if nums else 0
-                else:
-                    cols = 0
-            hd = head_dim_swa if is_swa else head_dim_dense
-            if hd > 0 and cols > 0:
-                return cols // hd
-        # Last resort: use scalar
-        return n_kv_heads_scalar
-
     swa_full = False
     if swa_full:
         swa_size = context
@@ -213,7 +155,15 @@ def compute_swa_kv(hparams: dict, context: int, kv_bpe: float = 2.0) -> dict:
 
     for il in range(n_alloc):
         is_swa = _is_swa_for_layer(il, pattern, n_alloc)
-        n_kv = _kv_heads_for_layer(il, is_swa)
+        if isinstance(n_kv_heads_raw, (list, tuple)):
+            kvlen = len(n_kv_heads_raw)
+            if kvlen > 0:
+                idx = il if il < kvlen else il % kvlen
+                n_kv = int(n_kv_heads_raw[idx])
+            else:
+                n_kv = 0
+        else:
+            n_kv = n_kv_heads_scalar
         if n_kv <= 0:
             continue
 
