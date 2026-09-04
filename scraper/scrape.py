@@ -2807,6 +2807,19 @@ def infer_capabilities(models: dict[str, Model]) -> None:
                 caps.append("tools")
             if "thinking" not in caps and "thinking" in desc:
                 caps.append("thinking")
+            # Audio: omni/multimodal models often describe audio/speech support
+            # (e.g. nemotron3 "Nemotron 3 Nano Omni ... unifies video, audio,
+            # image, and text understanding"). ollama.com doesn't show an audio
+            # badge, so infer from description/readme keywords.
+            if "audio" not in caps and (
+                "audio" in desc
+                or "speech" in desc
+                or "transcription" in desc
+                or "omni" in desc
+                or "text-to-speech" in desc
+                or " tts " in desc
+            ):
+                caps.append("audio")
         # Check readme content for capability signals. Some models have no
         # template blob, no system prompt, and no chat_template in GGUF metadata
         # (e.g. imported HF models), but their readme mentions tools/thinking.
@@ -2857,6 +2870,17 @@ def infer_capabilities(models: dict[str, Model]) -> None:
                         or "...done thinking" in rh_text
                     ):
                         caps.append("thinking")
+                    if "audio" not in caps and (
+                        "audio" in heading_text
+                        or "speech" in heading_text
+                        or "transcription" in heading_text
+                        or "omni" in heading_text
+                        or "speech transcription" in rh_text
+                        or "audio understanding" in rh_text
+                        or "speech recognition" in rh_text
+                        or "automatic speech recognition" in rh_text
+                    ):
+                        caps.append("audio")
                 except Exception:
                     pass
 
