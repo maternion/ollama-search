@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4294,
+      "pulls": 4302,
       "sizes": [
         "3b"
       ],
@@ -168,7 +168,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1159,
+      "pulls": 1160,
       "sizes": [
         "3b",
         "8b",
@@ -211,7 +211,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1050,
+      "pulls": 1053,
       "sizes": [
         "284b"
       ],
@@ -452,7 +452,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 500,
+      "pulls": 504,
       "sizes": [
         "9b",
         "35b",
@@ -532,6 +532,27 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "qwen3.8-flash-next",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/qwen3.8-flash-next",
+      "pulls": 299,
+      "sizes": [
+        "125b"
+      ],
+      "source_url": "https://ollama.com/frob/qwen3.8-flash-next",
+      "tag_count": 8,
+      "tags": [],
+      "updated": "3 days ago",
+      "updated_title": "Sep 2, 2026 11:40 AM UTC"
+    },
+    {
+      "capabilities": [
         "tools",
         "thinking"
       ],
@@ -551,27 +572,6 @@
       "tags": [],
       "updated": "2 months ago",
       "updated_title": "Jun 26, 2026 3:13 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "qwen3.8-flash-next",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/qwen3.8-flash-next",
-      "pulls": 257,
-      "sizes": [
-        "125b"
-      ],
-      "source_url": "https://ollama.com/frob/qwen3.8-flash-next",
-      "tag_count": 8,
-      "tags": [],
-      "updated": "2 days ago",
-      "updated_title": "Sep 2, 2026 11:40 AM UTC"
     },
     {
       "capabilities": [
@@ -681,14 +681,14 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.3",
-      "pulls": 66,
+      "pulls": 67,
       "sizes": [
         "753b"
       ],
       "source_url": "https://ollama.com/frob/glm-5.3",
       "tag_count": 9,
       "tags": [],
-      "updated": "4 days ago",
+      "updated": "5 days ago",
       "updated_title": "Aug 31, 2026 8:52 AM UTC"
     },
     {
@@ -958,8 +958,8 @@
     "/frob/mimo-v2.5",
     "/frob/iquest-coder",
     "/frob/mimo-v2-flash",
-    "/frob/qwen-agentworld",
     "/frob/qwen3.8-flash-next",
+    "/frob/qwen-agentworld",
     "/frob/KaLM-Embedding-Gemma3-12B-2511",
     "/frob/kimi-k2.5-prism-reap",
     "/frob/qwen3.6",
