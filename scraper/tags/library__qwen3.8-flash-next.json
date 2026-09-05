@@ -4,24 +4,60 @@
   "tags": [
     {
       "context": "256K",
-      "digest": "ae2130e55774",
-      "format": "mlx",
-      "input_type": "Text, Image",
-      "name": "125b-a6b-mlx-bf16",
-      "size_bytes": 360000000000,
-      "size_text": "360GB",
-      "updated": "1 week ago",
-      "usage_active_slots": 0,
-      "usage_level": ""
-    },
-    {
-      "context": "256K",
       "digest": "c7b96ffe21af",
       "format": "mlx",
       "input_type": "Text, Image",
       "name": "125b-a6b-nvfp4",
       "size_bytes": 105000000000,
       "size_text": "105GB",
+      "updated": "1 week ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "f79436a1cc83",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "125b-a6b-q4_K_M",
+      "size_bytes": 120000000000,
+      "size_text": "120GB",
+      "updated": "3 hours ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "068643f34f42",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "125b-a6b-q8_0",
+      "size_bytes": 189000000000,
+      "size_text": "189GB",
+      "updated": "2 hours ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "860af341daa0",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "125b-a6b-bf16",
+      "size_bytes": 355000000000,
+      "size_text": "355GB",
+      "updated": "2 hours ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "ae2130e55774",
+      "format": "mlx",
+      "input_type": "Text, Image",
+      "name": "125b-a6b-mlx-bf16",
+      "size_bytes": 360000000000,
+      "size_text": "360GB",
       "updated": "1 week ago",
       "usage_active_slots": 0,
       "usage_level": ""
