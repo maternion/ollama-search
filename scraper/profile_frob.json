@@ -67,7 +67,7 @@
       "source_url": "https://ollama.com/frob/qwen3.5-instruct",
       "tag_count": 7,
       "tags": [],
-      "updated": "1 month ago",
+      "updated": "2 months ago",
       "updated_title": "Jul 8, 2026 3:41 PM UTC"
     },
     {
@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4323,
+      "pulls": 4328,
       "sizes": [
         "3b"
       ],
@@ -168,7 +168,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1161,
+      "pulls": 1162,
       "sizes": [
         "3b",
         "8b",
@@ -189,7 +189,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1085,
+      "pulls": 1088,
       "sizes": [
         "35b"
       ],
@@ -386,7 +386,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kimi-k2.5",
-      "pulls": 674,
+      "pulls": 675,
       "sizes": [
         "1030b"
       ],
@@ -430,7 +430,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 536,
+      "pulls": 545,
       "sizes": [
         "9b",
         "35b",
@@ -489,6 +489,27 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "qwen3.8-flash-next",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/qwen3.8-flash-next",
+      "pulls": 395,
+      "sizes": [
+        "125b"
+      ],
+      "source_url": "https://ollama.com/frob/qwen3.8-flash-next",
+      "tag_count": 8,
+      "tags": [],
+      "updated": "4 days ago",
+      "updated_title": "Sep 2, 2026 11:40 AM UTC"
+    },
+    {
+      "capabilities": [
         "tools"
       ],
       "cloud": false,
@@ -507,27 +528,6 @@
       "tags": [],
       "updated": "2 weeks ago",
       "updated_title": "Aug 21, 2026 8:31 AM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "qwen3.8-flash-next",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/qwen3.8-flash-next",
-      "pulls": 384,
-      "sizes": [
-        "125b"
-      ],
-      "source_url": "https://ollama.com/frob/qwen3.8-flash-next",
-      "tag_count": 8,
-      "tags": [],
-      "updated": "4 days ago",
-      "updated_title": "Sep 2, 2026 11:40 AM UTC"
     },
     {
       "capabilities": [
@@ -956,8 +956,8 @@
     "/frob/ornith-1.5",
     "/frob/glm-5",
     "/frob/mimo-v2.5",
-    "/frob/iquest-coder",
     "/frob/qwen3.8-flash-next",
+    "/frob/iquest-coder",
     "/frob/mimo-v2-flash",
     "/frob/qwen-agentworld",
     "/frob/KaLM-Embedding-Gemma3-12B-2511",
