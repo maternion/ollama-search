@@ -76,7 +76,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3.5-abliterated",
-      "pulls": 599000,
+      "pulls": 599100,
       "sizes": [
         "0.8b",
         "2b",
@@ -171,7 +171,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-abliterated",
-      "pulls": 274500,
+      "pulls": 275200,
       "sizes": [
         "0.6b",
         "1.7b",
@@ -202,7 +202,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-vl-abliterated",
-      "pulls": 113300,
+      "pulls": 113400,
       "sizes": [
         "2b",
         "4b",
@@ -227,7 +227,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gemma3-abliterated",
-      "pulls": 97400,
+      "pulls": 97500,
       "sizes": [
         "270m",
         "1b",
@@ -493,7 +493,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/mistral-small-abliterated",
-      "pulls": 20100,
+      "pulls": 20200,
       "sizes": [
         "24b"
       ],
@@ -645,7 +645,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-r1-abliterated",
-      "pulls": 9476,
+      "pulls": 9478,
       "sizes": [
         "24b"
       ],
@@ -685,7 +685,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-coder-next-abliterated",
-      "pulls": 8654,
+      "pulls": 8658,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/qwen3-coder-next-abliterated",
       "tag_count": 4,
@@ -704,7 +704,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/phi4-mini-abliterated",
-      "pulls": 7928,
+      "pulls": 7931,
       "sizes": [
         "3.8b"
       ],
@@ -726,7 +726,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.2-vision-abliterated",
-      "pulls": 7631,
+      "pulls": 7636,
       "sizes": [
         "2b"
       ],
@@ -764,7 +764,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/magistral-abliterated",
-      "pulls": 7028,
+      "pulls": 7029,
       "sizes": [
         "24b"
       ],
@@ -805,7 +805,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite4.1-abliterated",
-      "pulls": 6172,
+      "pulls": 6176,
       "sizes": [
         "3b",
         "8b",
@@ -848,7 +848,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deephermes3-abliterated",
-      "pulls": 5047,
+      "pulls": 5048,
       "sizes": [
         "8b"
       ],
@@ -888,7 +888,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepseek-v3-abliterated",
-      "pulls": 4095,
+      "pulls": 4096,
       "sizes": [
         "671b"
       ],
@@ -909,7 +909,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/lfm2.5-abliterated",
-      "pulls": 4071,
+      "pulls": 4072,
       "sizes": [
         "1.2b"
       ],
@@ -949,7 +949,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/foundation-sec-abliterated",
-      "pulls": 3989,
+      "pulls": 3994,
       "sizes": [
         "8b"
       ],
@@ -968,7 +968,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/phi4-reasoning-abliterated",
-      "pulls": 3496,
+      "pulls": 3501,
       "sizes": [
         "3.8b"
       ],
@@ -1012,7 +1012,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/tongyi-deepresearch-abliterated",
-      "pulls": 3304,
+      "pulls": 3312,
       "sizes": [
         "30b"
       ],
@@ -1073,7 +1073,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/huihui-4",
-      "pulls": 3241,
+      "pulls": 3244,
       "sizes": [
         "8b"
       ],
@@ -1170,6 +1170,28 @@
     },
     {
       "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Granite-3.2 is a family of long-context AI models from IBM Granite fine-tuned for thinking capabilities.",
+      "name": "granite3.2-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/granite3.2-abliterated",
+      "pulls": 2730,
+      "sizes": [
+        "2b",
+        "8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/granite3.2-abliterated",
+      "tag_count": 11,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Mar 4, 2025 5:35 PM UTC"
+    },
+    {
+      "capabilities": [
         "tools",
         "thinking"
       ],
@@ -1191,28 +1213,6 @@
       "tags": [],
       "updated": "9 months ago",
       "updated_title": "Nov 23, 2025 11:06 PM UTC"
-    },
-    {
-      "capabilities": [
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Granite-3.2 is a family of long-context AI models from IBM Granite fine-tuned for thinking capabilities.",
-      "name": "granite3.2-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/granite3.2-abliterated",
-      "pulls": 2728,
-      "sizes": [
-        "2b",
-        "8b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/granite3.2-abliterated",
-      "tag_count": 11,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "Mar 4, 2025 5:35 PM UTC"
     },
     {
       "capabilities": [],
@@ -1343,7 +1343,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/fara-abliterated",
-      "pulls": 2519,
+      "pulls": 2520,
       "sizes": [
         "7b"
       ],
@@ -1529,7 +1529,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.1-dense-abliterated",
-      "pulls": 1580,
+      "pulls": 1585,
       "sizes": [
         "2b",
         "8b"
@@ -1549,7 +1549,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/smallthinker-abliterated",
-      "pulls": 1558,
+      "pulls": 1560,
       "sizes": [
         "3b"
       ],
@@ -1608,7 +1608,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/command-r7b-abliterated",
-      "pulls": 1334,
+      "pulls": 1335,
       "sizes": [
         "7b"
       ],
@@ -2317,8 +2317,8 @@
     "/huihui_ai/nemotron-abliterated",
     "/huihui_ai/am-thinking-abliterate",
     "/huihui_ai/qwenlong-abliterated",
-    "/huihui_ai/mirothinker1-abliterated",
     "/huihui_ai/granite3.2-abliterated",
+    "/huihui_ai/mirothinker1-abliterated",
     "/huihui_ai/arcee-blitz-abliterated",
     "/huihui_ai/qwenlong-l1.5-abliterated",
     "/huihui_ai/acereason-nemotron-abliterated",
