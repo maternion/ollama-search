@@ -76,7 +76,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3.5-abliterated",
-      "pulls": 596600,
+      "pulls": 597000,
       "sizes": [
         "0.8b",
         "2b",
@@ -104,7 +104,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gpt-oss-abliterated",
-      "pulls": 371200,
+      "pulls": 371700,
       "sizes": [
         "20b",
         "120b"
@@ -128,7 +128,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3.6-abliterated",
-      "pulls": 359400,
+      "pulls": 359800,
       "sizes": [
         "27b",
         "35b"
@@ -151,7 +151,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/glm-4.7-flash-abliterated",
-      "pulls": 299600,
+      "pulls": 300000,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/glm-4.7-flash-abliterated",
       "tag_count": 5,
@@ -171,7 +171,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-abliterated",
-      "pulls": 271200,
+      "pulls": 272600,
       "sizes": [
         "0.6b",
         "1.7b",
@@ -202,7 +202,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-vl-abliterated",
-      "pulls": 113000,
+      "pulls": 113100,
       "sizes": [
         "2b",
         "4b",
@@ -252,7 +252,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-abliterate",
-      "pulls": 84000,
+      "pulls": 84100,
       "sizes": [
         "0.5b",
         "1.5b",
@@ -387,7 +387,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3.8-abliterated",
-      "pulls": 44600,
+      "pulls": 44700,
       "sizes": [
         "27b"
       ],
@@ -685,12 +685,12 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-coder-next-abliterated",
-      "pulls": 8624,
+      "pulls": 8631,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/qwen3-coder-next-abliterated",
       "tag_count": 4,
       "tags": [],
-      "updated": "6 months ago",
+      "updated": "7 months ago",
       "updated_title": "Feb 8, 2026 12:41 AM UTC"
     },
     {
@@ -726,7 +726,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.2-vision-abliterated",
-      "pulls": 7620,
+      "pulls": 7623,
       "sizes": [
         "2b"
       ],
@@ -805,7 +805,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite4.1-abliterated",
-      "pulls": 6158,
+      "pulls": 6160,
       "sizes": [
         "3b",
         "8b",
@@ -829,7 +829,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-next-abliterated",
-      "pulls": 5579,
+      "pulls": 5580,
       "sizes": [
         "80b"
       ],
@@ -930,7 +930,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
-      "pulls": 3994,
+      "pulls": 4004,
       "sizes": [
         "3b"
       ],
@@ -949,7 +949,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/foundation-sec-abliterated",
-      "pulls": 3980,
+      "pulls": 3981,
       "sizes": [
         "8b"
       ],
@@ -1073,7 +1073,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/huihui-4",
-      "pulls": 3235,
+      "pulls": 3236,
       "sizes": [
         "8b"
       ],
@@ -1170,6 +1170,30 @@
     },
     {
       "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "MiroThinker v1.0 is an open-source research agent designed to advance tool-augmented reasoning and information-seeking capabilities.",
+      "name": "mirothinker1-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/mirothinker1-abliterated",
+      "pulls": 2729,
+      "sizes": [
+        "8b",
+        "30b",
+        "72b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/mirothinker1-abliterated",
+      "tag_count": 18,
+      "tags": [],
+      "updated": "9 months ago",
+      "updated_title": "Nov 23, 2025 11:06 PM UTC"
+    },
+    {
+      "capabilities": [
         "tools"
       ],
       "cloud": false,
@@ -1191,28 +1215,23 @@
       "updated_title": "Mar 4, 2025 5:35 PM UTC"
     },
     {
-      "capabilities": [
-        "tools",
-        "thinking"
-      ],
+      "capabilities": [],
       "cloud": false,
       "cloud_only": false,
-      "description": "MiroThinker v1.0 is an open-source research agent designed to advance tool-augmented reasoning and information-seeking capabilities.",
-      "name": "mirothinker1-abliterated",
+      "description": "Arcee-Blitz (24B) is a new Mistral-based 24B model distilled from DeepSeek, designed to be both fast and efficient. We view it as a practical “workhorse” model that can tackle a range of tasks without the overhead of larger architectures.",
+      "name": "arcee-blitz-abliterated",
       "official": false,
       "owner": "huihui_ai",
-      "path": "/huihui_ai/mirothinker1-abliterated",
-      "pulls": 2728,
+      "path": "/huihui_ai/arcee-blitz-abliterated",
+      "pulls": 2722,
       "sizes": [
-        "8b",
-        "30b",
-        "72b"
+        "24b"
       ],
-      "source_url": "https://ollama.com/huihui_ai/mirothinker1-abliterated",
-      "tag_count": 18,
+      "source_url": "https://ollama.com/huihui_ai/arcee-blitz-abliterated",
+      "tag_count": 5,
       "tags": [],
-      "updated": "9 months ago",
-      "updated_title": "Nov 23, 2025 11:06 PM UTC"
+      "updated": "1 year ago",
+      "updated_title": "Mar 1, 2025 4:43 PM UTC"
     },
     {
       "capabilities": [
@@ -1235,25 +1254,6 @@
       "tags": [],
       "updated": "8 months ago",
       "updated_title": "Dec 25, 2025 11:58 AM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Arcee-Blitz (24B) is a new Mistral-based 24B model distilled from DeepSeek, designed to be both fast and efficient. We view it as a practical “workhorse” model that can tackle a range of tasks without the overhead of larger architectures.",
-      "name": "arcee-blitz-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/arcee-blitz-abliterated",
-      "pulls": 2722,
-      "sizes": [
-        "24b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/arcee-blitz-abliterated",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "Mar 1, 2025 4:43 PM UTC"
     },
     {
       "capabilities": [],
@@ -1385,7 +1385,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/orchestrator-abliterated",
-      "pulls": 2086,
+      "pulls": 2087,
       "sizes": [
         "8b"
       ],
@@ -2317,10 +2317,10 @@
     "/huihui_ai/nemotron-abliterated",
     "/huihui_ai/am-thinking-abliterate",
     "/huihui_ai/qwenlong-abliterated",
-    "/huihui_ai/granite3.2-abliterated",
     "/huihui_ai/mirothinker1-abliterated",
-    "/huihui_ai/qwenlong-l1.5-abliterated",
+    "/huihui_ai/granite3.2-abliterated",
     "/huihui_ai/arcee-blitz-abliterated",
+    "/huihui_ai/qwenlong-l1.5-abliterated",
     "/huihui_ai/acereason-nemotron-abliterated",
     "/huihui_ai/deepseek-r1-Fusion",
     "/huihui_ai/tess-r1-abliterated",
