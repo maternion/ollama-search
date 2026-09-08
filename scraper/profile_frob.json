@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4353,
+      "pulls": 4360,
       "sizes": [
         "3b"
       ],
@@ -168,7 +168,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1164,
+      "pulls": 1165,
       "sizes": [
         "3b",
         "8b",
@@ -211,7 +211,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1082,
+      "pulls": 1084,
       "sizes": [
         "284b"
       ],
@@ -234,7 +234,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/davidau-qwen3.6-uncensored",
-      "pulls": 982,
+      "pulls": 983,
       "sizes": [
         "40b"
       ],
@@ -296,17 +296,19 @@
       "cloud": false,
       "cloud_only": false,
       "description": "",
-      "name": "mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
+      "name": "glm-5.1",
       "official": false,
       "owner": "frob",
-      "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "pulls": 842,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "tag_count": 1,
+      "path": "/frob/glm-5.1",
+      "pulls": 843,
+      "sizes": [
+        "744b"
+      ],
+      "source_url": "https://ollama.com/frob/glm-5.1",
+      "tag_count": 5,
       "tags": [],
-      "updated": "5 months ago",
-      "updated_title": "Mar 14, 2026 12:46 PM UTC"
+      "updated": "2 months ago",
+      "updated_title": "Jun 26, 2026 3:24 PM UTC"
     },
     {
       "capabilities": [
@@ -316,19 +318,17 @@
       "cloud": false,
       "cloud_only": false,
       "description": "",
-      "name": "glm-5.1",
+      "name": "mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "official": false,
       "owner": "frob",
-      "path": "/frob/glm-5.1",
-      "pulls": 841,
-      "sizes": [
-        "744b"
-      ],
-      "source_url": "https://ollama.com/frob/glm-5.1",
-      "tag_count": 5,
+      "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
+      "pulls": 843,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
+      "tag_count": 1,
       "tags": [],
-      "updated": "2 months ago",
-      "updated_title": "Jun 26, 2026 3:24 PM UTC"
+      "updated": "5 months ago",
+      "updated_title": "Mar 14, 2026 12:46 PM UTC"
     },
     {
       "capabilities": [
@@ -430,7 +430,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 566,
+      "pulls": 571,
       "sizes": [
         "9b",
         "35b",
@@ -475,7 +475,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 469,
+      "pulls": 478,
       "sizes": [
         "125b"
       ],
@@ -563,7 +563,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen-agentworld",
-      "pulls": 276,
+      "pulls": 277,
       "sizes": [
         "35b"
       ],
@@ -681,7 +681,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.3",
-      "pulls": 71,
+      "pulls": 72,
       "sizes": [
         "753b"
       ],
@@ -702,7 +702,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/minimax-m3",
-      "pulls": 66,
+      "pulls": 69,
       "sizes": [
         "428b"
       ],
@@ -947,8 +947,8 @@
     "/frob/davidau-qwen3.6-uncensored",
     "/frob/minimax-m2.7",
     "/frob/minimax-m2.1",
-    "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
     "/frob/glm-5.1",
+    "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
     "/frob/glm-4.7",
     "/frob/locooperator",
     "/frob/kimi-k2.5",
