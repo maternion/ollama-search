@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4373,
+      "pulls": 4384,
       "sizes": [
         "3b"
       ],
@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3713,
+      "pulls": 3714,
       "sizes": [
         "80b"
       ],
@@ -144,7 +144,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.5",
-      "pulls": 1662,
+      "pulls": 1665,
       "sizes": [
         "122b",
         "397b"
@@ -296,6 +296,26 @@
       "cloud": false,
       "cloud_only": false,
       "description": "",
+      "name": "mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
+      "pulls": 844,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
+      "tag_count": 1,
+      "tags": [],
+      "updated": "5 months ago",
+      "updated_title": "Mar 14, 2026 12:46 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
       "name": "glm-5.1",
       "official": false,
       "owner": "frob",
@@ -309,26 +329,6 @@
       "tags": [],
       "updated": "2 months ago",
       "updated_title": "Jun 26, 2026 3:24 PM UTC"
-    },
-    {
-      "capabilities": [
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "pulls": 844,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "tag_count": 1,
-      "tags": [],
-      "updated": "5 months ago",
-      "updated_title": "Mar 14, 2026 12:46 PM UTC"
     },
     {
       "capabilities": [
@@ -363,7 +363,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 761,
+      "pulls": 763,
       "sizes": [
         "4b"
       ],
@@ -407,7 +407,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/nuextract-2.0",
-      "pulls": 654,
+      "pulls": 655,
       "sizes": [
         "8b"
       ],
@@ -430,7 +430,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 586,
+      "pulls": 588,
       "sizes": [
         "9b",
         "35b",
@@ -441,6 +441,27 @@
       "tags": [],
       "updated": "2 weeks ago",
       "updated_title": "Aug 22, 2026 8:05 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "qwen3.8-flash-next",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/qwen3.8-flash-next",
+      "pulls": 525,
+      "sizes": [
+        "125b"
+      ],
+      "source_url": "https://ollama.com/frob/qwen3.8-flash-next",
+      "tag_count": 8,
+      "tags": [],
+      "updated": "6 days ago",
+      "updated_title": "Sep 2, 2026 11:40 AM UTC"
     },
     {
       "capabilities": [
@@ -463,27 +484,6 @@
       "tags": [],
       "updated": "2 months ago",
       "updated_title": "Jun 26, 2026 3:28 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "qwen3.8-flash-next",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/qwen3.8-flash-next",
-      "pulls": 500,
-      "sizes": [
-        "125b"
-      ],
-      "source_url": "https://ollama.com/frob/qwen3.8-flash-next",
-      "tag_count": 8,
-      "tags": [],
-      "updated": "6 days ago",
-      "updated_title": "Sep 2, 2026 11:40 AM UTC"
     },
     {
       "capabilities": [
@@ -541,7 +541,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2-flash",
-      "pulls": 383,
+      "pulls": 384,
       "sizes": [
         "309b"
       ],
@@ -702,7 +702,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/minimax-m3",
-      "pulls": 72,
+      "pulls": 73,
       "sizes": [
         "428b"
       ],
@@ -802,7 +802,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ling-3.0-flash",
-      "pulls": 26,
+      "pulls": 27,
       "sizes": [
         "124b"
       ],
@@ -947,15 +947,15 @@
     "/frob/davidau-qwen3.6-uncensored",
     "/frob/minimax-m2.7",
     "/frob/minimax-m2.1",
-    "/frob/glm-5.1",
     "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
+    "/frob/glm-5.1",
     "/frob/glm-4.7",
     "/frob/locooperator",
     "/frob/kimi-k2.5",
     "/frob/nuextract-2.0",
     "/frob/ornith-1.5",
-    "/frob/glm-5",
     "/frob/qwen3.8-flash-next",
+    "/frob/glm-5",
     "/frob/mimo-v2.5",
     "/frob/iquest-coder",
     "/frob/mimo-v2-flash",
