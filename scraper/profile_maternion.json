@@ -50,7 +50,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/fara",
-      "pulls": 5565,
+      "pulls": 5566,
       "sizes": [
         "7b"
       ],
@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 3974,
+      "pulls": 3980,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2274,
+      "pulls": 2275,
       "sizes": [
         "4b"
       ],
@@ -115,7 +115,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2",
-      "pulls": 2086,
+      "pulls": 2087,
       "sizes": [
         "8b"
       ],
@@ -226,7 +226,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/NuMarkdown-Thinking",
-      "pulls": 759,
+      "pulls": 761,
       "sizes": [
         "8b"
       ],
@@ -245,7 +245,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 741,
+      "pulls": 744,
       "sizes": [
         "8b"
       ],
@@ -287,7 +287,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/sweep-next-edit-1.5B",
-      "pulls": 428,
+      "pulls": 429,
       "sizes": [],
       "source_url": "https://ollama.com/maternion/sweep-next-edit-1.5B",
       "tag_count": 1,
@@ -322,23 +322,21 @@
       "cloud": false,
       "cloud_only": false,
       "description": "",
-      "name": "minicpm",
+      "name": "minicpm5",
       "official": false,
       "owner": "maternion",
-      "path": "/maternion/minicpm",
-      "pulls": 0,
-      "sizes": [
-        "2b"
-      ],
-      "source_url": "https://ollama.com/maternion/minicpm",
-      "tag_count": 1,
+      "path": "/maternion/minicpm5",
+      "pulls": 6,
+      "sizes": [],
+      "source_url": "https://ollama.com/maternion/minicpm5",
+      "tag_count": 3,
       "tags": [],
-      "updated": "10 minutes ago",
-      "updated_title": "Sep 9, 2026 8:37 AM UTC"
+      "updated": "4 hours ago",
+      "updated_title": "Sep 9, 2026 9:45 AM UTC"
     }
   ],
   "newest_order": [
-    "/maternion/minicpm",
+    "/maternion/minicpm5",
     "/maternion/ling-3.0-tiny",
     "/maternion/hy-mt2",
     "/maternion/lfm2.5",
@@ -369,7 +367,7 @@
     "/maternion/manim-coder",
     "/maternion/sweep-next-edit-1.5B",
     "/maternion/context-1",
-    "/maternion/minicpm"
+    "/maternion/minicpm5"
   ],
   "username": "maternion"
 }
