@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4392,
+      "pulls": 4394,
       "sizes": [
         "3b"
       ],
@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3716,
+      "pulls": 3717,
       "sizes": [
         "80b"
       ],
@@ -144,7 +144,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.5",
-      "pulls": 1665,
+      "pulls": 1666,
       "sizes": [
         "122b",
         "397b"
@@ -189,7 +189,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1095,
+      "pulls": 1096,
       "sizes": [
         "35b"
       ],
@@ -211,7 +211,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1092,
+      "pulls": 1093,
       "sizes": [
         "284b"
       ],
@@ -453,14 +453,14 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 539,
+      "pulls": 546,
       "sizes": [
         "125b"
       ],
       "source_url": "https://ollama.com/frob/qwen3.8-flash-next",
       "tag_count": 8,
       "tags": [],
-      "updated": "6 days ago",
+      "updated": "1 week ago",
       "updated_title": "Sep 2, 2026 11:40 AM UTC"
     },
     {
@@ -662,7 +662,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/hy3",
-      "pulls": 75,
+      "pulls": 77,
       "sizes": [
         "295b"
       ],
@@ -671,6 +671,27 @@
       "tags": [],
       "updated": "2 weeks ago",
       "updated_title": "Aug 21, 2026 8:29 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "minimax-m3",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/minimax-m3",
+      "pulls": 76,
+      "sizes": [
+        "428b"
+      ],
+      "source_url": "https://ollama.com/frob/minimax-m3",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Aug 25, 2026 12:32 PM UTC"
     },
     {
       "capabilities": [],
@@ -690,27 +711,6 @@
       "tags": [],
       "updated": "1 week ago",
       "updated_title": "Aug 31, 2026 8:52 AM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "minimax-m3",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/minimax-m3",
-      "pulls": 73,
-      "sizes": [
-        "428b"
-      ],
-      "source_url": "https://ollama.com/frob/minimax-m3",
-      "tag_count": 6,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Aug 25, 2026 12:32 PM UTC"
     },
     {
       "capabilities": [],
@@ -783,7 +783,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kimi-k3",
-      "pulls": 33,
+      "pulls": 34,
       "sizes": [
         "2780b"
       ],
@@ -872,6 +872,27 @@
       "updated_title": "Nov 23, 2025 7:27 PM UTC"
     },
     {
+      "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "qwen3.8",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/qwen3.8",
+      "pulls": 5,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/qwen3.8",
+      "tag_count": 1,
+      "tags": [],
+      "updated": "4 hours ago",
+      "updated_title": "Sep 9, 2026 9:50 AM UTC"
+    },
+    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -890,6 +911,7 @@
     }
   ],
   "newest_order": [
+    "/frob/qwen3.8",
     "/frob/qwen3.8-flash-next",
     "/frob/glm-5.3",
     "/frob/minimax-m3",
@@ -965,8 +987,8 @@
     "/frob/qwen3.6",
     "/frob/llama3.2-vision",
     "/frob/hy3",
-    "/frob/glm-5.3",
     "/frob/minimax-m3",
+    "/frob/glm-5.3",
     "/frob/hy-mt1.5",
     "/frob/nex-n2-mini",
     "/frob/trinity",
@@ -975,6 +997,7 @@
     "/frob/nex-n2-pro",
     "/frob/whyhow-ai_PatientSeek",
     "/frob/NireeskshanAI_Niri",
+    "/frob/qwen3.8",
     "/frob/mixtao"
   ],
   "username": "frob"
