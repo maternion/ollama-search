@@ -44,7 +44,7 @@
       "items": [
         {
           "q": "How does monthly usage work?",
-          "a": "<p class=\"text-sm\">Pro, Max, and Team plans include a set dollar amount of usage credits each month. Free accounts include a starter amount of usage for a smaller set of starter models. Adding extra credits unlocks all models. Running models on your own hardware is always unlimited.</p>"
+          "a": "<p class=\"text-sm\">Pro, Max, and Team plans include a set dollar amount of usage credits each month. Free accounts include a starter amount of usage for a smaller set of starter models. Buying usage credits unlocks all models. Running models on your own hardware is always unlimited.</p>"
         },
         {
           "q": "When does my monthly included usage reset?",
@@ -59,8 +59,8 @@
           "a": "<p class=\"text-sm\">Usage is measured in tokens at each model's rates. The <a href=\"#model-pricing\" class=\"underline\">model pricing table</a> lists the input, cached input, and output price per million tokens for every cloud model.</p>"
         },
         {
-          "q": "How does extra usage work?",
-          "a": "<p class=\"text-sm\">Every plan, including Free, can add extra usage credits. Ollama uses included plan credits first, then draws from the extra usage balance. Team usage draws from one balance shared by the organization.</p>"
+          "q": "How do usage credits work?",
+          "a": "<p class=\"text-sm\">Every plan, including Free, can buy usage credits. Ollama uses included plan credits first, then draws from the purchased usage credit balance. Team usage draws from one balance shared by the organization.</p>"
         },
         {
           "q": "How do I know when I've hit my limit?",
