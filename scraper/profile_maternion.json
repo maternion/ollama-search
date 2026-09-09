@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 3966,
+      "pulls": 3974,
       "sizes": [
         "1.8b",
         "7b",
@@ -115,7 +115,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2",
-      "pulls": 2085,
+      "pulls": 2086,
       "sizes": [
         "8b"
       ],
@@ -181,7 +181,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1234,
+      "pulls": 1235,
       "sizes": [
         "2b",
         "8b"
@@ -245,7 +245,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 734,
+      "pulls": 741,
       "sizes": [
         "8b"
       ],
@@ -316,9 +316,29 @@
       "tags": [],
       "updated": "5 months ago",
       "updated_title": "Mar 30, 2026 1:59 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "minicpm",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/minicpm",
+      "pulls": 0,
+      "sizes": [
+        "2b"
+      ],
+      "source_url": "https://ollama.com/maternion/minicpm",
+      "tag_count": 1,
+      "tags": [],
+      "updated": "10 minutes ago",
+      "updated_title": "Sep 9, 2026 8:37 AM UTC"
     }
   ],
   "newest_order": [
+    "/maternion/minicpm",
     "/maternion/ling-3.0-tiny",
     "/maternion/hy-mt2",
     "/maternion/lfm2.5",
@@ -348,7 +368,8 @@
     "/maternion/ling-3.0-tiny",
     "/maternion/manim-coder",
     "/maternion/sweep-next-edit-1.5B",
-    "/maternion/context-1"
+    "/maternion/context-1",
+    "/maternion/minicpm"
   ],
   "username": "maternion"
 }
