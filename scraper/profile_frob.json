@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4400,
+      "pulls": 4403,
       "sizes": [
         "3b"
       ],
@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3720,
+      "pulls": 3721,
       "sizes": [
         "80b"
       ],
@@ -121,7 +121,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1914,
+      "pulls": 1917,
       "sizes": [
         "753b"
       ],
@@ -168,7 +168,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1169,
+      "pulls": 1170,
       "sizes": [
         "3b",
         "8b",
@@ -211,7 +211,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1097,
+      "pulls": 1102,
       "sizes": [
         "284b"
       ],
@@ -327,7 +327,7 @@
       "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "tag_count": 1,
       "tags": [],
-      "updated": "5 months ago",
+      "updated": "6 months ago",
       "updated_title": "Mar 14, 2026 12:46 PM UTC"
     },
     {
@@ -341,7 +341,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 769,
+      "pulls": 770,
       "sizes": [
         "4b"
       ],
@@ -430,7 +430,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 610,
+      "pulls": 617,
       "sizes": [
         "9b",
         "35b",
@@ -453,7 +453,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 559,
+      "pulls": 568,
       "sizes": [
         "125b"
       ],
@@ -673,6 +673,27 @@
       "updated_title": "Aug 21, 2026 8:29 AM UTC"
     },
     {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "minimax-m3",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/minimax-m3",
+      "pulls": 77,
+      "sizes": [
+        "428b"
+      ],
+      "source_url": "https://ollama.com/frob/minimax-m3",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Aug 25, 2026 12:32 PM UTC"
+    },
+    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -690,27 +711,6 @@
       "tags": [],
       "updated": "1 week ago",
       "updated_title": "Aug 31, 2026 8:52 AM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "minimax-m3",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/minimax-m3",
-      "pulls": 76,
-      "sizes": [
-        "428b"
-      ],
-      "source_url": "https://ollama.com/frob/minimax-m3",
-      "tag_count": 6,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Aug 25, 2026 12:32 PM UTC"
     },
     {
       "capabilities": [],
@@ -743,7 +743,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/nex-n2-mini",
-      "pulls": 46,
+      "pulls": 48,
       "sizes": [
         "35b"
       ],
@@ -848,12 +848,12 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8",
-      "pulls": 10,
+      "pulls": 12,
       "sizes": [],
       "source_url": "https://ollama.com/frob/qwen3.8",
       "tag_count": 1,
       "tags": [],
-      "updated": "23 hours ago",
+      "updated": "yesterday",
       "updated_title": "Sep 9, 2026 9:50 AM UTC"
     },
     {
@@ -987,8 +987,8 @@
     "/frob/qwen3.6",
     "/frob/llama3.2-vision",
     "/frob/hy3",
-    "/frob/glm-5.3",
     "/frob/minimax-m3",
+    "/frob/glm-5.3",
     "/frob/hy-mt1.5",
     "/frob/nex-n2-mini",
     "/frob/trinity",
