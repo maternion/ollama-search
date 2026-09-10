@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4403,
+      "pulls": 4404,
       "sizes": [
         "3b"
       ],
@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3721,
+      "pulls": 3722,
       "sizes": [
         "80b"
       ],
@@ -181,6 +181,28 @@
       "updated_title": "Jun 26, 2026 3:22 PM UTC"
     },
     {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "0731",
+      "name": "deepseek-v4-flash",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/deepseek-v4-flash",
+      "pulls": 1104,
+      "sizes": [
+        "284b"
+      ],
+      "source_url": "https://ollama.com/frob/deepseek-v4-flash",
+      "tag_count": 17,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Aug 21, 2026 8:36 AM UTC"
+    },
+    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -198,28 +220,6 @@
       "tags": [],
       "updated": "2 weeks ago",
       "updated_title": "Aug 21, 2026 8:34 AM UTC"
-    },
-    {
-      "capabilities": [
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "0731",
-      "name": "deepseek-v4-flash",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/deepseek-v4-flash",
-      "pulls": 1102,
-      "sizes": [
-        "284b"
-      ],
-      "source_url": "https://ollama.com/frob/deepseek-v4-flash",
-      "tag_count": 17,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Aug 21, 2026 8:36 AM UTC"
     },
     {
       "capabilities": [
@@ -341,7 +341,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 770,
+      "pulls": 771,
       "sizes": [
         "4b"
       ],
@@ -430,7 +430,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 617,
+      "pulls": 619,
       "sizes": [
         "9b",
         "35b",
@@ -453,7 +453,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 568,
+      "pulls": 570,
       "sizes": [
         "125b"
       ],
@@ -635,25 +635,6 @@
       "updated_title": "May 20, 2026 9:57 PM UTC"
     },
     {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "llama3.2-vision",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/llama3.2-vision",
-      "pulls": 78,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/llama3.2-vision",
-      "tag_count": 2,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "Feb 20, 2025 2:54 PM UTC"
-    },
-    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -679,19 +660,17 @@
       "cloud": false,
       "cloud_only": false,
       "description": "",
-      "name": "minimax-m3",
+      "name": "llama3.2-vision",
       "official": false,
       "owner": "frob",
-      "path": "/frob/minimax-m3",
-      "pulls": 77,
-      "sizes": [
-        "428b"
-      ],
-      "source_url": "https://ollama.com/frob/minimax-m3",
-      "tag_count": 6,
+      "path": "/frob/llama3.2-vision",
+      "pulls": 78,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/llama3.2-vision",
+      "tag_count": 2,
       "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Aug 25, 2026 12:32 PM UTC"
+      "updated": "1 year ago",
+      "updated_title": "Feb 20, 2025 2:54 PM UTC"
     },
     {
       "capabilities": [],
@@ -711,6 +690,27 @@
       "tags": [],
       "updated": "1 week ago",
       "updated_title": "Aug 31, 2026 8:52 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "minimax-m3",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/minimax-m3",
+      "pulls": 77,
+      "sizes": [
+        "428b"
+      ],
+      "source_url": "https://ollama.com/frob/minimax-m3",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Aug 25, 2026 12:32 PM UTC"
     },
     {
       "capabilities": [],
@@ -837,27 +837,6 @@
     },
     {
       "capabilities": [
-        "vision",
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "qwen3.8",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/qwen3.8",
-      "pulls": 12,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/qwen3.8",
-      "tag_count": 1,
-      "tags": [],
-      "updated": "yesterday",
-      "updated_title": "Sep 9, 2026 9:50 AM UTC"
-    },
-    {
-      "capabilities": [
         "thinking"
       ],
       "cloud": false,
@@ -911,7 +890,6 @@
     }
   ],
   "newest_order": [
-    "/frob/qwen3.8",
     "/frob/qwen3.8-flash-next",
     "/frob/glm-5.3",
     "/frob/minimax-m3",
@@ -964,8 +942,8 @@
     "/frob/glm-5.2",
     "/frob/qwen3.5",
     "/frob/ministral-3",
-    "/frob/kat-coder-v2.5-dev",
     "/frob/deepseek-v4-flash",
+    "/frob/kat-coder-v2.5-dev",
     "/frob/davidau-qwen3.6-uncensored",
     "/frob/minimax-m2.7",
     "/frob/minimax-m2.1",
@@ -985,17 +963,16 @@
     "/frob/KaLM-Embedding-Gemma3-12B-2511",
     "/frob/kimi-k2.5-prism-reap",
     "/frob/qwen3.6",
-    "/frob/llama3.2-vision",
     "/frob/hy3",
-    "/frob/minimax-m3",
+    "/frob/llama3.2-vision",
     "/frob/glm-5.3",
+    "/frob/minimax-m3",
     "/frob/hy-mt1.5",
     "/frob/nex-n2-mini",
     "/frob/trinity",
     "/frob/kimi-k3",
     "/frob/ling-3.0-flash",
     "/frob/nex-n2-pro",
-    "/frob/qwen3.8",
     "/frob/whyhow-ai_PatientSeek",
     "/frob/NireeskshanAI_Niri",
     "/frob/mixtao"
