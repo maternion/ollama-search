@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4422,
+      "pulls": 4428,
       "sizes": [
         "3b"
       ],
@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3722,
+      "pulls": 3724,
       "sizes": [
         "80b"
       ],
@@ -341,7 +341,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 771,
+      "pulls": 772,
       "sizes": [
         "4b"
       ],
@@ -430,7 +430,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 621,
+      "pulls": 622,
       "sizes": [
         "9b",
         "35b",
@@ -453,7 +453,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 571,
+      "pulls": 587,
       "sizes": [
         "125b"
       ],
@@ -498,7 +498,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.5",
-      "pulls": 414,
+      "pulls": 415,
       "sizes": [
         "309b"
       ],
@@ -519,7 +519,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/iquest-coder",
-      "pulls": 388,
+      "pulls": 389,
       "sizes": [
         "40b"
       ],
@@ -743,7 +743,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/nex-n2-mini",
-      "pulls": 48,
+      "pulls": 49,
       "sizes": [
         "35b"
       ],
@@ -752,6 +752,25 @@
       "tags": [],
       "updated": "2 weeks ago",
       "updated_title": "Aug 22, 2026 8:31 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "kimi-k3",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/kimi-k3",
+      "pulls": 36,
+      "sizes": [
+        "2780b"
+      ],
+      "source_url": "https://ollama.com/frob/kimi-k3",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Aug 21, 2026 8:20 AM UTC"
     },
     {
       "capabilities": [
@@ -773,25 +792,6 @@
       "tags": [],
       "updated": "2 months ago",
       "updated_title": "Jun 26, 2026 3:17 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "kimi-k3",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/kimi-k3",
-      "pulls": 35,
-      "sizes": [
-        "2780b"
-      ],
-      "source_url": "https://ollama.com/frob/kimi-k3",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Aug 21, 2026 8:20 AM UTC"
     },
     {
       "capabilities": [],
@@ -969,8 +969,8 @@
     "/frob/minimax-m3",
     "/frob/hy-mt1.5",
     "/frob/nex-n2-mini",
-    "/frob/trinity",
     "/frob/kimi-k3",
+    "/frob/trinity",
     "/frob/ling-3.0-flash",
     "/frob/nex-n2-pro",
     "/frob/whyhow-ai_PatientSeek",
