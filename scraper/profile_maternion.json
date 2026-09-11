@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 4054,
+      "pulls": 4073,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2289,
+      "pulls": 2292,
       "sizes": [
         "4b"
       ],
@@ -115,7 +115,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2",
-      "pulls": 2088,
+      "pulls": 2092,
       "sizes": [
         "8b"
       ],
@@ -137,7 +137,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2.5",
-      "pulls": 1779,
+      "pulls": 1781,
       "sizes": [
         "350m",
         "8b"
@@ -159,7 +159,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/strand-rust-coder",
-      "pulls": 1275,
+      "pulls": 1276,
       "sizes": [
         "14b"
       ],
@@ -223,7 +223,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 793,
+      "pulls": 800,
       "sizes": [
         "8b"
       ],
@@ -277,6 +277,25 @@
       "updated_title": "Feb 16, 2026 3:13 PM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "MiniCPM5-2B is a dense 2B Transformer for on-device deployment. It achieves 2B-class \nSOTA, remains competitive with 4B models overall, and excels in coding, math, \nlong-context, tool use, and agentic tasks.",
+      "name": "minicpm5",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/minicpm5",
+      "pulls": 436,
+      "sizes": [
+        "2b"
+      ],
+      "source_url": "https://ollama.com/maternion/minicpm5",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "yesterday",
+      "updated_title": "Sep 9, 2026 7:38 PM UTC"
+    },
+    {
       "capabilities": [
         "tools"
       ],
@@ -294,25 +313,6 @@
       "tags": [],
       "updated": "7 months ago",
       "updated_title": "Jan 24, 2026 10:15 AM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "MiniCPM5-2B is a dense 2B Transformer for on-device deployment. It achieves 2B-class \nSOTA, remains competitive with 4B models overall, and excels in coding, math, \nlong-context, tool use, and agentic tasks.",
-      "name": "minicpm5",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/minicpm5",
-      "pulls": 378,
-      "sizes": [
-        "2b"
-      ],
-      "source_url": "https://ollama.com/maternion/minicpm5",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "yesterday",
-      "updated_title": "Sep 9, 2026 7:38 PM UTC"
     },
     {
       "capabilities": [
@@ -367,8 +367,8 @@
     "/maternion/ling-3.0-tiny",
     "/maternion/NuMarkdown-Thinking",
     "/maternion/manim-coder",
-    "/maternion/sweep-next-edit-1.5B",
     "/maternion/minicpm5",
+    "/maternion/sweep-next-edit-1.5B",
     "/maternion/context-1"
   ],
   "username": "maternion"
