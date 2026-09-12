@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4478,
+      "pulls": 4481,
       "sizes": [
         "3b"
       ],
@@ -121,7 +121,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1924,
+      "pulls": 1926,
       "sizes": [
         "753b"
       ],
@@ -168,7 +168,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1171,
+      "pulls": 1172,
       "sizes": [
         "3b",
         "8b",
@@ -189,7 +189,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1113,
+      "pulls": 1114,
       "sizes": [
         "35b"
       ],
@@ -453,7 +453,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 646,
+      "pulls": 655,
       "sizes": [
         "125b"
       ],
@@ -519,7 +519,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/iquest-coder",
-      "pulls": 389,
+      "pulls": 390,
       "sizes": [
         "40b"
       ],
@@ -626,7 +626,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.6",
-      "pulls": 106,
+      "pulls": 107,
       "sizes": [],
       "source_url": "https://ollama.com/frob/qwen3.6",
       "tag_count": 1,
@@ -679,6 +679,25 @@
       "cloud": false,
       "cloud_only": false,
       "description": "",
+      "name": "llama3.2-vision",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/llama3.2-vision",
+      "pulls": 79,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/llama3.2-vision",
+      "tag_count": 2,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Feb 20, 2025 2:54 PM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
       "name": "minimax-m3",
       "official": false,
       "owner": "frob",
@@ -695,22 +714,25 @@
     },
     {
       "capabilities": [
-        "vision"
+        "tools",
+        "thinking"
       ],
       "cloud": false,
       "cloud_only": false,
       "description": "",
-      "name": "llama3.2-vision",
+      "name": "nex-n2-mini",
       "official": false,
       "owner": "frob",
-      "path": "/frob/llama3.2-vision",
-      "pulls": 79,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/llama3.2-vision",
-      "tag_count": 2,
+      "path": "/frob/nex-n2-mini",
+      "pulls": 51,
+      "sizes": [
+        "35b"
+      ],
+      "source_url": "https://ollama.com/frob/nex-n2-mini",
+      "tag_count": 11,
       "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "Feb 20, 2025 2:54 PM UTC"
+      "updated": "3 weeks ago",
+      "updated_title": "Aug 22, 2026 8:31 AM UTC"
     },
     {
       "capabilities": [],
@@ -732,28 +754,6 @@
       "updated_title": "Aug 21, 2026 8:27 AM UTC"
     },
     {
-      "capabilities": [
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "nex-n2-mini",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/nex-n2-mini",
-      "pulls": 50,
-      "sizes": [
-        "35b"
-      ],
-      "source_url": "https://ollama.com/frob/nex-n2-mini",
-      "tag_count": 11,
-      "tags": [],
-      "updated": "3 weeks ago",
-      "updated_title": "Aug 22, 2026 8:31 AM UTC"
-    },
-    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -762,7 +762,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kimi-k3",
-      "pulls": 38,
+      "pulls": 39,
       "sizes": [
         "2780b"
       ],
@@ -985,10 +985,10 @@
     "/frob/qwen3.6",
     "/frob/hy3",
     "/frob/glm-5.3",
-    "/frob/minimax-m3",
     "/frob/llama3.2-vision",
-    "/frob/hy-mt1.5",
+    "/frob/minimax-m3",
     "/frob/nex-n2-mini",
+    "/frob/hy-mt1.5",
     "/frob/kimi-k3",
     "/frob/trinity",
     "/frob/ling-3.0-flash",
