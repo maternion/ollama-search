@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 4135,
+      "pulls": 4137,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2298,
+      "pulls": 2300,
       "sizes": [
         "4b"
       ],
@@ -223,7 +223,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 827,
+      "pulls": 832,
       "sizes": [
         "8b"
       ],
@@ -256,6 +256,25 @@
       "updated_title": "Feb 1, 2026 12:55 PM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "MiniCPM5-2B is a dense 2B Transformer for on-device deployment. It achieves 2B-class \nSOTA, remains competitive with 4B models overall, and excels in coding, math, \nlong-context, tool use, and agentic tasks.",
+      "name": "minicpm5",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/minicpm5",
+      "pulls": 557,
+      "sizes": [
+        "2b"
+      ],
+      "source_url": "https://ollama.com/maternion/minicpm5",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "3 days ago",
+      "updated_title": "Sep 9, 2026 7:38 PM UTC"
+    },
+    {
       "capabilities": [
         "tools"
       ],
@@ -275,25 +294,6 @@
       "tags": [],
       "updated": "6 months ago",
       "updated_title": "Feb 16, 2026 3:13 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "MiniCPM5-2B is a dense 2B Transformer for on-device deployment. It achieves 2B-class \nSOTA, remains competitive with 4B models overall, and excels in coding, math, \nlong-context, tool use, and agentic tasks.",
-      "name": "minicpm5",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/minicpm5",
-      "pulls": 550,
-      "sizes": [
-        "2b"
-      ],
-      "source_url": "https://ollama.com/maternion/minicpm5",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "2 days ago",
-      "updated_title": "Sep 9, 2026 7:38 PM UTC"
     },
     {
       "capabilities": [
@@ -366,8 +366,8 @@
     "/maternion/AgentCPM-Explore",
     "/maternion/ling-3.0-tiny",
     "/maternion/NuMarkdown-Thinking",
-    "/maternion/manim-coder",
     "/maternion/minicpm5",
+    "/maternion/manim-coder",
     "/maternion/sweep-next-edit-1.5B",
     "/maternion/context-1"
   ],
