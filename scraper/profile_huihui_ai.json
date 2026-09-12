@@ -76,7 +76,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3.5-abliterated",
-      "pulls": 612800,
+      "pulls": 612900,
       "sizes": [
         "0.8b",
         "2b",
@@ -171,7 +171,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-abliterated",
-      "pulls": 306400,
+      "pulls": 306600,
       "sizes": [
         "0.6b",
         "1.7b",
@@ -202,7 +202,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-vl-abliterated",
-      "pulls": 115200,
+      "pulls": 115300,
       "sizes": [
         "2b",
         "4b",
@@ -252,7 +252,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-abliterate",
-      "pulls": 86400,
+      "pulls": 86500,
       "sizes": [
         "0.5b",
         "1.5b",
@@ -344,7 +344,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3.8-abliterated",
-      "pulls": 51600,
+      "pulls": 51800,
       "sizes": [
         "27b"
       ],
@@ -484,6 +484,29 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Flagship vision-language model of Qwen and also a significant leap from the previous Qwen2-VL.",
+      "name": "qwen2.5-vl-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwen2.5-vl-abliterated",
+      "pulls": 20700,
+      "sizes": [
+        "3b",
+        "7b",
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/qwen2.5-vl-abliterated",
+      "tag_count": 16,
+      "tags": [],
+      "updated": "10 months ago",
+      "updated_title": "Nov 7, 2025 11:33 PM UTC"
+    },
+    {
+      "capabilities": [
         "tools"
       ],
       "cloud": false,
@@ -502,29 +525,6 @@
       "tags": [],
       "updated": "1 year ago",
       "updated_title": "Feb 2, 2025 5:12 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Flagship vision-language model of Qwen and also a significant leap from the previous Qwen2-VL.",
-      "name": "qwen2.5-vl-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/qwen2.5-vl-abliterated",
-      "pulls": 18200,
-      "sizes": [
-        "3b",
-        "7b",
-        "32b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/qwen2.5-vl-abliterated",
-      "tag_count": 16,
-      "tags": [],
-      "updated": "10 months ago",
-      "updated_title": "Nov 7, 2025 11:33 PM UTC"
     },
     {
       "capabilities": [],
@@ -645,7 +645,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-r1-abliterated",
-      "pulls": 9691,
+      "pulls": 9692,
       "sizes": [
         "24b"
       ],
@@ -664,7 +664,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/hunyuan-mt-abliterated",
-      "pulls": 8926,
+      "pulls": 8927,
       "sizes": [
         "7b"
       ],
@@ -685,7 +685,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-coder-next-abliterated",
-      "pulls": 8811,
+      "pulls": 8819,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/qwen3-coder-next-abliterated",
       "tag_count": 4,
@@ -726,7 +726,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.2-vision-abliterated",
-      "pulls": 7793,
+      "pulls": 7796,
       "sizes": [
         "2b"
       ],
@@ -805,7 +805,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite4.1-abliterated",
-      "pulls": 6288,
+      "pulls": 6291,
       "sizes": [
         "3b",
         "8b",
@@ -848,7 +848,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deephermes3-abliterated",
-      "pulls": 5104,
+      "pulls": 5106,
       "sizes": [
         "8b"
       ],
@@ -869,7 +869,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/devstral-abliterated",
-      "pulls": 4263,
+      "pulls": 4264,
       "sizes": [
         "24b"
       ],
@@ -878,6 +878,46 @@
       "tags": [],
       "updated": "1 year ago",
       "updated_title": "May 28, 2025 10:57 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Hermes 3 3B is a small but mighty new addition to the Hermes series of LLMs by Nous Research, and is Nous's first fine-tune in this parameter class.",
+      "name": "Hermes-3-Llama-3.2-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
+      "pulls": 4114,
+      "sizes": [
+        "3b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/Hermes-3-Llama-3.2-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Dec 16, 2024 10:23 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Foundation-Sec-8B-abliterated is an uncensored version fine-tuned based on fdtn-ai/Foundation-Sec-8B. Foundation-Sec-8B is an open-weight, 8-billion-parameter foundational language model designed specifically for cybersecurity applications.",
+      "name": "foundation-sec-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/foundation-sec-abliterated",
+      "pulls": 4113,
+      "sizes": [
+        "8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/foundation-sec-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "May 12, 2025 5:07 PM UTC"
     },
     {
       "capabilities": [
@@ -899,46 +939,6 @@
       "tags": [],
       "updated": "7 months ago",
       "updated_title": "Jan 25, 2026 11:49 AM UTC"
-    },
-    {
-      "capabilities": [
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Hermes 3 3B is a small but mighty new addition to the Hermes series of LLMs by Nous Research, and is Nous's first fine-tune in this parameter class.",
-      "name": "Hermes-3-Llama-3.2-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
-      "pulls": 4112,
-      "sizes": [
-        "3b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/Hermes-3-Llama-3.2-abliterated",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "Dec 16, 2024 10:23 AM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Foundation-Sec-8B-abliterated is an uncensored version fine-tuned based on fdtn-ai/Foundation-Sec-8B. Foundation-Sec-8B is an open-weight, 8-billion-parameter foundational language model designed specifically for cybersecurity applications.",
-      "name": "foundation-sec-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/foundation-sec-abliterated",
-      "pulls": 4111,
-      "sizes": [
-        "8b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/foundation-sec-abliterated",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "May 12, 2025 5:07 PM UTC"
     },
     {
       "capabilities": [],
@@ -968,7 +968,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/phi4-reasoning-abliterated",
-      "pulls": 3617,
+      "pulls": 3618,
       "sizes": [
         "3.8b"
       ],
@@ -1035,7 +1035,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/huihui-4",
-      "pulls": 3331,
+      "pulls": 3334,
       "sizes": [
         "8b"
       ],
@@ -1180,7 +1180,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwenlong-l1.5-abliterated",
-      "pulls": 2762,
+      "pulls": 2763,
       "sizes": [
         "30b"
       ],
@@ -1385,7 +1385,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/orchestrator-abliterated",
-      "pulls": 2096,
+      "pulls": 2098,
       "sizes": [
         "8b"
       ],
@@ -1710,7 +1710,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/huihui-moe",
-      "pulls": 1147,
+      "pulls": 1148,
       "sizes": [
         "1.2b",
         "23b"
@@ -2284,8 +2284,8 @@
     "/huihui_ai/qwen2.5-coder-abliterate",
     "/huihui_ai/qwen3-coder-abliterated",
     "/huihui_ai/gemma3n-abliterated",
-    "/huihui_ai/mistral-small-abliterated",
     "/huihui_ai/qwen2.5-vl-abliterated",
+    "/huihui_ai/mistral-small-abliterated",
     "/huihui_ai/hy-mt1.5-abliterated",
     "/huihui_ai/phi4-abliterated",
     "/huihui_ai/huihui-moe-abliterated",
@@ -2303,9 +2303,9 @@
     "/huihui_ai/qwen3-next-abliterated",
     "/huihui_ai/deephermes3-abliterated",
     "/huihui_ai/devstral-abliterated",
-    "/huihui_ai/lfm2.5-abliterated",
     "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
     "/huihui_ai/foundation-sec-abliterated",
+    "/huihui_ai/lfm2.5-abliterated",
     "/huihui_ai/deepseek-v3-abliterated",
     "/huihui_ai/phi4-reasoning-abliterated",
     "/huihui_ai/jan-nano-abliterated",
