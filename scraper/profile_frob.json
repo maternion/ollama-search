@@ -56,7 +56,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.5-instruct",
-      "pulls": 15700,
+      "pulls": 15800,
       "sizes": [
         "4b",
         "9b",
@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4441,
+      "pulls": 4453,
       "sizes": [
         "3b"
       ],
@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3731,
+      "pulls": 3738,
       "sizes": [
         "80b"
       ],
@@ -398,6 +398,31 @@
     },
     {
       "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Missing quants, MTP, MLX and correct sampling parameters.",
+      "name": "ornith-1.5",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/ornith-1.5",
+      "pulls": 656,
+      "sizes": [
+        "9b",
+        "35b",
+        "397b"
+      ],
+      "source_url": "https://ollama.com/frob/ornith-1.5",
+      "tag_count": 36,
+      "tags": [],
+      "updated": "3 weeks ago",
+      "updated_title": "Aug 22, 2026 8:05 AM UTC"
+    },
+    {
+      "capabilities": [
         "vision"
       ],
       "cloud": false,
@@ -419,31 +444,6 @@
     },
     {
       "capabilities": [
-        "vision",
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Missing quants, MTP, MLX and correct sampling parameters.",
-      "name": "ornith-1.5",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/ornith-1.5",
-      "pulls": 648,
-      "sizes": [
-        "9b",
-        "35b",
-        "397b"
-      ],
-      "source_url": "https://ollama.com/frob/ornith-1.5",
-      "tag_count": 36,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Aug 22, 2026 8:05 AM UTC"
-    },
-    {
-      "capabilities": [
         "vision"
       ],
       "cloud": false,
@@ -453,7 +453,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 605,
+      "pulls": 607,
       "sizes": [
         "125b"
       ],
@@ -660,25 +660,6 @@
       "cloud": false,
       "cloud_only": false,
       "description": "",
-      "name": "llama3.2-vision",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/llama3.2-vision",
-      "pulls": 79,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/llama3.2-vision",
-      "tag_count": 2,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "Feb 20, 2025 2:54 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
       "name": "minimax-m3",
       "official": false,
       "owner": "frob",
@@ -694,6 +675,25 @@
       "updated_title": "Aug 25, 2026 12:32 PM UTC"
     },
     {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "llama3.2-vision",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/llama3.2-vision",
+      "pulls": 79,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/llama3.2-vision",
+      "tag_count": 2,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Feb 20, 2025 2:54 PM UTC"
+    },
+    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -702,7 +702,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.3",
-      "pulls": 77,
+      "pulls": 78,
       "sizes": [
         "753b"
       ],
@@ -750,7 +750,7 @@
       "source_url": "https://ollama.com/frob/nex-n2-mini",
       "tag_count": 11,
       "tags": [],
-      "updated": "2 weeks ago",
+      "updated": "3 weeks ago",
       "updated_title": "Aug 22, 2026 8:31 AM UTC"
     },
     {
@@ -809,7 +809,7 @@
       "source_url": "https://ollama.com/frob/ling-3.0-flash",
       "tag_count": 6,
       "tags": [],
-      "updated": "2 weeks ago",
+      "updated": "3 weeks ago",
       "updated_title": "Aug 22, 2026 8:27 AM UTC"
     },
     {
@@ -832,7 +832,7 @@
       "source_url": "https://ollama.com/frob/nex-n2-pro",
       "tag_count": 11,
       "tags": [],
-      "updated": "2 weeks ago",
+      "updated": "3 weeks ago",
       "updated_title": "Aug 22, 2026 8:32 AM UTC"
     },
     {
@@ -904,7 +904,7 @@
       "source_url": "https://ollama.com/frob/hy4-preview",
       "tag_count": 6,
       "tags": [],
-      "updated": "19 hours ago",
+      "updated": "yesterday",
       "updated_title": "Sep 11, 2026 8:35 AM UTC"
     }
   ],
@@ -972,8 +972,8 @@
     "/frob/locooperator",
     "/frob/glm-4.7",
     "/frob/kimi-k2.5",
-    "/frob/nuextract-2.0",
     "/frob/ornith-1.5",
+    "/frob/nuextract-2.0",
     "/frob/qwen3.8-flash-next",
     "/frob/glm-5",
     "/frob/mimo-v2.5",
@@ -984,8 +984,8 @@
     "/frob/kimi-k2.5-prism-reap",
     "/frob/qwen3.6",
     "/frob/hy3",
-    "/frob/llama3.2-vision",
     "/frob/minimax-m3",
+    "/frob/llama3.2-vision",
     "/frob/glm-5.3",
     "/frob/hy-mt1.5",
     "/frob/nex-n2-mini",
