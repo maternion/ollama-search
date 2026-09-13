@@ -48,7 +48,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepseek-r1-abliterated",
-      "pulls": 729500,
+      "pulls": 729700,
       "sizes": [
         "1.5b",
         "7b",
@@ -76,7 +76,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3.5-abliterated",
-      "pulls": 615200,
+      "pulls": 615300,
       "sizes": [
         "0.8b",
         "2b",
@@ -171,7 +171,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-abliterated",
-      "pulls": 307100,
+      "pulls": 307400,
       "sizes": [
         "0.6b",
         "1.7b",
@@ -202,7 +202,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-vl-abliterated",
-      "pulls": 115500,
+      "pulls": 115600,
       "sizes": [
         "2b",
         "4b",
@@ -252,7 +252,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-abliterate",
-      "pulls": 86600,
+      "pulls": 86700,
       "sizes": [
         "0.5b",
         "1.5b",
@@ -344,7 +344,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3.8-abliterated",
-      "pulls": 52200,
+      "pulls": 52400,
       "sizes": [
         "27b"
       ],
@@ -421,6 +421,29 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Flagship vision-language model of Qwen and also a significant leap from the previous Qwen2-VL.",
+      "name": "qwen2.5-vl-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwen2.5-vl-abliterated",
+      "pulls": 40500,
+      "sizes": [
+        "3b",
+        "7b",
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/qwen2.5-vl-abliterated",
+      "tag_count": 16,
+      "tags": [],
+      "updated": "10 months ago",
+      "updated_title": "Nov 7, 2025 11:33 PM UTC"
+    },
+    {
+      "capabilities": [
         "tools"
       ],
       "cloud": false,
@@ -430,7 +453,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-coder-abliterate",
-      "pulls": 40300,
+      "pulls": 40400,
       "sizes": [
         "0.5b",
         "1.5b",
@@ -444,29 +467,6 @@
       "tags": [],
       "updated": "1 year ago",
       "updated_title": "Nov 25, 2024 12:55 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Flagship vision-language model of Qwen and also a significant leap from the previous Qwen2-VL.",
-      "name": "qwen2.5-vl-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/qwen2.5-vl-abliterated",
-      "pulls": 35100,
-      "sizes": [
-        "3b",
-        "7b",
-        "32b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/qwen2.5-vl-abliterated",
-      "tag_count": 16,
-      "tags": [],
-      "updated": "10 months ago",
-      "updated_title": "Nov 7, 2025 11:33 PM UTC"
     },
     {
       "capabilities": [],
@@ -645,7 +645,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-r1-abliterated",
-      "pulls": 9702,
+      "pulls": 9711,
       "sizes": [
         "24b"
       ],
@@ -664,7 +664,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/hunyuan-mt-abliterated",
-      "pulls": 8929,
+      "pulls": 8930,
       "sizes": [
         "7b"
       ],
@@ -685,7 +685,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-coder-next-abliterated",
-      "pulls": 8850,
+      "pulls": 8855,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/qwen3-coder-next-abliterated",
       "tag_count": 4,
@@ -704,7 +704,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/phi4-mini-abliterated",
-      "pulls": 8162,
+      "pulls": 8166,
       "sizes": [
         "3.8b"
       ],
@@ -726,7 +726,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.2-vision-abliterated",
-      "pulls": 7803,
+      "pulls": 7807,
       "sizes": [
         "2b"
       ],
@@ -764,7 +764,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/magistral-abliterated",
-      "pulls": 7065,
+      "pulls": 7067,
       "sizes": [
         "24b"
       ],
@@ -805,7 +805,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite4.1-abliterated",
-      "pulls": 6299,
+      "pulls": 6307,
       "sizes": [
         "3b",
         "8b",
@@ -848,7 +848,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deephermes3-abliterated",
-      "pulls": 5111,
+      "pulls": 5114,
       "sizes": [
         "8b"
       ],
@@ -909,7 +909,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/foundation-sec-abliterated",
-      "pulls": 4116,
+      "pulls": 4119,
       "sizes": [
         "8b"
       ],
@@ -930,7 +930,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/lfm2.5-abliterated",
-      "pulls": 4115,
+      "pulls": 4116,
       "sizes": [
         "1.2b"
       ],
@@ -968,7 +968,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/phi4-reasoning-abliterated",
-      "pulls": 3618,
+      "pulls": 3619,
       "sizes": [
         "3.8b"
       ],
@@ -1035,7 +1035,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/huihui-4",
-      "pulls": 3341,
+      "pulls": 3345,
       "sizes": [
         "8b"
       ],
@@ -1054,7 +1054,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/seed-coder-abliterate",
-      "pulls": 3277,
+      "pulls": 3278,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/seed-coder-abliterate",
       "tag_count": 5,
@@ -1073,7 +1073,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/homunculus-abliterated",
-      "pulls": 3264,
+      "pulls": 3265,
       "sizes": [
         "12b"
       ],
@@ -1094,7 +1094,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/aya-expanse-abliterated",
-      "pulls": 3146,
+      "pulls": 3147,
       "sizes": [
         "8b",
         "32b"
@@ -1116,7 +1116,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/nemotron-abliterated",
-      "pulls": 3122,
+      "pulls": 3123,
       "sizes": [
         "70b"
       ],
@@ -1158,7 +1158,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwenlong-abliterated",
-      "pulls": 3072,
+      "pulls": 3076,
       "sizes": [
         "32b"
       ],
@@ -1180,7 +1180,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwenlong-l1.5-abliterated",
-      "pulls": 2797,
+      "pulls": 2802,
       "sizes": [
         "30b"
       ],
@@ -1549,7 +1549,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/smallthinker-abliterated",
-      "pulls": 1569,
+      "pulls": 1570,
       "sizes": [
         "3b"
       ],
@@ -1608,7 +1608,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/command-r7b-abliterated",
-      "pulls": 1346,
+      "pulls": 1347,
       "sizes": [
         "7b"
       ],
@@ -1732,7 +1732,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/openhands-lm-abliterated",
-      "pulls": 1043,
+      "pulls": 1045,
       "sizes": [
         "32b"
       ],
@@ -2001,7 +2001,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Lucie-abliterated",
-      "pulls": 419,
+      "pulls": 421,
       "sizes": [
         "7b"
       ],
@@ -2281,8 +2281,8 @@
     "/huihui_ai/llama3.2-abliterate",
     "/huihui_ai/exaone3.5-abliterated",
     "/huihui_ai/qwen2.5-1m-abliterated",
-    "/huihui_ai/qwen2.5-coder-abliterate",
     "/huihui_ai/qwen2.5-vl-abliterated",
+    "/huihui_ai/qwen2.5-coder-abliterate",
     "/huihui_ai/qwen3-coder-abliterated",
     "/huihui_ai/gemma3n-abliterated",
     "/huihui_ai/mistral-small-abliterated",
