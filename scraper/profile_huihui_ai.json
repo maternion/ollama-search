@@ -48,7 +48,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepseek-r1-abliterated",
-      "pulls": 729700,
+      "pulls": 730000,
       "sizes": [
         "1.5b",
         "7b",
@@ -76,7 +76,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3.5-abliterated",
-      "pulls": 615300,
+      "pulls": 615500,
       "sizes": [
         "0.8b",
         "2b",
@@ -128,7 +128,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3.6-abliterated",
-      "pulls": 372900,
+      "pulls": 373000,
       "sizes": [
         "27b",
         "35b"
@@ -171,7 +171,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-abliterated",
-      "pulls": 307400,
+      "pulls": 307700,
       "sizes": [
         "0.6b",
         "1.7b",
@@ -202,7 +202,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-vl-abliterated",
-      "pulls": 115600,
+      "pulls": 115700,
       "sizes": [
         "2b",
         "4b",
@@ -252,7 +252,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-abliterate",
-      "pulls": 86700,
+      "pulls": 86800,
       "sizes": [
         "0.5b",
         "1.5b",
@@ -344,7 +344,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3.8-abliterated",
-      "pulls": 52400,
+      "pulls": 52800,
       "sizes": [
         "27b"
       ],
@@ -399,28 +399,6 @@
     },
     {
       "capabilities": [
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Qwen2.5-1M is the long-context version of the Qwen2.5 series models, supporting a context length of up to 1M tokens.",
-      "name": "qwen2.5-1m-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/qwen2.5-1m-abliterated",
-      "pulls": 43000,
-      "sizes": [
-        "7b",
-        "14b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/qwen2.5-1m-abliterated",
-      "tag_count": 11,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "Jan 28, 2025 8:08 AM UTC"
-    },
-    {
-      "capabilities": [
         "vision"
       ],
       "cloud": false,
@@ -430,7 +408,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-vl-abliterated",
-      "pulls": 40500,
+      "pulls": 44800,
       "sizes": [
         "3b",
         "7b",
@@ -441,6 +419,28 @@
       "tags": [],
       "updated": "10 months ago",
       "updated_title": "Nov 7, 2025 11:33 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Qwen2.5-1M is the long-context version of the Qwen2.5 series models, supporting a context length of up to 1M tokens.",
+      "name": "qwen2.5-1m-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwen2.5-1m-abliterated",
+      "pulls": 43100,
+      "sizes": [
+        "7b",
+        "14b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/qwen2.5-1m-abliterated",
+      "tag_count": 11,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jan 28, 2025 8:08 AM UTC"
     },
     {
       "capabilities": [
@@ -645,7 +645,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-r1-abliterated",
-      "pulls": 9711,
+      "pulls": 9718,
       "sizes": [
         "24b"
       ],
@@ -664,7 +664,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/hunyuan-mt-abliterated",
-      "pulls": 8930,
+      "pulls": 8931,
       "sizes": [
         "7b"
       ],
@@ -685,7 +685,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-coder-next-abliterated",
-      "pulls": 8855,
+      "pulls": 8862,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/qwen3-coder-next-abliterated",
       "tag_count": 4,
@@ -726,7 +726,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.2-vision-abliterated",
-      "pulls": 7807,
+      "pulls": 7808,
       "sizes": [
         "2b"
       ],
@@ -805,7 +805,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite4.1-abliterated",
-      "pulls": 6307,
+      "pulls": 6308,
       "sizes": [
         "3b",
         "8b",
@@ -829,7 +829,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-next-abliterated",
-      "pulls": 5648,
+      "pulls": 5649,
       "sizes": [
         "80b"
       ],
@@ -848,7 +848,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deephermes3-abliterated",
-      "pulls": 5114,
+      "pulls": 5117,
       "sizes": [
         "8b"
       ],
@@ -880,27 +880,6 @@
       "updated_title": "May 28, 2025 10:57 AM UTC"
     },
     {
-      "capabilities": [
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Hermes 3 3B is a small but mighty new addition to the Hermes series of LLMs by Nous Research, and is Nous's first fine-tune in this parameter class.",
-      "name": "Hermes-3-Llama-3.2-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
-      "pulls": 4119,
-      "sizes": [
-        "3b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/Hermes-3-Llama-3.2-abliterated",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "Dec 16, 2024 10:23 AM UTC"
-    },
-    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -909,7 +888,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/foundation-sec-abliterated",
-      "pulls": 4119,
+      "pulls": 4122,
       "sizes": [
         "8b"
       ],
@@ -925,12 +904,33 @@
       ],
       "cloud": false,
       "cloud_only": false,
+      "description": "Hermes 3 3B is a small but mighty new addition to the Hermes series of LLMs by Nous Research, and is Nous's first fine-tune in this parameter class.",
+      "name": "Hermes-3-Llama-3.2-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
+      "pulls": 4121,
+      "sizes": [
+        "3b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/Hermes-3-Llama-3.2-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Dec 16, 2024 10:23 AM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
       "description": "LFM2.5 is a new family of hybrid models designed for on-device deployment.",
       "name": "lfm2.5-abliterated",
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/lfm2.5-abliterated",
-      "pulls": 4116,
+      "pulls": 4117,
       "sizes": [
         "1.2b"
       ],
@@ -949,7 +949,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepseek-v3-abliterated",
-      "pulls": 4111,
+      "pulls": 4112,
       "sizes": [
         "671b"
       ],
@@ -1035,7 +1035,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/huihui-4",
-      "pulls": 3345,
+      "pulls": 3346,
       "sizes": [
         "8b"
       ],
@@ -1073,7 +1073,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/homunculus-abliterated",
-      "pulls": 3265,
+      "pulls": 3266,
       "sizes": [
         "12b"
       ],
@@ -1094,7 +1094,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/aya-expanse-abliterated",
-      "pulls": 3147,
+      "pulls": 3148,
       "sizes": [
         "8b",
         "32b"
@@ -1468,7 +1468,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/llama3.3-abliterated-ft",
-      "pulls": 1900,
+      "pulls": 1901,
       "sizes": [
         "70b"
       ],
@@ -1732,7 +1732,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/openhands-lm-abliterated",
-      "pulls": 1045,
+      "pulls": 1049,
       "sizes": [
         "32b"
       ],
@@ -2280,8 +2280,8 @@
     "/huihui_ai/Qwen3.8-abliterated",
     "/huihui_ai/llama3.2-abliterate",
     "/huihui_ai/exaone3.5-abliterated",
-    "/huihui_ai/qwen2.5-1m-abliterated",
     "/huihui_ai/qwen2.5-vl-abliterated",
+    "/huihui_ai/qwen2.5-1m-abliterated",
     "/huihui_ai/qwen2.5-coder-abliterate",
     "/huihui_ai/qwen3-coder-abliterated",
     "/huihui_ai/gemma3n-abliterated",
@@ -2303,8 +2303,8 @@
     "/huihui_ai/qwen3-next-abliterated",
     "/huihui_ai/deephermes3-abliterated",
     "/huihui_ai/devstral-abliterated",
-    "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
     "/huihui_ai/foundation-sec-abliterated",
+    "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
     "/huihui_ai/lfm2.5-abliterated",
     "/huihui_ai/deepseek-v3-abliterated",
     "/huihui_ai/phi4-reasoning-abliterated",
