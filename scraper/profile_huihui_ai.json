@@ -48,7 +48,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepseek-r1-abliterated",
-      "pulls": 731100,
+      "pulls": 731200,
       "sizes": [
         "1.5b",
         "7b",
@@ -76,7 +76,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3.5-abliterated",
-      "pulls": 618400,
+      "pulls": 618500,
       "sizes": [
         "0.8b",
         "2b",
@@ -171,7 +171,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-abliterated",
-      "pulls": 309000,
+      "pulls": 309100,
       "sizes": [
         "0.6b",
         "1.7b",
@@ -252,7 +252,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-abliterate",
-      "pulls": 87300,
+      "pulls": 87400,
       "sizes": [
         "0.5b",
         "1.5b",
@@ -344,7 +344,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3.8-abliterated",
-      "pulls": 53900,
+      "pulls": 54000,
       "sizes": [
         "27b"
       ],
@@ -645,7 +645,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-r1-abliterated",
-      "pulls": 9746,
+      "pulls": 9747,
       "sizes": [
         "24b"
       ],
@@ -685,7 +685,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-coder-next-abliterated",
-      "pulls": 8924,
+      "pulls": 8926,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/qwen3-coder-next-abliterated",
       "tag_count": 4,
@@ -726,7 +726,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.2-vision-abliterated",
-      "pulls": 7825,
+      "pulls": 7826,
       "sizes": [
         "2b"
       ],
@@ -805,7 +805,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite4.1-abliterated",
-      "pulls": 6335,
+      "pulls": 6336,
       "sizes": [
         "3b",
         "8b",
@@ -848,7 +848,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deephermes3-abliterated",
-      "pulls": 5131,
+      "pulls": 5132,
       "sizes": [
         "8b"
       ],
@@ -880,6 +880,27 @@
       "updated_title": "May 28, 2025 10:57 AM UTC"
     },
     {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Hermes 3 3B is a small but mighty new addition to the Hermes series of LLMs by Nous Research, and is Nous's first fine-tune in this parameter class.",
+      "name": "Hermes-3-Llama-3.2-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
+      "pulls": 4133,
+      "sizes": [
+        "3b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/Hermes-3-Llama-3.2-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Dec 16, 2024 10:23 AM UTC"
+    },
+    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -897,27 +918,6 @@
       "tags": [],
       "updated": "1 year ago",
       "updated_title": "May 12, 2025 5:07 PM UTC"
-    },
-    {
-      "capabilities": [
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Hermes 3 3B is a small but mighty new addition to the Hermes series of LLMs by Nous Research, and is Nous's first fine-tune in this parameter class.",
-      "name": "Hermes-3-Llama-3.2-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
-      "pulls": 4128,
-      "sizes": [
-        "3b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/Hermes-3-Llama-3.2-abliterated",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "Dec 16, 2024 10:23 AM UTC"
     },
     {
       "capabilities": [
@@ -968,7 +968,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/phi4-reasoning-abliterated",
-      "pulls": 3626,
+      "pulls": 3630,
       "sizes": [
         "3.8b"
       ],
@@ -1012,7 +1012,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/tongyi-deepresearch-abliterated",
-      "pulls": 3423,
+      "pulls": 3427,
       "sizes": [
         "30b"
       ],
@@ -1094,7 +1094,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/aya-expanse-abliterated",
-      "pulls": 3153,
+      "pulls": 3154,
       "sizes": [
         "8b",
         "32b"
@@ -1180,7 +1180,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwenlong-l1.5-abliterated",
-      "pulls": 2828,
+      "pulls": 2829,
       "sizes": [
         "30b"
       ],
@@ -1362,7 +1362,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/exaone-deep-abliterated",
-      "pulls": 2170,
+      "pulls": 2172,
       "sizes": [
         "2.4b",
         "7.8b"
@@ -1385,7 +1385,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/orchestrator-abliterated",
-      "pulls": 2107,
+      "pulls": 2108,
       "sizes": [
         "8b"
       ],
@@ -1404,7 +1404,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/falcon3-abliterated",
-      "pulls": 1998,
+      "pulls": 1999,
       "sizes": [
         "1b",
         "3b",
@@ -1426,7 +1426,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepscaler-abliterated",
-      "pulls": 1976,
+      "pulls": 1977,
       "sizes": [
         "1.5b"
       ],
@@ -1510,7 +1510,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.1-dense-abliterated",
-      "pulls": 1656,
+      "pulls": 1658,
       "sizes": [
         "2b",
         "8b"
@@ -1859,7 +1859,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/devstral-2-abliterated",
-      "pulls": 678,
+      "pulls": 679,
       "sizes": [
         "123b"
       ],
@@ -2303,8 +2303,8 @@
     "/huihui_ai/qwen3-next-abliterated",
     "/huihui_ai/deephermes3-abliterated",
     "/huihui_ai/devstral-abliterated",
-    "/huihui_ai/foundation-sec-abliterated",
     "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
+    "/huihui_ai/foundation-sec-abliterated",
     "/huihui_ai/lfm2.5-abliterated",
     "/huihui_ai/deepseek-v3-abliterated",
     "/huihui_ai/phi4-reasoning-abliterated",
