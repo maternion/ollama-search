@@ -12,7 +12,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash-0731",
-      "pulls": 67800,
+      "pulls": 67900,
       "sizes": [
         "284b"
       ],
@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4572,
+      "pulls": 4582,
       "sizes": [
         "3b"
       ],
@@ -121,7 +121,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1930,
+      "pulls": 1931,
       "sizes": [
         "753b"
       ],
@@ -144,7 +144,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.5",
-      "pulls": 1678,
+      "pulls": 1679,
       "sizes": [
         "122b",
         "397b"
@@ -256,7 +256,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/minimax-m2.7",
-      "pulls": 961,
+      "pulls": 963,
       "sizes": [
         "230b"
       ],
@@ -300,7 +300,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "pulls": 851,
+      "pulls": 852,
       "sizes": [],
       "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "tag_count": 1,
@@ -341,7 +341,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 788,
+      "pulls": 790,
       "sizes": [
         "4b"
       ],
@@ -384,7 +384,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 750,
+      "pulls": 753,
       "sizes": [
         "125b"
       ],
@@ -407,7 +407,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 730,
+      "pulls": 737,
       "sizes": [
         "9b",
         "35b",
@@ -498,7 +498,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.5",
-      "pulls": 424,
+      "pulls": 426,
       "sizes": [
         "309b"
       ],
@@ -643,7 +643,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.3",
-      "pulls": 96,
+      "pulls": 97,
       "sizes": [
         "753b"
       ],
@@ -762,7 +762,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ling-3.0-flash",
-      "pulls": 46,
+      "pulls": 47,
       "sizes": [
         "124b"
       ],
@@ -851,7 +851,7 @@
       "source_url": "https://ollama.com/frob/hy4-preview",
       "tag_count": 6,
       "tags": [],
-      "updated": "4 days ago",
+      "updated": "5 days ago",
       "updated_title": "Sep 11, 2026 8:35 AM UTC"
     },
     {
@@ -895,6 +895,25 @@
       "cloud": false,
       "cloud_only": false,
       "description": "",
+      "name": "sarvam",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/sarvam",
+      "pulls": 2,
+      "sizes": [
+        "30b"
+      ],
+      "source_url": "https://ollama.com/frob/sarvam",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "2 days ago",
+      "updated_title": "Sep 13, 2026 4:08 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
       "name": "mixtao",
       "official": false,
       "owner": "frob",
@@ -906,25 +925,6 @@
       "tags": [],
       "updated": "7 months ago",
       "updated_title": "Jan 31, 2026 11:52 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "sarvam",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/sarvam",
-      "pulls": 1,
-      "sizes": [
-        "30b"
-      ],
-      "source_url": "https://ollama.com/frob/sarvam",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "2 days ago",
-      "updated_title": "Sep 13, 2026 4:08 PM UTC"
     }
   ],
   "newest_order": [
@@ -1016,8 +1016,8 @@
     "/frob/hy4-preview",
     "/frob/whyhow-ai_PatientSeek",
     "/frob/NireeskshanAI_Niri",
-    "/frob/mixtao",
-    "/frob/sarvam"
+    "/frob/sarvam",
+    "/frob/mixtao"
   ],
   "username": "frob"
 }
