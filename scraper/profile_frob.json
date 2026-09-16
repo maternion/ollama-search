@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4589,
+      "pulls": 4591,
       "sizes": [
         "3b"
       ],
@@ -192,7 +192,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1142,
+      "pulls": 1143,
       "sizes": [
         "284b"
       ],
@@ -211,7 +211,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1130,
+      "pulls": 1131,
       "sizes": [
         "35b"
       ],
@@ -256,7 +256,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/minimax-m2.7",
-      "pulls": 963,
+      "pulls": 964,
       "sizes": [
         "230b"
       ],
@@ -300,7 +300,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "pulls": 853,
+      "pulls": 855,
       "sizes": [],
       "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "tag_count": 1,
@@ -332,6 +332,27 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "qwen3.8-flash-next",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/qwen3.8-flash-next",
+      "pulls": 821,
+      "sizes": [
+        "125b"
+      ],
+      "source_url": "https://ollama.com/frob/qwen3.8-flash-next",
+      "tag_count": 8,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Sep 2, 2026 11:40 AM UTC"
+    },
+    {
+      "capabilities": [
         "tools"
       ],
       "cloud": false,
@@ -353,24 +374,28 @@
     },
     {
       "capabilities": [
-        "vision"
+        "vision",
+        "tools",
+        "thinking"
       ],
       "cloud": false,
       "cloud_only": false,
-      "description": "",
-      "name": "qwen3.8-flash-next",
+      "description": "Missing quants, MTP, MLX and correct sampling parameters.",
+      "name": "ornith-1.5",
       "official": false,
       "owner": "frob",
-      "path": "/frob/qwen3.8-flash-next",
-      "pulls": 775,
+      "path": "/frob/ornith-1.5",
+      "pulls": 768,
       "sizes": [
-        "125b"
+        "9b",
+        "35b",
+        "397b"
       ],
-      "source_url": "https://ollama.com/frob/qwen3.8-flash-next",
-      "tag_count": 8,
+      "source_url": "https://ollama.com/frob/ornith-1.5",
+      "tag_count": 36,
       "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Sep 2, 2026 11:40 AM UTC"
+      "updated": "3 weeks ago",
+      "updated_title": "Aug 22, 2026 8:05 AM UTC"
     },
     {
       "capabilities": [
@@ -393,31 +418,6 @@
       "tags": [],
       "updated": "2 months ago",
       "updated_title": "Jun 26, 2026 3:24 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision",
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Missing quants, MTP, MLX and correct sampling parameters.",
-      "name": "ornith-1.5",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/ornith-1.5",
-      "pulls": 761,
-      "sizes": [
-        "9b",
-        "35b",
-        "397b"
-      ],
-      "source_url": "https://ollama.com/frob/ornith-1.5",
-      "tag_count": 36,
-      "tags": [],
-      "updated": "3 weeks ago",
-      "updated_title": "Aug 22, 2026 8:05 AM UTC"
     },
     {
       "capabilities": [
@@ -453,7 +453,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/nuextract-2.0",
-      "pulls": 657,
+      "pulls": 658,
       "sizes": [
         "8b"
       ],
@@ -498,7 +498,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.5",
-      "pulls": 429,
+      "pulls": 430,
       "sizes": [
         "309b"
       ],
@@ -584,7 +584,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/KaLM-Embedding-Gemma3-12B-2511",
-      "pulls": 213,
+      "pulls": 214,
       "sizes": [],
       "source_url": "https://ollama.com/frob/KaLM-Embedding-Gemma3-12B-2511",
       "tag_count": 1,
@@ -906,7 +906,7 @@
       "source_url": "https://ollama.com/frob/sarvam",
       "tag_count": 5,
       "tags": [],
-      "updated": "2 days ago",
+      "updated": "3 days ago",
       "updated_title": "Sep 13, 2026 4:08 PM UTC"
     },
     {
@@ -989,10 +989,10 @@
     "/frob/minimax-m2.1",
     "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
     "/frob/glm-5.1",
-    "/frob/locooperator",
     "/frob/qwen3.8-flash-next",
-    "/frob/glm-4.7",
+    "/frob/locooperator",
     "/frob/ornith-1.5",
+    "/frob/glm-4.7",
     "/frob/kimi-k2.5",
     "/frob/nuextract-2.0",
     "/frob/glm-5",
