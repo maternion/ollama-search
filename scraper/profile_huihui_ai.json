@@ -48,7 +48,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepseek-r1-abliterated",
-      "pulls": 731900,
+      "pulls": 732000,
       "sizes": [
         "1.5b",
         "7b",
@@ -76,7 +76,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3.5-abliterated",
-      "pulls": 624300,
+      "pulls": 625600,
       "sizes": [
         "0.8b",
         "2b",
@@ -104,7 +104,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gpt-oss-abliterated",
-      "pulls": 390100,
+      "pulls": 391100,
       "sizes": [
         "20b",
         "120b"
@@ -128,7 +128,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3.6-abliterated",
-      "pulls": 379500,
+      "pulls": 380500,
       "sizes": [
         "27b",
         "35b"
@@ -151,7 +151,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/glm-4.7-flash-abliterated",
-      "pulls": 317800,
+      "pulls": 318800,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/glm-4.7-flash-abliterated",
       "tag_count": 5,
@@ -171,7 +171,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-abliterated",
-      "pulls": 312100,
+      "pulls": 312400,
       "sizes": [
         "0.6b",
         "1.7b",
@@ -252,7 +252,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-abliterate",
-      "pulls": 93400,
+      "pulls": 93500,
       "sizes": [
         "0.5b",
         "1.5b",
@@ -312,27 +312,6 @@
     },
     {
       "capabilities": [
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Dolphin 3.0 Llama 3.1 8B 🐬 is the next generation of the Dolphin series of instruct-tuned models designed to be the ultimate general purpose local model, enabling coding, math, agentic, function calling, and general use cases.",
-      "name": "dolphin3-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/dolphin3-abliterated",
-      "pulls": 55600,
-      "sizes": [
-        "8b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/dolphin3-abliterated",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "Jan 8, 2025 10:24 AM UTC"
-    },
-    {
-      "capabilities": [
         "vision",
         "tools",
         "thinking"
@@ -344,7 +323,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3.8-abliterated",
-      "pulls": 55600,
+      "pulls": 55800,
       "sizes": [
         "27b"
       ],
@@ -353,6 +332,27 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Aug 17, 2026 8:18 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Dolphin 3.0 Llama 3.1 8B 🐬 is the next generation of the Dolphin series of instruct-tuned models designed to be the ultimate general purpose local model, enabling coding, math, agentic, function calling, and general use cases.",
+      "name": "dolphin3-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/dolphin3-abliterated",
+      "pulls": 55700,
+      "sizes": [
+        "8b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/dolphin3-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Jan 8, 2025 10:24 AM UTC"
     },
     {
       "capabilities": [
@@ -453,7 +453,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-coder-abliterate",
-      "pulls": 42500,
+      "pulls": 43000,
       "sizes": [
         "0.5b",
         "1.5b",
@@ -467,6 +467,27 @@
       "tags": [],
       "updated": "1 year ago",
       "updated_title": "Nov 25, 2024 12:55 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Mistral Small 3 sets a new benchmark in the “small” Large Language Models category below 70B.",
+      "name": "mistral-small-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/mistral-small-abliterated",
+      "pulls": 29000,
+      "sizes": [
+        "24b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/mistral-small-abliterated",
+      "tag_count": 10,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Feb 2, 2025 5:12 PM UTC"
     },
     {
       "capabilities": [],
@@ -487,27 +508,6 @@
       "tags": [],
       "updated": "1 year ago",
       "updated_title": "Aug 11, 2025 8:22 AM UTC"
-    },
-    {
-      "capabilities": [
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Mistral Small 3 sets a new benchmark in the “small” Large Language Models category below 70B.",
-      "name": "mistral-small-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/mistral-small-abliterated",
-      "pulls": 23500,
-      "sizes": [
-        "24b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/mistral-small-abliterated",
-      "tag_count": 10,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "Feb 2, 2025 5:12 PM UTC"
     },
     {
       "capabilities": [],
@@ -645,7 +645,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-r1-abliterated",
-      "pulls": 9861,
+      "pulls": 9869,
       "sizes": [
         "24b"
       ],
@@ -666,7 +666,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-coder-next-abliterated",
-      "pulls": 9025,
+      "pulls": 9042,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/qwen3-coder-next-abliterated",
       "tag_count": 4,
@@ -683,7 +683,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/hunyuan-mt-abliterated",
-      "pulls": 8948,
+      "pulls": 8955,
       "sizes": [
         "7b"
       ],
@@ -704,7 +704,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/phi4-mini-abliterated",
-      "pulls": 8210,
+      "pulls": 8227,
       "sizes": [
         "3.8b"
       ],
@@ -726,7 +726,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.2-vision-abliterated",
-      "pulls": 7857,
+      "pulls": 7864,
       "sizes": [
         "2b"
       ],
@@ -764,7 +764,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/magistral-abliterated",
-      "pulls": 7088,
+      "pulls": 7089,
       "sizes": [
         "24b"
       ],
@@ -805,7 +805,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite4.1-abliterated",
-      "pulls": 6414,
+      "pulls": 6417,
       "sizes": [
         "3b",
         "8b",
@@ -848,7 +848,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deephermes3-abliterated",
-      "pulls": 5169,
+      "pulls": 5174,
       "sizes": [
         "8b"
       ],
@@ -890,7 +890,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
-      "pulls": 4167,
+      "pulls": 4169,
       "sizes": [
         "3b"
       ],
@@ -909,7 +909,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/foundation-sec-abliterated",
-      "pulls": 4158,
+      "pulls": 4163,
       "sizes": [
         "8b"
       ],
@@ -930,7 +930,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/lfm2.5-abliterated",
-      "pulls": 4138,
+      "pulls": 4139,
       "sizes": [
         "1.2b"
       ],
@@ -968,7 +968,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/phi4-reasoning-abliterated",
-      "pulls": 3661,
+      "pulls": 3672,
       "sizes": [
         "3.8b"
       ],
@@ -990,7 +990,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/jan-nano-abliterated",
-      "pulls": 3494,
+      "pulls": 3495,
       "sizes": [
         "4b"
       ],
@@ -1012,7 +1012,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/tongyi-deepresearch-abliterated",
-      "pulls": 3470,
+      "pulls": 3481,
       "sizes": [
         "30b"
       ],
@@ -1054,7 +1054,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/seed-coder-abliterate",
-      "pulls": 3284,
+      "pulls": 3285,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/seed-coder-abliterate",
       "tag_count": 5,
@@ -1180,7 +1180,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwenlong-l1.5-abliterated",
-      "pulls": 2842,
+      "pulls": 2843,
       "sizes": [
         "30b"
       ],
@@ -1202,7 +1202,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/mirothinker1-abliterated",
-      "pulls": 2803,
+      "pulls": 2805,
       "sizes": [
         "8b",
         "30b",
@@ -1225,7 +1225,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.2-abliterated",
-      "pulls": 2752,
+      "pulls": 2753,
       "sizes": [
         "2b",
         "8b"
@@ -1245,7 +1245,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/arcee-blitz-abliterated",
-      "pulls": 2748,
+      "pulls": 2750,
       "sizes": [
         "24b"
       ],
@@ -1303,7 +1303,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/tess-r1-abliterated",
-      "pulls": 2541,
+      "pulls": 2542,
       "sizes": [
         "70b"
       ],
@@ -1404,7 +1404,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/falcon3-abliterated",
-      "pulls": 2002,
+      "pulls": 2004,
       "sizes": [
         "1b",
         "3b",
@@ -1426,7 +1426,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepscaler-abliterated",
-      "pulls": 1979,
+      "pulls": 1980,
       "sizes": [
         "1.5b"
       ],
@@ -1447,7 +1447,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/skywork-o1-abliterated",
-      "pulls": 1968,
+      "pulls": 1969,
       "sizes": [
         "8b"
       ],
@@ -1468,7 +1468,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/llama3.3-abliterated-ft",
-      "pulls": 1907,
+      "pulls": 1908,
       "sizes": [
         "70b"
       ],
@@ -1549,7 +1549,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/smallthinker-abliterated",
-      "pulls": 1575,
+      "pulls": 1576,
       "sizes": [
         "3b"
       ],
@@ -1773,7 +1773,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/kimi-k2-abliterated",
-      "pulls": 931,
+      "pulls": 932,
       "sizes": [
         "1026b"
       ],
@@ -1850,6 +1850,27 @@
     },
     {
       "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "123B model that excels at using tools to explore codebases, editing multiple files and power software engineering agents.",
+      "name": "devstral-2-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/devstral-2-abliterated",
+      "pulls": 690,
+      "sizes": [
+        "123b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/devstral-2-abliterated",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "8 months ago",
+      "updated_title": "Dec 30, 2025 6:50 PM UTC"
+    },
+    {
+      "capabilities": [
         "tools",
         "thinking"
       ],
@@ -1869,27 +1890,6 @@
       "tags": [],
       "updated": "9 months ago",
       "updated_title": "Dec 6, 2025 7:58 PM UTC"
-    },
-    {
-      "capabilities": [
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "123B model that excels at using tools to explore codebases, editing multiple files and power software engineering agents.",
-      "name": "devstral-2-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/devstral-2-abliterated",
-      "pulls": 688,
-      "sizes": [
-        "123b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/devstral-2-abliterated",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "8 months ago",
-      "updated_title": "Dec 30, 2025 6:50 PM UTC"
     },
     {
       "capabilities": [],
@@ -1938,7 +1938,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/uwu-abliterated",
-      "pulls": 507,
+      "pulls": 508,
       "sizes": [
         "7b"
       ],
@@ -2149,7 +2149,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepseek-r1-pruned",
-      "pulls": 114,
+      "pulls": 115,
       "sizes": [
         "411b"
       ],
@@ -2276,15 +2276,15 @@
     "/huihui_ai/qwen2.5-abliterate",
     "/huihui_ai/qwq-abliterated",
     "/huihui_ai/llama3.3-abliterated",
-    "/huihui_ai/dolphin3-abliterated",
     "/huihui_ai/Qwen3.8-abliterated",
+    "/huihui_ai/dolphin3-abliterated",
     "/huihui_ai/llama3.2-abliterate",
     "/huihui_ai/qwen2.5-vl-abliterated",
     "/huihui_ai/exaone3.5-abliterated",
     "/huihui_ai/qwen2.5-1m-abliterated",
     "/huihui_ai/qwen2.5-coder-abliterate",
-    "/huihui_ai/qwen3-coder-abliterated",
     "/huihui_ai/mistral-small-abliterated",
+    "/huihui_ai/qwen3-coder-abliterated",
     "/huihui_ai/gemma3n-abliterated",
     "/huihui_ai/hy-mt1.5-abliterated",
     "/huihui_ai/phi4-abliterated",
@@ -2350,8 +2350,8 @@
     "/huihui_ai/microthinker",
     "/huihui_ai/glm-4.7-abliterated",
     "/huihui_ai/Qwen3-Coder",
-    "/huihui_ai/glm4.6-abliterated",
     "/huihui_ai/devstral-2-abliterated",
+    "/huihui_ai/glm4.6-abliterated",
     "/huihui_ai/perplexity-ai-r1",
     "/huihui_ai/s1-abliterated",
     "/huihui_ai/uwu-abliterated",
