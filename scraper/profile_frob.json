@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4673,
+      "pulls": 4676,
       "sizes": [
         "3b"
       ],
@@ -168,7 +168,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1185,
+      "pulls": 1186,
       "sizes": [
         "3b",
         "8b",
@@ -192,7 +192,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1157,
+      "pulls": 1158,
       "sizes": [
         "284b"
       ],
@@ -211,7 +211,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1137,
+      "pulls": 1141,
       "sizes": [
         "35b"
       ],
@@ -299,7 +299,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 868,
+      "pulls": 869,
       "sizes": [
         "125b"
       ],
@@ -364,7 +364,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 816,
+      "pulls": 823,
       "sizes": [
         "9b",
         "35b",
@@ -387,7 +387,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 804,
+      "pulls": 805,
       "sizes": [
         "4b"
       ],
@@ -683,7 +683,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/hy3",
-      "pulls": 83,
+      "pulls": 85,
       "sizes": [
         "295b"
       ],
@@ -813,6 +813,25 @@
       "updated_title": "Jun 26, 2026 3:17 PM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "hy4-preview",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/hy4-preview",
+      "pulls": 20,
+      "sizes": [
+        "770b"
+      ],
+      "source_url": "https://ollama.com/frob/hy4-preview",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "1 week ago",
+      "updated_title": "Sep 11, 2026 8:35 AM UTC"
+    },
+    {
       "capabilities": [
         "vision",
         "tools",
@@ -834,25 +853,6 @@
       "tags": [],
       "updated": "3 weeks ago",
       "updated_title": "Aug 22, 2026 8:32 AM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "hy4-preview",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/hy4-preview",
-      "pulls": 19,
-      "sizes": [
-        "770b"
-      ],
-      "source_url": "https://ollama.com/frob/hy4-preview",
-      "tag_count": 6,
-      "tags": [],
-      "updated": "1 week ago",
-      "updated_title": "Sep 11, 2026 8:35 AM UTC"
     },
     {
       "capabilities": [
@@ -891,6 +891,27 @@
       "updated_title": "Nov 23, 2025 7:27 PM UTC"
     },
     {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "mistral-small-4",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/mistral-small-4",
+      "pulls": 3,
+      "sizes": [
+        "119b"
+      ],
+      "source_url": "https://ollama.com/frob/mistral-small-4",
+      "tag_count": 8,
+      "tags": [],
+      "updated": "9 hours ago",
+      "updated_title": "Sep 18, 2026 3:09 PM UTC"
+    },
+    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -908,27 +929,6 @@
       "tags": [],
       "updated": "5 days ago",
       "updated_title": "Sep 13, 2026 4:08 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "mistral-small-4",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/mistral-small-4",
-      "pulls": 2,
-      "sizes": [
-        "119b"
-      ],
-      "source_url": "https://ollama.com/frob/mistral-small-4",
-      "tag_count": 8,
-      "tags": [],
-      "updated": "5 hours ago",
-      "updated_title": "Sep 18, 2026 3:09 PM UTC"
     },
     {
       "capabilities": [],
@@ -1034,12 +1034,12 @@
     "/frob/hy-mt1.5",
     "/frob/ling-3.0-flash",
     "/frob/trinity",
-    "/frob/nex-n2-pro",
     "/frob/hy4-preview",
+    "/frob/nex-n2-pro",
     "/frob/whyhow-ai_PatientSeek",
     "/frob/NireeskshanAI_Niri",
-    "/frob/sarvam",
     "/frob/mistral-small-4",
+    "/frob/sarvam",
     "/frob/mixtao"
   ],
   "username": "frob"
