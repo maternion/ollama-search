@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4672,
+      "pulls": 4673,
       "sizes": [
         "3b"
       ],
@@ -211,7 +211,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1136,
+      "pulls": 1137,
       "sizes": [
         "35b"
       ],
@@ -299,7 +299,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 866,
+      "pulls": 868,
       "sizes": [
         "125b"
       ],
@@ -364,7 +364,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 815,
+      "pulls": 816,
       "sizes": [
         "9b",
         "35b",
@@ -664,7 +664,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/minimax-m3",
-      "pulls": 88,
+      "pulls": 89,
       "sizes": [
         "428b"
       ],
@@ -711,6 +711,25 @@
       "tags": [],
       "updated": "1 year ago",
       "updated_title": "Feb 20, 2025 2:54 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "kimi-k3",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/kimi-k3",
+      "pulls": 53,
+      "sizes": [
+        "2780b"
+      ],
+      "source_url": "https://ollama.com/frob/kimi-k3",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "4 weeks ago",
+      "updated_title": "Aug 21, 2026 8:20 AM UTC"
     },
     {
       "capabilities": [
@@ -771,25 +790,6 @@
       "tags": [],
       "updated": "3 weeks ago",
       "updated_title": "Aug 22, 2026 8:27 AM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "kimi-k3",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/kimi-k3",
-      "pulls": 50,
-      "sizes": [
-        "2780b"
-      ],
-      "source_url": "https://ollama.com/frob/kimi-k3",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "4 weeks ago",
-      "updated_title": "Aug 21, 2026 8:20 AM UTC"
     },
     {
       "capabilities": [
@@ -899,7 +899,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/sarvam",
-      "pulls": 2,
+      "pulls": 3,
       "sizes": [
         "30b"
       ],
@@ -908,6 +908,27 @@
       "tags": [],
       "updated": "5 days ago",
       "updated_title": "Sep 13, 2026 4:08 PM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "mistral-small-4",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/mistral-small-4",
+      "pulls": 2,
+      "sizes": [
+        "119b"
+      ],
+      "source_url": "https://ollama.com/frob/mistral-small-4",
+      "tag_count": 8,
+      "tags": [],
+      "updated": "5 hours ago",
+      "updated_title": "Sep 18, 2026 3:09 PM UTC"
     },
     {
       "capabilities": [],
@@ -925,27 +946,6 @@
       "tags": [],
       "updated": "7 months ago",
       "updated_title": "Jan 31, 2026 11:52 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "mistral-small-4",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/mistral-small-4",
-      "pulls": 0,
-      "sizes": [
-        "119b"
-      ],
-      "source_url": "https://ollama.com/frob/mistral-small-4",
-      "tag_count": 8,
-      "tags": [],
-      "updated": "52 minutes ago",
-      "updated_title": "Sep 18, 2026 3:09 PM UTC"
     }
   ],
   "newest_order": [
@@ -1029,18 +1029,18 @@
     "/frob/minimax-m3",
     "/frob/hy3",
     "/frob/llama3.2-vision",
+    "/frob/kimi-k3",
     "/frob/nex-n2-mini",
     "/frob/hy-mt1.5",
     "/frob/ling-3.0-flash",
-    "/frob/kimi-k3",
     "/frob/trinity",
     "/frob/nex-n2-pro",
     "/frob/hy4-preview",
     "/frob/whyhow-ai_PatientSeek",
     "/frob/NireeskshanAI_Niri",
     "/frob/sarvam",
-    "/frob/mixtao",
-    "/frob/mistral-small-4"
+    "/frob/mistral-small-4",
+    "/frob/mixtao"
   ],
   "username": "frob"
 }
