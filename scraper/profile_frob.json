@@ -12,7 +12,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash-0731",
-      "pulls": 68000,
+      "pulls": 68100,
       "sizes": [
         "284b"
       ],
@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4654,
+      "pulls": 4672,
       "sizes": [
         "3b"
       ],
@@ -192,7 +192,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1155,
+      "pulls": 1157,
       "sizes": [
         "284b"
       ],
@@ -299,7 +299,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 864,
+      "pulls": 866,
       "sizes": [
         "125b"
       ],
@@ -364,7 +364,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 809,
+      "pulls": 815,
       "sizes": [
         "9b",
         "35b",
@@ -387,7 +387,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 801,
+      "pulls": 804,
       "sizes": [
         "4b"
       ],
@@ -498,7 +498,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.5",
-      "pulls": 435,
+      "pulls": 436,
       "sizes": [
         "309b"
       ],
@@ -643,7 +643,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.3",
-      "pulls": 102,
+      "pulls": 103,
       "sizes": [
         "753b"
       ],
@@ -664,7 +664,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/minimax-m3",
-      "pulls": 87,
+      "pulls": 88,
       "sizes": [
         "428b"
       ],
@@ -906,7 +906,7 @@
       "source_url": "https://ollama.com/frob/sarvam",
       "tag_count": 5,
       "tags": [],
-      "updated": "4 days ago",
+      "updated": "5 days ago",
       "updated_title": "Sep 13, 2026 4:08 PM UTC"
     },
     {
@@ -925,9 +925,31 @@
       "tags": [],
       "updated": "7 months ago",
       "updated_title": "Jan 31, 2026 11:52 PM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "mistral-small-4",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/mistral-small-4",
+      "pulls": 0,
+      "sizes": [
+        "119b"
+      ],
+      "source_url": "https://ollama.com/frob/mistral-small-4",
+      "tag_count": 8,
+      "tags": [],
+      "updated": "52 minutes ago",
+      "updated_title": "Sep 18, 2026 3:09 PM UTC"
     }
   ],
   "newest_order": [
+    "/frob/mistral-small-4",
     "/frob/sarvam",
     "/frob/hy4-preview",
     "/frob/qwen3.8-flash-next",
@@ -1017,7 +1039,8 @@
     "/frob/whyhow-ai_PatientSeek",
     "/frob/NireeskshanAI_Niri",
     "/frob/sarvam",
-    "/frob/mixtao"
+    "/frob/mixtao",
+    "/frob/mistral-small-4"
   ],
   "username": "frob"
 }
