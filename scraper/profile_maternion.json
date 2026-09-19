@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 4382,
+      "pulls": 4408,
       "sizes": [
         "1.8b",
         "7b",
@@ -115,7 +115,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2",
-      "pulls": 2106,
+      "pulls": 2107,
       "sizes": [
         "8b"
       ],
@@ -201,7 +201,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1079,
+      "pulls": 1088,
       "sizes": [
         "8b"
       ],
@@ -220,7 +220,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1048,
+      "pulls": 1056,
       "sizes": [
         "2b"
       ],
@@ -335,9 +335,49 @@
       "tags": [],
       "updated": "5 months ago",
       "updated_title": "Mar 30, 2026 1:59 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Uncensored/Abliterated MiniCPM5-2B with only 5/100 refusals. It achieves 2B-class SOTA, remains competitive with 4B models overall.",
+      "name": "minicpm5-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/minicpm5-heretic",
+      "pulls": 9,
+      "sizes": [
+        "2b"
+      ],
+      "source_url": "https://ollama.com/maternion/minicpm5-heretic",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "2 hours ago",
+      "updated_title": "Sep 19, 2026 8:23 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Spark-X2.5-4B is an efficient, open-source AI model built for chat, writing, coding, reasoning, tools, and agents, supporting 1M-token context and 200+ languages.",
+      "name": "spark-x2.5",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/spark-x2.5",
+      "pulls": 4,
+      "sizes": [
+        "4b"
+      ],
+      "source_url": "https://ollama.com/maternion/spark-x2.5",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "an hour ago",
+      "updated_title": "Sep 19, 2026 9:04 AM UTC"
     }
   ],
   "newest_order": [
+    "/maternion/spark-x2.5",
+    "/maternion/minicpm5-heretic",
     "/maternion/minicpm5",
     "/maternion/ling-3.0-tiny",
     "/maternion/hy-mt2",
@@ -369,7 +409,9 @@
     "/maternion/NuMarkdown-Thinking",
     "/maternion/manim-coder",
     "/maternion/sweep-next-edit-1.5B",
-    "/maternion/context-1"
+    "/maternion/context-1",
+    "/maternion/minicpm5-heretic",
+    "/maternion/spark-x2.5"
   ],
   "username": "maternion"
 }
