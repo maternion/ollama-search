@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4705,
+      "pulls": 4709,
       "sizes": [
         "3b"
       ],
@@ -211,7 +211,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1150,
+      "pulls": 1151,
       "sizes": [
         "35b"
       ],
@@ -321,7 +321,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "pulls": 862,
+      "pulls": 863,
       "sizes": [],
       "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "tag_count": 1,
@@ -342,7 +342,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 853,
+      "pulls": 855,
       "sizes": [
         "9b",
         "35b",
@@ -387,7 +387,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 822,
+      "pulls": 826,
       "sizes": [
         "4b"
       ],
@@ -498,7 +498,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.5",
-      "pulls": 439,
+      "pulls": 441,
       "sizes": [
         "309b"
       ],
@@ -622,7 +622,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.3",
-      "pulls": 115,
+      "pulls": 116,
       "sizes": [
         "753b"
       ],
@@ -833,6 +833,27 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "mistral-small-4",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/mistral-small-4",
+      "pulls": 20,
+      "sizes": [
+        "119b"
+      ],
+      "source_url": "https://ollama.com/frob/mistral-small-4",
+      "tag_count": 8,
+      "tags": [],
+      "updated": "2 days ago",
+      "updated_title": "Sep 18, 2026 3:09 PM UTC"
+    },
+    {
+      "capabilities": [
         "vision",
         "tools",
         "thinking"
@@ -853,27 +874,6 @@
       "tags": [],
       "updated": "4 weeks ago",
       "updated_title": "Aug 22, 2026 8:32 AM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "mistral-small-4",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/mistral-small-4",
-      "pulls": 18,
-      "sizes": [
-        "119b"
-      ],
-      "source_url": "https://ollama.com/frob/mistral-small-4",
-      "tag_count": 8,
-      "tags": [],
-      "updated": "2 days ago",
-      "updated_title": "Sep 18, 2026 3:09 PM UTC"
     },
     {
       "capabilities": [
@@ -1035,8 +1035,8 @@
     "/frob/ling-3.0-flash",
     "/frob/trinity",
     "/frob/hy4-preview",
-    "/frob/nex-n2-pro",
     "/frob/mistral-small-4",
+    "/frob/nex-n2-pro",
     "/frob/whyhow-ai_PatientSeek",
     "/frob/NireeskshanAI_Niri",
     "/frob/sarvam",
