@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 4505,
+      "pulls": 4518,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2354,
+      "pulls": 2356,
       "sizes": [
         "4b"
       ],
@@ -201,7 +201,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1141,
+      "pulls": 1145,
       "sizes": [
         "8b"
       ],
@@ -220,7 +220,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1114,
+      "pulls": 1130,
       "sizes": [
         "2b"
       ],
@@ -264,7 +264,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/NuMarkdown-Thinking",
-      "pulls": 769,
+      "pulls": 770,
       "sizes": [
         "8b"
       ],
@@ -311,7 +311,7 @@
       "source_url": "https://ollama.com/maternion/sweep-next-edit-1.5B",
       "tag_count": 1,
       "tags": [],
-      "updated": "7 months ago",
+      "updated": "8 months ago",
       "updated_title": "Jan 24, 2026 10:15 AM UTC"
     },
     {
@@ -323,7 +323,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 131,
+      "pulls": 151,
       "sizes": [
         "2b"
       ],
@@ -364,18 +364,38 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 69,
+      "pulls": 77,
       "sizes": [
         "4b"
       ],
       "source_url": "https://ollama.com/maternion/spark-x2.5",
       "tag_count": 4,
       "tags": [],
-      "updated": "yesterday",
+      "updated": "2 days ago",
       "updated_title": "Sep 19, 2026 9:04 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Spark-X2.5-4B abliterated (uncensored) - efficient AI model for chat, writing, coding, reasoning, tools, and agents, 1M-token context, 200+ languages, with refusal behavior removed.",
+      "name": "spark-x2.5-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/spark-x2.5-heretic",
+      "pulls": 18,
+      "sizes": [
+        "4b"
+      ],
+      "source_url": "https://ollama.com/maternion/spark-x2.5-heretic",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "2 hours ago",
+      "updated_title": "Sep 21, 2026 8:05 AM UTC"
     }
   ],
   "newest_order": [
+    "/maternion/spark-x2.5-heretic",
     "/maternion/spark-x2.5",
     "/maternion/minicpm5-heretic",
     "/maternion/minicpm5",
@@ -411,7 +431,8 @@
     "/maternion/sweep-next-edit-1.5B",
     "/maternion/minicpm5-heretic",
     "/maternion/context-1",
-    "/maternion/spark-x2.5"
+    "/maternion/spark-x2.5",
+    "/maternion/spark-x2.5-heretic"
   ],
   "username": "maternion"
 }
