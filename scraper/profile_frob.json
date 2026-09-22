@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4743,
+      "pulls": 4752,
       "sizes": [
         "3b"
       ],
@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3814,
+      "pulls": 3818,
       "sizes": [
         "80b"
       ],
@@ -121,7 +121,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1944,
+      "pulls": 1945,
       "sizes": [
         "753b"
       ],
@@ -167,7 +167,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1189,
+      "pulls": 1191,
       "sizes": [
         "284b"
       ],
@@ -211,7 +211,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1155,
+      "pulls": 1156,
       "sizes": [
         "35b"
       ],
@@ -232,7 +232,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 1031,
+      "pulls": 1037,
       "sizes": [
         "125b"
       ],
@@ -322,7 +322,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 893,
+      "pulls": 902,
       "sizes": [
         "9b",
         "35b",
@@ -346,7 +346,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "pulls": 864,
+      "pulls": 865,
       "sizes": [],
       "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "tag_count": 1,
@@ -432,7 +432,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kimi-k2.5",
-      "pulls": 685,
+      "pulls": 686,
       "sizes": [
         "1030b"
       ],
@@ -541,7 +541,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2-flash",
-      "pulls": 389,
+      "pulls": 390,
       "sizes": [
         "309b"
       ],
@@ -671,7 +671,7 @@
       "source_url": "https://ollama.com/frob/minimax-m3",
       "tag_count": 6,
       "tags": [],
-      "updated": "3 weeks ago",
+      "updated": "4 weeks ago",
       "updated_title": "Aug 25, 2026 12:32 PM UTC"
     },
     {
@@ -743,7 +743,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/nex-n2-mini",
-      "pulls": 53,
+      "pulls": 54,
       "sizes": [
         "35b"
       ],
@@ -823,7 +823,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mistral-small-4",
-      "pulls": 32,
+      "pulls": 33,
       "sizes": [
         "119b"
       ],
@@ -842,7 +842,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/hy4-preview",
-      "pulls": 23,
+      "pulls": 24,
       "sizes": [
         "770b"
       ],
@@ -899,6 +899,25 @@
       "cloud": false,
       "cloud_only": false,
       "description": "",
+      "name": "sarvam",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/sarvam",
+      "pulls": 7,
+      "sizes": [
+        "30b"
+      ],
+      "source_url": "https://ollama.com/frob/sarvam",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 week ago",
+      "updated_title": "Sep 13, 2026 4:08 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
       "name": "NireeskshanAI_Niri",
       "official": false,
       "owner": "frob",
@@ -910,25 +929,6 @@
       "tags": [],
       "updated": "10 months ago",
       "updated_title": "Nov 23, 2025 7:27 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "sarvam",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/sarvam",
-      "pulls": 5,
-      "sizes": [
-        "30b"
-      ],
-      "source_url": "https://ollama.com/frob/sarvam",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "1 week ago",
-      "updated_title": "Sep 13, 2026 4:08 PM UTC"
     },
     {
       "capabilities": [],
@@ -1038,8 +1038,8 @@
     "/frob/hy4-preview",
     "/frob/nex-n2-pro",
     "/frob/whyhow-ai_PatientSeek",
-    "/frob/NireeskshanAI_Niri",
     "/frob/sarvam",
+    "/frob/NireeskshanAI_Niri",
     "/frob/mixtao"
   ],
   "username": "frob"
