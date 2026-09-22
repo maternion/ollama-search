@@ -50,7 +50,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/fara",
-      "pulls": 5588,
+      "pulls": 5589,
       "sizes": [
         "7b"
       ],
@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 4538,
+      "pulls": 4547,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2356,
+      "pulls": 2362,
       "sizes": [
         "4b"
       ],
@@ -196,31 +196,12 @@
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
-      "description": "Ling-3.0-tiny is a lightweight 7.9B-parameter hybrid reasoning MoE with just 1.3B active parameters per token, offering strong reasoning and agentic capabilities at low inference cost.",
-      "name": "ling-3.0-tiny",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1163,
-      "sizes": [
-        "8b"
-      ],
-      "source_url": "https://ollama.com/maternion/ling-3.0-tiny",
-      "tag_count": 10,
-      "tags": [],
-      "updated": "1 month ago",
-      "updated_title": "Aug 20, 2026 8:18 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
       "description": "MiniCPM5-2B is a dense 2B Transformer for on-device deployment. It achieves 2B-class \nSOTA, remains competitive with 4B models overall, and excels in coding, math, \nlong-context, tool use, and agentic tasks.",
       "name": "minicpm5",
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1162,
+      "pulls": 1179,
       "sizes": [
         "2b"
       ],
@@ -229,6 +210,25 @@
       "tags": [],
       "updated": "1 week ago",
       "updated_title": "Sep 9, 2026 7:38 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Ling-3.0-tiny is a lightweight 7.9B-parameter hybrid reasoning MoE with just 1.3B active parameters per token, offering strong reasoning and agentic capabilities at low inference cost.",
+      "name": "ling-3.0-tiny",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/ling-3.0-tiny",
+      "pulls": 1168,
+      "sizes": [
+        "8b"
+      ],
+      "source_url": "https://ollama.com/maternion/ling-3.0-tiny",
+      "tag_count": 10,
+      "tags": [],
+      "updated": "1 month ago",
+      "updated_title": "Aug 20, 2026 8:18 PM UTC"
     },
     {
       "capabilities": [
@@ -323,7 +323,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 204,
+      "pulls": 218,
       "sizes": [
         "2b"
       ],
@@ -359,12 +359,31 @@
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
+      "description": "Spark-X2.5-4B abliterated (uncensored) - efficient AI model for chat, writing, coding, reasoning, tools, and agents, 1M-token context, 200+ languages, with refusal behavior removed.",
+      "name": "spark-x2.5-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/spark-x2.5-heretic",
+      "pulls": 126,
+      "sizes": [
+        "4b"
+      ],
+      "source_url": "https://ollama.com/maternion/spark-x2.5-heretic",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "23 hours ago",
+      "updated_title": "Sep 21, 2026 8:05 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
       "description": "Spark-X2.5-4B is an efficient, open-source AI model built for chat, writing, coding, reasoning, tools, and agents, supporting 1M-token context and 200+ languages.",
       "name": "spark-x2.5",
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 101,
+      "pulls": 108,
       "sizes": [
         "4b"
       ],
@@ -373,25 +392,6 @@
       "tags": [],
       "updated": "2 days ago",
       "updated_title": "Sep 19, 2026 9:04 AM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Spark-X2.5-4B abliterated (uncensored) - efficient AI model for chat, writing, coding, reasoning, tools, and agents, 1M-token context, 200+ languages, with refusal behavior removed.",
-      "name": "spark-x2.5-heretic",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 94,
-      "sizes": [
-        "4b"
-      ],
-      "source_url": "https://ollama.com/maternion/spark-x2.5-heretic",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "17 hours ago",
-      "updated_title": "Sep 21, 2026 8:05 AM UTC"
     }
   ],
   "newest_order": [
@@ -423,16 +423,16 @@
     "/maternion/lfm2.5",
     "/maternion/strand-rust-coder",
     "/maternion/mai-ui",
-    "/maternion/ling-3.0-tiny",
     "/maternion/minicpm5",
+    "/maternion/ling-3.0-tiny",
     "/maternion/AgentCPM-Explore",
     "/maternion/NuMarkdown-Thinking",
     "/maternion/manim-coder",
     "/maternion/sweep-next-edit-1.5B",
     "/maternion/minicpm5-heretic",
     "/maternion/context-1",
-    "/maternion/spark-x2.5",
-    "/maternion/spark-x2.5-heretic"
+    "/maternion/spark-x2.5-heretic",
+    "/maternion/spark-x2.5"
   ],
   "username": "maternion"
 }
