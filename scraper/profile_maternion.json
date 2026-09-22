@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 4547,
+      "pulls": 4555,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2362,
+      "pulls": 2363,
       "sizes": [
         "4b"
       ],
@@ -159,7 +159,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/strand-rust-coder",
-      "pulls": 1310,
+      "pulls": 1311,
       "sizes": [
         "14b"
       ],
@@ -181,7 +181,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1268,
+      "pulls": 1270,
       "sizes": [
         "2b",
         "8b"
@@ -201,7 +201,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1179,
+      "pulls": 1190,
       "sizes": [
         "2b"
       ],
@@ -220,7 +220,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1168,
+      "pulls": 1175,
       "sizes": [
         "8b"
       ],
@@ -323,7 +323,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 218,
+      "pulls": 243,
       "sizes": [
         "2b"
       ],
@@ -332,6 +332,25 @@
       "tags": [],
       "updated": "2 days ago",
       "updated_title": "Sep 19, 2026 2:06 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Spark-X2.5-4B abliterated (uncensored) - efficient AI model for chat, writing, coding, reasoning, tools, and agents, 1M-token context, 200+ languages, with refusal behavior removed.",
+      "name": "spark-x2.5-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/spark-x2.5-heretic",
+      "pulls": 159,
+      "sizes": [
+        "4b"
+      ],
+      "source_url": "https://ollama.com/maternion/spark-x2.5-heretic",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "yesterday",
+      "updated_title": "Sep 21, 2026 8:05 AM UTC"
     },
     {
       "capabilities": [
@@ -359,42 +378,43 @@
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
-      "description": "Spark-X2.5-4B abliterated (uncensored) - efficient AI model for chat, writing, coding, reasoning, tools, and agents, 1M-token context, 200+ languages, with refusal behavior removed.",
-      "name": "spark-x2.5-heretic",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 126,
-      "sizes": [
-        "4b"
-      ],
-      "source_url": "https://ollama.com/maternion/spark-x2.5-heretic",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "23 hours ago",
-      "updated_title": "Sep 21, 2026 8:05 AM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
       "description": "Spark-X2.5-4B is an efficient, open-source AI model built for chat, writing, coding, reasoning, tools, and agents, supporting 1M-token context and 200+ languages.",
       "name": "spark-x2.5",
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 108,
+      "pulls": 120,
       "sizes": [
         "4b"
       ],
       "source_url": "https://ollama.com/maternion/spark-x2.5",
       "tag_count": 4,
       "tags": [],
-      "updated": "2 days ago",
+      "updated": "3 days ago",
       "updated_title": "Sep 19, 2026 9:04 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "NeoHorse-1-9B is a 9B causal language model and an initial prototype on the path toward recursive self-improvement (RSI).",
+      "name": "neohorse-1",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/neohorse-1",
+      "pulls": 2,
+      "sizes": [
+        "9b"
+      ],
+      "source_url": "https://ollama.com/maternion/neohorse-1",
+      "tag_count": 2,
+      "tags": [],
+      "updated": "3 hours ago",
+      "updated_title": "Sep 22, 2026 10:24 AM UTC"
     }
   ],
   "newest_order": [
+    "/maternion/neohorse-1",
     "/maternion/spark-x2.5-heretic",
     "/maternion/spark-x2.5",
     "/maternion/minicpm5-heretic",
@@ -430,9 +450,10 @@
     "/maternion/manim-coder",
     "/maternion/sweep-next-edit-1.5B",
     "/maternion/minicpm5-heretic",
-    "/maternion/context-1",
     "/maternion/spark-x2.5-heretic",
-    "/maternion/spark-x2.5"
+    "/maternion/context-1",
+    "/maternion/spark-x2.5",
+    "/maternion/neohorse-1"
   ],
   "username": "maternion"
 }
