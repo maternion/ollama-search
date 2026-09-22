@@ -12,11 +12,29 @@
   "files": [
     {
       "arch": "",
+      "blob_url": "/library/gemma4:26b-nvfp4/blobs/0c4ee7ddeb30",
+      "content_preview": "{\n\"architectures\": [\n\"Gemma4ForConditionalGeneration\"\n],\n\"audio_config\": null,\n\"audio_token_id\": 258",
+      "parameters": "",
+      "quantization": "",
+      "size": "47kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
       "blob_url": "/library/gemma4:26b-nvfp4/blobs/d4226bbe3117",
       "content_preview": "{\n\"bos_token_id\": 2,\n\"do_sample\": true,\n\"eos_token_id\": [\n1,\n106,\n50\n],\n\"pad_token_id\": 0,\n\"temperat",
       "parameters": "",
       "quantization": "",
       "size": "208B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:26b-nvfp4/blobs/38a8b3f0379d",
+      "content_preview": "{\n\"producer\": {\n\"name\": \"modelopt\",\n\"version\": \"0.47.0rc1.dev36+g613e5e8b2\"\n},\n\"quantization\": {\n\"kv",
+      "parameters": "",
+      "quantization": "",
+      "size": "29kB",
       "type": "json"
     },
     {
@@ -39,25 +57,16 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/gemma4:26b-nvfp4/blobs/90c3a3ba5bf5",
+      "blob_url": "/library/gemma4:26b-nvfp4/blobs/9f4fec4b1dc6",
       "content_preview": "{\n\"audio_token\": \"<|audio|>\",\n\"backend\": \"tokenizers\",\n\"boa_token\": \"<|audio>\",\n\"boi_token\": \"<|imag",
       "parameters": "",
       "quantization": "",
-      "size": "2.1kB",
+      "size": "3.1kB",
       "type": "json"
     },
     {
       "arch": "",
-      "blob_url": "/library/gemma4:26b-nvfp4/blobs/ed0c1eb3633d",
-      "content_preview": "{\n\"architectures\": [\n\"Gemma4ForConditionalGeneration\"\n],\n\"audio_config\": null,\n\"audio_token_id\": 258",
-      "parameters": "",
-      "quantization": "",
-      "size": "3.8kB",
-      "type": "json"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/gemma4:26b-nvfp4/blobs/416fb5490310",
+      "blob_url": "/library/gemma4:26b-nvfp4/blobs/f393dd4bbdbb",
       "content_preview": "{\n\"architectures\": [\n\"Gemma4AssistantForCausalLM\"\n],\n\"audio_token_id\": 258881,\n\"backbone_hidden_size",
       "parameters": "",
       "quantization": "",
@@ -66,11 +75,11 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/gemma4:26b-nvfp4/blobs/91346e3d8385",
-      "content_preview": "{\n\"bos_token_id\": 2,\n\"do_sample\": true,\n\"eos_token_id\": 1,\n\"pad_token_id\": 0,\n\"temperature\": 1.0,\n\"t",
+      "blob_url": "/library/gemma4:26b-nvfp4/blobs/8e58004dc0e2",
+      "content_preview": "{\n\"bos_token_id\": 2,\n\"do_sample\": true,\n\"eos_token_id\": [\n1,\n106,\n50\n],\n\"is_assistant\": true,\n\"num_a",
       "parameters": "",
       "quantization": "",
-      "size": "181B",
+      "size": "307B",
       "type": "json"
     },
     {
@@ -93,6 +102,15 @@
     },
     {
       "arch": "",
+      "blob_url": "/library/gemma4:26b-nvfp4/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    },
+    {
+      "arch": "",
       "blob_url": "/library/gemma4:26b-nvfp4/blobs/a59e1ee2d202",
       "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
       "parameters": "",
@@ -111,9 +129,9 @@
     }
   ],
   "full_path": "/library/gemma4:26b-nvfp4",
-  "manifest_digest": "f0fc7e0ae494",
-  "manifest_size": "18GB",
-  "manifest_updated": "an hour ago",
+  "manifest_digest": "f60799545325",
+  "manifest_size": "16GB",
+  "manifest_updated": "49 minutes ago",
   "path": "/library/gemma4",
   "tag_name": "26b-nvfp4"
 }
