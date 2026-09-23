@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4789,
+      "pulls": 4807,
       "sizes": [
         "3b"
       ],
@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3825,
+      "pulls": 3826,
       "sizes": [
         "80b"
       ],
@@ -167,7 +167,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1194,
+      "pulls": 1195,
       "sizes": [
         "284b"
       ],
@@ -211,7 +211,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1158,
+      "pulls": 1160,
       "sizes": [
         "35b"
       ],
@@ -232,14 +232,14 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 1063,
+      "pulls": 1071,
       "sizes": [
         "125b"
       ],
       "source_url": "https://ollama.com/frob/qwen3.8-flash-next",
       "tag_count": 8,
       "tags": [],
-      "updated": "2 weeks ago",
+      "updated": "3 weeks ago",
       "updated_title": "Sep 2, 2026 11:40 AM UTC"
     },
     {
@@ -277,7 +277,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/minimax-m2.7",
-      "pulls": 971,
+      "pulls": 979,
       "sizes": [
         "230b"
       ],
@@ -322,7 +322,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 914,
+      "pulls": 922,
       "sizes": [
         "9b",
         "35b",
@@ -387,7 +387,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 835,
+      "pulls": 836,
       "sizes": [
         "4b"
       ],
@@ -432,7 +432,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kimi-k2.5",
-      "pulls": 686,
+      "pulls": 690,
       "sizes": [
         "1030b"
       ],
@@ -510,6 +510,28 @@
     },
     {
       "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "mimo-v2-flash",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/mimo-v2-flash",
+      "pulls": 393,
+      "sizes": [
+        "309b"
+      ],
+      "source_url": "https://ollama.com/frob/mimo-v2-flash",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "2 months ago",
+      "updated_title": "Jun 26, 2026 3:29 PM UTC"
+    },
+    {
+      "capabilities": [
         "tools"
       ],
       "cloud": false,
@@ -528,28 +550,6 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Aug 21, 2026 8:31 AM UTC"
-    },
-    {
-      "capabilities": [
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "mimo-v2-flash",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/mimo-v2-flash",
-      "pulls": 391,
-      "sizes": [
-        "309b"
-      ],
-      "source_url": "https://ollama.com/frob/mimo-v2-flash",
-      "tag_count": 6,
-      "tags": [],
-      "updated": "2 months ago",
-      "updated_title": "Jun 26, 2026 3:29 PM UTC"
     },
     {
       "capabilities": [
@@ -622,7 +622,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.3",
-      "pulls": 125,
+      "pulls": 127,
       "sizes": [
         "753b"
       ],
@@ -721,7 +721,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kimi-k3",
-      "pulls": 58,
+      "pulls": 59,
       "sizes": [
         "2780b"
       ],
@@ -802,7 +802,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mistral-small-4",
-      "pulls": 37,
+      "pulls": 38,
       "sizes": [
         "119b"
       ],
@@ -1019,8 +1019,8 @@
     "/frob/nuextract-2.0",
     "/frob/glm-5",
     "/frob/mimo-v2.5",
-    "/frob/iquest-coder",
     "/frob/mimo-v2-flash",
+    "/frob/iquest-coder",
     "/frob/qwen-agentworld",
     "/frob/KaLM-Embedding-Gemma3-12B-2511",
     "/frob/kimi-k2.5-prism-reap",
