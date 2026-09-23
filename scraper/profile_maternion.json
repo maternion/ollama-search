@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 4561,
+      "pulls": 4578,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2364,
+      "pulls": 2368,
       "sizes": [
         "4b"
       ],
@@ -137,7 +137,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2.5",
-      "pulls": 1814,
+      "pulls": 1815,
       "sizes": [
         "350m",
         "8b"
@@ -181,7 +181,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1272,
+      "pulls": 1278,
       "sizes": [
         "2b",
         "8b"
@@ -201,7 +201,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1202,
+      "pulls": 1223,
       "sizes": [
         "2b"
       ],
@@ -220,7 +220,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1188,
+      "pulls": 1194,
       "sizes": [
         "8b"
       ],
@@ -264,7 +264,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/NuMarkdown-Thinking",
-      "pulls": 773,
+      "pulls": 774,
       "sizes": [
         "8b"
       ],
@@ -318,31 +318,12 @@
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
-      "description": "Uncensored/Abliterated MiniCPM5-2B with only 10/100 refusals. It achieves 2B-class SOTA, remains competitive with 4B models overall.",
-      "name": "minicpm5-heretic",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/minicpm5-heretic",
-      "pulls": 260,
-      "sizes": [
-        "2b"
-      ],
-      "source_url": "https://ollama.com/maternion/minicpm5-heretic",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "3 days ago",
-      "updated_title": "Sep 19, 2026 2:06 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
       "description": "Spark-X2.5-4B abliterated (uncensored) - efficient AI model for chat, writing, coding, reasoning, tools, and agents, 1M-token context, 200+ languages, with refusal behavior removed.",
       "name": "spark-x2.5-heretic",
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 250,
+      "pulls": 295,
       "sizes": [
         "4b"
       ],
@@ -356,12 +337,31 @@
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
+      "description": "Uncensored/Abliterated MiniCPM5-2B with only 10/100 refusals. It achieves 2B-class SOTA, remains competitive with 4B models overall.",
+      "name": "minicpm5-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/minicpm5-heretic",
+      "pulls": 282,
+      "sizes": [
+        "2b"
+      ],
+      "source_url": "https://ollama.com/maternion/minicpm5-heretic",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "3 days ago",
+      "updated_title": "Sep 19, 2026 2:06 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
       "description": "Spark-X2.5-4B is an efficient, open-source AI model built for chat, writing, coding, reasoning, tools, and agents, supporting 1M-token context and 200+ languages.",
       "name": "spark-x2.5",
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 158,
+      "pulls": 169,
       "sizes": [
         "4b"
       ],
@@ -404,14 +404,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 19,
+      "pulls": 80,
       "sizes": [
         "9b"
       ],
       "source_url": "https://ollama.com/maternion/mimo-v2.6",
       "tag_count": 9,
       "tags": [],
-      "updated": "5 hours ago",
+      "updated": "12 hours ago",
       "updated_title": "Sep 22, 2026 7:27 PM UTC"
     },
     {
@@ -423,14 +423,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/neohorse-1",
-      "pulls": 11,
+      "pulls": 17,
       "sizes": [
         "9b"
       ],
       "source_url": "https://ollama.com/maternion/neohorse-1",
       "tag_count": 4,
       "tags": [],
-      "updated": "9 hours ago",
+      "updated": "16 hours ago",
       "updated_title": "Sep 22, 2026 3:03 PM UTC"
     }
   ],
@@ -471,8 +471,8 @@
     "/maternion/NuMarkdown-Thinking",
     "/maternion/manim-coder",
     "/maternion/sweep-next-edit-1.5B",
-    "/maternion/minicpm5-heretic",
     "/maternion/spark-x2.5-heretic",
+    "/maternion/minicpm5-heretic",
     "/maternion/spark-x2.5",
     "/maternion/context-1",
     "/maternion/mimo-v2.6",
