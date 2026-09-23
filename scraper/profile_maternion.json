@@ -28,14 +28,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/LightOnOCR-2",
-      "pulls": 13900,
+      "pulls": 14000,
       "sizes": [
         "1b"
       ],
       "source_url": "https://ollama.com/maternion/LightOnOCR-2",
       "tag_count": 2,
       "tags": [],
-      "updated": "7 months ago",
+      "updated": "8 months ago",
       "updated_title": "Jan 26, 2026 9:57 AM UTC"
     },
     {
@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 4578,
+      "pulls": 4586,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2368,
+      "pulls": 2379,
       "sizes": [
         "4b"
       ],
@@ -137,7 +137,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2.5",
-      "pulls": 1815,
+      "pulls": 1816,
       "sizes": [
         "350m",
         "8b"
@@ -181,7 +181,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1278,
+      "pulls": 1279,
       "sizes": [
         "2b",
         "8b"
@@ -201,7 +201,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1223,
+      "pulls": 1229,
       "sizes": [
         "2b"
       ],
@@ -220,7 +220,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1194,
+      "pulls": 1198,
       "sizes": [
         "8b"
       ],
@@ -323,14 +323,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 295,
+      "pulls": 351,
       "sizes": [
         "4b"
       ],
       "source_url": "https://ollama.com/maternion/spark-x2.5-heretic",
       "tag_count": 5,
       "tags": [],
-      "updated": "yesterday",
+      "updated": "2 days ago",
       "updated_title": "Sep 21, 2026 8:05 AM UTC"
     },
     {
@@ -342,7 +342,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 282,
+      "pulls": 298,
       "sizes": [
         "2b"
       ],
@@ -361,15 +361,36 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 169,
+      "pulls": 190,
       "sizes": [
         "4b"
       ],
       "source_url": "https://ollama.com/maternion/spark-x2.5",
       "tag_count": 4,
       "tags": [],
-      "updated": "3 days ago",
+      "updated": "4 days ago",
       "updated_title": "Sep 19, 2026 9:04 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "MiMo-V2.6-Distill-9B (Qwen3.5-9B SFT): coding, agent tasks, visual coding, cybersecurity. Thinking + instruct quants, multimodal.",
+      "name": "mimo-v2.6",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/mimo-v2.6",
+      "pulls": 145,
+      "sizes": [
+        "9b"
+      ],
+      "source_url": "https://ollama.com/maternion/mimo-v2.6",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "18 hours ago",
+      "updated_title": "Sep 22, 2026 7:27 PM UTC"
     },
     {
       "capabilities": [
@@ -394,27 +415,6 @@
       "updated_title": "Mar 30, 2026 1:59 PM UTC"
     },
     {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "MiMo-V2.6-Distill-9B (Qwen3.5-9B SFT): coding, agent tasks, visual coding, cybersecurity. Thinking + instruct quants, multimodal.",
-      "name": "mimo-v2.6",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/mimo-v2.6",
-      "pulls": 80,
-      "sizes": [
-        "9b"
-      ],
-      "source_url": "https://ollama.com/maternion/mimo-v2.6",
-      "tag_count": 9,
-      "tags": [],
-      "updated": "12 hours ago",
-      "updated_title": "Sep 22, 2026 7:27 PM UTC"
-    },
-    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -423,14 +423,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/neohorse-1",
-      "pulls": 17,
+      "pulls": 20,
       "sizes": [
         "9b"
       ],
       "source_url": "https://ollama.com/maternion/neohorse-1",
       "tag_count": 4,
       "tags": [],
-      "updated": "16 hours ago",
+      "updated": "22 hours ago",
       "updated_title": "Sep 22, 2026 3:03 PM UTC"
     }
   ],
@@ -474,8 +474,8 @@
     "/maternion/spark-x2.5-heretic",
     "/maternion/minicpm5-heretic",
     "/maternion/spark-x2.5",
-    "/maternion/context-1",
     "/maternion/mimo-v2.6",
+    "/maternion/context-1",
     "/maternion/neohorse-1"
   ],
   "username": "maternion"
