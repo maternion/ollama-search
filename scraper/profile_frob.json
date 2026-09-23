@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4771,
+      "pulls": 4777,
       "sizes": [
         "3b"
       ],
@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3818,
+      "pulls": 3819,
       "sizes": [
         "80b"
       ],
@@ -167,7 +167,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1191,
+      "pulls": 1192,
       "sizes": [
         "284b"
       ],
@@ -232,7 +232,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 1051,
+      "pulls": 1053,
       "sizes": [
         "125b"
       ],
@@ -322,7 +322,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 906,
+      "pulls": 910,
       "sizes": [
         "9b",
         "35b",
@@ -387,7 +387,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 834,
+      "pulls": 835,
       "sizes": [
         "4b"
       ],
@@ -498,7 +498,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.5",
-      "pulls": 446,
+      "pulls": 447,
       "sizes": [
         "309b"
       ],
@@ -563,7 +563,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen-agentworld",
-      "pulls": 283,
+      "pulls": 284,
       "sizes": [
         "35b"
       ],
@@ -622,7 +622,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.3",
-      "pulls": 123,
+      "pulls": 124,
       "sizes": [
         "753b"
       ],
@@ -793,6 +793,27 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "mistral-small-4",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/mistral-small-4",
+      "pulls": 36,
+      "sizes": [
+        "119b"
+      ],
+      "source_url": "https://ollama.com/frob/mistral-small-4",
+      "tag_count": 8,
+      "tags": [],
+      "updated": "4 days ago",
+      "updated_title": "Sep 18, 2026 3:09 PM UTC"
+    },
+    {
+      "capabilities": [
         "tools"
       ],
       "cloud": false,
@@ -811,27 +832,6 @@
       "tags": [],
       "updated": "2 months ago",
       "updated_title": "Jun 26, 2026 3:17 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "mistral-small-4",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/mistral-small-4",
-      "pulls": 34,
-      "sizes": [
-        "119b"
-      ],
-      "source_url": "https://ollama.com/frob/mistral-small-4",
-      "tag_count": 8,
-      "tags": [],
-      "updated": "4 days ago",
-      "updated_title": "Sep 18, 2026 3:09 PM UTC"
     },
     {
       "capabilities": [],
@@ -1033,8 +1033,8 @@
     "/frob/nex-n2-mini",
     "/frob/ling-3.0-flash",
     "/frob/hy-mt1.5",
-    "/frob/trinity",
     "/frob/mistral-small-4",
+    "/frob/trinity",
     "/frob/hy4-preview",
     "/frob/nex-n2-pro",
     "/frob/whyhow-ai_PatientSeek",
