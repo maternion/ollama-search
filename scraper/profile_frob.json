@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4829,
+      "pulls": 4832,
       "sizes": [
         "3b"
       ],
@@ -111,6 +111,27 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Aug 21, 2026 8:40 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "qwen3.8-flash-next",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/qwen3.8-flash-next",
+      "pulls": 3485,
+      "sizes": [
+        "125b"
+      ],
+      "source_url": "https://ollama.com/frob/qwen3.8-flash-next",
+      "tag_count": 8,
+      "tags": [],
+      "updated": "3 weeks ago",
+      "updated_title": "Sep 2, 2026 11:40 AM UTC"
     },
     {
       "capabilities": [],
@@ -144,7 +165,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.5",
-      "pulls": 1697,
+      "pulls": 1698,
       "sizes": [
         "122b",
         "397b"
@@ -211,7 +232,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1162,
+      "pulls": 1165,
       "sizes": [
         "35b"
       ],
@@ -220,27 +241,6 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Aug 21, 2026 8:34 AM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "qwen3.8-flash-next",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/qwen3.8-flash-next",
-      "pulls": 1098,
-      "sizes": [
-        "125b"
-      ],
-      "source_url": "https://ollama.com/frob/qwen3.8-flash-next",
-      "tag_count": 8,
-      "tags": [],
-      "updated": "3 weeks ago",
-      "updated_title": "Sep 2, 2026 11:40 AM UTC"
     },
     {
       "capabilities": [
@@ -322,7 +322,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 936,
+      "pulls": 942,
       "sizes": [
         "9b",
         "35b",
@@ -387,7 +387,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 841,
+      "pulls": 842,
       "sizes": [
         "4b"
       ],
@@ -622,7 +622,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.3",
-      "pulls": 129,
+      "pulls": 138,
       "sizes": [
         "753b"
       ],
@@ -664,7 +664,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/minimax-m3",
-      "pulls": 92,
+      "pulls": 93,
       "sizes": [
         "428b"
       ],
@@ -743,7 +743,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kimi-k3",
-      "pulls": 59,
+      "pulls": 60,
       "sizes": [
         "2780b"
       ],
@@ -762,7 +762,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ling-3.0-flash",
-      "pulls": 53,
+      "pulls": 55,
       "sizes": [
         "124b"
       ],
@@ -1001,12 +1001,12 @@
     "/frob/qwen3.5-instruct",
     "/frob/unlimited-ocr",
     "/frob/qwen3-coder-next",
+    "/frob/qwen3.8-flash-next",
     "/frob/glm-5.2",
     "/frob/qwen3.5",
     "/frob/deepseek-v4-flash",
     "/frob/ministral-3",
     "/frob/kat-coder-v2.5-dev",
-    "/frob/qwen3.8-flash-next",
     "/frob/davidau-qwen3.6-uncensored",
     "/frob/minimax-m2.7",
     "/frob/minimax-m2.1",
