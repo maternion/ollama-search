@@ -48,7 +48,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepseek-r1-abliterated",
-      "pulls": 734400,
+      "pulls": 734500,
       "sizes": [
         "1.5b",
         "7b",
@@ -76,7 +76,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3.5-abliterated",
-      "pulls": 641200,
+      "pulls": 641900,
       "sizes": [
         "0.8b",
         "2b",
@@ -104,7 +104,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gpt-oss-abliterated",
-      "pulls": 401300,
+      "pulls": 401700,
       "sizes": [
         "20b",
         "120b"
@@ -128,7 +128,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3.6-abliterated",
-      "pulls": 391400,
+      "pulls": 391900,
       "sizes": [
         "27b",
         "35b"
@@ -151,7 +151,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/glm-4.7-flash-abliterated",
-      "pulls": 328600,
+      "pulls": 329100,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/glm-4.7-flash-abliterated",
       "tag_count": 5,
@@ -171,7 +171,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-abliterated",
-      "pulls": 320800,
+      "pulls": 321000,
       "sizes": [
         "0.6b",
         "1.7b",
@@ -227,7 +227,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gemma3-abliterated",
-      "pulls": 99500,
+      "pulls": 99600,
       "sizes": [
         "270m",
         "1b",
@@ -302,7 +302,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3.8-abliterated",
-      "pulls": 66300,
+      "pulls": 66400,
       "sizes": [
         "27b"
       ],
@@ -387,7 +387,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-vl-abliterated",
-      "pulls": 46500,
+      "pulls": 46600,
       "sizes": [
         "3b",
         "7b",
@@ -666,7 +666,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-coder-next-abliterated",
-      "pulls": 9261,
+      "pulls": 9265,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/qwen3-coder-next-abliterated",
       "tag_count": 4,
@@ -704,7 +704,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/phi4-mini-abliterated",
-      "pulls": 8312,
+      "pulls": 8315,
       "sizes": [
         "3.8b"
       ],
@@ -726,7 +726,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.2-vision-abliterated",
-      "pulls": 7952,
+      "pulls": 7954,
       "sizes": [
         "2b"
       ],
@@ -764,7 +764,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/magistral-abliterated",
-      "pulls": 7120,
+      "pulls": 7123,
       "sizes": [
         "24b"
       ],
@@ -805,7 +805,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite4.1-abliterated",
-      "pulls": 6581,
+      "pulls": 6583,
       "sizes": [
         "3b",
         "8b",
@@ -829,7 +829,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-next-abliterated",
-      "pulls": 5758,
+      "pulls": 5759,
       "sizes": [
         "80b"
       ],
@@ -890,7 +890,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
-      "pulls": 4247,
+      "pulls": 4249,
       "sizes": [
         "3b"
       ],
@@ -909,7 +909,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/foundation-sec-abliterated",
-      "pulls": 4229,
+      "pulls": 4230,
       "sizes": [
         "8b"
       ],
@@ -1035,7 +1035,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/huihui-4",
-      "pulls": 3479,
+      "pulls": 3480,
       "sizes": [
         "8b"
       ],
@@ -1202,7 +1202,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/mirothinker1-abliterated",
-      "pulls": 2831,
+      "pulls": 2832,
       "sizes": [
         "8b",
         "30b",
@@ -1743,6 +1743,27 @@
       "updated_title": "Apr 3, 2025 8:51 AM UTC"
     },
     {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "A state-of-the-art mixture-of-experts (MoE) language model. Kimi K2-Instruct-0905 demonstrates significant improvements in performance on public benchmarks and real-world coding agent tasks.",
+      "name": "kimi-k2-abliterated",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/kimi-k2-abliterated",
+      "pulls": 947,
+      "sizes": [
+        "1026b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/kimi-k2-abliterated",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "9 months ago",
+      "updated_title": "Dec 17, 2025 2:57 AM UTC"
+    },
+    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -1761,27 +1782,6 @@
       "tags": [],
       "updated": "1 year ago",
       "updated_title": "Nov 28, 2024 2:11 AM UTC"
-    },
-    {
-      "capabilities": [
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "A state-of-the-art mixture-of-experts (MoE) language model. Kimi K2-Instruct-0905 demonstrates significant improvements in performance on public benchmarks and real-world coding agent tasks.",
-      "name": "kimi-k2-abliterated",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/kimi-k2-abliterated",
-      "pulls": 946,
-      "sizes": [
-        "1026b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/kimi-k2-abliterated",
-      "tag_count": 6,
-      "tags": [],
-      "updated": "9 months ago",
-      "updated_title": "Dec 17, 2025 2:57 AM UTC"
     },
     {
       "capabilities": [
@@ -1818,7 +1818,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/glm-4.7-abliterated",
-      "pulls": 893,
+      "pulls": 894,
       "sizes": [],
       "source_url": "https://ollama.com/huihui_ai/glm-4.7-abliterated",
       "tag_count": 1,
@@ -2345,8 +2345,8 @@
     "/huihui_ai/huihui-moe",
     "/huihui_ai/nemotron-v1-abliterated",
     "/huihui_ai/openhands-lm-abliterated",
-    "/huihui_ai/tulu3-abliterate",
     "/huihui_ai/kimi-k2-abliterated",
+    "/huihui_ai/tulu3-abliterate",
     "/huihui_ai/microthinker",
     "/huihui_ai/glm-4.7-abliterated",
     "/huihui_ai/Qwen3-Coder",
