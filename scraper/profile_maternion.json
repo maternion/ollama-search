@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 4612,
+      "pulls": 4619,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2383,
+      "pulls": 2385,
       "sizes": [
         "4b"
       ],
@@ -159,7 +159,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/strand-rust-coder",
-      "pulls": 1313,
+      "pulls": 1314,
       "sizes": [
         "14b"
       ],
@@ -181,7 +181,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1284,
+      "pulls": 1285,
       "sizes": [
         "2b",
         "8b"
@@ -201,7 +201,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1256,
+      "pulls": 1261,
       "sizes": [
         "2b"
       ],
@@ -220,7 +220,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1216,
+      "pulls": 1220,
       "sizes": [
         "8b"
       ],
@@ -264,7 +264,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/NuMarkdown-Thinking",
-      "pulls": 774,
+      "pulls": 775,
       "sizes": [
         "8b"
       ],
@@ -273,6 +273,25 @@
       "tags": [],
       "updated": "7 months ago",
       "updated_title": "Feb 1, 2026 12:55 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Spark-X2.5-4B abliterated (uncensored) - efficient AI model for chat, writing, coding, reasoning, tools, and agents, 1M-token context, 200+ languages, with refusal behavior removed.",
+      "name": "spark-x2.5-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/spark-x2.5-heretic",
+      "pulls": 587,
+      "sizes": [
+        "4b"
+      ],
+      "source_url": "https://ollama.com/maternion/spark-x2.5-heretic",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "3 days ago",
+      "updated_title": "Sep 21, 2026 8:05 AM UTC"
     },
     {
       "capabilities": [
@@ -294,25 +313,6 @@
       "tags": [],
       "updated": "7 months ago",
       "updated_title": "Feb 16, 2026 3:13 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Spark-X2.5-4B abliterated (uncensored) - efficient AI model for chat, writing, coding, reasoning, tools, and agents, 1M-token context, 200+ languages, with refusal behavior removed.",
-      "name": "spark-x2.5-heretic",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 547,
-      "sizes": [
-        "4b"
-      ],
-      "source_url": "https://ollama.com/maternion/spark-x2.5-heretic",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "3 days ago",
-      "updated_title": "Sep 21, 2026 8:05 AM UTC"
     },
     {
       "capabilities": [
@@ -344,7 +344,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 368,
+      "pulls": 428,
       "sizes": [
         "9b"
       ],
@@ -363,14 +363,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 337,
+      "pulls": 347,
       "sizes": [
         "2b"
       ],
       "source_url": "https://ollama.com/maternion/minicpm5-heretic",
       "tag_count": 5,
       "tags": [],
-      "updated": "4 days ago",
+      "updated": "5 days ago",
       "updated_title": "Sep 19, 2026 2:06 PM UTC"
     },
     {
@@ -382,7 +382,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 266,
+      "pulls": 281,
       "sizes": [
         "4b"
       ],
@@ -430,7 +430,7 @@
       "source_url": "https://ollama.com/maternion/neohorse-1",
       "tag_count": 4,
       "tags": [],
-      "updated": "yesterday",
+      "updated": "2 days ago",
       "updated_title": "Sep 22, 2026 3:03 PM UTC"
     }
   ],
@@ -469,8 +469,8 @@
     "/maternion/ling-3.0-tiny",
     "/maternion/AgentCPM-Explore",
     "/maternion/NuMarkdown-Thinking",
-    "/maternion/manim-coder",
     "/maternion/spark-x2.5-heretic",
+    "/maternion/manim-coder",
     "/maternion/sweep-next-edit-1.5B",
     "/maternion/mimo-v2.6",
     "/maternion/minicpm5-heretic",
