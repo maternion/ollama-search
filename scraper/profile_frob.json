@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4824,
+      "pulls": 4829,
       "sizes": [
         "3b"
       ],
@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3829,
+      "pulls": 3830,
       "sizes": [
         "80b"
       ],
@@ -144,7 +144,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.5",
-      "pulls": 1685,
+      "pulls": 1697,
       "sizes": [
         "122b",
         "397b"
@@ -167,7 +167,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1200,
+      "pulls": 1201,
       "sizes": [
         "284b"
       ],
@@ -190,7 +190,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1189,
+      "pulls": 1190,
       "sizes": [
         "3b",
         "8b",
@@ -211,7 +211,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1161,
+      "pulls": 1162,
       "sizes": [
         "35b"
       ],
@@ -232,7 +232,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 1089,
+      "pulls": 1098,
       "sizes": [
         "125b"
       ],
@@ -322,7 +322,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 935,
+      "pulls": 936,
       "sizes": [
         "9b",
         "35b",
@@ -346,7 +346,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "pulls": 865,
+      "pulls": 866,
       "sizes": [],
       "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "tag_count": 1,
@@ -713,6 +713,28 @@
       "updated_title": "Feb 20, 2025 2:54 PM UTC"
     },
     {
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "nex-n2-mini",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/nex-n2-mini",
+      "pulls": 61,
+      "sizes": [
+        "35b"
+      ],
+      "source_url": "https://ollama.com/frob/nex-n2-mini",
+      "tag_count": 11,
+      "tags": [],
+      "updated": "1 month ago",
+      "updated_title": "Aug 22, 2026 8:31 AM UTC"
+    },
+    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -730,28 +752,6 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Aug 21, 2026 8:20 AM UTC"
-    },
-    {
-      "capabilities": [
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "nex-n2-mini",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/nex-n2-mini",
-      "pulls": 58,
-      "sizes": [
-        "35b"
-      ],
-      "source_url": "https://ollama.com/frob/nex-n2-mini",
-      "tag_count": 11,
-      "tags": [],
-      "updated": "1 month ago",
-      "updated_title": "Aug 22, 2026 8:31 AM UTC"
     },
     {
       "capabilities": [],
@@ -1029,8 +1029,8 @@
     "/frob/minimax-m3",
     "/frob/hy3",
     "/frob/llama3.2-vision",
-    "/frob/kimi-k3",
     "/frob/nex-n2-mini",
+    "/frob/kimi-k3",
     "/frob/ling-3.0-flash",
     "/frob/hy-mt1.5",
     "/frob/mistral-small-4",
