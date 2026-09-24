@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 4605,
+      "pulls": 4612,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2382,
+      "pulls": 2383,
       "sizes": [
         "4b"
       ],
@@ -181,7 +181,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1281,
+      "pulls": 1284,
       "sizes": [
         "2b",
         "8b"
@@ -201,7 +201,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1252,
+      "pulls": 1256,
       "sizes": [
         "2b"
       ],
@@ -220,7 +220,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1211,
+      "pulls": 1216,
       "sizes": [
         "8b"
       ],
@@ -304,14 +304,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 506,
+      "pulls": 547,
       "sizes": [
         "4b"
       ],
       "source_url": "https://ollama.com/maternion/spark-x2.5-heretic",
       "tag_count": 5,
       "tags": [],
-      "updated": "2 days ago",
+      "updated": "3 days ago",
       "updated_title": "Sep 21, 2026 8:05 AM UTC"
     },
     {
@@ -334,25 +334,6 @@
       "updated_title": "Jan 24, 2026 10:15 AM UTC"
     },
     {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Uncensored/Abliterated MiniCPM5-2B with only 10/100 refusals. It achieves 2B-class SOTA, remains competitive with 4B models overall.",
-      "name": "minicpm5-heretic",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/minicpm5-heretic",
-      "pulls": 323,
-      "sizes": [
-        "2b"
-      ],
-      "source_url": "https://ollama.com/maternion/minicpm5-heretic",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "4 days ago",
-      "updated_title": "Sep 19, 2026 2:06 PM UTC"
-    },
-    {
       "capabilities": [
         "vision"
       ],
@@ -363,7 +344,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 297,
+      "pulls": 368,
       "sizes": [
         "9b"
       ],
@@ -377,19 +358,38 @@
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
+      "description": "Uncensored/Abliterated MiniCPM5-2B with only 10/100 refusals. It achieves 2B-class SOTA, remains competitive with 4B models overall.",
+      "name": "minicpm5-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/minicpm5-heretic",
+      "pulls": 337,
+      "sizes": [
+        "2b"
+      ],
+      "source_url": "https://ollama.com/maternion/minicpm5-heretic",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "4 days ago",
+      "updated_title": "Sep 19, 2026 2:06 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
       "description": "Spark-X2.5-4B is an efficient, open-source AI model built for chat, writing, coding, reasoning, tools, and agents, supporting 1M-token context and 200+ languages.",
       "name": "spark-x2.5",
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 243,
+      "pulls": 266,
       "sizes": [
         "4b"
       ],
       "source_url": "https://ollama.com/maternion/spark-x2.5",
       "tag_count": 4,
       "tags": [],
-      "updated": "4 days ago",
+      "updated": "5 days ago",
       "updated_title": "Sep 19, 2026 9:04 AM UTC"
     },
     {
@@ -423,7 +423,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/neohorse-1",
-      "pulls": 26,
+      "pulls": 28,
       "sizes": [
         "9b"
       ],
@@ -472,8 +472,8 @@
     "/maternion/manim-coder",
     "/maternion/spark-x2.5-heretic",
     "/maternion/sweep-next-edit-1.5B",
-    "/maternion/minicpm5-heretic",
     "/maternion/mimo-v2.6",
+    "/maternion/minicpm5-heretic",
     "/maternion/spark-x2.5",
     "/maternion/context-1",
     "/maternion/neohorse-1"
