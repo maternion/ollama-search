@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 4634,
+      "pulls": 4651,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2387,
+      "pulls": 2392,
       "sizes": [
         "4b"
       ],
@@ -115,7 +115,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2",
-      "pulls": 2115,
+      "pulls": 2118,
       "sizes": [
         "8b"
       ],
@@ -159,7 +159,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/strand-rust-coder",
-      "pulls": 1314,
+      "pulls": 1315,
       "sizes": [
         "14b"
       ],
@@ -181,7 +181,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1287,
+      "pulls": 1297,
       "sizes": [
         "2b",
         "8b"
@@ -201,7 +201,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1275,
+      "pulls": 1295,
       "sizes": [
         "2b"
       ],
@@ -220,7 +220,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1223,
+      "pulls": 1235,
       "sizes": [
         "8b"
       ],
@@ -283,36 +283,15 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 690,
+      "pulls": 740,
       "sizes": [
         "4b"
       ],
       "source_url": "https://ollama.com/maternion/spark-x2.5-heretic",
       "tag_count": 5,
       "tags": [],
-      "updated": "3 days ago",
+      "updated": "4 days ago",
       "updated_title": "Sep 21, 2026 8:05 AM UTC"
-    },
-    {
-      "capabilities": [
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Fine-tuned manim model using Qwen2.5-Coder-14B-Instruct trained on 3blue1brown-manim dataset with 2,407 examples.",
-      "name": "manim-coder",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/manim-coder",
-      "pulls": 557,
-      "sizes": [
-        "14b"
-      ],
-      "source_url": "https://ollama.com/maternion/manim-coder",
-      "tag_count": 3,
-      "tags": [],
-      "updated": "7 months ago",
-      "updated_title": "Feb 16, 2026 3:13 PM UTC"
     },
     {
       "capabilities": [
@@ -325,7 +304,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 555,
+      "pulls": 620,
       "sizes": [
         "9b"
       ],
@@ -341,12 +320,33 @@
       ],
       "cloud": false,
       "cloud_only": false,
+      "description": "Fine-tuned manim model using Qwen2.5-Coder-14B-Instruct trained on 3blue1brown-manim dataset with 2,407 examples.",
+      "name": "manim-coder",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/manim-coder",
+      "pulls": 558,
+      "sizes": [
+        "14b"
+      ],
+      "source_url": "https://ollama.com/maternion/manim-coder",
+      "tag_count": 3,
+      "tags": [],
+      "updated": "7 months ago",
+      "updated_title": "Feb 16, 2026 3:13 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
       "description": "Sweep Next-Edit a 1.5B parameter model for next-edit autocomplete, quantized to Q8_0 GGUF format. (Template supports tools)",
       "name": "sweep-next-edit-1.5B",
       "official": false,
       "owner": "maternion",
       "path": "/maternion/sweep-next-edit-1.5B",
-      "pulls": 443,
+      "pulls": 444,
       "sizes": [],
       "source_url": "https://ollama.com/maternion/sweep-next-edit-1.5B",
       "tag_count": 1,
@@ -363,7 +363,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 377,
+      "pulls": 389,
       "sizes": [
         "2b"
       ],
@@ -382,14 +382,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 312,
+      "pulls": 321,
       "sizes": [
         "4b"
       ],
       "source_url": "https://ollama.com/maternion/spark-x2.5",
       "tag_count": 4,
       "tags": [],
-      "updated": "5 days ago",
+      "updated": "6 days ago",
       "updated_title": "Sep 19, 2026 9:04 AM UTC"
     },
     {
@@ -423,7 +423,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/neohorse-1",
-      "pulls": 29,
+      "pulls": 30,
       "sizes": [
         "9b"
       ],
@@ -432,9 +432,31 @@
       "tags": [],
       "updated": "2 days ago",
       "updated_title": "Sep 22, 2026 3:03 PM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Uncensored/Abliterated MiMo-V2.6-Distill-Qwen-9B: coding, agent tasks, visual coding, cybersecurity. Thinking+instruct variants.",
+      "name": "mimo-v2.6-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/mimo-v2.6-heretic",
+      "pulls": 0,
+      "sizes": [
+        "9b"
+      ],
+      "source_url": "https://ollama.com/maternion/mimo-v2.6-heretic",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "33 minutes ago",
+      "updated_title": "Sep 25, 2026 10:52 AM UTC"
     }
   ],
   "newest_order": [
+    "/maternion/mimo-v2.6-heretic",
     "/maternion/mimo-v2.6",
     "/maternion/neohorse-1",
     "/maternion/spark-x2.5-heretic",
@@ -470,13 +492,14 @@
     "/maternion/AgentCPM-Explore",
     "/maternion/NuMarkdown-Thinking",
     "/maternion/spark-x2.5-heretic",
-    "/maternion/manim-coder",
     "/maternion/mimo-v2.6",
+    "/maternion/manim-coder",
     "/maternion/sweep-next-edit-1.5B",
     "/maternion/minicpm5-heretic",
     "/maternion/spark-x2.5",
     "/maternion/context-1",
-    "/maternion/neohorse-1"
+    "/maternion/neohorse-1",
+    "/maternion/mimo-v2.6-heretic"
   ],
   "username": "maternion"
 }
