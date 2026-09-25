@@ -16,18 +16,6 @@
     },
     {
       "context": "256K",
-      "digest": "a7bf6f7891c3",
-      "format": "gguf",
-      "input_type": "Text, Image",
-      "name": "cloud",
-      "size_bytes": null,
-      "size_text": "",
-      "updated": "7 months ago",
-      "usage_active_slots": 2,
-      "usage_level": "medium"
-    },
-    {
-      "context": "256K",
       "digest": "f3817196d142",
       "format": "gguf",
       "input_type": "Text, Image",
@@ -652,6 +640,30 @@
     },
     {
       "context": "256K",
+      "digest": "3460ffeede54",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "35b-a3b-q4_K_M",
+      "size_bytes": 24000000000,
+      "size_text": "24GB",
+      "updated": "6 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "85eaedff99c3",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "35b-a3b-bf16",
+      "size_bytes": 72000000000,
+      "size_text": "72GB",
+      "updated": "5 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
       "digest": "f6555d933b86",
       "format": "mlx",
       "input_type": "Text, Image",
@@ -688,18 +700,6 @@
     },
     {
       "context": "256K",
-      "digest": "3460ffeede54",
-      "format": "gguf",
-      "input_type": "Text, Image",
-      "name": "35b-a3b-q4_K_M",
-      "size_bytes": 24000000000,
-      "size_text": "24GB",
-      "updated": "6 months ago",
-      "usage_active_slots": 0,
-      "usage_level": ""
-    },
-    {
-      "context": "256K",
       "digest": "655d273ede3a",
       "format": "gguf",
       "input_type": "Text, Image",
@@ -707,18 +707,6 @@
       "size_bytes": 39000000000,
       "size_text": "39GB",
       "updated": "6 months ago",
-      "usage_active_slots": 0,
-      "usage_level": ""
-    },
-    {
-      "context": "256K",
-      "digest": "85eaedff99c3",
-      "format": "gguf",
-      "input_type": "Text, Image",
-      "name": "35b-a3b-bf16",
-      "size_bytes": 72000000000,
-      "size_text": "72GB",
-      "updated": "5 months ago",
       "usage_active_slots": 0,
       "usage_level": ""
     },
@@ -757,18 +745,6 @@
       "updated": "7 months ago",
       "usage_active_slots": 0,
       "usage_level": ""
-    },
-    {
-      "context": "256K",
-      "digest": "a7bf6f7891c3",
-      "format": "gguf",
-      "input_type": "Text, Image",
-      "name": "397b-cloud",
-      "size_bytes": 397,
-      "size_text": "397b",
-      "updated": "7 months ago",
-      "usage_active_slots": 2,
-      "usage_level": "medium"
     }
   ]
 }
