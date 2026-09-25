@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 4651,
+      "pulls": 4662,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2392,
+      "pulls": 2393,
       "sizes": [
         "4b"
       ],
@@ -115,7 +115,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2",
-      "pulls": 2118,
+      "pulls": 2119,
       "sizes": [
         "8b"
       ],
@@ -137,7 +137,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2.5",
-      "pulls": 1819,
+      "pulls": 1820,
       "sizes": [
         "350m",
         "8b"
@@ -159,7 +159,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/strand-rust-coder",
-      "pulls": 1315,
+      "pulls": 1316,
       "sizes": [
         "14b"
       ],
@@ -168,6 +168,25 @@
       "tags": [],
       "updated": "7 months ago",
       "updated_title": "Feb 22, 2026 6:27 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "MiniCPM5-2B is a dense 2B Transformer for on-device deployment. It achieves 2B-class \nSOTA, remains competitive with 4B models overall, and excels in coding, math, \nlong-context, tool use, and agentic tasks.",
+      "name": "minicpm5",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/minicpm5",
+      "pulls": 1305,
+      "sizes": [
+        "2b"
+      ],
+      "source_url": "https://ollama.com/maternion/minicpm5",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Sep 9, 2026 7:38 PM UTC"
     },
     {
       "capabilities": [
@@ -181,7 +200,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1297,
+      "pulls": 1301,
       "sizes": [
         "2b",
         "8b"
@@ -196,31 +215,12 @@
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
-      "description": "MiniCPM5-2B is a dense 2B Transformer for on-device deployment. It achieves 2B-class \nSOTA, remains competitive with 4B models overall, and excels in coding, math, \nlong-context, tool use, and agentic tasks.",
-      "name": "minicpm5",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/minicpm5",
-      "pulls": 1295,
-      "sizes": [
-        "2b"
-      ],
-      "source_url": "https://ollama.com/maternion/minicpm5",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Sep 9, 2026 7:38 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
       "description": "Ling-3.0-tiny is a lightweight 7.9B-parameter hybrid reasoning MoE with just 1.3B active parameters per token, offering strong reasoning and agentic capabilities at low inference cost.",
       "name": "ling-3.0-tiny",
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1235,
+      "pulls": 1239,
       "sizes": [
         "8b"
       ],
@@ -283,7 +283,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 740,
+      "pulls": 772,
       "sizes": [
         "4b"
       ],
@@ -304,7 +304,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 620,
+      "pulls": 674,
       "sizes": [
         "9b"
       ],
@@ -363,14 +363,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 389,
+      "pulls": 402,
       "sizes": [
         "2b"
       ],
       "source_url": "https://ollama.com/maternion/minicpm5-heretic",
       "tag_count": 5,
       "tags": [],
-      "updated": "5 days ago",
+      "updated": "6 days ago",
       "updated_title": "Sep 19, 2026 2:06 PM UTC"
     },
     {
@@ -382,7 +382,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 321,
+      "pulls": 334,
       "sizes": [
         "4b"
       ],
@@ -415,25 +415,6 @@
       "updated_title": "Mar 30, 2026 1:59 PM UTC"
     },
     {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "NeoHorse-1-9B is a 9B causal language model and an initial prototype on the path toward recursive self-improvement (RSI).",
-      "name": "neohorse-1",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/neohorse-1",
-      "pulls": 30,
-      "sizes": [
-        "9b"
-      ],
-      "source_url": "https://ollama.com/maternion/neohorse-1",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "2 days ago",
-      "updated_title": "Sep 22, 2026 3:03 PM UTC"
-    },
-    {
       "capabilities": [
         "vision"
       ],
@@ -444,15 +425,34 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 0,
+      "pulls": 62,
       "sizes": [
         "9b"
       ],
       "source_url": "https://ollama.com/maternion/mimo-v2.6-heretic",
       "tag_count": 9,
       "tags": [],
-      "updated": "33 minutes ago",
+      "updated": "6 hours ago",
       "updated_title": "Sep 25, 2026 10:52 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "NeoHorse-1-9B is a 9B causal language model and an initial prototype on the path toward recursive self-improvement (RSI).",
+      "name": "neohorse-1",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/neohorse-1",
+      "pulls": 33,
+      "sizes": [
+        "9b"
+      ],
+      "source_url": "https://ollama.com/maternion/neohorse-1",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "3 days ago",
+      "updated_title": "Sep 22, 2026 3:03 PM UTC"
     }
   ],
   "newest_order": [
@@ -486,8 +486,8 @@
     "/maternion/lfm2",
     "/maternion/lfm2.5",
     "/maternion/strand-rust-coder",
-    "/maternion/mai-ui",
     "/maternion/minicpm5",
+    "/maternion/mai-ui",
     "/maternion/ling-3.0-tiny",
     "/maternion/AgentCPM-Explore",
     "/maternion/NuMarkdown-Thinking",
@@ -498,8 +498,8 @@
     "/maternion/minicpm5-heretic",
     "/maternion/spark-x2.5",
     "/maternion/context-1",
-    "/maternion/neohorse-1",
-    "/maternion/mimo-v2.6-heretic"
+    "/maternion/mimo-v2.6-heretic",
+    "/maternion/neohorse-1"
   ],
   "username": "maternion"
 }
