@@ -77,32 +77,11 @@
       "cloud": false,
       "cloud_only": false,
       "description": "",
-      "name": "unlimited-ocr",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/unlimited-ocr",
-      "pulls": 4916,
-      "sizes": [
-        "3b"
-      ],
-      "source_url": "https://ollama.com/frob/unlimited-ocr",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "1 month ago",
-      "updated_title": "Aug 21, 2026 8:42 AM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
       "name": "qwen3.8-flash-next",
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 4252,
+      "pulls": 5663,
       "sizes": [
         "125b"
       ],
@@ -111,6 +90,27 @@
       "tags": [],
       "updated": "3 weeks ago",
       "updated_title": "Sep 2, 2026 11:40 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "unlimited-ocr",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/unlimited-ocr",
+      "pulls": 4917,
+      "sizes": [
+        "3b"
+      ],
+      "source_url": "https://ollama.com/frob/unlimited-ocr",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "1 month ago",
+      "updated_title": "Aug 21, 2026 8:42 AM UTC"
     },
     {
       "capabilities": [
@@ -123,7 +123,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3834,
+      "pulls": 3837,
       "sizes": [
         "80b"
       ],
@@ -188,7 +188,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1213,
+      "pulls": 1215,
       "sizes": [
         "284b"
       ],
@@ -232,7 +232,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1188,
+      "pulls": 1189,
       "sizes": [
         "35b"
       ],
@@ -255,7 +255,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1032,
+      "pulls": 1034,
       "sizes": [
         "9b",
         "35b",
@@ -346,7 +346,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "pulls": 869,
+      "pulls": 870,
       "sizes": [],
       "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "tag_count": 1,
@@ -520,7 +520,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2-flash",
-      "pulls": 395,
+      "pulls": 396,
       "sizes": [
         "309b"
       ],
@@ -584,7 +584,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/KaLM-Embedding-Gemma3-12B-2511",
-      "pulls": 220,
+      "pulls": 221,
       "sizes": [],
       "source_url": "https://ollama.com/frob/KaLM-Embedding-Gemma3-12B-2511",
       "tag_count": 1,
@@ -762,7 +762,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ling-3.0-flash",
-      "pulls": 57,
+      "pulls": 60,
       "sizes": [
         "124b"
       ],
@@ -783,7 +783,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mistral-small-4",
-      "pulls": 53,
+      "pulls": 55,
       "sizes": [
         "119b"
       ],
@@ -896,6 +896,27 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "ling-3.0-flash-vl",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/ling-3.0-flash-vl",
+      "pulls": 13,
+      "sizes": [
+        "125b"
+      ],
+      "source_url": "https://ollama.com/frob/ling-3.0-flash-vl",
+      "tag_count": 7,
+      "tags": [],
+      "updated": "20 hours ago",
+      "updated_title": "Sep 25, 2026 4:41 PM UTC"
+    },
+    {
+      "capabilities": [
         "vision",
         "tools",
         "thinking"
@@ -907,7 +928,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.6-flash",
-      "pulls": 10,
+      "pulls": 13,
       "sizes": [
         "309b"
       ],
@@ -955,27 +976,6 @@
     },
     {
       "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "ling-3.0-flash-vl",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/ling-3.0-flash-vl",
-      "pulls": 5,
-      "sizes": [
-        "125b"
-      ],
-      "source_url": "https://ollama.com/frob/ling-3.0-flash-vl",
-      "tag_count": 7,
-      "tags": [],
-      "updated": "15 hours ago",
-      "updated_title": "Sep 25, 2026 4:41 PM UTC"
-    },
-    {
-      "capabilities": [
         "vision",
         "tools",
         "thinking"
@@ -994,7 +994,7 @@
       "source_url": "https://ollama.com/frob/mimo-v2.6-pro",
       "tag_count": 4,
       "tags": [],
-      "updated": "yesterday",
+      "updated": "2 days ago",
       "updated_title": "Sep 24, 2026 8:37 AM UTC"
     },
     {
@@ -1069,8 +1069,8 @@
     "/frob/deepseek-v4-flash-0731",
     "/frob/minimax-m2.5",
     "/frob/qwen3.5-instruct",
-    "/frob/unlimited-ocr",
     "/frob/qwen3.8-flash-next",
+    "/frob/unlimited-ocr",
     "/frob/qwen3-coder-next",
     "/frob/glm-5.2",
     "/frob/qwen3.5",
@@ -1108,10 +1108,10 @@
     "/frob/hy4-preview",
     "/frob/nex-n2-pro",
     "/frob/sarvam",
+    "/frob/ling-3.0-flash-vl",
     "/frob/mimo-v2.6-flash",
     "/frob/whyhow-ai_PatientSeek",
     "/frob/NireeskshanAI_Niri",
-    "/frob/ling-3.0-flash-vl",
     "/frob/mimo-v2.6-pro",
     "/frob/mixtao"
   ],
