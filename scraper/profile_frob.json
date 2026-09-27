@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 7793,
+      "pulls": 8857,
       "sizes": [
         "125b"
       ],
@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4929,
+      "pulls": 4937,
       "sizes": [
         "3b"
       ],
@@ -123,7 +123,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3837,
+      "pulls": 3838,
       "sizes": [
         "80b"
       ],
@@ -232,7 +232,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1192,
+      "pulls": 1193,
       "sizes": [
         "35b"
       ],
@@ -255,7 +255,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1038,
+      "pulls": 1040,
       "sizes": [
         "9b",
         "35b",
@@ -664,7 +664,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/minimax-m3",
-      "pulls": 94,
+      "pulls": 95,
       "sizes": [
         "428b"
       ],
@@ -783,7 +783,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mistral-small-4",
-      "pulls": 58,
+      "pulls": 59,
       "sizes": [
         "119b"
       ],
@@ -896,6 +896,29 @@
     },
     {
       "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "mimo-v2.6-flash",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/mimo-v2.6-flash",
+      "pulls": 14,
+      "sizes": [
+        "309b"
+      ],
+      "source_url": "https://ollama.com/frob/mimo-v2.6-flash",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "3 days ago",
+      "updated_title": "Sep 23, 2026 9:49 PM UTC"
+    },
+    {
+      "capabilities": [
         "vision"
       ],
       "cloud": false,
@@ -914,29 +937,6 @@
       "tags": [],
       "updated": "yesterday",
       "updated_title": "Sep 25, 2026 4:41 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision",
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "mimo-v2.6-flash",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/mimo-v2.6-flash",
-      "pulls": 13,
-      "sizes": [
-        "309b"
-      ],
-      "source_url": "https://ollama.com/frob/mimo-v2.6-flash",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "2 days ago",
-      "updated_title": "Sep 23, 2026 9:49 PM UTC"
     },
     {
       "capabilities": [
@@ -1108,8 +1108,8 @@
     "/frob/hy4-preview",
     "/frob/nex-n2-pro",
     "/frob/sarvam",
-    "/frob/ling-3.0-flash-vl",
     "/frob/mimo-v2.6-flash",
+    "/frob/ling-3.0-flash-vl",
     "/frob/whyhow-ai_PatientSeek",
     "/frob/NireeskshanAI_Niri",
     "/frob/mimo-v2.6-pro",
