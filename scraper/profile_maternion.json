@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 4788,
+      "pulls": 4790,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2399,
+      "pulls": 2400,
       "sizes": [
         "4b"
       ],
@@ -137,7 +137,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2.5",
-      "pulls": 1823,
+      "pulls": 1824,
       "sizes": [
         "350m",
         "8b"
@@ -145,7 +145,7 @@
       "source_url": "https://ollama.com/maternion/lfm2.5",
       "tag_count": 15,
       "tags": [],
-      "updated": "2 months ago",
+      "updated": "3 months ago",
       "updated_title": "Jun 29, 2026 7:12 PM UTC"
     },
     {
@@ -157,7 +157,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1357,
+      "pulls": 1359,
       "sizes": [
         "2b"
       ],
@@ -176,7 +176,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1327,
+      "pulls": 1330,
       "sizes": [
         "8b"
       ],
@@ -197,7 +197,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/strand-rust-coder",
-      "pulls": 1318,
+      "pulls": 1319,
       "sizes": [
         "14b"
       ],
@@ -239,7 +239,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 1111,
+      "pulls": 1132,
       "sizes": [
         "4b"
       ],
@@ -260,14 +260,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 965,
+      "pulls": 978,
       "sizes": [
         "9b"
       ],
       "source_url": "https://ollama.com/maternion/mimo-v2.6",
       "tag_count": 9,
       "tags": [],
-      "updated": "4 days ago",
+      "updated": "5 days ago",
       "updated_title": "Sep 22, 2026 7:27 PM UTC"
     },
     {
@@ -344,7 +344,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 474,
+      "pulls": 484,
       "sizes": [
         "2b"
       ],
@@ -353,6 +353,25 @@
       "tags": [],
       "updated": "1 week ago",
       "updated_title": "Sep 19, 2026 2:06 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Spark-X2.5-4B is an efficient, open-source AI model built for chat, writing, coding, reasoning, tools, and agents, supporting 1M-token context and 200+ languages.",
+      "name": "spark-x2.5",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/spark-x2.5",
+      "pulls": 455,
+      "sizes": [
+        "4b"
+      ],
+      "source_url": "https://ollama.com/maternion/spark-x2.5",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "1 week ago",
+      "updated_title": "Sep 19, 2026 9:04 AM UTC"
     },
     {
       "capabilities": [
@@ -374,25 +393,6 @@
       "updated_title": "Jan 24, 2026 10:15 AM UTC"
     },
     {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Spark-X2.5-4B is an efficient, open-source AI model built for chat, writing, coding, reasoning, tools, and agents, supporting 1M-token context and 200+ languages.",
-      "name": "spark-x2.5",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/spark-x2.5",
-      "pulls": 444,
-      "sizes": [
-        "4b"
-      ],
-      "source_url": "https://ollama.com/maternion/spark-x2.5",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "1 week ago",
-      "updated_title": "Sep 19, 2026 9:04 AM UTC"
-    },
-    {
       "capabilities": [
         "vision"
       ],
@@ -403,7 +403,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 379,
+      "pulls": 398,
       "sizes": [
         "9b"
       ],
@@ -444,7 +444,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/neohorse-1",
-      "pulls": 47,
+      "pulls": 48,
       "sizes": [
         "9b"
       ],
@@ -495,8 +495,8 @@
     "/maternion/NuMarkdown-Thinking",
     "/maternion/manim-coder",
     "/maternion/minicpm5-heretic",
-    "/maternion/sweep-next-edit-1.5B",
     "/maternion/spark-x2.5",
+    "/maternion/sweep-next-edit-1.5B",
     "/maternion/mimo-v2.6-heretic",
     "/maternion/context-1",
     "/maternion/neohorse-1"
