@@ -56,7 +56,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.5-instruct",
-      "pulls": 16300,
+      "pulls": 16400,
       "sizes": [
         "4b",
         "9b",
@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4996,
+      "pulls": 4998,
       "sizes": [
         "3b"
       ],
@@ -123,7 +123,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3845,
+      "pulls": 3847,
       "sizes": [
         "80b"
       ],
@@ -188,7 +188,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1227,
+      "pulls": 1228,
       "sizes": [
         "284b"
       ],
@@ -255,7 +255,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1111,
+      "pulls": 1119,
       "sizes": [
         "9b",
         "35b",
@@ -346,7 +346,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "pulls": 874,
+      "pulls": 875,
       "sizes": [],
       "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "tag_count": 1,
@@ -365,7 +365,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 873,
+      "pulls": 875,
       "sizes": [
         "4b"
       ],
@@ -520,7 +520,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2-flash",
-      "pulls": 397,
+      "pulls": 399,
       "sizes": [
         "309b"
       ],
@@ -700,6 +700,27 @@
       "cloud": false,
       "cloud_only": false,
       "description": "",
+      "name": "mistral-small-4",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/mistral-small-4",
+      "pulls": 82,
+      "sizes": [
+        "119b"
+      ],
+      "source_url": "https://ollama.com/frob/mistral-small-4",
+      "tag_count": 8,
+      "tags": [],
+      "updated": "1 week ago",
+      "updated_title": "Sep 18, 2026 3:09 PM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
       "name": "llama3.2-vision",
       "official": false,
       "owner": "frob",
@@ -711,27 +732,6 @@
       "tags": [],
       "updated": "1 year ago",
       "updated_title": "Feb 20, 2025 2:54 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "mistral-small-4",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/mistral-small-4",
-      "pulls": 79,
-      "sizes": [
-        "119b"
-      ],
-      "source_url": "https://ollama.com/frob/mistral-small-4",
-      "tag_count": 8,
-      "tags": [],
-      "updated": "1 week ago",
-      "updated_title": "Sep 18, 2026 3:09 PM UTC"
     },
     {
       "capabilities": [],
@@ -872,7 +872,7 @@
       "source_url": "https://ollama.com/frob/mimo-v2.6-flash",
       "tag_count": 4,
       "tags": [],
-      "updated": "4 days ago",
+      "updated": "5 days ago",
       "updated_title": "Sep 23, 2026 9:49 PM UTC"
     },
     {
@@ -1011,7 +1011,7 @@
       "source_url": "https://ollama.com/frob/mixtao",
       "tag_count": 3,
       "tags": [],
-      "updated": "7 months ago",
+      "updated": "8 months ago",
       "updated_title": "Jan 31, 2026 11:52 PM UTC"
     }
   ],
@@ -1098,8 +1098,8 @@
     "/frob/qwen3.6",
     "/frob/minimax-m3",
     "/frob/hy3",
-    "/frob/llama3.2-vision",
     "/frob/mistral-small-4",
+    "/frob/llama3.2-vision",
     "/frob/ling-3.0-flash",
     "/frob/nex-n2-mini",
     "/frob/kimi-k3",
