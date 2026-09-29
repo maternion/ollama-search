@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 4998,
+      "pulls": 5011,
       "sizes": [
         "3b"
       ],
@@ -188,7 +188,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1228,
+      "pulls": 1231,
       "sizes": [
         "284b"
       ],
@@ -255,7 +255,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1119,
+      "pulls": 1123,
       "sizes": [
         "9b",
         "35b",
@@ -336,6 +336,27 @@
     },
     {
       "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "LocoOperator-4B is a 4B-parameter tool-calling agent model trained via knowledge distillation from Qwen3-Coder-Next inference traces.",
+      "name": "locooperator",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/locooperator",
+      "pulls": 876,
+      "sizes": [
+        "4b"
+      ],
+      "source_url": "https://ollama.com/frob/locooperator",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 month ago",
+      "updated_title": "Aug 21, 2026 8:33 AM UTC"
+    },
+    {
+      "capabilities": [
         "tools",
         "thinking"
       ],
@@ -353,27 +374,6 @@
       "tags": [],
       "updated": "6 months ago",
       "updated_title": "Mar 14, 2026 12:46 PM UTC"
-    },
-    {
-      "capabilities": [
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "LocoOperator-4B is a 4B-parameter tool-calling agent model trained via knowledge distillation from Qwen3-Coder-Next inference traces.",
-      "name": "locooperator",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/locooperator",
-      "pulls": 875,
-      "sizes": [
-        "4b"
-      ],
-      "source_url": "https://ollama.com/frob/locooperator",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "1 month ago",
-      "updated_title": "Aug 21, 2026 8:33 AM UTC"
     },
     {
       "capabilities": [
@@ -432,7 +432,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kimi-k2.5",
-      "pulls": 693,
+      "pulls": 694,
       "sizes": [
         "1030b"
       ],
@@ -675,6 +675,27 @@
       "updated_title": "Aug 25, 2026 12:32 PM UTC"
     },
     {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "mistral-small-4",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/mistral-small-4",
+      "pulls": 96,
+      "sizes": [
+        "119b"
+      ],
+      "source_url": "https://ollama.com/frob/mistral-small-4",
+      "tag_count": 8,
+      "tags": [],
+      "updated": "1 week ago",
+      "updated_title": "Sep 18, 2026 3:09 PM UTC"
+    },
+    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -692,27 +713,6 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Aug 21, 2026 8:29 AM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "mistral-small-4",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/mistral-small-4",
-      "pulls": 82,
-      "sizes": [
-        "119b"
-      ],
-      "source_url": "https://ollama.com/frob/mistral-small-4",
-      "tag_count": 8,
-      "tags": [],
-      "updated": "1 week ago",
-      "updated_title": "Sep 18, 2026 3:09 PM UTC"
     },
     {
       "capabilities": [
@@ -742,7 +742,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ling-3.0-flash",
-      "pulls": 63,
+      "pulls": 66,
       "sizes": [
         "124b"
       ],
@@ -751,6 +751,25 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Aug 22, 2026 8:27 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "kimi-k3",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/kimi-k3",
+      "pulls": 62,
+      "sizes": [
+        "2780b"
+      ],
+      "source_url": "https://ollama.com/frob/kimi-k3",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "1 month ago",
+      "updated_title": "Aug 21, 2026 8:20 AM UTC"
     },
     {
       "capabilities": [
@@ -773,25 +792,6 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Aug 22, 2026 8:31 AM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "kimi-k3",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/kimi-k3",
-      "pulls": 60,
-      "sizes": [
-        "2780b"
-      ],
-      "source_url": "https://ollama.com/frob/kimi-k3",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "1 month ago",
-      "updated_title": "Aug 21, 2026 8:20 AM UTC"
     },
     {
       "capabilities": [],
@@ -865,7 +865,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.6-flash",
-      "pulls": 20,
+      "pulls": 21,
       "sizes": [
         "309b"
       ],
@@ -928,7 +928,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ling-3.0-flash-vl",
-      "pulls": 14,
+      "pulls": 15,
       "sizes": [
         "125b"
       ],
@@ -951,7 +951,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.6-pro",
-      "pulls": 9,
+      "pulls": 10,
       "sizes": [
         "1023b"
       ],
@@ -1081,8 +1081,8 @@
     "/frob/davidau-qwen3.6-uncensored",
     "/frob/minimax-m2.7",
     "/frob/minimax-m2.1",
-    "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
     "/frob/locooperator",
+    "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
     "/frob/glm-5.1",
     "/frob/glm-4.7",
     "/frob/kimi-k2.5",
@@ -1097,12 +1097,12 @@
     "/frob/glm-5.3",
     "/frob/qwen3.6",
     "/frob/minimax-m3",
-    "/frob/hy3",
     "/frob/mistral-small-4",
+    "/frob/hy3",
     "/frob/llama3.2-vision",
     "/frob/ling-3.0-flash",
-    "/frob/nex-n2-mini",
     "/frob/kimi-k3",
+    "/frob/nex-n2-mini",
     "/frob/hy-mt1.5",
     "/frob/trinity",
     "/frob/hy4-preview",
