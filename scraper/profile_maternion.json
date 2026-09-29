@@ -28,7 +28,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/LightOnOCR-2",
-      "pulls": 14200,
+      "pulls": 14300,
       "sizes": [
         "1b"
       ],
@@ -50,14 +50,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/fara",
-      "pulls": 5598,
+      "pulls": 5601,
       "sizes": [
         "7b"
       ],
       "source_url": "https://ollama.com/maternion/fara",
       "tag_count": 4,
       "tags": [],
-      "updated": "9 months ago",
+      "updated": "10 months ago",
       "updated_title": "Dec 3, 2025 10:08 AM UTC"
     },
     {
@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 4834,
+      "pulls": 4845,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2412,
+      "pulls": 2419,
       "sizes": [
         "4b"
       ],
@@ -137,7 +137,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2.5",
-      "pulls": 1828,
+      "pulls": 1830,
       "sizes": [
         "350m",
         "8b"
@@ -157,7 +157,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1433,
+      "pulls": 1444,
       "sizes": [
         "2b"
       ],
@@ -176,7 +176,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1364,
+      "pulls": 1414,
       "sizes": [
         "8b"
       ],
@@ -185,27 +185,6 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Aug 20, 2026 8:18 PM UTC"
-    },
-    {
-      "capabilities": [
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "The model fine-tunes Qwen2.5-Coder-14B for Rust-specific programming tasks using a 191K-example synthetic dataset built via multi-model generation and peer-reviewed validation.",
-      "name": "strand-rust-coder",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/strand-rust-coder",
-      "pulls": 1321,
-      "sizes": [
-        "14b"
-      ],
-      "source_url": "https://ollama.com/maternion/strand-rust-coder",
-      "tag_count": 3,
-      "tags": [],
-      "updated": "7 months ago",
-      "updated_title": "Feb 22, 2026 6:27 PM UTC"
     },
     {
       "capabilities": [
@@ -219,7 +198,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1315,
+      "pulls": 1329,
       "sizes": [
         "2b",
         "8b"
@@ -231,6 +210,27 @@
       "updated_title": "Jan 19, 2026 5:13 AM UTC"
     },
     {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "The model fine-tunes Qwen2.5-Coder-14B for Rust-specific programming tasks using a 191K-example synthetic dataset built via multi-model generation and peer-reviewed validation.",
+      "name": "strand-rust-coder",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/strand-rust-coder",
+      "pulls": 1322,
+      "sizes": [
+        "14b"
+      ],
+      "source_url": "https://ollama.com/maternion/strand-rust-coder",
+      "tag_count": 3,
+      "tags": [],
+      "updated": "7 months ago",
+      "updated_title": "Feb 22, 2026 6:27 PM UTC"
+    },
+    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -239,7 +239,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 1278,
+      "pulls": 1313,
       "sizes": [
         "4b"
       ],
@@ -260,7 +260,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 1133,
+      "pulls": 1188,
       "sizes": [
         "9b"
       ],
@@ -311,7 +311,7 @@
       "source_url": "https://ollama.com/maternion/NuMarkdown-Thinking",
       "tag_count": 2,
       "tags": [],
-      "updated": "7 months ago",
+      "updated": "8 months ago",
       "updated_title": "Feb 1, 2026 12:55 PM UTC"
     },
     {
@@ -325,15 +325,34 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 590,
+      "pulls": 652,
       "sizes": [
         "9b"
       ],
       "source_url": "https://ollama.com/maternion/mimo-v2.6-heretic",
       "tag_count": 9,
       "tags": [],
-      "updated": "3 days ago",
+      "updated": "4 days ago",
       "updated_title": "Sep 25, 2026 10:52 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Uncensored/Abliterated MiniCPM5-2B with only 10/100 refusals. It achieves 2B-class SOTA, remains competitive with 4B models overall.",
+      "name": "minicpm5-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/minicpm5-heretic",
+      "pulls": 560,
+      "sizes": [
+        "2b"
+      ],
+      "source_url": "https://ollama.com/maternion/minicpm5-heretic",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 week ago",
+      "updated_title": "Sep 19, 2026 2:06 PM UTC"
     },
     {
       "capabilities": [
@@ -346,7 +365,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/manim-coder",
-      "pulls": 559,
+      "pulls": 560,
       "sizes": [
         "14b"
       ],
@@ -360,31 +379,12 @@
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
-      "description": "Uncensored/Abliterated MiniCPM5-2B with only 10/100 refusals. It achieves 2B-class SOTA, remains competitive with 4B models overall.",
-      "name": "minicpm5-heretic",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/minicpm5-heretic",
-      "pulls": 546,
-      "sizes": [
-        "2b"
-      ],
-      "source_url": "https://ollama.com/maternion/minicpm5-heretic",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "1 week ago",
-      "updated_title": "Sep 19, 2026 2:06 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
       "description": "Spark-X2.5-4B is an efficient, open-source AI model built for chat, writing, coding, reasoning, tools, and agents, supporting 1M-token context and 200+ languages.",
       "name": "spark-x2.5",
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 520,
+      "pulls": 538,
       "sizes": [
         "4b"
       ],
@@ -425,7 +425,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/context-1",
-      "pulls": 127,
+      "pulls": 128,
       "sizes": [
         "20b"
       ],
@@ -444,14 +444,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/neohorse-1",
-      "pulls": 50,
+      "pulls": 52,
       "sizes": [
         "9b"
       ],
       "source_url": "https://ollama.com/maternion/neohorse-1",
       "tag_count": 4,
       "tags": [],
-      "updated": "6 days ago",
+      "updated": "1 week ago",
       "updated_title": "Sep 22, 2026 3:03 PM UTC"
     }
   ],
@@ -487,15 +487,15 @@
     "/maternion/lfm2.5",
     "/maternion/minicpm5",
     "/maternion/ling-3.0-tiny",
-    "/maternion/strand-rust-coder",
     "/maternion/mai-ui",
+    "/maternion/strand-rust-coder",
     "/maternion/spark-x2.5-heretic",
     "/maternion/mimo-v2.6",
     "/maternion/AgentCPM-Explore",
     "/maternion/NuMarkdown-Thinking",
     "/maternion/mimo-v2.6-heretic",
-    "/maternion/manim-coder",
     "/maternion/minicpm5-heretic",
+    "/maternion/manim-coder",
     "/maternion/spark-x2.5",
     "/maternion/sweep-next-edit-1.5B",
     "/maternion/context-1",
