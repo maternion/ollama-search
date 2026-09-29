@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 4828,
+      "pulls": 4834,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2409,
+      "pulls": 2412,
       "sizes": [
         "4b"
       ],
@@ -137,7 +137,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2.5",
-      "pulls": 1827,
+      "pulls": 1828,
       "sizes": [
         "350m",
         "8b"
@@ -157,7 +157,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1416,
+      "pulls": 1433,
       "sizes": [
         "2b"
       ],
@@ -176,7 +176,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1358,
+      "pulls": 1364,
       "sizes": [
         "8b"
       ],
@@ -197,7 +197,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/strand-rust-coder",
-      "pulls": 1320,
+      "pulls": 1321,
       "sizes": [
         "14b"
       ],
@@ -239,7 +239,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 1256,
+      "pulls": 1278,
       "sizes": [
         "4b"
       ],
@@ -260,7 +260,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 1099,
+      "pulls": 1133,
       "sizes": [
         "9b"
       ],
@@ -282,7 +282,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/AgentCPM-Explore",
-      "pulls": 886,
+      "pulls": 887,
       "sizes": [
         "4b"
       ],
@@ -316,6 +316,27 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Uncensored/Abliterated MiMo-V2.6-Distill-Qwen-9B: coding, agent tasks, visual coding, cybersecurity. Thinking+instruct variants.",
+      "name": "mimo-v2.6-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/mimo-v2.6-heretic",
+      "pulls": 590,
+      "sizes": [
+        "9b"
+      ],
+      "source_url": "https://ollama.com/maternion/mimo-v2.6-heretic",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "3 days ago",
+      "updated_title": "Sep 25, 2026 10:52 AM UTC"
+    },
+    {
+      "capabilities": [
         "tools"
       ],
       "cloud": false,
@@ -336,27 +357,6 @@
       "updated_title": "Feb 16, 2026 3:13 PM UTC"
     },
     {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Uncensored/Abliterated MiMo-V2.6-Distill-Qwen-9B: coding, agent tasks, visual coding, cybersecurity. Thinking+instruct variants.",
-      "name": "mimo-v2.6-heretic",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 540,
-      "sizes": [
-        "9b"
-      ],
-      "source_url": "https://ollama.com/maternion/mimo-v2.6-heretic",
-      "tag_count": 9,
-      "tags": [],
-      "updated": "3 days ago",
-      "updated_title": "Sep 25, 2026 10:52 AM UTC"
-    },
-    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -365,7 +365,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 533,
+      "pulls": 546,
       "sizes": [
         "2b"
       ],
@@ -384,7 +384,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 509,
+      "pulls": 520,
       "sizes": [
         "4b"
       ],
@@ -493,8 +493,8 @@
     "/maternion/mimo-v2.6",
     "/maternion/AgentCPM-Explore",
     "/maternion/NuMarkdown-Thinking",
-    "/maternion/manim-coder",
     "/maternion/mimo-v2.6-heretic",
+    "/maternion/manim-coder",
     "/maternion/minicpm5-heretic",
     "/maternion/spark-x2.5",
     "/maternion/sweep-next-edit-1.5B",
