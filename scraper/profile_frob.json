@@ -88,7 +88,7 @@
       "source_url": "https://ollama.com/frob/qwen3.8-flash-next",
       "tag_count": 9,
       "tags": [],
-      "updated": "8 hours ago",
+      "updated": "15 hours ago",
       "updated_title": "Sep 29, 2026 4:46 PM UTC"
     },
     {
@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 5040,
+      "pulls": 5052,
       "sizes": [
         "3b"
       ],
@@ -142,7 +142,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 1962,
+      "pulls": 1963,
       "sizes": [
         "753b"
       ],
@@ -188,7 +188,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1239,
+      "pulls": 1241,
       "sizes": [
         "284b"
       ],
@@ -207,7 +207,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1211,
+      "pulls": 1216,
       "sizes": [
         "35b"
       ],
@@ -230,7 +230,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1199,
+      "pulls": 1200,
       "sizes": [
         "3b",
         "8b",
@@ -255,7 +255,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1150,
+      "pulls": 1152,
       "sizes": [
         "9b",
         "35b",
@@ -280,7 +280,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/davidau-qwen3.6-uncensored",
-      "pulls": 1000,
+      "pulls": 1002,
       "sizes": [
         "40b"
       ],
@@ -345,7 +345,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 880,
+      "pulls": 881,
       "sizes": [
         "4b"
       ],
@@ -622,7 +622,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.3",
-      "pulls": 169,
+      "pulls": 170,
       "sizes": [
         "753b"
       ],
@@ -643,7 +643,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mistral-small-4",
-      "pulls": 110,
+      "pulls": 119,
       "sizes": [
         "119b"
       ],
@@ -907,7 +907,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/sarvam",
-      "pulls": 17,
+      "pulls": 19,
       "sizes": [
         "30b"
       ],
@@ -928,7 +928,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ling-3.0-flash-vl",
-      "pulls": 15,
+      "pulls": 16,
       "sizes": [
         "125b"
       ],
@@ -958,7 +958,7 @@
       "source_url": "https://ollama.com/frob/mimo-v2.6-pro",
       "tag_count": 4,
       "tags": [],
-      "updated": "5 days ago",
+      "updated": "6 days ago",
       "updated_title": "Sep 24, 2026 8:37 AM UTC"
     },
     {
@@ -998,6 +998,26 @@
       "updated_title": "Nov 23, 2025 7:27 PM UTC"
     },
     {
+      "capabilities": [
+        "vision",
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "Llama-4-Maverick-17B-128E-Instruct-GGUF",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/Llama-4-Maverick-17B-128E-Instruct-GGUF",
+      "pulls": 2,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/Llama-4-Maverick-17B-128E-Instruct-GGUF",
+      "tag_count": 1,
+      "tags": [],
+      "updated": "19 hours ago",
+      "updated_title": "Sep 29, 2026 1:31 PM UTC"
+    },
+    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -1013,26 +1033,6 @@
       "tags": [],
       "updated": "8 months ago",
       "updated_title": "Jan 31, 2026 11:52 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision",
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "Llama-4-Maverick-17B-128E-Instruct-GGUF",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/Llama-4-Maverick-17B-128E-Instruct-GGUF",
-      "pulls": 0,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/Llama-4-Maverick-17B-128E-Instruct-GGUF",
-      "tag_count": 1,
-      "tags": [],
-      "updated": "12 hours ago",
-      "updated_title": "Sep 29, 2026 1:31 PM UTC"
     }
   ],
   "newest_order": [
@@ -1134,8 +1134,8 @@
     "/frob/mimo-v2.6-pro",
     "/frob/whyhow-ai_PatientSeek",
     "/frob/NireeskshanAI_Niri",
-    "/frob/mixtao",
-    "/frob/Llama-4-Maverick-17B-128E-Instruct-GGUF"
+    "/frob/Llama-4-Maverick-17B-128E-Instruct-GGUF",
+    "/frob/mixtao"
   ],
   "username": "frob"
 }
