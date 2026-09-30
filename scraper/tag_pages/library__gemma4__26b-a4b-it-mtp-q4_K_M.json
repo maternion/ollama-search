@@ -12,7 +12,7 @@
   "files": [
     {
       "arch": "gemma4",
-      "blob_url": "/library/gemma4:26b-a4b-it-mtp-q4_K_M/blobs/dfd98d273421",
+      "blob_url": "/library/gemma4:26b-a4b-it-mtp-q4_K_M/blobs/a8bdd07a49b8",
       "content_preview": "arch  gemma4",
       "parameters": "25.2B",
       "quantization": "Q4_K_M",
@@ -21,7 +21,7 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/gemma4:26b-a4b-it-mtp-q4_K_M/blobs/41926ed5f140",
+      "blob_url": "/library/gemma4:26b-a4b-it-mtp-q4_K_M/blobs/7e78b02d928b",
       "content_preview": "arch  clip",
       "parameters": "",
       "quantization": "",
@@ -30,21 +30,12 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/gemma4:26b-a4b-it-mtp-q4_K_M/blobs/6326fb9f5e48",
-      "content_preview": "GGUF\u0003���1�������.�������\u0014�������general.architecture\b���\u0010�������gemma4-assistant\f�������general.type",
+      "blob_url": "/library/gemma4:26b-a4b-it-mtp-q4_K_M/blobs/491f38afe0eb",
+      "content_preview": "GGUF\u0003���1�������-�������\u0014�������general.architecture\b���\u0010�������gemma4-assistant\f�������general.type",
       "parameters": "",
       "quantization": "",
       "size": "462MB",
       "type": "draft"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/gemma4:26b-a4b-it-mtp-q4_K_M/blobs/b507b9c2f6ca",
-      "content_preview": "{{ .Prompt }}",
-      "parameters": "",
-      "quantization": "",
-      "size": "13B",
-      "type": "template"
     },
     {
       "arch": "",
@@ -63,12 +54,21 @@
       "quantization": "",
       "size": "64B",
       "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:26b-a4b-it-mtp-q4_K_M/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
     }
   ],
   "full_path": "/library/gemma4:26b-a4b-it-mtp-q4_K_M",
-  "manifest_digest": "08ae7ec1744b",
+  "manifest_digest": "001e5dafc3c7",
   "manifest_size": "19GB",
-  "manifest_updated": "3 hours ago",
+  "manifest_updated": "6 hours ago",
   "path": "/library/gemma4",
   "tag_name": "26b-a4b-it-mtp-q4_K_M"
 }
