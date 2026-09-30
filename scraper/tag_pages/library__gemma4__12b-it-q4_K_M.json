@@ -12,7 +12,7 @@
   "files": [
     {
       "arch": "gemma4",
-      "blob_url": "/library/gemma4:12b-it-q4_K_M/blobs/1278394b6936",
+      "blob_url": "/library/gemma4:12b-it-q4_K_M/blobs/bb722270d543",
       "content_preview": "arch  gemma4",
       "parameters": "11.9B",
       "quantization": "Q4_K_M",
@@ -21,12 +21,30 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/gemma4:12b-it-q4_K_M/blobs/675ad6e68101",
+      "blob_url": "/library/gemma4:12b-it-q4_K_M/blobs/0cb0cd0a5c49",
       "content_preview": "arch  clip",
       "parameters": "",
       "quantization": "",
       "size": "175MB",
       "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:12b-it-q4_K_M/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:12b-it-q4_K_M/blobs/7008a656050b",
+      "content_preview": "GGUF\u0003���1�������.�������\u0014�������general.architecture\b���\u0010�������gemma4-assistant\f�������general.type",
+      "parameters": "",
+      "quantization": "",
+      "size": "465MB",
+      "type": "draft"
     },
     {
       "arch": "",
@@ -39,18 +57,18 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/gemma4:12b-it-q4_K_M/blobs/56380ca2ab89",
-      "content_preview": "{\n    \"temperature\": 1,\n    \"top_k\": 64,\n    \"top_p\": 0.95\n}",
+      "blob_url": "/library/gemma4:12b-it-q4_K_M/blobs/2365fbb6d97b",
+      "content_preview": "{\n    \"draft_num_predict\": 3,\n    \"temperature\": 1,\n    \"top_k\": 64,\n    \"top_p\": 0.95\n}",
       "parameters": "",
       "quantization": "",
-      "size": "42B",
+      "size": "64B",
       "type": "params"
     }
   ],
   "full_path": "/library/gemma4:12b-it-q4_K_M",
-  "manifest_digest": "4eb23ef187e2",
-  "manifest_size": "7.6GB",
-  "manifest_updated": "1 month ago",
+  "manifest_digest": "6114515d63c1",
+  "manifest_size": "8.0GB",
+  "manifest_updated": "2 hours ago",
   "path": "/library/gemma4",
   "tag_name": "12b-it-q4_K_M"
 }
