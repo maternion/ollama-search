@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 11000,
+      "pulls": 11100,
       "sizes": [
         "125b"
       ],
@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 5063,
+      "pulls": 5066,
       "sizes": [
         "3b"
       ],
@@ -207,7 +207,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1219,
+      "pulls": 1223,
       "sizes": [
         "35b"
       ],
@@ -255,7 +255,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1157,
+      "pulls": 1161,
       "sizes": [
         "9b",
         "35b",
@@ -589,7 +589,7 @@
       "source_url": "https://ollama.com/frob/KaLM-Embedding-Gemma3-12B-2511",
       "tag_count": 1,
       "tags": [],
-      "updated": "8 months ago",
+      "updated": "9 months ago",
       "updated_title": "Jan 4, 2026 4:52 AM UTC"
     },
     {
@@ -601,7 +601,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.3",
-      "pulls": 175,
+      "pulls": 181,
       "sizes": [
         "753b"
       ],
@@ -629,7 +629,7 @@
       "source_url": "https://ollama.com/frob/kimi-k2.5-prism-reap",
       "tag_count": 3,
       "tags": [],
-      "updated": "6 months ago",
+      "updated": "7 months ago",
       "updated_title": "Mar 5, 2026 3:25 AM UTC"
     },
     {
@@ -643,7 +643,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mistral-small-4",
-      "pulls": 127,
+      "pulls": 128,
       "sizes": [
         "119b"
       ],
@@ -834,6 +834,29 @@
       "updated_title": "Jun 26, 2026 3:17 PM UTC"
     },
     {
+      "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "mimo-v2.6-flash",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/mimo-v2.6-flash",
+      "pulls": 30,
+      "sizes": [
+        "309b"
+      ],
+      "source_url": "https://ollama.com/frob/mimo-v2.6-flash",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "1 week ago",
+      "updated_title": "Sep 23, 2026 9:49 PM UTC"
+    },
+    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -851,29 +874,6 @@
       "tags": [],
       "updated": "2 weeks ago",
       "updated_title": "Sep 11, 2026 8:35 AM UTC"
-    },
-    {
-      "capabilities": [
-        "vision",
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "mimo-v2.6-flash",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/mimo-v2.6-flash",
-      "pulls": 29,
-      "sizes": [
-        "309b"
-      ],
-      "source_url": "https://ollama.com/frob/mimo-v2.6-flash",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "1 week ago",
-      "updated_title": "Sep 23, 2026 9:49 PM UTC"
     },
     {
       "capabilities": [
@@ -895,6 +895,25 @@
       "tags": [],
       "updated": "5 days ago",
       "updated_title": "Sep 25, 2026 4:41 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "sarvam",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/sarvam",
+      "pulls": 20,
+      "sizes": [
+        "30b"
+      ],
+      "source_url": "https://ollama.com/frob/sarvam",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Sep 13, 2026 4:08 PM UTC"
     },
     {
       "capabilities": [
@@ -920,25 +939,6 @@
       "updated_title": "Aug 22, 2026 8:32 AM UTC"
     },
     {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "sarvam",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/sarvam",
-      "pulls": 19,
-      "sizes": [
-        "30b"
-      ],
-      "source_url": "https://ollama.com/frob/sarvam",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Sep 13, 2026 4:08 PM UTC"
-    },
-    {
       "capabilities": [
         "vision",
         "tools",
@@ -958,7 +958,7 @@
       "source_url": "https://ollama.com/frob/mimo-v2.6-pro",
       "tag_count": 4,
       "tags": [],
-      "updated": "6 days ago",
+      "updated": "1 week ago",
       "updated_title": "Sep 24, 2026 8:37 AM UTC"
     },
     {
@@ -1126,11 +1126,11 @@
     "/frob/nex-n2-mini",
     "/frob/hy-mt1.5",
     "/frob/trinity",
-    "/frob/hy4-preview",
     "/frob/mimo-v2.6-flash",
+    "/frob/hy4-preview",
     "/frob/ling-3.0-flash-vl",
-    "/frob/nex-n2-pro",
     "/frob/sarvam",
+    "/frob/nex-n2-pro",
     "/frob/mimo-v2.6-pro",
     "/frob/whyhow-ai_PatientSeek",
     "/frob/NireeskshanAI_Niri",
