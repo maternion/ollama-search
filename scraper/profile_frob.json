@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 5062,
+      "pulls": 5063,
       "sizes": [
         "3b"
       ],
@@ -123,7 +123,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3851,
+      "pulls": 3852,
       "sizes": [
         "80b"
       ],
@@ -255,7 +255,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1156,
+      "pulls": 1157,
       "sizes": [
         "9b",
         "35b",
@@ -367,7 +367,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "pulls": 876,
+      "pulls": 877,
       "sizes": [],
       "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "tag_count": 1,
@@ -643,7 +643,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mistral-small-4",
-      "pulls": 126,
+      "pulls": 127,
       "sizes": [
         "119b"
       ],
@@ -834,6 +834,25 @@
       "updated_title": "Jun 26, 2026 3:17 PM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "hy4-preview",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/hy4-preview",
+      "pulls": 30,
+      "sizes": [
+        "770b"
+      ],
+      "source_url": "https://ollama.com/frob/hy4-preview",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Sep 11, 2026 8:35 AM UTC"
+    },
+    {
       "capabilities": [
         "vision",
         "tools",
@@ -855,25 +874,6 @@
       "tags": [],
       "updated": "1 week ago",
       "updated_title": "Sep 23, 2026 9:49 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "hy4-preview",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/hy4-preview",
-      "pulls": 29,
-      "sizes": [
-        "770b"
-      ],
-      "source_url": "https://ollama.com/frob/hy4-preview",
-      "tag_count": 6,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Sep 11, 2026 8:35 AM UTC"
     },
     {
       "capabilities": [
@@ -1009,7 +1009,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/Llama-4-Maverick-17B-128E-Instruct-GGUF",
-      "pulls": 3,
+      "pulls": 4,
       "sizes": [],
       "source_url": "https://ollama.com/frob/Llama-4-Maverick-17B-128E-Instruct-GGUF",
       "tag_count": 1,
@@ -1126,8 +1126,8 @@
     "/frob/nex-n2-mini",
     "/frob/hy-mt1.5",
     "/frob/trinity",
-    "/frob/mimo-v2.6-flash",
     "/frob/hy4-preview",
+    "/frob/mimo-v2.6-flash",
     "/frob/ling-3.0-flash-vl",
     "/frob/nex-n2-pro",
     "/frob/sarvam",
