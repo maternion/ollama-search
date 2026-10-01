@@ -28,7 +28,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/LightOnOCR-2",
-      "pulls": 14300,
+      "pulls": 14400,
       "sizes": [
         "1b"
       ],
@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 4892,
+      "pulls": 4900,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2426,
+      "pulls": 2429,
       "sizes": [
         "4b"
       ],
@@ -115,7 +115,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2",
-      "pulls": 2128,
+      "pulls": 2129,
       "sizes": [
         "8b"
       ],
@@ -137,7 +137,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2.5",
-      "pulls": 1838,
+      "pulls": 1840,
       "sizes": [
         "350m",
         "8b"
@@ -157,7 +157,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1479,
+      "pulls": 1487,
       "sizes": [
         "2b"
       ],
@@ -171,31 +171,12 @@
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
-      "description": "Ling-3.0-tiny is a lightweight 7.9B-parameter hybrid reasoning MoE with just 1.3B active parameters per token, offering strong reasoning and agentic capabilities at low inference cost.",
-      "name": "ling-3.0-tiny",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1453,
-      "sizes": [
-        "8b"
-      ],
-      "source_url": "https://ollama.com/maternion/ling-3.0-tiny",
-      "tag_count": 10,
-      "tags": [],
-      "updated": "1 month ago",
-      "updated_title": "Aug 20, 2026 8:18 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
       "description": "Spark-X2.5-4B abliterated (uncensored) - efficient AI model for chat, writing, coding, reasoning, tools, and agents, 1M-token context, 200+ languages, with refusal behavior removed.",
       "name": "spark-x2.5-heretic",
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 1438,
+      "pulls": 1469,
       "sizes": [
         "4b"
       ],
@@ -204,6 +185,25 @@
       "tags": [],
       "updated": "1 week ago",
       "updated_title": "Sep 21, 2026 8:05 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Ling-3.0-tiny is a lightweight 7.9B-parameter hybrid reasoning MoE with just 1.3B active parameters per token, offering strong reasoning and agentic capabilities at low inference cost.",
+      "name": "ling-3.0-tiny",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/ling-3.0-tiny",
+      "pulls": 1462,
+      "sizes": [
+        "8b"
+      ],
+      "source_url": "https://ollama.com/maternion/ling-3.0-tiny",
+      "tag_count": 10,
+      "tags": [],
+      "updated": "1 month ago",
+      "updated_title": "Aug 20, 2026 8:18 PM UTC"
     },
     {
       "capabilities": [
@@ -216,7 +216,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 1346,
+      "pulls": 1384,
       "sizes": [
         "9b"
       ],
@@ -238,7 +238,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1338,
+      "pulls": 1341,
       "sizes": [
         "2b",
         "8b"
@@ -272,6 +272,27 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Uncensored/Abliterated MiMo-V2.6-Distill-Qwen-9B: coding, agent tasks, visual coding, cybersecurity. Thinking+instruct variants.",
+      "name": "mimo-v2.6-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/mimo-v2.6-heretic",
+      "pulls": 938,
+      "sizes": [
+        "9b"
+      ],
+      "source_url": "https://ollama.com/maternion/mimo-v2.6-heretic",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "6 days ago",
+      "updated_title": "Sep 25, 2026 10:52 AM UTC"
+    },
+    {
+      "capabilities": [
         "tools",
         "thinking"
       ],
@@ -282,7 +303,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/AgentCPM-Explore",
-      "pulls": 888,
+      "pulls": 893,
       "sizes": [
         "4b"
       ],
@@ -291,27 +312,6 @@
       "tags": [],
       "updated": "8 months ago",
       "updated_title": "Jan 16, 2026 7:04 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Uncensored/Abliterated MiMo-V2.6-Distill-Qwen-9B: coding, agent tasks, visual coding, cybersecurity. Thinking+instruct variants.",
-      "name": "mimo-v2.6-heretic",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 867,
-      "sizes": [
-        "9b"
-      ],
-      "source_url": "https://ollama.com/maternion/mimo-v2.6-heretic",
-      "tag_count": 9,
-      "tags": [],
-      "updated": "5 days ago",
-      "updated_title": "Sep 25, 2026 10:52 AM UTC"
     },
     {
       "capabilities": [
@@ -344,7 +344,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 613,
+      "pulls": 631,
       "sizes": [
         "4b"
       ],
@@ -363,7 +363,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 589,
+      "pulls": 597,
       "sizes": [
         "2b"
       ],
@@ -486,13 +486,13 @@
     "/maternion/lfm2",
     "/maternion/lfm2.5",
     "/maternion/minicpm5",
-    "/maternion/ling-3.0-tiny",
     "/maternion/spark-x2.5-heretic",
+    "/maternion/ling-3.0-tiny",
     "/maternion/mimo-v2.6",
     "/maternion/mai-ui",
     "/maternion/strand-rust-coder",
-    "/maternion/AgentCPM-Explore",
     "/maternion/mimo-v2.6-heretic",
+    "/maternion/AgentCPM-Explore",
     "/maternion/NuMarkdown-Thinking",
     "/maternion/spark-x2.5",
     "/maternion/minicpm5-heretic",
