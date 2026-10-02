@@ -4,11 +4,11 @@
       "os": "mac",
       "label": "macOS",
       "command": "curl -fsSL https://ollama.com/install.sh | sh",
-      "helper": "paste this in terminal",
-      "or_separator": true,
-      "download_url": "/download/Ollama.dmg",
-      "download_label": "Download for macOS",
-      "footnote": "Requires macOS 14 Sonoma or later"
+      "helper": "",
+      "or_separator": false,
+      "download_url": "",
+      "download_label": "",
+      "footnote": ""
     },
     {
       "os": "linux",
@@ -23,12 +23,12 @@
     {
       "os": "windows",
       "label": "Windows",
-      "command": "irm https://ollama.com/install.ps1 | iex",
-      "helper": "paste this in PowerShell",
-      "or_separator": true,
-      "download_url": "/download/OllamaSetup.exe",
-      "download_label": "Download for Windows",
-      "footnote": "Requires Windows 10 or later"
+      "command": "curl -fsSL https://ollama.com/install.sh | sh",
+      "helper": "",
+      "or_separator": false,
+      "download_url": "",
+      "download_label": "",
+      "footnote": ""
     }
   ]
 }
