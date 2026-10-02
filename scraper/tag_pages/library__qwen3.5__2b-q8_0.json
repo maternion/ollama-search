@@ -12,16 +12,43 @@
   "files": [
     {
       "arch": "qwen35",
-      "blob_url": "/library/qwen3.5:2b-q8_0/blobs/b709d81508a0",
+      "blob_url": "/library/qwen3.5:2b-q8_0/blobs/e8bf47d40c5b",
       "content_preview": "arch  qwen35",
-      "parameters": "2.27B",
+      "parameters": "1.88B",
       "quantization": "Q8_0",
-      "size": "2.7GB",
+      "size": "2.0GB",
       "type": "model"
     },
     {
       "arch": "",
-      "blob_url": "/library/qwen3.5:2b-q8_0/blobs/9be69ef46306",
+      "blob_url": "/library/qwen3.5:2b-q8_0/blobs/5ddf560e3404",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "671MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:2b-q8_0/blobs/413fa3f21db8",
+      "content_preview": "GGUF\u0003���\u0011�������*�������\u0014�������general.architecture\b���\u0006�������qwen35\f�������general.type\b���\u0005�����",
+      "parameters": "",
+      "quantization": "",
+      "size": "616MB",
+      "type": "draft"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:2b-q8_0/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:2b-q8_0/blobs/50cbab8a892c",
       "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
       "parameters": "",
       "quantization": "",
@@ -30,18 +57,18 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/qwen3.5:2b-q8_0/blobs/9371364b27a5",
-      "content_preview": "{\n    \"presence_penalty\": 1.5,\n    \"temperature\": 1,\n    \"top_k\": 20,\n    \"top_p\": 0.95\n}",
+      "blob_url": "/library/qwen3.5:2b-q8_0/blobs/3cfce0087eaa",
+      "content_preview": "{\n    \"draft_num_predict\": 2,\n    \"presence_penalty\": 1.5,\n    \"temperature\": 1,\n    \"top_k\": 20,",
       "parameters": "",
       "quantization": "",
-      "size": "65B",
+      "size": "87B",
       "type": "params"
     }
   ],
   "full_path": "/library/qwen3.5:2b-q8_0",
-  "manifest_digest": "324d162be6ca",
-  "manifest_size": "2.7GB",
-  "manifest_updated": "4 months ago",
+  "manifest_digest": "d9ed436b38f7",
+  "manifest_size": "3.3GB",
+  "manifest_updated": "2 hours ago",
   "path": "/library/qwen3.5",
   "tag_name": "2b-q8_0"
 }
