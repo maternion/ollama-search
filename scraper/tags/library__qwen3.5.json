@@ -148,13 +148,13 @@
     },
     {
       "context": "256K",
-      "digest": "f3817196d142",
+      "digest": "de63045f2975",
       "format": "gguf",
       "input_type": "Text, Image",
       "name": "0.8b-q8_0",
-      "size_bytes": 1000000000,
-      "size_text": "1.0GB",
-      "updated": "7 months ago",
+      "size_bytes": 1300000000,
+      "size_text": "1.3GB",
+      "updated": "2 hours ago",
       "usage_active_slots": 0,
       "usage_level": ""
     },
@@ -232,13 +232,13 @@
     },
     {
       "context": "256K",
-      "digest": "324d162be6ca",
+      "digest": "d9ed436b38f7",
       "format": "gguf",
       "input_type": "Text, Image",
       "name": "2b-q8_0",
-      "size_bytes": 2700000000,
-      "size_text": "2.7GB",
-      "updated": "7 months ago",
+      "size_bytes": 3300000000,
+      "size_text": "3.3GB",
+      "updated": "an hour ago",
       "usage_active_slots": 0,
       "usage_level": ""
     },
@@ -652,6 +652,18 @@
     },
     {
       "context": "256K",
+      "digest": "655d273ede3a",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "35b-a3b-q8_0",
+      "size_bytes": 39000000000,
+      "size_text": "39GB",
+      "updated": "7 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
       "digest": "85eaedff99c3",
       "format": "gguf",
       "input_type": "Text, Image",
@@ -695,18 +707,6 @@
       "size_bytes": 22000000000,
       "size_text": "22GB",
       "updated": "6 months ago",
-      "usage_active_slots": 0,
-      "usage_level": ""
-    },
-    {
-      "context": "256K",
-      "digest": "655d273ede3a",
-      "format": "gguf",
-      "input_type": "Text, Image",
-      "name": "35b-a3b-q8_0",
-      "size_bytes": 39000000000,
-      "size_text": "39GB",
-      "updated": "7 months ago",
       "usage_active_slots": 0,
       "usage_level": ""
     },
