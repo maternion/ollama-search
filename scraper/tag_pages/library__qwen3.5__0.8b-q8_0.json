@@ -30,15 +30,6 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/qwen3.5:0.8b-q8_0/blobs/b0108ebdcf5a",
-      "content_preview": "GGUF\u0003���\u0011�������*�������\u0014�������general.architecture\b���\u0006�������qwen35\f�������general.type\b���\u0005�����",
-      "parameters": "",
-      "quantization": "",
-      "size": "303MB",
-      "type": "draft"
-    },
-    {
-      "arch": "",
       "blob_url": "/library/qwen3.5:0.8b-q8_0/blobs/b507b9c2f6ca",
       "content_preview": "{{ .Prompt }}",
       "parameters": "",
@@ -57,18 +48,18 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/qwen3.5:0.8b-q8_0/blobs/3cfce0087eaa",
-      "content_preview": "{\n    \"draft_num_predict\": 2,\n    \"presence_penalty\": 1.5,\n    \"temperature\": 1,\n    \"top_k\": 20,",
+      "blob_url": "/library/qwen3.5:0.8b-q8_0/blobs/9371364b27a5",
+      "content_preview": "{\n    \"presence_penalty\": 1.5,\n    \"temperature\": 1,\n    \"top_k\": 20,\n    \"top_p\": 0.95\n}",
       "parameters": "",
       "quantization": "",
-      "size": "87B",
+      "size": "65B",
       "type": "params"
     }
   ],
   "full_path": "/library/qwen3.5:0.8b-q8_0",
-  "manifest_digest": "de63045f2975",
-  "manifest_size": "1.3GB",
-  "manifest_updated": "2 hours ago",
+  "manifest_digest": "7c00f78aed0f",
+  "manifest_size": "1.0GB",
+  "manifest_updated": "3 hours ago",
   "path": "/library/qwen3.5",
   "tag_name": "0.8b-q8_0"
 }
