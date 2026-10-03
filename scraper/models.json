@@ -475,7 +475,9 @@
       "updated_title": "Nov 15, 2024 11:37 PM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "Aya 23, released by Cohere, is a new family of state-of-the-art, multilingual models that support 23 languages.",
@@ -6838,7 +6840,8 @@
     },
     {
       "capabilities": [
-        "tools"
+        "tools",
+        "thinking"
       ],
       "cloud": false,
       "cloud_only": false,
@@ -8213,7 +8216,9 @@
       "updated_title": "Apr 16, 2024 4:18 AM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "DeepCoder is a fully open-Source 14B coder model at O3-mini level, with a 1.5B version also available.",
@@ -12811,7 +12816,9 @@
       "updated_title": "Dec 13, 2025 6:47 AM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "Dolphin 2.9 is a new model with 8B and 70B sizes by Eric Hartford based on Llama 3 that has a variety of instruction, conversational, and coding skills.",
@@ -15989,7 +15996,9 @@
       "updated_title": "Dec 24, 2023 4:37 PM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "Dolphin 3.0 Llama 3.1 8B 🐬 is the next generation of the Dolphin series of instruct-tuned models designed to be the ultimate general purpose local model, enabling coding, math, agentic, function calling, and general use cases.",
@@ -27131,7 +27140,8 @@
     },
     {
       "capabilities": [
-        "tools"
+        "tools",
+        "thinking"
       ],
       "cloud": false,
       "cloud_only": false,
@@ -27345,7 +27355,8 @@
     },
     {
       "capabilities": [
-        "tools"
+        "tools",
+        "thinking"
       ],
       "cloud": false,
       "cloud_only": false,
@@ -28446,7 +28457,10 @@
       "updated_title": "Jun 10, 2026 9:07 PM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "IBM Granite Models are a family of enterprise-ready, open foundation models that support multilingual capabilities, coding, retrieval-augmented generation (RAG), tool use, thinking and structured JSON output. Released under Apache 2.0 license.",
@@ -29861,7 +29875,9 @@
       "updated_title": "Dec 16, 2024 8:56 AM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "InternLM2.5 is a 7B parameter model tailored for practical scenarios with outstanding reasoning capability.",
@@ -48270,7 +48286,9 @@
       "updated_title": "Dec 20, 2023 5:02 PM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "Nexus Raven is a 13B instruction tuned model for function calling tasks.",
@@ -56906,7 +56924,9 @@
       "updated_title": "May 1, 2025 3:53 AM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "thinking"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "Phi 4 reasoning and reasoning plus are 14-billion parameter open-weight reasoning models that rival much larger models on complex reasoning tasks.",
@@ -68092,7 +68112,8 @@
     },
     {
       "capabilities": [
-        "vision"
+        "vision",
+        "tools"
       ],
       "cloud": false,
       "cloud_only": false,
@@ -94372,7 +94393,10 @@
       "updated_title": "Apr 16, 2024 12:10 AM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "This is an uncensored version of nvidia/AceReason-Nemotron created with abliteration Edit",
@@ -94537,7 +94561,8 @@
     },
     {
       "capabilities": [
-        "tools"
+        "tools",
+        "thinking"
       ],
       "cloud": false,
       "cloud_only": false,
@@ -95112,7 +95137,10 @@
       "updated_title": "Jun 26, 2026 3:15 PM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "DeepHermes 3 Preview is the latest version of our flagship Hermes series of LLMs by Nous Research, and one of the first models in the world to unify Reasoning (long chains of thought that improve answer accuracy) and normal LLM response modes into one mod",
@@ -95204,7 +95232,9 @@
       "updated_title": "Feb 19, 2025 2:36 AM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "A fine-tuned version of Deepseek-R1-Distilled-Qwen-1.5B that surpasses the performance of OpenAI’s o1-preview with just 1.5B parameters on popular math evaluations.",
@@ -96749,7 +96779,10 @@
       "updated_title": "Aug 21, 2026 8:36 AM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "",
@@ -98213,7 +98246,8 @@
     },
     {
       "capabilities": [
-        "vision"
+        "vision",
+        "tools"
       ],
       "cloud": false,
       "cloud_only": false,
@@ -98376,7 +98410,9 @@
       "updated_title": "Mar 1, 2025 12:55 PM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "thinking"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "Foundation-Sec-8B-abliterated is an uncensored version fine-tuned based on fdtn-ai/Foundation-Sec-8B. Foundation-Sec-8B is an open-weight, 8-billion-parameter foundational language model designed specifically for cybersecurity applications.",
@@ -99517,7 +99553,10 @@
       "updated_title": "Jun 26, 2026 3:24 PM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "",
@@ -99621,7 +99660,10 @@
       "updated_title": "Jul 21, 2026 7:45 PM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "",
@@ -100192,7 +100234,8 @@
     },
     {
       "capabilities": [
-        "tools"
+        "tools",
+        "thinking"
       ],
       "cloud": false,
       "cloud_only": false,
@@ -102038,7 +102081,9 @@
       "updated_title": "May 28, 2026 7:30 PM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "",
@@ -102130,7 +102175,10 @@
       "updated_title": "Aug 21, 2026 8:29 AM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "",
@@ -102627,7 +102675,10 @@
       "updated_title": "Mar 2, 2025 2:28 PM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "",
@@ -103013,7 +103064,10 @@
       "updated_title": "Mar 5, 2026 3:25 AM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "",
@@ -103544,7 +103598,10 @@
       "updated_title": "Jan 26, 2026 9:57 AM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "",
@@ -103637,7 +103694,9 @@
     },
     {
       "capabilities": [
-        "vision"
+        "vision",
+        "tools",
+        "thinking"
       ],
       "cloud": false,
       "cloud_only": false,
@@ -103742,7 +103801,10 @@
       "updated_title": "Sep 25, 2026 4:41 PM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "Ling-3.0-tiny is a lightweight 7.9B-parameter hybrid reasoning MoE with just 1.3B active parameters per token, offering strong reasoning and agentic capabilities at low inference cost.",
@@ -105294,7 +105356,9 @@
     },
     {
       "capabilities": [
-        "vision"
+        "vision",
+        "thinking",
+        "tools"
       ],
       "cloud": false,
       "cloud_only": false,
@@ -105496,7 +105560,9 @@
     },
     {
       "capabilities": [
-        "vision"
+        "vision",
+        "thinking",
+        "tools"
       ],
       "cloud": false,
       "cloud_only": false,
@@ -105697,7 +105763,9 @@
       "updated_title": "Sep 24, 2026 8:37 AM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "MiniCPM5-2B is a dense 2B Transformer for on-device deployment. It achieves 2B-class \nSOTA, remains competitive with 4B models overall, and excels in coding, math, \nlong-context, tool use, and agentic tasks.",
@@ -105765,7 +105833,9 @@
       "updated_title": "Sep 9, 2026 7:38 PM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "thinking"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "Uncensored/Abliterated MiniCPM5-2B with only 10/100 refusals. It achieves 2B-class SOTA, remains competitive with 4B models overall.",
@@ -106071,7 +106141,9 @@
     },
     {
       "capabilities": [
-        "vision"
+        "vision",
+        "tools",
+        "thinking"
       ],
       "cloud": false,
       "cloud_only": false,
@@ -106576,7 +106648,9 @@
     },
     {
       "capabilities": [
-        "vision"
+        "vision",
+        "tools",
+        "thinking"
       ],
       "cloud": false,
       "cloud_only": false,
@@ -107110,7 +107184,10 @@
       "updated_title": "Apr 20, 2025 3:19 PM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "NeoHorse-1-9B is a 9B causal language model and an initial prototype on the path toward recursive self-improvement (RSI).",
@@ -111571,7 +111648,9 @@
       "updated_title": "Jul 26, 2025 1:54 AM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "Qwen3-Coder featuring the following key enhancements: Significant Performance, Long-context Capabilities, Agentic Coding.",
@@ -113602,7 +113681,8 @@
     {
       "capabilities": [
         "vision",
-        "tools"
+        "tools",
+        "thinking"
       ],
       "cloud": false,
       "cloud_only": false,
@@ -114179,7 +114259,9 @@
     },
     {
       "capabilities": [
-        "vision"
+        "vision",
+        "tools",
+        "thinking"
       ],
       "cloud": false,
       "cloud_only": false,
@@ -115125,7 +115207,10 @@
       "updated_title": "Feb 14, 2025 2:41 PM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools",
+        "thinking"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "",
@@ -115366,7 +115451,8 @@
     },
     {
       "capabilities": [
-        "tools"
+        "tools",
+        "thinking"
       ],
       "cloud": false,
       "cloud_only": false,
@@ -115527,7 +115613,9 @@
       "updated_title": "Jan 1, 2025 11:18 AM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "Spark-X2.5-4B is an efficient, open-source AI model built for chat, writing, coding, reasoning, tools, and agents, supporting 1M-token context and 200+ languages.",
@@ -115595,7 +115683,9 @@
       "updated_title": "Sep 19, 2026 9:04 AM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "Spark-X2.5-4B abliterated (uncensored) - efficient AI model for chat, writing, coding, reasoning, tools, and agents, 1M-token context, 200+ languages, with refusal behavior removed.",
