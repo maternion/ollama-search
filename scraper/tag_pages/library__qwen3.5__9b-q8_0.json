@@ -12,16 +12,34 @@
   "files": [
     {
       "arch": "qwen35",
-      "blob_url": "/library/qwen3.5:9b-q8_0/blobs/73b25b605337",
+      "blob_url": "/library/qwen3.5:9b-q8_0/blobs/c8b507e4fefe",
       "content_preview": "arch  qwen35",
-      "parameters": "9.65B",
+      "parameters": "8.95B",
       "quantization": "Q8_0",
-      "size": "11GB",
+      "size": "9.5GB",
       "type": "model"
     },
     {
       "arch": "",
-      "blob_url": "/library/qwen3.5:9b-q8_0/blobs/7339fa418c9a",
+      "blob_url": "/library/qwen3.5:9b-q8_0/blobs/f836f08f9211",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "922MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:9b-q8_0/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:9b-q8_0/blobs/50cbab8a892c",
       "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
       "parameters": "",
       "quantization": "",
@@ -39,9 +57,9 @@
     }
   ],
   "full_path": "/library/qwen3.5:9b-q8_0",
-  "manifest_digest": "441ec31e4d2a",
-  "manifest_size": "11GB",
-  "manifest_updated": "4 months ago",
+  "manifest_digest": "a8ee95bc3592",
+  "manifest_size": "10GB",
+  "manifest_updated": "4 hours ago",
   "path": "/library/qwen3.5",
   "tag_name": "9b-q8_0"
 }
