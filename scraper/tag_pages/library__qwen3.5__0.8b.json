@@ -11,17 +11,62 @@
   "cloud_usage_level": "",
   "files": [
     {
-      "arch": "qwen35",
-      "blob_url": "/library/qwen3.5:0.8b/blobs/afb707b6b8fa",
-      "content_preview": "arch  qwen35",
-      "parameters": "873M",
-      "quantization": "Q8_0",
-      "size": "1.0GB",
-      "type": "model"
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b/blobs/b90b86f35c8e",
+      "content_preview": "{\n\"architectures\": [\n\"Qwen3_5ForConditionalGeneration\"\n],\n\"image_token_id\": 248056,\n\"model_type\": \"q",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.9kB",
+      "type": "json"
     },
     {
       "arch": "",
-      "blob_url": "/library/qwen3.5:0.8b/blobs/9be69ef46306",
+      "blob_url": "/library/qwen3.5:0.8b/blobs/27225450ac9c",
+      "content_preview": "{\n\"size\": {\n\"longest_edge\": 16777216,\n\"shortest_edge\": 65536\n},\n\"patch_size\": 16,\n\"temporal_patch_si",
+      "parameters": "",
+      "quantization": "",
+      "size": "390B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b/blobs/5f9e4d4901a9",
+      "content_preview": "{\n\"version\": \"1.0\",\n\"truncation\": null,\n\"padding\": null,\n\"added_tokens\": [\n{\n\"id\": 248044,\n\"content\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "13MB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b/blobs/49e2b6e395f9",
+      "content_preview": "{\n\"add_prefix_space\": false,\n\"added_tokens_decoder\": {\n\"248044\": {\n\"content\": \"<|endoftext|>\",\n\"lstr",
+      "parameters": "",
+      "quantization": "",
+      "size": "17kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b/blobs/7768af27c1fa",
+      "content_preview": "{\n\"size\": {\n\"longest_edge\": 25165824,\n\"shortest_edge\": 4096\n},\n\"patch_size\": 16,\n\"temporal_patch_siz",
+      "parameters": "",
+      "quantization": "",
+      "size": "385B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b/blobs/ce99b4cb2983",
+      "content_preview": "{\n\"!\": 0,\n\"\\\"\": 1,\n\"#\": 2,\n\"$\": 3,\n\"%\": 4,\n\"&\": 5,\n\"'\": 6,\n\"(\": 7,\n\")\": 8,\n\"*\": 9,\n\"+\": 10,\n\",\": 11,",
+      "parameters": "",
+      "quantization": "",
+      "size": "6.7MB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b/blobs/5f3a3c817e78",
       "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
       "parameters": "",
       "quantization": "",
@@ -30,18 +75,72 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/qwen3.5:0.8b/blobs/9371364b27a5",
-      "content_preview": "{\n    \"presence_penalty\": 1.5,\n    \"temperature\": 1,\n    \"top_k\": 20,\n    \"top_p\": 0.95\n}",
+      "blob_url": "/library/qwen3.5:0.8b/blobs/86eff881e8d2",
+      "content_preview": "{\n    \"min_p\": 0,\n    \"presence_penalty\": 1.5,\n    \"repeat_penalty\": 1,\n    \"temperature\": 1,\n    \"t",
       "parameters": "",
       "quantization": "",
-      "size": "65B",
+      "size": "94B",
+      "type": "params"
+    },
+    {
+      "arch": "qwen35",
+      "blob_url": "/library/qwen3.5:0.8b/blobs/889ea3b9143c",
+      "content_preview": "arch  qwen35",
+      "parameters": "752M",
+      "quantization": "Q8_0",
+      "size": "812MB",
+      "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b/blobs/5ba2eb9bf28c",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "207MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b/blobs/b0108ebdcf5a",
+      "content_preview": "GGUF\u0003���\u0011�������*�������\u0014�������general.architecture\b���\u0006�������qwen35\f�������general.type\b���\u0005�����",
+      "parameters": "",
+      "quantization": "",
+      "size": "303MB",
+      "type": "draft"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b/blobs/50cbab8a892c",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b/blobs/3cfce0087eaa",
+      "content_preview": "{\n    \"draft_num_predict\": 2,\n    \"presence_penalty\": 1.5,\n    \"temperature\": 1,\n    \"top_k\": 20,",
+      "parameters": "",
+      "quantization": "",
+      "size": "87B",
       "type": "params"
     }
   ],
   "full_path": "/library/qwen3.5:0.8b",
-  "manifest_digest": "f3817196d142",
-  "manifest_size": "1.0GB",
-  "manifest_updated": "4 months ago",
+  "manifest_digest": "",
+  "manifest_size": "",
+  "manifest_updated": "",
   "path": "/library/qwen3.5",
   "tag_name": "0.8b"
 }
