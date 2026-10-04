@@ -12,11 +12,38 @@
   "files": [
     {
       "arch": "",
+      "blob_url": "/library/qwen3.5:9b-nvfp4/blobs/b81e77102c2a",
+      "content_preview": "{\n\"architectures\": [\n\"Qwen3_5ForConditionalGeneration\"\n],\n\"image_token_id\": 248056,\n\"model_type\": \"q",
+      "parameters": "",
+      "quantization": "",
+      "size": "42kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:9b-nvfp4/blobs/cca523f59e76",
+      "content_preview": "{\n\"producer\": {\n\"name\": \"modelopt\",\n\"version\": \"0.47.0.dev75+gfbcdc16c2.d20260818\"\n},\n\"quantization\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "32kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
       "blob_url": "/library/qwen3.5:9b-nvfp4/blobs/27225450ac9c",
       "content_preview": "{\n\"size\": {\n\"longest_edge\": 16777216,\n\"shortest_edge\": 65536\n},\n\"patch_size\": 16,\n\"temporal_patch_si",
       "parameters": "",
       "quantization": "",
       "size": "390B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:9b-nvfp4/blobs/d89ef49ce9cd",
+      "content_preview": "{\n\"image_processor\": {\n\"do_convert_rgb\": true,\n\"do_normalize\": true,\n\"do_rescale\": true,\n\"do_resize\"",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.2kB",
       "type": "json"
     },
     {
@@ -57,7 +84,16 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/qwen3.5:9b-nvfp4/blobs/5f3a3c817e78",
+      "blob_url": "/library/qwen3.5:9b-nvfp4/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:9b-nvfp4/blobs/50cbab8a892c",
       "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
       "parameters": "",
       "quantization": "",
@@ -72,21 +108,12 @@
       "quantization": "",
       "size": "94B",
       "type": "params"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/qwen3.5:9b-nvfp4/blobs/d0883072e018",
-      "content_preview": "{\n\"architectures\": [\n\"Qwen3_5ForConditionalGeneration\"\n],\n\"image_token_id\": 248056,\n\"model_type\": \"q",
-      "parameters": "",
-      "quantization": "",
-      "size": "3.1kB",
-      "type": "json"
     }
   ],
   "full_path": "/library/qwen3.5:9b-nvfp4",
-  "manifest_digest": "203e30078279",
-  "manifest_size": "8.9GB",
-  "manifest_updated": "4 months ago",
+  "manifest_digest": "8218177ac78e",
+  "manifest_size": "7.2GB",
+  "manifest_updated": "59 minutes ago",
   "path": "/library/qwen3.5",
   "tag_name": "9b-nvfp4"
 }
