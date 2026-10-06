@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 5052,
+      "pulls": 5064,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2459,
+      "pulls": 2461,
       "sizes": [
         "4b"
       ],
@@ -115,7 +115,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2",
-      "pulls": 2142,
+      "pulls": 2143,
       "sizes": [
         "8b"
       ],
@@ -124,6 +124,25 @@
       "tags": [],
       "updated": "6 months ago",
       "updated_title": "Mar 12, 2026 4:09 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Spark-X2.5-4B abliterated (uncensored) - efficient AI model for chat, writing, coding, reasoning, tools, and agents, 1M-token context, 200+ languages, with refusal behavior removed.",
+      "name": "spark-x2.5-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/spark-x2.5-heretic",
+      "pulls": 1900,
+      "sizes": [
+        "4b"
+      ],
+      "source_url": "https://ollama.com/maternion/spark-x2.5-heretic",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Sep 21, 2026 8:05 AM UTC"
     },
     {
       "capabilities": [
@@ -137,7 +156,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2.5",
-      "pulls": 1866,
+      "pulls": 1868,
       "sizes": [
         "350m",
         "8b"
@@ -147,25 +166,6 @@
       "tags": [],
       "updated": "3 months ago",
       "updated_title": "Jun 29, 2026 7:12 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Spark-X2.5-4B abliterated (uncensored) - efficient AI model for chat, writing, coding, reasoning, tools, and agents, 1M-token context, 200+ languages, with refusal behavior removed.",
-      "name": "spark-x2.5-heretic",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 1859,
-      "sizes": [
-        "4b"
-      ],
-      "source_url": "https://ollama.com/maternion/spark-x2.5-heretic",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Sep 21, 2026 8:05 AM UTC"
     },
     {
       "capabilities": [
@@ -178,7 +178,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 1697,
+      "pulls": 1715,
       "sizes": [
         "9b"
       ],
@@ -197,7 +197,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1584,
+      "pulls": 1596,
       "sizes": [
         "2b"
       ],
@@ -216,7 +216,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1557,
+      "pulls": 1562,
       "sizes": [
         "8b"
       ],
@@ -238,7 +238,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1359,
+      "pulls": 1362,
       "sizes": [
         "2b",
         "8b"
@@ -281,7 +281,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 1261,
+      "pulls": 1282,
       "sizes": [
         "9b"
       ],
@@ -344,7 +344,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 757,
+      "pulls": 766,
       "sizes": [
         "4b"
       ],
@@ -363,7 +363,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 687,
+      "pulls": 703,
       "sizes": [
         "2b"
       ],
@@ -484,8 +484,8 @@
     "/maternion/hy-mt2",
     "/maternion/Qianfan-OCR",
     "/maternion/lfm2",
-    "/maternion/lfm2.5",
     "/maternion/spark-x2.5-heretic",
+    "/maternion/lfm2.5",
     "/maternion/mimo-v2.6",
     "/maternion/minicpm5",
     "/maternion/ling-3.0-tiny",
