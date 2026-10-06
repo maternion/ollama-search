@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 5163,
+      "pulls": 5221,
       "sizes": [
         "3b"
       ],
@@ -123,7 +123,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3862,
+      "pulls": 3865,
       "sizes": [
         "80b"
       ],
@@ -188,7 +188,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1272,
+      "pulls": 1279,
       "sizes": [
         "284b"
       ],
@@ -207,7 +207,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1250,
+      "pulls": 1252,
       "sizes": [
         "35b"
       ],
@@ -345,7 +345,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 914,
+      "pulls": 916,
       "sizes": [
         "4b"
       ],
@@ -367,7 +367,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "pulls": 890,
+      "pulls": 891,
       "sizes": [],
       "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "tag_count": 1,
@@ -453,7 +453,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/nuextract-2.0",
-      "pulls": 666,
+      "pulls": 667,
       "sizes": [
         "8b"
       ],
@@ -622,7 +622,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mistral-small-4",
-      "pulls": 181,
+      "pulls": 184,
       "sizes": [
         "119b"
       ],
@@ -783,7 +783,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/nex-n2-mini",
-      "pulls": 65,
+      "pulls": 66,
       "sizes": [
         "35b"
       ],
@@ -814,27 +814,6 @@
     },
     {
       "capabilities": [
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "trinity",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/trinity",
-      "pulls": 39,
-      "sizes": [
-        "398b"
-      ],
-      "source_url": "https://ollama.com/frob/trinity",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "3 months ago",
-      "updated_title": "Jun 26, 2026 3:17 PM UTC"
-    },
-    {
-      "capabilities": [
         "vision",
         "tools",
         "thinking"
@@ -857,23 +836,25 @@
       "updated_title": "Sep 23, 2026 9:49 PM UTC"
     },
     {
-      "capabilities": [],
+      "capabilities": [
+        "tools"
+      ],
       "cloud": false,
       "cloud_only": false,
       "description": "",
-      "name": "hy4-preview",
+      "name": "trinity",
       "official": false,
       "owner": "frob",
-      "path": "/frob/hy4-preview",
-      "pulls": 33,
+      "path": "/frob/trinity",
+      "pulls": 39,
       "sizes": [
-        "770b"
+        "398b"
       ],
-      "source_url": "https://ollama.com/frob/hy4-preview",
-      "tag_count": 6,
+      "source_url": "https://ollama.com/frob/trinity",
+      "tag_count": 5,
       "tags": [],
-      "updated": "3 weeks ago",
-      "updated_title": "Sep 11, 2026 8:35 AM UTC"
+      "updated": "3 months ago",
+      "updated_title": "Jun 26, 2026 3:17 PM UTC"
     },
     {
       "capabilities": [
@@ -895,6 +876,25 @@
       "tags": [],
       "updated": "1 week ago",
       "updated_title": "Sep 25, 2026 4:41 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "hy4-preview",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/hy4-preview",
+      "pulls": 33,
+      "sizes": [
+        "770b"
+      ],
+      "source_url": "https://ollama.com/frob/hy4-preview",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "3 weeks ago",
+      "updated_title": "Sep 11, 2026 8:35 AM UTC"
     },
     {
       "capabilities": [],
@@ -1030,12 +1030,12 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
-      "pulls": 5,
+      "pulls": 6,
       "sizes": [],
       "source_url": "https://ollama.com/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
       "tag_count": 1,
       "tags": [],
-      "updated": "6 hours ago",
+      "updated": "12 hours ago",
       "updated_title": "Oct 5, 2026 12:46 PM UTC"
     },
     {
@@ -1054,9 +1054,30 @@
       "tags": [],
       "updated": "8 months ago",
       "updated_title": "Jan 31, 2026 11:52 PM UTC"
+    },
+    {
+      "capabilities": [
+        "vision",
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Fix missing metadata.",
+      "name": "glm-ocr",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/glm-ocr",
+      "pulls": 2,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/glm-ocr",
+      "tag_count": 3,
+      "tags": [],
+      "updated": "2 hours ago",
+      "updated_title": "Oct 5, 2026 11:18 PM UTC"
     }
   ],
   "newest_order": [
+    "/frob/glm-ocr",
     "/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
     "/frob/Llama-4-Maverick-17B-128E-Instruct-GGUF",
     "/frob/ling-3.0-flash-vl",
@@ -1147,10 +1168,10 @@
     "/frob/kimi-k3",
     "/frob/nex-n2-mini",
     "/frob/hy-mt1.5",
-    "/frob/trinity",
     "/frob/mimo-v2.6-flash",
-    "/frob/hy4-preview",
+    "/frob/trinity",
     "/frob/ling-3.0-flash-vl",
+    "/frob/hy4-preview",
     "/frob/sarvam",
     "/frob/nex-n2-pro",
     "/frob/mimo-v2.6-pro",
@@ -1158,7 +1179,8 @@
     "/frob/whyhow-ai_PatientSeek",
     "/frob/NireeskshanAI_Niri",
     "/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
-    "/frob/mixtao"
+    "/frob/mixtao",
+    "/frob/glm-ocr"
   ],
   "username": "frob"
 }
