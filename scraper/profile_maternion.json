@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 5181,
+      "pulls": 5183,
       "sizes": [
         "1.8b",
         "7b",
@@ -105,6 +105,25 @@
       "updated_title": "Mar 22, 2026 7:44 AM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Spark-X2.5-4B abliterated (uncensored) - efficient AI model for chat, writing, coding, reasoning, tools, and agents, 1M-token context, 200+ languages, with refusal behavior removed.",
+      "name": "spark-x2.5-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/spark-x2.5-heretic",
+      "pulls": 2182,
+      "sizes": [
+        "4b"
+      ],
+      "source_url": "https://ollama.com/maternion/spark-x2.5-heretic",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Sep 21, 2026 8:05 AM UTC"
+    },
+    {
       "capabilities": [
         "tools"
       ],
@@ -126,25 +145,6 @@
       "updated_title": "Mar 12, 2026 4:09 PM UTC"
     },
     {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Spark-X2.5-4B abliterated (uncensored) - efficient AI model for chat, writing, coding, reasoning, tools, and agents, 1M-token context, 200+ languages, with refusal behavior removed.",
-      "name": "spark-x2.5-heretic",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 2145,
-      "sizes": [
-        "4b"
-      ],
-      "source_url": "https://ollama.com/maternion/spark-x2.5-heretic",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Sep 21, 2026 8:05 AM UTC"
-    },
-    {
       "capabilities": [
         "tools",
         "thinking"
@@ -156,7 +156,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2.5",
-      "pulls": 1887,
+      "pulls": 1888,
       "sizes": [
         "350m",
         "8b"
@@ -178,7 +178,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 1837,
+      "pulls": 1851,
       "sizes": [
         "9b"
       ],
@@ -197,7 +197,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1634,
+      "pulls": 1641,
       "sizes": [
         "2b"
       ],
@@ -216,7 +216,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1608,
+      "pulls": 1610,
       "sizes": [
         "8b"
       ],
@@ -237,7 +237,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 1523,
+      "pulls": 1543,
       "sizes": [
         "9b"
       ],
@@ -259,7 +259,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1363,
+      "pulls": 1365,
       "sizes": [
         "2b",
         "8b"
@@ -322,7 +322,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 833,
+      "pulls": 835,
       "sizes": [
         "4b"
       ],
@@ -344,7 +344,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/NuMarkdown-Thinking",
-      "pulls": 791,
+      "pulls": 792,
       "sizes": [
         "8b"
       ],
@@ -363,7 +363,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 771,
+      "pulls": 774,
       "sizes": [
         "2b"
       ],
@@ -444,7 +444,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/neohorse-1",
-      "pulls": 75,
+      "pulls": 76,
       "sizes": [
         "9b"
       ],
@@ -483,8 +483,8 @@
     "/maternion/fara",
     "/maternion/hy-mt2",
     "/maternion/Qianfan-OCR",
-    "/maternion/lfm2",
     "/maternion/spark-x2.5-heretic",
+    "/maternion/lfm2",
     "/maternion/lfm2.5",
     "/maternion/mimo-v2.6",
     "/maternion/minicpm5",
