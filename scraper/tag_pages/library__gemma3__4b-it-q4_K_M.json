@@ -12,12 +12,30 @@
   "files": [
     {
       "arch": "gemma3",
-      "blob_url": "/library/gemma3:4b-it-q4_K_M/blobs/aeda25e63ebd",
+      "blob_url": "/library/gemma3:4b-it-q4_K_M/blobs/f06e91e18fc7",
       "content_preview": "arch  gemma3",
-      "parameters": "4.3B",
+      "parameters": "3.88B",
       "quantization": "Q4_K_M",
-      "size": "3.3GB",
+      "size": "2.5GB",
       "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma3:4b-it-q4_K_M/blobs/7a50f9607a47",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "851MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma3:4b-it-q4_K_M/blobs/e0a42594d802",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if or (eq .Rol",
+      "parameters": "",
+      "quantization": "",
+      "size": "358B",
+      "type": "template"
     },
     {
       "arch": "",
@@ -36,21 +54,12 @@
       "quantization": "",
       "size": "77B",
       "type": "params"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/gemma3:4b-it-q4_K_M/blobs/e0a42594d802",
-      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if or (eq .Rol",
-      "parameters": "",
-      "quantization": "",
-      "size": "358B",
-      "type": "template"
     }
   ],
   "full_path": "/library/gemma3:4b-it-q4_K_M",
-  "manifest_digest": "a2af6cc3eb7f",
-  "manifest_size": "3.3GB",
-  "manifest_updated": "1 year ago",
+  "manifest_digest": "68ceab7e468a",
+  "manifest_size": "3.4GB",
+  "manifest_updated": "5 hours ago",
   "path": "/library/gemma3",
   "tag_name": "4b-it-q4_K_M"
 }
