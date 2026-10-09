@@ -12,12 +12,30 @@
   "files": [
     {
       "arch": "gemma3",
-      "blob_url": "/library/gemma3:27b-it-fp16/blobs/07ca3450446e",
+      "blob_url": "/library/gemma3:27b-it-fp16/blobs/4b2d11d23ca7",
       "content_preview": "arch  gemma3",
-      "parameters": "27.4B",
-      "quantization": "F16",
-      "size": "55GB",
+      "parameters": "27B",
+      "quantization": "BF16",
+      "size": "54GB",
       "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma3:27b-it-fp16/blobs/6770388ba3b4",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "858MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma3:27b-it-fp16/blobs/e0a42594d802",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if or (eq .Rol",
+      "parameters": "",
+      "quantization": "",
+      "size": "358B",
+      "type": "template"
     },
     {
       "arch": "",
@@ -36,21 +54,12 @@
       "quantization": "",
       "size": "77B",
       "type": "params"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/gemma3:27b-it-fp16/blobs/e0a42594d802",
-      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if or (eq .Rol",
-      "parameters": "",
-      "quantization": "",
-      "size": "358B",
-      "type": "template"
     }
   ],
   "full_path": "/library/gemma3:27b-it-fp16",
-  "manifest_digest": "b7d58e2e179e",
+  "manifest_digest": "1bc907263cde",
   "manifest_size": "55GB",
-  "manifest_updated": "1 year ago",
+  "manifest_updated": "4 hours ago",
   "path": "/library/gemma3",
   "tag_name": "27b-it-fp16"
 }
