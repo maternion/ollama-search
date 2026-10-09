@@ -11,13 +11,22 @@
   "cloud_usage_level": "",
   "files": [
     {
-      "arch": "gptoss",
-      "blob_url": "/library/gpt-oss:20b/blobs/e7b273f96360",
-      "content_preview": "arch  gptoss",
+      "arch": "gpt-oss",
+      "blob_url": "/library/gpt-oss:20b/blobs/8ecb5d4ad617",
+      "content_preview": "arch  gpt-oss",
       "parameters": "20.9B",
       "quantization": "MXFP4",
       "size": "14GB",
       "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gpt-oss:20b/blobs/fa6710a93d78",
+      "content_preview": "<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.\nKnowledge cutof",
+      "parameters": "",
+      "quantization": "",
+      "size": "7.2kB",
+      "type": "template"
     },
     {
       "arch": "",
@@ -36,21 +45,12 @@
       "quantization": "",
       "size": "18B",
       "type": "params"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/gpt-oss:20b/blobs/fa6710a93d78",
-      "content_preview": "<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.\nKnowledge cutof",
-      "parameters": "",
-      "quantization": "",
-      "size": "7.2kB",
-      "type": "template"
     }
   ],
   "full_path": "/library/gpt-oss:20b",
-  "manifest_digest": "17052f91a42e",
+  "manifest_digest": "f38aa0c53da5",
   "manifest_size": "14GB",
-  "manifest_updated": "9 months ago",
+  "manifest_updated": "4 hours ago",
   "path": "/library/gpt-oss",
   "tag_name": "20b"
 }
