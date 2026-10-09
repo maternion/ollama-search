@@ -28,7 +28,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/LightOnOCR-2",
-      "pulls": 14600,
+      "pulls": 14700,
       "sizes": [
         "1b"
       ],
@@ -50,7 +50,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/fara",
-      "pulls": 5621,
+      "pulls": 5622,
       "sizes": [
         "7b"
       ],
@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 5201,
+      "pulls": 5212,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2480,
+      "pulls": 2485,
       "sizes": [
         "4b"
       ],
@@ -113,7 +113,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 2215,
+      "pulls": 2241,
       "sizes": [
         "4b"
       ],
@@ -146,6 +146,27 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "MiMo-V2.6-Distill-9B (Qwen3.5-9B SFT): coding, agent tasks, visual coding, cybersecurity. Thinking + instruct quants, multimodal.",
+      "name": "mimo-v2.6",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/mimo-v2.6",
+      "pulls": 1911,
+      "sizes": [
+        "9b"
+      ],
+      "source_url": "https://ollama.com/maternion/mimo-v2.6",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Sep 22, 2026 7:27 PM UTC"
+    },
+    {
+      "capabilities": [
         "tools",
         "thinking"
       ],
@@ -156,7 +177,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2.5",
-      "pulls": 1888,
+      "pulls": 1890,
       "sizes": [
         "350m",
         "8b"
@@ -168,27 +189,6 @@
       "updated_title": "Jun 29, 2026 7:12 PM UTC"
     },
     {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "MiMo-V2.6-Distill-9B (Qwen3.5-9B SFT): coding, agent tasks, visual coding, cybersecurity. Thinking + instruct quants, multimodal.",
-      "name": "mimo-v2.6",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/mimo-v2.6",
-      "pulls": 1866,
-      "sizes": [
-        "9b"
-      ],
-      "source_url": "https://ollama.com/maternion/mimo-v2.6",
-      "tag_count": 9,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Sep 22, 2026 7:27 PM UTC"
-    },
-    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -197,7 +197,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1644,
+      "pulls": 1653,
       "sizes": [
         "2b"
       ],
@@ -216,7 +216,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1610,
+      "pulls": 1619,
       "sizes": [
         "8b"
       ],
@@ -237,14 +237,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 1557,
+      "pulls": 1585,
       "sizes": [
         "9b"
       ],
       "source_url": "https://ollama.com/maternion/mimo-v2.6-heretic",
       "tag_count": 9,
       "tags": [],
-      "updated": "1 week ago",
+      "updated": "2 weeks ago",
       "updated_title": "Sep 25, 2026 10:52 AM UTC"
     },
     {
@@ -259,7 +259,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1366,
+      "pulls": 1388,
       "sizes": [
         "2b",
         "8b"
@@ -303,7 +303,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/AgentCPM-Explore",
-      "pulls": 897,
+      "pulls": 898,
       "sizes": [
         "4b"
       ],
@@ -322,7 +322,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 839,
+      "pulls": 850,
       "sizes": [
         "4b"
       ],
@@ -344,7 +344,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/NuMarkdown-Thinking",
-      "pulls": 792,
+      "pulls": 794,
       "sizes": [
         "8b"
       ],
@@ -363,7 +363,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 779,
+      "pulls": 785,
       "sizes": [
         "2b"
       ],
@@ -405,7 +405,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/sweep-next-edit-1.5B",
-      "pulls": 452,
+      "pulls": 454,
       "sizes": [],
       "source_url": "https://ollama.com/maternion/sweep-next-edit-1.5B",
       "tag_count": 1,
@@ -485,8 +485,8 @@
     "/maternion/Qianfan-OCR",
     "/maternion/spark-x2.5-heretic",
     "/maternion/lfm2",
-    "/maternion/lfm2.5",
     "/maternion/mimo-v2.6",
+    "/maternion/lfm2.5",
     "/maternion/minicpm5",
     "/maternion/ling-3.0-tiny",
     "/maternion/mimo-v2.6-heretic",
