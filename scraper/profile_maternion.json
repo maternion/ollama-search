@@ -50,7 +50,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/fara",
-      "pulls": 5623,
+      "pulls": 5624,
       "sizes": [
         "7b"
       ],
@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 5218,
+      "pulls": 5221,
       "sizes": [
         "1.8b",
         "7b",
@@ -113,7 +113,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 2278,
+      "pulls": 2286,
       "sizes": [
         "4b"
       ],
@@ -155,7 +155,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 1935,
+      "pulls": 1941,
       "sizes": [
         "9b"
       ],
@@ -197,7 +197,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1655,
+      "pulls": 1656,
       "sizes": [
         "2b"
       ],
@@ -216,7 +216,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1621,
+      "pulls": 1628,
       "sizes": [
         "8b"
       ],
@@ -237,7 +237,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 1614,
+      "pulls": 1620,
       "sizes": [
         "9b"
       ],
@@ -259,7 +259,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1397,
+      "pulls": 1398,
       "sizes": [
         "2b",
         "8b"
@@ -322,7 +322,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 865,
+      "pulls": 872,
       "sizes": [
         "4b"
       ],
@@ -331,6 +331,25 @@
       "tags": [],
       "updated": "2 weeks ago",
       "updated_title": "Sep 19, 2026 9:04 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Uncensored/Abliterated MiniCPM5-2B with only 10/100 refusals. It achieves 2B-class SOTA, remains competitive with 4B models overall.",
+      "name": "minicpm5-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/minicpm5-heretic",
+      "pulls": 797,
+      "sizes": [
+        "2b"
+      ],
+      "source_url": "https://ollama.com/maternion/minicpm5-heretic",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Sep 19, 2026 2:06 PM UTC"
     },
     {
       "capabilities": [
@@ -353,25 +372,6 @@
       "tags": [],
       "updated": "8 months ago",
       "updated_title": "Feb 1, 2026 12:55 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Uncensored/Abliterated MiniCPM5-2B with only 10/100 refusals. It achieves 2B-class SOTA, remains competitive with 4B models overall.",
-      "name": "minicpm5-heretic",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/minicpm5-heretic",
-      "pulls": 793,
-      "sizes": [
-        "2b"
-      ],
-      "source_url": "https://ollama.com/maternion/minicpm5-heretic",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Sep 19, 2026 2:06 PM UTC"
     },
     {
       "capabilities": [
@@ -494,8 +494,8 @@
     "/maternion/strand-rust-coder",
     "/maternion/AgentCPM-Explore",
     "/maternion/spark-x2.5",
-    "/maternion/NuMarkdown-Thinking",
     "/maternion/minicpm5-heretic",
+    "/maternion/NuMarkdown-Thinking",
     "/maternion/manim-coder",
     "/maternion/sweep-next-edit-1.5B",
     "/maternion/context-1",
