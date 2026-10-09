@@ -130,20 +130,11 @@
     {
       "arch": "",
       "blob_url": "/library/gemma4:e2b/blobs/dd57b3b7308f",
-      "content_preview": "GGUF\u0003���1�������-�������\u0014�������general.architecture\b���\u0010�������gemma4-assistant\f�������general.type",
+      "content_preview": "arch  gemma4-assistant",
       "parameters": "",
       "quantization": "",
       "size": "98MB",
       "type": "draft"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/gemma4:e2b/blobs/b507b9c2f6ca",
-      "content_preview": "{{ .Prompt }}",
-      "parameters": "",
-      "quantization": "",
-      "size": "13B",
-      "type": "template"
     },
     {
       "arch": "",
@@ -162,6 +153,15 @@
       "quantization": "",
       "size": "64B",
       "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma4:e2b/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
     }
   ],
   "full_path": "/library/gemma4:e2b",

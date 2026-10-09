@@ -12,6 +12,15 @@
   "files": [
     {
       "arch": "",
+      "blob_url": "/library/gemma4:26b/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    },
+    {
+      "arch": "",
       "blob_url": "/library/gemma4:26b/blobs/d4226bbe3117",
       "content_preview": "{\n\"bos_token_id\": 2,\n\"do_sample\": true,\n\"eos_token_id\": [\n1,\n106,\n50\n],\n\"pad_token_id\": 0,\n\"temperat",
       "parameters": "",
@@ -93,15 +102,6 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/gemma4:26b/blobs/b507b9c2f6ca",
-      "content_preview": "{{ .Prompt }}",
-      "parameters": "",
-      "quantization": "",
-      "size": "13B",
-      "type": "template"
-    },
-    {
-      "arch": "",
       "blob_url": "/library/gemma4:26b/blobs/a59e1ee2d202",
       "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
       "parameters": "",
@@ -148,7 +148,7 @@
     {
       "arch": "",
       "blob_url": "/library/gemma4:26b/blobs/491f38afe0eb",
-      "content_preview": "GGUF\u0003���1�������-�������\u0014�������general.architecture\b���\u0010�������gemma4-assistant\f�������general.type",
+      "content_preview": "arch  gemma4-assistant",
       "parameters": "",
       "quantization": "",
       "size": "462MB",
