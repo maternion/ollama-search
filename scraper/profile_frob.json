@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 5437,
+      "pulls": 5440,
       "sizes": [
         "3b"
       ],
@@ -123,7 +123,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3905,
+      "pulls": 3906,
       "sizes": [
         "80b"
       ],
@@ -213,7 +213,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1307,
+      "pulls": 1308,
       "sizes": [
         "284b"
       ],
@@ -255,7 +255,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1236,
+      "pulls": 1237,
       "sizes": [
         "3b",
         "8b",
@@ -302,7 +302,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/minimax-m2.7",
-      "pulls": 1003,
+      "pulls": 1004,
       "sizes": [
         "230b"
       ],
@@ -345,7 +345,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 929,
+      "pulls": 930,
       "sizes": [
         "4b"
       ],
@@ -603,7 +603,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mistral-small-4",
-      "pulls": 274,
+      "pulls": 276,
       "sizes": [
         "119b"
       ],
@@ -742,7 +742,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ling-3.0-flash",
-      "pulls": 78,
+      "pulls": 79,
       "sizes": [
         "124b"
       ],
@@ -827,7 +827,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.6-flash",
-      "pulls": 59,
+      "pulls": 62,
       "sizes": [
         "309b"
       ],
@@ -878,6 +878,27 @@
       "updated_title": "Jun 26, 2026 3:17 PM UTC"
     },
     {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "ling-3.0-flash-vl",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/ling-3.0-flash-vl",
+      "pulls": 38,
+      "sizes": [
+        "125b"
+      ],
+      "source_url": "https://ollama.com/frob/ling-3.0-flash-vl",
+      "tag_count": 7,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Sep 25, 2026 4:41 PM UTC"
+    },
+    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -895,27 +916,6 @@
       "tags": [],
       "updated": "4 weeks ago",
       "updated_title": "Sep 11, 2026 8:35 AM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "ling-3.0-flash-vl",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/ling-3.0-flash-vl",
-      "pulls": 34,
-      "sizes": [
-        "125b"
-      ],
-      "source_url": "https://ollama.com/frob/ling-3.0-flash-vl",
-      "tag_count": 7,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Sep 25, 2026 4:41 PM UTC"
     },
     {
       "capabilities": [],
@@ -1171,8 +1171,8 @@
     "/frob/mimo-v2.6-flash",
     "/frob/hy-mt1.5",
     "/frob/trinity",
-    "/frob/hy4-preview",
     "/frob/ling-3.0-flash-vl",
+    "/frob/hy4-preview",
     "/frob/sarvam",
     "/frob/nex-n2-pro",
     "/frob/mimo-v2.6-pro",
