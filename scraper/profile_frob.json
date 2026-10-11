@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 5449,
+      "pulls": 5464,
       "sizes": [
         "3b"
       ],
@@ -142,7 +142,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 2015,
+      "pulls": 2016,
       "sizes": [
         "753b"
       ],
@@ -189,7 +189,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1345,
+      "pulls": 1347,
       "sizes": [
         "9b",
         "35b",
@@ -498,7 +498,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.5",
-      "pulls": 464,
+      "pulls": 465,
       "sizes": [
         "309b"
       ],
@@ -655,6 +655,27 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "minimax-m3",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/minimax-m3",
+      "pulls": 116,
+      "sizes": [
+        "428b"
+      ],
+      "source_url": "https://ollama.com/frob/minimax-m3",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "1 month ago",
+      "updated_title": "Aug 25, 2026 12:32 PM UTC"
+    },
+    {
+      "capabilities": [
         "vision",
         "tools",
         "thinking"
@@ -675,27 +696,6 @@
       "updated_title": "May 20, 2026 9:57 PM UTC"
     },
     {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "minimax-m3",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/minimax-m3",
-      "pulls": 111,
-      "sizes": [
-        "428b"
-      ],
-      "source_url": "https://ollama.com/frob/minimax-m3",
-      "tag_count": 6,
-      "tags": [],
-      "updated": "1 month ago",
-      "updated_title": "Aug 25, 2026 12:32 PM UTC"
-    },
-    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -713,6 +713,25 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Aug 21, 2026 8:29 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "kimi-k3",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/kimi-k3",
+      "pulls": 87,
+      "sizes": [
+        "2780b"
+      ],
+      "source_url": "https://ollama.com/frob/kimi-k3",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "1 month ago",
+      "updated_title": "Aug 21, 2026 8:20 AM UTC"
     },
     {
       "capabilities": [
@@ -738,25 +757,6 @@
       "cloud": false,
       "cloud_only": false,
       "description": "",
-      "name": "kimi-k3",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/kimi-k3",
-      "pulls": 81,
-      "sizes": [
-        "2780b"
-      ],
-      "source_url": "https://ollama.com/frob/kimi-k3",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "1 month ago",
-      "updated_title": "Aug 21, 2026 8:20 AM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
       "name": "ling-3.0-flash",
       "official": false,
       "owner": "frob",
@@ -770,6 +770,27 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Aug 22, 2026 8:27 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
+      "pulls": 77,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
+      "tag_count": 1,
+      "tags": [],
+      "updated": "6 days ago",
+      "updated_title": "Oct 5, 2026 12:46 PM UTC"
     },
     {
       "capabilities": [
@@ -802,32 +823,11 @@
       "cloud": false,
       "cloud_only": false,
       "description": "",
-      "name": "DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
-      "pulls": 71,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
-      "tag_count": 1,
-      "tags": [],
-      "updated": "6 days ago",
-      "updated_title": "Oct 5, 2026 12:46 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision",
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
       "name": "mimo-v2.6-flash",
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.6-flash",
-      "pulls": 62,
+      "pulls": 63,
       "sizes": [
         "309b"
       ],
@@ -972,7 +972,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.6-pro",
-      "pulls": 24,
+      "pulls": 26,
       "sizes": [
         "1023b"
       ],
@@ -994,12 +994,12 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-ocr",
-      "pulls": 23,
+      "pulls": 24,
       "sizes": [],
       "source_url": "https://ollama.com/frob/glm-ocr",
       "tag_count": 3,
       "tags": [],
-      "updated": "5 days ago",
+      "updated": "6 days ago",
       "updated_title": "Oct 5, 2026 11:18 PM UTC"
     },
     {
@@ -1160,14 +1160,14 @@
     "/frob/mistral-small-4",
     "/frob/KaLM-Embedding-Gemma3-12B-2511",
     "/frob/kimi-k2.5-prism-reap",
-    "/frob/qwen3.6",
     "/frob/minimax-m3",
+    "/frob/qwen3.6",
     "/frob/hy3",
-    "/frob/llama3.2-vision",
     "/frob/kimi-k3",
+    "/frob/llama3.2-vision",
     "/frob/ling-3.0-flash",
-    "/frob/nex-n2-mini",
     "/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
+    "/frob/nex-n2-mini",
     "/frob/mimo-v2.6-flash",
     "/frob/hy-mt1.5",
     "/frob/ling-3.0-flash-vl",
