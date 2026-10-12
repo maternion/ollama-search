@@ -81,7 +81,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.8-flash-next",
-      "pulls": 11200,
+      "pulls": 11300,
       "sizes": [
         "125b"
       ],
@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 5464,
+      "pulls": 5471,
       "sizes": [
         "3b"
       ],
@@ -123,7 +123,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3908,
+      "pulls": 3909,
       "sizes": [
         "80b"
       ],
@@ -189,7 +189,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1347,
+      "pulls": 1349,
       "sizes": [
         "9b",
         "35b",
@@ -213,7 +213,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1314,
+      "pulls": 1315,
       "sizes": [
         "284b"
       ],
@@ -280,7 +280,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/davidau-qwen3.6-uncensored",
-      "pulls": 1030,
+      "pulls": 1031,
       "sizes": [
         "40b"
       ],
@@ -345,7 +345,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 932,
+      "pulls": 933,
       "sizes": [
         "4b"
       ],
@@ -432,7 +432,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kimi-k2.5",
-      "pulls": 713,
+      "pulls": 714,
       "sizes": [
         "1030b"
       ],
@@ -704,7 +704,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/hy3",
-      "pulls": 93,
+      "pulls": 94,
       "sizes": [
         "295b"
       ],
@@ -723,7 +723,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kimi-k3",
-      "pulls": 87,
+      "pulls": 88,
       "sizes": [
         "2780b"
       ],
@@ -732,6 +732,27 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Aug 21, 2026 8:20 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
+      "pulls": 83,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
+      "tag_count": 1,
+      "tags": [],
+      "updated": "6 days ago",
+      "updated_title": "Oct 5, 2026 12:46 PM UTC"
     },
     {
       "capabilities": [
@@ -770,27 +791,6 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Aug 22, 2026 8:27 AM UTC"
-    },
-    {
-      "capabilities": [
-        "vision",
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
-      "pulls": 77,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
-      "tag_count": 1,
-      "tags": [],
-      "updated": "6 days ago",
-      "updated_title": "Oct 5, 2026 12:46 PM UTC"
     },
     {
       "capabilities": [
@@ -972,7 +972,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.6-pro",
-      "pulls": 26,
+      "pulls": 27,
       "sizes": [
         "1023b"
       ],
@@ -1164,9 +1164,9 @@
     "/frob/qwen3.6",
     "/frob/hy3",
     "/frob/kimi-k3",
+    "/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
     "/frob/llama3.2-vision",
     "/frob/ling-3.0-flash",
-    "/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
     "/frob/nex-n2-mini",
     "/frob/mimo-v2.6-flash",
     "/frob/hy-mt1.5",
