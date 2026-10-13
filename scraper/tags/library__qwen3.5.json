@@ -172,13 +172,13 @@
     },
     {
       "context": "256K",
-      "digest": "81a0b6550a2d",
+      "digest": "53aad6f8ef31",
       "format": "gguf",
       "input_type": "Text, Image",
       "name": "0.8b-bf16",
       "size_bytes": 1800000000,
       "size_text": "1.8GB",
-      "updated": "6 months ago",
+      "updated": "2 hours ago",
       "usage_active_slots": 0,
       "usage_level": ""
     },
@@ -280,13 +280,13 @@
     },
     {
       "context": "256K",
-      "digest": "64148169aba8",
+      "digest": "48e5fa2a680f",
       "format": "gguf",
       "input_type": "Text, Image",
       "name": "2b-bf16",
       "size_bytes": 4600000000,
       "size_text": "4.6GB",
-      "updated": "6 months ago",
+      "updated": "2 hours ago",
       "usage_active_slots": 0,
       "usage_level": ""
     },
@@ -388,13 +388,13 @@
     },
     {
       "context": "256K",
-      "digest": "d7207ebcf0be",
+      "digest": "530cc2ae9e85",
       "format": "gguf",
       "input_type": "Text, Image",
       "name": "4b-bf16",
       "size_bytes": 9300000000,
       "size_text": "9.3GB",
-      "updated": "6 months ago",
+      "updated": "an hour ago",
       "usage_active_slots": 0,
       "usage_level": ""
     },
@@ -712,6 +712,18 @@
     },
     {
       "context": "256K",
+      "digest": "39a73d8a124d",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "35b-a3b-int4",
+      "size_bytes": 20000000000,
+      "size_text": "20GB",
+      "updated": "6 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
       "digest": "72aac7c28be8",
       "format": "gguf",
       "input_type": "Text, Image",
@@ -754,18 +766,6 @@
       "name": "35b-a3b-coding-bf16",
       "size_bytes": 70000000000,
       "size_text": "70GB",
-      "updated": "6 months ago",
-      "usage_active_slots": 0,
-      "usage_level": ""
-    },
-    {
-      "context": "256K",
-      "digest": "39a73d8a124d",
-      "format": "gguf",
-      "input_type": "Text, Image",
-      "name": "35b-a3b-int4",
-      "size_bytes": 20000000000,
-      "size_text": "20GB",
       "updated": "6 months ago",
       "usage_active_slots": 0,
       "usage_level": ""
