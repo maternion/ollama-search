@@ -102,15 +102,6 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/qwen3.5:0.8b/blobs/b507b9c2f6ca",
-      "content_preview": "{{ .Prompt }}",
-      "parameters": "",
-      "quantization": "",
-      "size": "13B",
-      "type": "template"
-    },
-    {
-      "arch": "",
       "blob_url": "/library/qwen3.5:0.8b/blobs/b0108ebdcf5a",
       "content_preview": "arch  qwen35",
       "parameters": "",
@@ -135,6 +126,15 @@
       "quantization": "",
       "size": "87B",
       "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:0.8b/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
     }
   ],
   "full_path": "/library/qwen3.5:0.8b",

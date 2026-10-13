@@ -12,15 +12,6 @@
   "files": [
     {
       "arch": "",
-      "blob_url": "/library/qwen3.5:9b/blobs/b507b9c2f6ca",
-      "content_preview": "{{ .Prompt }}",
-      "parameters": "",
-      "quantization": "",
-      "size": "13B",
-      "type": "template"
-    },
-    {
-      "arch": "",
       "blob_url": "/library/qwen3.5:9b/blobs/b41ca2dedf68",
       "content_preview": "{\n\"architectures\": [\n\"Qwen3_5ForConditionalGeneration\"\n],\n\"image_token_id\": 248056,\n\"model_type\": \"q",
       "parameters": "",
@@ -108,6 +99,15 @@
       "quantization": "",
       "size": "116B",
       "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:9b/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
     },
     {
       "arch": "qwen35",
