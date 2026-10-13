@@ -12,21 +12,30 @@
   "files": [
     {
       "arch": "qwen35moe",
-      "blob_url": "/library/qwen3.5:35b-a3b-q8_0/blobs/acd3c29c18f0",
+      "blob_url": "/library/qwen3.5:35b-a3b-q8_0/blobs/5d870c1c32f0",
       "content_preview": "arch  qwen35moe",
-      "parameters": "36B",
+      "parameters": "35.5B",
       "quantization": "Q8_0",
-      "size": "39GB",
+      "size": "38GB",
       "type": "model"
     },
     {
       "arch": "",
-      "blob_url": "/library/qwen3.5:35b-a3b-q8_0/blobs/7339fa418c9a",
-      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "blob_url": "/library/qwen3.5:35b-a3b-q8_0/blobs/5865fc7bd75c",
+      "content_preview": "arch  clip",
       "parameters": "",
       "quantization": "",
-      "size": "11kB",
-      "type": "license"
+      "size": "903MB",
+      "type": "projector"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:35b-a3b-q8_0/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
     },
     {
       "arch": "",
@@ -36,12 +45,21 @@
       "quantization": "",
       "size": "65B",
       "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:35b-a3b-q8_0/blobs/bbedc3fda330",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "12kB",
+      "type": "license"
     }
   ],
   "full_path": "/library/qwen3.5:35b-a3b-q8_0",
-  "manifest_digest": "655d273ede3a",
+  "manifest_digest": "1fa6ef720fcb",
   "manifest_size": "39GB",
-  "manifest_updated": "4 months ago",
+  "manifest_updated": "4 hours ago",
   "path": "/library/qwen3.5",
   "tag_name": "35b-a3b-q8_0"
 }
