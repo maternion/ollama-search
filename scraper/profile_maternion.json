@@ -50,7 +50,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/fara",
-      "pulls": 5628,
+      "pulls": 5630,
       "sizes": [
         "7b"
       ],
@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 5351,
+      "pulls": 5370,
       "sizes": [
         "1.8b",
         "7b",
@@ -90,7 +90,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 2577,
+      "pulls": 2604,
       "sizes": [
         "4b"
       ],
@@ -134,7 +134,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 2200,
+      "pulls": 2240,
       "sizes": [
         "9b"
       ],
@@ -176,7 +176,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 2071,
+      "pulls": 2119,
       "sizes": [
         "9b"
       ],
@@ -213,31 +213,12 @@
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
-      "description": "Ling-3.0-tiny is a lightweight 7.9B-parameter hybrid reasoning MoE with just 1.3B active parameters per token, offering strong reasoning and agentic capabilities at low inference cost.",
-      "name": "ling-3.0-tiny",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1730,
-      "sizes": [
-        "8b"
-      ],
-      "source_url": "https://ollama.com/maternion/ling-3.0-tiny",
-      "tag_count": 10,
-      "tags": [],
-      "updated": "1 month ago",
-      "updated_title": "Aug 20, 2026 8:18 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
       "description": "MiniCPM5-2B is a dense 2B Transformer for on-device deployment. It achieves 2B-class \nSOTA, remains competitive with 4B models overall, and excels in coding, math, \nlong-context, tool use, and agentic tasks.",
       "name": "minicpm5",
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1699,
+      "pulls": 1746,
       "sizes": [
         "2b"
       ],
@@ -246,6 +227,25 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Sep 9, 2026 7:38 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Ling-3.0-tiny is a lightweight 7.9B-parameter hybrid reasoning MoE with just 1.3B active parameters per token, offering strong reasoning and agentic capabilities at low inference cost.",
+      "name": "ling-3.0-tiny",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/ling-3.0-tiny",
+      "pulls": 1734,
+      "sizes": [
+        "8b"
+      ],
+      "source_url": "https://ollama.com/maternion/ling-3.0-tiny",
+      "tag_count": 10,
+      "tags": [],
+      "updated": "1 month ago",
+      "updated_title": "Aug 20, 2026 8:18 PM UTC"
     },
     {
       "capabilities": [
@@ -259,7 +259,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1410,
+      "pulls": 1411,
       "sizes": [
         "2b",
         "8b"
@@ -300,7 +300,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 968,
+      "pulls": 977,
       "sizes": [
         "4b"
       ],
@@ -341,7 +341,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 881,
+      "pulls": 895,
       "sizes": [
         "2b"
       ],
@@ -363,7 +363,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/NuMarkdown-Thinking",
-      "pulls": 799,
+      "pulls": 800,
       "sizes": [
         "8b"
       ],
@@ -384,7 +384,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/manim-coder",
-      "pulls": 567,
+      "pulls": 568,
       "sizes": [
         "14b"
       ],
@@ -444,14 +444,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/neohorse-1",
-      "pulls": 79,
+      "pulls": 82,
       "sizes": [
         "9b"
       ],
       "source_url": "https://ollama.com/maternion/neohorse-1",
       "tag_count": 4,
       "tags": [],
-      "updated": "2 weeks ago",
+      "updated": "3 weeks ago",
       "updated_title": "Sep 22, 2026 3:03 PM UTC"
     },
     {
@@ -467,7 +467,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/LightOnOCR-3",
-      "pulls": 31,
+      "pulls": 45,
       "sizes": [
         "0.8b",
         "1b",
@@ -476,11 +476,33 @@
       "source_url": "https://ollama.com/maternion/LightOnOCR-3",
       "tag_count": 12,
       "tags": [],
-      "updated": "19 hours ago",
+      "updated": "yesterday",
       "updated_title": "Oct 12, 2026 11:29 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "MiniCPM-V4.7 1B (Abliterated/Uncensored) - multimodal vision, reasoning, and tool calling, with a low 0.0122 KL divergence.",
+      "name": "minicpm-v4.7-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/minicpm-v4.7-heretic",
+      "pulls": 9,
+      "sizes": [
+        "1b"
+      ],
+      "source_url": "https://ollama.com/maternion/minicpm-v4.7-heretic",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "38 minutes ago",
+      "updated_title": "Oct 13, 2026 3:02 PM UTC"
     }
   ],
   "newest_order": [
+    "/maternion/minicpm-v4.7-heretic",
     "/maternion/LightOnOCR-3",
     "/maternion/mimo-v2.6-heretic",
     "/maternion/mimo-v2.6",
@@ -514,8 +536,8 @@
     "/maternion/lfm2",
     "/maternion/mimo-v2.6-heretic",
     "/maternion/lfm2.5",
-    "/maternion/ling-3.0-tiny",
     "/maternion/minicpm5",
+    "/maternion/ling-3.0-tiny",
     "/maternion/mai-ui",
     "/maternion/strand-rust-coder",
     "/maternion/spark-x2.5",
@@ -526,7 +548,8 @@
     "/maternion/sweep-next-edit-1.5B",
     "/maternion/context-1",
     "/maternion/neohorse-1",
-    "/maternion/LightOnOCR-3"
+    "/maternion/LightOnOCR-3",
+    "/maternion/minicpm-v4.7-heretic"
   ],
   "username": "maternion"
 }
