@@ -12,21 +12,21 @@
   "files": [
     {
       "arch": "qwen35",
-      "blob_url": "/library/qwen3.5:27b-bf16/blobs/627ae4f393e1",
+      "blob_url": "/library/qwen3.5:27b-bf16/blobs/5b2e58aede09",
       "content_preview": "arch  qwen35",
-      "parameters": "27.8B",
-      "quantization": "F16",
-      "size": "56GB",
+      "parameters": "27.3B",
+      "quantization": "BF16",
+      "size": "55GB",
       "type": "model"
     },
     {
       "arch": "",
-      "blob_url": "/library/qwen3.5:27b-bf16/blobs/7339fa418c9a",
-      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "blob_url": "/library/qwen3.5:27b-bf16/blobs/19dce903809e",
+      "content_preview": "arch  clip",
       "parameters": "",
       "quantization": "",
-      "size": "11kB",
-      "type": "license"
+      "size": "931MB",
+      "type": "projector"
     },
     {
       "arch": "",
@@ -36,12 +36,30 @@
       "quantization": "",
       "size": "65B",
       "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:27b-bf16/blobs/50cbab8a892c",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:27b-bf16/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
     }
   ],
   "full_path": "/library/qwen3.5:27b-bf16",
-  "manifest_digest": "f9ebcd0c9957",
+  "manifest_digest": "c5bbf5f39766",
   "manifest_size": "56GB",
-  "manifest_updated": "3 months ago",
+  "manifest_updated": "4 hours ago",
   "path": "/library/qwen3.5",
   "tag_name": "27b-bf16"
 }
