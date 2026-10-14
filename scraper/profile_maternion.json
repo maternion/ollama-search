@@ -28,7 +28,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/LightOnOCR-2",
-      "pulls": 14800,
+      "pulls": 14900,
       "sizes": [
         "1b"
       ],
@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 5374,
+      "pulls": 5375,
       "sizes": [
         "1.8b",
         "7b",
@@ -90,7 +90,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 2620,
+      "pulls": 2627,
       "sizes": [
         "4b"
       ],
@@ -113,7 +113,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2507,
+      "pulls": 2508,
       "sizes": [
         "4b"
       ],
@@ -134,7 +134,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 2254,
+      "pulls": 2260,
       "sizes": [
         "9b"
       ],
@@ -176,7 +176,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 2143,
+      "pulls": 2148,
       "sizes": [
         "9b"
       ],
@@ -218,7 +218,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1748,
+      "pulls": 1749,
       "sizes": [
         "2b"
       ],
@@ -300,7 +300,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 983,
+      "pulls": 987,
       "sizes": [
         "4b"
       ],
@@ -309,6 +309,25 @@
       "tags": [],
       "updated": "3 weeks ago",
       "updated_title": "Sep 19, 2026 9:04 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Uncensored/Abliterated MiniCPM5-2B with only 10/100 refusals. It achieves 2B-class SOTA, remains competitive with 4B models overall.",
+      "name": "minicpm5-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/minicpm5-heretic",
+      "pulls": 903,
+      "sizes": [
+        "2b"
+      ],
+      "source_url": "https://ollama.com/maternion/minicpm5-heretic",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "3 weeks ago",
+      "updated_title": "Sep 19, 2026 2:06 PM UTC"
     },
     {
       "capabilities": [
@@ -331,25 +350,6 @@
       "tags": [],
       "updated": "9 months ago",
       "updated_title": "Jan 16, 2026 7:04 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Uncensored/Abliterated MiniCPM5-2B with only 10/100 refusals. It achieves 2B-class SOTA, remains competitive with 4B models overall.",
-      "name": "minicpm5-heretic",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/minicpm5-heretic",
-      "pulls": 900,
-      "sizes": [
-        "2b"
-      ],
-      "source_url": "https://ollama.com/maternion/minicpm5-heretic",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "3 weeks ago",
-      "updated_title": "Sep 19, 2026 2:06 PM UTC"
     },
     {
       "capabilities": [
@@ -405,7 +405,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/sweep-next-edit-1.5B",
-      "pulls": 456,
+      "pulls": 457,
       "sizes": [],
       "source_url": "https://ollama.com/maternion/sweep-next-edit-1.5B",
       "tag_count": 1,
@@ -467,7 +467,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/LightOnOCR-3",
-      "pulls": 53,
+      "pulls": 56,
       "sizes": [
         "0.8b",
         "1b",
@@ -490,14 +490,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm-v4.7-heretic",
-      "pulls": 29,
+      "pulls": 38,
       "sizes": [
         "1b"
       ],
       "source_url": "https://ollama.com/maternion/minicpm-v4.7-heretic",
       "tag_count": 5,
       "tags": [],
-      "updated": "6 hours ago",
+      "updated": "10 hours ago",
       "updated_title": "Oct 13, 2026 3:02 PM UTC"
     }
   ],
@@ -541,8 +541,8 @@
     "/maternion/mai-ui",
     "/maternion/strand-rust-coder",
     "/maternion/spark-x2.5",
-    "/maternion/AgentCPM-Explore",
     "/maternion/minicpm5-heretic",
+    "/maternion/AgentCPM-Explore",
     "/maternion/NuMarkdown-Thinking",
     "/maternion/manim-coder",
     "/maternion/sweep-next-edit-1.5B",
