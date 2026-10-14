@@ -12,21 +12,21 @@
   "files": [
     {
       "arch": "gemma3n",
-      "blob_url": "/library/gemma3n:e2b/blobs/3839a254cf2d",
+      "blob_url": "/library/gemma3n:e2b/blobs/d6138de197b8",
       "content_preview": "arch  gemma3n",
       "parameters": "4.46B",
       "quantization": "Q4_K_M",
-      "size": "5.6GB",
+      "size": "5.7GB",
       "type": "model"
     },
     {
       "arch": "",
-      "blob_url": "/library/gemma3n:e2b/blobs/1adbfec9dcf0",
-      "content_preview": "Gemma Terms of Use\nLast modified: March 24, 2025\nBy using, reproducing, modifying, distributing, per",
+      "blob_url": "/library/gemma3n:e2b/blobs/79d049bcb4e4",
+      "content_preview": "arch  clip",
       "parameters": "",
       "quantization": "",
-      "size": "8.4kB",
-      "type": "license"
+      "size": "2.1GB",
+      "type": "projector"
     },
     {
       "arch": "",
@@ -36,12 +36,21 @@
       "quantization": "",
       "size": "358B",
       "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma3n:e2b/blobs/1adbfec9dcf0",
+      "content_preview": "Gemma Terms of Use\nLast modified: March 24, 2025\nBy using, reproducing, modifying, distributing, per",
+      "parameters": "",
+      "quantization": "",
+      "size": "8.4kB",
+      "type": "license"
     }
   ],
   "full_path": "/library/gemma3n:e2b",
-  "manifest_digest": "719372f8c7de",
-  "manifest_size": "5.6GB",
-  "manifest_updated": "1 year ago",
+  "manifest_digest": "dae166dc6a5e",
+  "manifest_size": "7.8GB",
+  "manifest_updated": "3 hours ago",
   "path": "/library/gemma3n",
   "tag_name": "e2b"
 }
