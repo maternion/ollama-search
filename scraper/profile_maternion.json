@@ -50,7 +50,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/fara",
-      "pulls": 5632,
+      "pulls": 5638,
       "sizes": [
         "7b"
       ],
@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 5375,
+      "pulls": 5392,
       "sizes": [
         "1.8b",
         "7b",
@@ -90,7 +90,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 2627,
+      "pulls": 2639,
       "sizes": [
         "4b"
       ],
@@ -113,7 +113,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2508,
+      "pulls": 2509,
       "sizes": [
         "4b"
       ],
@@ -134,7 +134,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 2260,
+      "pulls": 2274,
       "sizes": [
         "9b"
       ],
@@ -176,7 +176,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 2148,
+      "pulls": 2166,
       "sizes": [
         "9b"
       ],
@@ -198,7 +198,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2.5",
-      "pulls": 1913,
+      "pulls": 1915,
       "sizes": [
         "350m",
         "8b"
@@ -218,7 +218,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1749,
+      "pulls": 1756,
       "sizes": [
         "2b"
       ],
@@ -237,7 +237,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1737,
+      "pulls": 1746,
       "sizes": [
         "8b"
       ],
@@ -259,7 +259,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1413,
+      "pulls": 1414,
       "sizes": [
         "2b",
         "8b"
@@ -281,7 +281,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/strand-rust-coder",
-      "pulls": 1351,
+      "pulls": 1354,
       "sizes": [
         "14b"
       ],
@@ -300,7 +300,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 987,
+      "pulls": 997,
       "sizes": [
         "4b"
       ],
@@ -319,7 +319,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 903,
+      "pulls": 916,
       "sizes": [
         "2b"
       ],
@@ -444,7 +444,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/neohorse-1",
-      "pulls": 82,
+      "pulls": 83,
       "sizes": [
         "9b"
       ],
@@ -453,6 +453,27 @@
       "tags": [],
       "updated": "3 weeks ago",
       "updated_title": "Sep 22, 2026 3:03 PM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "MiniCPM-V4.7 1B (Abliterated/Uncensored) - excellent multimodal vision understanding, reasoning with a low 0.0122 KL divergence.",
+      "name": "minicpm-v4.7-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/minicpm-v4.7-heretic",
+      "pulls": 78,
+      "sizes": [
+        "1b"
+      ],
+      "source_url": "https://ollama.com/maternion/minicpm-v4.7-heretic",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "16 hours ago",
+      "updated_title": "Oct 13, 2026 3:02 PM UTC"
     },
     {
       "capabilities": [
@@ -467,7 +488,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/LightOnOCR-3",
-      "pulls": 56,
+      "pulls": 60,
       "sizes": [
         "0.8b",
         "1b",
@@ -478,27 +499,6 @@
       "tags": [],
       "updated": "yesterday",
       "updated_title": "Oct 12, 2026 11:29 AM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "MiniCPM-V4.7 1B (Abliterated/Uncensored) - excellent multimodal vision understanding, reasoning with a low 0.0122 KL divergence.",
-      "name": "minicpm-v4.7-heretic",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/minicpm-v4.7-heretic",
-      "pulls": 38,
-      "sizes": [
-        "1b"
-      ],
-      "source_url": "https://ollama.com/maternion/minicpm-v4.7-heretic",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "10 hours ago",
-      "updated_title": "Oct 13, 2026 3:02 PM UTC"
     }
   ],
   "newest_order": [
@@ -548,8 +548,8 @@
     "/maternion/sweep-next-edit-1.5B",
     "/maternion/context-1",
     "/maternion/neohorse-1",
-    "/maternion/LightOnOCR-3",
-    "/maternion/minicpm-v4.7-heretic"
+    "/maternion/minicpm-v4.7-heretic",
+    "/maternion/LightOnOCR-3"
   ],
   "username": "maternion"
 }
