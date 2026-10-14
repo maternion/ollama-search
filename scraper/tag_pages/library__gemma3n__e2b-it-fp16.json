@@ -12,12 +12,21 @@
   "files": [
     {
       "arch": "gemma3n",
-      "blob_url": "/library/gemma3n:e2b-it-fp16/blobs/ada5eb64a106",
+      "blob_url": "/library/gemma3n:e2b-it-fp16/blobs/563bbd8ccc08",
       "content_preview": "arch  gemma3n",
       "parameters": "4.46B",
       "quantization": "F16",
       "size": "8.9GB",
       "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma3n:e2b-it-fp16/blobs/79d049bcb4e4",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "2.1GB",
+      "type": "projector"
     },
     {
       "arch": "",
@@ -39,9 +48,9 @@
     }
   ],
   "full_path": "/library/gemma3n:e2b-it-fp16",
-  "manifest_digest": "c202cf857d68",
-  "manifest_size": "8.9GB",
-  "manifest_updated": "1 year ago",
+  "manifest_digest": "20add489ee5c",
+  "manifest_size": "11GB",
+  "manifest_updated": "2 hours ago",
   "path": "/library/gemma3n",
   "tag_name": "e2b-it-fp16"
 }
