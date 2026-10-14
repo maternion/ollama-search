@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 5557,
+      "pulls": 5574,
       "sizes": [
         "3b"
       ],
@@ -142,7 +142,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 2023,
+      "pulls": 2024,
       "sizes": [
         "753b"
       ],
@@ -189,7 +189,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1405,
+      "pulls": 1409,
       "sizes": [
         "9b",
         "35b",
@@ -232,7 +232,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1287,
+      "pulls": 1288,
       "sizes": [
         "35b"
       ],
@@ -255,7 +255,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1254,
+      "pulls": 1262,
       "sizes": [
         "3b",
         "8b",
@@ -345,7 +345,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 947,
+      "pulls": 948,
       "sizes": [
         "4b"
       ],
@@ -562,7 +562,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mistral-small-4",
-      "pulls": 334,
+      "pulls": 337,
       "sizes": [
         "119b"
       ],
@@ -696,6 +696,27 @@
       "updated_title": "May 20, 2026 9:57 PM UTC"
     },
     {
+      "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
+      "pulls": 101,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
+      "tag_count": 1,
+      "tags": [],
+      "updated": "1 week ago",
+      "updated_title": "Oct 5, 2026 12:46 PM UTC"
+    },
+    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -715,27 +736,6 @@
       "updated_title": "Aug 21, 2026 8:29 AM UTC"
     },
     {
-      "capabilities": [
-        "vision",
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
-      "pulls": 94,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
-      "tag_count": 1,
-      "tags": [],
-      "updated": "1 week ago",
-      "updated_title": "Oct 5, 2026 12:46 PM UTC"
-    },
-    {
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
@@ -744,7 +744,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kimi-k3",
-      "pulls": 93,
+      "pulls": 94,
       "sizes": [
         "2780b"
       ],
@@ -886,7 +886,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/sarvam",
-      "pulls": 48,
+      "pulls": 49,
       "sizes": [
         "30b"
       ],
@@ -949,7 +949,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.6-pro",
-      "pulls": 34,
+      "pulls": 35,
       "sizes": [
         "1023b"
       ],
@@ -1162,8 +1162,8 @@
     "/frob/kimi-k2.5-prism-reap",
     "/frob/minimax-m3",
     "/frob/qwen3.6",
-    "/frob/hy3",
     "/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
+    "/frob/hy3",
     "/frob/kimi-k3",
     "/frob/ling-3.0-flash",
     "/frob/llama3.2-vision",
