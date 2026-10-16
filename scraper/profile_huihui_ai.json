@@ -48,7 +48,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deepseek-r1-abliterated",
-      "pulls": 743000,
+      "pulls": 743100,
       "sizes": [
         "1.5b",
         "7b",
@@ -76,7 +76,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3.5-abliterated",
-      "pulls": 679600,
+      "pulls": 680000,
       "sizes": [
         "0.8b",
         "2b",
@@ -104,7 +104,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gpt-oss-abliterated",
-      "pulls": 410700,
+      "pulls": 410800,
       "sizes": [
         "20b",
         "120b"
@@ -151,7 +151,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-abliterated",
-      "pulls": 353700,
+      "pulls": 354000,
       "sizes": [
         "0.6b",
         "1.7b",
@@ -202,7 +202,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-vl-abliterated",
-      "pulls": 130500,
+      "pulls": 130700,
       "sizes": [
         "2b",
         "4b",
@@ -227,7 +227,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-abliterate",
-      "pulls": 108000,
+      "pulls": 108100,
       "sizes": [
         "0.5b",
         "1.5b",
@@ -254,7 +254,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/gemma3-abliterated",
-      "pulls": 103200,
+      "pulls": 103300,
       "sizes": [
         "270m",
         "1b",
@@ -281,7 +281,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Qwen3.8-abliterated",
-      "pulls": 87900,
+      "pulls": 88000,
       "sizes": [
         "27b"
       ],
@@ -290,6 +290,32 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Aug 17, 2026 8:18 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "The latest series of Code-Specific Qwen models, with significant improvements in code generation, code reasoning, and code fixing.",
+      "name": "qwen2.5-coder-abliterate",
+      "official": false,
+      "owner": "huihui_ai",
+      "path": "/huihui_ai/qwen2.5-coder-abliterate",
+      "pulls": 75400,
+      "sizes": [
+        "0.5b",
+        "1.5b",
+        "3b",
+        "7b",
+        "14b",
+        "32b"
+      ],
+      "source_url": "https://ollama.com/huihui_ai/qwen2.5-coder-abliterate",
+      "tag_count": 31,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Nov 25, 2024 12:55 PM UTC"
     },
     {
       "capabilities": [
@@ -318,38 +344,12 @@
       ],
       "cloud": false,
       "cloud_only": false,
-      "description": "The latest series of Code-Specific Qwen models, with significant improvements in code generation, code reasoning, and code fixing.",
-      "name": "qwen2.5-coder-abliterate",
-      "official": false,
-      "owner": "huihui_ai",
-      "path": "/huihui_ai/qwen2.5-coder-abliterate",
-      "pulls": 72200,
-      "sizes": [
-        "0.5b",
-        "1.5b",
-        "3b",
-        "7b",
-        "14b",
-        "32b"
-      ],
-      "source_url": "https://ollama.com/huihui_ai/qwen2.5-coder-abliterate",
-      "tag_count": 31,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "Nov 25, 2024 12:55 PM UTC"
-    },
-    {
-      "capabilities": [
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
       "description": "Dolphin 3.0 Llama 3.1 8B 🐬 is the next generation of the Dolphin series of instruct-tuned models designed to be the ultimate general purpose local model, enabling coding, math, agentic, function calling, and general use cases.",
       "name": "dolphin3-abliterated",
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/dolphin3-abliterated",
-      "pulls": 60800,
+      "pulls": 60900,
       "sizes": [
         "8b"
       ],
@@ -413,7 +413,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen2.5-vl-abliterated",
-      "pulls": 50100,
+      "pulls": 50200,
       "sizes": [
         "3b",
         "7b",
@@ -498,7 +498,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-coder-abliterated",
-      "pulls": 28500,
+      "pulls": 28600,
       "sizes": [
         "30b",
         "480b"
@@ -683,7 +683,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/hunyuan-mt-abliterated",
-      "pulls": 9281,
+      "pulls": 9282,
       "sizes": [
         "7b"
       ],
@@ -704,7 +704,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/phi4-mini-abliterated",
-      "pulls": 8605,
+      "pulls": 8621,
       "sizes": [
         "3.8b"
       ],
@@ -726,7 +726,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.2-vision-abliterated",
-      "pulls": 8247,
+      "pulls": 8250,
       "sizes": [
         "2b"
       ],
@@ -785,7 +785,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite4.1-abliterated",
-      "pulls": 7190,
+      "pulls": 7202,
       "sizes": [
         "3b",
         "8b",
@@ -829,7 +829,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwen3-next-abliterated",
-      "pulls": 6006,
+      "pulls": 6008,
       "sizes": [
         "80b"
       ],
@@ -848,7 +848,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/deephermes3-abliterated",
-      "pulls": 5498,
+      "pulls": 5499,
       "sizes": [
         "8b"
       ],
@@ -869,7 +869,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/Hermes-3-Llama-3.2-abliterated",
-      "pulls": 4598,
+      "pulls": 4614,
       "sizes": [
         "3b"
       ],
@@ -888,7 +888,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/foundation-sec-abliterated",
-      "pulls": 4476,
+      "pulls": 4478,
       "sizes": [
         "8b"
       ],
@@ -930,7 +930,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/lfm2.5-abliterated",
-      "pulls": 4389,
+      "pulls": 4402,
       "sizes": [
         "1.2b"
       ],
@@ -972,7 +972,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/huihui-4",
-      "pulls": 4111,
+      "pulls": 4116,
       "sizes": [
         "8b"
       ],
@@ -1180,7 +1180,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/qwenlong-l1.5-abliterated",
-      "pulls": 2965,
+      "pulls": 2967,
       "sizes": [
         "30b"
       ],
@@ -1202,7 +1202,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/mirothinker1-abliterated",
-      "pulls": 2904,
+      "pulls": 2907,
       "sizes": [
         "8b",
         "30b",
@@ -1225,7 +1225,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/granite3.2-abliterated",
-      "pulls": 2817,
+      "pulls": 2818,
       "sizes": [
         "2b",
         "8b"
@@ -1245,7 +1245,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/arcee-blitz-abliterated",
-      "pulls": 2791,
+      "pulls": 2796,
       "sizes": [
         "24b"
       ],
@@ -1305,7 +1305,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/fara-abliterated",
-      "pulls": 2610,
+      "pulls": 2614,
       "sizes": [
         "7b"
       ],
@@ -1362,7 +1362,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/exaone-deep-abliterated",
-      "pulls": 2254,
+      "pulls": 2256,
       "sizes": [
         "2.4b",
         "7.8b"
@@ -1385,7 +1385,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/orchestrator-abliterated",
-      "pulls": 2238,
+      "pulls": 2242,
       "sizes": [
         "8b"
       ],
@@ -1404,7 +1404,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/falcon3-abliterated",
-      "pulls": 2115,
+      "pulls": 2117,
       "sizes": [
         "1b",
         "3b",
@@ -1530,7 +1530,7 @@
       "official": false,
       "owner": "huihui_ai",
       "path": "/huihui_ai/smallthinker-abliterated",
-      "pulls": 1667,
+      "pulls": 1668,
       "sizes": [
         "3b"
       ],
@@ -2275,8 +2275,8 @@
     "/huihui_ai/qwen2.5-abliterate",
     "/huihui_ai/gemma3-abliterated",
     "/huihui_ai/Qwen3.8-abliterated",
-    "/huihui_ai/qwq-abliterated",
     "/huihui_ai/qwen2.5-coder-abliterate",
+    "/huihui_ai/qwq-abliterated",
     "/huihui_ai/dolphin3-abliterated",
     "/huihui_ai/llama3.3-abliterated",
     "/huihui_ai/llama3.2-abliterate",
