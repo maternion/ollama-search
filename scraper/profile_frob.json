@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 5631,
+      "pulls": 5633,
       "sizes": [
         "3b"
       ],
@@ -123,7 +123,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3929,
+      "pulls": 3931,
       "sizes": [
         "80b"
       ],
@@ -189,7 +189,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1429,
+      "pulls": 1435,
       "sizes": [
         "9b",
         "35b",
@@ -213,7 +213,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1331,
+      "pulls": 1332,
       "sizes": [
         "284b"
       ],
@@ -232,7 +232,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1307,
+      "pulls": 1308,
       "sizes": [
         "35b"
       ],
@@ -255,7 +255,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1264,
+      "pulls": 1265,
       "sizes": [
         "3b",
         "8b",
@@ -323,7 +323,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 956,
+      "pulls": 957,
       "sizes": [
         "4b"
       ],
@@ -562,7 +562,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mistral-small-4",
-      "pulls": 359,
+      "pulls": 363,
       "sizes": [
         "119b"
       ],
@@ -603,7 +603,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen-agentworld",
-      "pulls": 298,
+      "pulls": 299,
       "sizes": [
         "35b"
       ],
@@ -664,7 +664,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/minimax-m3",
-      "pulls": 123,
+      "pulls": 125,
       "sizes": [
         "428b"
       ],
@@ -763,7 +763,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ling-3.0-flash",
-      "pulls": 87,
+      "pulls": 88,
       "sizes": [
         "124b"
       ],
@@ -804,7 +804,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/nex-n2-mini",
-      "pulls": 74,
+      "pulls": 75,
       "sizes": [
         "35b"
       ],
@@ -886,7 +886,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/sarvam",
-      "pulls": 51,
+      "pulls": 52,
       "sizes": [
         "30b"
       ],
@@ -895,6 +895,27 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Sep 13, 2026 4:08 PM UTC"
+    },
+    {
+      "capabilities": [
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "trinity",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/trinity",
+      "pulls": 40,
+      "sizes": [
+        "398b"
+      ],
+      "source_url": "https://ollama.com/frob/trinity",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "3 months ago",
+      "updated_title": "Jun 26, 2026 3:17 PM UTC"
     },
     {
       "capabilities": [
@@ -918,27 +939,6 @@
       "tags": [],
       "updated": "3 weeks ago",
       "updated_title": "Sep 24, 2026 8:37 AM UTC"
-    },
-    {
-      "capabilities": [
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "trinity",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/trinity",
-      "pulls": 39,
-      "sizes": [
-        "398b"
-      ],
-      "source_url": "https://ollama.com/frob/trinity",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "3 months ago",
-      "updated_title": "Jun 26, 2026 3:17 PM UTC"
     },
     {
       "capabilities": [],
@@ -1193,8 +1193,8 @@
     "/frob/hy-mt1.5",
     "/frob/ling-3.0-flash-vl",
     "/frob/sarvam",
-    "/frob/mimo-v2.6-pro",
     "/frob/trinity",
+    "/frob/mimo-v2.6-pro",
     "/frob/hy4-preview",
     "/frob/glm-ocr",
     "/frob/nex-n2-pro",
