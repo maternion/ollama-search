@@ -12,11 +12,29 @@
   "files": [
     {
       "arch": "",
+      "blob_url": "/library/nemotron-3.5-lightning:30b-mlx/blobs/0784ee90f6f5",
+      "content_preview": "{\n\"architectures\": [\n\"NemotronHForCausalLM\"\n],\n\"attention_bias\": false,\n\"attention_dropout\": 0.0,\n\"b",
+      "parameters": "",
+      "quantization": "",
+      "size": "28kB",
+      "type": "json"
+    },
+    {
+      "arch": "",
       "blob_url": "/library/nemotron-3.5-lightning:30b-mlx/blobs/0ed94823ae73",
       "content_preview": "{\n\"_from_model_config\": true,\n\"bos_token_id\": 1,\n\"do_sample\": true,\n\"eos_token_id\": [\n2,\n11\n],\n\"pad_",
       "parameters": "",
       "quantization": "",
       "size": "210B",
+      "type": "json"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/nemotron-3.5-lightning:30b-mlx/blobs/672d9c5a4bc6",
+      "content_preview": "{\n\"producer\": {\n\"name\": \"modelopt\",\n\"version\": \"0.0.0\"\n},\n\"quantization\": {\n\"quant_algo\": \"MIXED_PRE",
+      "parameters": "",
+      "quantization": "",
+      "size": "21kB",
       "type": "json"
     },
     {
@@ -48,6 +66,15 @@
     },
     {
       "arch": "",
+      "blob_url": "/library/nemotron-3.5-lightning:30b-mlx/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
+    },
+    {
+      "arch": "",
       "blob_url": "/library/nemotron-3.5-lightning:30b-mlx/blobs/de0520fe3613",
       "content_preview": "NVIDIA Open Model Agreement\nTERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\nRelease Dat",
       "parameters": "",
@@ -57,36 +84,18 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/nemotron-3.5-lightning:30b-mlx/blobs/ec0173fc4f62",
-      "content_preview": "{\n\"architectures\": [\n\"NemotronHForCausalLM\"\n],\n\"attention_bias\": false,\n\"attention_dropout\": 0.0,\n\"a",
-      "parameters": "",
-      "quantization": "",
-      "size": "1.9kB",
-      "type": "json"
-    },
-    {
-      "arch": "",
       "blob_url": "/library/nemotron-3.5-lightning:30b-mlx/blobs/02897ca0d6a3",
       "content_preview": "{\n    \"temperature\": 1,\n    \"top_p\": 0.95\n}",
       "parameters": "",
       "quantization": "",
       "size": "31B",
       "type": "params"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/nemotron-3.5-lightning:30b-mlx/blobs/b507b9c2f6ca",
-      "content_preview": "{{ .Prompt }}",
-      "parameters": "",
-      "quantization": "",
-      "size": "13B",
-      "type": "template"
     }
   ],
   "full_path": "/library/nemotron-3.5-lightning:30b-mlx",
-  "manifest_digest": "8b1474be6e54",
-  "manifest_size": "23GB",
-  "manifest_updated": "2 hours ago",
+  "manifest_digest": "d1e17d7dabac",
+  "manifest_size": "19GB",
+  "manifest_updated": "26 minutes ago",
   "path": "/library/nemotron-3.5-lightning",
   "tag_name": "30b-mlx"
 }
