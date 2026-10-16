@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 5489,
+      "pulls": 5494,
       "sizes": [
         "1.8b",
         "7b",
@@ -90,7 +90,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 2868,
+      "pulls": 2883,
       "sizes": [
         "4b"
       ],
@@ -99,6 +99,27 @@
       "tags": [],
       "updated": "3 weeks ago",
       "updated_title": "Sep 21, 2026 8:05 AM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "MiMo-V2.6-Distill-9B (Qwen3.5-9B SFT): coding, agent tasks, visual coding, cybersecurity. Thinking + instruct quants, multimodal.",
+      "name": "mimo-v2.6",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/mimo-v2.6",
+      "pulls": 2530,
+      "sizes": [
+        "9b"
+      ],
+      "source_url": "https://ollama.com/maternion/mimo-v2.6",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "3 weeks ago",
+      "updated_title": "Sep 22, 2026 7:27 PM UTC"
     },
     {
       "capabilities": [
@@ -129,33 +150,12 @@
       ],
       "cloud": false,
       "cloud_only": false,
-      "description": "MiMo-V2.6-Distill-9B (Qwen3.5-9B SFT): coding, agent tasks, visual coding, cybersecurity. Thinking + instruct quants, multimodal.",
-      "name": "mimo-v2.6",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/mimo-v2.6",
-      "pulls": 2520,
-      "sizes": [
-        "9b"
-      ],
-      "source_url": "https://ollama.com/maternion/mimo-v2.6",
-      "tag_count": 9,
-      "tags": [],
-      "updated": "3 weeks ago",
-      "updated_title": "Sep 22, 2026 7:27 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
       "description": "Uncensored/Abliterated MiMo-V2.6-Distill-Qwen-9B: coding, agent tasks, visual coding, cybersecurity. Thinking+instruct variants.",
       "name": "mimo-v2.6-heretic",
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 2371,
+      "pulls": 2384,
       "sizes": [
         "9b"
       ],
@@ -218,7 +218,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1817,
+      "pulls": 1819,
       "sizes": [
         "2b"
       ],
@@ -281,7 +281,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/strand-rust-coder",
-      "pulls": 1358,
+      "pulls": 1359,
       "sizes": [
         "14b"
       ],
@@ -384,7 +384,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/manim-coder",
-      "pulls": 569,
+      "pulls": 570,
       "sizes": [
         "14b"
       ],
@@ -424,7 +424,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm-v4.7-heretic",
-      "pulls": 329,
+      "pulls": 343,
       "sizes": [
         "1b"
       ],
@@ -469,7 +469,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/LightOnOCR-3",
-      "pulls": 123,
+      "pulls": 128,
       "sizes": [
         "0.8b",
         "1b",
@@ -531,8 +531,8 @@
     "/maternion/fara",
     "/maternion/hy-mt2",
     "/maternion/spark-x2.5-heretic",
-    "/maternion/Qianfan-OCR",
     "/maternion/mimo-v2.6",
+    "/maternion/Qianfan-OCR",
     "/maternion/mimo-v2.6-heretic",
     "/maternion/lfm2",
     "/maternion/lfm2.5",
