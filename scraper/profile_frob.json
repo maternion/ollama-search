@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 5685,
+      "pulls": 5692,
       "sizes": [
         "3b"
       ],
@@ -142,7 +142,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 2035,
+      "pulls": 2037,
       "sizes": [
         "753b"
       ],
@@ -189,7 +189,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1483,
+      "pulls": 1485,
       "sizes": [
         "9b",
         "35b",
@@ -213,7 +213,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1358,
+      "pulls": 1359,
       "sizes": [
         "284b"
       ],
@@ -232,7 +232,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1326,
+      "pulls": 1329,
       "sizes": [
         "35b"
       ],
@@ -255,7 +255,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1278,
+      "pulls": 1280,
       "sizes": [
         "3b",
         "8b",
@@ -323,7 +323,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 967,
+      "pulls": 969,
       "sizes": [
         "4b"
       ],
@@ -367,7 +367,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
-      "pulls": 900,
+      "pulls": 901,
       "sizes": [],
       "source_url": "https://ollama.com/frob/mradermacher-Llama3.3-8B-Thinking-Heretic-Claude-4.5-Opus",
       "tag_count": 1,
@@ -794,6 +794,29 @@
     },
     {
       "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "mimo-v2.6-flash",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/mimo-v2.6-flash",
+      "pulls": 80,
+      "sizes": [
+        "309b"
+      ],
+      "source_url": "https://ollama.com/frob/mimo-v2.6-flash",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "3 weeks ago",
+      "updated_title": "Sep 23, 2026 9:49 PM UTC"
+    },
+    {
+      "capabilities": [
         "tools",
         "thinking"
       ],
@@ -813,29 +836,6 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Aug 22, 2026 8:31 AM UTC"
-    },
-    {
-      "capabilities": [
-        "vision",
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "mimo-v2.6-flash",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/mimo-v2.6-flash",
-      "pulls": 75,
-      "sizes": [
-        "309b"
-      ],
-      "source_url": "https://ollama.com/frob/mimo-v2.6-flash",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "3 weeks ago",
-      "updated_title": "Sep 23, 2026 9:49 PM UTC"
     },
     {
       "capabilities": [],
@@ -909,7 +909,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.6-pro",
-      "pulls": 44,
+      "pulls": 46,
       "sizes": [
         "1023b"
       ],
@@ -1014,7 +1014,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/Llama-4-Maverick-17B-128E-Instruct-GGUF",
-      "pulls": 19,
+      "pulls": 20,
       "sizes": [],
       "source_url": "https://ollama.com/frob/Llama-4-Maverick-17B-128E-Instruct-GGUF",
       "tag_count": 1,
@@ -1188,8 +1188,8 @@
     "/frob/kimi-k3",
     "/frob/ling-3.0-flash",
     "/frob/llama3.2-vision",
-    "/frob/nex-n2-mini",
     "/frob/mimo-v2.6-flash",
+    "/frob/nex-n2-mini",
     "/frob/hy-mt1.5",
     "/frob/ling-3.0-flash-vl",
     "/frob/sarvam",
