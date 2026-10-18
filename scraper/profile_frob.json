@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 5677,
+      "pulls": 5685,
       "sizes": [
         "3b"
       ],
@@ -123,7 +123,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3941,
+      "pulls": 3942,
       "sizes": [
         "80b"
       ],
@@ -189,7 +189,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1482,
+      "pulls": 1483,
       "sizes": [
         "9b",
         "35b",
@@ -255,7 +255,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1277,
+      "pulls": 1278,
       "sizes": [
         "3b",
         "8b",
@@ -510,6 +510,27 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "mistral-small-4",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/mistral-small-4",
+      "pulls": 404,
+      "sizes": [
+        "119b"
+      ],
+      "source_url": "https://ollama.com/frob/mistral-small-4",
+      "tag_count": 8,
+      "tags": [],
+      "updated": "1 month ago",
+      "updated_title": "Sep 18, 2026 3:09 PM UTC"
+    },
+    {
+      "capabilities": [
         "tools",
         "thinking"
       ],
@@ -529,27 +550,6 @@
       "tags": [],
       "updated": "3 months ago",
       "updated_title": "Jun 26, 2026 3:29 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "mistral-small-4",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/mistral-small-4",
-      "pulls": 402,
-      "sizes": [
-        "119b"
-      ],
-      "source_url": "https://ollama.com/frob/mistral-small-4",
-      "tag_count": 8,
-      "tags": [],
-      "updated": "1 month ago",
-      "updated_title": "Sep 18, 2026 3:09 PM UTC"
     },
     {
       "capabilities": [
@@ -952,7 +952,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-ocr",
-      "pulls": 38,
+      "pulls": 39,
       "sizes": [],
       "source_url": "https://ollama.com/frob/glm-ocr",
       "tag_count": 3,
@@ -1174,8 +1174,8 @@
     "/frob/nuextract-2.0",
     "/frob/glm-5",
     "/frob/mimo-v2.5",
-    "/frob/mimo-v2-flash",
     "/frob/mistral-small-4",
+    "/frob/mimo-v2-flash",
     "/frob/iquest-coder",
     "/frob/glm-5.3",
     "/frob/qwen-agentworld",
