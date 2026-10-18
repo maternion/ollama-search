@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 5669,
+      "pulls": 5674,
       "sizes": [
         "3b"
       ],
@@ -123,7 +123,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3940,
+      "pulls": 3941,
       "sizes": [
         "80b"
       ],
@@ -142,7 +142,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 2033,
+      "pulls": 2034,
       "sizes": [
         "753b"
       ],
@@ -189,7 +189,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1478,
+      "pulls": 1482,
       "sizes": [
         "9b",
         "35b",
@@ -213,7 +213,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1352,
+      "pulls": 1358,
       "sizes": [
         "284b"
       ],
@@ -255,7 +255,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1276,
+      "pulls": 1277,
       "sizes": [
         "3b",
         "8b",
@@ -280,7 +280,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/davidau-qwen3.6-uncensored",
-      "pulls": 1046,
+      "pulls": 1047,
       "sizes": [
         "40b"
       ],
@@ -323,7 +323,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 966,
+      "pulls": 967,
       "sizes": [
         "4b"
       ],
@@ -532,6 +532,27 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "mistral-small-4",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/mistral-small-4",
+      "pulls": 398,
+      "sizes": [
+        "119b"
+      ],
+      "source_url": "https://ollama.com/frob/mistral-small-4",
+      "tag_count": 8,
+      "tags": [],
+      "updated": "4 weeks ago",
+      "updated_title": "Sep 18, 2026 3:09 PM UTC"
+    },
+    {
+      "capabilities": [
         "tools"
       ],
       "cloud": false,
@@ -550,27 +571,6 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Aug 21, 2026 8:31 AM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "mistral-small-4",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/mistral-small-4",
-      "pulls": 388,
-      "sizes": [
-        "119b"
-      ],
-      "source_url": "https://ollama.com/frob/mistral-small-4",
-      "tag_count": 8,
-      "tags": [],
-      "updated": "4 weeks ago",
-      "updated_title": "Sep 18, 2026 3:09 PM UTC"
     },
     {
       "capabilities": [],
@@ -708,7 +708,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
-      "pulls": 115,
+      "pulls": 116,
       "sizes": [],
       "source_url": "https://ollama.com/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
       "tag_count": 1,
@@ -909,7 +909,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.6-pro",
-      "pulls": 43,
+      "pulls": 44,
       "sizes": [
         "1023b"
       ],
@@ -1175,8 +1175,8 @@
     "/frob/glm-5",
     "/frob/mimo-v2.5",
     "/frob/mimo-v2-flash",
-    "/frob/iquest-coder",
     "/frob/mistral-small-4",
+    "/frob/iquest-coder",
     "/frob/glm-5.3",
     "/frob/qwen-agentworld",
     "/frob/KaLM-Embedding-Gemma3-12B-2511",
