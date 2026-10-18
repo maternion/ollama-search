@@ -69,7 +69,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 5521,
+      "pulls": 5527,
       "sizes": [
         "1.8b",
         "7b",
@@ -90,7 +90,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 2972,
+      "pulls": 2988,
       "sizes": [
         "4b"
       ],
@@ -111,7 +111,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 2613,
+      "pulls": 2626,
       "sizes": [
         "9b"
       ],
@@ -120,6 +120,27 @@
       "tags": [],
       "updated": "3 weeks ago",
       "updated_title": "Sep 22, 2026 7:27 PM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Uncensored/Abliterated MiMo-V2.6-Distill-Qwen-9B: coding, agent tasks, visual coding, cybersecurity. Thinking+instruct variants.",
+      "name": "mimo-v2.6-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/mimo-v2.6-heretic",
+      "pulls": 2532,
+      "sizes": [
+        "9b"
+      ],
+      "source_url": "https://ollama.com/maternion/mimo-v2.6-heretic",
+      "tag_count": 9,
+      "tags": [],
+      "updated": "3 weeks ago",
+      "updated_title": "Sep 25, 2026 10:52 AM UTC"
     },
     {
       "capabilities": [
@@ -143,27 +164,6 @@
       "tags": [],
       "updated": "6 months ago",
       "updated_title": "Mar 22, 2026 7:44 AM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Uncensored/Abliterated MiMo-V2.6-Distill-Qwen-9B: coding, agent tasks, visual coding, cybersecurity. Thinking+instruct variants.",
-      "name": "mimo-v2.6-heretic",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 2524,
-      "sizes": [
-        "9b"
-      ],
-      "source_url": "https://ollama.com/maternion/mimo-v2.6-heretic",
-      "tag_count": 9,
-      "tags": [],
-      "updated": "3 weeks ago",
-      "updated_title": "Sep 25, 2026 10:52 AM UTC"
     },
     {
       "capabilities": [
@@ -218,7 +218,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1833,
+      "pulls": 1835,
       "sizes": [
         "2b"
       ],
@@ -259,7 +259,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1425,
+      "pulls": 1426,
       "sizes": [
         "2b",
         "8b"
@@ -281,7 +281,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/strand-rust-coder",
-      "pulls": 1364,
+      "pulls": 1366,
       "sizes": [
         "14b"
       ],
@@ -300,7 +300,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 1057,
+      "pulls": 1058,
       "sizes": [
         "4b"
       ],
@@ -319,7 +319,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 984,
+      "pulls": 986,
       "sizes": [
         "2b"
       ],
@@ -396,6 +396,27 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "MiniCPM-V4.7 1B (Abliterated/Uncensored) - excellent multimodal vision understanding, reasoning with a low 0.0122 KL divergence.",
+      "name": "minicpm-v4.7-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/minicpm-v4.7-heretic",
+      "pulls": 464,
+      "sizes": [
+        "1b"
+      ],
+      "source_url": "https://ollama.com/maternion/minicpm-v4.7-heretic",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "4 days ago",
+      "updated_title": "Oct 13, 2026 3:02 PM UTC"
+    },
+    {
+      "capabilities": [
         "tools"
       ],
       "cloud": false,
@@ -415,27 +436,6 @@
     },
     {
       "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "MiniCPM-V4.7 1B (Abliterated/Uncensored) - excellent multimodal vision understanding, reasoning with a low 0.0122 KL divergence.",
-      "name": "minicpm-v4.7-heretic",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/minicpm-v4.7-heretic",
-      "pulls": 449,
-      "sizes": [
-        "1b"
-      ],
-      "source_url": "https://ollama.com/maternion/minicpm-v4.7-heretic",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "4 days ago",
-      "updated_title": "Oct 13, 2026 3:02 PM UTC"
-    },
-    {
-      "capabilities": [
         "vision",
         "tools",
         "thinking"
@@ -447,7 +447,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/LightOnOCR-3",
-      "pulls": 145,
+      "pulls": 149,
       "sizes": [
         "0.8b",
         "1b",
@@ -532,8 +532,8 @@
     "/maternion/hy-mt2",
     "/maternion/spark-x2.5-heretic",
     "/maternion/mimo-v2.6",
-    "/maternion/Qianfan-OCR",
     "/maternion/mimo-v2.6-heretic",
+    "/maternion/Qianfan-OCR",
     "/maternion/lfm2",
     "/maternion/lfm2.5",
     "/maternion/minicpm5",
@@ -545,8 +545,8 @@
     "/maternion/AgentCPM-Explore",
     "/maternion/NuMarkdown-Thinking",
     "/maternion/manim-coder",
-    "/maternion/sweep-next-edit-1.5B",
     "/maternion/minicpm-v4.7-heretic",
+    "/maternion/sweep-next-edit-1.5B",
     "/maternion/LightOnOCR-3",
     "/maternion/context-1",
     "/maternion/neohorse-1"
