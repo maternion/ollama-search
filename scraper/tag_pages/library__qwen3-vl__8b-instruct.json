@@ -12,12 +12,21 @@
   "files": [
     {
       "arch": "qwen3vl",
-      "blob_url": "/library/qwen3-vl:8b-instruct/blobs/1329cd5ab37e",
+      "blob_url": "/library/qwen3-vl:8b-instruct/blobs/a0c1f7c1356e",
       "content_preview": "arch  qwen3vl",
-      "parameters": "8.77B",
+      "parameters": "8.19B",
       "quantization": "Q4_K_M",
-      "size": "6.1GB",
+      "size": "5.0GB",
       "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3-vl:8b-instruct/blobs/85aa79666ee7",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.2GB",
+      "type": "projector"
     },
     {
       "arch": "",
@@ -39,9 +48,9 @@
     }
   ],
   "full_path": "/library/qwen3-vl:8b-instruct",
-  "manifest_digest": "0533d74300e4",
-  "manifest_size": "6.1GB",
-  "manifest_updated": "9 months ago",
+  "manifest_digest": "70e58e37beb1",
+  "manifest_size": "6.2GB",
+  "manifest_updated": "3 hours ago",
   "path": "/library/qwen3-vl",
   "tag_name": "8b-instruct"
 }
