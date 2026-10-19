@@ -12,12 +12,21 @@
   "files": [
     {
       "arch": "qwen3vl",
-      "blob_url": "/library/qwen3-vl:8b-thinking-q4_K_M/blobs/ed12a4674d72",
+      "blob_url": "/library/qwen3-vl:8b-thinking-q4_K_M/blobs/9c3e4853af40",
       "content_preview": "arch  qwen3vl",
-      "parameters": "8.77B",
+      "parameters": "8.19B",
       "quantization": "Q4_K_M",
-      "size": "6.1GB",
+      "size": "5.0GB",
       "type": "model"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3-vl:8b-thinking-q4_K_M/blobs/9a42417378dd",
+      "content_preview": "arch  clip",
+      "parameters": "",
+      "quantization": "",
+      "size": "1.2GB",
+      "type": "projector"
     },
     {
       "arch": "",
@@ -39,9 +48,9 @@
     }
   ],
   "full_path": "/library/qwen3-vl:8b-thinking-q4_K_M",
-  "manifest_digest": "901cae732162",
-  "manifest_size": "6.1GB",
-  "manifest_updated": "9 months ago",
+  "manifest_digest": "9cf69da2b16d",
+  "manifest_size": "6.2GB",
+  "manifest_updated": "2 hours ago",
   "path": "/library/qwen3-vl",
   "tag_name": "8b-thinking-q4_K_M"
 }
