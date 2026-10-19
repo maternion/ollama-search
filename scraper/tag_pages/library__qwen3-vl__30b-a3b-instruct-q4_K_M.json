@@ -12,21 +12,21 @@
   "files": [
     {
       "arch": "qwen3vlmoe",
-      "blob_url": "/library/qwen3-vl:30b-a3b-instruct-q4_K_M/blobs/8088c24b807c",
+      "blob_url": "/library/qwen3-vl:30b-a3b-instruct-q4_K_M/blobs/884457e79121",
       "content_preview": "arch  qwen3vlmoe",
-      "parameters": "31.1B",
+      "parameters": "30.5B",
       "quantization": "Q4_K_M",
-      "size": "20GB",
+      "size": "19GB",
       "type": "model"
     },
     {
       "arch": "",
-      "blob_url": "/library/qwen3-vl:30b-a3b-instruct-q4_K_M/blobs/f6417cb1e269",
-      "content_preview": "{\n    \"temperature\": 1,\n    \"top_k\": 20,\n    \"top_p\": 0.95\n}",
+      "blob_url": "/library/qwen3-vl:30b-a3b-instruct-q4_K_M/blobs/04d9a35e6bb6",
+      "content_preview": "arch  clip",
       "parameters": "",
       "quantization": "",
-      "size": "42B",
-      "type": "params"
+      "size": "1.1GB",
+      "type": "projector"
     },
     {
       "arch": "",
@@ -36,12 +36,21 @@
       "quantization": "",
       "size": "11kB",
       "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3-vl:30b-a3b-instruct-q4_K_M/blobs/f6417cb1e269",
+      "content_preview": "{\n    \"temperature\": 1,\n    \"top_k\": 20,\n    \"top_p\": 0.95\n}",
+      "parameters": "",
+      "quantization": "",
+      "size": "42B",
+      "type": "params"
     }
   ],
   "full_path": "/library/qwen3-vl:30b-a3b-instruct-q4_K_M",
-  "manifest_digest": "c871fc73fabc",
+  "manifest_digest": "9b053ed92b6a",
   "manifest_size": "20GB",
-  "manifest_updated": "9 months ago",
+  "manifest_updated": "an hour ago",
   "path": "/library/qwen3-vl",
   "tag_name": "30b-a3b-instruct-q4_K_M"
 }
