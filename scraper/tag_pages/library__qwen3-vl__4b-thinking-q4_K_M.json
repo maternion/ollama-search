@@ -12,21 +12,21 @@
   "files": [
     {
       "arch": "qwen3vl",
-      "blob_url": "/library/qwen3-vl:4b-thinking-q4_K_M/blobs/9c60bdd691c1",
+      "blob_url": "/library/qwen3-vl:4b-thinking-q4_K_M/blobs/02fb4392a076",
       "content_preview": "arch  qwen3vl",
-      "parameters": "4.44B",
+      "parameters": "4.02B",
       "quantization": "Q4_K_M",
-      "size": "3.3GB",
+      "size": "2.5GB",
       "type": "model"
     },
     {
       "arch": "",
-      "blob_url": "/library/qwen3-vl:4b-thinking-q4_K_M/blobs/7339fa418c9a",
-      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "blob_url": "/library/qwen3-vl:4b-thinking-q4_K_M/blobs/ee8b93fa272a",
+      "content_preview": "arch  clip",
       "parameters": "",
       "quantization": "",
-      "size": "11kB",
-      "type": "license"
+      "size": "839MB",
+      "type": "projector"
     },
     {
       "arch": "",
@@ -36,12 +36,21 @@
       "quantization": "",
       "size": "42B",
       "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3-vl:4b-thinking-q4_K_M/blobs/7339fa418c9a",
+      "content_preview": "Apache License\nVersion 2.0, January 2004\nhttp://www.apache.org/licenses/\nTERMS AND CONDITIONS FOR US",
+      "parameters": "",
+      "quantization": "",
+      "size": "11kB",
+      "type": "license"
     }
   ],
   "full_path": "/library/qwen3-vl:4b-thinking-q4_K_M",
-  "manifest_digest": "1343d82ebee3",
+  "manifest_digest": "a1b29c246319",
   "manifest_size": "3.3GB",
-  "manifest_updated": "9 months ago",
+  "manifest_updated": "4 hours ago",
   "path": "/library/qwen3-vl",
   "tag_name": "4b-thinking-q4_K_M"
 }
