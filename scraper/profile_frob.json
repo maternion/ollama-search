@@ -34,7 +34,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/minimax-m2.5",
-      "pulls": 52500,
+      "pulls": 52600,
       "sizes": [
         "230b"
       ],
@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 5701,
+      "pulls": 5706,
       "sizes": [
         "3b"
       ],
@@ -142,14 +142,14 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 2044,
+      "pulls": 2046,
       "sizes": [
         "753b"
       ],
       "source_url": "https://ollama.com/frob/glm-5.2",
       "tag_count": 7,
       "tags": [],
-      "updated": "2 months ago",
+      "updated": "3 months ago",
       "updated_title": "Jul 21, 2026 7:45 PM UTC"
     },
     {
@@ -189,7 +189,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1489,
+      "pulls": 1493,
       "sizes": [
         "9b",
         "35b",
@@ -213,7 +213,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1359,
+      "pulls": 1362,
       "sizes": [
         "284b"
       ],
@@ -232,7 +232,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1329,
+      "pulls": 1331,
       "sizes": [
         "35b"
       ],
@@ -323,7 +323,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 970,
+      "pulls": 975,
       "sizes": [
         "4b"
       ],
@@ -519,7 +519,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mistral-small-4",
-      "pulls": 411,
+      "pulls": 412,
       "sizes": [
         "119b"
       ],
@@ -775,6 +775,29 @@
     },
     {
       "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "mimo-v2.6-flash",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/mimo-v2.6-flash",
+      "pulls": 83,
+      "sizes": [
+        "309b"
+      ],
+      "source_url": "https://ollama.com/frob/mimo-v2.6-flash",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "3 weeks ago",
+      "updated_title": "Sep 23, 2026 9:49 PM UTC"
+    },
+    {
+      "capabilities": [
         "vision"
       ],
       "cloud": false,
@@ -791,29 +814,6 @@
       "tags": [],
       "updated": "1 year ago",
       "updated_title": "Feb 20, 2025 2:54 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision",
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "mimo-v2.6-flash",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/mimo-v2.6-flash",
-      "pulls": 82,
-      "sizes": [
-        "309b"
-      ],
-      "source_url": "https://ollama.com/frob/mimo-v2.6-flash",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "3 weeks ago",
-      "updated_title": "Sep 23, 2026 9:49 PM UTC"
     },
     {
       "capabilities": [
@@ -931,7 +931,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-ocr",
-      "pulls": 41,
+      "pulls": 43,
       "sizes": [],
       "source_url": "https://ollama.com/frob/glm-ocr",
       "tag_count": 3,
@@ -1055,7 +1055,7 @@
       "source_url": "https://ollama.com/frob/NireeskshanAI_Niri",
       "tag_count": 3,
       "tags": [],
-      "updated": "10 months ago",
+      "updated": "11 months ago",
       "updated_title": "Nov 23, 2025 7:27 PM UTC"
     },
     {
@@ -1092,7 +1092,7 @@
       "source_url": "https://ollama.com/frob/clef-flash",
       "tag_count": 1,
       "tags": [],
-      "updated": "4 days ago",
+      "updated": "5 days ago",
       "updated_title": "Oct 14, 2026 5:10 PM UTC"
     }
   ],
@@ -1187,8 +1187,8 @@
     "/frob/hy3",
     "/frob/kimi-k3",
     "/frob/ling-3.0-flash",
-    "/frob/llama3.2-vision",
     "/frob/mimo-v2.6-flash",
+    "/frob/llama3.2-vision",
     "/frob/nex-n2-mini",
     "/frob/ling-3.0-flash-vl",
     "/frob/hy-mt1.5",
