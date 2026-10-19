@@ -1,22 +1,22 @@
 {
   "applications": [
     {
-      "command": "ollama launch claude --model nemotron3:33b",
+      "command": "ollama launch claude --model nemotron3",
       "icon_url": "/public/claude.png",
       "name": "Claude Code"
     },
     {
-      "command": "ollama launch opencode --model nemotron3:33b",
+      "command": "ollama launch opencode --model nemotron3",
       "icon_url": "/public/opencode.png",
       "name": "OpenCode"
     },
     {
-      "command": "ollama launch hermes --model nemotron3:33b",
+      "command": "ollama launch hermes --model nemotron3",
       "icon_url": "/public/hermes.png",
       "name": "Hermes Agent"
     },
     {
-      "command": "ollama launch openclaw --model nemotron3:33b",
+      "command": "ollama launch openclaw --model nemotron3",
       "icon_url": "/public/openclaw.svg",
       "name": "OpenClaw"
     }
