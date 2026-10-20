@@ -28,6 +28,18 @@
     },
     {
       "context": "256K",
+      "digest": "ea3e29aebeb8",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "122b",
+      "size_bytes": 73000000000,
+      "size_text": "73GB - 77GB",
+      "updated": "58 minutes ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
       "digest": "337c6db6be12",
       "format": "gguf",
       "input_type": "Text, Image",
@@ -35,6 +47,30 @@
       "size_bytes": 242000000000,
       "size_text": "242GB",
       "updated": "2 months ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "f0df8c3e9efc",
+      "format": "mlx",
+      "input_type": "Text, Image",
+      "name": "122b-nvfp4",
+      "size_bytes": 73000000000,
+      "size_text": "73GB",
+      "updated": "58 minutes ago",
+      "usage_active_slots": 0,
+      "usage_level": ""
+    },
+    {
+      "context": "256K",
+      "digest": "f1e64af05b7d",
+      "format": "gguf",
+      "input_type": "Text, Image",
+      "name": "122b-q4_K_M",
+      "size_bytes": 77000000000,
+      "size_text": "77GB",
+      "updated": "58 minutes ago",
       "usage_active_slots": 0,
       "usage_level": ""
     }
