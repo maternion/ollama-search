@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 5764,
+      "pulls": 5768,
       "sizes": [
         "3b"
       ],
@@ -165,7 +165,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.5",
-      "pulls": 1756,
+      "pulls": 1757,
       "sizes": [
         "122b",
         "397b"
@@ -189,7 +189,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1540,
+      "pulls": 1545,
       "sizes": [
         "9b",
         "35b",
@@ -232,7 +232,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kat-coder-v2.5-dev",
-      "pulls": 1344,
+      "pulls": 1348,
       "sizes": [
         "35b"
       ],
@@ -255,7 +255,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1289,
+      "pulls": 1290,
       "sizes": [
         "3b",
         "8b",
@@ -323,7 +323,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 986,
+      "pulls": 987,
       "sizes": [
         "4b"
       ],
@@ -519,7 +519,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mistral-small-4",
-      "pulls": 437,
+      "pulls": 438,
       "sizes": [
         "119b"
       ],
@@ -581,7 +581,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.3",
-      "pulls": 352,
+      "pulls": 353,
       "sizes": [
         "753b"
       ],
@@ -664,7 +664,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/minimax-m3",
-      "pulls": 150,
+      "pulls": 151,
       "sizes": [
         "428b"
       ],
@@ -839,6 +839,26 @@
     },
     {
       "capabilities": [
+        "vision",
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Fix missing metadata.",
+      "name": "glm-ocr",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/glm-ocr",
+      "pulls": 75,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/glm-ocr",
+      "tag_count": 3,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Oct 5, 2026 11:18 PM UTC"
+    },
+    {
+      "capabilities": [
         "vision"
       ],
       "cloud": false,
@@ -848,7 +868,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ling-3.0-flash-vl",
-      "pulls": 61,
+      "pulls": 62,
       "sizes": [
         "125b"
       ],
@@ -909,7 +929,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/sarvam",
-      "pulls": 55,
+      "pulls": 56,
       "sizes": [
         "30b"
       ],
@@ -918,26 +938,6 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Sep 13, 2026 4:08 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision",
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Fix missing metadata.",
-      "name": "glm-ocr",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/glm-ocr",
-      "pulls": 50,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/glm-ocr",
-      "tag_count": 3,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Oct 5, 2026 11:18 PM UTC"
     },
     {
       "capabilities": [
@@ -1190,11 +1190,11 @@
     "/frob/mimo-v2.6-flash",
     "/frob/llama3.2-vision",
     "/frob/nex-n2-mini",
+    "/frob/glm-ocr",
     "/frob/ling-3.0-flash-vl",
     "/frob/mimo-v2.6-pro",
     "/frob/hy-mt1.5",
     "/frob/sarvam",
-    "/frob/glm-ocr",
     "/frob/trinity",
     "/frob/hy4-preview",
     "/frob/nex-n2-pro",
