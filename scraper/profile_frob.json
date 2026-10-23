@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 5781,
+      "pulls": 5786,
       "sizes": [
         "3b"
       ],
@@ -123,7 +123,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3957,
+      "pulls": 3959,
       "sizes": [
         "80b"
       ],
@@ -142,7 +142,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 2050,
+      "pulls": 2052,
       "sizes": [
         "753b"
       ],
@@ -189,7 +189,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1550,
+      "pulls": 1556,
       "sizes": [
         "9b",
         "35b",
@@ -302,7 +302,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/minimax-m2.7",
-      "pulls": 1028,
+      "pulls": 1029,
       "sizes": [
         "230b"
       ],
@@ -453,7 +453,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/nuextract-2.0",
-      "pulls": 681,
+      "pulls": 682,
       "sizes": [
         "8b"
       ],
@@ -519,7 +519,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mistral-small-4",
-      "pulls": 444,
+      "pulls": 446,
       "sizes": [
         "119b"
       ],
@@ -776,6 +776,26 @@
     {
       "capabilities": [
         "vision",
+        "tools"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Fix missing metadata.",
+      "name": "glm-ocr",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/glm-ocr",
+      "pulls": 88,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/glm-ocr",
+      "tag_count": 3,
+      "tags": [],
+      "updated": "2 weeks ago",
+      "updated_title": "Oct 5, 2026 11:18 PM UTC"
+    },
+    {
+      "capabilities": [
+        "vision",
         "tools",
         "thinking"
       ],
@@ -817,26 +837,6 @@
     },
     {
       "capabilities": [
-        "vision",
-        "tools"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Fix missing metadata.",
-      "name": "glm-ocr",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/glm-ocr",
-      "pulls": 79,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/glm-ocr",
-      "tag_count": 3,
-      "tags": [],
-      "updated": "2 weeks ago",
-      "updated_title": "Oct 5, 2026 11:18 PM UTC"
-    },
-    {
-      "capabilities": [
         "tools",
         "thinking"
       ],
@@ -868,7 +868,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ling-3.0-flash-vl",
-      "pulls": 62,
+      "pulls": 63,
       "sizes": [
         "125b"
       ],
@@ -1187,9 +1187,9 @@
     "/frob/hy3",
     "/frob/kimi-k3",
     "/frob/ling-3.0-flash",
+    "/frob/glm-ocr",
     "/frob/mimo-v2.6-flash",
     "/frob/llama3.2-vision",
-    "/frob/glm-ocr",
     "/frob/nex-n2-mini",
     "/frob/ling-3.0-flash-vl",
     "/frob/mimo-v2.6-pro",
