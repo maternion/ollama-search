@@ -35,7 +35,7 @@
       "source_url": "https://ollama.com/maternion/LightOnOCR-2",
       "tag_count": 2,
       "tags": [],
-      "updated": "8 months ago",
+      "updated": "9 months ago",
       "updated_title": "Jan 26, 2026 9:57 AM UTC"
     },
     {
@@ -47,7 +47,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 5708,
+      "pulls": 5714,
       "sizes": [
         "1.8b",
         "7b",
@@ -90,7 +90,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 3294,
+      "pulls": 3297,
       "sizes": [
         "4b"
       ],
@@ -111,7 +111,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 3016,
+      "pulls": 3039,
       "sizes": [
         "9b"
       ],
@@ -132,14 +132,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 2874,
+      "pulls": 2891,
       "sizes": [
         "9b"
       ],
       "source_url": "https://ollama.com/maternion/mimo-v2.6-heretic",
       "tag_count": 9,
       "tags": [],
-      "updated": "3 weeks ago",
+      "updated": "4 weeks ago",
       "updated_title": "Sep 25, 2026 10:52 AM UTC"
     },
     {
@@ -155,7 +155,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2552,
+      "pulls": 2556,
       "sizes": [
         "4b"
       ],
@@ -176,7 +176,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2",
-      "pulls": 2197,
+      "pulls": 2200,
       "sizes": [
         "8b"
       ],
@@ -218,7 +218,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1915,
+      "pulls": 1917,
       "sizes": [
         "2b"
       ],
@@ -237,7 +237,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1906,
+      "pulls": 1910,
       "sizes": [
         "8b"
       ],
@@ -259,7 +259,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1439,
+      "pulls": 1444,
       "sizes": [
         "2b",
         "8b"
@@ -300,7 +300,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 1160,
+      "pulls": 1163,
       "sizes": [
         "4b"
       ],
@@ -319,7 +319,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 1040,
+      "pulls": 1047,
       "sizes": [
         "2b"
       ],
@@ -363,7 +363,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/NuMarkdown-Thinking",
-      "pulls": 816,
+      "pulls": 817,
       "sizes": [
         "8b"
       ],
@@ -384,7 +384,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm-v4.7-heretic",
-      "pulls": 773,
+      "pulls": 781,
       "sizes": [
         "1b"
       ],
@@ -447,7 +447,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/LightOnOCR-3",
-      "pulls": 248,
+      "pulls": 261,
       "sizes": [
         "0.8b",
         "1b",
@@ -501,6 +501,25 @@
       "updated_title": "Sep 22, 2026 3:03 PM UTC"
     },
     {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "Spark-X2.6-4B keeps X2.5 architecture and gains from post-training: coding, tool use, long-context work, multilingual tasks, reasoning, supporting 1M-token context and 200+ languages.",
+      "name": "spark-x2.6",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/spark-x2.6",
+      "pulls": 71,
+      "sizes": [
+        "4b"
+      ],
+      "source_url": "https://ollama.com/maternion/spark-x2.6",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "yesterday",
+      "updated_title": "Oct 21, 2026 4:12 PM UTC"
+    },
+    {
       "capabilities": [
         "vision",
         "embedding"
@@ -512,7 +531,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/nemotron-3.5-embed",
-      "pulls": 51,
+      "pulls": 54,
       "sizes": [
         "1b",
         "8b"
@@ -520,27 +539,8 @@
       "source_url": "https://ollama.com/maternion/nemotron-3.5-embed",
       "tag_count": 8,
       "tags": [],
-      "updated": "yesterday",
+      "updated": "2 days ago",
       "updated_title": "Oct 21, 2026 3:02 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Spark-X2.6-4B keeps X2.5 architecture and gains from post-training: coding, tool use, long-context work, multilingual tasks, reasoning, supporting 1M-token context and 200+ languages.",
-      "name": "spark-x2.6",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/spark-x2.6",
-      "pulls": 50,
-      "sizes": [
-        "4b"
-      ],
-      "source_url": "https://ollama.com/maternion/spark-x2.6",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "yesterday",
-      "updated_title": "Oct 21, 2026 4:12 PM UTC"
     }
   ],
   "newest_order": [
@@ -594,8 +594,8 @@
     "/maternion/LightOnOCR-3",
     "/maternion/context-1",
     "/maternion/neohorse-1",
-    "/maternion/nemotron-3.5-embed",
-    "/maternion/spark-x2.6"
+    "/maternion/spark-x2.6",
+    "/maternion/nemotron-3.5-embed"
   ],
   "username": "maternion"
 }
