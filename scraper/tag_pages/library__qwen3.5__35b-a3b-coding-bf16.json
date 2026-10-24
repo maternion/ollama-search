@@ -12,15 +12,6 @@
   "files": [
     {
       "arch": "",
-      "blob_url": "/library/qwen3.5:35b-a3b-coding-bf16/blobs/5e4d7f74fec2",
-      "content_preview": "{\n\"architectures\": [\n\"Qwen3_5MoeForConditionalGeneration\"\n],\n\"image_token_id\": 248056,\n\"model_type\":",
-      "parameters": "",
-      "quantization": "",
-      "size": "3.5kB",
-      "type": "json"
-    },
-    {
-      "arch": "",
       "blob_url": "/library/qwen3.5:35b-a3b-coding-bf16/blobs/4f25002776b7",
       "content_preview": "{\n\"bos_token_id\": 248044,\n\"do_sample\": true,\n\"eos_token_id\": [\n248046,\n248044\n],\n\"pad_token_id\": 248",
       "parameters": "",
@@ -90,12 +81,21 @@
       "quantization": "",
       "size": "94B",
       "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:35b-a3b-coding-bf16/blobs/5e4d7f74fec2",
+      "content_preview": "{\n\"architectures\": [\n\"Qwen3_5MoeForConditionalGeneration\"\n],\n\"image_token_id\": 248056,\n\"model_type\":",
+      "parameters": "",
+      "quantization": "",
+      "size": "3.5kB",
+      "type": "json"
     }
   ],
   "full_path": "/library/qwen3.5:35b-a3b-coding-bf16",
   "manifest_digest": "37b8d012f58e",
   "manifest_size": "70GB",
-  "manifest_updated": "4 months ago",
+  "manifest_updated": "6 months ago",
   "path": "/library/qwen3.5",
   "tag_name": "35b-a3b-coding-bf16"
 }
