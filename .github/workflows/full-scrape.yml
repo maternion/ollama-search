@@ -46,6 +46,10 @@ jobs:
           if git rev-parse --verify origin/scraped-data >/dev/null 2>&1; then
             git checkout origin/scraped-data -- scraper/ 2>/dev/null || true
             git reset HEAD scraper/ 2>/dev/null || true
+            # scraped-data carries a stale copy of scraper/scrape.py (the
+            # checkpoint step copies the whole scraper/ dir). Restore the
+            # current code from HEAD so new flags/fixes actually take effect.
+            git checkout HEAD -- scraper/scrape.py 2>/dev/null || true
             echo "Restored scraped data from scraped-data branch"
             git worktree add /tmp/scraped-data scraped-data 2>/dev/null || true
           else

@@ -40,6 +40,7 @@ jobs:
             # scraped-data branch's older copy.
             git checkout origin/scraped-data -- scraper/ 2>/dev/null || true
             git reset HEAD scraper/ 2>/dev/null || true
+            git checkout HEAD -- scraper/scrape.py 2>/dev/null || true
             echo "Restored scraped data from scraped-data branch"
             git worktree add /tmp/scraped-data scraped-data 2>/dev/null || true
           else
