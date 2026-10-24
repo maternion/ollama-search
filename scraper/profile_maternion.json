@@ -47,7 +47,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 5728,
+      "pulls": 5736,
       "sizes": [
         "1.8b",
         "7b",
@@ -90,7 +90,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 3320,
+      "pulls": 3326,
       "sizes": [
         "4b"
       ],
@@ -111,7 +111,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 3065,
+      "pulls": 3082,
       "sizes": [
         "9b"
       ],
@@ -132,7 +132,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 2915,
+      "pulls": 2929,
       "sizes": [
         "9b"
       ],
@@ -218,7 +218,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1920,
+      "pulls": 1921,
       "sizes": [
         "2b"
       ],
@@ -237,7 +237,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1917,
+      "pulls": 1921,
       "sizes": [
         "8b"
       ],
@@ -300,7 +300,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 1169,
+      "pulls": 1170,
       "sizes": [
         "4b"
       ],
@@ -319,7 +319,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 1051,
+      "pulls": 1052,
       "sizes": [
         "2b"
       ],
@@ -341,7 +341,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/AgentCPM-Explore",
-      "pulls": 919,
+      "pulls": 920,
       "sizes": [
         "4b"
       ],
@@ -384,7 +384,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm-v4.7-heretic",
-      "pulls": 797,
+      "pulls": 801,
       "sizes": [
         "1b"
       ],
@@ -447,7 +447,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/LightOnOCR-3",
-      "pulls": 280,
+      "pulls": 281,
       "sizes": [
         "0.8b",
         "1b",
@@ -485,6 +485,25 @@
       "capabilities": [],
       "cloud": false,
       "cloud_only": false,
+      "description": "Spark-X2.6-4B keeps X2.5 architecture and gains from post-training: coding, tool use, long-context work, multilingual tasks, reasoning, supporting 1M-token context and 200+ languages.",
+      "name": "spark-x2.6",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/spark-x2.6",
+      "pulls": 96,
+      "sizes": [
+        "4b"
+      ],
+      "source_url": "https://ollama.com/maternion/spark-x2.6",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "2 days ago",
+      "updated_title": "Oct 21, 2026 4:12 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
       "description": "NeoHorse-1-9B is a 9B causal language model and an initial prototype on the path toward recursive self-improvement (RSI).",
       "name": "neohorse-1",
       "official": false,
@@ -501,25 +520,6 @@
       "updated_title": "Sep 22, 2026 3:03 PM UTC"
     },
     {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "Spark-X2.6-4B keeps X2.5 architecture and gains from post-training: coding, tool use, long-context work, multilingual tasks, reasoning, supporting 1M-token context and 200+ languages.",
-      "name": "spark-x2.6",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/spark-x2.6",
-      "pulls": 88,
-      "sizes": [
-        "4b"
-      ],
-      "source_url": "https://ollama.com/maternion/spark-x2.6",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "2 days ago",
-      "updated_title": "Oct 21, 2026 4:12 PM UTC"
-    },
-    {
       "capabilities": [
         "vision",
         "embedding"
@@ -531,7 +531,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/nemotron-3.5-embed",
-      "pulls": 77,
+      "pulls": 83,
       "sizes": [
         "1b",
         "8b"
@@ -593,8 +593,8 @@
     "/maternion/sweep-next-edit-1.5B",
     "/maternion/LightOnOCR-3",
     "/maternion/context-1",
-    "/maternion/neohorse-1",
     "/maternion/spark-x2.6",
+    "/maternion/neohorse-1",
     "/maternion/nemotron-3.5-embed"
   ],
   "username": "maternion"
