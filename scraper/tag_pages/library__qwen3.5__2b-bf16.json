@@ -30,15 +30,6 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/qwen3.5:2b-bf16/blobs/b507b9c2f6ca",
-      "content_preview": "{{ .Prompt }}",
-      "parameters": "",
-      "quantization": "",
-      "size": "13B",
-      "type": "template"
-    },
-    {
-      "arch": "",
       "blob_url": "/library/qwen3.5:2b-bf16/blobs/9371364b27a5",
       "content_preview": "{\n    \"presence_penalty\": 1.5,\n    \"temperature\": 1,\n    \"top_k\": 20,\n    \"top_p\": 0.95\n}",
       "parameters": "",
@@ -54,12 +45,21 @@
       "quantization": "",
       "size": "12kB",
       "type": "license"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/qwen3.5:2b-bf16/blobs/b507b9c2f6ca",
+      "content_preview": "{{ .Prompt }}",
+      "parameters": "",
+      "quantization": "",
+      "size": "13B",
+      "type": "template"
     }
   ],
   "full_path": "/library/qwen3.5:2b-bf16",
   "manifest_digest": "48e5fa2a680f",
   "manifest_size": "4.6GB",
-  "manifest_updated": "2 hours ago",
+  "manifest_updated": "1 week ago",
   "path": "/library/qwen3.5",
   "tag_name": "2b-bf16"
 }
