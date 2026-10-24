@@ -130,9 +130,10 @@ class Client:
         self.consecutive_failures = 0
         self.bail_out = False
 
-    def get(self, url: str) -> str | None:
+    def get(self, url: str, hx: bool = False) -> str | None:
         if self.bail_out:
             return None
+        headers = {"HX-Request": "true"} if hx else {}
         for attempt in range(3):
             try:
                 # Hard wall-clock deadline via SIGALRM — catches slow-trickle
@@ -140,7 +141,7 @@ class Client:
                 old_handler = signal.signal(signal.SIGALRM, _alarm_handler)
                 signal.alarm(int(HARD_DEADLINE))
                 try:
-                    r = self.session.get(url, timeout=TIMEOUT)
+                    r = self.session.get(url, timeout=TIMEOUT, headers=headers)
                 finally:
                     signal.alarm(0)
                     signal.signal(signal.SIGALRM, old_handler)
@@ -277,6 +278,7 @@ class Model:
     owner: str | None  # username for user models, None for official
     source_url: str
     cloud_only: bool = False  # True if all tags are cloud (no downloadable local tags)
+    context: str = ""  # max context from /search card (e.g. "1M"), fallback when tags lack it
     tags: list[Tag] = field(default_factory=list)
 
 
@@ -373,10 +375,12 @@ class BlobPage:
 # Card parsing (two markup variants: /library and /search)
 # --------------------------------------------------------------------------- #
 
-# A card is a <li class="flex items-baseline border-b ..."> element.
-# ollama.com removed x-test-* attributes; we now match by the li class.
+# A card is a <li> element. Two markup variants:
+#   /library, /x, profiles: <li class="flex items-baseline border-b ...">
+#   /search (post-overhaul): <li class="border-b border-black/[0.08]">
+# Both contain an <a href="/namespace/model"> as the first link.
 _CARD_OPEN_RE = re.compile(
-    r'<li\s+class="flex items-baseline border-b[^"]*">\s*'
+    r'<li\s+class="(?:flex items-baseline border-b[^"]*|border-b border-black/\[0\.08\])">\s*'
     r'<a\s+href="(/(?:library|x|maternion|frob|huihui_ai)/[^"]+)"',
     re.IGNORECASE,
 )
@@ -435,6 +439,11 @@ def parse_card(card_html: str, source_url: str) -> Model | None:
         if tm:
             name = tm.group(1)
     if not name:
+        # /search post-overhaul: <h2 title="name" ...><span>name</span></h2>
+        tm = re.search(r'<h2\b[^>]*\btitle="([^"]+)"', card_html)
+        if tm:
+            name = tm.group(1)
+    if not name:
         # Fallback: <span class="group-hover:underline truncate">name</span>
         tm = re.search(
             r'class="group-hover:underline truncate"[^>]*>([^<]+)</span>', card_html
@@ -449,6 +458,19 @@ def parse_card(card_html: str, source_url: str) -> Model | None:
     dm = re.search(r"<p\b[^>]*\bbreak-words\b[^>]*>(.*?)</p>", card_html, re.DOTALL)
     if dm:
         desc = strip_tags(dm.group(1))
+    if not desc:
+        # /search post-overhaul: <p title="..." class="... truncate ...">
+        dm = re.search(
+            r'<p\b[^>]*\btitle="([^"]+)"[^>]*\btruncate\b', card_html
+        )
+        if dm:
+            desc = dm.group(1)
+
+    # --- context: /search card has "<n> context" text ---
+    context = ""
+    cm = re.search(r">\s*([\d.]+\s*[KM]?)\s*context\s*<", card_html, re.IGNORECASE)
+    if cm:
+        context = cm.group(1).strip()
 
     # --- capabilities: indigo badges (bg-indigo-50 text-indigo-600) ---
     # Old markup used x-test-capability. New markup: <span class="... bg-indigo-50
@@ -514,6 +536,11 @@ def parse_card(card_html: str, source_url: str) -> Model | None:
             card_html,
             re.DOTALL,
         )
+        if pm:
+            pulls = parse_count(pm.group(1).strip())
+    if not pulls:
+        # /search post-overhaul: <span title="4,838,026 downloads">...<span>4.8M</span>
+        pm = re.search(r'title="([\d,]+)\s*downloads"', card_html, re.IGNORECASE)
         if pm:
             pulls = parse_count(pm.group(1).strip())
     if not tag_count:
@@ -589,6 +616,7 @@ def parse_card(card_html: str, source_url: str) -> Model | None:
         official=official,
         owner=owner,
         source_url=BASE + path,
+        context=context,
     )
 
 
@@ -756,57 +784,89 @@ def parse_tags_page(html: str) -> list[Tag]:
     return tags
 
 
+def parse_model_updated(html: str) -> tuple[str, str]:
+    """Extract the model-level (updated, updated_title) from a /tags page header.
+
+    The header has <span class="flex items-center" title="Oct 13, 2026 5:35 PM UTC">
+    with a clock SVG, followed by a relative-text span ("2 weeks ago").
+    Returns (relative_text, absolute_title); both "" if not found.
+    """
+    updated_title = ""
+    um = re.search(
+        r'<span\s+class="flex items-center"\s+title="([^"]+)"\s*>'
+        r'\s*<svg[^>]*>.*?d="M12 6v6h4\.5',
+        html,
+        re.DOTALL,
+    )
+    if um:
+        updated_title = um.group(1)
+    updated = ""
+    # Relative text: the span following the clock SVG inside the same header.
+    rm = re.search(
+        r'd="M12 6v6h4\.5[^"]*"[^>]*>.*?<span\s*>([^<]+)</span>',
+        html,
+        re.DOTALL,
+    )
+    if rm:
+        updated = rm.group(1).strip()
+        if updated.startswith("Updated"):
+            updated = updated.replace("Updated", "").strip()
+    return updated, updated_title
+
+
 # --------------------------------------------------------------------------- #
 # Crawl orchestration
 # --------------------------------------------------------------------------- #
 
 
+def _search_pages(client: Client, sort: str, q: str = "") -> list[Model]:
+    """Page through /search results for a given sort (and optional query).
+
+    Page 1 is a full HTML document; pages >=2 require the HX-Request header
+    and return a fragment. Stops on the first page with no cards.
+    """
+    cards: list[Model] = []
+    page = 1
+    while True:
+        params = {"o": sort}
+        if q:
+            params["q"] = q
+        if page > 1:
+            params["page"] = page
+        url = f"{BASE}/search?" + "&".join(
+            f"{k}={v}" for k, v in params.items()
+        )
+        html = client.get(url, hx=(page > 1))
+        if html is None:
+            break
+        page_cards = parse_cards(html, url)
+        if not page_cards:
+            break
+        cards.extend(page_cards)
+        page += 1
+        time.sleep(DELAY)
+    return cards
+
+
 def crawl_official(client: Client) -> tuple[dict[str, Model], dict[str, list[str]]]:
-    """Crawl /search (trending), /library?sort=popular and /library?sort=newest.
+    """Crawl /search?o=popular and /search?o=newest (paginated).
 
     Returns (models_by_path, sort_orders) where sort_orders maps
-    sort name → list of model paths in document order.
-    The 'popular' order comes from /search (trending, 20 models) with
-    remaining models appended in /library?sort=popular (pulls) order.
+    sort name -> list of model paths in document order.
     """
     found: dict[str, Model] = {}
     orders: dict[str, list[str]] = {}
 
-    # 1. Fetch /search for the trending list
-    log.info("crawling %s/search", BASE)
-    search_html = client.get(f"{BASE}/search")
-    search_cards = []
-    if search_html:
-        search_cards = parse_cards(search_html, f"{BASE}/search")
-        log.info("  search (trending): %d cards", len(search_cards))
-        for m in search_cards:
-            if m.path not in found:
-                found[m.path] = m
-    time.sleep(DELAY)
-
-    # 2. Fetch /library?sort=popular and /library?sort=newest
-    lib_orders: dict[str, list[str]] = {}
     for sort in ("popular", "newest"):
-        url = f"{BASE}/library?sort={sort}"
-        log.info("crawling %s", url)
-        html = client.get(url)
-        if html is None:
-            log.error("failed to fetch %s", url)
-            continue
-        cards = parse_cards(html, url)
+        log.info("crawling %s/search?o=%s", BASE, sort)
+        cards = _search_pages(client, sort)
         log.info("  %s: %d cards", sort, len(cards))
-        lib_orders[sort] = [m.path for m in cards]
+        orders[sort] = []
         for m in cards:
             if m.path not in found:
                 found[m.path] = m
-        time.sleep(DELAY)
-
-    # Build 'popular' order: trending from /search first, then rest by pulls
-    trending_paths = [m.path for m in search_cards]
-    trending_set = set(trending_paths)
-    remaining = [p for p in lib_orders.get("popular", []) if p not in trending_set]
-    orders["popular"] = trending_paths + remaining
-    orders["newest"] = lib_orders.get("newest", [])
+            if m.path not in orders[sort]:
+                orders[sort].append(m.path)
 
     return found, orders
 
@@ -876,19 +936,13 @@ SEARCH_TERMS: list[str] = list("abcdefghijklmnopqrstuvwxyz0123456789") + [
 def crawl_search(client: Client, models: dict[str, Model]) -> None:
     """Crawl /search?q=<term> for many terms; merge new models into `models`."""
     for term in SEARCH_TERMS:
-        url = f"{BASE}/search?q={term}"
-        html = client.get(url)
-        if html is None:
-            log.error("failed to fetch %s", url)
-            continue
-        cards = parse_cards(html, url)
+        cards = _search_pages(client, "popular", q=term)
         new = 0
         for m in cards:
             if m.path not in models:
                 models[m.path] = m
                 new += 1
         log.info("search q=%-12s -> %2d cards (%d new)", term, len(cards), new)
-        time.sleep(DELAY)
 
 
 def fetch_tags(client: Client, model: Model) -> list[Tag]:
@@ -900,6 +954,13 @@ def fetch_tags(client: Client, model: Model) -> list[Tag]:
     tags = parse_tags_page(html)
     if not tags:
         log.warning("no tags parsed for %s", url)
+    # /search cards no longer carry tag_count/updated, so derive them here.
+    updated, updated_title = parse_model_updated(html)
+    if updated_title:
+        model.updated_title = updated_title
+    if updated:
+        model.updated = updated
+    model.tag_count = len(tags)
     return tags
 
 
@@ -971,14 +1032,36 @@ def _parse_file_explorer(
     Returns (manifest_updated, manifest_digest, manifest_size, files).
     Shared by parse_model_page() and parse_tag_page().
     """
-    # --- manifest header row: <div class="flex items-center justify-between
-    #     bg-neutral-50 px-4 py-3 ..."> ... </div> ---
+    # Tag pages may contain multiple runtime panels (e.g. mlx + llamacpp).
+    # Pick the one containing a model blob (GGUF/llamacpp); if none, use the
+    # first/only panel (MLX). Falls back to the whole section if no panels.
+    panel_starts = [
+        m.start() for m in re.finditer(
+            r'<div class="detail-panel[^"]*" data-panel="runtime-\d">', file_explorer
+        )
+    ]
+    if len(panel_starts) >= 2:
+        best = None
+        for i, s in enumerate(panel_starts):
+            e = panel_starts[i + 1] if i + 1 < len(panel_starts) else len(file_explorer)
+            chunk = file_explorer[s:e]
+            # A GGUF/llamacpp panel has a model blob row; MLX panels don't.
+            if 'href="' in chunk and re.search(
+                r'<a\s+href="[^"]*">\s*model\s*</a>', chunk, re.DOTALL
+            ):
+                best = chunk
+                break
+        if best is None:
+            end = panel_starts[1] if len(panel_starts) > 1 else len(file_explorer)
+            best = file_explorer[panel_starts[0]:end]
+        file_explorer = best
+
+    # --- manifest header row: <div class="... bg-neutral-50 ..."> ... </div> ---
     manifest_updated = ""
     manifest_digest = ""
     manifest_size = ""
     hm = re.search(
-        r'<div class="flex items-center justify-between bg-neutral-50[^"]*">'
-        r"(.*?)</div>",
+        r'<div class="[^"]*\bbg-neutral-50\b[^"]*"[^>]*>(.*?)</div>',
         file_explorer,
         re.DOTALL,
     )
@@ -2807,10 +2890,8 @@ def infer_capabilities(models: dict[str, Model]) -> None:
                 caps.append("tools")
             if "thinking" not in caps and "thinking" in desc:
                 caps.append("thinking")
-            # Audio: omni/multimodal models often describe audio/speech support
-            # (e.g. nemotron3 "Nemotron 3 Nano Omni ... unifies video, audio,
-            # image, and text understanding"). ollama.com doesn't show an audio
-            # badge, so infer from description/readme keywords.
+            # Audio: omni/multimodal models often describe audio/speech support.
+            # ollama.com doesn't always show an audio badge, so infer from desc.
             if "audio" not in caps and (
                 "audio" in desc
                 or "speech" in desc
@@ -2820,6 +2901,17 @@ def infer_capabilities(models: dict[str, Model]) -> None:
                 or " tts " in desc
             ):
                 caps.append("audio")
+            # Speech (TTS): models that generate audio from text (e.g. phonon).
+            # Distinct from "audio" understanding (speech-to-text/omni).
+            if "speech" not in caps and (
+                "text-to-speech" in desc
+                or "text to speech" in desc
+                or " tts " in desc
+                or " tts." in desc
+                or "narrat" in desc
+                or "spoken audio" in desc
+            ):
+                caps.append("speech")
         # Check readme content for capability signals. Some models have no
         # template blob, no system prompt, and no chat_template in GGUF metadata
         # (e.g. imported HF models), but their readme mentions tools/thinking.
@@ -3127,7 +3219,7 @@ def git_checkpoint(label: str = "") -> None:
 
 
 def check_only() -> int:
-    """Fetch /search + /library?sort=newest (2 requests), hash card data, compare to cache.
+    """Fetch /search (paginated, popular order), hash card data, compare to cache.
 
     Exit 0 = no change, 1 = changed (or first run).
     Writes the hash to scraper/.catalog-hash.
@@ -3136,31 +3228,17 @@ def check_only() -> int:
 
     client = Client()
     try:
-        # Fetch /search (trending)
-        search_html = client.get(f"{BASE}/search")
-        cards = []
-        if search_html:
-            cards = parse_cards(search_html, f"{BASE}/search")
-            log.info("fetched %d cards from /search", len(cards))
-
-        # Fetch /library?sort=newest (all official models)
-        lib_html = client.get(f"{BASE}/library?sort=newest")
-        if lib_html:
-            lib_cards = parse_cards(lib_html, f"{BASE}/library?sort=newest")
-            log.info("fetched %d cards from /library?sort=newest", len(lib_cards))
-            # Merge, deduplicating by path
-            seen = {c.path for c in cards}
-            for c in lib_cards:
-                if c.path not in seen:
-                    cards.append(c)
-                    seen.add(c.path)
-
-        log.info("total unique cards: %d", len(cards))
+        cards = _search_pages(client, "popular")
+        log.info("fetched %d cards from /search", len(cards))
     finally:
         client.close()
 
-    # Hash: name + tag_count + updated_title + path
-    sig = "|".join(f"{m.name}:{m.tag_count}:{m.updated_title}:{m.path}" for m in cards)
+    # Hash: path + pulls + sizes + capabilities + context (the fields a /search
+    # card exposes; tag_count/updated are no longer on the card).
+    sig = "|".join(
+        f"{m.path}:{m.pulls}:{','.join(m.sizes)}:{','.join(m.capabilities)}:{m.context}"
+        for m in cards
+    )
     current = hashlib.sha256(sig.encode()).hexdigest()[:16]
 
     cache_file = DATA / ".catalog-hash"
@@ -3184,25 +3262,27 @@ def check_only() -> int:
 # Static pages: /download + /pricing
 # --------------------------------------------------------------------------- #
 
-# OS labels in the order shown on ollama.com's download page.
+# /download is now a single page with three data-os-panel sections.
 _DOWNLOAD_OS = [
-    ("mac", "macOS", f"{BASE}/download/mac"),
-    ("linux", "Linux", f"{BASE}/download/linux"),
-    ("windows", "Windows", f"{BASE}/download/windows"),
+    ("mac", "macOS"),
+    ("linux", "Linux"),
+    ("windows", "Windows"),
 ]
 
 _CMD_RE = re.compile(r'<code class="command[^"]*">(.*?)</code>', re.DOTALL)
 _HELPER_RE = re.compile(r'<p class="text-xs[^"]*mt-1">(.*?)</p>', re.DOTALL)
 _OR_RE = re.compile(r'<p class="my-2 text-xs[^"]*">or</p>', re.DOTALL)
-# Download button: <a class="...rounded-3xl..." href="/download/...">Label</a>.
-# The anchor spans multiple lines (class and href on separate lines). Match
-# only buttons whose href starts with "/download/" (a relative ollama.com
-# path) — excludes external github release links that contain "/download/".
+# Manual download link inside a data-os-panel: <a href="/download/Ollama.dmg" ...>Download manually</a>
 _DL_BTN_RE = re.compile(
-    r'<a\b[^>]*class="[^"]*rounded-3xl[^"]*"[^>]*href="(/download/[^"]+)"[^>]*>\s*([^<]+?)\s*</a\b',
+    r'<a\b[^>]*href="(/download/[^"]+)"[^>]*>\s*([^<]+?)\s*</a\b',
     re.DOTALL,
 )
 _FOOTNOTE_RE = re.compile(r'<p class="mt-4 text-xs[^"]*">(.*?)</p>', re.DOTALL)
+# A data-os-panel block: <div data-os-panel="mac" ...> ... </div>
+_OS_PANEL_RE = re.compile(
+    r'<div\b[^>]*\bdata-os-panel="([^"]+)"[^>]*>(.*?)(?=<div\b[^>]*\bdata-os-panel=|<section|</main|$)',
+    re.DOTALL,
+)
 
 
 def _strip_tags(s: str) -> str:
@@ -3213,43 +3293,44 @@ def _strip_tags(s: str) -> str:
 
 
 def scrape_download_page(client: Client) -> dict:
-    """Fetch all three OS download variants and parse the install blocks."""
-    tabs = []
-    for os_slug, label, page_url in _DOWNLOAD_OS:
-        html_text = client.get(page_url)
-        if not html_text:
-            log.warning("download page %s: no html", os_slug)
+    """Fetch /download once and parse each data-os-panel install block."""
+    html_text = client.get(f"{BASE}/download")
+    if not html_text:
+        log.warning("download page: no html")
+        return {"tabs": []}
+
+    label_by_os = {slug: label for slug, label in _DOWNLOAD_OS}
+    # Group panels by OS (there are two per OS: command block + manual link).
+    panels_by_os: dict[str, str] = {}
+    for pm in _OS_PANEL_RE.finditer(html_text):
+        os_slug = pm.group(1)
+        if os_slug not in label_by_os:
             continue
-        tab = {"os": os_slug, "label": label}
+        panels_by_os.setdefault(os_slug, "")
+        panels_by_os[os_slug] += pm.group(2)
 
-        m = _CMD_RE.search(html_text)
+    tabs = []
+    for os_slug, panel in panels_by_os.items():
+        tab = {"os": os_slug, "label": label_by_os[os_slug]}
+
+        m = _CMD_RE.search(panel)
+        tab["command"] = _strip_tags(m.group(1)) if m else ""
+
+        m = _HELPER_RE.search(panel)
+        tab["helper"] = _strip_tags(m.group(1)) if m else ""
+
+        tab["or_separator"] = bool(_OR_RE.search(panel))
+
+        m = _DL_BTN_RE.search(panel)
         if m:
-            tab["command"] = _strip_tags(m.group(1))
-        else:
-            tab["command"] = ""
-
-        m = _HELPER_RE.search(html_text)
-        if m:
-            tab["helper"] = _strip_tags(m.group(1))
-        else:
-            tab["helper"] = ""
-
-        tab["or_separator"] = bool(_OR_RE.search(html_text))
-
-        m = _DL_BTN_RE.search(html_text)
-        if m:
-            href = m.group(1)
-            tab["download_url"] = href
+            tab["download_url"] = m.group(1)
             tab["download_label"] = _strip_tags(m.group(2))
         else:
             tab["download_url"] = ""
             tab["download_label"] = ""
 
-        m = _FOOTNOTE_RE.search(html_text)
-        if m:
-            tab["footnote"] = _strip_tags(m.group(1))
-        else:
-            tab["footnote"] = ""
+        m = _FOOTNOTE_RE.search(panel)
+        tab["footnote"] = _strip_tags(m.group(1)) if m else ""
 
         tabs.append(tab)
         log.info(
@@ -3258,17 +3339,17 @@ def scrape_download_page(client: Client) -> dict:
             tab["command"],
             tab["download_url"] or "(none)",
         )
-        time.sleep(DELAY)
     return {"tabs": tabs}
 
 
 # Pricing card: the tier name (h2), description (p), price block, button, features (ul>li>span).
 _PRICE_RE = re.compile(
-    r'<div class="text-2xl font-semibold font-rounded">(.*?)</div>', re.DOTALL
+    r'<div class="[^"]*text-[23]xl font-semibold font-rounded[^"]*">(.*?)</div>', re.DOTALL
 )
 _TIER_NAME_RE = re.compile(r"<h2[^>]*>(.*?)</h2>", re.DOTALL)
 _TIER_DESC_RE = re.compile(
-    r'<p class="(?:text-black )?mb-(?:4|6)">(.*?)</p>', re.DOTALL
+    r'<p class="(?:text-black )?(?:mb-(?:4|6)|mt-2 min-h-8 text-xs text-neutral-500)[^"]*">\s*(.*?)\s*</p>',
+    re.DOTALL,
 )
 _TIER_IMG_RE = re.compile(
     r'<img\s+src="([^"]+)"[^>]*class="[^"]*self-start[^"]*"', re.DOTALL
@@ -3277,13 +3358,13 @@ _TIER_IMG_RE = re.compile(
 _TIER_PRICESUB_RE = re.compile(
     r'<p class="text-xs text-neutral-600[^"]*">\s*(.*?)\s*</p>', re.DOTALL
 )
-# Badge: <span class="... rounded-full ... text-xs font-medium ...">Introductory pricing</span>
+# Badge: <span class="... rounded-full ...">Introductory pricing</span>
 _TIER_BADGE_RE = re.compile(
-    r'<span class="inline-flex[^"]*rounded-full[^"]*text-xs[^"]*">(.*?)</span>',
+    r'<span class="(?:inline-flex[^"]*|[^"]*border[^"]*)\brounded-full\b[^"]*"[^>]*>(.*?)</span>',
     re.DOTALL,
 )
 _TIER_BTN_RE = re.compile(
-    r'<a href="([^"]+)"[^>]*class="block w-full[^"]*rounded-full[^"]*"[^>]*>\s*(.*?)\s*</a>',
+    r'<a\s+href="([^"]+)"[^>]*class="[^"]*rounded-full[^"]*"[^>]*>\s*(.*?)\s*</a>',
     re.DOTALL,
 )
 # Paused/disabled button: a <div> (not <a>) with cursor-not-allowed class
@@ -3299,7 +3380,7 @@ _TIER_NOTICE_RE = re.compile(
 _FEAT_RE = re.compile(r"<span>(.*?)</span>", re.DOTALL)
 # Features subtitle: "Everything in Free, plus:" / "What's included:" / "Coming soon:"
 _FEAT_SUBTITLE_RE = re.compile(
-    r'<div class="text-sm font-medium[^"]*">(.*?)</div>', re.DOTALL
+    r'<(?:div|p) class="text-sm (?:font-medium|text-neutral-500)[^"]*"[^>]*>(.*?)</(?:div|p)>', re.DOTALL
 )
 
 
@@ -3389,6 +3470,111 @@ def _parse_pricing_card(card_html: str) -> dict:
     }
 
 
+def _extract_subblock(html: str, anchor_id: str) -> str:
+    """Return the inner HTML of the element with the given id, up to its
+    matching close tag (handles nested same-tag divs by depth counting)."""
+    m = re.search(r'id="' + re.escape(anchor_id) + r'"', html)
+    if not m:
+        return ""
+    # Back up to the opening <div
+    start = html.rfind("<div", 0, m.start())
+    if start == -1:
+        return ""
+    open_end = html.find(">", start)
+    if open_end == -1:
+        return ""
+    depth = 1
+    i = open_end + 1
+    n = len(html)
+    while i < n and depth > 0:
+        no = html.find("<div", i)
+        nc = html.find("</div>", i)
+        if nc == -1:
+            return ""
+        if no != -1 and no < nc:
+            depth += 1
+            i = html.find(">", no) + 1
+        else:
+            depth -= 1
+            i = nc + len("</div>")
+            if depth == 0:
+                return html[open_end + 1 : nc]
+    return ""
+
+
+def _parse_pricing_plan_card(card_html: str, plan: str) -> dict:
+    """Parse one of the Pro/Max sub-plans from the combined card."""
+    header = _extract_subblock(card_html, f"plan-header-{plan}")
+    body = _extract_subblock(card_html, f"plan-body-{plan}")
+
+    name = plan.capitalize()
+    # Description: <p class="mt-2 min-h-8 text-xs text-neutral-500">text</p>
+    desc = ""
+    dm = re.search(
+        r'<p class="mt-2 min-h-8 text-xs text-neutral-500">\s*(.*?)\s*</p>',
+        header,
+        re.DOTALL,
+    )
+    if dm:
+        desc = _strip_tags(dm.group(1))
+
+    # Price: first $-prefixed text node in the price block.
+    price = ""
+    pm = re.search(
+        r'<div class="mt-2 text-3xl font-semibold font-rounded">(.*?)</div>',
+        header,
+        re.DOTALL,
+    )
+    if pm:
+        price_text = _strip_tags(re.sub(r"<[^>]+>", " ", pm.group(1)))
+        pm2 = re.search(r"(\$\d+(?:\.\d+)?)", price_text)
+        if pm2:
+            price = pm2.group(1)
+
+    # Features: <li ...><span>text</span></li> inside the body's first <ul>.
+    features: list[str] = []
+    ul_m = re.search(r"<ul[^>]*>(.*?)</ul>", body, re.DOTALL)
+    if ul_m:
+        for li_m in re.finditer(r"<li\b[^>]*>(.*?)</li>", ul_m.group(1), re.DOTALL):
+            txt = _strip_tags(re.sub(r"<[^>]+>", " ", li_m.group(1)))
+            if txt:
+                features.append(txt)
+
+    # Subtitle: "Everything in Free, plus:" etc.
+    features_subtitle = ""
+    sm = re.search(
+        r'<p class="mt-6 text-sm text-neutral-500 mb-4">\s*(.*?)\s*</p>',
+        body,
+        re.DOTALL,
+    )
+    if sm:
+        features_subtitle = _strip_tags(sm.group(1))
+
+    # Button: <a href="/upgrade?plan=pro">Get Pro</a>
+    button_url = ""
+    button_label = ""
+    bm = re.search(r'<a\s+href="([^"]+)"[^>]*>\s*([^<]+?)\s*</a>', body, re.DOTALL)
+    if bm:
+        button_url = bm.group(1)
+        button_label = _strip_tags(bm.group(2))
+
+    return {
+        "name": name,
+        "price": price,
+        "price_subtext": "",
+        "description": desc,
+        "image_url": "",
+        "badge": "",
+        "button_url": button_url,
+        "button_label": button_label,
+        "button_paused": False,
+        "notice": "",
+        "features": features,
+        "features_subtitle": features_subtitle,
+        "coming_soon_features": [],
+    }
+
+
 def _parse_pricing_faq(html_text: str) -> list:
     """Parse the FAQ section into groups (Models, Usage, Privacy) + Q&A items.
 
@@ -3430,36 +3616,38 @@ def _parse_pricing_faq(html_text: str) -> list:
 def scrape_pricing_page(client: Client) -> dict:
     """Fetch /pricing and parse the tier cards + FAQ groups.
 
-    ollama.com now has two tab sections: pricing-individuals (Free/Pro/Max)
-    and pricing-teams (Team/Enterprise). Each has a grid of tier cards.
+    New layout: a single grid of 4 cards (Free, Pro/Max toggle, Team,
+    Enterprise). The Pro/Max card carries two hidden headers/bodies
+    (#plan-header-pro/#plan-header-max, #plan-body-pro/#plan-body-max) which
+    we split into two tier entries so build_pricing_page's Individuals grid
+    (Free/Pro/Max) keeps working.
     """
     html_text = client.get(f"{BASE}/pricing")
     if not html_text:
         log.warning("pricing page: no html")
         return {"tiers": [], "faq": []}
 
-    tiers = []
-    # Parse both the individuals and teams sections.
-    for sec_id in ("pricing-individuals", "pricing-teams"):
-        sec_start = html_text.find(f'id="{sec_id}"')
-        if sec_start < 0:
-            continue
-        # Back up to the <section tag
-        sec_start = html_text.rfind("<section", 0, sec_start)
-        sec_end = html_text.find("</section>", sec_start)
-        grid = html_text[sec_start:sec_end]
-        # Each card is a top-level <div> with rounded-3xl inside the grid.
-        # Individuals: md:col-span-2, Teams: flex flex-col.
-        card_starts = [
-            mm.start()
-            for mm in re.finditer(
-                r'<div class="(?:md:col-span-(?:2|6)|flex flex-col) [^"]*rounded-3xl',
-                grid,
-            )
-        ]
-        for i, cs in enumerate(card_starts):
-            ce = card_starts[i + 1] if i + 1 < len(card_starts) else len(grid)
-            card_html = grid[cs:ce]
+    tiers: list[dict] = []
+    # The 4 tier cards live inside the first <section class="mb-12"> grid.
+    grid_start = html_text.find('<section class="mb-12">')
+    grid_end = html_text.find("</section>", grid_start) if grid_start >= 0 else -1
+    grid = html_text[grid_start:grid_end] if grid_start >= 0 else html_text
+    # Each card is a <div class="flex flex-col border ... rounded-2xl p-6">.
+    card_starts = [
+        m.start()
+        for m in re.finditer(
+            r'<div class="flex flex-col border border-neutral-200 rounded-2xl p-6">',
+            grid,
+        )
+    ]
+    for i, cs in enumerate(card_starts):
+        ce = card_starts[i + 1] if i + 1 < len(card_starts) else len(grid)
+        card_html = grid[cs:ce]
+        # Pro/Max card has both plan headers; emit two tiers.
+        if 'id="plan-header-pro"' in card_html and 'id="plan-header-max"' in card_html:
+            for plan in ("pro", "max"):
+                tiers.append(_parse_pricing_plan_card(card_html, plan))
+        else:
             tiers.append(_parse_pricing_card(card_html))
 
     faq = _parse_pricing_faq(html_text)

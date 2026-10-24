@@ -619,14 +619,14 @@ def nav_html(active: str = "") -> str:
         <div id="searchpreview" class="hidden absolute left-0 right-0 top-12 z-50" style="width: calc(100% + 2px); margin-left: -1px;"></div>
       </div>
     </div>
-    <div class="hidden lg:flex xl:flex-1 items-center space-x-2 justify-end ml-6 xl:ml-0">
+    <div class="hidden md:flex items-center space-x-2 justify-end ml-6">
       <button id="theme-toggle" class="flex cursor-pointer items-center rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 text-lg px-3 py-1.5 text-black dark:text-neutral-200 whitespace-nowrap" title="Toggle dark mode">
         <span class="dark:hidden">{SVG_SUN}</span>
         <span class="hidden dark:block">{SVG_MOON}</span>
       </button>
       <a class="flex cursor-pointer items-center rounded-full bg-neutral-800 dark:bg-neutral-100 text-lg px-4 py-1.5 text-white dark:text-neutral-900 hover:bg-black dark:hover:bg-white whitespace-nowrap focus:bg-black dark:focus:bg-white" href="{url("/download")}">Download</a>
     </div>
-    <div class="lg:hidden flex items-center">
+    <div class="md:hidden flex items-center">
       <button id="theme-toggle-mobile" class="flex items-center rounded-full bg-black/5 dark:bg-white/10 px-3 py-1.5 mr-2 text-black dark:text-neutral-200">
         <span class="dark:hidden">{SVG_SUN}</span>
         <span class="hidden dark:block">{SVG_MOON}</span>
@@ -843,6 +843,85 @@ def _has_moe(model_path: str, tags: list[dict] | None = None) -> bool:
     return False
 
 
+_FAMILY_CACHE: dict[str, str] = {}
+
+
+def _model_family(model_path: str, tags: list[dict] | None = None) -> str:
+    """Detect the attention family (standard/swa/mla/hybrid/none) for a model.
+
+    Resolves the latest tag's model blob (or config.json fallback) and runs
+    memcalc's detect_family. Cached per model path. Returns 'unknown' when no
+    blob/hparams are available.
+    """
+    if model_path in _FAMILY_CACHE:
+        return _FAMILY_CACHE[model_path]
+    family = "unknown"
+    try:
+        from memcalc.parse import extract_hparams as _eh, extract_hparams_from_config as _ec
+        from memcalc.dispatch import detect_family as _df
+
+        tname, tp = _first_tag_page(model_path)
+        if tp:
+            digest = None
+            for f in tp.get("files") or []:
+                if f.get("type") == "model" and f.get("blob_url"):
+                    digest = f["blob_url"].rsplit("/", 1)[-1]
+                    break
+            if not digest:
+                json_files = [
+                    f for f in tp.get("files") or []
+                    if f.get("type") == "json" and f.get("blob_url")
+                ]
+                json_files.sort(key=lambda f: _size_key(f.get("size", "")))
+                for f in json_files:
+                    d = f["blob_url"].rsplit("/", 1)[-1]
+                    bp = BLOBS_DIR / f"{d}.json"
+                    if bp.exists():
+                        try:
+                            bd = json.loads(bp.read_text())
+                            cfg = json.loads(bd.get("content") or "")
+                            if isinstance(cfg, dict) and (
+                                "model_type" in cfg or "architectures" in cfg
+                            ):
+                                digest = d
+                                break
+                        except Exception:
+                            pass
+            if digest:
+                bp = BLOBS_DIR / f"{digest}.json"
+                if bp.exists():
+                    bd = json.loads(bp.read_text())
+                    hp = None
+                    if bd.get("blob_type") == "json" and bd.get("content"):
+                        try:
+                            hp = _ec(json.loads(bd["content"]))
+                        except Exception:
+                            hp = None
+                    else:
+                        hp = _eh(bd)
+                    if hp:
+                        family = _df(hp)
+    except Exception:
+        pass
+    _FAMILY_CACHE[model_path] = family
+    return family
+
+
+def _size_key(raw: str) -> float:
+    """Parse a size string like '42kB' to bytes for sorting."""
+    raw = str(raw).strip().lower()
+    m = re.match(r"([\d.]+)\s*([kmgtp]?i?b?)", raw)
+    if not m:
+        return float("inf")
+    unit = m.group(2).rstrip("b") or ""
+    idx = " kmgt".find(unit[:1]) if unit[:1] in "kmgt" else 0
+    base = 1024 if "i" in unit else 1e3
+    try:
+        return float(m.group(1)) * (base ** idx if unit else 1)
+    except ValueError:
+        return float("inf")
+
+
 def _first_tag_page(model_path: str):
     """Return (tag_name, parsed_tag_page) for the latest tag, or the first
     available tag if there is no 'latest'. Returns (None, None) if none exist."""
@@ -982,15 +1061,18 @@ def render_card(
         f'data-tag-count="{tag_count}" '
         f'data-sizes-count="{len(m["sizes"])}" '
         f'data-sizes="{" ".join(m.get("sizes", []))}" '
-        f'data-context="{max((parse_context_to_tokens(t.get("context", "-")) for t in m.get("tags", [])), default=0)}" '
+        f'data-context="{max([parse_context_to_tokens(t.get("context", "-")) for t in m.get("tags", [])] + [parse_context_to_tokens(m.get("context", "-"))], default=0)}" '
         f'data-name="{esc(name_raw).lower()}" '
         f'data-path="{esc(m["path"].strip("/").lower())}" '
         f'data-cloud="{str(m.get("cloud", False)).lower()}" '
         f'data-cloud-only="{str(m.get("cloud_only", False)).lower()}" '
         f'data-official="{str(m.get("official", True)).lower()}" '
         f'data-audio="{"true" if "audio" in (m.get("capabilities") or []) else "false"}" '
+        f'data-speech="{"true" if "speech" in (m.get("capabilities") or []) else "false"}" '
+        f'data-decision="{"true" if "decision" in (m.get("capabilities") or []) else "false"}" '
         f'data-mlx="{"true" if any((t.get("format") == "mlx") for t in (m.get("tags") or [])) else "false"}" '
         f'data-moe="{"true" if _has_moe(m["path"], m.get("tags")) else "false"}" '
+        f'data-family="{_model_family(m["path"], m.get("tags"))}" '
         f'data-mtp="{"true" if any("-mtp" in (t.get("name", "").lower()) for t in (m.get("tags") or [])) else "false"}" '
         f'data-image="{"true" if "image" in (m.get("capabilities") or []) else "false"}" '
         f'data-template-type="{_classify_template(m["path"], m.get("capabilities") or [], m.get("updated_title") or "")}"'
@@ -1103,17 +1185,18 @@ def build_index(models: list[dict], ranks: dict) -> None:
         for m in sorted_models
     )
 
-    # Capability filter chips (Embedding/Vision/Tools/Thinking only).
-    # Image/MLX/MTP/Audio live exclusively inside the More dropdown.
-    chip_labels = ["Embedding", "Vision", "Tools", "Thinking"]
-    chip_values = ["embedding", "vision", "tools", "thinking"]
-    chip_ids = ["cap-embedding", "cap-vision", "cap-tools", "cap-thinking"]
-    chip_classes = ["cap-filter", "cap-filter", "cap-filter", "cap-filter"]
+    # Capability filter chips (Embedding/Vision/Tools/Thinking/Decision).
+    # Image/MLX/MTP/Audio/Speech live exclusively inside the More dropdown.
+    chip_labels = ["Embedding", "Vision", "Tools", "Thinking", "Decision"]
+    chip_values = ["embedding", "vision", "tools", "thinking", "decision"]
+    chip_ids = ["cap-embedding", "cap-vision", "cap-tools", "cap-thinking", "cap-decision"]
+    chip_classes = ["cap-filter", "cap-filter", "cap-filter", "cap-filter", "cap-filter"]
     chip_data_attrs = [
         'data-cap="embedding"',
         'data-cap="vision"',
         'data-cap="tools"',
         'data-cap="thinking"',
+        'data-cap="decision"',
     ]
     chips = []
     for label, val, cid, cls, dattr in zip(
@@ -1264,6 +1347,10 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 <input type="checkbox" id="more-mtp" class="more-filter peer sr-only" data-more="mtp">
                 <label for="more-mtp" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">MTP</label>
               </div>
+              <div class="relative inline-block">
+                <input type="checkbox" id="more-speech" class="more-filter peer sr-only" data-more="speech">
+                <label for="more-speech" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">Speech</label>
+              </div>
             </div>
             <!-- Row 2: Architecture (All / Dense / MoE) -->
             <div id="arch-content">
@@ -1280,6 +1367,10 @@ def build_index(models: list[dict], ranks: dict) -> None:
                 <div class="relative inline-block">
                   <input type="radio" name="moe-filter" value="moe" id="moe-moe" class="moe-radio peer sr-only">
                   <label for="moe-moe" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">MoE</label>
+                </div>
+                <div class="relative inline-block">
+                  <input type="radio" name="moe-filter" value="hybrid" id="moe-hybrid" class="moe-radio peer sr-only">
+                  <label for="moe-hybrid" class="px-3 py-1 text-sm font-medium rounded-3xl cursor-pointer text-center border border-neutral-200 text-neutral-800 dark:text-neutral-300 dark:border-neutral-800 inline-flex items-center justify-center peer-checked:bg-neutral-100 dark:peer-checked:bg-neutral-800 select-none">Hybrid</label>
                 </div>
               </div>
             </div>
@@ -1610,6 +1701,8 @@ def build_index(models: list[dict], ranks: dict) -> None:
                     digest = _resolve_mlx_config_digest(model_path, tname)
                 else:
                     digest = _resolve_blob_digest(model_path, tname)
+                    if not digest:
+                        digest = _resolve_mlx_config_digest(model_path, tname)
                 if not digest:
                     _stats_skipped += 1
                     continue
@@ -4528,6 +4621,8 @@ function filtersToParams() {
   if (ml && ml.checked) p.append('f', 'mlx');
   var mt = document.getElementById('more-mtp');
   if (mt && mt.checked) p.append('f', 'mtp');
+  var ms = document.getElementById('more-speech');
+  if (ms && ms.checked) p.append('f', 'speech');
   var mi = document.getElementById('more-image');
   if (mi && mi.checked) p.append('f', 'image');
   var moe = document.querySelector('input[name="moe-filter"]:checked');
@@ -4586,6 +4681,7 @@ function applyUrlToFilters() {
   setMore('more-audio', fFlags.indexOf('audio') !== -1 || p.has('audio'));
   setMore('more-mlx', fFlags.indexOf('mlx') !== -1 || p.has('mlx'));
   setMore('more-mtp', fFlags.indexOf('mtp') !== -1 || p.has('mtp'));
+  setMore('more-speech', fFlags.indexOf('speech') !== -1 || p.has('speech'));
   setMore('more-image', fFlags.indexOf('image') !== -1 || p.has('image'));
   var moe = p.get('moe') || 'all';
   var moeR = document.querySelector('input[name="moe-filter"][value="' + moe + '"]');
@@ -4802,11 +4898,13 @@ function applyFilters() {
   var moreAudio = document.getElementById('more-audio');
   var moreMlx = document.getElementById('more-mlx');
   var moreMtp = document.getElementById('more-mtp');
+  var moreSpeech = document.getElementById('more-speech');
   var moreImage = document.getElementById('more-image');
   var moeRadio = document.querySelector('input[name="moe-filter"]:checked');
   var moreAudioOn = moreAudio && moreAudio.checked;
   var moreMlxOn = moreMlx && moreMlx.checked;
   var moreMtpOn = moreMtp && moreMtp.checked;
+  var moreSpeechOn = moreSpeech && moreSpeech.checked;
   var moreImageOn = moreImage && moreImage.checked;
   var moeVal = moeRadio ? moeRadio.value : 'all';
   var tplRadio = document.querySelector('input[name="tpl-filter"]:checked');
@@ -4858,18 +4956,21 @@ function applyFilters() {
       || (cloudFilter === 'cloud' && isCloud)
       || (cloudFilter === 'local' && !isCloudOnly);
     var isAudio = card.getAttribute('data-audio') === 'true';
+    var isSpeech = card.getAttribute('data-speech') === 'true';
     var isMlx = card.getAttribute('data-mlx') === 'true';
     var isMoe = card.getAttribute('data-moe') === 'true';
     var isMtp = card.getAttribute('data-mtp') === 'true';
     var isImage = card.getAttribute('data-image') === 'true';
+    var cardFam = card.getAttribute('data-family') || 'unknown';
     var cardTpl = card.getAttribute('data-template-type') || 'base';
     var matchMoreAudio = !moreAudioOn || isAudio;
     var matchMoreMlx = !moreMlxOn || isMlx;
     var matchMoreMtp = !moreMtpOn || isMtp;
+    var matchMoreSpeech = !moreSpeechOn || isSpeech;
     var matchMoreImage = !moreImageOn || isImage;
-    var matchMoe = moeVal === 'all' || (moeVal === 'moe' && isMoe) || (moeVal === 'dense' && !isMoe);
+    var matchMoe = moeVal === 'all' || (moeVal === 'moe' && isMoe) || (moeVal === 'dense' && !isMoe) || (moeVal === 'hybrid' && cardFam === 'hybrid');
     var matchTpl = tplVal === 'all' || cardTpl === tplVal;
-    var show = matchText && matchCaps && matchCloud && matchSize && matchContext && matchMoreAudio && matchMoreMlx && matchMoreMtp && matchMoreImage && matchMoe && matchTpl;
+    var show = matchText && matchCaps && matchCloud && matchSize && matchContext && matchMoreAudio && matchMoreMlx && matchMoreMtp && matchMoreSpeech && matchMoreImage && matchMoe && matchTpl;
     // Non-official models are visible on the main page (no search required)
     card.style.display = show ? '' : 'none';
     if (show) visible++;
@@ -7533,6 +7634,21 @@ def main() -> int:
             "description": m.get("description", ""),
             "path": m.get("path", f"/library/{m['name']}"),
             "pulls": m.get("pulls", 0),
+            "capabilities": m.get("capabilities") or [],
+            "sizes": m.get("sizes") or [],
+            "cloud": bool(m.get("cloud")),
+            "cloud_only": bool(m.get("cloud_only")),
+            "official": bool(m.get("official")),
+            "owner": m.get("owner"),
+            "max_ctx": max(
+                [parse_context_to_tokens(t.get("context", "-")) for t in (m.get("tags") or [])]
+                + [parse_context_to_tokens(m.get("context", "-"))],
+                default=0,
+            ),
+            "moe": _has_moe(m["path"], m.get("tags")),
+            "family": _model_family(m["path"], m.get("tags")),
+            "speech": "speech" in (m.get("capabilities") or []),
+            "decision": "decision" in (m.get("capabilities") or []),
         }
         for m in models
     ]

@@ -14,6 +14,7 @@ NO_KV_ARCHS = {
     "modern-bert",
     "clip",
     "gemma-embedding",
+    "gemma-embedding2",
     "wavtokenizer-dec",
     "dream",
     "llada",

@@ -39,7 +39,6 @@ jobs:
           git fetch origin scraped-data 2>/dev/null || true
           if git rev-parse --verify origin/scraped-data >/dev/null 2>&1; then
             git checkout origin/scraped-data -- scraper/ 2>/dev/null || true
-            git checkout origin/main -- scraper/scrape.py 2>/dev/null || true
             git reset HEAD scraper/ 2>/dev/null || true
             echo "Restored scraped data from scraped-data branch"
             git worktree add /tmp/scraped-data scraped-data 2>/dev/null || true
