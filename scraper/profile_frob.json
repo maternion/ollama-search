@@ -102,7 +102,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 5794,
+      "pulls": 5795,
       "sizes": [
         "3b"
       ],
@@ -123,7 +123,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3-coder-next",
-      "pulls": 3961,
+      "pulls": 3963,
       "sizes": [
         "80b"
       ],
@@ -142,7 +142,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.2",
-      "pulls": 2054,
+      "pulls": 2055,
       "sizes": [
         "753b"
       ],
@@ -189,7 +189,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1557,
+      "pulls": 1559,
       "sizes": [
         "9b",
         "35b",
@@ -213,7 +213,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1404,
+      "pulls": 1412,
       "sizes": [
         "284b"
       ],
@@ -255,7 +255,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1293,
+      "pulls": 1295,
       "sizes": [
         "3b",
         "8b",
@@ -280,7 +280,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/davidau-qwen3.6-uncensored",
-      "pulls": 1055,
+      "pulls": 1056,
       "sizes": [
         "40b"
       ],
@@ -323,7 +323,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/locooperator",
-      "pulls": 991,
+      "pulls": 992,
       "sizes": [
         "4b"
       ],
@@ -581,7 +581,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-5.3",
-      "pulls": 355,
+      "pulls": 357,
       "sizes": [
         "753b"
       ],
@@ -603,7 +603,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen-agentworld",
-      "pulls": 306,
+      "pulls": 307,
       "sizes": [
         "35b"
       ],
@@ -687,7 +687,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
-      "pulls": 140,
+      "pulls": 144,
       "sizes": [],
       "source_url": "https://ollama.com/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
       "tag_count": 1,
@@ -725,7 +725,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/hy3",
-      "pulls": 104,
+      "pulls": 105,
       "sizes": [
         "295b"
       ],
@@ -755,25 +755,6 @@
       "updated_title": "Aug 21, 2026 8:20 AM UTC"
     },
     {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "",
-      "name": "ling-3.0-flash",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/ling-3.0-flash",
-      "pulls": 93,
-      "sizes": [
-        "124b"
-      ],
-      "source_url": "https://ollama.com/frob/ling-3.0-flash",
-      "tag_count": 6,
-      "tags": [],
-      "updated": "2 months ago",
-      "updated_title": "Aug 22, 2026 8:27 AM UTC"
-    },
-    {
       "capabilities": [
         "vision",
         "tools"
@@ -785,13 +766,32 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-ocr",
-      "pulls": 93,
+      "pulls": 95,
       "sizes": [],
       "source_url": "https://ollama.com/frob/glm-ocr",
       "tag_count": 3,
       "tags": [],
       "updated": "2 weeks ago",
       "updated_title": "Oct 5, 2026 11:18 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "",
+      "name": "ling-3.0-flash",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/ling-3.0-flash",
+      "pulls": 94,
+      "sizes": [
+        "124b"
+      ],
+      "source_url": "https://ollama.com/frob/ling-3.0-flash",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "2 months ago",
+      "updated_title": "Aug 22, 2026 8:27 AM UTC"
     },
     {
       "capabilities": [
@@ -806,7 +806,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mimo-v2.6-flash",
-      "pulls": 85,
+      "pulls": 86,
       "sizes": [
         "309b"
       ],
@@ -898,7 +898,7 @@
       "source_url": "https://ollama.com/frob/mimo-v2.6-pro",
       "tag_count": 4,
       "tags": [],
-      "updated": "4 weeks ago",
+      "updated": "1 month ago",
       "updated_title": "Sep 24, 2026 8:37 AM UTC"
     },
     {
@@ -1186,8 +1186,8 @@
     "/frob/qwen3.6",
     "/frob/hy3",
     "/frob/kimi-k3",
-    "/frob/ling-3.0-flash",
     "/frob/glm-ocr",
+    "/frob/ling-3.0-flash",
     "/frob/mimo-v2.6-flash",
     "/frob/llama3.2-vision",
     "/frob/nex-n2-mini",
