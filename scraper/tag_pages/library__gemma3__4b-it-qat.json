@@ -30,27 +30,27 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/gemma3:4b-it-qat/blobs/3116c5225075",
-      "content_preview": "{\n    \"stop\": [\n        \"<end_of_turn>\"\n    ],\n    \"temperature\": 1,\n    \"top_k\": 64,\n    \"top_p\": 0",
-      "parameters": "",
-      "quantization": "",
-      "size": "77B",
-      "type": "params"
-    },
-    {
-      "arch": "",
       "blob_url": "/library/gemma3:4b-it-qat/blobs/5be6630b666f",
       "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if or (eq .Rol",
       "parameters": "",
       "quantization": "",
       "size": "359B",
       "type": "template"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma3:4b-it-qat/blobs/3116c5225075",
+      "content_preview": "{\n    \"stop\": [\n        \"<end_of_turn>\"\n    ],\n    \"temperature\": 1,\n    \"top_k\": 64,\n    \"top_p\": 0",
+      "parameters": "",
+      "quantization": "",
+      "size": "77B",
+      "type": "params"
     }
   ],
   "full_path": "/library/gemma3:4b-it-qat",
   "manifest_digest": "b0313423c944",
   "manifest_size": "4.0GB",
-  "manifest_updated": "2 hours ago",
+  "manifest_updated": "2 weeks ago",
   "path": "/library/gemma3",
   "tag_name": "4b-it-qat"
 }
