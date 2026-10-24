@@ -47,7 +47,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 5748,
+      "pulls": 5752,
       "sizes": [
         "1.8b",
         "7b",
@@ -90,7 +90,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 3330,
+      "pulls": 3337,
       "sizes": [
         "4b"
       ],
@@ -111,7 +111,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 3092,
+      "pulls": 3102,
       "sizes": [
         "9b"
       ],
@@ -132,7 +132,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 2944,
+      "pulls": 2969,
       "sizes": [
         "9b"
       ],
@@ -155,7 +155,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2560,
+      "pulls": 2563,
       "sizes": [
         "4b"
       ],
@@ -218,7 +218,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1932,
+      "pulls": 1954,
       "sizes": [
         "2b"
       ],
@@ -237,7 +237,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1925,
+      "pulls": 1930,
       "sizes": [
         "8b"
       ],
@@ -259,7 +259,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mai-ui",
-      "pulls": 1449,
+      "pulls": 1450,
       "sizes": [
         "2b",
         "8b"
@@ -300,7 +300,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 1172,
+      "pulls": 1181,
       "sizes": [
         "4b"
       ],
@@ -319,7 +319,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 1057,
+      "pulls": 1061,
       "sizes": [
         "2b"
       ],
@@ -353,6 +353,27 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "description": "MiniCPM-V4.7 1B (Abliterated/Uncensored) - excellent multimodal vision understanding, reasoning with a low 0.0122 KL divergence.",
+      "name": "minicpm-v4.7-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/minicpm-v4.7-heretic",
+      "pulls": 823,
+      "sizes": [
+        "1b"
+      ],
+      "source_url": "https://ollama.com/maternion/minicpm-v4.7-heretic",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 week ago",
+      "updated_title": "Oct 13, 2026 3:02 PM UTC"
+    },
+    {
+      "capabilities": [
         "vision",
         "thinking"
       ],
@@ -372,27 +393,6 @@
       "tags": [],
       "updated": "8 months ago",
       "updated_title": "Feb 1, 2026 12:55 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "description": "MiniCPM-V4.7 1B (Abliterated/Uncensored) - excellent multimodal vision understanding, reasoning with a low 0.0122 KL divergence.",
-      "name": "minicpm-v4.7-heretic",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/minicpm-v4.7-heretic",
-      "pulls": 811,
-      "sizes": [
-        "1b"
-      ],
-      "source_url": "https://ollama.com/maternion/minicpm-v4.7-heretic",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "1 week ago",
-      "updated_title": "Oct 13, 2026 3:02 PM UTC"
     },
     {
       "capabilities": [
@@ -447,7 +447,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/LightOnOCR-3",
-      "pulls": 284,
+      "pulls": 287,
       "sizes": [
         "0.8b",
         "1b",
@@ -490,7 +490,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.6",
-      "pulls": 106,
+      "pulls": 118,
       "sizes": [
         "4b"
       ],
@@ -509,7 +509,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/neohorse-1",
-      "pulls": 96,
+      "pulls": 97,
       "sizes": [
         "9b"
       ],
@@ -531,7 +531,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/nemotron-3.5-embed",
-      "pulls": 86,
+      "pulls": 89,
       "sizes": [
         "1b",
         "8b"
@@ -587,8 +587,8 @@
     "/maternion/spark-x2.5",
     "/maternion/minicpm5-heretic",
     "/maternion/AgentCPM-Explore",
-    "/maternion/NuMarkdown-Thinking",
     "/maternion/minicpm-v4.7-heretic",
+    "/maternion/NuMarkdown-Thinking",
     "/maternion/manim-coder",
     "/maternion/sweep-next-edit-1.5B",
     "/maternion/LightOnOCR-3",
