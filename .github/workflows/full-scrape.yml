@@ -2,6 +2,17 @@ name: Full Scrape and Deploy
 
 on:
   workflow_dispatch:
+    inputs:
+      since_date:
+        description: "Only re-scrape models added/updated/missing-data since this date (YYYY-MM-DD). Defaults to the last scraped-data commit date. Broken-data models (no/empty tag pages) are always re-scraped regardless."
+        required: false
+        type: string
+        default: ""
+      max_runtime:
+        description: "Max scrape runtime in seconds (0 = unlimited)."
+        required: false
+        type: string
+        default: "5400"
 
 permissions:
   contents: write
@@ -16,7 +27,7 @@ jobs:
   full-scrape-and-deploy:
     runs-on: ubuntu-latest
     environment: github-pages
-    timeout-minutes: 60
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
 
@@ -46,15 +57,39 @@ jobs:
             cd "$GITHUB_WORKSPACE"
           fi
 
-      # ── Full scrape: no age filter, all models scraped ──
-      - name: Full Scrape (2h max)
+      # ── Compute --since-date: explicit input, else last scraped-data commit date ──
+      - name: Compute since-date
+        id: sincetime
+        run: |
+          SINCE="${{ inputs.since_date }}"
+          if [ -z "$SINCE" ]; then
+            if git rev-parse --verify origin/scraped-data >/dev/null 2>&1; then
+              SINCE=$(git log -1 --format=%cd --date=short origin/scraped-data 2>/dev/null || echo "")
+            fi
+          fi
+          if [ -z "$SINCE" ]; then
+            SINCE=$(date -u -d '7 days ago' +%Y-%m-%d)
+          fi
+          echo "since_date=$SINCE" >> "$GITHUB_OUTPUT"
+          echo "Using --since-date $SINCE"
+
+      # ── Incremental scrape: models added/updated/missing-data since the date ──
+      # No --skip-search: the /search sweep runs (forced by --since-date) so new
+      # models are discovered and Popular/Newest ordering is refreshed. --smart
+      # keeps stable models cached; --since-date scopes the re-scrape to the gap.
+      - name: Incremental Scrape (since-date)
         id: scrape1
         continue-on-error: true
         env:
           GIT_CHECKPOINT: "1"
           GIT_CHECKPOINT_WORKTREE: "/tmp/scraped-data"
           PYTHONUNBUFFERED: "1"
-        run: python3 scraper/scrape.py --smart --skip-search --max-runtime 3000 -v
+        run: |
+          python3 scraper/scrape.py \
+            --smart \
+            --since-date "${{ steps.sincetime.outputs.since_date }}" \
+            --max-runtime ${{ inputs.max_runtime }} \
+            -v
 
       - name: Checkpoint + build + self-check
         id: build1

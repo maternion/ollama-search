@@ -102,6 +102,66 @@ def _model_is_stale(m, max_age_days: int) -> bool:
     return False
 
 
+def _parse_updated_dt(m):
+    """Parse a model's updated_title into an aware UTC datetime, or None."""
+    from datetime import datetime, timezone
+
+    ut = getattr(m, "updated_title", "") or ""
+    if not ut:
+        return None
+    for fmt in (
+        "%b %d, %Y %I:%M %p UTC",
+        "%b %d, %Y %I:%M %p",
+        "%Y-%m-%dT%H:%M:%SZ",
+    ):
+        try:
+            dt = datetime.strptime(ut, fmt)
+            return dt.replace(tzinfo=timezone.utc) if dt.tzinfo is None else dt
+        except ValueError:
+            continue
+    return None
+
+
+def _needs_rescrape_since(m, since_dt) -> bool:
+    """True if a model should be re-scraped under --since-date.
+
+    Triggers on: updated on/after since_dt, no cached tags file, has tags but
+    no tag-page files, or any tag-page file with empty `files` (broken-parser
+    data). Otherwise the model is left alone so the run stays scoped.
+    """
+    if since_dt is None:
+        return False
+    dt = _parse_updated_dt(m)
+    if dt is not None and dt >= since_dt:
+        return True
+    slug = slugify(m.path)
+    tf = TAGS_DIR / f"{slug}.json"
+    if not tf.exists():
+        return True  # never had tags scraped
+    # Has tags cached -> check tag pages
+    if TAG_PAGES_DIR.exists():
+        tp_files = list(TAG_PAGES_DIR.glob(f"{slug}__*.json"))
+        if not tp_files:
+            # No tag pages at all. Needs rescrape if the model actually has
+            # tags (else it's an embedding/empty model with no tag pages by
+            # design).
+            try:
+                td = json.loads(tf.read_text())
+                if td.get("tags"):
+                    return True
+            except Exception:
+                return True
+        else:
+            for tp in tp_files:
+                try:
+                    tpd = json.loads(tp.read_text())
+                    if not tpd.get("files"):
+                        return True
+                except Exception:
+                    return True
+    return False
+
+
 # --------------------------------------------------------------------------- #
 # Hard wall-clock timeout via SIGALRM (POSIX, main thread only)
 # ---------------------------------------------------------------------------
@@ -3749,6 +3809,15 @@ def main(argv: list[str] | None = None) -> int:
         "Profile/community models are always scraped regardless of age.",
     )
     ap.add_argument(
+        "--since-date",
+        type=str,
+        default="",
+        help="only re-scrape models added/updated/missing-data since this date "
+        "(YYYY-MM-DD). Forces re-scrape of models with no cached tags, no tag "
+        "pages, or empty tag pages regardless of date. Runs the /search sweep "
+        "even with --skip-search. Scopes smart runs to the gap only.",
+    )
+    ap.add_argument(
         "--only-model",
         type=str,
         default="",
@@ -3762,6 +3831,21 @@ def main(argv: list[str] | None = None) -> int:
     global _START_TIME, _MAX_RUNTIME
     _START_TIME = time.time()
     _MAX_RUNTIME = args.max_runtime if args.max_runtime > 0 else 0
+
+    # Parse --since-date into an aware UTC datetime at midnight.
+    since_dt = None
+    if args.since_date:
+        from datetime import datetime, timezone
+
+        try:
+            since_dt = datetime.strptime(args.since_date, "%Y-%m-%d").replace(
+                tzinfo=timezone.utc
+            )
+            log.info("--since-date: re-scoping scrape to models from %s UTC onwards "
+                     "(plus any with missing/empty data)", args.since_date)
+        except ValueError:
+            log.error("invalid --since-date %r (expected YYYY-MM-DD)", args.since_date)
+            return 2
 
     logging.basicConfig(
         level=logging.DEBUG if args.verbose else logging.INFO,
@@ -4143,7 +4227,7 @@ def main(argv: list[str] | None = None) -> int:
         # the catalog page does not reflect).
         tags_changed: set[str] = set()
 
-        if not args.skip_search:
+        if not args.skip_search or since_dt:
             log.info("=== crawling /search for user models ===")
             before = len(models)
             crawl_search(client, models)
@@ -4279,8 +4363,12 @@ def main(argv: list[str] | None = None) -> int:
                     if client.bail_out or _time_up():
                         log.warning("STOPPING at smart fast-path tag sweep")
                         break
-                    # Skip stale official models (age filter)
-                    if m.official and _model_is_stale(m, args.max_age_days):
+                    # Skip stale official models (age filter) — unless
+                    # --since-date flagged this model as needing a re-scrape
+                    # (missing/empty data), in which case broken data wins.
+                    if m.official and _model_is_stale(m, args.max_age_days) and not (
+                        since_dt and _needs_rescrape_since(m, since_dt)
+                    ):
                         # Still load tags from cache so the model's graph data
                         # is preserved in models.json for build.py.
                         slug = slugify(m.path)
@@ -4291,6 +4379,11 @@ def main(argv: list[str] | None = None) -> int:
                                 m.tags = [Tag(**t) for t in existing.get("tags", [])]
                             except Exception:
                                 pass
+                        continue
+                    # --since-date: force re-scrape of broken/missing-data or
+                    # updated-since models, bypassing the fingerprint fast-path.
+                    if since_dt and _needs_rescrape_since(m, since_dt):
+                        to_fetch.append(m)
                         continue
                     slug = slugify(m.path)
                     tf = TAGS_DIR / f"{slug}.json"
@@ -4338,6 +4431,21 @@ def main(argv: list[str] | None = None) -> int:
                         # No cached fingerprint (first run / corrupt cache):
                         # treat as to-fetch.
                     to_fetch.append(m)
+                # --since-date: scrape broken/missing-data and updated-since
+                # models FIRST so the time budget reaches them before stable
+                # models that merely had a fingerprint change.
+                if since_dt:
+                    to_fetch.sort(
+                        key=lambda mm: not _needs_rescrape_since(mm, since_dt)
+                    )
+                    forced = sum(
+                        1 for mm in to_fetch if _needs_rescrape_since(mm, since_dt)
+                    )
+                    log.info(
+                        "--since-date: %d of %d to-fetch models need re-scrape",
+                        forced,
+                        len(to_fetch),
+                    )
                 log.info(
                     "=== fetching per-model tags (%d cached, %d to fetch) ===",
                     cached,
@@ -4377,10 +4485,24 @@ def main(argv: list[str] | None = None) -> int:
                             _time_up(),
                         )
                         break
-                    # Skip stale official models (age filter)
-                    if m.official and _model_is_stale(m, args.max_age_days):
+                    # Skip stale official models (age filter) — unless
+                    # --since-date flagged this model for re-scrape.
+                    if m.official and _model_is_stale(m, args.max_age_days) and not (
+                        since_dt and _needs_rescrape_since(m, since_dt)
+                    ):
                         # Still load tags from cache so the model's graph data
                         # is preserved in models.json for build.py.
+                        slug = slugify(m.path)
+                        tf = TAGS_DIR / f"{slug}.json"
+                        if tf.exists() and not m.tags:
+                            try:
+                                existing = json.loads(tf.read_text())
+                                m.tags = [Tag(**t) for t in existing.get("tags", [])]
+                            except Exception:
+                                pass
+                        continue
+                    # --since-date: skip models that don't need a re-scrape.
+                    if since_dt and not _needs_rescrape_since(m, since_dt):
                         slug = slugify(m.path)
                         tf = TAGS_DIR / f"{slug}.json"
                         if tf.exists() and not m.tags:
@@ -4434,6 +4556,7 @@ def main(argv: list[str] | None = None) -> int:
                 for m in models.values()
                 if (m.official or m.path in profile_model_paths)
                 and not (m.official and _model_is_stale(m, args.max_age_days))
+                and not (since_dt and not _needs_rescrape_since(m, since_dt))
             ]
             total = len(fetch_models)
             pages_done = 0
@@ -4482,6 +4605,7 @@ def main(argv: list[str] | None = None) -> int:
                 for m in models.values()
                 if (m.official or m.path in profile_model_paths)
                 and not (m.official and _model_is_stale(m, args.max_age_days))
+                and not (since_dt and not _needs_rescrape_since(m, since_dt))
             ]
             total_tag_pages = 0
             tag_pages_done = 0
@@ -4495,6 +4619,11 @@ def main(argv: list[str] | None = None) -> int:
                 tags_to_fetch = list(m.tags)
                 if not tags_to_fetch:
                     continue
+                # --since-date forces a full re-scrape of this model's tag
+                # pages (bypasses the tier-1/tier-2 digest skip gates below,
+                # which would otherwise keep broken-parser pages with empty
+                # `files` whose manifest digest still matches).
+                force_rescrape = bool(since_dt and _needs_rescrape_since(m, since_dt))
                 # Smart mode: if the tag sweep reported a fingerprint change
                 # for this model, prune any cached tag-page files whose tag
                 # is no longer present (retired/removed tags). Without this,
@@ -4544,7 +4673,7 @@ def main(argv: list[str] | None = None) -> int:
                     # report a tag fingerprint change (added/removed/re-pushed
                     # tags). The latter catches tag retirements that the
                     # catalog page does not surface.
-                    if args.smart and prev_models:
+                    if args.smart and prev_models and not force_rescrape:
                         pm = prev_models.get(m.path)
                         if (
                             pm
@@ -4561,7 +4690,7 @@ def main(argv: list[str] | None = None) -> int:
                     # tag (and every other tag) is unaffected, so we must NOT
                     # re-scrape them. Only re-scrape when the tag is new (no
                     # cached page) or its digest actually differs.
-                    if args.smart and tf.exists():
+                    if args.smart and tf.exists() and not force_rescrape:
                         try:
                             existing_tp = json.loads(tf.read_text())
                             cached_digest = existing_tp.get("manifest_digest", "")
@@ -4592,6 +4721,7 @@ def main(argv: list[str] | None = None) -> int:
                 for m in models.values()
                 if (m.official or m.path in profile_model_paths)
                 and not (m.official and _model_is_stale(m, args.max_age_days))
+                and not (since_dt and not _needs_rescrape_since(m, since_dt))
             ]
             total_blobs = 0
             blobs_done = 0
