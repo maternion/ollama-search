@@ -30,15 +30,6 @@
     },
     {
       "arch": "",
-      "blob_url": "/library/gemma3:12b-it-q4_K_M/blobs/e0a42594d802",
-      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if or (eq .Rol",
-      "parameters": "",
-      "quantization": "",
-      "size": "358B",
-      "type": "template"
-    },
-    {
-      "arch": "",
       "blob_url": "/library/gemma3:12b-it-q4_K_M/blobs/dd084c7d92a3",
       "content_preview": "Gemma Terms of Use\nLast modified: February 21, 2024\nBy using, reproducing, modifying, distributing,",
       "parameters": "",
@@ -54,12 +45,21 @@
       "quantization": "",
       "size": "77B",
       "type": "params"
+    },
+    {
+      "arch": "",
+      "blob_url": "/library/gemma3:12b-it-q4_K_M/blobs/e0a42594d802",
+      "content_preview": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if or (eq .Rol",
+      "parameters": "",
+      "quantization": "",
+      "size": "358B",
+      "type": "template"
     }
   ],
   "full_path": "/library/gemma3:12b-it-q4_K_M",
   "manifest_digest": "b92b218582c5",
   "manifest_size": "8.2GB",
-  "manifest_updated": "2 hours ago",
+  "manifest_updated": "2 weeks ago",
   "path": "/library/gemma3",
   "tag_name": "12b-it-q4_K_M"
 }
