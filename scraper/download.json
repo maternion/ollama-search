@@ -6,8 +6,8 @@
       "command": "curl -fsSL https://ollama.com/install.sh | sh",
       "helper": "",
       "or_separator": false,
-      "download_url": "",
-      "download_label": "",
+      "download_url": "/download/Ollama.dmg",
+      "download_label": "Download manually",
       "footnote": ""
     },
     {
@@ -23,11 +23,11 @@
     {
       "os": "windows",
       "label": "Windows",
-      "command": "curl -fsSL https://ollama.com/install.sh | sh",
+      "command": "irm https://ollama.com/install.ps1 | iex",
       "helper": "",
       "or_separator": false,
-      "download_url": "",
-      "download_label": "",
+      "download_url": "/download/OllamaSetup.exe",
+      "download_label": "Download manually",
       "footnote": ""
     }
   ]

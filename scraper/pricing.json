@@ -1,5 +1,107 @@
 {
-  "tiers": [],
+  "tiers": [
+    {
+      "name": "Free",
+      "price": "$0",
+      "price_subtext": "",
+      "description": "Use any cloud model with pay-as-you-go usage credits.",
+      "image_url": "",
+      "badge": "",
+      "button_url": "/signup",
+      "button_label": "Get started",
+      "button_paused": false,
+      "notice": "",
+      "features": [
+        "Run models locally",
+        "Starter usage credits included",
+        "Includes access to starter models",
+        "Add credits to unlock all models",
+        "No service fees"
+      ],
+      "features_subtitle": "",
+      "coming_soon_features": []
+    },
+    {
+      "name": "Pro",
+      "price": "$20",
+      "price_subtext": "",
+      "description": "For shorter, well-defined day-to-day tasks",
+      "image_url": "",
+      "badge": "",
+      "button_url": "/upgrade?plan=pro",
+      "button_label": "Get Pro",
+      "button_paused": false,
+      "notice": "",
+      "features": [
+        "$60 of usage credits per month",
+        "Access to larger pro models",
+        "Run multiple models concurrently",
+        "Fast mode  (coming soon)"
+      ],
+      "features_subtitle": "Everything in Free, plus:",
+      "coming_soon_features": []
+    },
+    {
+      "name": "Max",
+      "price": "$100",
+      "price_subtext": "",
+      "description": "For power users who run multiple agents simultaneously",
+      "image_url": "",
+      "badge": "",
+      "button_url": "/upgrade?plan=max",
+      "button_label": "Get Max",
+      "button_paused": false,
+      "notice": "",
+      "features": [
+        "$300 of usage credits per month",
+        "Early access to the newest models",
+        "10 concurrent requests"
+      ],
+      "features_subtitle": "Everything in Pro, plus:",
+      "coming_soon_features": []
+    },
+    {
+      "name": "Team",
+      "price": "$500 / mo.",
+      "price_subtext": "",
+      "description": "For teams scaling with open models",
+      "image_url": "",
+      "badge": "",
+      "button_url": "/teams/new",
+      "button_label": "Get Team",
+      "button_paused": false,
+      "notice": "",
+      "features": [
+        "Unlimited users",
+        "$1,000 of usage credits per month, shared across the team",
+        "Centralized billing and administration",
+        "Priority support",
+        "Shared projects, skills, and instructions (coming soon)"
+      ],
+      "features_subtitle": "",
+      "coming_soon_features": []
+    },
+    {
+      "name": "Enterprise",
+      "price": "Custom",
+      "price_subtext": "",
+      "description": "For larger teams with volume usage pricing",
+      "image_url": "",
+      "badge": "",
+      "button_url": "https://ollama.typeform.com/to/FFV2AVPu",
+      "button_label": "Contact us",
+      "button_paused": false,
+      "notice": "",
+      "features": [
+        "Model access controls\n              Limit team access to specific models",
+        "Set cost budgets for users and API keys",
+        "Private Slack channel with dedicated support",
+        "Custom security questionnaires"
+      ],
+      "features_subtitle": "",
+      "coming_soon_features": []
+    }
+  ],
   "faq": [
     {
       "group": "Team",
