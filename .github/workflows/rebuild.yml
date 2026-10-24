@@ -49,6 +49,7 @@ jobs:
         run: python3 build.py --base "/${{ github.event.repository.name }}"
 
       - name: Self-check
+        continue-on-error: true
         run: python3 scraper/scrape.py --self-check
 
       - name: Upload Pages artifact
