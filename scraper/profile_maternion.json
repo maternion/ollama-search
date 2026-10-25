@@ -49,7 +49,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 5802,
+      "pulls": 5807,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 3371,
+      "pulls": 3374,
       "sizes": [
         "4b"
       ],
@@ -116,7 +116,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 3194,
+      "pulls": 3216,
       "sizes": [
         "9b"
       ],
@@ -138,7 +138,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 3030,
+      "pulls": 3037,
       "sizes": [
         "9b"
       ],
@@ -248,7 +248,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1943,
+      "pulls": 1945,
       "sizes": [
         "8b"
       ],
@@ -294,7 +294,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/strand-rust-coder",
-      "pulls": 1389,
+      "pulls": 1390,
       "sizes": [
         "14b"
       ],
@@ -325,26 +325,6 @@
       "updated_title": "Sep 19, 2026 9:04 AM UTC"
     },
     {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "context": "",
-      "description": "Uncensored/Abliterated MiniCPM5-2B with only 10/100 refusals. It achieves 2B-class SOTA, remains competitive with 4B models overall.",
-      "name": "minicpm5-heretic",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/minicpm5-heretic",
-      "pulls": 1073,
-      "sizes": [
-        "2b"
-      ],
-      "source_url": "https://ollama.com/maternion/minicpm5-heretic",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "1 month ago",
-      "updated_title": "Sep 19, 2026 2:06 PM UTC"
-    },
-    {
       "capabilities": [
         "vision"
       ],
@@ -356,7 +336,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm-v4.7-heretic",
-      "pulls": 1067,
+      "pulls": 1081,
       "sizes": [
         "1b"
       ],
@@ -365,6 +345,26 @@
       "tags": [],
       "updated": "1 week ago",
       "updated_title": "Oct 13, 2026 3:02 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "context": "",
+      "description": "Uncensored/Abliterated MiniCPM5-2B with only 10/100 refusals. It achieves 2B-class SOTA, remains competitive with 4B models overall.",
+      "name": "minicpm5-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/minicpm5-heretic",
+      "pulls": 1075,
+      "sizes": [
+        "2b"
+      ],
+      "source_url": "https://ollama.com/maternion/minicpm5-heretic",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 month ago",
+      "updated_title": "Sep 19, 2026 2:06 PM UTC"
     },
     {
       "capabilities": [
@@ -468,7 +468,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/LightOnOCR-3",
-      "pulls": 311,
+      "pulls": 315,
       "sizes": [
         "0.8b",
         "1b",
@@ -490,14 +490,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.6",
-      "pulls": 139,
+      "pulls": 147,
       "sizes": [
         "4b"
       ],
       "source_url": "https://ollama.com/maternion/spark-x2.6",
       "tag_count": 5,
       "tags": [],
-      "updated": "3 days ago",
+      "updated": "4 days ago",
       "updated_title": "Oct 21, 2026 4:12 PM UTC"
     },
     {
@@ -513,7 +513,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/nemotron-3.5-embed",
-      "pulls": 135,
+      "pulls": 147,
       "sizes": [
         "1b",
         "8b"
@@ -521,7 +521,7 @@
       "source_url": "https://ollama.com/maternion/nemotron-3.5-embed",
       "tag_count": 8,
       "tags": [],
-      "updated": "3 days ago",
+      "updated": "4 days ago",
       "updated_title": "Oct 21, 2026 3:02 PM UTC"
     },
     {
@@ -610,8 +610,8 @@
     "/maternion/mai-ui",
     "/maternion/strand-rust-coder",
     "/maternion/spark-x2.5",
-    "/maternion/minicpm5-heretic",
     "/maternion/minicpm-v4.7-heretic",
+    "/maternion/minicpm5-heretic",
     "/maternion/AgentCPM-Explore",
     "/maternion/NuMarkdown-Thinking",
     "/maternion/manim-coder",
