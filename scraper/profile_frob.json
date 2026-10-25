@@ -107,7 +107,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/unlimited-ocr",
-      "pulls": 5805,
+      "pulls": 5808,
       "sizes": [
         "3b"
       ],
@@ -173,7 +173,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/qwen3.5",
-      "pulls": 1759,
+      "pulls": 1760,
       "sizes": [
         "122b",
         "397b"
@@ -198,7 +198,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ornith-1.5",
-      "pulls": 1567,
+      "pulls": 1568,
       "sizes": [
         "9b",
         "35b",
@@ -223,7 +223,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/deepseek-v4-flash",
-      "pulls": 1431,
+      "pulls": 1436,
       "sizes": [
         "284b"
       ],
@@ -267,7 +267,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/ministral-3",
-      "pulls": 1299,
+      "pulls": 1300,
       "sizes": [
         "3b",
         "8b",
@@ -293,7 +293,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/davidau-qwen3.6-uncensored",
-      "pulls": 1057,
+      "pulls": 1058,
       "sizes": [
         "40b"
       ],
@@ -528,7 +528,7 @@
       "source_url": "https://ollama.com/frob/mimo-v2.5",
       "tag_count": 6,
       "tags": [],
-      "updated": "3 months ago",
+      "updated": "4 months ago",
       "updated_title": "Jun 27, 2026 11:41 AM UTC"
     },
     {
@@ -543,7 +543,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/mistral-small-4",
-      "pulls": 461,
+      "pulls": 462,
       "sizes": [
         "119b"
       ],
@@ -685,6 +685,28 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "context": "",
+      "description": "",
+      "name": "minimax-m3",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/minimax-m3",
+      "pulls": 155,
+      "sizes": [
+        "428b"
+      ],
+      "source_url": "https://ollama.com/frob/minimax-m3",
+      "tag_count": 6,
+      "tags": [],
+      "updated": "2 months ago",
+      "updated_title": "Aug 25, 2026 12:32 PM UTC"
+    },
+    {
+      "capabilities": [
         "vision",
         "tools",
         "thinking"
@@ -704,28 +726,6 @@
       "tags": [],
       "updated": "2 weeks ago",
       "updated_title": "Oct 5, 2026 12:46 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "context": "",
-      "description": "",
-      "name": "minimax-m3",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/minimax-m3",
-      "pulls": 154,
-      "sizes": [
-        "428b"
-      ],
-      "source_url": "https://ollama.com/frob/minimax-m3",
-      "tag_count": 6,
-      "tags": [],
-      "updated": "2 months ago",
-      "updated_title": "Aug 25, 2026 12:32 PM UTC"
     },
     {
       "capabilities": [
@@ -779,7 +779,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/kimi-k3",
-      "pulls": 104,
+      "pulls": 105,
       "sizes": [
         "2780b"
       ],
@@ -802,7 +802,7 @@
       "official": false,
       "owner": "frob",
       "path": "/frob/glm-ocr",
-      "pulls": 98,
+      "pulls": 99,
       "sizes": [],
       "source_url": "https://ollama.com/frob/glm-ocr",
       "tag_count": 3,
@@ -856,6 +856,26 @@
     },
     {
       "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "context": "",
+      "description": "",
+      "name": "llama3.2-vision",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/llama3.2-vision",
+      "pulls": 84,
+      "sizes": [],
+      "source_url": "https://ollama.com/frob/llama3.2-vision",
+      "tag_count": 2,
+      "tags": [],
+      "updated": "1 year ago",
+      "updated_title": "Feb 20, 2025 2:54 PM UTC"
+    },
+    {
+      "capabilities": [
         "tools",
         "thinking"
       ],
@@ -885,26 +905,6 @@
       "cloud_only": false,
       "context": "",
       "description": "",
-      "name": "llama3.2-vision",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/llama3.2-vision",
-      "pulls": 83,
-      "sizes": [],
-      "source_url": "https://ollama.com/frob/llama3.2-vision",
-      "tag_count": 2,
-      "tags": [],
-      "updated": "1 year ago",
-      "updated_title": "Feb 20, 2025 2:54 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "context": "",
-      "description": "",
       "name": "ling-3.0-flash-vl",
       "official": false,
       "owner": "frob",
@@ -918,6 +918,30 @@
       "tags": [],
       "updated": "4 weeks ago",
       "updated_title": "Sep 25, 2026 4:41 PM UTC"
+    },
+    {
+      "capabilities": [
+        "vision",
+        "tools",
+        "thinking"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "context": "",
+      "description": "",
+      "name": "mimo-v2.6-pro",
+      "official": false,
+      "owner": "frob",
+      "path": "/frob/mimo-v2.6-pro",
+      "pulls": 62,
+      "sizes": [
+        "1023b"
+      ],
+      "source_url": "https://ollama.com/frob/mimo-v2.6-pro",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "1 month ago",
+      "updated_title": "Sep 24, 2026 8:37 AM UTC"
     },
     {
       "capabilities": [],
@@ -938,30 +962,6 @@
       "tags": [],
       "updated": "2 months ago",
       "updated_title": "Aug 21, 2026 8:27 AM UTC"
-    },
-    {
-      "capabilities": [
-        "vision",
-        "tools",
-        "thinking"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "context": "",
-      "description": "",
-      "name": "mimo-v2.6-pro",
-      "official": false,
-      "owner": "frob",
-      "path": "/frob/mimo-v2.6-pro",
-      "pulls": 60,
-      "sizes": [
-        "1023b"
-      ],
-      "source_url": "https://ollama.com/frob/mimo-v2.6-pro",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "1 month ago",
-      "updated_title": "Sep 24, 2026 8:37 AM UTC"
     },
     {
       "capabilities": [],
@@ -1233,19 +1233,19 @@
     "/frob/qwen-agentworld",
     "/frob/KaLM-Embedding-Gemma3-12B-2511",
     "/frob/kimi-k2.5-prism-reap",
-    "/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
     "/frob/minimax-m3",
+    "/frob/DavidAU-Qwen3.8-27B-TFCF-735-882-Heretic-UNCM-MTP",
     "/frob/qwen3.6",
     "/frob/hy3",
     "/frob/kimi-k3",
     "/frob/glm-ocr",
     "/frob/ling-3.0-flash",
     "/frob/mimo-v2.6-flash",
-    "/frob/nex-n2-mini",
     "/frob/llama3.2-vision",
+    "/frob/nex-n2-mini",
     "/frob/ling-3.0-flash-vl",
-    "/frob/hy-mt1.5",
     "/frob/mimo-v2.6-pro",
+    "/frob/hy-mt1.5",
     "/frob/sarvam",
     "/frob/trinity",
     "/frob/hy4-preview",
