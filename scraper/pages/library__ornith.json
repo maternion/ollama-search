@@ -1,5 +1,26 @@
 {
-  "applications": [],
+  "applications": [
+    {
+      "command": "ollama launch claude --model ornith",
+      "icon_url": "/public/claude.png",
+      "name": "Claude Code"
+    },
+    {
+      "command": "ollama launch opencode --model ornith",
+      "icon_url": "/public/opencode.png",
+      "name": "OpenCode"
+    },
+    {
+      "command": "ollama launch hermes --model ornith",
+      "icon_url": "/public/hermes.png",
+      "name": "Hermes Agent"
+    },
+    {
+      "command": "ollama launch openclaw --model ornith",
+      "icon_url": "/public/openclaw.svg",
+      "name": "OpenClaw"
+    }
+  ],
   "cloud_context": "",
   "cloud_context_unit": "",
   "cloud_cost_cached": "",
