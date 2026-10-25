@@ -11,96 +11,6 @@
   "cloud_usage_level": "",
   "files": [
     {
-      "arch": "",
-      "blob_url": "/library/nemotron3:33b/blobs/19c119ca04d7",
-      "content_preview": "{\n\"architectures\": [\n\"NemotronH_Nano_Omni_Reasoning_V3\"\n],\n\"auto_map\": {\n\"AutoConfig\": \"configuratio",
-      "parameters": "",
-      "quantization": "",
-      "size": "1.3MB",
-      "type": "json"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/nemotron3:33b/blobs/dbe3dfa851ad",
-      "content_preview": "{\n\"_from_model_config\": true,\n\"bos_token_id\": 1,\n\"eos_token_id\": [2, 11],\n\"pad_token_id\": 0,\n\"do_sam",
-      "parameters": "",
-      "quantization": "",
-      "size": "309B",
-      "type": "json"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/nemotron3:33b/blobs/d3995cd13d73",
-      "content_preview": "{\n\"producer\": {\n\"name\": \"modelopt\",\n\"version\": \"0.0.0\"\n},\n\"quantization\": {\n\"quant_algo\": \"MIXED_PRE",
-      "parameters": "",
-      "quantization": "",
-      "size": "984kB",
-      "type": "json"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/nemotron3:33b/blobs/5b06a0684fad",
-      "content_preview": "{\n\"image_processor_type\": \"NemotronH_Nano_Omni_Reasoning_V3ImageProcessor\",\n\"auto_map\": {\n\"AutoImage",
-      "parameters": "",
-      "quantization": "",
-      "size": "594B",
-      "type": "json"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/nemotron3:33b/blobs/e3a4f63da745",
-      "content_preview": "{\n\"bos_token\": {\n\"content\": \"<s>\",\n\"lstrip\": false,\n\"normalized\": false,\n\"rstrip\": false,\n\"single_wo",
-      "parameters": "",
-      "quantization": "",
-      "size": "420B",
-      "type": "json"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/nemotron3:33b/blobs/e5e7dc84d72e",
-      "content_preview": "{\n\"version\": \"1.0\",\n\"truncation\": null,\n\"padding\": null,\n\"added_tokens\": [\n{\n\"id\": 0,\n\"content\": \"<u",
-      "parameters": "",
-      "quantization": "",
-      "size": "17MB",
-      "type": "json"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/nemotron3:33b/blobs/02176136a63e",
-      "content_preview": "{\n\"add_bos_token\": false,\n\"add_eos_token\": false,\n\"add_prefix_space\": false,\n\"added_tokens_decoder\":",
-      "parameters": "",
-      "quantization": "",
-      "size": "188kB",
-      "type": "json"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/nemotron3:33b/blobs/b507b9c2f6ca",
-      "content_preview": "{{ .Prompt }}",
-      "parameters": "",
-      "quantization": "",
-      "size": "13B",
-      "type": "template"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/nemotron3:33b/blobs/7e2dd29664b3",
-      "content_preview": "NVIDIA Open Model License Agreement\nLast Modified: October 24, 2025\nThis NVIDIA Open Model License A",
-      "parameters": "",
-      "quantization": "",
-      "size": "10kB",
-      "type": "license"
-    },
-    {
-      "arch": "",
-      "blob_url": "/library/nemotron3:33b/blobs/ceaa5f78afb8",
-      "content_preview": "{\n    \"temperature\": 0.6,\n    \"top_p\": 0.95\n}",
-      "parameters": "",
-      "quantization": "",
-      "size": "33B",
-      "type": "params"
-    },
-    {
       "arch": "nemotron_h_omni",
       "blob_url": "/library/nemotron3:33b/blobs/02025860ddde",
       "content_preview": "arch  nemotron_h_omni",
@@ -120,9 +30,9 @@
     }
   ],
   "full_path": "/library/nemotron3:33b",
-  "manifest_digest": "",
-  "manifest_size": "",
-  "manifest_updated": "",
+  "manifest_digest": "32f4d7534dee",
+  "manifest_size": "28GB",
+  "manifest_updated": "6 days ago",
   "path": "/library/nemotron3",
   "tag_name": "33b"
 }
