@@ -49,7 +49,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 5775,
+      "pulls": 5785,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 3354,
+      "pulls": 3367,
       "sizes": [
         "4b"
       ],
@@ -116,7 +116,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 3137,
+      "pulls": 3163,
       "sizes": [
         "9b"
       ],
@@ -138,7 +138,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 3005,
+      "pulls": 3019,
       "sizes": [
         "9b"
       ],
@@ -184,7 +184,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2",
-      "pulls": 2207,
+      "pulls": 2210,
       "sizes": [
         "8b"
       ],
@@ -193,6 +193,26 @@
       "tags": [],
       "updated": "7 months ago",
       "updated_title": "Mar 12, 2026 4:09 PM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "context": "",
+      "description": "MiniCPM5-2B is a dense 2B Transformer for on-device deployment. It achieves 2B-class \nSOTA, remains competitive with 4B models overall, and excels in coding, math, \nlong-context, tool use, and agentic tasks.",
+      "name": "minicpm5",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/minicpm5",
+      "pulls": 1963,
+      "sizes": [
+        "2b"
+      ],
+      "source_url": "https://ollama.com/maternion/minicpm5",
+      "tag_count": 4,
+      "tags": [],
+      "updated": "1 month ago",
+      "updated_title": "Sep 9, 2026 7:38 PM UTC"
     },
     {
       "capabilities": [
@@ -207,7 +227,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/lfm2.5",
-      "pulls": 1962,
+      "pulls": 1963,
       "sizes": [
         "350m",
         "8b"
@@ -223,32 +243,12 @@
       "cloud": false,
       "cloud_only": false,
       "context": "",
-      "description": "MiniCPM5-2B is a dense 2B Transformer for on-device deployment. It achieves 2B-class \nSOTA, remains competitive with 4B models overall, and excels in coding, math, \nlong-context, tool use, and agentic tasks.",
-      "name": "minicpm5",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/minicpm5",
-      "pulls": 1954,
-      "sizes": [
-        "2b"
-      ],
-      "source_url": "https://ollama.com/maternion/minicpm5",
-      "tag_count": 4,
-      "tags": [],
-      "updated": "1 month ago",
-      "updated_title": "Sep 9, 2026 7:38 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "context": "",
       "description": "Ling-3.0-tiny is a lightweight 7.9B-parameter hybrid reasoning MoE with just 1.3B active parameters per token, offering strong reasoning and agentic capabilities at low inference cost.",
       "name": "ling-3.0-tiny",
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1938,
+      "pulls": 1941,
       "sizes": [
         "8b"
       ],
@@ -314,7 +314,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 1188,
+      "pulls": 1190,
       "sizes": [
         "4b"
       ],
@@ -334,7 +334,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 1069,
+      "pulls": 1071,
       "sizes": [
         "2b"
       ],
@@ -343,6 +343,28 @@
       "tags": [],
       "updated": "1 month ago",
       "updated_title": "Sep 19, 2026 2:06 PM UTC"
+    },
+    {
+      "capabilities": [
+        "vision"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "context": "",
+      "description": "MiniCPM-V4.7 1B (Abliterated/Uncensored) - excellent multimodal vision understanding, reasoning with a low 0.0122 KL divergence.",
+      "name": "minicpm-v4.7-heretic",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/minicpm-v4.7-heretic",
+      "pulls": 1060,
+      "sizes": [
+        "1b"
+      ],
+      "source_url": "https://ollama.com/maternion/minicpm-v4.7-heretic",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "1 week ago",
+      "updated_title": "Oct 13, 2026 3:02 PM UTC"
     },
     {
       "capabilities": [
@@ -369,28 +391,6 @@
     },
     {
       "capabilities": [
-        "vision"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "context": "",
-      "description": "MiniCPM-V4.7 1B (Abliterated/Uncensored) - excellent multimodal vision understanding, reasoning with a low 0.0122 KL divergence.",
-      "name": "minicpm-v4.7-heretic",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/minicpm-v4.7-heretic",
-      "pulls": 848,
-      "sizes": [
-        "1b"
-      ],
-      "source_url": "https://ollama.com/maternion/minicpm-v4.7-heretic",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "1 week ago",
-      "updated_title": "Oct 13, 2026 3:02 PM UTC"
-    },
-    {
-      "capabilities": [
         "vision",
         "thinking"
       ],
@@ -402,7 +402,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/NuMarkdown-Thinking",
-      "pulls": 822,
+      "pulls": 823,
       "sizes": [
         "8b"
       ],
@@ -468,7 +468,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/LightOnOCR-3",
-      "pulls": 299,
+      "pulls": 309,
       "sizes": [
         "0.8b",
         "1b",
@@ -513,7 +513,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.6",
-      "pulls": 127,
+      "pulls": 132,
       "sizes": [
         "4b"
       ],
@@ -536,7 +536,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/nemotron-3.5-embed",
-      "pulls": 117,
+      "pulls": 131,
       "sizes": [
         "1b",
         "8b"
@@ -604,15 +604,15 @@
     "/maternion/mimo-v2.6-heretic",
     "/maternion/Qianfan-OCR",
     "/maternion/lfm2",
-    "/maternion/lfm2.5",
     "/maternion/minicpm5",
+    "/maternion/lfm2.5",
     "/maternion/ling-3.0-tiny",
     "/maternion/mai-ui",
     "/maternion/strand-rust-coder",
     "/maternion/spark-x2.5",
     "/maternion/minicpm5-heretic",
-    "/maternion/AgentCPM-Explore",
     "/maternion/minicpm-v4.7-heretic",
+    "/maternion/AgentCPM-Explore",
     "/maternion/NuMarkdown-Thinking",
     "/maternion/manim-coder",
     "/maternion/sweep-next-edit-1.5B",
