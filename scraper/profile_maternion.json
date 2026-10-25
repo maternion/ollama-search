@@ -49,7 +49,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/hy-mt2",
-      "pulls": 5785,
+      "pulls": 5802,
       "sizes": [
         "1.8b",
         "7b",
@@ -94,7 +94,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5-heretic",
-      "pulls": 3367,
+      "pulls": 3371,
       "sizes": [
         "4b"
       ],
@@ -116,7 +116,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6",
-      "pulls": 3163,
+      "pulls": 3194,
       "sizes": [
         "9b"
       ],
@@ -138,14 +138,14 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/mimo-v2.6-heretic",
-      "pulls": 3019,
+      "pulls": 3030,
       "sizes": [
         "9b"
       ],
       "source_url": "https://ollama.com/maternion/mimo-v2.6-heretic",
       "tag_count": 9,
       "tags": [],
-      "updated": "4 weeks ago",
+      "updated": "1 month ago",
       "updated_title": "Sep 25, 2026 10:52 AM UTC"
     },
     {
@@ -162,7 +162,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/Qianfan-OCR",
-      "pulls": 2569,
+      "pulls": 2570,
       "sizes": [
         "4b"
       ],
@@ -204,7 +204,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5",
-      "pulls": 1963,
+      "pulls": 1969,
       "sizes": [
         "2b"
       ],
@@ -248,7 +248,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/ling-3.0-tiny",
-      "pulls": 1941,
+      "pulls": 1943,
       "sizes": [
         "8b"
       ],
@@ -314,7 +314,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/spark-x2.5",
-      "pulls": 1190,
+      "pulls": 1196,
       "sizes": [
         "4b"
       ],
@@ -334,7 +334,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm5-heretic",
-      "pulls": 1071,
+      "pulls": 1073,
       "sizes": [
         "2b"
       ],
@@ -356,7 +356,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/minicpm-v4.7-heretic",
-      "pulls": 1060,
+      "pulls": 1067,
       "sizes": [
         "1b"
       ],
@@ -402,7 +402,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/NuMarkdown-Thinking",
-      "pulls": 823,
+      "pulls": 824,
       "sizes": [
         "8b"
       ],
@@ -424,7 +424,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/manim-coder",
-      "pulls": 575,
+      "pulls": 576,
       "sizes": [
         "14b"
       ],
@@ -468,7 +468,7 @@
       "official": false,
       "owner": "maternion",
       "path": "/maternion/LightOnOCR-3",
-      "pulls": 309,
+      "pulls": 311,
       "sizes": [
         "0.8b",
         "1b",
@@ -479,6 +479,50 @@
       "tags": [],
       "updated": "1 week ago",
       "updated_title": "Oct 12, 2026 11:29 AM UTC"
+    },
+    {
+      "capabilities": [],
+      "cloud": false,
+      "cloud_only": false,
+      "context": "",
+      "description": "Spark-X2.6-4B keeps X2.5 architecture and gains from post-training: coding, tool use, long-context work, multilingual tasks, reasoning, supporting 1M-token context and 200+ languages.",
+      "name": "spark-x2.6",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/spark-x2.6",
+      "pulls": 139,
+      "sizes": [
+        "4b"
+      ],
+      "source_url": "https://ollama.com/maternion/spark-x2.6",
+      "tag_count": 5,
+      "tags": [],
+      "updated": "3 days ago",
+      "updated_title": "Oct 21, 2026 4:12 PM UTC"
+    },
+    {
+      "capabilities": [
+        "vision",
+        "embedding"
+      ],
+      "cloud": false,
+      "cloud_only": false,
+      "context": "",
+      "description": "Nemotron-3.5-Embed 1B and 8B: multilingual text + image embedding models for retrieval and RAG. 32,768 tokens context, 34 languages, bundled vision projector.",
+      "name": "nemotron-3.5-embed",
+      "official": false,
+      "owner": "maternion",
+      "path": "/maternion/nemotron-3.5-embed",
+      "pulls": 135,
+      "sizes": [
+        "1b",
+        "8b"
+      ],
+      "source_url": "https://ollama.com/maternion/nemotron-3.5-embed",
+      "tag_count": 8,
+      "tags": [],
+      "updated": "3 days ago",
+      "updated_title": "Oct 21, 2026 3:02 PM UTC"
     },
     {
       "capabilities": [
@@ -502,50 +546,6 @@
       "tags": [],
       "updated": "6 months ago",
       "updated_title": "Mar 30, 2026 1:59 PM UTC"
-    },
-    {
-      "capabilities": [],
-      "cloud": false,
-      "cloud_only": false,
-      "context": "",
-      "description": "Spark-X2.6-4B keeps X2.5 architecture and gains from post-training: coding, tool use, long-context work, multilingual tasks, reasoning, supporting 1M-token context and 200+ languages.",
-      "name": "spark-x2.6",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/spark-x2.6",
-      "pulls": 132,
-      "sizes": [
-        "4b"
-      ],
-      "source_url": "https://ollama.com/maternion/spark-x2.6",
-      "tag_count": 5,
-      "tags": [],
-      "updated": "3 days ago",
-      "updated_title": "Oct 21, 2026 4:12 PM UTC"
-    },
-    {
-      "capabilities": [
-        "vision",
-        "embedding"
-      ],
-      "cloud": false,
-      "cloud_only": false,
-      "context": "",
-      "description": "Nemotron-3.5-Embed 1B and 8B: multilingual text + image embedding models for retrieval and RAG. 32,768 tokens context, 34 languages, bundled vision projector.",
-      "name": "nemotron-3.5-embed",
-      "official": false,
-      "owner": "maternion",
-      "path": "/maternion/nemotron-3.5-embed",
-      "pulls": 131,
-      "sizes": [
-        "1b",
-        "8b"
-      ],
-      "source_url": "https://ollama.com/maternion/nemotron-3.5-embed",
-      "tag_count": 8,
-      "tags": [],
-      "updated": "3 days ago",
-      "updated_title": "Oct 21, 2026 3:02 PM UTC"
     },
     {
       "capabilities": [],
@@ -617,9 +617,9 @@
     "/maternion/manim-coder",
     "/maternion/sweep-next-edit-1.5B",
     "/maternion/LightOnOCR-3",
-    "/maternion/context-1",
     "/maternion/spark-x2.6",
     "/maternion/nemotron-3.5-embed",
+    "/maternion/context-1",
     "/maternion/neohorse-1"
   ],
   "username": "maternion"
