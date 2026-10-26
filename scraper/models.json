@@ -15,7 +15,20 @@
       "sizes": [],
       "source_url": "https://ollama.com/x/canary",
       "tag_count": 1,
-      "tags": [],
+      "tags": [
+        {
+          "context": "-",
+          "digest": "d967ae1795c6",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "local-v1",
+          "size_bytes": 8400000,
+          "size_text": "8.4MB",
+          "updated": "3 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        }
+      ],
       "updated": "3 months ago",
       "updated_title": "Jul 10, 2026 11:02 PM UTC"
     },
@@ -38,7 +51,116 @@
       ],
       "source_url": "https://ollama.com/x/flux2-klein",
       "tag_count": 9,
-      "tags": [],
+      "tags": [
+        {
+          "context": "-",
+          "digest": "50a0c0ab15ac",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "latest",
+          "size_bytes": 5700000000,
+          "size_text": "5.7GB",
+          "updated": "9 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "50a0c0ab15ac",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "4b",
+          "size_bytes": 5700000000,
+          "size_text": "5.7GB",
+          "updated": "9 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "91f22bc541d8",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "9b",
+          "size_bytes": 12000000000,
+          "size_text": "12GB",
+          "updated": "9 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "50a0c0ab15ac",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "4b-fp4",
+          "size_bytes": 5700000000,
+          "size_text": "5.7GB",
+          "updated": "9 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "d968d763271a",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "4b-fp8",
+          "size_bytes": 9500000000,
+          "size_text": "9.5GB",
+          "updated": "9 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "34332042377f",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "4b-bf16",
+          "size_bytes": 16000000000,
+          "size_text": "16GB",
+          "updated": "9 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "91f22bc541d8",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "9b-fp4",
+          "size_bytes": 12000000000,
+          "size_text": "12GB",
+          "updated": "9 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "5525d07b06a0",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "9b-fp8",
+          "size_bytes": 20000000000,
+          "size_text": "20GB",
+          "updated": "9 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "4c16567cccf5",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "9b-bf16",
+          "size_bytes": 35000000000,
+          "size_text": "35GB",
+          "updated": "9 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        }
+      ],
       "updated": "9 months ago",
       "updated_title": "Jan 20, 2026 10:16 PM UTC"
     },
@@ -58,7 +180,44 @@
       "sizes": [],
       "source_url": "https://ollama.com/x/z-image-turbo",
       "tag_count": 3,
-      "tags": [],
+      "tags": [
+        {
+          "context": "-",
+          "digest": "77b78ce4e883",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "latest",
+          "size_bytes": 13000000000,
+          "size_text": "13GB",
+          "updated": "9 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "77b78ce4e883",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "fp8",
+          "size_bytes": 13000000000,
+          "size_text": "13GB",
+          "updated": "9 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "-",
+          "digest": "a9a017f804f2",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "bf16",
+          "size_bytes": 33000000000,
+          "size_text": "33GB",
+          "updated": "9 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        }
+      ],
       "updated": "9 months ago",
       "updated_title": "Jan 15, 2026 1:36 AM UTC"
     },
@@ -752,7 +911,7 @@
           "name": "latest",
           "size_bytes": 16000000000,
           "size_text": "16GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -764,7 +923,7 @@
           "name": "20b",
           "size_bytes": 16000000000,
           "size_text": "16GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -776,7 +935,7 @@
           "name": "20b-q4_K_M",
           "size_bytes": 16000000000,
           "size_text": "16GB",
-          "updated": "6 months ago",
+          "updated": "7 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         }
@@ -2969,7 +3128,7 @@
           "name": "latest",
           "size_bytes": 75000000000,
           "size_text": "75GB",
-          "updated": "9 months ago",
+          "updated": "10 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -2981,7 +3140,7 @@
           "name": "123b",
           "size_bytes": 75000000000,
           "size_text": "75GB",
-          "updated": "9 months ago",
+          "updated": "10 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -2993,7 +3152,7 @@
           "name": "123b-instruct",
           "size_bytes": 75000000000,
           "size_text": "75GB",
-          "updated": "9 months ago",
+          "updated": "10 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -3005,7 +3164,7 @@
           "name": "123b-instruct-2512",
           "size_bytes": 75000000000,
           "size_text": "75GB",
-          "updated": "9 months ago",
+          "updated": "10 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -3017,7 +3176,7 @@
           "name": "123b-instruct-2512-q4_K_M",
           "size_bytes": 75000000000,
           "size_text": "75GB",
-          "updated": "9 months ago",
+          "updated": "10 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         }
@@ -14247,7 +14406,7 @@
           "name": "latest",
           "size_bytes": 5000000000,
           "size_text": "5.0GB",
-          "updated": "10 months ago",
+          "updated": "11 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -14259,7 +14418,7 @@
           "name": "8b",
           "size_bytes": 5000000000,
           "size_text": "5.0GB",
-          "updated": "10 months ago",
+          "updated": "11 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -14271,7 +14430,7 @@
           "name": "8b-Q4_K_M",
           "size_bytes": 5000000000,
           "size_text": "5.0GB",
-          "updated": "10 months ago",
+          "updated": "11 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -14283,7 +14442,7 @@
           "name": "8b-q8_0",
           "size_bytes": 8700000000,
           "size_text": "8.7GB",
-          "updated": "10 months ago",
+          "updated": "11 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         },
@@ -14295,7 +14454,7 @@
           "name": "8b-fp16",
           "size_bytes": 16000000000,
           "size_text": "16GB",
-          "updated": "10 months ago",
+          "updated": "11 months ago",
           "usage_active_slots": 0,
           "usage_level": ""
         }
@@ -22127,7 +22286,44 @@
       ],
       "source_url": "https://ollama.com/maternion/strand-rust-coder",
       "tag_count": 3,
-      "tags": [],
+      "tags": [
+        {
+          "context": "32K",
+          "digest": "e96b4ce0f6de",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "latest",
+          "size_bytes": 9000000000,
+          "size_text": "9.0GB",
+          "updated": "8 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "32K",
+          "digest": "e96b4ce0f6de",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "14b",
+          "size_bytes": 9000000000,
+          "size_text": "9.0GB",
+          "updated": "8 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        },
+        {
+          "context": "32K",
+          "digest": "e96b4ce0f6de",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "14b-q4_K_M",
+          "size_bytes": 9000000000,
+          "size_text": "9.0GB",
+          "updated": "8 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        }
+      ],
       "updated": "8 months ago",
       "updated_title": "Feb 22, 2026 6:27 PM UTC"
     },
@@ -22147,7 +22343,20 @@
       "sizes": [],
       "source_url": "https://ollama.com/maternion/sweep-next-edit-1.5B",
       "tag_count": 1,
-      "tags": [],
+      "tags": [
+        {
+          "context": "32K",
+          "digest": "6a6bbfafb2cf",
+          "format": "gguf",
+          "input_type": "Text",
+          "name": "latest",
+          "size_bytes": 1500000000,
+          "size_text": "1.5GB",
+          "updated": "9 months ago",
+          "usage_active_slots": 0,
+          "usage_level": ""
+        }
+      ],
       "updated": "9 months ago",
       "updated_title": "Jan 24, 2026 10:15 AM UTC"
     },
