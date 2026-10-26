@@ -1,8 +1,10 @@
 name: Scrape and Deploy
 
 on:
-  schedule:
-    - cron: "0 */2 * * *"
+  # Scheduled scrape disabled while the site is in maintenance mode
+  # (ollama.com UI changed again). Re-enable by uncommenting the cron line.
+  # schedule:
+  #   - cron: "0 */2 * * *"
   workflow_dispatch:
 
 permissions:
@@ -18,6 +20,11 @@ jobs:
   scrape-and-deploy:
     runs-on: ubuntu-latest
     environment: github-pages
+    env:
+      # Site is temporarily closed while ollama.com's UI changes are re-accommodated.
+      # build.py emits a single holding page when MAINTENANCE=1. Unset to reopen
+      # (and re-enable the schedule cron above) once parsers are fixed.
+      MAINTENANCE: "1"
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
@@ -53,8 +60,10 @@ jobs:
           fi
 
       # ── Scrape: always run --smart (detects tier changes, tag retirements) ──
+      # Skipped while MAINTENANCE=1 (don't scrape against a changed UI).
       - name: Scrape (2h max)
         id: scrape1
+        if: env.MAINTENANCE == ''
         continue-on-error: true
         env:
           GIT_CHECKPOINT: "1"
@@ -79,7 +88,10 @@ jobs:
           # Build site
           python3 build.py --base "/${{ github.event.repository.name }}"
           # Self-check BEFORE deploy so bad data doesn't go live
-          python3 scraper/scrape.py --self-check
+          # (skipped in maintenance mode — the holding page has no models)
+          if [ -z "$MAINTENANCE" ]; then
+            python3 scraper/scrape.py --self-check
+          fi
 
       # ── Deploy: upload artifact + deploy-pages (no gh-pages branch needed) ──
       - name: Upload Pages artifact

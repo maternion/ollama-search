@@ -24,6 +24,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: github-pages
     timeout-minutes: 15
+    env:
+      # Site is temporarily closed while ollama.com's UI changes are re-accommodated.
+      # build.py emits a single holding page when MAINTENANCE=1. Unset to reopen.
+      MAINTENANCE: "1"
     steps:
       - uses: actions/checkout@v4
 
@@ -40,6 +44,7 @@ jobs:
           if git rev-parse --verify origin/scraped-data >/dev/null 2>&1; then
             git checkout origin/scraped-data -- scraper/ 2>/dev/null || true
             git reset HEAD scraper/ 2>/dev/null || true
+            git checkout HEAD -- scraper/scrape.py 2>/dev/null || true
             echo "Restored scraped data from scraped-data branch"
           else
             echo "::warning::No scraped-data branch found — build will use whatever scraper/ data exists on main"
@@ -49,6 +54,7 @@ jobs:
         run: python3 build.py --base "/${{ github.event.repository.name }}"
 
       - name: Self-check
+        if: env.MAINTENANCE == ''
         continue-on-error: true
         run: python3 scraper/scrape.py --self-check
 

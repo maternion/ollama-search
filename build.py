@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import html
 import json
+import os
 import re
 import shutil
 import sys
@@ -7478,11 +7479,61 @@ def build_pricing_page() -> None:
     print(f"  pricing: {len(tiers)} tiers, {len(faq)} faq groups")
 
 
+def _write_maintenance_page() -> None:
+    """Emit a single holding page and nothing else, so the site shows a
+    clean 'temporarily unavailable' notice instead of broken/stale content.
+    Triggered by MAINTENANCE=1 in the env (set in the deploy workflows)."""
+    PUBLIC.mkdir(parents=True, exist_ok=True)
+    # Wipe any prior built pages so only the notice is served.
+    for child in PUBLIC.iterdir():
+        if child.is_dir():
+            shutil.rmtree(child, ignore_errors=True)
+        else:
+            try:
+                child.unlink()
+            except Exception:
+                pass
+    base = BASE
+    css = (
+        "html,body{margin:0;height:100%;background:#0a0a0a;color:#e5e5e5;"
+        "font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;"
+        "display:flex;align-items:center;justify-content:center;text-align:center}"
+        "main{max-width:32rem;padding:2rem}"
+        "h1{font-size:1.5rem;font-weight:600;margin:0 0 .75rem}"
+        "p{color:#a3a3a3;font-size:.95rem;line-height:1.5;margin:0}"
+        "a{color:#fff;text-decoration:underline}"
+        ".logo{font-size:1.1rem;font-weight:600;margin-bottom:1.25rem;opacity:.85}"
+    )
+    html = (
+        f"<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'>"
+        f"<meta name='viewport' content='width=device-width,initial-scale=1'>"
+        f"<title>Ollama Search · Temporarily Unavailable</title>"
+        f"<style>{css}</style></head>"
+        f"<body><main>"
+        f"<div class='logo'>Ollama Search</div>"
+        f"<h1>Temporarily unavailable</h1>"
+        f"<p>This site is down for maintenance while we catch up to changes on "
+        f"ollama.com. It'll be back shortly. In the meantime, browse models "
+        f"directly on <a href='https://ollama.com/search'>ollama.com/search</a>.</p>"
+        f"</main></body></html>"
+    )
+    (PUBLIC / "index.html").write_text(html)
+    # Keep a 404 too so deep links also show the notice.
+    (PUBLIC / "404.html").write_text(html)
+    print("wrote maintenance page")
+
+
 def main() -> int:
     global BASE
     if "--base" in sys.argv:
         idx = sys.argv.index("--base")
         BASE = sys.argv[idx + 1].rstrip("/") if idx + 1 < len(sys.argv) else ""
+    # Maintenance mode: emit a single holding page and stop. All code/data is
+    # left intact; unset MAINTENANCE (or set to 0/empty) to resume normal builds.
+    if os.environ.get("MAINTENANCE", "").lower() in ("1", "true", "yes"):
+        print("MAINTENANCE mode: skipping normal build")
+        _write_maintenance_page()
+        return 0
     models = load_models()
     print(f"loaded {len(models)} models from scraper/models.json")
     global _NEW_MODELS
